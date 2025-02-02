@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2025- 02 Feb 2025, Andrew Grant of Carrick Software .
+ * All rights reserved.
+ */
+
 package scot.carricksoftware.grants;
 
 import org.apache.logging.log4j.LogManager;
