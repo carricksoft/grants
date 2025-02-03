@@ -20,7 +20,8 @@ public class Place extends BaseEntity {
     private Region region;
 
 
-    public Place() {}
+    public Place() {
+    }
 
     @SuppressWarnings("unused")
     public String getName() {

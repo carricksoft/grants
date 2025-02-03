@@ -4,8 +4,6 @@
  */
 
 
-
-
 package scot.carricksoftware.grants.domains.people;
 
 import jakarta.persistence.Entity;
