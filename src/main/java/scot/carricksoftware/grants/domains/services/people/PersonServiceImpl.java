@@ -5,6 +5,8 @@
 
 package scot.carricksoftware.grants.domains.services.people;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
@@ -13,6 +15,8 @@ import java.util.Set;
 
 @Service
 public class PersonServiceImpl implements PersonService {
+    private static final Logger logger = LogManager.getLogger(PersonServiceImpl.class);
+
 
     private final PersonRepository personRepository;
 
@@ -32,6 +36,7 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person save(Person person) {
+        logger.debug("PersonServiceImpl::save");
         return personRepository.save(person);
     }
 
