@@ -42,11 +42,11 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void delete(Person object) {
-
+        throw new UnsupportedOperationException();
     }
 
     @Override
     public void deleteById(Long aLong) {
-
+        throw new UnsupportedOperationException();
     }
 }
