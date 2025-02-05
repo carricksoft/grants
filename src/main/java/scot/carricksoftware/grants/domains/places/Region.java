@@ -13,6 +13,9 @@ public class Region extends BaseEntity {
     private String name;
 
     public Region() {
+        //
+        // empty constructor required by JPA
+        //
     }
 
     @SuppressWarnings("unused")
