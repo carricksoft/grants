@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.exceptions.GrantsException;
 import scot.carricksoftware.grants.repositories.places.PlaceRepository;
 
 import java.util.Set;
@@ -34,12 +35,12 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public Place save(Place place) {
+    public Place save(Place place) throws GrantsException {
         logger.debug("PlaceServiceImpl::save");
         if (place == null ||
                 place.getCountry() == null ||
                 place.getRegion() == null) {
-            throw new RuntimeException("Place is invalid when saving");
+            throw new GrantsException("Place is invalid when saving");
         }
         return placeRepository.save(place);
     }

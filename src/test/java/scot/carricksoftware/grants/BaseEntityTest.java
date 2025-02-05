@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 
-public class BaseEntityTest {
+class BaseEntityTest {
 
     BaseEntity baseEntity;
 

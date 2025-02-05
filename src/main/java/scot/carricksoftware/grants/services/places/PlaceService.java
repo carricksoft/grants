@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants.services.places;
 
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.exceptions.GrantsException;
 
 import java.util.Set;
 
@@ -18,6 +19,6 @@ public interface PlaceService {
     Place findById(Long aLong);
 
     @SuppressWarnings({"UnusedReturnValue", "unused", "SameReturnValue"})
-    Place save(Place place);
+    Place save(Place place) throws GrantsException;
 
 }
