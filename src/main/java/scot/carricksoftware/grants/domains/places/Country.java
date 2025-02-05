@@ -13,6 +13,9 @@ public class Country extends BaseEntity {
     private String name;
 
     public Country() {
+        //
+        // empty constructor required by JPA
+        //
     }
 
     @SuppressWarnings("unused")

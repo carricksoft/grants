@@ -21,6 +21,9 @@ public class Place extends BaseEntity {
 
 
     public Place() {
+        //
+        // empty constructor required by JPA
+        //
     }
 
     @SuppressWarnings("unused")
