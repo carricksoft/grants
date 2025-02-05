@@ -33,7 +33,7 @@
     </scm>
     <properties>
         <java.version>17</java.version>
-        <sonar.host.url>http://localhost:9000/</sonar.host.url>
+        <sonar.host.url>https://git.carricksoftware.co.uk:9000/</sonar.host.url>
         <sonar.login>sqa_4d27bbd7a90f8e32419fa09b3b4eaf7d6e852f7f</sonar.login>
     </properties>
     <dependencies>
