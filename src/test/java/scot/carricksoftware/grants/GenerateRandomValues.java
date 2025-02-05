@@ -7,11 +7,19 @@ package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Random;
+
 @Component
 public class GenerateRandomValues {
 
+    private static final Random rand = new Random();
+
     public static Long GetRandomLong() {
-        long lowLimit = 1L;
-        return lowLimit + (long) (Math.random() * lowLimit);
+        return rand.nextLong();
+    }
+
+    @SuppressWarnings("unused")
+    public static Integer GetRandomInt() {
+        return rand.nextInt();
     }
 }

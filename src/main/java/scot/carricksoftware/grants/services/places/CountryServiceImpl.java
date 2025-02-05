@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.repositories.places.CountryRepository;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -24,7 +25,9 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Set<Country> findAll() {
-        return Set.of();
+        Set<Country> countrySet = new HashSet<>();
+        countryRepository.findAll().iterator().forEachRemaining(countrySet::add);
+        return countrySet;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Country save(Country country) {
-        logger.debug("PersonServiceImpl::save");
+        logger.debug("CountryImpl::save");
         return countryRepository.save(country);
     }
 
