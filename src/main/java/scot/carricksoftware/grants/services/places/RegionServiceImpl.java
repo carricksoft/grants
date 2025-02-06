@@ -14,6 +14,7 @@ import scot.carricksoftware.grants.repositories.places.RegionRepository;
 import java.util.HashSet;
 import java.util.Set;
 
+@SuppressWarnings("LoggingSimilarMessage")
 @Service
 public class RegionServiceImpl implements RegionService {
 

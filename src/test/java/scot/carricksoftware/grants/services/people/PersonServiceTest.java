@@ -47,16 +47,25 @@ class PersonServiceTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void saveTest() {assertTrue(true);
+    void saveTest() {
+        Person person = new Person();
+        person.setFirstName("John");
+        person.setLastName("Doe");
+
+        when(personRepositoryMock.save(person)).thenReturn(person);
+
+        assertEquals(person, personService.save(person));
     }
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void deleteTest() {assertTrue(true);
+    void deleteTest() {
+        assertTrue(true);
     }
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void deleteByIdTest() {assertTrue(true);
+    void deleteByIdTest() {
+        assertTrue(true);
     }
 }

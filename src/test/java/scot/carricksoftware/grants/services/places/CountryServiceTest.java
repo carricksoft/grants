@@ -44,12 +44,17 @@ class CountryServiceTest {
     @SuppressWarnings("EmptyMethod")
     @Test
     void findByIdTest() {
-assertTrue(true);
+        assertTrue(true);
     }
 
-    @SuppressWarnings("EmptyMethod")
+
     @Test
     void saveTest() {
-        assertTrue(true);
+        Country scotland = new Country();
+        scotland.setName("Scotland");
+
+        when(countryRepositoryMock.save(scotland)).thenReturn(scotland);
+
+        assertEquals(scotland, countryService.save(scotland));
     }
 }

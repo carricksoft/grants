@@ -47,9 +47,13 @@ class RegionServiceTest {
         assertTrue(true);
     }
 
-    @SuppressWarnings("EmptyMethod")
     @Test
     void saveTest() {
-        assertTrue(true);
+        Region edinburgh = new Region();
+        edinburgh.setName("Edinburgh");
+
+        when(regionRepositoryMock.save(edinburgh)).thenReturn(edinburgh);
+
+        assertEquals(edinburgh, regionService.save(edinburgh));
     }
 }

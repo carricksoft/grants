@@ -31,12 +31,12 @@ class PlaceServiceTest {
     }
 
     @Test
-    void findAllTest(){
-    HashSet<Place> places = new HashSet<>();
-    Place elmRow = new Place();
-    places.add(elmRow);
-    when(placeRepositoryMock.findAll()).thenReturn(places);
-    assertEquals(places, placeService.findAll());
+    void findAllTest() {
+        HashSet<Place> places = new HashSet<>();
+        Place elmRow = new Place();
+        places.add(elmRow);
+        when(placeRepositoryMock.findAll()).thenReturn(places);
+        assertEquals(places, placeService.findAll());
     }
 
     @SuppressWarnings("EmptyMethod")
@@ -47,6 +47,7 @@ class PlaceServiceTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void saveTest() {assertTrue(true);
+    void saveTest() {
+        assertTrue(true);
     }
 }
