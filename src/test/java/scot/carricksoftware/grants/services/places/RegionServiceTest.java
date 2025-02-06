@@ -12,11 +12,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.repositories.places.RegionRepository;
 
+
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
 class RegionServiceTest {
@@ -35,8 +37,8 @@ class RegionServiceTest {
     @Test
     void findAllTest() {
         HashSet<Region> regions = new HashSet<>();
-        Region west = new Region();
-        regions.add(west);
+        Region region = new Region();
+        regions.add(region);
         when(regionRepositoryMock.findAll()).thenReturn(regions);
         assertEquals(regions, regionService.findAll());
     }
@@ -49,11 +51,11 @@ class RegionServiceTest {
 
     @Test
     void saveTest() {
-        Region edinburgh = new Region();
-        edinburgh.setName("Edinburgh");
+        Region region = new Region();
+        region.setName(GetRandomString());
 
-        when(regionRepositoryMock.save(edinburgh)).thenReturn(edinburgh);
+        when(regionRepositoryMock.save(region)).thenReturn(region);
 
-        assertEquals(edinburgh, regionService.save(edinburgh));
+        assertEquals(region, regionService.save(region));
     }
 }

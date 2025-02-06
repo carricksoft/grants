@@ -12,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
+
 import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -49,8 +51,8 @@ class PersonServiceTest {
     @Test
     void saveTest() {
         Person person = new Person();
-        person.setFirstName("John");
-        person.setLastName("Doe");
+        person.setFirstName(GetRandomString());
+        person.setLastName(GetRandomString());
 
         when(personRepositoryMock.save(person)).thenReturn(person);
 

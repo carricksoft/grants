@@ -17,6 +17,7 @@ import java.util.HashSet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
 class CountryServiceTest {
@@ -50,11 +51,11 @@ class CountryServiceTest {
 
     @Test
     void saveTest() {
-        Country scotland = new Country();
-        scotland.setName("Scotland");
+        Country country = new Country();
+        country.setName(GetRandomString());
 
-        when(countryRepositoryMock.save(scotland)).thenReturn(scotland);
+        when(countryRepositoryMock.save(country)).thenReturn(country);
 
-        assertEquals(scotland, countryService.save(scotland));
+        assertEquals(country, countryService.save(country));
     }
 }

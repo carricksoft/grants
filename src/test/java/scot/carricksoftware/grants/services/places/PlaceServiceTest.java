@@ -33,8 +33,8 @@ class PlaceServiceTest {
     @Test
     void findAllTest() {
         HashSet<Place> places = new HashSet<>();
-        Place elmRow = new Place();
-        places.add(elmRow);
+        Place place = new Place();
+        places.add(place);
         when(placeRepositoryMock.findAll()).thenReturn(places);
         assertEquals(places, placeService.findAll());
     }

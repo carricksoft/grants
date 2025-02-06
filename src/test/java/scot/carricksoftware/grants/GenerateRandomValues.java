@@ -13,6 +13,9 @@ import java.util.Random;
 public class GenerateRandomValues {
 
     private static final Random rand = new Random();
+    @SuppressWarnings("SpellCheckingInspection")
+    private static final String[] names = {"Ryland", "Oscar", "Martha", "Brynn"
+            , "Euan", "Jack", "Ramsay", "Ally"};
 
     public static Long GetRandomLong() {
         return rand.nextLong();
@@ -21,5 +24,10 @@ public class GenerateRandomValues {
     @SuppressWarnings("unused")
     public static Integer GetRandomInt() {
         return rand.nextInt();
+    }
+
+    public static String GetRandomString() {
+        int random = rand.nextInt(names.length);
+        return names[random];
     }
 }

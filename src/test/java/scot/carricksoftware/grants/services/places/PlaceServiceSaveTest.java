@@ -15,6 +15,8 @@ import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.exceptions.GrantsException;
 import scot.carricksoftware.grants.repositories.places.PlaceRepository;
 
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
@@ -39,22 +41,22 @@ class PlaceServiceSaveTest {
 
     @Test
     void saveValidTest() throws GrantsException {
-        Region edinburgh = new Region();
-        edinburgh.setName("Edinburgh");
+        Region region = new Region();
+        region.setName(GetRandomString());
 
-        Country scotland = new Country();
-        scotland.setName("Scotland");
+        Country country = new Country();
+        country.setName(GetRandomString());
 
-        place.setName("Elm Row");
-        place.setCountry(scotland);
-        place.setRegion(edinburgh);
+        place.setName(GetRandomString());
+        place.setCountry(country);
+        place.setRegion(region);
 
         when(placeRepositoryMock.save(place)).thenReturn(place);
 
         Place returnPlace = placeService.save(place);
 
-        assertEquals(scotland.getName(), returnPlace.getCountry().getName());
-        assertEquals(edinburgh.getName(), returnPlace.getRegion().getName());
+        assertEquals(country.getName(), returnPlace.getCountry().getName());
+        assertEquals(region.getName(), returnPlace.getRegion().getName());
         assertEquals(place.getName(), returnPlace.getName());
     }
 
@@ -67,7 +69,7 @@ class PlaceServiceSaveTest {
 
     @Test
     void saveTestNullCountry() {
-        place.setName("name");
+        place.setName(GetRandomString());
         place.setRegion(new Region());
         GrantsException thrown = assertThrows(GrantsException.class, () -> placeService.save(place));
 
@@ -77,7 +79,7 @@ class PlaceServiceSaveTest {
     @Test
     void saveTestNullRegion() {
 
-        place.setName("name");
+        place.setName(GetRandomString());
         place.setCountry(new Country());
         GrantsException thrown = assertThrows(GrantsException.class, () -> placeService.save(place));
 
