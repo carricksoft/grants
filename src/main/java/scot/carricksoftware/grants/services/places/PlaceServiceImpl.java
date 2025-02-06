@@ -12,8 +12,10 @@ import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.exceptions.GrantsException;
 import scot.carricksoftware.grants.repositories.places.PlaceRepository;
 
+import java.util.HashSet;
 import java.util.Set;
 
+@SuppressWarnings("LoggingSimilarMessage")
 @Service
 public class PlaceServiceImpl implements PlaceService {
 
@@ -26,7 +28,10 @@ public class PlaceServiceImpl implements PlaceService {
 
     @Override
     public Set<Place> findAll() {
-        return Set.of();
+        logger.debug("PlaceServiceImpl::save");
+        Set<Place> placeSet = new HashSet<>();
+        placeRepository.findAll().iterator().forEachRemaining(placeSet::add);
+        return placeSet;
     }
 
     @Override

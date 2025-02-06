@@ -25,6 +25,7 @@ public class CountryServiceImpl implements CountryService {
 
     @Override
     public Set<Country> findAll() {
+        logger.debug("CountryServiceImpl::save");
         Set<Country> countrySet = new HashSet<>();
         countryRepository.findAll().iterator().forEachRemaining(countrySet::add);
         return countrySet;

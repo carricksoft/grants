@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -26,7 +27,10 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Set<Person> findAll() {
-        return Set.of();
+        logger.debug("PersonServiceImpl::findAll");
+        Set<Person> personSet = new HashSet<>();
+        personRepository.findAll().iterator().forEachRemaining(personSet::add);
+        return personSet;
     }
 
     @Override
