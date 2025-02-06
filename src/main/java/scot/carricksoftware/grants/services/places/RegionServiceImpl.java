@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.repositories.places.RegionRepository;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -25,7 +26,10 @@ public class RegionServiceImpl implements RegionService {
 
     @Override
     public Set<Region> findAll() {
-        return Set.of();
+        logger.debug("RegionServiceImpl::save");
+        Set<Region> regionSet = new HashSet<>();
+        regionRepository.findAll().iterator().forEachRemaining(regionSet::add);
+        return regionSet;
     }
 
     @Override

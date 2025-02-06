@@ -34,11 +34,11 @@ class RegionServiceTest {
 
     @Test
     void findAllTest() {
-        HashSet<Region> countries = new HashSet<>();
-        Region scotland = new Region();
-        countries.add(scotland);
-        when(regionRepositoryMock.findAll()).thenReturn(countries);
-        assertEquals(countries, regionService.findAll());
+        HashSet<Region> regions = new HashSet<>();
+        Region west = new Region();
+        regions.add(west);
+        when(regionRepositoryMock.findAll()).thenReturn(regions);
+        assertEquals(regions, regionService.findAll());
     }
 
     @SuppressWarnings("EmptyMethod")
