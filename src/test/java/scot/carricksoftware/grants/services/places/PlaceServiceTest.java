@@ -45,9 +45,4 @@ class PlaceServiceTest {
         assertTrue(true);
     }
 
-    @SuppressWarnings("EmptyMethod")
-    @Test
-    void saveTest() {
-        assertTrue(true);
-    }
 }
