@@ -5,6 +5,7 @@
   ~ All rights reserved.
   -->
 
+<!--suppress HtmlUnknownTarget -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 
@@ -25,7 +26,7 @@
             </div>
             <div class="col-sm-7">
                 <div class="w-25 p-3">
-                    <img class="img-fluid" src="Four.jpg" alt="">
+                    <img class="img-fluid" src="Four.jpg"  alt="">
                 </div>
             </div>
         </div>
@@ -53,23 +54,30 @@
                 <td th:text="${person.firstName}"> First</td>
                 <td th:text="${person.lastName}">Last</td>
                 <td><span>
-                    <a th:action="delete" class="btn btn-danger btn-sm" href="#" role="button" th:text="${button.DELETE}"></a>
-                <a th:action="edit" class="btn btn-warning btn-sm" href="#" role="button"  th:text="${button.EDIT}"></a>
+                    <a th:action="delete" class="btn btn-danger btn-sm" href="#" role="button"
+                       th:text="${button.DELETE}"></a>
+                <a th:action="edit" class="btn btn-warning btn-sm" href="#" role="button" th:text="${button.EDIT}"></a>
                 </span></td>
             </tr>
             <tfoot>
             <tr>
                 <td colspan="4"><span>
-                    <a th:action="rewind" class="btn btn-secondary btn-sm" href="#" role="button" th:text = "${button.REWIND}"></a>
-                     <a th:action="back" class="btn btn-secondary btn-sm" href="#" role="button" th:text = "${button.BACK}"></a>
-                     <a th:action="new" class="btn btn-primary btn-sm" href="#" role="button" th:text = "${button.NEW} + 'Person'"></a>
-                     <a th:action="home" class="btn btn-success btn-sm" href="#" role="button" th:text = "${button.HOME}"></a>
-                     <a th:action="forward" class="btn btn-secondary btn-sm" href="#" role="button" th:text = "${button.FORWARD}"></a>
-                     <a th:action="end" class="btn btn-secondary btn-sm" href="#" role="button" th:text = "${button.END}"></a>
+                    <a th:action="rewind" class="btn btn-secondary btn-sm" href="#" role="button"
+                       th:text="${button.REWIND}"></a>
+                     <a th:action="back" class="btn btn-secondary btn-sm" href="#" role="button"
+                        th:text="${button.BACK}"></a>
+                     <a th:action="new" class="btn btn-primary btn-sm" href="#" role="button"
+                        th:text="${button.NEW} + 'Person'"></a>
+                     <a th:action="home" class="btn btn-success btn-sm" href="./" role="button"
+                        th:text="${button.HOME}"></a>
+                     <a th:action="forward" class="btn btn-secondary btn-sm" href="#" role="button"
+                        th:text="${button.FORWARD}"></a>
+                     <a th:action="end" class="btn btn-secondary btn-sm" href="#" role="button"
+                        th:text="${button.END}"></a>
                     </span></td>
             </tr>
             </tfoot>
-         </table>
+        </table>
     </div>
 </div>
 </body>
