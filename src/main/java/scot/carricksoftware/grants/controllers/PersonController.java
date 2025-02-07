@@ -1,9 +1,9 @@
 /*
- * Copyright (c)  06 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  07 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.domains.controllers;
+package scot.carricksoftware.grants.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,9 +28,9 @@ public class PersonController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping("/people")
     public String getListPage(Model model) {
+        model.addAttribute("button", button);
         model.addAttribute("people", personService.findAll());
-        model.addAttribute("button", button);
-        model.addAttribute("button", button);
+
 
         return "person/list";
     }
