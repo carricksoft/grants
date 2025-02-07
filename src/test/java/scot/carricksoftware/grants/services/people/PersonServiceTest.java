@@ -9,9 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Pageable;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
+import static org.mockito.ArgumentMatchers.any;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 import java.util.HashSet;
@@ -32,13 +34,18 @@ class PersonServiceTest {
         personService = new PersonServiceImpl(personRepositoryMock);
     }
 
+    @Mock
+    Pageable pageableMock;
+
     @Test
     void findAllTest() {
         HashSet<Person> people = new HashSet<>();
+
         Person archie = new Person();
         people.add(archie);
-        when(personRepositoryMock.findAll()).thenReturn(people);
-        assertEquals(people, personService.findAll());
+
+        when(personRepositoryMock.findAll(any(Pageable.class))).thenReturn(people);
+        assertEquals(people, personRepositoryMock.findAll(pageableMock));
     }
 
     @SuppressWarnings("EmptyMethod")
