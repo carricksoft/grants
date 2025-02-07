@@ -11,7 +11,6 @@ import java.util.Set;
 
 public interface PersonService {
 
-    @SuppressWarnings("unused")
     Set<Person> findAll();
 
     @SuppressWarnings({"SameReturnValue", "unused"})
