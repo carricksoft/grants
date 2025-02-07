@@ -30,6 +30,7 @@ public class PersonController {
     public String getListPage(Model model) {
         model.addAttribute("people", personService.findAll());
         model.addAttribute("button", button);
+        model.addAttribute("button", button);
 
         return "person/list";
     }
