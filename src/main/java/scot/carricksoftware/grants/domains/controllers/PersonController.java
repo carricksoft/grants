@@ -7,7 +7,8 @@ package scot.carricksoftware.grants.domains.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import scot.carricksoftware.grants.constants.Button;
 import scot.carricksoftware.grants.services.people.PersonService;
 
 @Controller
@@ -17,15 +18,19 @@ public class PersonController {
      */
 
     final PersonService personService;
+    final Button button;
 
-    public PersonController(PersonService personService) {
+    public PersonController(PersonService personService, Button button) {
         this.personService = personService;
+        this.button = button;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @RequestMapping("/people")
+    @GetMapping("/people")
     public String getListPage(Model model) {
         model.addAttribute("people", personService.findAll());
+        model.addAttribute("button", button);
+
         return "person/list";
     }
 }
