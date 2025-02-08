@@ -8,7 +8,6 @@ package scot.carricksoftware.grants.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import scot.carricksoftware.grants.constants.Button;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -20,28 +19,22 @@ public class PersonController {
      */
 
     final PersonService personService;
-    final Button button;
 
-    public PersonController(PersonService personService, Button button) {
+    public PersonController(PersonService personService) {
         this.personService = personService;
-        this.button = button;
     }
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PEOPLE_LIST)
     public String getListPage(Model model) {
-        model.addAttribute("button", button);
         model.addAttribute("people", personService.findAll());
-
         return ViewConstants.PEOPLE_LIST;
     }
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PEOPLE_NEXT)
     public String getNextPage(Model model) {
-        model.addAttribute("button", button);
         model.addAttribute("people", personService.findAll('+'));
-
         return ViewConstants.PEOPLE_LIST;
 
     }
