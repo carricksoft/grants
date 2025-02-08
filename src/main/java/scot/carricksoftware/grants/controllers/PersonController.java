@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import scot.carricksoftware.grants.constants.Button;
 import scot.carricksoftware.grants.constants.MappingConstants;
+import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.services.people.PersonService;
 
 @Controller
@@ -32,7 +33,7 @@ public class PersonController {
         model.addAttribute("button", button);
         model.addAttribute("people", personService.findAll());
 
-        return "person/list";
+        return ViewConstants.PEOPLE_LIST;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -41,7 +42,8 @@ public class PersonController {
         model.addAttribute("button", button);
         model.addAttribute("people", personService.findAll('+'));
 
-        return "person/list";
+        return ViewConstants.PEOPLE_LIST;
+
     }
 
 
