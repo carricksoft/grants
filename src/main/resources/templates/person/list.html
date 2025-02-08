@@ -70,7 +70,8 @@
                         th:text="${button.NEW} + 'Person'"></a>
                      <a th:action="home" class="btn btn-success btn-sm" href="./" role="button"
                         th:text="${button.HOME}"></a>
-                     <a th:action="forward" class="btn btn-secondary btn-sm" href="#" role="button"
+                     <a th:action="forward" class="btn btn-secondary btn-sm"
+                        th:href="@{/people/next}" role="button"
                         th:text="${button.FORWARD}"></a>
                      <a th:action="end" class="btn btn-secondary btn-sm" href="#" role="button"
                         th:text="${button.END}"></a>

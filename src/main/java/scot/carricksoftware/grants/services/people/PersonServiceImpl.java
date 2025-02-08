@@ -18,12 +18,13 @@ import scot.carricksoftware.grants.repositories.people.PersonRepository;
 import java.util.HashSet;
 import java.util.Set;
 
+import static java.lang.Math.max;
+
 @Service
 public class PersonServiceImpl implements PersonService {
 
     private static final Logger logger = LogManager.getLogger(PersonServiceImpl.class);
-    @SuppressWarnings("FieldCanBeLocal")
-    private final int currentPage = 0;
+    int currentPage = 0;
     private final PersonRepository personRepository;
 
     public PersonServiceImpl(PersonRepository personRepository) {
@@ -39,6 +40,28 @@ public class PersonServiceImpl implements PersonService {
 
         personRepository.findAll(pageable).iterator().forEachRemaining(personSet::add);
         return personSet;
+    }
+
+    @Override
+    public Set<Person> findAll(char direction) {
+        logger.debug("PersonServiceImpl::findAll(direction) ");
+        switch (direction) {
+            case '+':
+                currentPage++;
+                break;
+            case '-':
+                currentPage = max(0, currentPage - 1);
+                break;
+            case '<':
+                currentPage = 0;
+                break;
+            case '>':
+                currentPage = (int) (personRepository.count() / currentPage);
+                break;
+            default:
+                break;
+        }
+        return findAll();
     }
 
     @Override

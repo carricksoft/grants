@@ -13,6 +13,8 @@ public interface PersonService {
 
     Set<Person> findAll();
 
+    Set<Person> findAll(char direction);
+
     @SuppressWarnings({"SameReturnValue", "unused"})
     Person findById(Long aLong);
 
