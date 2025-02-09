@@ -13,22 +13,13 @@ public class ButtonConstants {
         // to stop checkstyle complaining
     }
 
-    @SuppressWarnings("unused")
-    public static final String DELETE = "Delete";
-    @SuppressWarnings("unused")
-    public static final String EDIT = "Edit";
-
-    @SuppressWarnings("unused")
-    public static final String NEW = "New ";//Note the space at the end
-    @SuppressWarnings("unused")
-    public static final String HOME = "Home ";
-    @SuppressWarnings("unused")
-    public static final String REWIND = "<<";
-    @SuppressWarnings("unused")
     public static final String BACK = "<";
-    @SuppressWarnings("unused")
+    public static final String DELETE = "Delete";
+    public static final String EDIT = "Edit";
+    public static final String NEW = "New ";//Note the space at the end
+    public static final String HOME = "Home ";
+    public static final String REWIND = "<<";
     public static final String END = ">>";
-    @SuppressWarnings("unused")
     public static final String FORWARD = ">";
 
 }

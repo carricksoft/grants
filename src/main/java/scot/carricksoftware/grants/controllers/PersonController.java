@@ -19,6 +19,7 @@ public class PersonController {
      */
 
     final PersonService personService;
+    final ControllerHelper controllerHelper = new ControllerHelper();
 
     public PersonController(PersonService personService) {
         this.personService = personService;
@@ -27,7 +28,9 @@ public class PersonController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PEOPLE_LIST)
     public String getListPage(Model model) {
+        controllerHelper.addAttributes(model);
         model.addAttribute("people", personService.findAll());
+
         return ViewConstants.PEOPLE_LIST;
     }
 
