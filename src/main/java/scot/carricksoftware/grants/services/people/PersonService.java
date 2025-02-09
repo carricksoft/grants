@@ -7,7 +7,7 @@ package scot.carricksoftware.grants.services.people;
 
 import scot.carricksoftware.grants.domains.people.Person;
 
-import java.util.Set;
+import java.util.List;
 
 public interface PersonService {
 
@@ -24,5 +24,5 @@ public interface PersonService {
     void delete(Person object);
 
     @SuppressWarnings("unused")
-    Set<Person> getPagedPersons(int pageNumber);
+    List<Person> getPagedPersons(int pageNumber);
 }

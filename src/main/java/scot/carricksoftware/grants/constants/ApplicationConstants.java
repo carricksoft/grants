@@ -14,6 +14,6 @@ public class ApplicationConstants {
         // to stop checkstyle complaining
     }
 
-    public static final int DEFAULT_PAGE_SIZE = 20;
+    public static final int DEFAULT_PAGE_SIZE = 15;
 
 }

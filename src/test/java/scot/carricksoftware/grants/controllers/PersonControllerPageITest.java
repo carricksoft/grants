@@ -25,13 +25,19 @@ import static org.mockito.Mockito.verify;
 class PersonControllerPageITest {
 
     private PersonListControllerImpl personController;
+    private final ControllerHelper controllerHelper;
 
     @Mock
     private PersonServiceImpl personServiceMock;
 
+    @SuppressWarnings("unused")
+    PersonControllerPageITest(ControllerHelper controllerHelper) {
+        this.controllerHelper = controllerHelper;
+    }
+
     @BeforeEach
     public void setUp() {
-        personController = new PersonListControllerImpl(personServiceMock);
+        personController = new PersonListControllerImpl(controllerHelper, personServiceMock);
     }
 
 

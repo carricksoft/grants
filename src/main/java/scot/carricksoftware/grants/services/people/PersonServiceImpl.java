@@ -7,18 +7,23 @@ package scot.carricksoftware.grants.services.people;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
-import java.util.Set;
+import java.util.List;
 
 @Service
 public class PersonServiceImpl implements PersonService {
 
     private static final Logger logger = LogManager.getLogger(PersonServiceImpl.class);
 
-    @SuppressWarnings({"FieldCanBeLocal", "unused"})
+    @SuppressWarnings({"unused"})
     private final PersonRepository personRepository;
 
     public PersonServiceImpl(PersonRepository personRepository) {
@@ -41,7 +46,7 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public Person save(Person person) {
         logger.debug("PersonServiceImpl::save");
-        throw new UnsupportedOperationException();
+        return personRepository.save(person);
     }
 
     @Override
@@ -51,8 +56,14 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Set<Person> getPagedPersons(int pageNumber) {
+    public List<Person> getPagedPersons(int pageNumber) {
         logger.debug("PersonServiceImpl::getPagedPersons");
-        throw new UnsupportedOperationException();
+        Pageable paging = PageRequest.of(pageNumber, ApplicationConstants.DEFAULT_PAGE_SIZE, getSort());
+        Page<Person> pagedResult = personRepository.findAll(paging);
+        return pagedResult.getContent();
+    }
+
+    private Sort getSort() {
+        return Sort.by(Sort.Direction.ASC, "lastName");
     }
 }

@@ -48,8 +48,8 @@ public class DataLoader implements CommandLineRunner {
 
     private void loadBulkPeople() {
         logger.debug("DataLoader::loadBulkPeople");
-        Person person = new Person();
         for (int i = 0; i < 50; i++) {
+            Person person = new Person();
             person.setFirstName("First Name");
             person.setLastName("last" + i);
             personService.save(person);
