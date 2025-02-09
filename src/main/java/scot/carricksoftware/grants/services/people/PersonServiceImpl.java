@@ -38,12 +38,6 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public Person findAll() {
-        logger.debug("PersonServiceImpl::findAll");
-        throw new UnsupportedOperationException();
-    }
-
-    @Override
     public Person save(Person person) {
         logger.debug("PersonServiceImpl::save");
         return personRepository.save(person);
@@ -65,5 +59,9 @@ public class PersonServiceImpl implements PersonService {
 
     private Sort getSort() {
         return Sort.by(Sort.Direction.ASC, "lastName");
+    }
+
+    public long count() {
+        return personRepository.count();
     }
 }

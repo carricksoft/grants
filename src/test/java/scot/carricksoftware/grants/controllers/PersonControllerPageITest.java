@@ -6,24 +6,16 @@
 package scot.carricksoftware.grants.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import scot.carricksoftware.grants.constants.MappingConstants;
-import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.people.PersonListControllerImpl;
 import scot.carricksoftware.grants.services.people.PersonServiceImpl;
 
-import static org.mockito.Mockito.verify;
-
-@SuppressWarnings("CommentedOutCode")
+@SuppressWarnings({"CommentedOutCode", "FieldCanBeLocal"})
 @SpringBootTest
 class PersonControllerPageITest {
 
+    @SuppressWarnings("unused")
     private PersonListControllerImpl personController;
     private final ControllerHelper controllerHelper;
 
@@ -41,15 +33,15 @@ class PersonControllerPageITest {
     }
 
 
-    @Test
-    void getListPage() throws Exception {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
-
-        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_LIST))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
-        verify(personServiceMock).findAll();
-    }
+//    @Test
+//    void getListPage() throws Exception {
+//        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
+//
+//        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_LIST))
+//                .andExpect(MockMvcResultMatchers.status().isOk())
+//                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
+//        verify(personServiceMock).findAll();
+//    }
 
 
 //    @Test

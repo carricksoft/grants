@@ -18,6 +18,8 @@ public class MappingConstants {
     @SuppressWarnings("unused")
     public static final String PEOPLE_NEXT = "/people/next";
     public static final String PEOPLE_PREVIOUS = "/people/prev";
+    public static final String PEOPLE_REWIND = "/people/rewind";
+    public static final String PEOPLE_FF = "/people/ff";
 
 
 }

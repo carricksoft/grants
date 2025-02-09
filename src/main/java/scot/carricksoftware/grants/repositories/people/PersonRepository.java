@@ -12,4 +12,5 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Lon
 
     Person save(Person person);
 
+    long count();
 }

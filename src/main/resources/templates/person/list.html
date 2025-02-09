@@ -59,7 +59,7 @@
             <tfoot>
             <tr>
                 <td colspan="4"><span>
-                        <a th:action="rewind" class="btn btn-secondary btn-sm" href="./"
+                        <a th:action="rewind" class="btn btn-secondary btn-sm" th:href="@{/people/rewind}"
                            th:text="'<<'"></a>
                          <a th:action="back" class="btn btn-secondary btn-sm"
                             th:href="@{/people/prev}" th:text="'<'"></a>
@@ -69,7 +69,7 @@
                             href="./" th:text="'Home'"></a>
                          <a th:action="forward" class="btn btn-secondary btn-sm"
                             th:href="@{/people/next}" th:text="'>'"></a>
-                         <a th:action="end" class="btn btn-secondary btn-sm" href="/"
+                         <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/people/ff}"
                             th:text="'>>'"></a>
                         </span></td>
             </tr>

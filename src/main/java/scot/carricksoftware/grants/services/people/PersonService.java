@@ -15,9 +15,6 @@ public interface PersonService {
     Person findById(Long aLong);
 
     @SuppressWarnings("unused")
-    Person findAll();
-
-    @SuppressWarnings("unused")
     Person save(Person person);
 
     @SuppressWarnings("unused")
