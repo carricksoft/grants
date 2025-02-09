@@ -6,12 +6,23 @@
 package scot.carricksoftware.grants.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import scot.carricksoftware.grants.constants.MappingConstants;
+import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.people.PersonListControllerImpl;
 import scot.carricksoftware.grants.services.people.PersonServiceImpl;
 
-@SuppressWarnings({"CommentedOutCode", "FieldCanBeLocal"})
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.verify;
+
+
 @SpringBootTest
 class PersonControllerPageITest {
 
@@ -22,35 +33,67 @@ class PersonControllerPageITest {
     @Mock
     private PersonServiceImpl personServiceMock;
 
-    @SuppressWarnings("unused")
+    @Autowired
     PersonControllerPageITest(ControllerHelper controllerHelper) {
         this.controllerHelper = controllerHelper;
     }
+
 
     @BeforeEach
     public void setUp() {
         personController = new PersonListControllerImpl(controllerHelper, personServiceMock);
     }
 
+    @Test
+    public void getListPage() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
 
-//    @Test
-//    void getListPage() throws Exception {
-//        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
-//
-//        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_LIST))
-//                .andExpect(MockMvcResultMatchers.status().isOk())
-//                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
-//        verify(personServiceMock).findAll();
-//    }
+        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_LIST))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
+        verify(personServiceMock).getPagedPersons(0);
+    }
+
+    @Test
+    void getNextPage() throws Exception {
+       MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
+
+       mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_NEXT))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+               .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
+        verify(personServiceMock).getPagedPersons(1);
+    }
+
+    @Test
+    void getLastPage() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
+
+        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_FF))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
+        verify(personServiceMock).getPagedPersons(anyInt());
+    }
+
+    @Test
+    void getPreviousPage() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
+
+        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_PREVIOUS))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
+        verify(personServiceMock).getPagedPersons(0);
+    }
+
+    @Test
+    void getFirstPage() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
+
+        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_REWIND))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
+        verify(personServiceMock).getPagedPersons(0);
+    }
 
 
-//    @Test
-//    void getNextPage() throws Exception {
-//        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
-//
-//        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_NEXT))
-//                .andExpect(MockMvcResultMatchers.status().isOk())
-//                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
-//        verify(personServiceMock).findAll('+');
-//    }
+
 }
