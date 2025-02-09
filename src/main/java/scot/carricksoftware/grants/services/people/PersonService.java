@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2025- 04 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  09 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
@@ -11,19 +11,18 @@ import java.util.Set;
 
 public interface PersonService {
 
-    Set<Person> findAll();
-
-    Set<Person> findAll(char direction);
-
-    @SuppressWarnings({"SameReturnValue", "unused"})
+    @SuppressWarnings("unused")
     Person findById(Long aLong);
 
-    @SuppressWarnings({"UnusedReturnValue", "unused"})
+    @SuppressWarnings("unused")
+    Person findAll();
+
+    @SuppressWarnings("unused")
     Person save(Person person);
 
-    @SuppressWarnings({"EmptyMethod", "unused"})
+    @SuppressWarnings("unused")
     void delete(Person object);
 
-    @SuppressWarnings({"EmptyMethod", "unused"})
-    void deleteById(Long aLong);
+    @SuppressWarnings("unused")
+    Set<Person> getPagedPersons(int pageNumber);
 }

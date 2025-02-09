@@ -9,9 +9,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.constants.ButtonConstants;
 
+@SuppressWarnings("unused")
 @Component
 public class ControllerHelper {
 
+    @SuppressWarnings("unused")
     public void addAttributes(Model model) {
         model.addAttribute("BUTTON_BACK", ButtonConstants.BACK);
         model.addAttribute("BUTTON_DELETE", ButtonConstants.DELETE);

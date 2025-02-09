@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.constants;
 
 import org.springframework.stereotype.Component;
 
+@SuppressWarnings("unused")
 @Component
 public class ApplicationConstants {
     private ApplicationConstants() {

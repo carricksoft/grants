@@ -41,8 +41,19 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) throws GrantsException {
         logger.debug("DataLoader::run");
         loadPeople();
+        loadBulkPeople();
         loadPlaces();
 
+    }
+
+    private void loadBulkPeople() {
+        logger.debug("DataLoader::loadBulkPeople");
+        Person person = new Person();
+        for (int i = 0; i < 50; i++) {
+            person.setFirstName("First Name");
+            person.setLastName("last" + i);
+            personService.save(person);
+        }
     }
 
     private void loadPlaces() throws GrantsException {

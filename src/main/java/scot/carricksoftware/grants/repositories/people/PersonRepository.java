@@ -5,11 +5,10 @@
 
 package scot.carricksoftware.grants.repositories.people;
 
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import scot.carricksoftware.grants.domains.people.Person;
 
-public interface PersonRepository extends CrudRepository<Person, Long> {
-    Iterable<Person> findAll(Pageable pageable);
+public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
 
+    Person save(Person person);
 }

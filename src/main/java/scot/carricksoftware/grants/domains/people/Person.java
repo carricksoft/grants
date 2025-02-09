@@ -37,6 +37,6 @@ public class Person extends BaseEntity {
 
     @Override
     public String toString() {
-        return lastName + ',' + firstName;
+        return lastName + ", " + firstName;
     }
 }
