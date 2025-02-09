@@ -17,6 +17,7 @@ public class MappingConstants {
     public static final String PEOPLE_LIST = "/people";
     @SuppressWarnings("unused")
     public static final String PEOPLE_NEXT = "/people/next";
+    public static final String PEOPLE_PREVIOUS = "/people/prev";
 
 
 }

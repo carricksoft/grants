@@ -15,6 +15,9 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.services.people.PersonServiceImpl;
 
+import static java.lang.Integer.max;
+
+@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class PersonListControllerImpl {
 
@@ -46,6 +49,16 @@ public class PersonListControllerImpl {
     public final String getNextPage(final Model model) {
         logger.debug("PersonListControllerImpl::getNextPage");
         currentPage++;
+        model.addAttribute("people", personService.getPagedPersons(currentPage));
+        controllerHelper.addAttributes(model);
+        return ViewConstants.PEOPLE_LIST;
+    }
+
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(MappingConstants.PEOPLE_PREVIOUS)
+    public final String getPreviousPage(final Model model) {
+        logger.debug("PersonListControllerImpl::getNextPage");
+        currentPage = max (0, currentPage - 1);
         model.addAttribute("people", personService.getPagedPersons(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.PEOPLE_LIST;
