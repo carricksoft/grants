@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
@@ -20,7 +19,8 @@ import scot.carricksoftware.grants.services.people.PersonServiceImpl;
 public class PersonListControllerImpl {
 
     private static final Logger logger = LogManager.getLogger(PersonListControllerImpl.class);
-    @SuppressWarnings({"FieldCanBeLocal", "unused"})
+
+
     private int currentPage = 0;
     private final ControllerHelper controllerHelper;
 
@@ -34,10 +34,19 @@ public class PersonListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PEOPLE_LIST)
-    public final String getListPage(final Model model, @RequestParam(defaultValue = "0") final int pageNumber) {
+    public final String getListPage(final Model model) {
         logger.debug("PersonListControllerImpl::getListPage");
-        currentPage = pageNumber;
-        model.addAttribute("people", personService.getPagedPersons(pageNumber));
+        model.addAttribute("people", personService.getPagedPersons(0));
+        controllerHelper.addAttributes(model);
+        return ViewConstants.PEOPLE_LIST;
+    }
+
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(MappingConstants.PEOPLE_NEXT)
+    public final String getNextPage(final Model model) {
+        logger.debug("PersonListControllerImpl::getNextPage");
+        currentPage++;
+        model.addAttribute("people", personService.getPagedPersons(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.PEOPLE_LIST;
     }
