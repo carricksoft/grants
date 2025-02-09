@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
 class PersonTest {
@@ -27,8 +28,9 @@ class PersonTest {
 
     @Test
     void setFirstName() {
-        person.setFirstName("John");
-        assertEquals("John", person.getFirstName());
+        String name = GetRandomString();
+        person.setFirstName(name);
+        assertEquals(name, person.getFirstName());
     }
 
     @Test
@@ -38,7 +40,15 @@ class PersonTest {
 
     @Test
     void setLastName() {
-        person.setLastName("Doe");
-        assertEquals("Doe", person.getLastName());
+        String name = GetRandomString();
+        person.setLastName(name);
+        assertEquals(name, person.getLastName());
+    }
+
+    @Test
+    void toStringTest() {
+        person.setLastName(GetRandomString());
+        person.setFirstName(GetRandomString());
+        assertEquals(person.getLastName() + ", " + person.getFirstName(), person.toString());
     }
 }

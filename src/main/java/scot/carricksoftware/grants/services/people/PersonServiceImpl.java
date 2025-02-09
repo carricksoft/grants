@@ -44,10 +44,11 @@ public class PersonServiceImpl implements PersonService {
     }
 
     @Override
-    public void delete(Person object) {
-        logger.debug("PersonServiceImpl::delete");
+    public void deleteById(Long id) {
+        logger.debug("PersonServiceImpl::deleteBy");
         throw new UnsupportedOperationException();
     }
+
 
     @Override
     public List<Person> getPagedPersons(int pageNumber) {
@@ -61,7 +62,9 @@ public class PersonServiceImpl implements PersonService {
         return Sort.by(Sort.Direction.ASC, "lastName");
     }
 
+    @Override
     public long count() {
+        logger.debug("PersonServiceImpl::count");
         return personRepository.count();
     }
 }

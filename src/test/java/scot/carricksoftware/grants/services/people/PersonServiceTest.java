@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -76,15 +77,18 @@ class PersonServiceTest {
         assertEquals(person, personService.save(person));
     }
 
-    @SuppressWarnings("EmptyMethod")
-    @Test
-    void deleteTest() {
-        assertTrue(true);
-    }
 
     @SuppressWarnings("EmptyMethod")
     @Test
     void deleteByIdTest() {
         assertTrue(true);
     }
+
+    @Test
+    void CountTest() {
+        long result = GetRandomLong();
+        when(personRepositoryMock.count()).thenReturn(result);
+        assertEquals(result, personService.count());
+    }
+
 }

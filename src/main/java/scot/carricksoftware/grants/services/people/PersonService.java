@@ -12,14 +12,16 @@ import java.util.List;
 public interface PersonService {
 
     @SuppressWarnings("unused")
-    Person findById(Long aLong);
+    Person findById(Long id);
 
     @SuppressWarnings("unused")
     Person save(Person person);
 
     @SuppressWarnings("unused")
-    void delete(Person object);
+    void deleteById(Long id);
 
     @SuppressWarnings("unused")
     List<Person> getPagedPersons(int pageNumber);
+
+    long count();
 }

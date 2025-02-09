@@ -56,11 +56,11 @@ class PersonControllerPageITest {
 
     @Test
     void getNextPage() throws Exception {
-       MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
 
-       mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_NEXT))
+        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_NEXT))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-               .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
+                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
         verify(personServiceMock).getPagedPersons(1);
     }
 
@@ -93,7 +93,6 @@ class PersonControllerPageITest {
                 .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
         verify(personServiceMock).getPagedPersons(0);
     }
-
 
 
 }
