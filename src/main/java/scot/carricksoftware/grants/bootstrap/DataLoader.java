@@ -45,6 +45,7 @@ public class DataLoader implements CommandLineRunner {
 
     }
 
+    @SuppressWarnings("unused")
     private void loadPlaces() throws GrantsException {
         logger.debug("DataLoader::loadPlaces");
 
