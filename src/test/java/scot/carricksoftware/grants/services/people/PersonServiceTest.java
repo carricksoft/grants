@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
+import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
@@ -81,7 +82,9 @@ class PersonServiceTest {
     @SuppressWarnings("EmptyMethod")
     @Test
     void deleteByIdTest() {
-        assertTrue(true);
+        Long id = GetRandomLong();
+        personService.deleteById(id);
+        verify(personRepositoryMock).deleteById(id);
     }
 
     @Test
@@ -90,5 +93,6 @@ class PersonServiceTest {
         when(personRepositoryMock.count()).thenReturn(result);
         assertEquals(result, personService.count());
     }
+
 
 }

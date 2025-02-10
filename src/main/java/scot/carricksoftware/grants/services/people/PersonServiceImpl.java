@@ -46,7 +46,7 @@ public class PersonServiceImpl implements PersonService {
     @Override
     public void deleteById(Long id) {
         logger.debug("PersonServiceImpl::deleteBy");
-        throw new UnsupportedOperationException();
+        personRepository.deleteById(id);
     }
 
 

@@ -11,6 +11,6 @@ import scot.carricksoftware.grants.domains.people.Person;
 public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
 
     Person save(Person person);
-
     long count();
+    void deleteById(Long id);
 }
