@@ -38,22 +38,11 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws GrantsException {
+    public void run(String... args) {
         logger.debug("DataLoader::run");
         loadPeople();
-        loadBulkPeople();
-        loadPlaces();
+//        loadPlaces();
 
-    }
-
-    private void loadBulkPeople() {
-        logger.debug("DataLoader::loadBulkPeople");
-        for (int i = 0; i < 50; i++) {
-            Person person = new Person();
-            person.setFirstName("First Name");
-            person.setLastName("last" + i);
-            personService.save(person);
-        }
     }
 
     private void loadPlaces() throws GrantsException {
@@ -75,6 +64,7 @@ public class DataLoader implements CommandLineRunner {
     }
 
 
+    @SuppressWarnings("unused")
     private void loadPeople() {
         logger.debug("DataLoader::loadPeople");
         Person dad = new Person();
