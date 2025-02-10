@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
+import scot.carricksoftware.grants.domains.people.Person;
 
 import java.util.Random;
 
@@ -30,4 +31,12 @@ public class GenerateRandomValues {
         int random = rand.nextInt(names.length);
         return names[random];
     }
+
+    public static Person GetRandomPerson() {
+        Person person = new Person();
+        person.setFirstName(GetRandomString());
+        person.setLastName(GetRandomString());
+        return person;
+    }
+
 }

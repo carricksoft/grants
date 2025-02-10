@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonServiceImpl implements PersonService {
@@ -32,9 +33,10 @@ public class PersonServiceImpl implements PersonService {
 
 
     @Override
-    public Person findById(Long aLong) {
+    public Person findById(Long id) {
         logger.debug("PersonServiceImpl::findById");
-        throw new UnsupportedOperationException();
+        Optional<Person> person = personRepository.findById(id);
+        return person.orElse(null);
     }
 
     @Override

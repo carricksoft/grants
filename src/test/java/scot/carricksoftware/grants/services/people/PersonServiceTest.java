@@ -13,14 +13,12 @@ import org.springframework.data.domain.Pageable;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
-
-@SuppressWarnings("CommentedOutCode")
 @SpringBootTest
 class PersonServiceTest {
 
@@ -38,34 +36,6 @@ class PersonServiceTest {
     @Mock
     Pageable pageableMock;
 
-//    @Test
-//    void findAllTest() {
-//        HashSet<Person> people = new HashSet<>();
-//
-//        Person archie = new Person();
-//        people.add(archie);
-//
-//        when(personRepositoryMock.findAll()).thenReturn(people);
-//        assertEquals(people, personRepositoryMock.findAll(pageableMock));
-//    }
-
-//    @Test
-//    void findAllSortTest() {
-//        final ArgumentCaptor<Pageable> pageableCaptor = ArgumentCaptor.forClass(Pageable.class);
-//        personService.findAll();
-//        verify(personRepositoryMock).findAll(pageableCaptor.capture());
-//
-//        Pageable pageable = pageableCaptor.getValue();
-//        assertEquals(Sort.Direction.ASC, Objects.requireNonNull(pageable.getSort().getOrderFor("firstName")).getDirection());
-//        assertEquals(Sort.Direction.ASC, Objects.requireNonNull(pageable.getSort().getOrderFor("lastName")).getDirection());
-//    }
-
-    @SuppressWarnings("EmptyMethod")
-    @Test
-    void findByIdTest() {
-        assertTrue(true);
-    }
-
     @SuppressWarnings("EmptyMethod")
     @Test
     void saveTest() {
@@ -77,7 +47,6 @@ class PersonServiceTest {
 
         assertEquals(person, personService.save(person));
     }
-
 
     @SuppressWarnings("EmptyMethod")
     @Test

@@ -8,9 +8,15 @@ package scot.carricksoftware.grants.repositories.people;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import scot.carricksoftware.grants.domains.people.Person;
 
+import java.util.Optional;
+
 public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
 
     Person save(Person person);
+
     long count();
+
     void deleteById(Long id);
+
+    Optional<Person> findById(Long id);
 }

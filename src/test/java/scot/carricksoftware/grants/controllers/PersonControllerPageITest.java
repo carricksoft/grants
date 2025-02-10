@@ -38,7 +38,6 @@ class PersonControllerPageITest {
         this.controllerHelper = controllerHelper;
     }
 
-
     @BeforeEach
     public void setUp() {
         personController = new PersonListControllerImpl(controllerHelper, personServiceMock);
