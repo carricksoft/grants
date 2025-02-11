@@ -13,7 +13,8 @@ public class PersonCommand {
     private String firstName;
     private String lastName;
 
-    public PersonCommand() {}
+    public PersonCommand() {
+    }
 
     public Long getId() {
         return id;
