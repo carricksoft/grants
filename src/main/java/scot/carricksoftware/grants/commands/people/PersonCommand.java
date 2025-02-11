@@ -14,6 +14,7 @@ public class PersonCommand {
     private String lastName;
 
     public PersonCommand() {
+    // required by JPA
     }
 
     public Long getId() {

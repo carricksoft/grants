@@ -27,7 +27,7 @@ class PersonConverterTest {
     }
 
     @Test
-    public void convertTest() {
+    void convertTest() {
         Long id = GetRandomLong();
         String firstName = GetRandomString();
         String lastName = GetRandomString();

@@ -62,7 +62,7 @@ public class PersonListControllerImpl {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PEOPLE_PREVIOUS)
     public final String getPreviousPage(final Model model) {
-        logger.debug("PersonListControllerImpl::getNextPage");
+        logger.debug("PersonListControllerImpl::getPreviousPage");
         currentPage = max(0, currentPage - 1);
         return sendAttributesAndReturn(model);
     }
@@ -70,7 +70,7 @@ public class PersonListControllerImpl {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PEOPLE_REWIND)
     public final String getFirstPage(final Model model) {
-        logger.debug("PersonListControllerImpl::getNextPage");
+        logger.debug("PersonListControllerImpl::getFirstPage");
         currentPage = 0;
         return sendAttributesAndReturn(model);
     }
@@ -78,7 +78,7 @@ public class PersonListControllerImpl {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PEOPLE_FF)
     public final String getLastPage(final Model model) {
-        logger.debug("PersonListControllerImpl::getNextPage");
+        logger.debug("PersonListControllerImpl::getLastPage");
         long personCount = personService.count();
         currentPage = (int) (personCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
         return sendAttributesAndReturn(model);

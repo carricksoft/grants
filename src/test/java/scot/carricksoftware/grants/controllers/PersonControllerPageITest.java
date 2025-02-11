@@ -39,7 +39,7 @@ class PersonControllerPageITest {
     }
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         personController = new PersonListControllerImpl(controllerHelper, personServiceMock);
     }
 
