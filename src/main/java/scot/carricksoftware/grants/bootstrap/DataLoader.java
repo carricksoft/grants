@@ -38,10 +38,10 @@ public class DataLoader implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) {
+    public void run(String... args) throws GrantsException {
         logger.debug("DataLoader::run");
         loadPeople();
-//        loadPlaces();
+        loadPlaces();
 
     }
 

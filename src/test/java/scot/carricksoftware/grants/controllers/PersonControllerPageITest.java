@@ -44,7 +44,7 @@ class PersonControllerPageITest {
     }
 
     @Test
-    public void getListPage() throws Exception {
+    void getListPage() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_LIST))
