@@ -44,7 +44,7 @@ class PersonControllerPageITest {
     }
 
     @Test
-    void getListPage() throws Exception {
+    void getListPageTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_LIST))
@@ -54,7 +54,7 @@ class PersonControllerPageITest {
     }
 
     @Test
-    void getNextPage() throws Exception {
+    void getNextPageTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_NEXT))
@@ -64,7 +64,7 @@ class PersonControllerPageITest {
     }
 
     @Test
-    void getLastPage() throws Exception {
+    void getLastPageTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_FF))
@@ -74,7 +74,7 @@ class PersonControllerPageITest {
     }
 
     @Test
-    void getPreviousPage() throws Exception {
+    void getPreviousPageTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_PREVIOUS))
@@ -84,7 +84,7 @@ class PersonControllerPageITest {
     }
 
     @Test
-    void getFirstPage() throws Exception {
+    void getFirstPageTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_REWIND))
@@ -92,6 +92,8 @@ class PersonControllerPageITest {
                 .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
         verify(personServiceMock).getPagedPersons(0);
     }
+
+
 
 
 }
