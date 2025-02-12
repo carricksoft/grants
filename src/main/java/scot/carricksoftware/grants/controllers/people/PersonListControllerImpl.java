@@ -18,7 +18,6 @@ import scot.carricksoftware.grants.services.people.PersonServiceImpl;
 
 import static java.lang.Integer.max;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class PersonListControllerImpl {
 

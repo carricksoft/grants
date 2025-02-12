@@ -16,7 +16,7 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 class PersonCommandConverterTest {
 
-    PersonCommandConverter converter = new PersonCommandConverter();
+    final PersonCommandConverter converter = new PersonCommandConverter();
     PersonCommand source;
 
     @BeforeEach

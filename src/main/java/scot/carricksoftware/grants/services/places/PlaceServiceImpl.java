@@ -14,6 +14,7 @@ import scot.carricksoftware.grants.exceptions.GrantsException;
 import scot.carricksoftware.grants.repositories.places.PlaceRepository;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -36,8 +37,10 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public Place findById(Long aLong) {
-        return null;
+    public Place findById(Long id) {
+        logger.debug("PersonServiceImpl::findById");
+        Optional<Place> person = placeRepository.findById(id);
+        return person.orElse(null);
     }
 
     @Override
