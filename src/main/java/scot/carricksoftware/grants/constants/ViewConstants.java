@@ -16,6 +16,7 @@ public class ViewConstants {
     }
 
     public static final String PEOPLE_LIST = "person/list";
+    public static final String PEOPLE_FORM = "person/form";
 
 
 }

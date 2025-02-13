@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
@@ -45,7 +46,7 @@ public class PersonListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute("people", personService.getPagedPersons(currentPage));
+        model.addAttribute(AttributeConstants.PEOPLE, personService.getPagedPersons(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.PEOPLE_LIST;
     }

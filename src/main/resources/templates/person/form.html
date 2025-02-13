@@ -36,8 +36,10 @@
                                 <div class="form-row">
                                     <label for="firstName">First Name:</label>
                                     <input type="text" id="firstName" style="width: 300px;" class="form-control"
-                                           th:field="*{firstName}"
-                                           th:errorclass="has-error"/>
+                                           th:field="*{firstName}"/>
+                                    <label for="lastName">Last Name:</label>
+                                    <input type="text" id="lastName" style="width: 300px;" class="form-control"
+                                           th:field="*{lastName}"/>
                                     <div class="col-md-3 form-group">
                                         <label for="databaseId">Database ID:<span style="color: rgb(255,0,0);">*</span>
                                         </label>
