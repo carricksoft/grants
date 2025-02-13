@@ -22,41 +22,27 @@
 <div th:insert="~{fragments/layout::banner}"></div>
 
 <div class="container border border-info
-                    rounded-3 text-center p-4">>
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="mx-auto" style="width:90%;">
-                <form th:object="${personCommand}" th:action="@{/person/}" method="post">
-                    <div class="panel-group">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h1 class="panel-title">Person</h1>
-                            </div>
-                            <div class="panel-body">
-                                <div class="form-row">
-                                    <label for="firstName">First Name:</label>
-                                    <input type="text" id="firstName" style="width: 300px;" class="form-control"
-                                           th:field="*{firstName}"/>
-                                    <label for="lastName">Last Name:</label>
-                                    <input type="text" id="lastName" style="width: 300px;" class="form-control"
-                                           th:field="*{lastName}"/>
-                                    <label for="databaseId">Database id: <span
-                                            style="color: rgb(255,0,0);">*</span></label>
-                                    <input type="text" id="databaseId" style="width: 100px;" class="form-control"
-                                           th:field="*{id}" readonly>
-                                </div>
-                            </div>
-                        </div>
-                        <hr style="height:20px;border:none;color:#FFFF;background-color:#FFFF;"/>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Commit</button>
-                    <a class="btn btn-secondary" th:href="@{/person/list}" th:text="${'List all'}">List all</a>
-                    <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
-                    <h6><span style="color: rgb(255,0,0);">*</span><span> Cannot be edited</span></h6>
-                </form>
+                    rounded-3 text-center p-4">
+    <form th:object="${personCommand}" th:action="@{/person/}" method="post">
+        <div class="form-group row">
+            <div class="col-xs-2" style="margin-right:20px;">
+                <label for="firstName">First Name</label>
+                <input class="form-control" id="firstName" type="text">
+            </div>
+            <div class="col-xs-3" style="margin-right:20px;">
+                <label for="lastName">Last Name</label>
+                <input class="form-control" id="lastName" type="text">
+            </div>
+            <div class="col-xs-4">
+                <label for="ex3">Database Id</label>
+                <input class="form-control" id="ex3" type="text" readonly>
             </div>
         </div>
-    </div>
+        <button type="submit" class="btn btn-primary">Commit</button>
+        <a class="btn btn-secondary" th:href="@{/person/list}" th:text="${'List all'}">List all</a>
+        <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
+        <h6><span style="color: rgb(255,0,0);">*</span><span> Cannot be edited</span></h6>
+    </form>
 </div>
 </body>
 </html>
