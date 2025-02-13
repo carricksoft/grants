@@ -1,9 +1,9 @@
 /*
- * Copyright (c)  11 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  13 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.converters;
+package scot.carricksoftware.grants.converters.people;
 
 
 import org.springframework.core.convert.converter.Converter;

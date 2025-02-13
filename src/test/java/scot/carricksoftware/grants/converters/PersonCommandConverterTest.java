@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.converters;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
+import scot.carricksoftware.grants.converters.people.PersonCommandConverter;
 import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.*;

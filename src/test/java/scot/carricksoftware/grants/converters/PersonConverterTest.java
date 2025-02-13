@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
+import scot.carricksoftware.grants.converters.people.PersonConverter;
 import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.*;
