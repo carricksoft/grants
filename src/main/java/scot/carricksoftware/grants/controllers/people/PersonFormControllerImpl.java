@@ -21,11 +21,11 @@ public class PersonFormControllerImpl {
     private static final Logger logger = LogManager.getLogger(PersonFormControllerImpl.class);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.PEOPLE_NEW)
+    @GetMapping(MappingConstants.PERSON_NEW)
     public final String getNewPerson(final Model model) {
         logger.debug("PersonFormControllerImpl::getNewPerson");
         model.addAttribute(AttributeConstants.PERSON_COMMAND, new PersonCommand());
-        return ViewConstants.PEOPLE_FORM;
+        return ViewConstants.PERSON_FORM;
     }
 
 }
