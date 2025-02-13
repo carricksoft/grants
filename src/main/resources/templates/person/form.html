@@ -24,16 +24,16 @@
 <div class="container border border-info
                     rounded-3 text-center p-4">
     <form th:object="${personCommand}" th:action="@{/person/}" method="post">
-        <div class="form-group row">
-            <div class="col-xs-2" style="margin-right:20px;">
+        <div class="form-group row justify-content-center">
+            <div class="col-xs-3" style="margin-right:20px;">
                 <label for="firstName">First Name</label>
                 <input class="form-control" id="firstName" type="text">
             </div>
-            <div class="col-xs-3" style="margin-right:20px;">
+            <div class="col-xs-3 " style="margin-right:20px;">
                 <label for="lastName">Last Name</label>
                 <input class="form-control" id="lastName" type="text">
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-2">
                 <label for="ex3">Database Id</label>
                 <input class="form-control" id="ex3" type="text" readonly>
             </div>
