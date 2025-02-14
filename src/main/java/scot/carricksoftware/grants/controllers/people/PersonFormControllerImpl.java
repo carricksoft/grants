@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
@@ -58,7 +57,7 @@ public class PersonFormControllerImpl implements PersonFormController {
     }
 
     @SuppressWarnings("SameReturnValue")
-    @RequestMapping("/person/show/{id}")
+    @GetMapping(MappingConstants.PERSON_SHOW)
     public String showById(@PathVariable String id, Model model) {
         logger.debug("PersonFormControllerImpl::saveOrUpdate");
         PersonCommand savedCommand = personConverterImpl.convert(personService.findById(Long.valueOf(id)));
