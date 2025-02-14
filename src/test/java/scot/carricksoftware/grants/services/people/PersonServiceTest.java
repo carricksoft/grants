@@ -11,6 +11,8 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
+import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
@@ -33,9 +35,18 @@ class PersonServiceTest {
     @Mock
     PersonRepository personRepositoryMock;
 
+    @Mock
+    PersonConverterImpl personConverterImplMock;
+
+    @Mock
+    PersonCommandConverterImpl personCommandConverterImplMock;
+
+
     @BeforeEach
     void setUp() {
-        personService = new PersonServiceImpl(personRepositoryMock);
+        personService = new PersonServiceImpl(personRepositoryMock,
+                personConverterImplMock,
+                personCommandConverterImplMock);
     }
 
     @SuppressWarnings("unused")

@@ -5,15 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.people;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import scot.carricksoftware.grants.commands.people.PersonCommand;
 
 @SuppressWarnings("unused")
-@Controller
+
 public interface PersonFormController {
 
-    @SuppressWarnings("unused")
-    String getListPage(final Model model, @RequestParam(defaultValue = "0") final int pageNumber);
-
+    String saveOrUpdate(@ModelAttribute PersonCommand personCommand);
 }

@@ -7,28 +7,26 @@ package scot.carricksoftware.grants.converters;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
-import scot.carricksoftware.grants.converters.people.PersonConverter;
+import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
-@Component
-class PersonConverterTest {
+class PersonCommandConverterImplTest {
 
-    final PersonConverter converter = new PersonConverter();
-    Person source;
+    final PersonCommandConverterImpl converter = new PersonCommandConverterImpl();
+    PersonCommand source;
 
     @BeforeEach
     void setUp() {
-        source = new Person();
+        source = new PersonCommand();
     }
 
     @Test
-    void convertTest() {
+    void convert() {
         Long id = GetRandomLong();
         String firstName = GetRandomString();
         String lastName = GetRandomString();
@@ -37,11 +35,10 @@ class PersonConverterTest {
         source.setFirstName(firstName);
         source.setLastName(lastName);
 
-        PersonCommand target = converter.convert(source);
+        Person target = converter.convert(source);
         assert target != null;
         assertEquals(id, target.getId());
         assertEquals(firstName, target.getFirstName());
         assertEquals(lastName, target.getLastName());
     }
-
 }

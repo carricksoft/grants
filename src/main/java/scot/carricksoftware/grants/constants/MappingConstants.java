@@ -21,5 +21,7 @@ public class MappingConstants {
     public static final String PEOPLE_REWIND = "/people/rewind";
     public static final String PEOPLE_FF = "/people/ff";
     public static final String PERSON_NEW = "/person/new";
+    public static final String PERSON = "/person";
+
 
 }

@@ -12,7 +12,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
+import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
@@ -26,9 +30,17 @@ public class PersonServiceImpl implements PersonService {
 
     @SuppressWarnings({"unused"})
     private final PersonRepository personRepository;
+    private final PersonConverterImpl personConverterImpl;
+    private final PersonCommandConverterImpl personCommandConverterImpl;
 
-    public PersonServiceImpl(PersonRepository personRepository) {
+    public PersonServiceImpl(
+            PersonRepository personRepository,
+            PersonConverterImpl personConverterImpl,
+            PersonCommandConverterImpl personCommandConverterImpl) {
+
         this.personRepository = personRepository;
+        this.personConverterImpl = personConverterImpl;
+        this.personCommandConverterImpl = personCommandConverterImpl;
     }
 
 
@@ -68,5 +80,15 @@ public class PersonServiceImpl implements PersonService {
     public long count() {
         logger.debug("PersonServiceImpl::count");
         return personRepository.count();
+    }
+
+    @Transactional
+    @Override
+    public PersonCommand savePersonCommand(PersonCommand personCommand) {
+        logger.debug("PersonServiceImpl::savePersonCommand");
+        Person person = personCommandConverterImpl.convert(personCommand);
+        Person savedPerson = personRepository.save(person);
+        return personConverterImpl.convert(savedPerson);
+
     }
 }

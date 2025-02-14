@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants.services.people;
 
+import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.domains.people.Person;
 
 import java.util.List;
@@ -24,4 +25,6 @@ public interface PersonService {
     List<Person> getPagedPersons(int pageNumber);
 
     long count();
+
+    PersonCommand savePersonCommand(PersonCommand personCommand);
 }

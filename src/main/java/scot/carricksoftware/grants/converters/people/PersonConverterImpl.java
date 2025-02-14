@@ -6,15 +6,20 @@
 package scot.carricksoftware.grants.converters.people;
 
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.domains.people.Person;
 
-@SuppressWarnings("unused")
 @Component
-public interface PersonConverter extends Converter<Person, PersonCommand> {
+public class PersonConverterImpl implements Converter<Person, PersonCommand> {
 
-    PersonCommand convert(@NotNull Person source);
+    @Override
+    public PersonCommand convert(Person source) {
+        PersonCommand target = new PersonCommand();
+        target.setId(source.getId());
+        target.setFirstName(source.getFirstName());
+        target.setLastName(source.getLastName());
+        return target;
+    }
 }

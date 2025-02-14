@@ -7,12 +7,16 @@ package scot.carricksoftware.grants.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.controllers.people.PersonFormControllerImpl;
+import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
+import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
+import scot.carricksoftware.grants.services.people.PersonService;
 
 import java.util.Objects;
 
@@ -25,13 +29,23 @@ class PersonFormControllerTest {
     @SuppressWarnings("unused")
     private PersonFormControllerImpl personController;
 
+    @Mock
+    private PersonService personServiceMock;
+
+    @Mock
+    private PersonCommandConverterImpl personCommandConverterMock;
+
+    @Mock
+    private PersonConverterImpl personConverterMock;
 
     PersonFormControllerTest() {
     }
 
     @BeforeEach
     void setUp() {
-        personController = new PersonFormControllerImpl();
+        personController = new PersonFormControllerImpl(personServiceMock,
+                personCommandConverterMock,
+                personConverterMock);
     }
 
     @Test
