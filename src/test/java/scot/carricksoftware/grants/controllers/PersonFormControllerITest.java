@@ -64,8 +64,8 @@ class PersonFormControllerITest {
         Long id = 4L;
         PersonCommand personCommand = new PersonCommand();
         personCommand.setId(id);
-        String expectedViewName = ViewConstants.REDIRECT
-                + ViewConstants.PERSON_SHOW
+        String expectedViewName = MappingConstants.REDIRECT
+                + "/person/show"
                 + "/" + id;
 
 

@@ -15,11 +15,9 @@ public class ViewConstants {
         // to stop checkstyle complaining
     }
 
-    public static final String REDIRECT = "redirect:/";
 
     public static final String PEOPLE_LIST = "person/list";
     public static final String PERSON_FORM = "person/form";
-    public static final String PERSON_SHOW = "person/show";
 
 
 }
