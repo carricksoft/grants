@@ -69,7 +69,7 @@ class PersonControllerPageITest {
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_FF))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
+                .andExpect(MockMvcResultMatchers.view().name("person/list"));
         verify(personServiceMock).getPagedPersons(anyInt());
     }
 
@@ -79,7 +79,7 @@ class PersonControllerPageITest {
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_PREVIOUS))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
+                .andExpect(MockMvcResultMatchers.view().name("person/list"));
         verify(personServiceMock).getPagedPersons(0);
     }
 
@@ -89,7 +89,7 @@ class PersonControllerPageITest {
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PEOPLE_REWIND))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PEOPLE_LIST));
+                .andExpect(MockMvcResultMatchers.view().name("person/list"));
         verify(personServiceMock).getPagedPersons(0);
     }
 

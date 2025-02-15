@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.constants.MappingConstants;
-import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.people.PersonFormController;
 import scot.carricksoftware.grants.controllers.people.PersonFormControllerImpl;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
@@ -24,6 +23,7 @@ import scot.carricksoftware.grants.services.people.PersonService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 
 @SpringBootTest
@@ -55,18 +55,16 @@ class PersonFormControllerITest {
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PERSON_NEW))
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.view().name(ViewConstants.PERSON_FORM));
+                .andExpect(MockMvcResultMatchers.view().name("person/form"));
     }
 
     @Test
     void PostPersonTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
-        Long id = 4L;
+        Long id = GetRandomLong();
         PersonCommand personCommand = new PersonCommand();
         personCommand.setId(id);
-        String expectedViewName = MappingConstants.REDIRECT
-                + "/person/show"
-                + "/" + id;
+        String expectedViewName = "redirect:/person/show/" + id;
 
 
         when(personServiceMock.savePersonCommand(any(PersonCommand.class))).thenReturn(personCommand);
