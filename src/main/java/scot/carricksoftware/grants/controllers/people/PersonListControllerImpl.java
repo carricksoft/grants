@@ -86,10 +86,9 @@ public class PersonListControllerImpl {
     }
 
 
-
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PERSON_DELETE)
-    public final String personDelete(@PathVariable final String id  ) {
+    public final String personDelete(@PathVariable final String id) {
         logger.debug("PersonListControllerImpl::personDelete");
         personService.deleteById(Long.valueOf(id));
         return MappingConstants.REDIRECT + MappingConstants.PEOPLE;

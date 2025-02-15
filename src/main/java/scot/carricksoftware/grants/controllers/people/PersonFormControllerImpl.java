@@ -47,13 +47,12 @@ public class PersonFormControllerImpl implements PersonFormController {
     }
 
 
-    @SuppressWarnings("SpringMVCViewInspection")
     @Override
     @PostMapping(MappingConstants.PERSON)
-    public String saveOrUpdate(@ModelAttribute PersonCommand personCommand) {
+    public String saveOrUpdate(@ModelAttribute PersonCommand personCommand, Model model) {
         logger.debug("PersonFormControllerImpl::saveOrUpdate");
         PersonCommand savedCommand = personService.savePersonCommand(personCommand);
-        return ViewConstants.REDIRECT + ViewConstants.PERSON_SHOW + "/" + savedCommand.getId();
+        return MappingConstants.REDIRECT + MappingConstants.PERSON_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
     @SuppressWarnings("SameReturnValue")
