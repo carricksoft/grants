@@ -23,8 +23,9 @@ public class MappingConstants {
     public static final String PERSON_NEW = "/person/new";
     public static final String PERSON = "/person";
     public static final String PEOPLE = "/people";
-    public static final String PERSON_SHOW = "/person/show/{id}";
-    public static final String PERSON_DELETE = "/person/delete/{id}";
+    public static final String PERSON_SHOW = "/person/{id}/show";
+    public static final String PERSON_DELETE = "/person/{id}/delete";
+    public static final String PERSON_EDIT = "/person/{id}/edit";
     public static final String REDIRECT = "redirect:";
 
 

@@ -46,6 +46,14 @@ public class PersonFormControllerImpl implements PersonFormController {
         return ViewConstants.PERSON_FORM;
     }
 
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(MappingConstants.PERSON_EDIT)
+    public final String personEdit(@PathVariable final String id, Model model) {
+        logger.debug("PersonFormControllerImpl::personEdit");
+        model.addAttribute(AttributeConstants.PERSON_COMMAND, personService.findById(Long.valueOf(id)));
+        return ViewConstants.PERSON_FORM;
+    }
+
 
     @Override
     @PostMapping(MappingConstants.PERSON)
