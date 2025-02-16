@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.controllers.people.PersonFormController;
 import scot.carricksoftware.grants.controllers.people.PersonFormControllerImpl;
+import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -41,12 +42,15 @@ class PersonFormControllerITest {
     @Mock
     private PersonConverterImpl personConverterMock;
 
+    @Mock
+    private CapitalisationImpl capitalisationMock;
 
     @BeforeEach
     void setUp() {
         personController = new PersonFormControllerImpl(personServiceMock,
                 personCommandConverterMock,
-                personConverterMock);
+                personConverterMock,
+                capitalisationMock);
     }
 
     @Test

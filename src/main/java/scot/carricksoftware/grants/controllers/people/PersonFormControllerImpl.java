@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
+import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -30,11 +31,16 @@ public class PersonFormControllerImpl implements PersonFormController {
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final PersonCommandConverterImpl personCommandConverterImpl;
     private final PersonConverterImpl personConverterImpl;
+    private final Capitalisation capitalisation;
 
-    public PersonFormControllerImpl(PersonService personService, PersonCommandConverterImpl personCommandConverterImpl, PersonConverterImpl personConverterImpl) {
+    public PersonFormControllerImpl(PersonService personService,
+                                    PersonCommandConverterImpl personCommandConverterImpl,
+                                    PersonConverterImpl personConverterImpl,
+                                    Capitalisation capitalisation) {
         this.personService = personService;
         this.personCommandConverterImpl = personCommandConverterImpl;
         this.personConverterImpl = personConverterImpl;
+        this.capitalisation = capitalisation;
     }
 
 
@@ -59,8 +65,15 @@ public class PersonFormControllerImpl implements PersonFormController {
     @PostMapping(MappingConstants.PERSON)
     public String saveOrUpdate(@ModelAttribute PersonCommand personCommand, Model model) {
         logger.debug("PersonFormControllerImpl::saveOrUpdate");
+
+        cleanUp(personCommand);
         PersonCommand savedCommand = personService.savePersonCommand(personCommand);
         return MappingConstants.REDIRECT + MappingConstants.PERSON_SHOW.replace("{id}", "" + savedCommand.getId());
+    }
+
+    private void cleanUp(PersonCommand personCommand) {
+        personCommand.setFirstName(capitalisation.getCapitalisation(personCommand.getFirstName()));
+        personCommand.setLastName(capitalisation.getCapitalisation(personCommand.getLastName()));
     }
 
     @SuppressWarnings("SameReturnValue")

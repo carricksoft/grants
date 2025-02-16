@@ -14,6 +14,7 @@ import scot.carricksoftware.grants.domains.people.Person;
 @Component
 public class PersonConverterImpl implements Converter<Person, PersonCommand> {
 
+
     @Override
     public PersonCommand convert(Person source) {
         PersonCommand target = new PersonCommand();

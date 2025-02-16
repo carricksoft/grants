@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.controllers.people.PersonFormControllerImpl;
+import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -38,6 +39,10 @@ class PersonFormControllerTest {
     @Mock
     private PersonConverterImpl personConverterMock;
 
+    @Mock
+            private CapitalisationImpl capitalisationMock;
+
+
     PersonFormControllerTest() {
     }
 
@@ -45,7 +50,8 @@ class PersonFormControllerTest {
     void setUp() {
         personController = new PersonFormControllerImpl(personServiceMock,
                 personCommandConverterMock,
-                personConverterMock);
+                personConverterMock,
+        capitalisationMock);
     }
 
     @Test
