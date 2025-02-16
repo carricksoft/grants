@@ -1,34 +1,31 @@
 /*
- * Copyright (c)  11 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  16 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.converters;
+package scot.carricksoftware.grants.converters.people;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
-import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
-@Component
-class PersonConverterImplTest {
+class PersonCommandConverterImplTest {
 
-    final PersonConverterImpl converter = new PersonConverterImpl();
-    Person source;
+    final PersonCommandConverterImpl converter = new PersonCommandConverterImpl();
+    PersonCommand source;
 
     @BeforeEach
     void setUp() {
-        source = new Person();
+        source = new PersonCommand();
     }
 
     @Test
-    void convertTest() {
+    void convert() {
         Long id = GetRandomLong();
         String firstName = GetRandomString();
         String lastName = GetRandomString();
@@ -37,11 +34,10 @@ class PersonConverterImplTest {
         source.setFirstName(firstName);
         source.setLastName(lastName);
 
-        PersonCommand target = converter.convert(source);
+        Person target = converter.convert(source);
         assert target != null;
         assertEquals(id, target.getId());
         assertEquals(firstName, target.getFirstName());
         assertEquals(lastName, target.getLastName());
     }
-
 }

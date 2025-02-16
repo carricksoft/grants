@@ -64,7 +64,7 @@ class PersonFormControllerITest {
         Long id = GetRandomLong();
         PersonCommand personCommand = new PersonCommand();
         personCommand.setId(id);
-        String expectedViewName = "redirect:/person/" + id + "/show" ;
+        String expectedViewName = "redirect:/person/" + id + "/show";
 
 
         when(personServiceMock.savePersonCommand(any(PersonCommand.class))).thenReturn(personCommand);
