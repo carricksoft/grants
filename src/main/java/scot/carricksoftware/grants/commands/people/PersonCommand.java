@@ -5,12 +5,20 @@
 
 package scot.carricksoftware.grants.commands.people;
 
+import jakarta.validation.constraints.Size;
+import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBlank;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PersonCommand {
     private Long id;
+
+    @NotBlank
+    @Size(min=3,max=100, message ="First name must be between 3 and 100 characters.")
     private String firstName;
+
+    @NotBlank
+    @Size(min=3,max=100, message ="First name must be between 3 and 100 characters.")
     private String lastName;
 
     public PersonCommand() {

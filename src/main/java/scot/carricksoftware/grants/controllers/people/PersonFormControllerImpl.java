@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.people;
 
+import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,7 +56,7 @@ public class PersonFormControllerImpl implements PersonFormController {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PERSON_EDIT)
-    public final String personEdit(@PathVariable final String id, Model model) {
+    public final String personEdit( @PathVariable final String id, Model model) {
         logger.debug("PersonFormControllerImpl::personEdit");
         model.addAttribute(AttributeConstants.PERSON_COMMAND, personService.findById(Long.valueOf(id)));
         return ViewConstants.PERSON_FORM;
@@ -63,8 +65,13 @@ public class PersonFormControllerImpl implements PersonFormController {
 
     @Override
     @PostMapping(MappingConstants.PERSON)
-    public String saveOrUpdate(@ModelAttribute PersonCommand personCommand, Model model) {
+    public String saveOrUpdate(@Valid @ModelAttribute PersonCommand personCommand, BindingResult bindingResult) {
         logger.debug("PersonFormControllerImpl::saveOrUpdate");
+
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
+            return ViewConstants.PERSON_FORM;
+        }
 
         cleanUp(personCommand);
         PersonCommand savedCommand = personService.savePersonCommand(personCommand);
