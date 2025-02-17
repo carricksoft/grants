@@ -21,10 +21,11 @@ import scot.carricksoftware.grants.services.people.PersonServiceImpl;
 
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.verify;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 
 @SpringBootTest
-class PersonControllerPageITest {
+class PersonListControllerPageITest {
 
     @SuppressWarnings("unused")
     private PersonListControllerImpl personController;
@@ -34,7 +35,7 @@ class PersonControllerPageITest {
     private PersonServiceImpl personServiceMock;
 
     @Autowired
-    PersonControllerPageITest(ControllerHelper controllerHelper) {
+    PersonListControllerPageITest(ControllerHelper controllerHelper) {
         this.controllerHelper = controllerHelper;
     }
 
@@ -91,6 +92,17 @@ class PersonControllerPageITest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("person/list"));
         verify(personServiceMock).getPagedPersons(0);
+    }
+
+    @Test
+    void personDeleteTest() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
+        Long id = GetRandomLong();
+
+        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PERSON_DELETE, id+""))
+                .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
+                .andExpect(MockMvcResultMatchers.view().name("redirect:/people"));
+        verify(personServiceMock).deleteById(id);
     }
 
 
