@@ -42,6 +42,11 @@ rounded-3 text-center p-4">
                 <label for="lastName">Last Name</label>
                 <input class="form-control" id="lastName"
                        th:field="*{lastName}" type="text">
+                <div th:if="${#fields.hasErrors('lastName')}" >
+                <ul class = "text-danger">
+                    <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"/>
+                </ul>
+            </div>
             </div>
             <div class="col-xs-2">
                 <label for="id">Database Id<span style="color: rgb(255,0,0);">*</span></label>
