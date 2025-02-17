@@ -17,11 +17,16 @@ import scot.carricksoftware.grants.controllers.people.PersonFormControllerImpl;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
+import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonService;
 
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
 
 
 @SpringBootTest
@@ -40,25 +45,36 @@ class PersonFormControllerTest {
     private PersonConverterImpl personConverterMock;
 
     @Mock
-            private CapitalisationImpl capitalisationMock;
+    private CapitalisationImpl capitalisationMock;
 
+    @Mock
+    private Model modelMock;
 
-    PersonFormControllerTest() {
-    }
 
     @BeforeEach
     void setUp() {
         personController = new PersonFormControllerImpl(personServiceMock,
                 personCommandConverterMock,
                 personConverterMock,
-        capitalisationMock);
+                capitalisationMock);
     }
 
     @Test
-    void NewPersonSetsTheAttributeTest() {
+    void getNewPersonTest() {
         Model model = new ExtendedModelMap();
-        personController.getNewPerson(model);
+        assertEquals("person/form", personController.getNewPerson(model));
         assertEquals(PersonCommand.class, Objects.requireNonNull(model.getAttribute(AttributeConstants.PERSON_COMMAND)).getClass());
+    }
+
+    @Test
+    void personEditTestEdit() {
+        Long id = GetRandomLong();
+        Person person = GetRandomPerson();
+        when(personServiceMock.findById(id)).thenReturn(person);
+
+        assertEquals("person/form", personController.personEdit(id + "", modelMock));
+        verify(modelMock).addAttribute(AttributeConstants.PERSON_COMMAND, person);
+
     }
 
 
