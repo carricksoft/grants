@@ -33,7 +33,9 @@ rounded-3 text-center p-4">
                 <input class="form-control" id="firstName"
                        th:field="*{firstName}" type="text">
                 <div th:if="${#fields.hasErrors('firstName')}" >
-                    <p class="text-danger" th:text="${#fields.errors('firstName')}"></p>
+                    <ul class = "text-danger">
+                        <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"/>
+                    </ul>
                 </div>
             </div>
             <div class="col-xs-3 " style="margin-right:20px;">
