@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
+import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Place;
@@ -40,6 +41,13 @@ public class GenerateRandomValues {
         person.setFirstName(GetRandomString());
         person.setLastName(GetRandomString());
         return person;
+    }
+
+    public static PersonCommand GetRandomPersonCommand() {
+        PersonCommand personCommand = new PersonCommand();
+        personCommand.setFirstName(GetRandomString());
+        personCommand.setLastName(GetRandomString());
+        return personCommand;
     }
 
     public static Place GetRandomPlace() {

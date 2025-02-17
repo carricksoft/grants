@@ -27,6 +27,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPersonCommand;
 
 
 @SpringBootTest
@@ -67,14 +68,25 @@ class PersonFormControllerTest {
     }
 
     @Test
-    void personEditTestEdit() {
+    void personEditTestEditTest() {
         Long id = GetRandomLong();
         Person person = GetRandomPerson();
         when(personServiceMock.findById(id)).thenReturn(person);
 
         assertEquals("person/form", personController.personEdit(id + "", modelMock));
         verify(modelMock).addAttribute(AttributeConstants.PERSON_COMMAND, person);
+    }
 
+    @Test
+    void showByIdTest() {
+        Long id = GetRandomLong();
+        Person person = GetRandomPerson();
+        PersonCommand personCommand = GetRandomPersonCommand();
+
+        when(personServiceMock.findById(id)).thenReturn(person);
+        when(personConverterMock.convert(person)).thenReturn(personCommand);
+        assertEquals("person/form", personController.showById(id + "", modelMock));
+        verify(modelMock).addAttribute(AttributeConstants.PERSON_COMMAND, personCommand);
     }
 
 
