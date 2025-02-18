@@ -1,5 +1,5 @@
 /*
- * Copyright (c)  05 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  06 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
@@ -9,25 +9,22 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import scot.carricksoftware.grants.converters.places.CountryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.CountryConverterImpl;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.repositories.places.CountryRepository;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCountry;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
-class CountryServiceTest {
+class CountryServiceFindTest {
 
     CountryService countryService;
 
@@ -40,10 +37,10 @@ class CountryServiceTest {
     @Mock
     CountryCommandConverterImpl countryCommandConverterImplMock;
 
-
     @BeforeEach
     void setUp() {
-        countryService = new CountryServiceImpl(countryRepositoryMock,
+        countryService = new CountryServiceImpl(
+                countryRepositoryMock,
                 countryConverterImplMock,
                 countryCommandConverterImplMock);
     }
@@ -52,33 +49,21 @@ class CountryServiceTest {
     @Mock
     Pageable pageableMock;
 
-    @Mock
-    Page<Country> pageMock;
-
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void deleteByIdTest() {
+    void findByIdTest() {
         Long id = GetRandomLong();
-        countryService.deleteById(id);
-        verify(countryRepositoryMock).deleteById(id);
-    }
-
-    @Test
-    void CountTest() {
-        long result = GetRandomLong();
-        when(countryRepositoryMock.count()).thenReturn(result);
-        assertEquals(result, countryService.count());
-    }
-
-    @Test
-    void getPagedCountriesTest() {
-        List<Country> result = new ArrayList<>();
         Country country = GetRandomCountry();
-        result.add(country);
-        when(pageMock.getContent()).thenReturn(result);
-        when(countryRepositoryMock.findAll(any(Pageable.class))).thenReturn(pageMock);
-        assertEquals(result, countryService.getPagedCountries(0));
+        when(countryRepositoryMock.findById(id)).thenReturn(Optional.of(country));
+        assertEquals(country, countryService.findById(id));
+    }
+
+    @Test
+    void findByIdNullTest() {
+        Long id = GetRandomLong();
+        when(countryRepositoryMock.findById(id)).thenReturn(Optional.empty());
+        assertNull(countryService.findById(id));
     }
 
 }

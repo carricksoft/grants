@@ -5,8 +5,18 @@
 
 package scot.carricksoftware.grants.repositories.places;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import scot.carricksoftware.grants.domains.places.Country;
 
-public interface CountryRepository extends CrudRepository<Country, Long> {
+import java.util.Optional;
+
+public interface CountryRepository extends PagingAndSortingRepository<Country, Long> {
+
+    Country save(Country country);
+
+    long count();
+
+    void deleteById(Long id);
+
+    Optional<Country> findById(Long id);
 }

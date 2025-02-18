@@ -5,19 +5,28 @@
 
 package scot.carricksoftware.grants.services.places;
 
+import scot.carricksoftware.grants.commands.people.CountryCommand;
 import scot.carricksoftware.grants.domains.places.Country;
 
-import java.util.Set;
+import java.util.List;
 
 public interface CountryService {
 
     @SuppressWarnings("unused")
-    Set<Country> findAll();
+    Country findById(Long id);
 
-    @SuppressWarnings({"SameReturnValue", "unused"})
-    Country findById(Long aLong);
-
-    @SuppressWarnings({"UnusedReturnValue", "unused", "SameReturnValue"})
+    @SuppressWarnings("unused")
     Country save(Country country);
+
+    @SuppressWarnings("unused")
+    void deleteById(Long id);
+
+    @SuppressWarnings("unused")
+    List<Country> getPagedCountries(int pageNumber);
+
+    long count();
+
+    @SuppressWarnings("unused")
+    CountryCommand saveCountryCommand(CountryCommand countryCommand);
 
 }

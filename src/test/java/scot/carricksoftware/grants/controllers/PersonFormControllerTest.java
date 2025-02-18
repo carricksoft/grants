@@ -89,5 +89,4 @@ class PersonFormControllerTest {
         verify(modelMock).addAttribute(AttributeConstants.PERSON_COMMAND, personCommand);
     }
 
-
 }
