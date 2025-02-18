@@ -37,12 +37,12 @@ class DataLoadPersonsTest {
         when(personServiceMock.save(personCaptor.capture())).thenReturn(new Person());
         dataLoadPersons.load();
         Person[] persons = personCaptor.getAllValues().toArray(new Person[0]);
-        assertEquals(2,persons.length);
-        assertEquals("Andrew",persons[0].getFirstName());
-        assertEquals("Grant",persons[0].getLastName());
+        assertEquals(2, persons.length);
+        assertEquals("Andrew", persons[0].getFirstName());
+        assertEquals("Grant", persons[0].getLastName());
 
-        assertEquals("Dorothy",persons[1].getFirstName());
-        assertEquals("Bramall",persons[1].getLastName());
+        assertEquals("Dorothy", persons[1].getFirstName());
+        assertEquals("Bramall", persons[1].getLastName());
     }
 
 }
