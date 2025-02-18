@@ -99,7 +99,7 @@ class PersonListControllerPageITest {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
         Long id = GetRandomLong();
 
-        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PERSON_DELETE, id+""))
+        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PERSON_DELETE, id + ""))
                 .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
                 .andExpect(MockMvcResultMatchers.view().name("redirect:/people"));
         verify(personServiceMock).deleteById(id);

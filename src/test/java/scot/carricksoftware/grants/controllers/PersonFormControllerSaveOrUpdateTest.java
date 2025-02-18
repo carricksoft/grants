@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.services.people.PersonService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -72,6 +73,19 @@ class PersonFormControllerSaveOrUpdateTest {
         when(bindingResultMock.hasErrors()).thenReturn(true);
         when(personServiceMock.savePersonCommand(any(PersonCommand.class))).thenReturn(personCommand);
         assertEquals("person/form", personController.saveOrUpdate(personCommand, bindingResultMock));
+    }
+
+    @Test
+    void CleaningTakesPlaceTest() {
+        PersonCommand personCommand = new PersonCommand();
+        personCommand.setId(4L);
+        personCommand.setFirstName("john");
+        personCommand.setLastName("doe");
+        when(bindingResultMock.hasErrors()).thenReturn(false);
+        when(personServiceMock.savePersonCommand(any(PersonCommand.class))).thenReturn(personCommand);
+        personController.saveOrUpdate(personCommand, bindingResultMock);
+        verify(capitalisationMock).getCapitalisation("john");
+        verify(capitalisationMock).getCapitalisation("doe");
     }
 
 }
