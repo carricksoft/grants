@@ -14,11 +14,11 @@ public class PersonCommand {
     private Long id;
 
     @NotBlank
-    @Size(min=3,max=40, message ="First name must be between 3 and 40 characters.")
+    @Size(min = 3, max = 40, message = "First name must be between 3 and 40 characters.")
     private String firstName;
 
     @NotBlank
-    @Size(min=3,max=40, message ="Last name must be between 3 and 40 characters.")
+    @Size(min = 3, max = 40, message = "Last name must be between 3 and 40 characters.")
     private String lastName;
 
     public PersonCommand() {
