@@ -31,7 +31,7 @@ public class MappingConstants {
 
     public static final String COUNTRY_LIST = "/countries";
     @SuppressWarnings("unused")
-    public static final String COUNTRY_NEXT = "/country/next";
+    public static final String COUNTRY_NEXT = "/countries/next";
     public static final String COUNTRY_PREVIOUS = "/countries/prev";
     public static final String COUNTRY_REWIND = "/countries/rewind";
     public static final String COUNTRY_FF = "/countries/ff";

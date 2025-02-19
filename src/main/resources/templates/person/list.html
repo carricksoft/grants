@@ -51,10 +51,10 @@
                            th:text="'<<'"></a>
                          <a th:action="back" class="btn btn-secondary btn-sm"
                             th:href="@{/people/prev}" th:text="'<'"></a>
-                         <a th:action="new" class="btn btn-primary btn-sm" href="person/new"
+                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{person/new}"
                             th:text="'New Person'"></a>
                          <a th:action="home" class="btn btn-success btn-sm"
-                            href="./" th:text="'Home'"></a>
+                            th:href="@{/}" th:text="'Home'"></a>
                          <a th:action="forward" class="btn btn-secondary btn-sm"
                             th:href="@{/people/next}" th:text="'>'"></a>
                          <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/people/ff}"
