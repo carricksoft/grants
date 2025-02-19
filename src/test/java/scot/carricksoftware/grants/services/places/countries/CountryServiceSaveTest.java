@@ -10,39 +10,39 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
-import scot.carricksoftware.grants.commands.people.PersonCommand;
-import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
-import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
-import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.repositories.people.PersonRepository;
-import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.people.PersonServiceImpl;
+import scot.carricksoftware.grants.commands.places.CountryCommand;
+import scot.carricksoftware.grants.converters.places.CountryCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.CountryConverterImpl;
+import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.repositories.places.CountryRepository;
+import scot.carricksoftware.grants.services.places.CountryService;
+import scot.carricksoftware.grants.services.places.CountryServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCountry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
 class CountryServiceSaveTest {
 
-    PersonService personService;
+    CountryService countryService;
 
     @Mock
-    PersonRepository personRepositoryMock;
+    CountryRepository countryRepositoryMock;
 
     @Mock
-    PersonConverterImpl personConverterImplMock;
+    CountryConverterImpl countryConverterImplMock;
 
     @Mock
-    PersonCommandConverterImpl personCommandConverterImplMock;
+    CountryCommandConverterImpl countryCommandConverterImplMock;
 
 
     @BeforeEach
     void setUp() {
-        personService = new PersonServiceImpl(personRepositoryMock,
-                personConverterImplMock,
-                personCommandConverterImplMock);
+        countryService = new CountryServiceImpl(countryRepositoryMock,
+                countryConverterImplMock,
+                countryCommandConverterImplMock);
     }
 
     @SuppressWarnings("unused")
@@ -52,24 +52,23 @@ class CountryServiceSaveTest {
     @SuppressWarnings("EmptyMethod")
     @Test
     void saveTest() {
-        Person person = new Person();
-        person.setFirstName(GetRandomString());
-        person.setLastName(GetRandomString());
+        Country country = new Country();
+        country.setName(GetRandomString());
 
-        when(personRepositoryMock.save(person)).thenReturn(person);
+        when(countryRepositoryMock.save(country)).thenReturn(country);
 
-        assertEquals(person, personService.save(person));
+        assertEquals(country, countryService.save(country));
     }
 
     @Test
-    void savePersonCommandTest() {
-        Person person = GetRandomPerson();
-        PersonCommand personCommand = new PersonCommand();
-        when(personCommandConverterImplMock.convert(personCommand)).thenReturn(person);
-        when(personRepositoryMock.save(person)).thenReturn(person);
-        when(personConverterImplMock.convert((person))).thenReturn(personCommand);
+    void saveCountryCommandTest() {
+        Country country = GetRandomCountry();
+        CountryCommand countryCommand = new CountryCommand();
+        when(countryCommandConverterImplMock.convert(countryCommand)).thenReturn(country);
+        when(countryRepositoryMock.save(country)).thenReturn(country);
+        when(countryConverterImplMock.convert((country))).thenReturn(countryCommand);
 
-        assertEquals(personCommand, personService.savePersonCommand(personCommand));
+        assertEquals(countryCommand, countryService.saveCountryCommand(countryCommand));
     }
 
 
