@@ -29,4 +29,18 @@ public class MappingConstants {
     public static final String REDIRECT = "redirect:";
 
 
+    public static final String COUNTRY_LIST = "/countries";
+    @SuppressWarnings("unused")
+    public static final String COUNTRY_NEXT = "/country/next";
+    public static final String COUNTRY_PREVIOUS = "/countries/prev";
+    public static final String COUNTRY_REWIND = "/countries/rewind";
+    public static final String COUNTRY_FF = "/countries/ff";
+    public static final String COUNTRY_NEW = "/country/new";
+    public static final String COUNTRY = "/country";
+    public static final String COUNTRIES = "/countries";
+    public static final String COUNTRY_SHOW = "/country/{id}/show";
+    public static final String COUNTRY_DELETE = "/country/{id}/delete";
+    public static final String COUNTRY_EDIT = "country/{id}/edit";
+
+
 }

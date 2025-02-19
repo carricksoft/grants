@@ -7,7 +7,7 @@ package scot.carricksoftware.grants.converters.places;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.commands.people.CountryCommand;
+import scot.carricksoftware.grants.commands.places.CountryCommand;
 import scot.carricksoftware.grants.domains.places.Country;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

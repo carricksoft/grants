@@ -16,6 +16,7 @@ public class AttributeConstants {
 
     public static final String PEOPLE = "people";
     public static final String PERSON_COMMAND = "personCommand";
-
+    public static final String COUNTRIES = "countries";
+    public static final String COUNTRY_COMMAND = "countryCommand";
 
 }

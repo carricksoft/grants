@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import scot.carricksoftware.grants.commands.people.CountryCommand;
+import scot.carricksoftware.grants.commands.places.CountryCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.converters.places.CountryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.CountryConverterImpl;
@@ -72,7 +72,7 @@ public class CountryServiceImpl implements CountryService {
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.ASC, "lastName");
+        return Sort.by(Sort.Direction.ASC, "name");
     }
 
     @Override

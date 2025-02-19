@@ -19,4 +19,7 @@ public class ViewConstants {
     public static final String PEOPLE_LIST = "person/list";
     public static final String PERSON_FORM = "person/form";
 
+    public static final String COUNTRY_LIST = "country/list";
+    public static final String COUNTRY_FORM = "country/form";
+
 }

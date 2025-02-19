@@ -8,7 +8,7 @@ package scot.carricksoftware.grants.converters.places;
 
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.commands.people.CountryCommand;
+import scot.carricksoftware.grants.commands.places.CountryCommand;
 import scot.carricksoftware.grants.domains.places.Country;
 
 @Component

@@ -1,9 +1,9 @@
 /*
- * Copyright (c)  11 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  19 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.commands.people;
+package scot.carricksoftware.grants.commands.places;
 
 import jakarta.validation.constraints.Size;
 import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBlank;

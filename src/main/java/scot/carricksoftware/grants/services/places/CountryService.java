@@ -5,7 +5,7 @@
 
 package scot.carricksoftware.grants.services.places;
 
-import scot.carricksoftware.grants.commands.people.CountryCommand;
+import scot.carricksoftware.grants.commands.places.CountryCommand;
 import scot.carricksoftware.grants.domains.places.Country;
 
 import java.util.List;
