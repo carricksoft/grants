@@ -1,9 +1,9 @@
 /*
- * Copyright (c)  06 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  19 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.services.places;
+package scot.carricksoftware.grants.services.places.countries;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
