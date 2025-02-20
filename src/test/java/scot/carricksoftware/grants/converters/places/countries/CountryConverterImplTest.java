@@ -16,8 +16,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 
 @Component
 class CountryConverterImplTest {
@@ -35,16 +37,19 @@ class CountryConverterImplTest {
         Long id = GetRandomLong();
         String name = GetRandomString();
         Set<Place> places = new HashSet<>();
-        places.add(new Place());
+        places.add(GetRandomPlace());
 
         source.setId(id);
         source.setName(name);
+        source.setPlaces(places);
 
         CountryCommand target = converter.convert(source);
         assert target != null;
         assertEquals(id, target.getId());
         assertEquals(name, target.getName());
-        assertEquals(places, target.getPlaces());
+        Set<Place> expectedPlaces = target.getPlaces();
+        assertTrue(expectedPlaces.containsAll(places));
+        assertTrue(places.containsAll(expectedPlaces));
     }
 
 }

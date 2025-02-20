@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
@@ -39,12 +40,15 @@ class RegionConverterImplTest {
 
         source.setId(id);
         source.setName(name);
+        source.setPlaces(places);
 
         RegionCommand target = converter.convert(source);
         assert target != null;
         assertEquals(id, target.getId());
         assertEquals(name, target.getName());
-        assertEquals(places, target.getPlaces());
+        Set<Place> targetPlaces = target.getPlaces();
+        assertTrue(places.containsAll(targetPlaces));
+        assertTrue(targetPlaces.containsAll(places));
     }
 
 }
