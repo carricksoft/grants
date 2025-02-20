@@ -50,7 +50,6 @@ class PersonFormControllerTest {
     @Mock
     private Model modelMock;
 
-
     @BeforeEach
     void setUp() {
         personController = new PersonFormControllerImpl(personServiceMock,
@@ -87,5 +86,6 @@ class PersonFormControllerTest {
         assertEquals("person/form", personController.showById(id + "", modelMock));
         verify(modelMock).addAttribute(AttributeConstants.PERSON_COMMAND, personCommand);
     }
+
 
 }
