@@ -7,51 +7,88 @@ package scot.carricksoftware.grants.services.places;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import scot.carricksoftware.grants.constants.ExceptionConstants;
+import org.springframework.transaction.annotation.Transactional;
+import scot.carricksoftware.grants.commands.places.PlaceCommand;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.domains.places.Place;
-import scot.carricksoftware.grants.exceptions.GrantsException;
 import scot.carricksoftware.grants.repositories.places.PlaceRepository;
 
-import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Service
 public class PlaceServiceImpl implements PlaceService {
-
     private static final Logger logger = LogManager.getLogger(PlaceServiceImpl.class);
+
+    @SuppressWarnings({"unused"})
     private final PlaceRepository placeRepository;
+    private final PlaceConverterImpl placeConverterImpl;
+    private final PlaceCommandConverterImpl placeCommandConverterImpl;
 
-    public PlaceServiceImpl(PlaceRepository placeRepository) {
+    public PlaceServiceImpl(
+            PlaceRepository placeRepository,
+            PlaceConverterImpl placeConverterImpl,
+            PlaceCommandConverterImpl placeCommandConverterImpl) {
+
         this.placeRepository = placeRepository;
-    }
-
-    @Override
-    public Set<Place> findAll() {
-        logger.debug("PlaceServiceImpl::save");
-        Set<Place> placeSet = new HashSet<>();
-        placeRepository.findAll().iterator().forEachRemaining(placeSet::add);
-        return placeSet;
+        this.placeConverterImpl = placeConverterImpl;
+        this.placeCommandConverterImpl = placeCommandConverterImpl;
     }
 
     @Override
     public Place findById(Long id) {
-        logger.debug("PersonServiceImpl::findById");
-        Optional<Place> person = placeRepository.findById(id);
-        return person.orElse(null);
+        logger.debug("PlaceServiceImpl::findById");
+        Optional<Place> place = placeRepository.findById(id);
+        return place.orElse(null);
     }
 
     @Override
-    public Place save(Place place) throws GrantsException {
+    public Place save(Place place) {
         logger.debug("PlaceServiceImpl::save");
-        if (place == null ||
-                place.getCountry() == null ||
-                place.getRegion() == null) {
-            throw new GrantsException(ExceptionConstants.INVALID_PLACE);
-        }
         return placeRepository.save(place);
     }
 
+    @Override
+    public void deleteById(Long id) {
+        logger.debug("PlaceServiceImpl::deleteBy");
+        placeRepository.deleteById(id);
+    }
+
+
+    @Override
+    public List<Place> getPagedCountries(int pageNumber) {
+        logger.debug("PlaceServiceImpl::getPagedCountries");
+        Pageable paging = PageRequest.of(pageNumber, ApplicationConstants.DEFAULT_PAGE_SIZE, getSort());
+        Page<Place> pagedResult = placeRepository.findAll(paging);
+        return pagedResult.getContent();
+    }
+
+    private Sort getSort() {
+        return Sort.by(Sort.Direction.ASC, "name");
+    }
+
+    @Override
+    public long count() {
+        logger.debug("PlaceServiceImpl::count");
+        return placeRepository.count();
+    }
+
+    @Transactional
+    @Override
+    public PlaceCommand savePlaceCommand(PlaceCommand placeCommand) {
+        logger.debug("PlaceServiceImpl::savePlaceCommand");
+        Place place = placeCommandConverterImpl.convert(placeCommand);
+        Place savedPlace = placeRepository.save(place);
+        return placeConverterImpl.convert(savedPlace);
+
+    }
+    
+   
 }

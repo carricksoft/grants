@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
-import scot.carricksoftware.grants.exceptions.GrantsException;
 
 import static org.mockito.Mockito.verify;
 
@@ -30,7 +29,7 @@ class DataLoaderTest {
     }
 
     @Test
-    void delegationTest() throws GrantsException {
+    void delegationTest() {
         dataLoader.run();
         verify(dataLoadPersonsMock).load();
         verify(dataLoadPlacesMock).load();

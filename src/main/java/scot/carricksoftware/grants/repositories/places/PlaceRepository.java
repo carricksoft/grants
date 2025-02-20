@@ -5,8 +5,18 @@
 
 package scot.carricksoftware.grants.repositories.places;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import scot.carricksoftware.grants.domains.places.Place;
 
-public interface PlaceRepository extends CrudRepository<Place, Long> {
+import java.util.Optional;
+
+public interface PlaceRepository extends PagingAndSortingRepository<Place, Long> {
+
+    Place save(Place place);
+
+    long count();
+
+    void deleteById(Long id);
+
+    Optional<Place> findById(Long id);
 }

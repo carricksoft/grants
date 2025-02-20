@@ -5,20 +5,30 @@
 
 package scot.carricksoftware.grants.services.places;
 
+import scot.carricksoftware.grants.commands.places.PlaceCommand;
 import scot.carricksoftware.grants.domains.places.Place;
-import scot.carricksoftware.grants.exceptions.GrantsException;
 
-import java.util.Set;
+import java.util.List;
 
 public interface PlaceService {
 
     @SuppressWarnings("unused")
-    Set<Place> findAll();
+    Place findById(Long id);
 
-    @SuppressWarnings({"SameReturnValue", "unused"})
-    Place findById(Long aLong);
+    @SuppressWarnings("unused")
+    Place save(Place place);
 
-    @SuppressWarnings({"UnusedReturnValue", "unused", "SameReturnValue"})
-    Place save(Place place) throws GrantsException;
+    @SuppressWarnings("unused")
+    void deleteById(Long id);
+
+    @SuppressWarnings("unused")
+    List<Place> getPagedCountries(int pageNumber);
+
+    long count();
+
+    @SuppressWarnings("unused")
+    PlaceCommand savePlaceCommand(PlaceCommand placeCommand);
+    
+    
 
 }

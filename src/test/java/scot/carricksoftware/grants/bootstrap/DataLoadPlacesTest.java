@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
-import scot.carricksoftware.grants.exceptions.GrantsException;
 import scot.carricksoftware.grants.services.places.CountryService;
 import scot.carricksoftware.grants.services.places.PlaceService;
 import scot.carricksoftware.grants.services.places.RegionService;
@@ -43,7 +42,7 @@ class DataLoadPlacesTest {
 
 
     @Test
-    void testCountries() throws GrantsException {
+    void testCountries() {
         ArgumentCaptor<Country> countryCaptor = ArgumentCaptor.forClass(Country.class);
 
         when(countryServiceMock.save(countryCaptor.capture())).thenReturn(new Country());
@@ -54,7 +53,7 @@ class DataLoadPlacesTest {
     }
 
     @Test
-    void testRegions() throws GrantsException {
+    void testRegions() {
         ArgumentCaptor<Region> regionCaptor = ArgumentCaptor.forClass(Region.class);
 
         when(regionServiceMock.save(regionCaptor.capture())).thenReturn(new Region());
@@ -65,7 +64,7 @@ class DataLoadPlacesTest {
     }
 
     @Test
-    void testPlaces() throws GrantsException {
+    void testPlaces() {
         ArgumentCaptor<Place> countryCaptor = ArgumentCaptor.forClass(Place.class);
 
         when(placeServiceMock.save(countryCaptor.capture())).thenReturn(new Place());

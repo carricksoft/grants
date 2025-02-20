@@ -9,38 +9,44 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
-import scot.carricksoftware.grants.exceptions.GrantsException;
 import scot.carricksoftware.grants.repositories.places.PlaceRepository;
 
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
-
-import static scot.carricksoftware.grants.constants.ExceptionConstants.INVALID_PLACE;
 
 @SpringBootTest
 class PlaceServiceTest {
 
-    PlaceService placeService;
+    private PlaceService placeService;
 
     @Mock
-    PlaceRepository placeRepositoryMock;
+    private PlaceRepository placeRepositoryMock;
+
+    @Mock
+    private PlaceConverterImpl placeConverterImplMock;
+
+    @Mock
+    private PlaceCommandConverterImpl placeCommandConverterImplMock;
 
     Place place;
 
     @BeforeEach
     void setUp() {
-        placeService = new PlaceServiceImpl(placeRepositoryMock);
+        placeService = new PlaceServiceImpl(placeRepositoryMock,
+                placeConverterImplMock,
+                placeCommandConverterImplMock);
         place = new Place();
     }
 
     @Test
-    void saveValidTest() throws GrantsException {
+    void saveValidTest() {
         Region region = new Region();
         region.setName(GetRandomString());
 
@@ -60,30 +66,5 @@ class PlaceServiceTest {
         assertEquals(place.getName(), returnPlace.getName());
     }
 
-    @Test
-    void saveTestNull() {
-        GrantsException thrown = assertThrows(GrantsException.class, () -> placeService.save(null));
-
-        assertEquals(INVALID_PLACE, thrown.getMessage());
-    }
-
-    @Test
-    void saveTestNullCountry() {
-        place.setName(GetRandomString());
-        place.setRegion(new Region());
-        GrantsException thrown = assertThrows(GrantsException.class, () -> placeService.save(place));
-
-        assertEquals(INVALID_PLACE, thrown.getMessage());
-    }
-
-    @Test
-    void saveTestNullRegion() {
-
-        place.setName(GetRandomString());
-        place.setCountry(new Country());
-        GrantsException thrown = assertThrows(GrantsException.class, () -> placeService.save(place));
-
-        assertEquals(INVALID_PLACE, thrown.getMessage());
-    }
 
 }

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
-import scot.carricksoftware.grants.exceptions.GrantsException;
 import scot.carricksoftware.grants.services.places.CountryService;
 import scot.carricksoftware.grants.services.places.PlaceService;
 import scot.carricksoftware.grants.services.places.RegionService;
@@ -32,7 +31,7 @@ public class DataLoadPlaces {
     }
 
 
-    public void load() throws GrantsException {
+    public void load() {
         logger.debug("DataLoadPlaces::load");
         loadCountries();
         loadRegions();
@@ -52,7 +51,7 @@ public class DataLoadPlaces {
         regionService.save(midlothian);
     }
 
-    private void loadPlaces() throws GrantsException {
+    private void loadPlaces() {
         Place wilsonAvenue = new Place();
         wilsonAvenue.setName("Wilson Avenue");
         wilsonAvenue.setRegion(midlothian);

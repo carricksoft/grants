@@ -9,10 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.repositories.places.PlaceRepository;
 
-import java.util.HashSet;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -28,18 +29,17 @@ class PlaceServiceFindTest {
     @Mock
     PlaceRepository placeRepositoryMock;
 
+    @Mock
+    PlaceConverterImpl placeConverterImplMock;
+
+    @Mock
+    PlaceCommandConverterImpl placeCommandConverterImplMock;
+
     @BeforeEach
     void setUp() {
-        placeService = new PlaceServiceImpl(placeRepositoryMock);
-    }
-
-    @Test
-    void findAllTest() {
-        HashSet<Place> places = new HashSet<>();
-        Place place = new Place();
-        places.add(place);
-        when(placeRepositoryMock.findAll()).thenReturn(places);
-        assertEquals(places, placeService.findAll());
+        placeService = new PlaceServiceImpl(placeRepositoryMock,
+                placeConverterImplMock,
+                placeCommandConverterImplMock);
     }
 
 
