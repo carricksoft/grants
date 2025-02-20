@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonServiceImpl;
@@ -48,6 +49,16 @@ public class PersonListControllerTest {
         assertEquals("person/list", controller.getListPage(modelMock));
         verify(modelMock).addAttribute("people", personListMock);
         verify(controllerHelperMock).addAttributes(modelMock);
+    }
+
+    @Test
+    void getLastPageTest() {
+        int page = 25;
+        int count =  page * ApplicationConstants.DEFAULT_PAGE_SIZE;
+        when(personServiceImplMock.count()).thenReturn((long) count);
+        controller.getLastPage(modelMock);
+        controller.getPreviousPage(modelMock);
+        verify(personServiceImplMock).getPagedPersons(page);
     }
 
 }

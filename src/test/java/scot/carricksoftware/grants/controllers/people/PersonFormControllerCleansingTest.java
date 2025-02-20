@@ -54,7 +54,17 @@ class PersonFormControllerCleansingTest {
                 capitalisationMock);
     }
 
+    @Test
+    void saveOrUpdateCleansingFirstNameTest() {
+        String name = "goat";
+        String uName = "Goat";
+        when(personServiceMock.savePersonCommand(any())).thenReturn(personCommandMock);
+        when(personCommandMock.getFirstName()).thenReturn(name);
+        when(capitalisationMock.getCapitalisation(name)).thenReturn(uName);
+        personController.saveOrUpdate(personCommandMock, bindingResultMock);
 
+        verify(personCommandMock).setFirstName(uName);
+    }
     @Test
     void saveOrUpdateCleansingLastNameTest() {
         String name = "goat";
