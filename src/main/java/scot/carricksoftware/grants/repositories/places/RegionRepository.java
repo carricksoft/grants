@@ -5,8 +5,17 @@
 
 package scot.carricksoftware.grants.repositories.places;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import scot.carricksoftware.grants.domains.places.Region;
 
-public interface RegionRepository extends CrudRepository<Region, Long> {
+import java.util.Optional;
+
+public interface RegionRepository extends PagingAndSortingRepository<Region, Long> {
+    Region save(Region region);
+
+    long count();
+
+    void deleteById(Long id);
+
+    Optional<Region> findById(Long id);
 }

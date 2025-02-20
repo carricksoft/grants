@@ -5,20 +5,27 @@
 
 package scot.carricksoftware.grants.services.places;
 
+import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.domains.places.Region;
 
-import java.util.Set;
+import java.util.List;
 
 @SuppressWarnings("SameReturnValue")
 public interface RegionService {
+    @SuppressWarnings("unused")
+    Region findById(Long id);
 
     @SuppressWarnings("unused")
-    Set<Region> findAll();
-
-    @SuppressWarnings({"SameReturnValue", "unused"})
-    Region findById(Long aLong);
-
-    @SuppressWarnings({"UnusedReturnValue", "unused"})
     Region save(Region region);
 
+    @SuppressWarnings("unused")
+    void deleteById(Long id);
+
+    @SuppressWarnings("unused")
+    List<Region> getPagedCountries(int pageNumber);
+
+    long count();
+
+    @SuppressWarnings("unused")
+    RegionCommand saveRegionCommand(RegionCommand regionCommand);
 }
