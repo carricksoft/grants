@@ -54,7 +54,7 @@ public class PersonListControllerTest {
     @Test
     void getLastPageTest() {
         int page = 25;
-        int count =  page * ApplicationConstants.DEFAULT_PAGE_SIZE;
+        int count = page * ApplicationConstants.DEFAULT_PAGE_SIZE;
         when(personServiceImplMock.count()).thenReturn((long) count);
         controller.getLastPage(modelMock);
         controller.getPreviousPage(modelMock);

@@ -22,7 +22,6 @@ public class Country extends BaseEntity {
     @JoinColumn(name = "country_id")
     private Set<Place> places;
 
-
     public Country() {
         //
         // empty constructor required by JPA

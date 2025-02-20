@@ -13,20 +13,16 @@ import scot.carricksoftware.grants.domains.places.Place;
 import java.util.Set;
 
 @Component
-public class PersonCommand {
+public class RegionCommand {
     private Long id;
 
     @NotBlank
-    @Size(min = 3, max = 40, message = "First name must be between 3 and 40 characters.")
-    private String firstName;
-
-    @NotBlank
-    @Size(min = 3, max = 40, message = "Last name must be between 3 and 40 characters.")
-    private String lastName;
+    @Size(min = 3, max = 40, message = "Name must be between 3 and 40 characters.")
+    private String name;
 
     private Set<Place> places;
 
-    public PersonCommand() {
+    public RegionCommand() {
         // required by JPA
     }
 
@@ -38,21 +34,6 @@ public class PersonCommand {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
 
     public Set<Place> getPlaces() {
         return places;
@@ -60,5 +41,13 @@ public class PersonCommand {
 
     public void setPlaces(Set<Place> places) {
         this.places = places;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

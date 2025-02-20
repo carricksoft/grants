@@ -1,12 +1,13 @@
 /*
- * Copyright (c)  11 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  19 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.commands.people;
+package scot.carricksoftware.grants.commands.places.regions;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.commands.people.RegionCommand;
 import scot.carricksoftware.grants.domains.places.Place;
 
 import java.util.HashSet;
@@ -19,13 +20,13 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
-class PersonCommandTest {
+class RegionCommandTest {
 
-    PersonCommand command;
+    RegionCommand command;
 
     @BeforeEach
     void setUp() {
-        command = new PersonCommand();
+        command = new RegionCommand();
     }
 
     @Test
@@ -41,27 +42,15 @@ class PersonCommandTest {
     }
 
     @Test
-    void getFirstNameTest() {
-        assertNull(command.getFirstName());
+    void getNameTest() {
+        assertNull(command.getName());
     }
 
     @Test
-    void setFirstNameTest() {
+    void setNameTest() {
         String name = GetRandomString();
-        command.setFirstName(name);
-        assertEquals(name, command.getFirstName());
-    }
-
-    @Test
-    void getLastNameTest() {
-        assertNull(command.getLastName());
-    }
-
-    @Test
-    void setLastNameTest() {
-        String name = GetRandomString();
-        command.setLastName(name);
-        assertEquals(name, command.getLastName());
+        command.setName(name);
+        assertEquals(name, command.getName());
     }
 
     @Test

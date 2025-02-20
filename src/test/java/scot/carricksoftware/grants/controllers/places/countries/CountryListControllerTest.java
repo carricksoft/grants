@@ -55,7 +55,7 @@ public class CountryListControllerTest {
     @Test
     void getLastPageTest() {
         int page = 25;
-        int count =  page * ApplicationConstants.DEFAULT_PAGE_SIZE;
+        int count = page * ApplicationConstants.DEFAULT_PAGE_SIZE;
         when(countryServiceImplMock.count()).thenReturn((long) count);
         controller.getLastPage(modelMock);
         controller.getPreviousPage(modelMock);

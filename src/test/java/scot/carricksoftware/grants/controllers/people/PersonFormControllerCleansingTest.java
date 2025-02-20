@@ -65,6 +65,7 @@ class PersonFormControllerCleansingTest {
 
         verify(personCommandMock).setFirstName(uName);
     }
+
     @Test
     void saveOrUpdateCleansingLastNameTest() {
         String name = "goat";
