@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.controllers.places.countries;
+package scot.carricksoftware.grants.controllers.places.regions;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -12,8 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.domains.places.Country;
-import scot.carricksoftware.grants.services.places.CountryServiceImpl;
+import scot.carricksoftware.grants.domains.places.Region;
+import scot.carricksoftware.grants.services.places.RegionServiceImpl;
 
 import java.util.List;
 
@@ -22,32 +22,32 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-public class CountryListControllerTest {
+public class RegionListControllerTest {
 
-    private CountryListControllerImpl controller;
+    private RegionListControllerImpl controller;
 
     @Mock
     private ControllerHelper controllerHelperMock;
 
     @Mock
-    private CountryServiceImpl countryServiceImplMock;
+    private RegionServiceImpl regionServiceImplMock;
 
     @Mock
     private Model modelMock;
 
     @Mock
-    List<Country> countryListMock;
+    List<Region> regionListMock;
 
     @BeforeEach
     public void setUp() {
-        controller = new CountryListControllerImpl(controllerHelperMock, countryServiceImplMock);
+        controller = new RegionListControllerImpl(controllerHelperMock, regionServiceImplMock);
     }
 
     @Test
     void getListPageTest() {
-        when(countryServiceImplMock.getPagedCountries(0)).thenReturn(countryListMock);
-        assertEquals("country/list", controller.getListPage(modelMock));
-        verify(modelMock).addAttribute("countries", countryListMock);
+        when(regionServiceImplMock.getPagedCountries(0)).thenReturn(regionListMock);
+        assertEquals("region/list", controller.getListPage(modelMock));
+        verify(modelMock).addAttribute("countries", regionListMock);
         verify(controllerHelperMock).addAttributes(modelMock);
     }
 
@@ -55,10 +55,10 @@ public class CountryListControllerTest {
     void getLastPageTest() {
         int page = 25;
         int count = page * ApplicationConstants.DEFAULT_PAGE_SIZE;
-        when(countryServiceImplMock.count()).thenReturn((long) count);
+        when(regionServiceImplMock.count()).thenReturn((long) count);
         controller.getLastPage(modelMock);
         controller.getPreviousPage(modelMock);
-        verify(countryServiceImplMock).getPagedCountries(page);
+        verify(regionServiceImplMock).getPagedCountries(page);
     }
 
 }

@@ -8,6 +8,7 @@ package scot.carricksoftware.grants;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
+import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Place;
@@ -75,6 +76,12 @@ public class GenerateRandomValues {
         Region region = new Region();
         region.setName(GetRandomString());
         return region;
+    }
+
+    public static RegionCommand GetRandomRegionCommand() {
+        RegionCommand regionCommand = new RegionCommand();
+        regionCommand.setName(GetRandomString());
+        return regionCommand;
     }
 
 

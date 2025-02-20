@@ -28,9 +28,7 @@ public class MappingConstants {
     public static final String PERSON_EDIT = "/person/{id}/edit";
     public static final String REDIRECT = "redirect:";
 
-
     public static final String COUNTRY_LIST = "/countries";
-    @SuppressWarnings("unused")
     public static final String COUNTRY_NEXT = "/countries/next";
     public static final String COUNTRY_PREVIOUS = "/countries/prev";
     public static final String COUNTRY_REWIND = "/countries/rewind";
@@ -42,5 +40,15 @@ public class MappingConstants {
     public static final String COUNTRY_DELETE = "/country/{id}/delete";
     public static final String COUNTRY_EDIT = "country/{id}/edit";
 
-
+    public static final String REGION_LIST = "/regions";
+    public static final String REGION_NEXT = "/regions/next";
+    public static final String REGION_PREVIOUS = "/regions/prev";
+    public static final String REGION_REWIND = "/regions/rewind";
+    public static final String REGION_FF = "/regions/ff";
+    public static final String REGION_NEW = "/region/new";
+    public static final String REGION = "/region";
+    public static final String REGIONS = "/regions";
+    public static final String REGION_SHOW = "/region/{id}/show";
+    public static final String REGION_DELETE = "/region/{id}/delete";
+    public static final String REGION_EDIT = "region/{id}/edit";
 }

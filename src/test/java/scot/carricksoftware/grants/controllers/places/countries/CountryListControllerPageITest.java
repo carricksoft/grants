@@ -17,7 +17,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.controllers.places.CountryListControllerImpl;
 import scot.carricksoftware.grants.services.places.CountryServiceImpl;
 
 import static org.mockito.ArgumentMatchers.anyInt;
