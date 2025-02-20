@@ -3,13 +3,13 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.converters.places.countries;
+package scot.carricksoftware.grants.converters.places.regions;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
-import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.places.Region;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,14 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
-class CountryCommandConverterImplTest {
+class RegionCommandConverterImplTest {
 
-    final CountryCommandConverterImpl converter = new CountryCommandConverterImpl();
-    CountryCommand source;
+    final RegionCommandConverterImpl converter = new RegionCommandConverterImpl();
+    RegionCommand source;
 
     @BeforeEach
     void setUp() {
-        source = new CountryCommand();
+        source = new RegionCommand();
     }
 
     @Test
@@ -40,11 +40,10 @@ class CountryCommandConverterImplTest {
         source.setPlaces(places);
 
 
-        Country target = converter.convert(source);
+        Region target = converter.convert(source);
         assert target != null;
         assertEquals(id, target.getId());
         assertEquals(name, target.getName());
         assertEquals(places, target.getPlaces());
-
     }
 }

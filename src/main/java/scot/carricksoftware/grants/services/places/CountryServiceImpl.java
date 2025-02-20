@@ -13,10 +13,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import scot.carricksoftware.grants.commands.places.CountryCommand;
+import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.converters.places.CountryCommandConverterImpl;
-import scot.carricksoftware.grants.converters.places.CountryConverterImpl;
+import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.repositories.places.CountryRepository;
 

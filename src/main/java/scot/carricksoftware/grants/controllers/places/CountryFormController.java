@@ -7,7 +7,7 @@ package scot.carricksoftware.grants.controllers.places;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import scot.carricksoftware.grants.commands.places.CountryCommand;
+import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 
 @SuppressWarnings("unused")
 

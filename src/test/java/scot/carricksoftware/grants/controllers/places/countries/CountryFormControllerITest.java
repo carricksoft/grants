@@ -13,13 +13,13 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import scot.carricksoftware.grants.commands.places.CountryCommand;
+import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.controllers.places.CountryFormController;
 import scot.carricksoftware.grants.controllers.places.CountryFormControllerImpl;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
-import scot.carricksoftware.grants.converters.places.CountryCommandConverterImpl;
-import scot.carricksoftware.grants.converters.places.CountryConverterImpl;
+import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.services.places.CountryService;
 
 import static org.mockito.ArgumentMatchers.any;

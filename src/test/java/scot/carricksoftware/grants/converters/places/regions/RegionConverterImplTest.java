@@ -3,12 +3,13 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.converters.places.countries;
+package scot.carricksoftware.grants.converters.places.regions;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
-import scot.carricksoftware.grants.domains.places.Country;
+import org.springframework.stereotype.Component;
+import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
+import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.domains.places.Place;
 
 import java.util.HashSet;
@@ -18,18 +19,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
-class CountryCommandConverterImplTest {
+@Component
+class RegionConverterImplTest {
 
-    final CountryCommandConverterImpl converter = new CountryCommandConverterImpl();
-    CountryCommand source;
+    final RegionConverterImpl converter = new RegionConverterImpl();
+    Region source;
 
     @BeforeEach
     void setUp() {
-        source = new CountryCommand();
+        source = new Region();
     }
 
     @Test
-    void convert() {
+    void convertTest() {
         Long id = GetRandomLong();
         String name = GetRandomString();
         Set<Place> places = new HashSet<>();
@@ -37,14 +39,12 @@ class CountryCommandConverterImplTest {
 
         source.setId(id);
         source.setName(name);
-        source.setPlaces(places);
 
-
-        Country target = converter.convert(source);
+        RegionCommand target = converter.convert(source);
         assert target != null;
         assertEquals(id, target.getId());
         assertEquals(name, target.getName());
         assertEquals(places, target.getPlaces());
-
     }
+
 }

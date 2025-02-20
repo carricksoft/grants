@@ -7,7 +7,6 @@ package scot.carricksoftware.grants.commands.places.regions;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.commands.people.RegionCommand;
 import scot.carricksoftware.grants.domains.places.Place;
 
 import java.util.HashSet;

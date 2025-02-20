@@ -8,9 +8,12 @@ package scot.carricksoftware.grants.converters.places.countries;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.commands.places.CountryCommand;
-import scot.carricksoftware.grants.converters.places.CountryConverterImpl;
+import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.domains.places.Place;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
@@ -31,6 +34,8 @@ class CountryConverterImplTest {
     void convertTest() {
         Long id = GetRandomLong();
         String name = GetRandomString();
+        Set<Place> places = new HashSet<>();
+        places.add(new Place());
 
         source.setId(id);
         source.setName(name);
@@ -39,6 +44,7 @@ class CountryConverterImplTest {
         assert target != null;
         assertEquals(id, target.getId());
         assertEquals(name, target.getName());
+        assertEquals(places, target.getPlaces());
     }
 
 }
