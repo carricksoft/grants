@@ -51,4 +51,16 @@ public class MappingConstants {
     public static final String REGION_SHOW = "/region/{id}/show";
     public static final String REGION_DELETE = "/region/{id}/delete";
     public static final String REGION_EDIT = "region/{id}/edit";
+
+    public static final String PLACE_LIST = "/places";
+    public static final String PLACE_NEXT = "/places/next";
+    public static final String PLACE_PREVIOUS = "/places/prev";
+    public static final String PLACE_REWIND = "/places/rewind";
+    public static final String PLACE_FF = "/places/ff";
+    public static final String PLACE_NEW = "/place/new";
+    public static final String PLACE = "/place";
+    public static final String PLACES = "/places";
+    public static final String PLACE_SHOW = "/place/{id}/show";
+    public static final String PLACE_DELETE = "/place/{id}/delete";
+    public static final String PLACE_EDIT = "place/{id}/edit";
 }

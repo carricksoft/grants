@@ -101,7 +101,7 @@ class RegionListControllerPageITest {
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.REGION_DELETE, id + ""))
                 .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
-                .andExpect(MockMvcResultMatchers.view().name("redirect:/countries"));
+                .andExpect(MockMvcResultMatchers.view().name("redirect:/regions"));
         verify(regionServiceMock).deleteById(id);
     }
 

@@ -47,7 +47,7 @@ public class RegionListControllerTest {
     void getListPageTest() {
         when(regionServiceImplMock.getPagedCountries(0)).thenReturn(regionListMock);
         assertEquals("region/list", controller.getListPage(modelMock));
-        verify(modelMock).addAttribute("countries", regionListMock);
+        verify(modelMock).addAttribute("regions", regionListMock);
         verify(controllerHelperMock).addAttributes(modelMock);
     }
 
