@@ -17,10 +17,13 @@ import scot.carricksoftware.grants.repositories.places.CountryRepository;
 import scot.carricksoftware.grants.services.places.CountryService;
 import scot.carricksoftware.grants.services.places.CountryServiceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCountry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
@@ -66,6 +69,17 @@ class CountryServiceFindTest {
         Long id = GetRandomLong();
         when(countryRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(countryService.findById(id));
+    }
+
+    @Test
+    void findAllTest() {
+        List<Country> testList = new ArrayList<>();
+        Country testCountry = new Country();
+        testList.add(testCountry);
+        when(countryRepositoryMock.findAll())
+                .thenReturn(testList);
+        assertEquals(testList, countryService.findAll());
+        verify(countryRepositoryMock).findAll();
     }
 
 }

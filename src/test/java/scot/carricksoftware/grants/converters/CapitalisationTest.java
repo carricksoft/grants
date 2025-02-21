@@ -7,11 +7,10 @@ package scot.carricksoftware.grants.converters;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+
 class CapitalisationTest {
 
     private Capitalisation capitalisation;
@@ -66,6 +65,11 @@ class CapitalisationTest {
     void ninthTest() {
         //noinspection SpellCheckingInspection
         assertEquals("McSmith", capitalisation.getCapitalisation("mcsmith"));
+    }
+
+    @Test
+    void lengthTest() {
+        assertEquals("ab", capitalisation.getCapitalisation("ab"));
     }
 
 }

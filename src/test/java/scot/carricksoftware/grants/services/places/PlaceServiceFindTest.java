@@ -59,4 +59,5 @@ class PlaceServiceFindTest {
         assertNull(placeService.findById(id));
     }
 
+
 }

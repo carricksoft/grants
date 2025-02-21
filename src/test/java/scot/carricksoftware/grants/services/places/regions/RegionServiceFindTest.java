@@ -17,10 +17,13 @@ import scot.carricksoftware.grants.repositories.places.RegionRepository;
 import scot.carricksoftware.grants.services.places.RegionService;
 import scot.carricksoftware.grants.services.places.RegionServiceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomRegion;
@@ -66,6 +69,17 @@ class RegionServiceFindTest {
         Long id = GetRandomLong();
         when(regionRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(regionService.findById(id));
+    }
+
+    @Test
+    void findAllTest() {
+        List<Region> testList = new ArrayList<>();
+        Region testRegion = GetRandomRegion();
+        testList.add(testRegion);
+        when(regionRepositoryMock.findAll())
+                .thenReturn(testList);
+        assertEquals(testList, regionService.findAll());
+        verify(regionRepositoryMock).findAll();
     }
 
 }
