@@ -27,4 +27,7 @@ public class ViewConstants {
 
     public static final String PLACE_LIST = "place/list";
     public static final String PLACE_FORM = "place/form";
+
+    public static final String CENSUS_LIST = "census/list";
+    public static final String CENSUS_FORM = "census/form";
 }

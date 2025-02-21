@@ -7,13 +7,21 @@ package scot.carricksoftware.grants.controllers.places.countries;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @SuppressWarnings("unused")
 @Controller
 public interface CountryListController {
 
-    @SuppressWarnings("unused")
-    String getListPage(final Model model, @RequestParam(defaultValue = "0") final int pageNumber);
+    String getListPage(final Model model);
 
+    String getNextPage(final Model model);
+
+    String getPreviousPage(final Model model);
+
+    String getFirstPage(final Model model);
+
+    String getLastPage(final Model model);
+
+    String CountryDelete(@PathVariable String id);
 }

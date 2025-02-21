@@ -59,8 +59,18 @@ public class MappingConstants {
     public static final String PLACE_FF = "/places/ff";
     public static final String PLACE_NEW = "/place/new";
     public static final String PLACE = "/place";
-
     public static final String PLACE_SHOW = "/place/{id}/show";
     public static final String PLACE_DELETE = "/place/{id}/delete";
     public static final String PLACE_EDIT = "place/{id}/edit";
+
+    public static final String CENSUS_LIST = "/censuses";
+    public static final String CENSUS_NEXT = "/censuses/next";
+    public static final String CENSUS_PREVIOUS = "/censuses/prev";
+    public static final String CENSUS_REWIND = "/censuses/rewind";
+    public static final String CENSUS_FF = "/censuses/ff";
+    public static final String CENSUS_NEW = "/census/new";
+    public static final String CENSUS = "/census";
+    public static final String CENSUS_SHOW = "/census/{id}/show";
+    public static final String CENSUS_DELETE = "/census/{id}/delete";
+    public static final String CENSUS_EDIT = "census/{id}/edit";
 }

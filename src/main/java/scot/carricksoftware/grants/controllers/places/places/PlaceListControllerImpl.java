@@ -21,7 +21,7 @@ import scot.carricksoftware.grants.services.places.PlaceServiceImpl;
 import static java.lang.Integer.max;
 
 @Controller
-public class PlaceListControllerImpl {
+public class PlaceListControllerImpl implements PlaceListController {
 
     private static final Logger logger = LogManager.getLogger(PlaceListControllerImpl.class);
 
@@ -39,6 +39,7 @@ public class PlaceListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PLACE_LIST)
+    @Override
     public final String getListPage(final Model model) {
         logger.debug("PersonListControllerImpl::getPlacePage");
         currentPage = 0;
@@ -54,6 +55,7 @@ public class PlaceListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PLACE_NEXT)
+    @Override
     public final String getNextPage(final Model model) {
         logger.debug("PlaceListControllerImpl::getNextPage");
         currentPage++;
@@ -62,6 +64,7 @@ public class PlaceListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PLACE_PREVIOUS)
+    @Override
     public final String getPreviousPage(final Model model) {
         logger.debug("PlaceListControllerImpl::getPreviousPage");
         currentPage = max(0, currentPage - 1);
@@ -70,6 +73,7 @@ public class PlaceListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PLACE_REWIND)
+    @Override
     public final String getFirstPage(final Model model) {
         logger.debug("PlaceListControllerImpl::getFirstPage");
         currentPage = 0;
@@ -78,6 +82,7 @@ public class PlaceListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PLACE_FF)
+    @Override
     public final String getLastPage(final Model model) {
         logger.debug("PlaceListControllerImpl::getLastPage");
         long placeCount = placeService.count();
@@ -88,6 +93,7 @@ public class PlaceListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PLACE_DELETE)
+    @Override
     public final String personDelete(@PathVariable final String id) {
         logger.debug("PlaceListControllerImpl::placeDelete");
         placeService.deleteById(Long.valueOf(id));

@@ -21,7 +21,7 @@ import scot.carricksoftware.grants.services.places.RegionServiceImpl;
 import static java.lang.Integer.max;
 
 @Controller
-public class RegionListControllerImpl {
+public class RegionListControllerImpl implements RegionListController {
 
     private static final Logger logger = LogManager.getLogger(RegionListControllerImpl.class);
 
@@ -38,6 +38,7 @@ public class RegionListControllerImpl {
     }
 
     @SuppressWarnings("SameReturnValue")
+    @Override
     @GetMapping(MappingConstants.REGION_LIST)
     public final String getListPage(final Model model) {
         logger.debug("RegionListControllerImpl::getRegionPage");
@@ -54,6 +55,7 @@ public class RegionListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.REGION_NEXT)
+    @Override
     public final String getNextPage(final Model model) {
         logger.debug("RegionListControllerImpl::getNextPage");
         currentPage++;
@@ -62,6 +64,7 @@ public class RegionListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.REGION_PREVIOUS)
+    @Override
     public final String getPreviousPage(final Model model) {
         logger.debug("RegionListControllerImpl::getPreviousPage");
         currentPage = max(0, currentPage - 1);
@@ -70,6 +73,7 @@ public class RegionListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.REGION_REWIND)
+    @Override
     public final String getFirstPage(final Model model) {
         logger.debug("RegionListControllerImpl::getFirstPage");
         currentPage = 0;
@@ -78,6 +82,7 @@ public class RegionListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.REGION_FF)
+    @Override
     public final String getLastPage(final Model model) {
         logger.debug("RegionListControllerImpl::getLastPage");
         long regionCount = regionService.count();
@@ -88,6 +93,7 @@ public class RegionListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.REGION_DELETE)
+    @Override
     public final String personDelete(@PathVariable final String id) {
         logger.debug("RegionListControllerImpl::regionDelete");
         regionService.deleteById(Long.valueOf(id));

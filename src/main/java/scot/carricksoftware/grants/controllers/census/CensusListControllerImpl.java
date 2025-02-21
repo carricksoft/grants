@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.controllers.places.countries;
+package scot.carricksoftware.grants.controllers.census;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,86 +16,81 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.services.places.CountryServiceImpl;
+import scot.carricksoftware.grants.services.census.CensusServiceImpl;
 
 import static java.lang.Integer.max;
 
 @Controller
-public class CountryListControllerImpl implements CountryListController {
+public class CensusListControllerImpl implements CensusListController {
 
-    private static final Logger logger = LogManager.getLogger(CountryListControllerImpl.class);
+    private static final Logger logger = LogManager.getLogger(CensusListControllerImpl.class);
 
 
     private int currentPage = 0;
     private final ControllerHelper controllerHelper;
 
-    private final CountryServiceImpl countryService;
+    private final CensusServiceImpl censusService;
 
-    public CountryListControllerImpl(ControllerHelper controllerHelper,
-                                     CountryServiceImpl countryService) {
+    public CensusListControllerImpl(ControllerHelper controllerHelper,
+                                    CensusServiceImpl censusService) {
         this.controllerHelper = controllerHelper;
-        this.countryService = countryService;
+        this.censusService = censusService;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.COUNTRY_LIST)
-    @Override
+    @GetMapping(MappingConstants.CENSUS_LIST)
     public final String getListPage(final Model model) {
-        logger.debug("PersonListControllerImpl::getCountryPage");
+        logger.debug("PersonListControllerImpl::getCensusPage");
         currentPage = 0;
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.COUNTRIES, countryService.getPagedCountries(currentPage));
+        model.addAttribute(AttributeConstants.COUNTRIES, censusService.getPagedCensuses(currentPage));
         controllerHelper.addAttributes(model);
-        return ViewConstants.COUNTRY_LIST;
+        return ViewConstants.CENSUS_LIST;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.COUNTRY_NEXT)
-    @Override
+    @GetMapping(MappingConstants.CENSUS_NEXT)
     public final String getNextPage(final Model model) {
-        logger.debug("CountryListControllerImpl::getNextPage");
+        logger.debug("CensusListControllerImpl::getNextPage");
         currentPage++;
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.COUNTRY_PREVIOUS)
-    @Override
+    @GetMapping(MappingConstants.CENSUS_PREVIOUS)
     public final String getPreviousPage(final Model model) {
-        logger.debug("CountryListControllerImpl::getPreviousPage");
+        logger.debug("CensusListControllerImpl::getPreviousPage");
         currentPage = max(0, currentPage - 1);
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.COUNTRY_REWIND)
+    @GetMapping(MappingConstants.CENSUS_REWIND)
     public final String getFirstPage(final Model model) {
-        logger.debug("CountryListControllerImpl::getFirstPage");
+        logger.debug("CensusListControllerImpl::getFirstPage");
         currentPage = 0;
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.COUNTRY_FF)
-    @Override
+    @GetMapping(MappingConstants.CENSUS_FF)
     public final String getLastPage(final Model model) {
-        logger.debug("CountryListControllerImpl::getLastPage");
-        long countryCount = countryService.count();
-        currentPage = (int) (countryCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
+        logger.debug("CensusListControllerImpl::getLastPage");
+        long censusCount = censusService.count();
+        currentPage = (int) (censusCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
         return sendAttributesAndReturn(model);
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.COUNTRY_DELETE)
-    @Override
-    public final String CountryDelete(@PathVariable final String id) {
-        logger.debug("CountryListControllerImpl::countryDelete");
-        countryService.deleteById(Long.valueOf(id));
+    @GetMapping(MappingConstants.CENSUS_DELETE)
+    public final String censusDelete(@PathVariable final String id) {
+        logger.debug("CensusListControllerImpl::censusDelete");
+        censusService.deleteById(Long.valueOf(id));
         return MappingConstants.REDIRECT + MappingConstants.COUNTRIES;
     }
 
