@@ -41,7 +41,7 @@ public class CapitalisationImpl implements Capitalisation {
 
     private String doPart(String input) {
         String result = input;
-        if(input.length() >= 3) {
+        if (input.length() >= 3) {
             String work = input.toLowerCase(Locale.ENGLISH);
             result = work.substring(0, 1).toUpperCase(Locale.ENGLISH) + work.substring(1);
             String prefix = result.substring(0, 2);

@@ -34,7 +34,7 @@ class CensusCommandTest {
     void setId() {
         Long id = GetRandomLong();
         censusCommand.setId(id);
-        assertEquals(id,censusCommand.getId());
+        assertEquals(id, censusCommand.getId());
     }
 
     @Test
@@ -46,7 +46,7 @@ class CensusCommandTest {
     void setPlace() {
         Place place = GetRandomPlace();
         censusCommand.setPlace(place);
-        assertEquals(place,censusCommand.getPlace());
+        assertEquals(place, censusCommand.getPlace());
     }
 
     @Test
@@ -58,6 +58,6 @@ class CensusCommandTest {
     void setDate() {
         LocalDate date = LocalDate.now();
         censusCommand.setDate(date);
-        assertEquals(date,censusCommand.getDate());
+        assertEquals(date, censusCommand.getDate());
     }
 }

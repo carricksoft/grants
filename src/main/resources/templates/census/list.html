@@ -18,43 +18,43 @@
 <div class="container text-center">
     <div class="container border border-info
                     rounded-3 text-center p-4">
-        <h3>Countries</h3>
+        <h3>Censuses</h3>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
             <tr>
                 <th>ID</th>
+                <th></th>
                 <th>Name</th>
                 <th></th>
             </tr>
             </thead>
 
-            <tr th:each="country   : ${countries}">
-                <!--/*@thymesVar id="country" type="scot.carricksoftware.grants.domains.places.Country"*/-->
+            <tr th:each="census   : ${censuses}">
+                <!--/*@thymesVar id="country" type="scot.carricksoftware.grants.domains.census."*/-->
                 <td th:text="${country.id}">123</td>
-                <td th:text="${country.name}"> First</td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                           th:href="'country/' + ${country.id} + '/delete'"
+                           th:href="'census/' + ${census.id} + '/delete'"
                            th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="'country/' + ${country.id} + '/edit'"
+                       th:href="'census/' + ${census.id} + '/edit'"
                        th:text="Edit"></a>
                     </span></td>
             </tr>
             <tfoot>
             <tr>
                 <td colspan="4"><span>
-                        <a th:action="rewind" class="btn btn-secondary btn-sm" th:href="@{/countries/rewind}"
+                        <a th:action="rewind" class="btn btn-secondary btn-sm" th:href="@{/census/rewind}"
                            th:text="'<<'"></a>
                          <a th:action="back" class="btn btn-secondary btn-sm"
-                            th:href="@{/countries/prev}" th:text="'<'"></a>
-                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{country/new}"
-                            th:text="'New Country'"></a>
+                            th:href="@{/census/prev}" th:text="'<'"></a>
+                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{census/new}"
+                            th:text="'New Census'"></a>
                          <a th:action="home" class="btn btn-success btn-sm"
                             th:href="@{/}" th:text="'Home'"></a>
                          <a th:action="forward" class="btn btn-secondary btn-sm"
-                            th:href="@{/countries/next}" th:text="'>'"></a>
-                         <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/countries/ff}"
+                            th:href="@{/census/next}" th:text="'>'"></a>
+                         <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/census/ff}"
                             th:text="'>>'"></a>
                         </span></td>
             </tr>

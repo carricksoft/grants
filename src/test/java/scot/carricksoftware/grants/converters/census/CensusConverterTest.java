@@ -41,8 +41,8 @@ class CensusConverterTest {
 
         CensusCommand target = converter.convert(source);
         assert target != null;
-        assertEquals(id,target.getId());
-        assertEquals(place,target.getPlace());
-        assertEquals(date,target.getDate());
+        assertEquals(id, target.getId());
+        assertEquals(place, target.getPlace());
+        assertEquals(date, target.getDate());
     }
 }

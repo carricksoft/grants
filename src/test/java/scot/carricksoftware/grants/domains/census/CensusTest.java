@@ -24,13 +24,13 @@ class CensusTest {
     }
 
     @Test
-    void getPlace(){
+    void getPlace() {
         assertNull(census.getPlace());
     }
 
     @Test
     void setPlace() {
-        Place place  = GetRandomPlace();
+        Place place = GetRandomPlace();
         census.setPlace(place);
         assertEquals(place, census.getPlace());
     }

@@ -27,7 +27,7 @@ import scot.carricksoftware.grants.services.census.CensusService;
 @SuppressWarnings({"LoggingSimilarMessage", "unused"})
 @Controller
 public class CensusFormControllerImpl implements CensusFormController {
-   
+
     private static final Logger logger = LogManager.getLogger(CensusFormControllerImpl.class);
     private final CensusService censusService;
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
@@ -38,9 +38,9 @@ public class CensusFormControllerImpl implements CensusFormController {
 
 
     public CensusFormControllerImpl(CensusService censusService,
-                                     CensusCommandConverterImpl censusCommandConverterImpl,
-                                     CensusConverterImpl censusConverterImpl,
-                                     Capitalisation capitalisation) {
+                                    CensusCommandConverterImpl censusCommandConverterImpl,
+                                    CensusConverterImpl censusConverterImpl,
+                                    Capitalisation capitalisation) {
         this.censusService = censusService;
         this.censusCommandConverterImpl = censusCommandConverterImpl;
         this.censusConverterImpl = censusConverterImpl;
@@ -88,5 +88,5 @@ public class CensusFormControllerImpl implements CensusFormController {
         return ViewConstants.CENSUS_FORM;
     }
 
- 
+
 }

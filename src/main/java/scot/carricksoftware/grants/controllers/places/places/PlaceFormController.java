@@ -15,5 +15,5 @@ public interface PlaceFormController {
 
     @SuppressWarnings("unused")
     String saveOrUpdate(@ModelAttribute PlaceCommand placeCommand, BindingResult bindingResult,
-            Model model);
+                        Model model);
 }

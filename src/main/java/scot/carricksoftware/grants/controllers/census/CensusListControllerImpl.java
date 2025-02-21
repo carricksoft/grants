@@ -47,7 +47,7 @@ public class CensusListControllerImpl implements CensusListController {
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.COUNTRIES, censusService.getPagedCensuses(currentPage));
+        model.addAttribute(AttributeConstants.CENSUSES, censusService.getPagedCensuses(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.CENSUS_LIST;
     }
@@ -91,7 +91,7 @@ public class CensusListControllerImpl implements CensusListController {
     public final String censusDelete(@PathVariable final String id) {
         logger.debug("CensusListControllerImpl::censusDelete");
         censusService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.COUNTRIES;
+        return MappingConstants.REDIRECT + MappingConstants.CENSUS;
     }
 
 
