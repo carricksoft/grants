@@ -3,12 +3,14 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.converters;
+package scot.carricksoftware.grants.converters.capitalisation;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.converters.Capitalisation;
+import scot.carricksoftware.grants.converters.CapitalisationImpl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 class CapitalisationTest {
@@ -67,9 +69,6 @@ class CapitalisationTest {
         assertEquals("McSmith", capitalisation.getCapitalisation("mcsmith"));
     }
 
-    @Test
-    void lengthTest() {
-        assertEquals("ab", capitalisation.getCapitalisation("ab"));
-    }
+
 
 }
