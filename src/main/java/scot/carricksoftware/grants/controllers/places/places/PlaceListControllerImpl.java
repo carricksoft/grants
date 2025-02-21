@@ -91,7 +91,7 @@ public class PlaceListControllerImpl {
     public final String personDelete(@PathVariable final String id) {
         logger.debug("PlaceListControllerImpl::placeDelete");
         placeService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.COUNTRIES;
+        return MappingConstants.REDIRECT + MappingConstants.PLACE;
     }
 
 

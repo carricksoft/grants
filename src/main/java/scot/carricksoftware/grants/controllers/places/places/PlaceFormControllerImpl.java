@@ -68,6 +68,8 @@ public class PlaceFormControllerImpl implements PlaceFormController {
     public final String placeEdit(@PathVariable final String id, Model model) {
         logger.debug("PlaceFormControllerImpl::placeEdit");
         model.addAttribute(AttributeConstants.PLACE_COMMAND, placeService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.COUNTRIES, countryService.findAll());
+        model.addAttribute(AttributeConstants.REGIONS, regionService.findAll());
         return ViewConstants.PLACE_FORM;
     }
 
@@ -97,6 +99,8 @@ public class PlaceFormControllerImpl implements PlaceFormController {
         logger.debug("PlaceFormControllerImpl::saveOrUpdate");
         PlaceCommand savedCommand = placeConverterImpl.convert(placeService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PLACE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.COUNTRIES, countryService.findAll());
+        model.addAttribute(AttributeConstants.REGIONS, regionService.findAll());
         return ViewConstants.PLACE_FORM;
     }
 

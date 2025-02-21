@@ -17,14 +17,18 @@
 
 <div class="container text-center">
     <!--/*@thymesVar id="place" type="scot.carricksoftware.grants.domains.places.Place"*/-->
+    <!--/*@thymesVar id="country" type="scot.carricksoftware.grants.domains.places.Country"*/-->
+    <!--/*@thymesVar id="region" type="scot.carricksoftware.grants.domains.places.Region"*/-->
     <div class="container border border-info
                     rounded-3 text-center p-4">
-        <h3>Countries</h3>
+        <h3>Places</h3>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Country</th>
+                <th>Region</th>
                 <th></th>
             </tr>
             </thead>
@@ -33,6 +37,8 @@
 
                 <td th:text="${place.id}">123</td>
                 <td th:text="${place.name}"> First</td>
+                <td th:text="${place.country != null} ? ${place.country.name}"></td>
+                <td th:text="${place.region != null} ? ${place.region.name}"></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'place/' + ${place.id} + '/delete'"

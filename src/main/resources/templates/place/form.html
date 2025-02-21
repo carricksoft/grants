@@ -23,7 +23,7 @@
 
 <div class="container border border-info
 rounded-3 text-center p-4">
-    <form th:object="${placeCommand}" th:action="@{/country}" method="post">
+    <form th:object="${placeCommand}" th:action="@{/place}" method="post">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p>Please Correct The Errors Below</p>
         </div>
@@ -61,7 +61,7 @@ rounded-3 text-center p-4">
             </div>
             <div class="col-xs-3" style="margin-right:20px;">
                 <label for="region">Region/Location</label>
-                <select id="region" name="region" th:field="*{country}"
+                <select id="region" name="region" th:field="*{region}"
                         class="form-control" th:errorclass="has-error">
                     <option th:value="${''}" th:text="${''}"></option>
                     <option th:each="region : ${regions}"

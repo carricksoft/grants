@@ -40,16 +40,19 @@ public class CapitalisationImpl implements Capitalisation {
     }
 
     private String doPart(String input) {
-        String work = input.toLowerCase(Locale.ENGLISH);
-        String result = work.substring(0, 1).toUpperCase(Locale.ENGLISH) + work.substring(1);
-        String prefix = result.substring(0, 2);
-        String name = result.substring(2);
-        if (prefix.equals("Mc")) {
-            result = prefix + doPart(name);
-        } else {
-            prefix = result.substring(0, 3);
-            if (prefix.equals("Mac")) {
-                result = prefix + input.charAt(3) + result.substring(4);
+        String result = input;
+        if(input.length() >= 3) {
+            String work = input.toLowerCase(Locale.ENGLISH);
+            result = work.substring(0, 1).toUpperCase(Locale.ENGLISH) + work.substring(1);
+            String prefix = result.substring(0, 2);
+            String name = result.substring(2);
+            if (prefix.equals("Mc")) {
+                result = prefix + doPart(name);
+            } else {
+                prefix = result.substring(0, 3);
+                if (prefix.equals("Mac")) {
+                    result = prefix + input.charAt(3) + result.substring(4);
+                }
             }
         }
         return result;
