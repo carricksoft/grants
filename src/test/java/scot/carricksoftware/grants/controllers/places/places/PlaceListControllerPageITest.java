@@ -101,7 +101,7 @@ class PlaceListControllerPageITest {
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PLACE_DELETE, id + ""))
                 .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
-                .andExpect(MockMvcResultMatchers.view().name("redirect:/countries"));
+                .andExpect(MockMvcResultMatchers.view().name("redirect:/places"));
         verify(placeServiceMock).deleteById(id);
     }
 
