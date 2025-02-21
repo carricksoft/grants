@@ -12,8 +12,8 @@ import scot.carricksoftware.grants.domains.census.Census;
 
 @Component
 public class CensusConverterImpl implements CensusConverter {
-    @Override
 
+    @Override
     public CensusCommand convert(@NotNull Census source) {
         CensusCommand target = new CensusCommand();
         target.setPlace(source.getPlace());
