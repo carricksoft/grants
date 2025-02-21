@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.converters.places.countries.CountryConverterI
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.repositories.places.CountryRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,6 +90,15 @@ public class CountryServiceImpl implements CountryService {
         Country savedCountry = countryRepository.save(country);
         return countryConverterImpl.convert(savedCountry);
 
+    }
+
+    @Override
+    public List<Country> findAll() {
+        logger.debug("CountryServiceImpl::findAll");
+        List<Country> result = new ArrayList<>();
+        Iterable<Country> countryIterable = countryRepository.findAll();
+        countryIterable.forEach(result::add);
+        return result;
     }
 
 }

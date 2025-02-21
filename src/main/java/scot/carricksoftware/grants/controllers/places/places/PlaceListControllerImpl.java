@@ -47,7 +47,7 @@ public class PlaceListControllerImpl {
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.COUNTRIES, placeService.getPagedCountries(currentPage));
+        model.addAttribute(AttributeConstants.PLACES, placeService.getPagedCountries(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.PLACE_LIST;
     }

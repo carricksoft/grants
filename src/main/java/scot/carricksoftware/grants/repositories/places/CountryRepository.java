@@ -20,5 +20,6 @@ public interface CountryRepository extends PagingAndSortingRepository<Country, L
 
     Optional<Country> findById(Long id);
 
+    Iterable<Country> findAll();
 
 }

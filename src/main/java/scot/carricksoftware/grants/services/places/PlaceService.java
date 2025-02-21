@@ -28,7 +28,6 @@ public interface PlaceService {
 
     @SuppressWarnings("unused")
     PlaceCommand savePlaceCommand(PlaceCommand placeCommand);
-    
-    
+
 
 }

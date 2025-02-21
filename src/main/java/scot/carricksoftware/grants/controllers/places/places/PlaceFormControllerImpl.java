@@ -22,6 +22,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
+import scot.carricksoftware.grants.services.places.CountryService;
 import scot.carricksoftware.grants.services.places.PlaceService;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -34,16 +35,19 @@ public class PlaceFormControllerImpl implements PlaceFormController {
     private final PlaceCommandConverterImpl placeCommandConverterImpl;
     private final PlaceConverterImpl placeConverterImpl;
     private final Capitalisation capitalisation;
+    private final CountryService countryService;
 
 
     public PlaceFormControllerImpl(PlaceService placeService,
                                    PlaceCommandConverterImpl placeCommandConverterImpl,
                                    PlaceConverterImpl placeConverterImpl,
-                                   Capitalisation capitalisation) {
+                                   Capitalisation capitalisation,
+                                   CountryService countryService) {
         this.placeService = placeService;
         this.placeCommandConverterImpl = placeCommandConverterImpl;
         this.placeConverterImpl = placeConverterImpl;
         this.capitalisation = capitalisation;
+        this.countryService = countryService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -51,6 +55,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
     public final String getNewPlace(final Model model) {
         logger.debug("PlaceFormControllerImpl::getNewPlace");
         model.addAttribute(AttributeConstants.PLACE_COMMAND, new PlaceCommand());
+        model.addAttribute(AttributeConstants.COUNTRIES, countryService.findAll());
         return ViewConstants.PLACE_FORM;
     }
 

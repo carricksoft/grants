@@ -29,4 +29,5 @@ public interface CountryService {
     @SuppressWarnings("unused")
     CountryCommand saveCountryCommand(CountryCommand countryCommand);
 
+    List<Country> findAll();
 }

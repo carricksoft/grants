@@ -14,6 +14,7 @@ import scot.carricksoftware.grants.commands.places.PlaceCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
+import scot.carricksoftware.grants.services.places.CountryService;
 import scot.carricksoftware.grants.services.places.PlaceService;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -29,6 +30,9 @@ class PlaceFormControllerCleansingTest {
 
     @Mock
     private PlaceService placeServiceMock;
+
+    @Mock
+    private CountryService countryServiceMock;
 
     @Mock
     private PlaceCommandConverterImpl placeCommandConverterMock;
@@ -51,7 +55,8 @@ class PlaceFormControllerCleansingTest {
         placeController = new PlaceFormControllerImpl(placeServiceMock,
                 placeCommandConverterMock,
                 placeConverterMock,
-                capitalisationMock);
+                capitalisationMock,
+                countryServiceMock);
     }
 
     @Test

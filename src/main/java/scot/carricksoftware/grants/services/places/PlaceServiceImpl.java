@@ -89,6 +89,6 @@ public class PlaceServiceImpl implements PlaceService {
         return placeConverterImpl.convert(savedPlace);
 
     }
-    
-   
+
+
 }
