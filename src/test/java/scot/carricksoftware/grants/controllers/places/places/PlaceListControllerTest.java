@@ -47,7 +47,7 @@ class PlaceListControllerTest {
     void getListPageTest() {
         when(placeServiceImplMock.getPagedCountries(0)).thenReturn(placeListMock);
         assertEquals("place/list", controller.getListPage(modelMock));
-        verify(modelMock).addAttribute("countries", placeListMock);
+        verify(modelMock).addAttribute("places", placeListMock);
         verify(controllerHelperMock).addAttributes(modelMock);
     }
 
