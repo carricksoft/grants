@@ -19,4 +19,6 @@ public interface PlaceRepository extends PagingAndSortingRepository<Place, Long>
     void deleteById(Long id);
 
     Optional<Place> findById(Long id);
+
+    Iterable<Place> findAll();
 }

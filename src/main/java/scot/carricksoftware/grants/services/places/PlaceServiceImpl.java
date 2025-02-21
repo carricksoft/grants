@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.repositories.places.PlaceRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,5 +91,13 @@ public class PlaceServiceImpl implements PlaceService {
 
     }
 
+    @Override
+    public List<Place> findAll() {
+        logger.debug("PlaceServiceImpl::findAll");
+        List<Place> result = new ArrayList<>();
+        Iterable<Place> placeIterable = placeRepository.findAll();
+        placeIterable.forEach(result::add);
+        return result;
+    }
 
 }

@@ -1,22 +1,29 @@
 /*
- * Copyright (c)  06 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  19 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.services.places;
+package scot.carricksoftware.grants.services.places.places;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Pageable;
 import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.repositories.places.PlaceRepository;
+import scot.carricksoftware.grants.services.places.PlaceService;
+import scot.carricksoftware.grants.services.places.PlaceServiceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
@@ -37,10 +44,15 @@ class PlaceServiceFindTest {
 
     @BeforeEach
     void setUp() {
-        placeService = new PlaceServiceImpl(placeRepositoryMock,
+        placeService = new PlaceServiceImpl(
+                placeRepositoryMock,
                 placeConverterImplMock,
                 placeCommandConverterImplMock);
     }
+
+    @SuppressWarnings("unused")
+    @Mock
+    Pageable pageableMock;
 
 
     @SuppressWarnings("EmptyMethod")
@@ -59,5 +71,15 @@ class PlaceServiceFindTest {
         assertNull(placeService.findById(id));
     }
 
+    @Test
+    void findAllTest() {
+        List<Place> testList = new ArrayList<>();
+        Place testPlace = new Place();
+        testList.add(testPlace);
+        when(placeRepositoryMock.findAll())
+                .thenReturn(testList);
+        assertEquals(testList, placeService.findAll());
+        verify(placeRepositoryMock).findAll();
+    }
 
 }
