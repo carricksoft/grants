@@ -28,4 +28,6 @@ public interface RegionService {
 
     @SuppressWarnings("unused")
     RegionCommand saveRegionCommand(RegionCommand regionCommand);
+
+    List<Region> findAll();
 }

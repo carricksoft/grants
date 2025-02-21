@@ -19,6 +19,7 @@ import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.places.CountryService;
 import scot.carricksoftware.grants.services.places.PlaceService;
+import scot.carricksoftware.grants.services.places.RegionService;
 
 import java.util.Objects;
 
@@ -43,6 +44,9 @@ class PlaceFormControllerTest {
     private CountryService countryServiceMock;
 
     @Mock
+    private RegionService regionServiceMock;
+
+    @Mock
     private PlaceCommandConverterImpl placeCommandConverterMock;
 
     @Mock
@@ -61,7 +65,8 @@ class PlaceFormControllerTest {
                 placeCommandConverterMock,
                 placeConverterMock,
                 capitalisationMock,
-                countryServiceMock);
+                countryServiceMock,
+                regionServiceMock);
     }
 
     @Test

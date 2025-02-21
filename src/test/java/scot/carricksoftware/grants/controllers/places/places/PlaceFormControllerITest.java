@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverte
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.services.places.CountryService;
 import scot.carricksoftware.grants.services.places.PlaceService;
+import scot.carricksoftware.grants.services.places.RegionService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -39,6 +40,9 @@ class PlaceFormControllerITest {
     private CountryService countryServiceMock;
 
     @Mock
+    private RegionService regionServiceMock;
+
+    @Mock
     private PlaceCommandConverterImpl placeCommandConverterMock;
 
     @Mock
@@ -53,7 +57,8 @@ class PlaceFormControllerITest {
                 placeCommandConverterMock,
                 placeConverterMock,
                 capitalisationMock,
-                countryServiceMock);
+                countryServiceMock,
+                regionServiceMock);
     }
 
     @Test

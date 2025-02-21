@@ -12,5 +12,6 @@ import scot.carricksoftware.grants.commands.places.PlaceCommand;
 
 public interface PlaceFormController {
 
+    @SuppressWarnings("unused")
     String saveOrUpdate(@ModelAttribute PlaceCommand placeCommand, BindingResult bindingResult);
 }

@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.repositories.places.RegionRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,7 +91,15 @@ public class RegionServiceImpl implements RegionService {
         Region region = regionCommandConverterImpl.convert(regionCommand);
         Region savedRegion = regionRepository.save(region);
         return regionConverterImpl.convert(savedRegion);
+    }
 
+    @Override
+    public List<Region> findAll() {
+        logger.debug("RegionServiceImpl::findAll");
+        List<Region> result = new ArrayList<>();
+        Iterable<Region> regionIterable = regionRepository.findAll();
+        regionIterable.forEach(result::add);
+        return result;
     }
 
 

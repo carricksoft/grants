@@ -18,4 +18,6 @@ public interface RegionRepository extends PagingAndSortingRepository<Region, Lon
     void deleteById(Long id);
 
     Optional<Region> findById(Long id);
+
+    Iterable<Region> findAll();
 }

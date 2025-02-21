@@ -59,7 +59,7 @@ public class MappingConstants {
     public static final String PLACE_FF = "/places/ff";
     public static final String PLACE_NEW = "/place/new";
     public static final String PLACE = "/place";
-    public static final String PLACES = "/places";
+
     public static final String PLACE_SHOW = "/place/{id}/show";
     public static final String PLACE_DELETE = "/place/{id}/delete";
     public static final String PLACE_EDIT = "place/{id}/edit";

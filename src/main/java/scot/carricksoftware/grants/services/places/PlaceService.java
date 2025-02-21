@@ -24,6 +24,7 @@ public interface PlaceService {
     @SuppressWarnings("unused")
     List<Place> getPagedCountries(int pageNumber);
 
+    @SuppressWarnings("unused")
     long count();
 
     @SuppressWarnings("unused")
