@@ -8,7 +8,11 @@ package scot.carricksoftware.grants.domains.places;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import scot.carricksoftware.grants.BaseEntity;
+import scot.carricksoftware.grants.domains.census.Census;
+
+import java.util.Set;
 
 @Entity
 public class Place extends BaseEntity {
@@ -24,6 +28,11 @@ public class Place extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "region_id")
     private Region region;
+
+    @SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
+    @OneToMany
+    @JoinColumn(name = "census_id")
+    private Set<Census> censuses;
 
     public Place() {
         //
@@ -59,5 +68,13 @@ public class Place extends BaseEntity {
     @SuppressWarnings("unused")
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    public Set<Census> getCensuses() {
+        return censuses;
+    }
+
+    public void setCensuses(Set<Census> censuses) {
+        this.censuses = censuses;
     }
 }

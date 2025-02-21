@@ -8,9 +8,15 @@ package scot.carricksoftware.grants.domains.places;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import scot.carricksoftware.grants.domains.census.Census;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCountry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomRegion;
@@ -71,6 +77,23 @@ class PlaceTest {
         Long id = GetRandomLong();
         place.setId(id);
         assertEquals(id, place.getId());
+    }
+
+    @Test
+    void getCensusesTest() {
+        assertNull(place.getCensuses());
+    }
+
+    @Test
+    void setCensusesTest() {
+        Census census = GetRandomCensus();
+        Set<Census> censusSet = new HashSet<>();
+        censusSet.add(census);
+        place.setCensuses(censusSet);
+        Set<Census> expectedCensusSet = place.getCensuses();
+        assertTrue(censusSet.containsAll(expectedCensusSet));
+        assertTrue(expectedCensusSet.containsAll(censusSet));
+
     }
 
 

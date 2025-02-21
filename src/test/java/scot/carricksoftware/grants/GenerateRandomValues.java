@@ -10,6 +10,7 @@ import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.places.PlaceCommand;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Place;
@@ -91,6 +92,13 @@ public class GenerateRandomValues {
         RegionCommand regionCommand = new RegionCommand();
         regionCommand.setName(GetRandomString());
         return regionCommand;
+    }
+
+    @SuppressWarnings("unused")
+    public static Census GetRandomCensus() {
+        Census census = new Census();
+        census.setPlace(GetRandomPlace());
+        return census;
     }
 
 
