@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.PlaceCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -54,6 +55,9 @@ class PlaceFormControllerCleansingTest {
     @Mock
     private BindingResult bindingResultMock;
 
+    @Mock
+    private Model modelMock;
+
 
     @BeforeEach
     void setUp() {
@@ -72,7 +76,7 @@ class PlaceFormControllerCleansingTest {
         when(placeServiceMock.savePlaceCommand(any())).thenReturn(placeCommandMock);
         when(placeCommandMock.getName()).thenReturn(name);
         when(capitalisationMock.getCapitalisation(name)).thenReturn(uName);
-        placeController.saveOrUpdate(placeCommandMock, bindingResultMock);
+        placeController.saveOrUpdate(placeCommandMock, bindingResultMock, modelMock);
 
         verify(placeCommandMock).setName(uName);
     }

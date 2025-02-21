@@ -76,16 +76,20 @@ public class PlaceFormControllerImpl implements PlaceFormController {
 
     @Override
     @PostMapping(MappingConstants.PLACE)
-    public String saveOrUpdate(@Valid @ModelAttribute PlaceCommand placeCommand, BindingResult bindingResult) {
+    public String saveOrUpdate(@Valid @ModelAttribute PlaceCommand placeCommand, BindingResult bindingResult, Model model) {
         logger.debug("PlaceFormControllerImpl::saveOrUpdate");
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
+            model.addAttribute(AttributeConstants.PLACE_COMMAND, placeCommand);
+            model.addAttribute(AttributeConstants.COUNTRIES, countryService.findAll());
+            model.addAttribute(AttributeConstants.REGIONS, regionService.findAll());
             return ViewConstants.PLACE_FORM;
         }
 
         cleanUp(placeCommand);
         PlaceCommand savedCommand = placeService.savePlaceCommand(placeCommand);
+
         return MappingConstants.REDIRECT + MappingConstants.PLACE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 

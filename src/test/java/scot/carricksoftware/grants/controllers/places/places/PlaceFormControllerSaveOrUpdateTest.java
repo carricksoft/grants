@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.PlaceCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -52,6 +53,9 @@ class PlaceFormControllerSaveOrUpdateTest {
     @Mock
     BindingResult bindingResultMock;
 
+    @Mock
+    Model modelMock;
+
 
     @BeforeEach
     void setUp() {
@@ -69,7 +73,7 @@ class PlaceFormControllerSaveOrUpdateTest {
         Long id = 4L;
         placeCommand.setId(id);
         when(placeServiceMock.savePlaceCommand(any(PlaceCommand.class))).thenReturn(placeCommand);
-        assertEquals("redirect:/place/4/show", placeController.saveOrUpdate(placeCommand, bindingResultMock));
+        assertEquals("redirect:/place/4/show", placeController.saveOrUpdate(placeCommand, bindingResultMock, modelMock));
     }
 
     @Test
@@ -79,7 +83,7 @@ class PlaceFormControllerSaveOrUpdateTest {
         placeCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
         when(placeServiceMock.savePlaceCommand(any(PlaceCommand.class))).thenReturn(placeCommand);
-        assertEquals("place/form", placeController.saveOrUpdate(placeCommand, bindingResultMock));
+        assertEquals("place/form", placeController.saveOrUpdate(placeCommand, bindingResultMock, modelMock));
     }
 
     @Test
@@ -89,7 +93,7 @@ class PlaceFormControllerSaveOrUpdateTest {
         placeCommand.setName("england");
         when(bindingResultMock.hasErrors()).thenReturn(false);
         when(placeServiceMock.savePlaceCommand(any(PlaceCommand.class))).thenReturn(placeCommand);
-        placeController.saveOrUpdate(placeCommand, bindingResultMock);
+        placeController.saveOrUpdate(placeCommand, bindingResultMock, modelMock);
         verify(capitalisationMock).getCapitalisation("england");
     }
 
