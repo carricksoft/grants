@@ -60,8 +60,9 @@ class DataLoadPlacesTest {
         when(regionServiceMock.save(regionCaptor.capture())).thenReturn(new Region());
         dataLoadPlaces.load();
         Region[] regions = regionCaptor.getAllValues().toArray(new Region[0]);
-        assertEquals(1, regions.length);
+        assertEquals(2, regions.length);
         assertEquals("Midlothian", regions[0].getName());
+        assertEquals("Inverness", regions[1].getName());
     }
 
     @Test
@@ -71,9 +72,17 @@ class DataLoadPlacesTest {
         when(placeServiceMock.save(countryCaptor.capture())).thenReturn(new Place());
         dataLoadPlaces.load();
         Place[] places = countryCaptor.getAllValues().toArray(new Place[0]);
-        assertEquals(1, places.length);
-        assertEquals("Wilson Avenue", places[0].getName());
+        assertEquals(2, places.length);
+        assertEquals("2 Wilson Avenue", places[0].getName());
         assertEquals("Scotland", places[0].getCountry().getName());
         assertEquals("Midlothian", places[0].getRegion().getName());
+
+        assertEquals("5 Bellfield Park", places[1].getName());
+        assertEquals("Scotland", places[1].getCountry().getName());
+        assertEquals("Inverness", places[1].getRegion().getName());
     }
+
+
+
+
 }

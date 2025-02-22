@@ -41,6 +41,8 @@ public class DataLoadPlaces {
     final Country scotland = new Country();
     final Country england = new Country();
     final Region midlothian = new Region();
+    final Region inverness = new Region();
+
 
     private void loadCountries() {
         scotland.setName("Scotland");
@@ -52,13 +54,21 @@ public class DataLoadPlaces {
     private void loadRegions() {
         midlothian.setName("Midlothian");
         regionService.save(midlothian);
+        inverness.setName("Inverness");
+        regionService.save(inverness);
     }
 
     private void loadPlaces() {
         Place wilsonAvenue = new Place();
-        wilsonAvenue.setName("Wilson Avenue");
+        wilsonAvenue.setName("2 Wilson Avenue");
         wilsonAvenue.setRegion(midlothian);
         wilsonAvenue.setCountry(scotland);
         placeService.save(wilsonAvenue);
+
+        Place bellFieldPark = new Place();
+        bellFieldPark.setName("5 Bellfield Park");
+        bellFieldPark.setRegion(inverness);
+        bellFieldPark.setCountry(scotland);
+        placeService.save(bellFieldPark);
     }
 }
