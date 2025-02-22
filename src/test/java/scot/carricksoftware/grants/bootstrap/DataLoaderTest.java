@@ -28,7 +28,7 @@ class DataLoaderTest {
 
     @BeforeEach
     void setUp() {
-        dataLoader = new DataLoader(dataLoadPersonsMock, dataLoadPlacesMock,dataLoadCensusMock );
+        dataLoader = new DataLoader(dataLoadPersonsMock, dataLoadPlacesMock, dataLoadCensusMock);
     }
 
     @Test

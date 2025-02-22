@@ -48,8 +48,9 @@ class DataLoadPlacesTest {
         when(countryServiceMock.save(countryCaptor.capture())).thenReturn(new Country());
         dataLoadPlaces.load();
         Country[] countries = countryCaptor.getAllValues().toArray(new Country[0]);
-        assertEquals(1, countries.length);
+        assertEquals(2, countries.length);
         assertEquals("Scotland", countries[0].getName());
+        assertEquals("England", countries[1].getName());
     }
 
     @Test

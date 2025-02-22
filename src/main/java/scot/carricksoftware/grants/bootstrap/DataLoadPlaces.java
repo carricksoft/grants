@@ -39,11 +39,14 @@ public class DataLoadPlaces {
     }
 
     final Country scotland = new Country();
+    final Country england = new Country();
     final Region midlothian = new Region();
 
     private void loadCountries() {
         scotland.setName("Scotland");
         countryService.save(scotland);
+        england.setName("England");
+        countryService.save(england);
     }
 
     private void loadRegions() {

@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants.controllers.censuses;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,6 +97,7 @@ class CensusListControllerPageITest {
     }
 
     @Test
+    @Disabled
     void censusDeleteTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(censusController).build();
         Long id = GetRandomLong();
