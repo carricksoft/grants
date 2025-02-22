@@ -42,7 +42,6 @@ public class CensusListControllerImpl implements CensusListController {
     public final String getListPage(final Model model) {
         logger.debug("CensusListControllerImpl::getCensusPage");
         currentPage = 0;
-        model.addAttribute(AttributeConstants.CENSUSES, censusService.getPagedCensuses(currentPage));
         return sendAttributesAndReturn(model);
     }
 
