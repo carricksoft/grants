@@ -31,7 +31,7 @@ public class Place extends BaseEntity {
 
     @SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
     @OneToMany
-    @JoinColumn(name = "census_id")
+    @JoinColumn(name = "place_id")
     private Set<Census> censuses;
 
     public Place() {

@@ -40,8 +40,9 @@ public class CensusListControllerImpl implements CensusListController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.CENSUS_LIST)
     public final String getListPage(final Model model) {
-        logger.debug("PersonListControllerImpl::getCensusPage");
+        logger.debug("CensusListControllerImpl::getCensusPage");
         currentPage = 0;
+        model.addAttribute(AttributeConstants.CENSUSES, censusService.getPagedCensuses(currentPage));
         return sendAttributesAndReturn(model);
     }
 

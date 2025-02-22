@@ -16,6 +16,7 @@
 
 
 <div class="container text-center">
+    <!--/*@thymesVar id="census" type="scot.carricksoftware.grants.domains.census.Census"*/-->
     <div class="container border border-info
                     rounded-3 text-center p-4">
         <h3>Censuses</h3>
@@ -23,15 +24,16 @@
             <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th></th>
-                <th>Name</th>
+                <th>Place</th>
+                <th>Date</th>
                 <th></th>
             </tr>
             </thead>
 
             <tr th:each="census   : ${censuses}">
-                <!--/*@thymesVar id="country" type="scot.carricksoftware.grants.domains.census."*/-->
-                <td th:text="${country.id}">123</td>
+                <td th:text="${census.id}">123</td>
+                <td th:text="${census.place.name}">123</td>
+                <td th:text="${census.date}">123</td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'census/' + ${census.id} + '/delete'"

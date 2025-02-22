@@ -23,9 +23,12 @@ class DataLoaderTest {
     @Mock
     private DataLoadPlaces dataLoadPlacesMock;
 
+    @Mock
+    private DataLoadCensus dataLoadCensusMock;
+
     @BeforeEach
     void setUp() {
-        dataLoader = new DataLoader(dataLoadPersonsMock, dataLoadPlacesMock);
+        dataLoader = new DataLoader(dataLoadPersonsMock, dataLoadPlacesMock,dataLoadCensusMock );
     }
 
     @Test
@@ -33,5 +36,6 @@ class DataLoaderTest {
         dataLoader.run();
         verify(dataLoadPersonsMock).load();
         verify(dataLoadPlacesMock).load();
+        verify(dataLoadCensusMock).load();
     }
 }

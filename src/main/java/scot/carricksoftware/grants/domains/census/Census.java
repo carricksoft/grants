@@ -19,7 +19,7 @@ public class Census extends BaseEntity {
 
     @SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
     @ManyToOne
-    @JoinColumn(name = "census_id")
+    @JoinColumn(name = "place_id")
     Place place;
 
     @SuppressWarnings("unused")
@@ -42,5 +42,13 @@ public class Census extends BaseEntity {
     @SuppressWarnings("unused")
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Census{" +
+                "place=" + place +
+                ", date=" + date +
+                '}';
     }
 }
