@@ -58,7 +58,7 @@ public class CensusServiceImpl implements CensusService {
 
     @Override
     public void deleteById(Long id) {
-        logger.debug("CensusServiceImpl::deleteBy");
+        logger.debug("CensusServiceImpl::deleteById");
         censusRepository.deleteById(id);
     }
 

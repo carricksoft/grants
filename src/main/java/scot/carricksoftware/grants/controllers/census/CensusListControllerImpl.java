@@ -91,7 +91,7 @@ public class CensusListControllerImpl implements CensusListController {
     public final String censusDelete(@PathVariable final String id) {
         logger.debug("CensusListControllerImpl::censusDelete");
         censusService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.CENSUS;
+        return MappingConstants.REDIRECT + MappingConstants.CENSUS_LIST;
     }
 
 

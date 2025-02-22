@@ -22,7 +22,6 @@ public interface CensusRepository extends PagingAndSortingRepository<Census, Lon
 
     Optional<Census> findById(Long id);
 
-    @SuppressWarnings("unused")
     Iterable<Census> findAll();
 
 }
