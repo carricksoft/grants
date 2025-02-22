@@ -46,4 +46,14 @@ class CensusTest {
         census.setDate(date);
         assertEquals(date, census.getDate());
     }
+
+    @Test
+    void toStringTest() {
+        Place place = GetRandomPlace();
+        LocalDate date = LocalDate.now();
+        Census census = new Census();
+        census.setPlace(place);
+        census.setDate(date);
+        assertEquals(place.getName()+", " + date, census.toString());
+    }
 }

@@ -46,9 +46,6 @@ public class Census extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Census{" +
-                "place=" + place +
-                ", date=" + date +
-                '}';
+        return place.getName() + ", " + date.toString();
     }
 }
