@@ -93,7 +93,23 @@ class PlaceTest {
         Set<Census> expectedCensusSet = place.getCensuses();
         assertTrue(censusSet.containsAll(expectedCensusSet));
         assertTrue(expectedCensusSet.containsAll(censusSet));
+    }
 
+    @Test
+    void getGetToStringNullTest() {
+        assertEquals("", place.toString());
+    }
+
+    @Test
+    void getGetToStringNotNullTest() {
+        Region region = GetRandomRegion();
+        Country country = GetRandomCountry();
+        String name = GetRandomString();
+        place.setRegion(region);
+        place.setCountry(country);
+        place.setName(name);
+        String requiredResult = name + ", " + region.getName() + ", " + country.getName();
+        assertEquals(requiredResult, place.toString());
     }
 
 

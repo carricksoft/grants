@@ -80,8 +80,18 @@ public class Place extends BaseEntity {
 
     @Override
     public String toString() {
-        return name + ", " +
-                region.getName() + ", " +
-                country.getName();
+        StringBuilder builder = new StringBuilder();
+        if (name != null) {
+            builder.append(name);
+        }
+        if (region != null) {
+            builder.append(", ");
+            builder.append(region.getName());
+        }
+        if (country != null) {
+            builder.append(", ");
+            builder.append(country.getName());
+        }
+        return builder.toString();
     }
 }
