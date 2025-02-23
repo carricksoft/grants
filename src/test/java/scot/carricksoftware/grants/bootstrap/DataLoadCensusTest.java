@@ -16,6 +16,8 @@ import scot.carricksoftware.grants.services.census.CensusServiceImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.PlaceServiceImpl;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.Mockito.verify;
@@ -38,6 +40,7 @@ class DataLoadCensusTest {
     CensusServiceImpl censusServiceImplMock;
 
     final Place place = GetRandomPlace();
+    final LocalDate date = LocalDate.now();
 
     @BeforeEach
     void setUp() {
@@ -45,7 +48,7 @@ class DataLoadCensusTest {
     }
 
     @Test
-    void testPeople() {
+    void censusTest() {
         ArgumentCaptor<Census> censusCaptor = ArgumentCaptor.forClass(Census.class);
         when(placeServiceImplMock.findById(anyLong())).thenReturn(place);
 
@@ -53,6 +56,7 @@ class DataLoadCensusTest {
         verify(censusServiceImplMock).save(censusCaptor.capture());
         Census census = censusCaptor.getValue();
         assertEquals(census.getPlace().getName(), place.getName());
+        assertEquals(census.getDate(), date);
     }
 
 }
