@@ -18,25 +18,31 @@ public class CapitalisationImpl implements Capitalisation {
 
     @Override
     public String getCapitalisation(String input) {
-        logger.info("CapitalisationImpl.getCapitalisation");
-        String[] parts = input.split(" ");
-        StringBuilder result = new StringBuilder();
-        for (String part : parts) {
-            result.append(doPart(part)).append(" ");
-        }
-        result = new StringBuilder(result.toString().trim());
-        parts = result.toString().split("-");
-        if (parts.length > 1) {
-            result = new StringBuilder();
+        if (input == null) {
+            return "";
+        } else if (input.length() < 3) {
+            return "";
+        } else {
+            logger.info("CapitalisationImpl.getCapitalisation");
+            String[] parts = input.split(" ");
+            StringBuilder result = new StringBuilder();
             for (String part : parts) {
-                if (!result.isEmpty()) {
-                    result = new StringBuilder(result.append("-"));
-                }
-                result.append(doPart(part));
+                result.append(doPart(part)).append(" ");
             }
-        }
+            result = new StringBuilder(result.toString().trim());
+            parts = result.toString().split("-");
+            if (parts.length > 1) {
+                result = new StringBuilder();
+                for (String part : parts) {
+                    if (!result.isEmpty()) {
+                        result = new StringBuilder(result.append("-"));
+                    }
+                    result.append(doPart(part));
+                }
+            }
 
-        return result.toString();
+            return result.toString();
+        }
     }
 
     private String doPart(String input) {

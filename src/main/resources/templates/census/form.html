@@ -19,6 +19,7 @@
 </head>
 <body>
 <!--/*@thymesVar id="censusCommand" type="scot.carricksoftware.grants.commands.census.CensusCommand"*/-->
+<!--/*@thymesVar id="place" type="scot.carricksoftware.grants.domains.places.Place"*/-->
 <div th:insert="~{fragments/layout::banner}"></div>
 
 <div class="container border border-info
@@ -41,7 +42,7 @@ rounded-3 text-center p-4">
                         class="form-control" th:errorclass="has-error">
                     <option th:value="${''}" th:text="${''}"></option>
                     <option th:each="place : ${places}"
-                            th:value="${place.id}" th:text="${place}"></option>
+                            th:value="${place.id}" th:text="${place.toString()}"></option>
                 </select>
                 <div th:if="${#fields.hasErrors('place')}">
                     <ul class="text-danger">

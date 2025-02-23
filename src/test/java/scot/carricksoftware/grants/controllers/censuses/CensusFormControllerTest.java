@@ -19,6 +19,7 @@ import scot.carricksoftware.grants.converters.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.places.PlaceService;
 
 import java.util.Objects;
 
@@ -40,6 +41,9 @@ class CensusFormControllerTest {
     private CensusService censusServiceMock;
 
     @Mock
+    private PlaceService placeServiceMock;
+
+    @Mock
     private CensusCommandConverterImpl censusCommandConverterMock;
 
     @Mock
@@ -56,6 +60,7 @@ class CensusFormControllerTest {
         censusController = new CensusFormControllerImpl(censusServiceMock,
                 censusCommandConverterMock,
                 censusConverterMock,
+                placeServiceMock,
                 capitalisationMock);
     }
 

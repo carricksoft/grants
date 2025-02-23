@@ -10,8 +10,12 @@ import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBl
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Region;
 
+import java.time.LocalDate;
+
 public class PlaceCommand {
     private Long id;
+    @SuppressWarnings("unused")
+    LocalDate date;
 
     @NotBlank
     @Size(min = 3, max = 40, message = "Name must be between 3 and 40 characters.")
@@ -51,5 +55,13 @@ public class PlaceCommand {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    @Override
+    public String toString() {
+        return name + ", " +
+                region + ", " +
+                country;
+
     }
 }

@@ -43,4 +43,6 @@ public class CensusCommand {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+
 }

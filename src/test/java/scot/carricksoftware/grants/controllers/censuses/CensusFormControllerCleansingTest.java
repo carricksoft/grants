@@ -16,6 +16,7 @@ import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
 import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.places.PlaceService;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -28,6 +29,9 @@ class CensusFormControllerCleansingTest {
 
     @Mock
     private CensusService censusServiceMock;
+
+    @Mock
+    private PlaceService placeServiceMock;
 
     @Mock
     private CensusCommandConverterImpl censusCommandConverterMock;
@@ -52,6 +56,7 @@ class CensusFormControllerCleansingTest {
         censusController = new CensusFormControllerImpl(censusServiceMock,
                 censusCommandConverterMock,
                 censusConverterMock,
+                placeServiceMock,
                 capitalisationMock);
     }
 

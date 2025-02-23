@@ -21,6 +21,7 @@ import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
 import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.places.PlaceService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -33,8 +34,12 @@ class CensusFormControllerITest {
     @SuppressWarnings("unused")
     private CensusFormController censusController;
 
+
     @Mock
     private CensusService censusServiceMock;
+
+    @Mock
+    private PlaceService placeServiceMock;
 
     @Mock
     private CensusCommandConverterImpl censusCommandConverterMock;
@@ -50,6 +55,7 @@ class CensusFormControllerITest {
         censusController = new CensusFormControllerImpl(censusServiceMock,
                 censusCommandConverterMock,
                 censusConverterMock,
+                placeServiceMock,
                 capitalisationMock);
     }
 

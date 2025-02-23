@@ -23,6 +23,7 @@ import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
 import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.places.PlaceService;
 
 @SuppressWarnings({"LoggingSimilarMessage", "unused"})
 @Controller
@@ -30,20 +31,23 @@ public class CensusFormControllerImpl implements CensusFormController {
 
     private static final Logger logger = LogManager.getLogger(CensusFormControllerImpl.class);
     private final CensusService censusService;
-    @SuppressWarnings({"FieldCanBeLocal", "unused"})
+    @SuppressWarnings("FieldCanBeLocal")
     private final CensusCommandConverterImpl censusCommandConverterImpl;
     private final CensusConverterImpl censusConverterImpl;
-    @SuppressWarnings({"FieldCanBeLocal", "unused"})
+    private final PlaceService placeService;
+    @SuppressWarnings("FieldCanBeLocal")
     private final Capitalisation capitalisation;
 
 
     public CensusFormControllerImpl(CensusService censusService,
                                     CensusCommandConverterImpl censusCommandConverterImpl,
                                     CensusConverterImpl censusConverterImpl,
+                                    PlaceService placeService,
                                     Capitalisation capitalisation) {
         this.censusService = censusService;
         this.censusCommandConverterImpl = censusCommandConverterImpl;
         this.censusConverterImpl = censusConverterImpl;
+        this.placeService = placeService;
         this.capitalisation = capitalisation;
     }
 
@@ -59,7 +63,8 @@ public class CensusFormControllerImpl implements CensusFormController {
     @GetMapping(MappingConstants.CENSUS_EDIT)
     public final String censusEdit(@PathVariable final String id, Model model) {
         logger.debug("CensusFormControllerImpl::censusEdit");
-        model.addAttribute(AttributeConstants.CENSUS_COMMAND, censusService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.CENSUS_COMMAND, censusConverterImpl.convert(censusService.findById(Long.valueOf(id))));
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return ViewConstants.CENSUS_FORM;
     }
 

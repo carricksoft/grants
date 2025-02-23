@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
 import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.places.PlaceService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -31,6 +32,9 @@ class CensusFormControllerSaveOrUpdateTest {
 
     @Mock
     private CensusService censusServiceMock;
+
+    @Mock
+    private PlaceService placeServiceMock;
 
     @Mock
     private CensusCommandConverterImpl censusCommandConverterMock;
@@ -54,6 +58,7 @@ class CensusFormControllerSaveOrUpdateTest {
         censusController = new CensusFormControllerImpl(censusServiceMock,
                 censusCommandConverterMock,
                 censusConverterMock,
+                placeServiceMock,
                 capitalisationMock);
     }
 
