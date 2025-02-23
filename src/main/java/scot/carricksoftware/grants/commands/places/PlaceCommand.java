@@ -12,6 +12,7 @@ import scot.carricksoftware.grants.domains.places.Region;
 
 import java.time.LocalDate;
 
+@SuppressWarnings("DuplicatedCode")
 public class PlaceCommand {
     private Long id;
     @SuppressWarnings("unused")
@@ -59,9 +60,19 @@ public class PlaceCommand {
 
     @Override
     public String toString() {
-        return name + ", " +
-                region + ", " +
-                country;
-
+        StringBuilder builder = new StringBuilder();
+        if (name != null) {
+            builder.append(name);
+        }
+        if (region != null) {
+            builder.append(", ");
+            builder.append(region.getName());
+        }
+        if (country != null) {
+            builder.append(", ");
+            builder.append(country.getName());
+        }
+        return builder.toString();
     }
+
 }

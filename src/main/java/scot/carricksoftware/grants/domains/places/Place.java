@@ -14,6 +14,7 @@ import scot.carricksoftware.grants.domains.census.Census;
 
 import java.util.Set;
 
+@SuppressWarnings("DuplicatedCode")
 @Entity
 public class Place extends BaseEntity {
 

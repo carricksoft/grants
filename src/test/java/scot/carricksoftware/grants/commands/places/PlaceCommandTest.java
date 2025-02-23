@@ -74,5 +74,23 @@ class PlaceCommandTest {
         assertEquals(region, command.getRegion());
     }
 
+    @Test
+    void getGetToStringNullTest() {
+        assertEquals("", command.toString());
+    }
+
+    @Test
+    void getGetToStringNotNullTest() {
+        Region region = GetRandomRegion();
+        Country country = GetRandomCountry();
+        String name = GetRandomString();
+        command.setRegion(region);
+        command.setCountry(country);
+        command.setName(name);
+        String requiredResult = name + ", " + region.getName() + ", " + country.getName();
+        assertEquals(requiredResult, command.toString());
+    }
+
+
 
 }
