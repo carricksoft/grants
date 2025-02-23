@@ -69,5 +69,10 @@ class CapitalisationTest {
         assertEquals("McSmith", capitalisation.getCapitalisation("mcsmith"));
     }
 
+    @Test
+    void nullTest() {
+        assertEquals("", capitalisation.getCapitalisation(null));
+    }
+
 
 }
