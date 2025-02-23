@@ -90,6 +90,7 @@ public class CensusFormControllerImpl implements CensusFormController {
         logger.debug("CensusFormControllerImpl::saveOrUpdate");
         CensusCommand savedCommand = censusConverterImpl.convert(censusService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return ViewConstants.CENSUS_FORM;
     }
 
