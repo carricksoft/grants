@@ -24,7 +24,7 @@
 
 <div class="container border border-info
 rounded-3 text-center p-4">
-    <form th:object="${censusCommand}" th:action="@{/place}" method="post">
+    <form th:object="${censusCommand}" th:action="@{/census}" method="post">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p>Please Correct The Errors Below</p>
         </div>
