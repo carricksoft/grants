@@ -22,6 +22,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.places.PlaceService;
 
@@ -63,6 +64,8 @@ public class CensusFormControllerImpl implements CensusFormController {
     @GetMapping(MappingConstants.CENSUS_EDIT)
     public final String censusEdit(@PathVariable final String id, Model model) {
         logger.debug("CensusFormControllerImpl::censusEdit");
+        Census census = censusService.findById(Long.valueOf(id));
+        Long z = Long.valueOf(id);
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, censusConverterImpl.convert(censusService.findById(Long.valueOf(id))));
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return ViewConstants.CENSUS_FORM;

@@ -18,9 +18,12 @@ import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.places.PlaceService;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -29,6 +32,7 @@ import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensusCommand;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 
 
 @SpringBootTest
@@ -75,10 +79,17 @@ class CensusFormControllerTest {
     void censusEditTestEditTest() {
         Long id = GetRandomLong();
         Census census = GetRandomCensus();
+        CensusCommand censusCommand = GetRandomCensusCommand();
+        List<Place> placeList = new ArrayList<>();
+        placeList.add(GetRandomPlace());
+
         when(censusServiceMock.findById(id)).thenReturn(census);
+        when(placeServiceMock.findAll()).thenReturn(placeList);
+        when(censusConverterMock.convert(census)).thenReturn(censusCommand);
 
         assertEquals("census/form", censusController.censusEdit(id + "", modelMock));
-        verify(modelMock).addAttribute(AttributeConstants.CENSUS_COMMAND, census);
+        verify(modelMock).addAttribute("censusCommand", censusCommand);
+        verify(modelMock).addAttribute("places", placeList);
     }
 
     @Test

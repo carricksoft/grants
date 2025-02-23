@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
 
+import java.time.LocalDate;
 import java.util.Random;
 
 @Component
@@ -99,6 +100,8 @@ public class GenerateRandomValues {
     public static Census GetRandomCensus() {
         Census census = new Census();
         census.setPlace(GetRandomPlace());
+        census.setId(GetRandomLong());
+        census.setDate(LocalDate.now());
         return census;
     }
 
@@ -106,6 +109,8 @@ public class GenerateRandomValues {
     public static CensusCommand GetRandomCensusCommand() {
         CensusCommand censusCommand = new CensusCommand();
         censusCommand.setPlace(GetRandomPlace());
+        censusCommand.setId(GetRandomLong());
+        censusCommand.setDate(LocalDate.now());
         return censusCommand;
     }
 
