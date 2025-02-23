@@ -21,7 +21,7 @@ public class CapitalisationImpl implements Capitalisation {
         if (input == null) {
             return "";
         } else if (input.length() < 3) {
-            return "";
+            return input;
         } else {
             logger.info("CapitalisationImpl.getCapitalisation");
             String[] parts = input.split(" ");
