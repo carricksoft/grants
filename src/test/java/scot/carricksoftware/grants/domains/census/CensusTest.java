@@ -11,8 +11,11 @@ import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.places.Place;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 
 class CensusTest {
@@ -57,4 +60,18 @@ class CensusTest {
         census.setDate(date);
         assertEquals(place.getName()+", " + date, census.toString());
     }
+
+    @Test
+    void getCensusesTest() {
+        assertNull(census.getDate());
+    }
+
+    @Test
+    void setCensusesTest() {
+        Set<Census> censusSet = new HashSet<>();
+        censusSet.add(GetRandomCensus());
+        census.setCensuses(censusSet);
+        assertEquals(censusSet, census.getCensuses());
+    }
+
 }
