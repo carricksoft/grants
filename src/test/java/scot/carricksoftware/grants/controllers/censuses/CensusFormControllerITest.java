@@ -18,8 +18,8 @@ import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.controllers.census.CensusFormController;
 import scot.carricksoftware.grants.controllers.census.CensusFormControllerImpl;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
-import scot.carricksoftware.grants.converters.census.CensusCommandConverterImpl;
-import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
+import scot.carricksoftware.grants.converters.census.census.CensusCommandConverterImpl;
+import scot.carricksoftware.grants.converters.census.census.CensusConverterImpl;
 import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.places.PlaceService;
 

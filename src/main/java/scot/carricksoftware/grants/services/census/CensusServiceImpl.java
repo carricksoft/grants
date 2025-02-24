@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.converters.census.CensusCommandConverterImpl;
-import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
+import scot.carricksoftware.grants.converters.census.census.CensusCommandConverterImpl;
+import scot.carricksoftware.grants.converters.census.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.repositories.census.CensusRepository;
 

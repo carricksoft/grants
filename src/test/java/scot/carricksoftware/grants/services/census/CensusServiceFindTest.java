@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
-import scot.carricksoftware.grants.converters.census.CensusCommandConverterImpl;
-import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
+import scot.carricksoftware.grants.converters.census.census.CensusCommandConverterImpl;
+import scot.carricksoftware.grants.converters.census.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.repositories.census.CensusRepository;
 

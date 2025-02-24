@@ -1,9 +1,9 @@
 /*
- * Copyright (c)  21 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  24 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.converters.census;
+package scot.carricksoftware.grants.converters.census.census;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
