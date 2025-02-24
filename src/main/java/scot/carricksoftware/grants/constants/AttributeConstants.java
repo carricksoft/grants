@@ -26,7 +26,9 @@ public class AttributeConstants {
     public static final String PLACES = "places";
     public static final String PLACE_COMMAND = "placeCommand";
 
-    @SuppressWarnings("unused")
     public static final String CENSUSES = "censuses";
     public static final String CENSUS_COMMAND = "censusCommand";
+
+    public static final String CENSUS_ENTRIES = "censusEntries";
+    public static final String CENSUS_ENTRY_COMMAND = "censusEmtryCommand";
 }

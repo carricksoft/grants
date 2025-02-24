@@ -30,4 +30,7 @@ public class ViewConstants {
 
     public static final String CENSUS_LIST = "census/list";
     public static final String CENSUS_FORM = "census/form";
+
+    public static final String CENSUS_ENTRY_LIST = "censusEntry/list";
+    public static final String CENSUS_ENTRY_FORM = "censusEntry/form";
 }
