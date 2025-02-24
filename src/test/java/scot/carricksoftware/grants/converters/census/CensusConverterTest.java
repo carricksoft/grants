@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.places.Place;
 
@@ -33,7 +34,7 @@ class CensusConverterTest {
         Census source = new Census();
         Long id = GetRandomLong();
         Place place = GetRandomPlace();
-        LocalDate date = LocalDate.now();
+        String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
 
         source.setId(id);
         source.setPlace(place);

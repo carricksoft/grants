@@ -8,10 +8,9 @@ package scot.carricksoftware.grants.domains.census;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.places.Place;
-
-import java.time.LocalDate;
 
 
 @Entity
@@ -22,8 +21,8 @@ public class Census extends BaseEntity {
     @JoinColumn(name = "place_id")
     Place place;
 
-    @SuppressWarnings("unused")
-    LocalDate date;
+    @DateTimeFormat(pattern = "dd MMM yyyy")
+    String date;
 
     @SuppressWarnings("unused")
     public Place getPlace() {
@@ -35,17 +34,17 @@ public class Census extends BaseEntity {
     }
 
     @SuppressWarnings("unused")
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
     @SuppressWarnings("unused")
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
     @Override
     public String toString() {
-        return place.getName() + ", " + date.toString();
+        return place.getName() + ", " + date;
     }
 }

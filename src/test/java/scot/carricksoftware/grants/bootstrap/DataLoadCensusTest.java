@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.census.CensusServiceImpl;
@@ -40,7 +41,7 @@ class DataLoadCensusTest {
     CensusServiceImpl censusServiceImplMock;
 
     final Place place = GetRandomPlace();
-    final LocalDate date = LocalDate.now();
+    final String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
 
     @BeforeEach
     void setUp() {

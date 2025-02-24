@@ -5,16 +5,17 @@
 
 package scot.carricksoftware.grants.commands.census;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.domains.places.Place;
-
-import java.time.LocalDate;
 
 @Component
 public class CensusCommand {
     Long id;
     Place place;
-    LocalDate date;
+
+    @DateTimeFormat(pattern = "dd MMM yyyy")
+    String date;
 
     public CensusCommand() {
         // Required by JPA
@@ -36,11 +37,11 @@ public class CensusCommand {
         this.place = place;
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

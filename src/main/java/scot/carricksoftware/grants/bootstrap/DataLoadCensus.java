@@ -10,6 +10,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.census.CensusServiceImpl;
@@ -47,7 +48,7 @@ public class DataLoadCensus {
 
     private void loadCensus(Place place) {
         Census census = new Census();
-        LocalDate date = LocalDate.now();
+        String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
         census.setPlace(place);
         census.setDate(date);
         censusService.save(census);

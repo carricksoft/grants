@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.commands.census;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.places.Place;
 
 import java.time.LocalDate;
@@ -56,7 +57,7 @@ class CensusCommandTest {
 
     @Test
     void setDate() {
-        LocalDate date = LocalDate.now();
+        String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
         censusCommand.setDate(date);
         assertEquals(date, censusCommand.getDate());
     }

@@ -11,6 +11,7 @@ import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.places.PlaceCommand;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Country;
@@ -101,7 +102,7 @@ public class GenerateRandomValues {
         Census census = new Census();
         census.setPlace(GetRandomPlace());
         census.setId(GetRandomLong());
-        census.setDate(LocalDate.now());
+        census.setDate(LocalDate.now().format(ApplicationConstants.FORMATTER));
         return census;
     }
 
@@ -110,7 +111,7 @@ public class GenerateRandomValues {
         CensusCommand censusCommand = new CensusCommand();
         censusCommand.setPlace(GetRandomPlace());
         censusCommand.setId(GetRandomLong());
-        censusCommand.setDate(LocalDate.now());
+        censusCommand.setDate(LocalDate.now().format(ApplicationConstants.FORMATTER));
         return censusCommand;
     }
 
