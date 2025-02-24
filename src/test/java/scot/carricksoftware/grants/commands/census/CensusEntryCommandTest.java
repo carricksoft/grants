@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.domains.people.Person;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
@@ -23,6 +24,18 @@ class CensusEntryCommandTest {
     @BeforeEach
     void setUp() {
         censusEntryCommand = new CensusEntryCommand();
+    }
+
+    @Test
+    void getIdTest() {
+        assertNull(censusEntryCommand.getId());
+    }
+
+    @Test
+    void setIdTest() {
+        Long id = GetRandomLong();
+        censusEntryCommand.setId(id);
+        assertEquals(id, censusEntryCommand.getId());
     }
 
     @Test
@@ -71,7 +84,7 @@ class CensusEntryCommandTest {
         censusEntryCommand.setCensus(census);
         censusEntryCommand.setOtherPerson(otherPerson);
 
-        String requiredResult = census +", (" + person +"), (" + otherPerson +")";
+        String requiredResult = census + ", (" + person + "), (" + otherPerson + ")";
 
         assertEquals(requiredResult, censusEntryCommand.toString());
 
