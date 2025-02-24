@@ -6,7 +6,6 @@
 package scot.carricksoftware.grants.services.census;
 
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
-import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 
 import java.util.List;
@@ -15,7 +14,7 @@ import java.util.List;
 public interface CensusEntryService {
 
     @SuppressWarnings("unused")
-    Census findById(Long id);
+    CensusEntry findById(Long id);
 
     @SuppressWarnings("unused")
     CensusEntry save(CensusEntry censusEntry);
@@ -24,7 +23,7 @@ public interface CensusEntryService {
     void deleteById(Long id);
 
     @SuppressWarnings("unused")
-    List<CensusEntry> getPagedEntries(int pageNumber);
+    List<CensusEntry> getPagedCensusEntries(int pageNumber);
 
     @SuppressWarnings("unused")
     long count();
