@@ -23,5 +23,5 @@ public interface CountryListController {
 
     String getLastPage(final Model model);
 
-    String CountryDelete(@PathVariable String id);
+    String countryDelete(@PathVariable String id);
 }

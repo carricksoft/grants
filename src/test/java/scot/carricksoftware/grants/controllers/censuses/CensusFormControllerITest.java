@@ -59,12 +59,6 @@ class CensusFormControllerITest {
                 capitalisationMock);
     }
 
-    @SuppressWarnings("unused")
-    @Test
-    void getNewCensusTest() {
-        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(censusController).build();
-    }
-
     @Test
     void PostCensusTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(censusController).build();

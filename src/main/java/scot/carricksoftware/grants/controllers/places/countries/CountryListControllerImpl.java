@@ -93,7 +93,7 @@ public class CountryListControllerImpl implements CountryListController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.COUNTRY_DELETE)
     @Override
-    public final String CountryDelete(@PathVariable final String id) {
+    public final String countryDelete(@PathVariable final String id) {
         logger.debug("CountryListControllerImpl::countryDelete");
         countryService.deleteById(Long.valueOf(id));
         return MappingConstants.REDIRECT + MappingConstants.COUNTRIES;
