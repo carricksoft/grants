@@ -9,9 +9,12 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.places.Place;
+
+import java.util.Set;
 
 
 @Entity
@@ -21,6 +24,11 @@ public class Census extends BaseEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "place_id")
     Place place;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @OneToMany
+    @JoinColumn(name = "census_id")
+    private Set<Census> censuses;
 
     @DateTimeFormat(pattern = "dd MMM yyyy")
     String date;
@@ -42,6 +50,16 @@ public class Census extends BaseEntity {
     @SuppressWarnings("unused")
     public void setDate(String date) {
         this.date = date;
+    }
+
+    @SuppressWarnings("unused")
+    public Set<Census> getCensuses() {
+        return censuses;
+    }
+
+    @SuppressWarnings("unused")
+    public void setCensuses(Set<Census> censuses) {
+        this.censuses = censuses;
     }
 
     @Override

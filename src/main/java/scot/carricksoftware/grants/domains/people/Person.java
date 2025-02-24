@@ -7,13 +7,23 @@
 package scot.carricksoftware.grants.domains.people;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import scot.carricksoftware.grants.BaseEntity;
+import scot.carricksoftware.grants.domains.census.CensusEntry;
+
+import java.util.Set;
 
 @Entity
 public class Person extends BaseEntity {
 
     private String firstName;
     private String lastName;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @OneToMany
+    @JoinColumn(name = "person_id")
+    private Set<CensusEntry> censusEntries;
 
     @SuppressWarnings("unused")
     public String getFirstName() {
@@ -33,6 +43,16 @@ public class Person extends BaseEntity {
     @SuppressWarnings("unused")
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    @SuppressWarnings("unused")
+    public Set<CensusEntry> getCensusEntries() {
+        return censusEntries;
+    }
+
+    @SuppressWarnings("unused")
+    public void setCensusEntries(Set<CensusEntry> censusEntries) {
+        this.censusEntries = censusEntries;
     }
 
     @Override

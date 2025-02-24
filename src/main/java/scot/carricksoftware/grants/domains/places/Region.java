@@ -22,6 +22,7 @@ public class Region extends BaseEntity {
     @JoinColumn(name = "region_id")
     private Set<Place> places;
 
+
     public Region() {
         //
         // empty constructor required by JPA
