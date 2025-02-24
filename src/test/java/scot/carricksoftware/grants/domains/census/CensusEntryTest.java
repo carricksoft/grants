@@ -69,7 +69,7 @@ class CensusEntryTest {
         censusEntry.setCensus(census);
         censusEntry.setOtherPerson(otherPerson);
 
-        String requiredResult = census +", (" + person +"), (" + otherPerson +")";
+        String requiredResult = census + ", (" + person + "), (" + otherPerson + ")";
 
         assertEquals(requiredResult, censusEntry.toString());
 

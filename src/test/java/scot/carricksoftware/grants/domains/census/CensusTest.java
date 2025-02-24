@@ -58,7 +58,7 @@ class CensusTest {
         Census census = new Census();
         census.setPlace(place);
         census.setDate(date);
-        assertEquals(place.getName()+", " + date, census.toString());
+        assertEquals(place.getName() + ", " + date, census.toString());
     }
 
     @Test

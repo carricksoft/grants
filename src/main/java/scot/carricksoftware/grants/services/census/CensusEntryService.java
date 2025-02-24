@@ -1,0 +1,34 @@
+/*
+ * Copyright (c)  09 Feb 2025, Andrew Grant of Carrick Software .
+ * All rights reserved.
+ */
+
+package scot.carricksoftware.grants.services.census;
+
+import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
+import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.census.CensusEntry;
+
+import java.util.List;
+
+@SuppressWarnings("unused")
+public interface CensusEntryService {
+
+    @SuppressWarnings("unused")
+    Census findById(Long id);
+
+    @SuppressWarnings("unused")
+    CensusEntry save(CensusEntry censusEntry);
+
+    @SuppressWarnings("unused")
+    void deleteById(Long id);
+
+    @SuppressWarnings("unused")
+    List<CensusEntry> getPagedEntries(int pageNumber);
+
+    @SuppressWarnings("unused")
+    long count();
+
+    @SuppressWarnings("unused")
+    CensusEntryCommand saveCensusEntryCommand(CensusEntryCommand censusEntryCommand);
+}
