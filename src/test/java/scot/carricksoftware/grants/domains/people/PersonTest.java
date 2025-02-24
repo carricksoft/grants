@@ -8,8 +8,13 @@ package scot.carricksoftware.grants.domains.people;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import scot.carricksoftware.grants.domains.census.CensusEntry;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
@@ -46,9 +51,24 @@ class PersonTest {
     }
 
     @Test
+    void getCensusEntriesTest() {
+        assertNull(person.getCensusEntries());
+    }
+
+    @Test
+    void setCensusEntries() {
+        Set<CensusEntry> censusEntries = new HashSet<>();
+        censusEntries.add(GetRandomCensusEntry());
+        person.setCensusEntries(censusEntries);
+        assertEquals(censusEntries, person.getCensusEntries());
+    }
+
+    @Test
     void toStringTest() {
         person.setLastName(GetRandomString());
         person.setFirstName(GetRandomString());
         assertEquals(person.getLastName() + ", " + person.getFirstName(), person.toString());
     }
+
+
 }
