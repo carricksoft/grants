@@ -1,27 +1,32 @@
 /*
- * Copyright (c)  06 Feb 2025, Andrew Grant of Carrick Software .
+ * Copyright (c)  24 Feb 2025, Andrew Grant of Carrick Software .
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.services.census;
+package scot.carricksoftware.grants.services.census.census;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
-import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.converters.census.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.repositories.census.CensusRepository;
+import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.census.CensusServiceImpl;
+
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
-class CensusServiceSaveTest {
+class CensusServiceFindTest {
 
     CensusService censusService;
 
@@ -34,10 +39,10 @@ class CensusServiceSaveTest {
     @Mock
     CensusCommandConverterImpl censusCommandConverterImplMock;
 
-
     @BeforeEach
     void setUp() {
-        censusService = new CensusServiceImpl(censusRepositoryMock,
+        censusService = new CensusServiceImpl(
+                censusRepositoryMock,
                 censusConverterImplMock,
                 censusCommandConverterImplMock);
     }
@@ -46,24 +51,21 @@ class CensusServiceSaveTest {
     @Mock
     Pageable pageableMock;
 
+
     @SuppressWarnings("EmptyMethod")
     @Test
-    void saveTest() {
-        Census census = new Census();
-        when(censusRepositoryMock.save(census)).thenReturn(census);
-        assertEquals(census, censusService.save(census));
+    void findByIdTest() {
+        Long id = GetRandomLong();
+        Census census = GetRandomCensus();
+        when(censusRepositoryMock.findById(id)).thenReturn(Optional.of(census));
+        assertEquals(census, censusService.findById(id));
     }
 
     @Test
-    void saveCensusCommandTest() {
-        Census census = GetRandomCensus();
-        CensusCommand censusCommand = new CensusCommand();
-        when(censusCommandConverterImplMock.convert(censusCommand)).thenReturn(census);
-        when(censusRepositoryMock.save(census)).thenReturn(census);
-        when(censusConverterImplMock.convert((census))).thenReturn(censusCommand);
-
-        assertEquals(censusCommand, censusService.saveCensusCommand(censusCommand));
+    void findByIdNullTest() {
+        Long id = GetRandomLong();
+        when(censusRepositoryMock.findById(id)).thenReturn(Optional.empty());
+        assertNull(censusService.findById(id));
     }
-
 
 }
