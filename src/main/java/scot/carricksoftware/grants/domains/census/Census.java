@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants.domains.census;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -17,7 +18,7 @@ import scot.carricksoftware.grants.domains.places.Place;
 public class Census extends BaseEntity {
 
     @SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "place_id")
     Place place;
 

@@ -57,6 +57,7 @@ public class CensusFormControllerImpl implements CensusFormController {
     public final String getNewCensus(final Model model) {
         logger.debug("CensusFormControllerImpl::getNewCensus");
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, new CensusCommand());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return ViewConstants.CENSUS_FORM;
     }
 
