@@ -13,8 +13,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.services.census.CensusEntryService;
+import scot.carricksoftware.grants.services.census.CensusEntryServiceImpl;
 import scot.carricksoftware.grants.services.census.CensusServiceImpl;
-import scot.carricksoftware.grants.services.people.PersonService;
+import scot.carricksoftware.grants.services.people.PersonServiceImpl;
 import scot.carricksoftware.grants.services.places.PlaceServiceImpl;
 
 import java.time.LocalDate;
@@ -32,7 +34,11 @@ class DataLoadCensusTest {
 
     @SuppressWarnings("unused")
     @Mock
-    PersonService personServiceMock;
+    PersonServiceImpl personServiceMock;
+
+    @Mock
+    CensusEntryServiceImpl censusEntryServiceMock;
+
 
     @Mock
     PlaceServiceImpl placeServiceImplMock;
@@ -43,9 +49,15 @@ class DataLoadCensusTest {
     final Place place = GetRandomPlace();
     final String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
 
+    @SuppressWarnings("unused")
+    private CensusEntryService censusEntryService;
+
     @BeforeEach
     void setUp() {
-        dataLoadCensus = new DataLoadCensus(censusServiceImplMock, placeServiceImplMock);
+        dataLoadCensus = new DataLoadCensus(censusServiceImplMock,
+                placeServiceImplMock,
+                censusEntryServiceMock,
+                personServiceMock);
     }
 
     @Test
