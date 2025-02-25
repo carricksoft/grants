@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
+import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.census.CensusEntryServiceImpl;
 import scot.carricksoftware.grants.services.census.CensusServiceImpl;
@@ -31,8 +32,6 @@ public class DataLoadCensus {
     final CensusEntryServiceImpl censusEntryService;
     final PersonServiceImpl personService;
 
-    final Census census = new Census();
-
     @Autowired
     public DataLoadCensus(CensusServiceImpl censusService,
                           PlaceServiceImpl placeService,
@@ -44,12 +43,37 @@ public class DataLoadCensus {
         this.personService = personService;
     }
 
+
     @Transactional
     public void load() {
         logger.debug("DataLoadCensus::load");
         Place place = buildPlace();
-        loadCensus(place);
-        loadCensusEntry();
+        Person person = buildPerson();
+        Census census = buildCensus(place);
+        CensusEntry censusEntry = buildCensusEntry(census, person);
+        loadCensus(census);
+        loadCensusEntry(censusEntry);
+    }
+
+    private Person buildPerson() {
+        return personService.findById(1L);
+    }
+
+    private CensusEntry buildCensusEntry(Census census, Person person) {
+        CensusEntry censusEntry = new CensusEntry();
+        censusEntry.setCensus(census);
+        censusEntry.setPerson(person);
+        censusEntry.setOtherPerson("Boo");
+        return censusEntry;
+    }
+
+    private Census buildCensus(Place place) {
+        Census census = new Census();
+        census.setPlace(place);
+
+        String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
+        census.setDate(date);
+        return census;
     }
 
 
@@ -57,19 +81,12 @@ public class DataLoadCensus {
         return placeService.findById(1L);
     }
 
-    private void loadCensus(Place place) {
-        String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
-        census.setPlace(place);
-        census.setDate(date);
+    private void loadCensus(Census census) {
         censusService.save(census);
     }
 
-    private void loadCensusEntry() {
-       CensusEntry censusEntry = new CensusEntry();
-       censusEntry.setPerson(personService.findById(1L));
-       censusEntry.setOtherPerson("Archie Grant");
-       censusEntry.setCensus(census);
-       censusEntryService.save(censusEntry);
+    private void loadCensusEntry(CensusEntry censusEntry) {
+        censusEntryService.save(censusEntry);
     }
 
 

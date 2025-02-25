@@ -67,7 +67,7 @@ class CensusCommandTest {
     }
 
     @Test
-    void getCencusEntriesTest() {
+    void getCensusEntriesTest() {
         assertNull(censusCommand.getCensusEntries());
     }
 

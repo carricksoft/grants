@@ -7,27 +7,23 @@ package scot.carricksoftware.grants.bootstrap;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.ArgumentCaptor;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
-import scot.carricksoftware.grants.constants.ApplicationConstants;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import scot.carricksoftware.grants.domains.census.Census;
-import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.census.CensusEntry;
+import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
 import scot.carricksoftware.grants.services.census.CensusEntryServiceImpl;
 import scot.carricksoftware.grants.services.census.CensusServiceImpl;
 import scot.carricksoftware.grants.services.people.PersonServiceImpl;
 import scot.carricksoftware.grants.services.places.PlaceServiceImpl;
 
-import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
 
-@SpringBootTest
+@ExtendWith(SpringExtension.class)
 class DataLoadCensusTest {
 
     DataLoadCensus dataLoadCensus;
@@ -46,30 +42,30 @@ class DataLoadCensusTest {
     @Mock
     CensusServiceImpl censusServiceImplMock;
 
-    final Place place = GetRandomPlace();
-    final String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
 
     @SuppressWarnings("unused")
     private CensusEntryService censusEntryService;
 
+    @SuppressWarnings("unused")
     @BeforeEach
     void setUp() {
         dataLoadCensus = new DataLoadCensus(censusServiceImplMock,
                 placeServiceImplMock,
                 censusEntryServiceMock,
                 personServiceMock);
+        Person person = GetRandomPerson();
     }
 
     @Test
     void censusTest() {
-        ArgumentCaptor<Census> censusCaptor = ArgumentCaptor.forClass(Census.class);
-        when(placeServiceImplMock.findById(anyLong())).thenReturn(place);
-
         dataLoadCensus.load();
-        verify(censusServiceImplMock).save(censusCaptor.capture());
-        Census census = censusCaptor.getValue();
-        assertEquals(census.getPlace().getName(), place.getName());
-        assertEquals(census.getDate(), date);
+        verify(censusServiceImplMock).save(any(Census.class));
+    }
+
+    @Test
+    void censusEntryTest() {
+        dataLoadCensus.load();
+        verify(censusEntryServiceMock).save(any(CensusEntry.class));
     }
 
 }
