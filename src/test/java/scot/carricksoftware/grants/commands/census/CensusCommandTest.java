@@ -8,12 +8,16 @@ package scot.carricksoftware.grants.commands.census;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.places.Place;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 
@@ -60,5 +64,18 @@ class CensusCommandTest {
         String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
         censusCommand.setDate(date);
         assertEquals(date, censusCommand.getDate());
+    }
+
+    @Test
+    void getCencusEntriesTest() {
+        assertNull(censusCommand.getCensusEntries());
+    }
+
+    @Test
+    void setCensusEntriesTest() {
+       Set<CensusEntry> censusEntries = new HashSet<>();
+       censusEntries.add(GetRandomCensusEntry());
+        censusCommand.setCensusEntries(censusEntries);
+       assertEquals(censusEntries, censusCommand.getCensusEntries());
     }
 }
