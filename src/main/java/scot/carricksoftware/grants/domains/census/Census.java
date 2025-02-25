@@ -28,7 +28,7 @@ public class Census extends BaseEntity {
     @SuppressWarnings("JpaDataSourceORMInspection")
     @OneToMany
     @JoinColumn(name = "census_id")
-    private Set<Census> censuses;
+    private Set<CensusEntry> censusEntries;
 
     @DateTimeFormat(pattern = "dd MMM yyyy")
     String date;
@@ -52,18 +52,19 @@ public class Census extends BaseEntity {
         this.date = date;
     }
 
-    @SuppressWarnings("unused")
-    public Set<Census> getCensuses() {
-        return censuses;
+
+    public Set<CensusEntry> getCensusEntries() {
+        return censusEntries;
     }
 
-    @SuppressWarnings("unused")
-    public void setCensuses(Set<Census> censuses) {
-        this.censuses = censuses;
+    public void setCensusEntries(Set<CensusEntry> censusEntries) {
+        this.censusEntries = censusEntries;
     }
 
     @Override
     public String toString() {
         return place.getName() + ", " + date;
     }
+
+
 }

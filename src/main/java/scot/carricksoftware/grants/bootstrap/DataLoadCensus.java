@@ -68,6 +68,7 @@ public class DataLoadCensus {
        CensusEntry censusEntry = new CensusEntry();
        censusEntry.setPerson(personService.findById(1L));
        censusEntry.setOtherPerson("Archie Grant");
+       censusEntry.setCensus(census);
        censusEntryService.save(censusEntry);
     }
 

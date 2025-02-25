@@ -7,7 +7,10 @@ package scot.carricksoftware.grants.commands.census;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
+import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.places.Place;
+
+import java.util.Set;
 
 @Component
 public class CensusCommand {
@@ -16,6 +19,8 @@ public class CensusCommand {
 
     @DateTimeFormat(pattern = "dd MMM yyyy")
     String date;
+
+    private Set<CensusEntry> censusEntries;
 
     public CensusCommand() {
         // Required by JPA
@@ -45,5 +50,11 @@ public class CensusCommand {
         this.date = date;
     }
 
+    public Set<CensusEntry> getCensusEntries() {
+        return censusEntries;
+    }
 
+    public void setCensusEntries(Set<CensusEntry> censusEntries) {
+        this.censusEntries = censusEntries;
+    }
 }

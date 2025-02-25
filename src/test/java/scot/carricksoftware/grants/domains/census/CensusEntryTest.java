@@ -60,7 +60,7 @@ class CensusEntryTest {
     }
 
     @Test
-    void testToStringTest() {
+    void toStringTest() {
         Person person = GetRandomPerson();
         Census census = GetRandomCensus();
         String otherPerson = GetRandomString();

@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 
 class CensusTest {
@@ -62,16 +62,18 @@ class CensusTest {
     }
 
     @Test
-    void getCensusesTest() {
-        assertNull(census.getDate());
+    void getCensusEntriesTest() {
+        assertNull(census.getCensusEntries());
     }
 
     @Test
-    void setCensusesTest() {
-        Set<Census> censusSet = new HashSet<>();
-        censusSet.add(GetRandomCensus());
-        census.setCensuses(censusSet);
-        assertEquals(censusSet, census.getCensuses());
+    void setCensusEntriesTest() {
+        Set<CensusEntry> censusEntries = new HashSet<>();
+        censusEntries.add(GetRandomCensusEntry());
+        census.setCensusEntries(censusEntries);
+        assertEquals(censusEntries, census.getCensusEntries());
     }
+
+
 
 }
