@@ -74,24 +74,5 @@ public class MappingConstants {
     public static final String CENSUS_DELETE = "/census/{id}/delete";
     public static final String CENSUS_EDIT = "census/{id}/edit";
 
-    @SuppressWarnings("unused")
-    public static final String CENSUS_ENTRY_LIST = "/censusEntries";
-    @SuppressWarnings("unused")
-    public static final String CENSUS_ENTRY_NEXT = "/censusEntries/next";
-    @SuppressWarnings("unused")
-    public static final String CENSUS_ENTRY_ENTRY_PREVIOUS = "/censusEntries/prev";
-    @SuppressWarnings("unused")
-    public static final String CENSUS_ENTRY_ENTRY_REWIND = "/censusEntries/rewind";
-    @SuppressWarnings("unused")
-    public static final String CENSUS_ENTRY_ENTRY_FF = "/censusEntries/ff";
-    @SuppressWarnings("unused")
-    public static final String CENSUS_ENTRY_ENTRY_NEW = "/censusEntry/new";
-    @SuppressWarnings("unused")
-    public static final String CENSUS_ENTRY = "/censusEntry";
-    @SuppressWarnings("unused")
-    public static final String CENSUS_ENTRY_ENTRY_SHOW = "/censusEntry/{id}/show";
-    @SuppressWarnings("unused")
-    public static final String CENSUS_ENTRY_ENTRY_DELETE = "/censusEntry/{id}/delete";
-    @SuppressWarnings("unused")
-    public static final String CENSUS_ENTRY_ENTRY_EDIT = "censusEntries/{id}/edit";
+
 }

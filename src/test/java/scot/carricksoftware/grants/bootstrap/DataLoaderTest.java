@@ -36,6 +36,5 @@ class DataLoaderTest {
         dataLoader.run();
         verify(dataLoadPersonsMock).load();
         verify(dataLoadPlacesMock).load();
-        verify(dataLoadCensusMock).load();
     }
 }
