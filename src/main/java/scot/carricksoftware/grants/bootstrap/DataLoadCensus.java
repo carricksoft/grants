@@ -10,7 +10,6 @@ import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.PlaceService;
@@ -36,12 +35,12 @@ public class DataLoadCensus {
         loadCensusEntry();
     }
 
-    @SuppressWarnings("EmptyMethod")
+    @SuppressWarnings({"EmptyMethod", "WriteOnlyObject"})
     private void loadCensusEntry() {
         CensusEntryCommand censusEntryCommand = new CensusEntryCommand();
         Person person = personService.findById(1L);
         censusEntryCommand.setPerson(person);
-        // awaitin censusEntry serice
+        // awaiting censusEntry service
         // censusEntryService.saveCensusEntryCommand(censusEntryCommand);
     }
 
