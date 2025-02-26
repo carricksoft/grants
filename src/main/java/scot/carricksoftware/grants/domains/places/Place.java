@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants.domains.places;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
@@ -31,7 +32,7 @@ public class Place extends BaseEntity {
     private Region region;
 
     @SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
-    @OneToMany
+    @OneToMany(fetch= FetchType.LAZY)
     @JoinColumn(name = "place_id")
     private Set<Census> censuses;
 
