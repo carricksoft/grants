@@ -26,6 +26,7 @@ class DataLoaderTest {
     @Mock
     private DataLoadCensus dataLoadCensusMock;
 
+
     @BeforeEach
     void setUp() {
         dataLoader = new DataLoader(dataLoadPersonsMock, dataLoadPlacesMock, dataLoadCensusMock);
@@ -36,5 +37,6 @@ class DataLoaderTest {
         dataLoader.run();
         verify(dataLoadPersonsMock).load();
         verify(dataLoadPlacesMock).load();
+        verify(dataLoadCensusMock).load();
     }
 }

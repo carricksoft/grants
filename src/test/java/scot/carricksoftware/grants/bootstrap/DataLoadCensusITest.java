@@ -18,10 +18,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.controllers.census.CensusListControllerImpl;
 import scot.carricksoftware.grants.domains.census.Census;
-import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.census.CensusServiceImpl;
-import scot.carricksoftware.grants.services.censusentry.CensusEntryServiceImpl;
-import scot.carricksoftware.grants.services.people.PersonService;
 
 import java.util.List;
 
@@ -38,8 +35,7 @@ class DataLoadCensusITest {
 
     @Autowired
     DataLoadCensusITest(ControllerHelper controllerHelper,
-                        CensusEntryServiceImpl censusEntryService,
-                        PersonService personService, CensusServiceImpl censusService) {
+                        CensusServiceImpl censusService) {
         this.controllerHelper = controllerHelper;
         this.censusService = censusService;
     }
