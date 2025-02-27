@@ -24,6 +24,7 @@
             <thead class="table-dark">
             <tr>
                 <th>ID</th>
+                <th>Census</th>
                 <th>Person</th>
                 <th>Other Person</th>
                 <th></th>
@@ -32,6 +33,7 @@
 
             <tr th:each="entry   : ${censusEntries}">
                 <td th:text="${entry.id}">123</td>
+                <td th:text="${entry.census?.toString()}"></td>
                 <td th:text="${entry.person?.toString()}">123</td>
             <td></td>
                 <td><span>
