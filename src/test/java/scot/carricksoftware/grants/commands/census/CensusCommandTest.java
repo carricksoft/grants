@@ -73,9 +73,9 @@ class CensusCommandTest {
 
     @Test
     void setCensusEntriesTest() {
-       Set<CensusEntry> censusEntries = new HashSet<>();
-       censusEntries.add(GetRandomCensusEntry());
+        Set<CensusEntry> censusEntries = new HashSet<>();
+        censusEntries.add(GetRandomCensusEntry());
         censusCommand.setCensusEntries(censusEntries);
-       assertEquals(censusEntries, censusCommand.getCensusEntries());
+        assertEquals(censusEntries, censusCommand.getCensusEntries());
     }
 }
