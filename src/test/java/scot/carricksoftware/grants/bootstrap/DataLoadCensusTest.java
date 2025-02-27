@@ -17,8 +17,10 @@ import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.controllers.censusentry.CensusEntryListControllerImpl;
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.censusentry.CensusEntryServiceImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
 
@@ -35,12 +37,14 @@ class DataLoadCensusTest {
     private final ControllerHelper controllerHelper;
     private final CensusEntryServiceImpl censusEntryService;
     private final PersonService personService;
+    private final CensusService censusService;
 
     @Autowired
-    DataLoadCensusTest(ControllerHelper controllerHelper, CensusEntryServiceImpl censusEntryService, PersonService personService) {
+    DataLoadCensusTest(ControllerHelper controllerHelper, CensusEntryServiceImpl censusEntryService, PersonService personService, CensusService censusService) {
         this.controllerHelper = controllerHelper;
         this.censusEntryService = censusEntryService;
         this.personService = personService;
+        this.censusService = censusService;
     }
 
 
@@ -60,9 +64,11 @@ class DataLoadCensusTest {
                 .andExpect(MockMvcResultMatchers.view().name(ViewConstants.CENSUSENTRY_LIST));
 
         List<CensusEntry> entries = censusEntryService.getPagedCensusEntries(0);
+        Census census = censusService.findById(1L);
 
         assertEquals(1, entries.size());
         assertEquals(person, entries.get(0).getPerson());
+        assertEquals(census.toString(), entries.get(0).getCensus().toString());
         assertEquals(person.toString(), entries.get(0).getOtherPerson());
     }
 

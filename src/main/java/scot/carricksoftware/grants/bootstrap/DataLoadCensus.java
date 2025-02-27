@@ -5,10 +5,13 @@
 
 package scot.carricksoftware.grants.bootstrap;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.censusentry.CensusEntryService;
@@ -19,6 +22,8 @@ import java.time.LocalDate;
 
 @Component
 public class DataLoadCensus {
+
+    private static final Logger logger = LogManager.getLogger(DataLoader.class);
 
     private final PlaceService placeService;
     private final CensusService censusService;
@@ -33,6 +38,7 @@ public class DataLoadCensus {
     }
 
     void load() {
+        logger.debug("DataLoader::run");
         loadCensus();
         loadCensusEntry();
     }
@@ -40,9 +46,11 @@ public class DataLoadCensus {
 
     private void loadCensusEntry() {
         CensusEntryCommand censusEntryCommand = new CensusEntryCommand();
+        Census census = censusService.findById(1L);
         Person person = personService.findById(1L);
         censusEntryCommand.setOtherPerson(person.toString());
         censusEntryCommand.setPerson(person);
+        censusEntryCommand.setCensus(census);
         censusEntryService.saveCensusEntryCommand(censusEntryCommand);
     }
 
