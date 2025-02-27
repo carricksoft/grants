@@ -23,7 +23,7 @@ import java.time.LocalDate;
 @Component
 public class DataLoadCensus {
 
-    private static final Logger logger = LogManager.getLogger(DataLoader.class);
+    private static final Logger logger = LogManager.getLogger(DataLoadCensus.class);
 
     private final PlaceService placeService;
     private final CensusService censusService;

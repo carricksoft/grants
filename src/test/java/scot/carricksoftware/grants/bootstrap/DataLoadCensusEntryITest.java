@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest
-class DataLoadCensusTest {
+class DataLoadCensusEntryITest {
 
 
     private CensusEntryListControllerImpl censusEntryController;
@@ -40,7 +40,7 @@ class DataLoadCensusTest {
     private final CensusService censusService;
 
     @Autowired
-    DataLoadCensusTest(ControllerHelper controllerHelper, CensusEntryServiceImpl censusEntryService, PersonService personService, CensusService censusService) {
+    DataLoadCensusEntryITest(ControllerHelper controllerHelper, CensusEntryServiceImpl censusEntryService, PersonService personService, CensusService censusService) {
         this.controllerHelper = controllerHelper;
         this.censusEntryService = censusEntryService;
         this.personService = personService;
