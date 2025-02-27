@@ -11,6 +11,7 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.PlaceService;
 
@@ -22,26 +23,26 @@ public class DataLoadCensus {
     private final PlaceService placeService;
     private final CensusService censusService;
     private final PersonService personService;
+    private final CensusEntryService censusEntryService;
 
-    public DataLoadCensus(PlaceService placeService, CensusService censusService, PersonService personService) {
+    public DataLoadCensus(PlaceService placeService, CensusService censusService, PersonService personService, CensusEntryService censusEntryService) {
         this.placeService = placeService;
         this.censusService = censusService;
         this.personService = personService;
+        this.censusEntryService = censusEntryService;
     }
 
     void load() {
         loadCensus();
         loadCensusEntry();
-        loadCensusEntry();
     }
 
-    @SuppressWarnings({"EmptyMethod", "WriteOnlyObject"})
+
     private void loadCensusEntry() {
         CensusEntryCommand censusEntryCommand = new CensusEntryCommand();
         Person person = personService.findById(1L);
         censusEntryCommand.setPerson(person);
-        // awaiting censusEntry service
-        // censusEntryService.saveCensusEntryCommand(censusEntryCommand);
+        censusEntryService.saveCensusEntryCommand(censusEntryCommand);
     }
 
 
