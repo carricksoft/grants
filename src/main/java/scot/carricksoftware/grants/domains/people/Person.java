@@ -12,6 +12,7 @@ import jakarta.persistence.OneToMany;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -59,4 +60,12 @@ public class Person extends BaseEntity {
     public String toString() {
         return lastName + ", " + firstName;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(firstName, person.firstName) && Objects.equals(lastName, person.lastName);
+    }
+
 }
