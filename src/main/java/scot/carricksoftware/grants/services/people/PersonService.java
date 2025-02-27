@@ -27,4 +27,6 @@ public interface PersonService {
     long count();
 
     PersonCommand savePersonCommand(PersonCommand personCommand);
+
+    List<Person> findAll();
 }

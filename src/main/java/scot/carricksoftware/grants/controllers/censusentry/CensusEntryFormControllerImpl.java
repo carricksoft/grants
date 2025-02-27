@@ -23,7 +23,7 @@ import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.services.censusentry.CensusEntryService;
-import scot.carricksoftware.grants.services.places.PlaceService;
+import scot.carricksoftware.grants.services.people.PersonService;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -34,19 +34,19 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final CensusEntryCommandConverterImpl censusEntryCommandConverterImpl;
     private final CensusEntryConverterImpl censusEntryConverterImpl;
-    private final PlaceService placeService;
+    private final PersonService personService;
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final Capitalisation capitalisation;
 
     public CensusEntryFormControllerImpl(CensusEntryService censusEntryService,
                                          CensusEntryCommandConverterImpl censusEntryCommandConverterImpl,
                                          CensusEntryConverterImpl censusEntryConverterImpl,
-                                         PlaceService placeService,
+                                         PersonService personService,
                                          Capitalisation capitalisation) {
         this.censusEntryService = censusEntryService;
         this.censusEntryCommandConverterImpl = censusEntryCommandConverterImpl;
         this.censusEntryConverterImpl = censusEntryConverterImpl;
-        this.placeService = placeService;
+        this.personService = personService;
         this.capitalisation = capitalisation;
     }
 
@@ -55,7 +55,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     public final String getNewCensusEntry(final Model model) {
         logger.debug("CensusEntryFormControllerImpl::getNewCensusEntry");
         model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, new CensusEntryCommand());
-        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.CENSUSENTRY_FORM;
     }
 
@@ -64,7 +64,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     public final String censusEntryEdit(@PathVariable final String id, Model model) {
         logger.debug("CensusEntryFormControllerImpl::censusEntryEdit");
         model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, censusEntryConverterImpl.convert(censusEntryService.findById(Long.valueOf(id))));
-        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, personService.findAll());
         return ViewConstants.CENSUSENTRY_FORM;
     }
 
@@ -90,7 +90,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         logger.debug("CensusEntryFormControllerImpl::saveOrUpdate");
         CensusEntryCommand savedCommand = censusEntryConverterImpl.convert(censusEntryService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, savedCommand);
-        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.CENSUSENTRY_FORM;
     }
 

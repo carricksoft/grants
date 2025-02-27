@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -90,5 +91,14 @@ public class PersonServiceImpl implements PersonService {
         Person savedPerson = personRepository.save(person);
         return personConverterImpl.convert(savedPerson);
 
+    }
+
+    @Override
+    public List<Person> findAll() {
+        logger.debug("PlaceServiceImpl::findAll");
+        List<Person> result = new ArrayList<>();
+        Iterable<Person> placeIterable = personRepository.findAll();
+        placeIterable.forEach(result::add);
+        return result;
     }
 }
