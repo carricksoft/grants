@@ -18,6 +18,7 @@ public class CensusEntryCommand {
     String otherPerson;
 
     public CensusEntryCommand() {
+        // required by JPA
     }
 
     @SuppressWarnings("unused")

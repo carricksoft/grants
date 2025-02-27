@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.converters.census.censusEntry;
+package scot.carricksoftware.grants.converters.census.censusentry;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Component;
