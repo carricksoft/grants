@@ -11,12 +11,12 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import scot.carricksoftware.grants.converters.census.census.CensusCommandConverterImpl;
-import scot.carricksoftware.grants.converters.census.census.CensusConverterImpl;
-import scot.carricksoftware.grants.domains.census.Census;
-import scot.carricksoftware.grants.repositories.census.CensusRepository;
-import scot.carricksoftware.grants.services.census.CensusService;
-import scot.carricksoftware.grants.services.census.CensusServiceImpl;
+import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryCommandConverterImpl;
+import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryConverterImpl;
+import scot.carricksoftware.grants.domains.census.CensusEntry;
+import scot.carricksoftware.grants.repositories.census.CensusEntryRepository;
+import scot.carricksoftware.grants.services.censusentry.CensusEntryService;
+import scot.carricksoftware.grants.services.censusentry.CensusEntryServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,29 +25,29 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
 class CensusEntryServiceTest {
 
-    CensusService censusService;
+    CensusEntryService censusEntryService;
 
     @Mock
-    CensusRepository censusRepositoryMock;
+    CensusEntryRepository censusEntryRepositoryMock;
 
     @Mock
-    CensusConverterImpl censusConverterImplMock;
+    CensusEntryConverterImpl censusEntryConverterImplMock;
 
     @Mock
-    CensusCommandConverterImpl censusCommandConverterImplMock;
+    CensusEntryCommandConverterImpl censusEntryCommandConverterImplMock;
 
 
     @BeforeEach
     void setUp() {
-        censusService = new CensusServiceImpl(censusRepositoryMock,
-                censusConverterImplMock,
-                censusCommandConverterImplMock);
+        censusEntryService = new CensusEntryServiceImpl(censusEntryRepositoryMock,
+                censusEntryConverterImplMock,
+                censusEntryCommandConverterImplMock);
     }
 
     @SuppressWarnings("unused")
@@ -55,32 +55,32 @@ class CensusEntryServiceTest {
     Pageable pageableMock;
 
     @Mock
-    Page<Census> pageMock;
+    Page<CensusEntry> pageMock;
 
 
     @SuppressWarnings("EmptyMethod")
     @Test
     void deleteByIdTest() {
         Long id = GetRandomLong();
-        censusService.deleteById(id);
-        verify(censusRepositoryMock).deleteById(id);
+        censusEntryService.deleteById(id);
+        verify(censusEntryRepositoryMock).deleteById(id);
     }
 
     @Test
     void CountTest() {
         long result = GetRandomLong();
-        when(censusRepositoryMock.count()).thenReturn(result);
-        assertEquals(result, censusService.count());
+        when(censusEntryRepositoryMock.count()).thenReturn(result);
+        assertEquals(result, censusEntryService.count());
     }
 
     @Test
-    void getPagedCensusesTest() {
-        List<Census> result = new ArrayList<>();
-        Census census = GetRandomCensus();
-        result.add(census);
+    void getPagedCensusEntryEntriesTest() {
+        List<CensusEntry> result = new ArrayList<>();
+        CensusEntry censusEntry = GetRandomCensusEntry();
+        result.add(censusEntry);
         when(pageMock.getContent()).thenReturn(result);
-        when(censusRepositoryMock.findAll(any(Pageable.class))).thenReturn(pageMock);
-        assertEquals(result, censusService.getPagedCensuses(0));
+        when(censusEntryRepositoryMock.findAll(any(Pageable.class))).thenReturn(pageMock);
+        assertEquals(result, censusEntryService.getPagedCensusEntries(0));
     }
 
 
