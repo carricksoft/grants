@@ -39,7 +39,6 @@ class CensusEntryListControllerPageITest {
         this.controllerHelper = controllerHelper;
     }
 
-
     @BeforeEach
     void setUp() {
         censusEntryController = new CensusEntryListControllerImpl(controllerHelper, censusEntryServiceMock);
