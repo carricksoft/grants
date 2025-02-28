@@ -17,6 +17,8 @@ import scot.carricksoftware.grants.repositories.census.CensusRepository;
 import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.census.CensusServiceImpl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -66,6 +68,14 @@ class CensusServiceFindTest {
         Long id = GetRandomLong();
         when(censusRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(censusService.findById(id));
+    }
+
+    @Test
+    void findAllTest() {
+        List<Census> censusList = new ArrayList<>();
+        censusList.add(GetRandomCensus());
+        when(censusRepositoryMock.findAll()).thenReturn(censusList);
+        assertEquals(censusList, censusService.findAll());
     }
 
 }
