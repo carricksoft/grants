@@ -48,7 +48,7 @@ public class DataLoadCensus {
         CensusEntryCommand censusEntryCommand = new CensusEntryCommand();
         Census census = censusService.findById(1L);
         Person person = personService.findById(1L);
-        censusEntryCommand.setOtherPerson(person.toString());
+        censusEntryCommand.setOtherPerson("Dad");
         censusEntryCommand.setPerson(person);
         censusEntryCommand.setCensus(census);
         censusEntryService.saveCensusEntryCommand(censusEntryCommand);
