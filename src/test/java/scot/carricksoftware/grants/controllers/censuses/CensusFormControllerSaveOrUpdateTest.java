@@ -36,6 +36,7 @@ class CensusFormControllerSaveOrUpdateTest {
     @Mock
     private PlaceService placeServiceMock;
 
+
     @Mock
     private CensusCommandConverterImpl censusCommandConverterMock;
 
@@ -61,6 +62,7 @@ class CensusFormControllerSaveOrUpdateTest {
                 placeServiceMock,
                 capitalisationMock);
     }
+
 
     @Test
     void saveOrUpdateNoErrorsTest() {

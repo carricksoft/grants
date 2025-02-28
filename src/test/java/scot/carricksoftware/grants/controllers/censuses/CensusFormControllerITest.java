@@ -34,7 +34,6 @@ class CensusFormControllerITest {
     @SuppressWarnings("unused")
     private CensusFormController censusController;
 
-
     @Mock
     private CensusService censusServiceMock;
 
@@ -60,6 +59,15 @@ class CensusFormControllerITest {
     }
 
     @Test
+    void getNewCensusTest() throws Exception {
+        MockMvc mockMvc = MockMvcBuilders.standaloneSetup(censusController).build();
+
+        mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.CENSUS_NEW))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.view().name("census/form"));
+    }
+
+    @Test
     void PostCensusTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(censusController).build();
         Long id = GetRandomLong();
@@ -73,8 +81,6 @@ class CensusFormControllerITest {
         mockMvc.perform(MockMvcRequestBuilders.post(MappingConstants.CENSUS))
                 .andExpect(MockMvcResultMatchers.status().is3xxRedirection())
                 .andExpect(MockMvcResultMatchers.view().name(expectedViewName));
-
-
     }
 
 
