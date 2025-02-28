@@ -1,0 +1,12 @@
+/*
+ * Copyright (c)  28 Feb 2025, Andrew Grant of Carrick Software .
+ * All rights reserved.
+ */
+
+package scot.carricksoftware.grants.domains.certificates;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class BirthCertificate extends BaseCertificate{
+}
