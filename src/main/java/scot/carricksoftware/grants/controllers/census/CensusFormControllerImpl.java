@@ -69,6 +69,7 @@ public class CensusFormControllerImpl implements CensusFormController {
         Long z = Long.valueOf(id);
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, censusConverterImpl.convert(censusService.findById(Long.valueOf(id))));
         model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
 
         return ViewConstants.CENSUS_FORM;
     }
