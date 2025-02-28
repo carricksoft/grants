@@ -22,6 +22,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryConverterImpl;
+import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.people.PersonService;
 
@@ -31,6 +32,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
 
     private static final Logger logger = LogManager.getLogger(CensusEntryFormControllerImpl.class);
     private final CensusEntryService censusEntryService;
+    private final CensusService censusService;
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final CensusEntryCommandConverterImpl censusEntryCommandConverterImpl;
     private final CensusEntryConverterImpl censusEntryConverterImpl;
@@ -39,11 +41,13 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     private final Capitalisation capitalisation;
 
     public CensusEntryFormControllerImpl(CensusEntryService censusEntryService,
+                                         CensusService censusService,
                                          CensusEntryCommandConverterImpl censusEntryCommandConverterImpl,
                                          CensusEntryConverterImpl censusEntryConverterImpl,
                                          PersonService personService,
                                          Capitalisation capitalisation) {
         this.censusEntryService = censusEntryService;
+        this.censusService = censusService;
         this.censusEntryCommandConverterImpl = censusEntryCommandConverterImpl;
         this.censusEntryConverterImpl = censusEntryConverterImpl;
         this.personService = personService;
@@ -56,6 +60,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         logger.debug("CensusEntryFormControllerImpl::getNewCensusEntry");
         model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, new CensusEntryCommand());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
         return ViewConstants.CENSUSENTRY_FORM;
     }
 
@@ -65,6 +70,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         logger.debug("CensusEntryFormControllerImpl::censusEntryEdit");
         model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, censusEntryConverterImpl.convert(censusEntryService.findById(Long.valueOf(id))));
         model.addAttribute(AttributeConstants.PLACES, personService.findAll());
+        model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
         return ViewConstants.CENSUSENTRY_FORM;
     }
 

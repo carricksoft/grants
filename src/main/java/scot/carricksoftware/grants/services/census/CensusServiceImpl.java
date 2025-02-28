@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.converters.census.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.repositories.census.CensusRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -89,6 +90,15 @@ public class CensusServiceImpl implements CensusService {
         Census savedCensus = censusRepository.save(census);
         return censusConverterImpl.convert(savedCensus);
 
+    }
+
+    @Override
+    public List<Census> findAll() {
+        logger.debug("CensusServiceImpl::findAll");
+        List<Census> result = new ArrayList<>();
+        Iterable<Census> censusIterable = censusRepository.findAll();
+        censusIterable.forEach(result::add);
+        return result;
     }
 
 }

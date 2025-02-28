@@ -30,4 +30,7 @@ public interface CensusService {
 
     @SuppressWarnings("unused")
     CensusCommand saveCensusCommand(CensusCommand censusCommand);
+
+    List<Census> findAll();
+
 }

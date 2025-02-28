@@ -35,6 +35,20 @@ rounded-3 text-center p-4">
                        th:field="*{id}" type="text" readonly>
             </div>
             <div class="col-xs-3" style="margin-right:20px;">
+                <label for="census">Census:</label>
+                <select id="census" name="" th:field="*{census}"
+                        class="form-control" th:errorclass="has-error">
+                    <option th:value="${''}" th:text="${''}"></option>
+                    <option th:each="census : ${censuses}"
+                            th:value="${census.id}" th:text="${census.toString()}"></option>
+                </select>
+                <div th:if="${#fields.hasErrors('census')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('census')}" th:text="${err}"/>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xs-3" style="margin-right:20px;">
                 <label for="person">Person:</label>
                 <select id="person" name="person" th:field="*{person}"
                         class="form-control" th:errorclass="has-error">
