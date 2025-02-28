@@ -15,6 +15,8 @@ import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.repositories.people.PersonRepository;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
@@ -64,6 +66,14 @@ class PersonServiceFindTest {
         Long id = GetRandomLong();
         when(personRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(personService.findById(id));
+    }
+
+    @Test
+    void findAllTest() {
+        List<Person> personList = new ArrayList<>();
+        personList.add(GetRandomPerson());
+        when(personRepositoryMock.findAll()).thenReturn(personList);
+        assertEquals(personList, personService.findAll());
     }
 
 }
