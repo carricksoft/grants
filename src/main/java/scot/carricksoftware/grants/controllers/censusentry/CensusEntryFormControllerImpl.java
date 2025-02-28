@@ -69,7 +69,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     public final String censusEntryEdit(@PathVariable final String id, Model model) {
         logger.debug("CensusEntryFormControllerImpl::censusEntryEdit");
         model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, censusEntryConverterImpl.convert(censusEntryService.findById(Long.valueOf(id))));
-        model.addAttribute(AttributeConstants.PLACES, personService.findAll());
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
         return ViewConstants.CENSUSENTRY_FORM;
     }

@@ -52,6 +52,11 @@ rounded-3 text-center p-4">
                 <label for="date">Date</label>
                 <input class="form-control" id="date"
                        th:field="*{date}" th:type="date">
+                <div th:if="${#fields.hasErrors('date')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('date')}" th:text="${err}"/>
+                    </ul>
+                </div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">Commit</button>

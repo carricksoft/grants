@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants.commands.census;
 
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
@@ -17,7 +18,8 @@ public class CensusCommand {
     Long id;
     Place place;
 
-    @DateTimeFormat(pattern = "dd MMM yyyy")
+
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     String date;
 
     private Set<CensusEntry> censusEntries;

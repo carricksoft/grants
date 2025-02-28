@@ -12,7 +12,9 @@ import scot.carricksoftware.grants.domains.people.Person;
 @Component
 public class CensusEntryCommand {
 
+
     Long id;
+
     Census census;
     Person person;
     String otherPerson;

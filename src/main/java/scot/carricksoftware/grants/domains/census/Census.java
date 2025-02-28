@@ -30,7 +30,7 @@ public class Census extends BaseEntity {
     @JoinColumn(name = "census_id")
     private Set<CensusEntry> censusEntries;
 
-    @DateTimeFormat(pattern = "dd MMM yyyy")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     String date;
 
     @SuppressWarnings("unused")

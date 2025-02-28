@@ -17,6 +17,6 @@ public class ApplicationConstants {
     }
 
     public static final int DEFAULT_PAGE_SIZE = 15;
-    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+    public static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
 }
