@@ -7,6 +7,7 @@ package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
+import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.places.PlaceCommand;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
@@ -113,6 +114,16 @@ public class GenerateRandomValues {
         censusCommand.setId(GetRandomLong());
         censusCommand.setDate(LocalDate.now().format(ApplicationConstants.FORMATTER));
         return censusCommand;
+    }
+
+    @SuppressWarnings("unused")
+    public static CensusEntryCommand GetRandomCensusEntryCommand() {
+        CensusEntryCommand censusEntryCommand = new CensusEntryCommand();
+        censusEntryCommand.setCensus(GetRandomCensus());
+        censusEntryCommand.setId(GetRandomLong());
+        censusEntryCommand.setPerson(GetRandomPerson());
+        censusEntryCommand.setOtherPerson(GetRandomString());
+        return censusEntryCommand;
     }
 
 }
