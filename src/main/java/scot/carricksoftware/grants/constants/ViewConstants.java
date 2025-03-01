@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.constants;
 
 import org.springframework.stereotype.Component;
 
+@SuppressWarnings("ALL")
 @Component
 public class ViewConstants {
 
@@ -31,9 +32,11 @@ public class ViewConstants {
     public static final String CENSUS_LIST = "census/list";
     public static final String CENSUS_FORM = "census/form";
 
-    @SuppressWarnings("unused")
     public static final String CENSUSENTRY_LIST = "censusentry/list";
-    @SuppressWarnings("unused")
     public static final String CENSUSENTRY_FORM = "censusentry/form";
 
+    @SuppressWarnings("unused")
+    public static final String BIRTHCERTIFICATE_LIST = "certificates/birthcertificate/list";
+    @SuppressWarnings("unused")
+    public static final String BIRTHCERTIFICATE_FORM = "certificates/birthcertificate/form";
 }

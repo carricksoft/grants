@@ -34,6 +34,6 @@ class BaseCertificateTest {
     void setPerson() {
         Person person = GetRandomPerson();
         baseCertificate.setPerson(person);
-        assertEquals(person,baseCertificate.getPerson());
+        assertEquals(person, baseCertificate.getPerson());
     }
 }

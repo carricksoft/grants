@@ -31,7 +31,7 @@ class BirthCertificateCommandTest {
     void setIdTest() {
         Long id = GetRandomLong();
         birthCertificateCommand.setId(id);
-        assertEquals(id,birthCertificateCommand.getId());
+        assertEquals(id, birthCertificateCommand.getId());
     }
 
     @Test
@@ -43,6 +43,6 @@ class BirthCertificateCommandTest {
     void setPersonTest() {
         Person person = GetRandomPerson();
         birthCertificateCommand.setPerson(person);
-        assertEquals(person,birthCertificateCommand.getPerson());
+        assertEquals(person, birthCertificateCommand.getPerson());
     }
 }
