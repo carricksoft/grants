@@ -26,6 +26,7 @@ public class Person extends BaseEntity {
     @JoinColumn(name = "person_id")
     private Set<CensusEntry> censusEntries;
 
+
     @SuppressWarnings("unused")
     public String getFirstName() {
         return firstName;

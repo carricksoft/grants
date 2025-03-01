@@ -12,10 +12,9 @@ import scot.carricksoftware.grants.domains.people.Person;
 public class BirthCertificateCommand {
 
     Long id;
-
     Person person;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
