@@ -66,7 +66,7 @@ public class BirthCertificateServiceImpl implements BirthCertificateService {
 
 
     @Override
-    public List<BirthCertificate> getPagedBirthCertificates(int pageNumber) {
+    public List<BirthCertificate> getPagedCertificates(int pageNumber) {
         logger.debug("BirthCertificateServiceImpl::getPagedBirthCertificates");
         Pageable paging = PageRequest.of(pageNumber, ApplicationConstants.DEFAULT_PAGE_SIZE, getSort());
         Page<BirthCertificate> pagedResult = birthCertificateRepository.findAll(paging);

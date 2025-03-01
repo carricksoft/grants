@@ -24,7 +24,7 @@ public interface BirthCertificateService {
     void deleteById(Long id);
 
     @SuppressWarnings("unused")
-    List<BirthCertificate> getPagedBirthCertificates(int pageNumber);
+    List<BirthCertificate> getPagedCertificates(int pageNumber);
 
     @SuppressWarnings("unused")
     long count();
