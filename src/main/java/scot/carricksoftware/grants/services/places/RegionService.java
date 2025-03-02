@@ -22,9 +22,10 @@ public interface RegionService {
     void deleteById(Long id);
 
     @SuppressWarnings("unused")
-    List<Region> getPagedCountries(int pageNumber);
+    List<Region> getPagedRegions(int pageNumber);
 
 
+    @SuppressWarnings("unused")
     long count();
 
     @SuppressWarnings("unused")
