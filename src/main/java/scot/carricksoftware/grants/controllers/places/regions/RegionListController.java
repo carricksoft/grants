@@ -23,5 +23,7 @@ public interface RegionListController {
 
     String getLastPage(final Model model);
 
-    String personDelete(@PathVariable final String id);
+    String regionDelete(@PathVariable final String id);
+
+    int getPageNumber();
 }

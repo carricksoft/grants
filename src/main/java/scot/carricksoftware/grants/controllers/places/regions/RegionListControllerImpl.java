@@ -94,10 +94,15 @@ public class RegionListControllerImpl implements RegionListController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.REGION_DELETE)
     @Override
-    public final String personDelete(@PathVariable final String id) {
+    public final String regionDelete(@PathVariable final String id) {
         logger.debug("RegionListControllerImpl::regionDelete");
         regionService.deleteById(Long.valueOf(id));
         return MappingConstants.REDIRECT + MappingConstants.REGIONS;
+    }
+
+    @Override
+    public int getPageNumber() {
+        return currentPage;
     }
 
 

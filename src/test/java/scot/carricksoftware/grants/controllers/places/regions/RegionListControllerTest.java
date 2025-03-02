@@ -18,11 +18,13 @@ import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.services.places.RegionServiceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -41,6 +43,7 @@ public class RegionListControllerTest {
 
     @Mock
     List<Region> regionListMock;
+
 
     @Before
     public void setUp() {
@@ -65,5 +68,20 @@ public class RegionListControllerTest {
         verify(regionServiceImplMock).getPagedRegions(page);
     }
 
+    @Test
+    public void regionDeleteTest() {
+        Long id = GetRandomLong();
+       assertEquals("redirect:/regions", controller.regionDelete(Long.toString(id)));
+       verify(regionServiceImplMock).deleteById(id);
+    }
 
+    @Test
+    public void regionUpdateGetFirstPageTest() {
+        List<Region> regionList = new ArrayList<>();
+        regionList.add(new Region());
+        when(regionServiceImplMock.getPagedRegions(0)).thenReturn(regionList);
+        assertEquals("region/list",controller.getFirstPage(modelMock));
+        assertEquals(0, controller.getPageNumber());
+        verify(modelMock).addAttribute("regions", regionList);
+    }
 }
