@@ -21,7 +21,7 @@ import scot.carricksoftware.grants.services.people.PersonServiceImpl;
 import static java.lang.Integer.max;
 
 @Controller
-public class PersonListControllerImpl {
+public class PersonListControllerImpl implements PersonListController {
 
     private static final Logger logger = LogManager.getLogger(PersonListControllerImpl.class);
 
@@ -37,13 +37,14 @@ public class PersonListControllerImpl {
         this.personService = personService;
     }
 
-    @SuppressWarnings("SameReturnValue")
+    @Override
     @GetMapping(MappingConstants.PEOPLE_LIST)
-    public final String getListPage(final Model model) {
+    public String getPagedPeople(Model model, int pageNumber) {
         logger.debug("PersonListControllerImpl::getListPage");
         currentPage = 0;
         return sendAttributesAndReturn(model);
     }
+
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
@@ -92,6 +93,11 @@ public class PersonListControllerImpl {
         logger.debug("PersonListControllerImpl::personDelete");
         personService.deleteById(Long.valueOf(id));
         return MappingConstants.REDIRECT + MappingConstants.PEOPLE;
+    }
+
+    @Override
+    public int getPageNumber() {
+        return currentPage;
     }
 
 

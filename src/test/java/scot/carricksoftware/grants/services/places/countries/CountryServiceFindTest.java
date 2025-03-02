@@ -44,36 +44,36 @@ public class CountryServiceFindTest {
     @Mock
     CountryCommandConverterImpl countryCommandConverterMock;
 
-   @Before
+    @Before
     public void setUp() {
-       countryService = new CountryServiceImpl(countryRepositoryMock,
-               countryConverterMock,
-               countryCommandConverterMock );
-   }
+        countryService = new CountryServiceImpl(countryRepositoryMock,
+                countryConverterMock,
+                countryCommandConverterMock);
+    }
 
-   @Test
+    @Test
     public void testFindAll() {
-       List<Country> countries = new ArrayList<>();
-       countries.add(GetRandomCountry());
-       when (countryRepositoryMock.findAll()).thenReturn(countries);
-       assertEquals(countries, countryService.findAll());
-   }
+        List<Country> countries = new ArrayList<>();
+        countries.add(GetRandomCountry());
+        when(countryRepositoryMock.findAll()).thenReturn(countries);
+        assertEquals(countries, countryService.findAll());
+    }
 
-   @Test
+    @Test
     public void testFindByFoundId() {
-       Long id = GetRandomLong();
-       Country country = GetRandomCountry();
-       Optional<Country> countryOptional = Optional.of(country);
-       when(countryRepositoryMock.findById(id)).thenReturn(countryOptional);
-       assertEquals(country, countryService.findById(id));
-   }
+        Long id = GetRandomLong();
+        Country country = GetRandomCountry();
+        Optional<Country> countryOptional = Optional.of(country);
+        when(countryRepositoryMock.findById(id)).thenReturn(countryOptional);
+        assertEquals(country, countryService.findById(id));
+    }
 
     @Test
     public void testFindByNotFoundId() {
         Long id = GetRandomLong();
         Optional<Country> empty = Optional.empty();
         when(countryRepositoryMock.findById(id)).thenReturn(empty);
-        assertNull( countryService.findById(id));
+        assertNull(countryService.findById(id));
     }
 
 }

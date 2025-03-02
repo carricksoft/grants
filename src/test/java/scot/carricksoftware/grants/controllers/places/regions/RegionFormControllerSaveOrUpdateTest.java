@@ -58,6 +58,6 @@ public class RegionFormControllerSaveOrUpdateTest {
     public void saveOrUpdateNoErrorsTest() {
         RegionCommand regionCommand = new RegionCommand();
         when(bindingResultMock.hasErrors()).thenReturn(true);
-        assertEquals("region/form",regionController.saveOrUpdate(regionCommand, bindingResultMock));
+        assertEquals("region/form", regionController.saveOrUpdate(regionCommand, bindingResultMock));
     }
 }
