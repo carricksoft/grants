@@ -25,6 +25,7 @@ public interface RegionService {
     List<Region> getPagedCountries(int pageNumber);
 
 
+    long count();
 
     @SuppressWarnings("unused")
     RegionCommand saveRegionCommand(RegionCommand regionCommand);
