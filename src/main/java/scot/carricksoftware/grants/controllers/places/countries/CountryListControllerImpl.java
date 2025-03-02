@@ -99,5 +99,10 @@ public class CountryListControllerImpl implements CountryListController {
         return MappingConstants.REDIRECT + MappingConstants.COUNTRIES;
     }
 
+    @Override
+    public int getPageNumber() {
+        return currentPage;
+    }
+
 
 }

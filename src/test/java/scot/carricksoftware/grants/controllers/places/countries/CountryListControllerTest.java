@@ -17,11 +17,13 @@ import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.services.places.CountryServiceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCountry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
@@ -70,6 +72,29 @@ public class CountryListControllerTest {
         Long id = GetRandomLong();
         assertEquals("redirect:/countries", controller.countryDelete(Long.toString(id)));
         verify(countryServiceImplMock).deleteById(id);
+    }
+
+    @Test
+    public void getFirstPlaceTest() {
+        List<Country> countryList = new ArrayList<>();
+        countryList.add(GetRandomCountry());
+        when(countryServiceImplMock.getPagedCountries(0)).thenReturn(countryList);
+
+        assertEquals("country/list", controller.getFirstPage(modelMock));
+        assertEquals(0, controller.getPageNumber());
+        verify(modelMock).addAttribute("countries", countryList);
+    }
+
+    @Test
+    public void getNextPlaceTest() {
+        List<Country> countryList = new ArrayList<>();
+        countryList.add(GetRandomCountry());
+        when(countryServiceImplMock.getPagedCountries(0)).thenReturn(countryList);
+
+        controller.getFirstPage(modelMock);
+        assertEquals("country/list", controller.getNextPage(modelMock));
+        assertEquals(1, controller.getPageNumber());
+        verify(modelMock).addAttribute("countries", countryList);
     }
 
 
