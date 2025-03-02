@@ -36,6 +36,6 @@ public class AttributeConstants {
 
     @SuppressWarnings({"SpellCheckingInspection", "unused"})
     public static final String BIRTHCERTIFICATES = "birthcertificates";
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String BIRTHCERTIFICATE_COMMAND = "birthCertificateCommand";
 }
