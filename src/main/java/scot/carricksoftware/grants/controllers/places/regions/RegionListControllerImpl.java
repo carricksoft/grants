@@ -48,7 +48,7 @@ public class RegionListControllerImpl implements RegionListController {
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.REGIONS, regionService.getPagedCountries(currentPage));
+        model.addAttribute(AttributeConstants.REGIONS, regionService.getPagedRegions(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.REGION_LIST;
     }

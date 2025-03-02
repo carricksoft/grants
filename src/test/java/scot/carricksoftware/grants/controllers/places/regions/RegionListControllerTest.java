@@ -49,7 +49,7 @@ public class RegionListControllerTest {
 
     @Test
     public void getListPageTest() {
-        when(regionServiceImplMock.getPagedCountries(0)).thenReturn(regionListMock);
+        when(regionServiceImplMock.getPagedRegions(0)).thenReturn(regionListMock);
         assertEquals("region/list", controller.getListPage(modelMock));
         verify(modelMock).addAttribute("regions", regionListMock);
         verify(controllerHelperMock).addAttributes(modelMock);
@@ -62,7 +62,7 @@ public class RegionListControllerTest {
         when(regionServiceImplMock.count()).thenReturn((long) count);
         controller.getLastPage(modelMock);
         controller.getPreviousPage(modelMock);
-        verify(regionServiceImplMock).getPagedCountries(page);
+        verify(regionServiceImplMock).getPagedRegions(page);
     }
 
 }

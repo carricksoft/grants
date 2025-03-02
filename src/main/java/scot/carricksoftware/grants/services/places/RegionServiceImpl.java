@@ -17,7 +17,6 @@ import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.converters.places.regions.RegionCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl;
-import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.repositories.places.RegionRepository;
 
@@ -69,7 +68,7 @@ public class RegionServiceImpl implements RegionService {
 
 
     @Override
-    public List<Region> getPagedCountries(int pageNumber) {
+    public List<Region> getPagedRegions(int pageNumber) {
         logger.debug("RegionServiceImpl::getPagedCountries");
         Pageable paging = PageRequest.of(pageNumber, ApplicationConstants.DEFAULT_PAGE_SIZE, getSort());
         Page<Region> pagedResult = regionRepository.findAll(paging);
