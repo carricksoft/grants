@@ -60,6 +60,7 @@ public class MappingConstants {
     public static final String PLACE_NEW = "/place/new";
     public static final String PLACE = "/place";
     public static final String PLACE_SHOW = "/place/{id}/show";
+    @SuppressWarnings("unused")
     public static final String PLACE_DELETE = "/place/{id}/delete";
     public static final String PLACE_EDIT = "place/{id}/edit";
 

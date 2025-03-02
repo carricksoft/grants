@@ -23,7 +23,7 @@ public interface PlaceListController {
 
     String getLastPage(final Model model);
 
-    String personDelete(@PathVariable final String id);
+    String placeDelete(@PathVariable final String id);
 
     int getPageNumber();
 }

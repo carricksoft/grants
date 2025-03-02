@@ -10,7 +10,6 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
@@ -90,11 +89,8 @@ public class PlaceListControllerImpl implements PlaceListController {
         return sendAttributesAndReturn(model);
     }
 
-
-    @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.PLACE_DELETE)
     @Override
-    public final String personDelete(@PathVariable final String id) {
+    public String placeDelete(String id) {
         logger.debug("PlaceListControllerImpl::placeDelete");
         placeService.deleteById(Long.valueOf(id));
         return MappingConstants.REDIRECT + MappingConstants.PLACE_LIST;
