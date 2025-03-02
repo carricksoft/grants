@@ -5,9 +5,11 @@
 
 package scot.carricksoftware.grants.services.places.places;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +31,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 
 @SpringBootTest
-class PlaceServiceTest {
+@RunWith(MockitoJUnitRunner.class)
+public class PlaceServiceTest {
 
     PlaceService placeService;
 
@@ -43,8 +46,8 @@ class PlaceServiceTest {
     PlaceCommandConverterImpl placeCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         placeService = new PlaceServiceImpl(placeRepositoryMock,
                 placeConverterImplMock,
                 placeCommandConverterImplMock);
@@ -60,21 +63,21 @@ class PlaceServiceTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void deleteByIdTest() {
+    public void deleteByIdTest() {
         Long id = GetRandomLong();
         placeService.deleteById(id);
         verify(placeRepositoryMock).deleteById(id);
     }
 
     @Test
-    void CountTest() {
+    public void CountTest() {
         long result = GetRandomLong();
         when(placeRepositoryMock.count()).thenReturn(result);
         assertEquals(result, placeService.count());
     }
 
     @Test
-    void getPagedCountriesTest() {
+    public void getPagedCountriesTest() {
         List<Place> result = new ArrayList<>();
         Place place = GetRandomPlace();
         result.add(place);

@@ -5,8 +5,8 @@
 
 package scot.carricksoftware.grants.services.places.regions;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -29,7 +29,7 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomRegion;
 
 @SpringBootTest
-class RegionServiceTest {
+public class RegionServiceTest {
 
     RegionService regionService;
 
@@ -43,8 +43,8 @@ class RegionServiceTest {
     RegionCommandConverterImpl regionCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         regionService = new RegionServiceImpl(regionRepositoryMock,
                 regionConverterImplMock,
                 regionCommandConverterImplMock);
@@ -60,21 +60,21 @@ class RegionServiceTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void deleteByIdTest() {
+    public void deleteByIdTest() {
         Long id = GetRandomLong();
         regionService.deleteById(id);
         verify(regionRepositoryMock).deleteById(id);
     }
 
     @Test
-    void CountTest() {
+    public void CountTest() {
         long result = GetRandomLong();
         when(regionRepositoryMock.count()).thenReturn(result);
         assertEquals(result, regionService.count());
     }
 
     @Test
-    void getPagedCountriesTest() {
+    public void getPagedCountriesTest() {
         List<Region> result = new ArrayList<>();
         Region region = GetRandomRegion();
         result.add(region);

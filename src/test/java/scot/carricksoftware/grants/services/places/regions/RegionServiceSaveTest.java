@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.services.places.regions;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.converters.places.regions.RegionCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl;
@@ -24,7 +26,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomRegion;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
-class RegionServiceSaveTest {
+@RunWith(SpringRunner.class)
+public class RegionServiceSaveTest {
 
     RegionService regionService;
 
@@ -38,8 +41,8 @@ class RegionServiceSaveTest {
     RegionCommandConverterImpl regionCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         regionService = new RegionServiceImpl(regionRepositoryMock,
                 regionConverterImplMock,
                 regionCommandConverterImplMock);
@@ -51,7 +54,7 @@ class RegionServiceSaveTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void saveTest() {
+    public void saveTest() {
         Region region = new Region();
         region.setName(GetRandomString());
 
@@ -61,7 +64,7 @@ class RegionServiceSaveTest {
     }
 
     @Test
-    void saveRegionCommandTest() {
+    public void saveRegionCommandTest() {
         Region region = GetRandomRegion();
         RegionCommand regionCommand = new RegionCommand();
         when(regionCommandConverterImplMock.convert(regionCommand)).thenReturn(region);

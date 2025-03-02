@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.places.countries;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
@@ -30,7 +32,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 
 @SpringBootTest
-class CountryFormControllerTest {
+@RunWith(SpringRunner.class)
+public class CountryFormControllerTest {
 
     @SuppressWarnings("unused")
     private CountryFormControllerImpl countryController;
@@ -51,8 +54,8 @@ class CountryFormControllerTest {
     private Model modelMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         countryController = new CountryFormControllerImpl(countryServiceMock,
                 countryCommandConverterMock,
                 countryConverterMock,
@@ -60,14 +63,14 @@ class CountryFormControllerTest {
     }
 
     @Test
-    void getNewCountryTest() {
+    public void getNewCountryTest() {
         Model model = new ExtendedModelMap();
         assertEquals("country/form", countryController.getNewCountry(model));
         assertEquals(CountryCommand.class, Objects.requireNonNull(model.getAttribute(AttributeConstants.COUNTRY_COMMAND)).getClass());
     }
 
     @Test
-    void countryEditTestEditTest() {
+    public void countryEditTestEditTest() {
         Long id = GetRandomLong();
         Country country = GetRandomCountry();
         when(countryServiceMock.findById(id)).thenReturn(country);
@@ -77,7 +80,7 @@ class CountryFormControllerTest {
     }
 
     @Test
-    void showByIdTest() {
+    public void showByIdTest() {
         Long id = GetRandomLong();
         Country country = GetRandomCountry();
         CountryCommand countryCommand = GetRandomCountryCommand();

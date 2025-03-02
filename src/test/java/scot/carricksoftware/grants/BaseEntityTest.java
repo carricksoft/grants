@@ -5,31 +5,34 @@
 
 package scot.carricksoftware.grants;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
-
-class BaseEntityTest {
+@SpringBootTest
+@RunWith(SpringRunner.class)
+public class BaseEntityTest {
 
     BaseEntity baseEntity;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         baseEntity = new BaseEntity();
     }
 
     @Test
-    void getIdTest() {
+    public void getIdTest() {
         assertNull(baseEntity.getId());
     }
 
     @Test
-    void setIdTest() {
+    public void setIdTest() {
         Long id = GetRandomLong();
         baseEntity.setId(id);
         assertEquals(id, baseEntity.getId());

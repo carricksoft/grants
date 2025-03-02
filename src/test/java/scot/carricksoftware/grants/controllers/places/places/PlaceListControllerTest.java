@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.places.places;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
@@ -22,7 +24,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class PlaceListControllerTest {
+@RunWith(SpringRunner.class)
+public class PlaceListControllerTest {
 
     private PlaceListControllerImpl controller;
 
@@ -38,13 +41,13 @@ class PlaceListControllerTest {
     @Mock
     List<Place> placeListMock;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         controller = new PlaceListControllerImpl(controllerHelperMock, placeServiceImplMock);
     }
 
     @Test
-    void getListPageTest() {
+    public void getListPageTest() {
         when(placeServiceImplMock.getPagedCountries(0)).thenReturn(placeListMock);
         assertEquals("place/list", controller.getListPage(modelMock));
         verify(modelMock).addAttribute("places", placeListMock);
@@ -52,7 +55,7 @@ class PlaceListControllerTest {
     }
 
     @Test
-    void getLastPageTest() {
+    public void getLastPageTest() {
         int page = 25;
         int count = page * ApplicationConstants.DEFAULT_PAGE_SIZE;
         when(placeServiceImplMock.count()).thenReturn((long) count);

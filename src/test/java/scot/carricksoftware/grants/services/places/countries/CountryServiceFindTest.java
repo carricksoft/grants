@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.services.places.countries;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +30,7 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCountry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
-class CountryServiceFindTest {
+public class CountryServiceFindTest {
 
     CountryService countryService;
 
@@ -42,8 +43,8 @@ class CountryServiceFindTest {
     @Mock
     CountryCommandConverterImpl countryCommandConverterImplMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         countryService = new CountryServiceImpl(
                 countryRepositoryMock,
                 countryConverterImplMock,
@@ -57,7 +58,7 @@ class CountryServiceFindTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void findByIdTest() {
+    public void findByIdTest() {
         Long id = GetRandomLong();
         Country country = GetRandomCountry();
         when(countryRepositoryMock.findById(id)).thenReturn(Optional.of(country));
@@ -65,14 +66,14 @@ class CountryServiceFindTest {
     }
 
     @Test
-    void findByIdNullTest() {
+    public void findByIdNullTest() {
         Long id = GetRandomLong();
         when(countryRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(countryService.findById(id));
     }
 
     @Test
-    void findAllTest() {
+    public void findAllTest() {
         List<Country> testList = new ArrayList<>();
         Country testCountry = new Country();
         testList.add(testCountry);

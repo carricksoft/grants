@@ -5,11 +5,14 @@
 
 package scot.carricksoftware.grants.services.census.censusentry;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
@@ -26,7 +29,8 @@ import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCe
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
-class CensusEntryServiceFindTest {
+@RunWith(SpringRunner.class)
+public class CensusEntryServiceFindTest {
 
     CensusEntryService censusEntryService;
 
@@ -39,8 +43,8 @@ class CensusEntryServiceFindTest {
     @Mock
     CensusEntryCommandConverterImpl censusEntryCommandConverterImplMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusEntryService = new CensusEntryServiceImpl(
                 censusEntryRepositoryMock,
                 censusEntryConverterImplMock,
@@ -54,7 +58,7 @@ class CensusEntryServiceFindTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void findByIdTest() {
+    public void findByIdTest() {
         Long id = GetRandomLong();
         CensusEntry censusEntry = GetRandomCensusEntry();
         when(censusEntryRepositoryMock.findById(id)).thenReturn(Optional.of(censusEntry));
@@ -62,7 +66,7 @@ class CensusEntryServiceFindTest {
     }
 
     @Test
-    void findByIdNullTest() {
+    public void findByIdNullTest() {
         Long id = GetRandomLong();
         when(censusEntryRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(censusEntryService.findById(id));

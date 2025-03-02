@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.controllers.places.countries;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -24,7 +26,8 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-class CountryFormControllerSaveOrUpdateTest {
+@RunWith(SpringRunner.class)
+public class CountryFormControllerSaveOrUpdateTest {
 
     @SuppressWarnings("unused")
     private CountryFormControllerImpl countryController;
@@ -49,8 +52,8 @@ class CountryFormControllerSaveOrUpdateTest {
     private CountryCommand countryCommand;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         countryController = new CountryFormControllerImpl(countryServiceMock,
                 countryCommandConverterMock,
                 countryConverterMock,
@@ -58,7 +61,7 @@ class CountryFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateNoErrorsTest() {
+    public void saveOrUpdateNoErrorsTest() {
         Long id = 4L;
         countryCommand.setId(id);
         when(countryServiceMock.saveCountryCommand(any(CountryCommand.class))).thenReturn(countryCommand);
@@ -66,7 +69,7 @@ class CountryFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateErrorsTest() {
+    public void saveOrUpdateErrorsTest() {
         Long id = 4L;
         countryCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
@@ -75,7 +78,7 @@ class CountryFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void CleaningTakesPlaceTest() {
+    public void CleaningTakesPlaceTest() {
         CountryCommand countryCommand = new CountryCommand();
         countryCommand.setId(4L);
         countryCommand.setName("england");

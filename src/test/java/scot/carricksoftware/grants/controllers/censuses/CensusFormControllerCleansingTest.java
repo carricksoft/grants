@@ -5,18 +5,18 @@
 
 package scot.carricksoftware.grants.controllers.censuses;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest
-class CensusFormControllerCleansingTest {
+public class CensusFormControllerCleansingTest {
 
 
     @Test
-    void dummyTest() {
+    public void dummyTest() {
         assertTrue(true);
     }
 

@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.services.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.domains.people.Person;
@@ -26,7 +28,8 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class PersonServiceFindTest {
+@RunWith(SpringRunner.class)
+public class PersonServiceFindTest {
 
     PersonService personService;
 
@@ -39,8 +42,8 @@ class PersonServiceFindTest {
     @Mock
     PersonCommandConverterImpl personCommandConverterImplMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         personService = new PersonServiceImpl(
                 personRepositoryMock,
                 personConverterImplMock,
@@ -54,7 +57,7 @@ class PersonServiceFindTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void findByIdTest() {
+    public void findByIdTest() {
         Long id = GetRandomLong();
         Person person = GetRandomPerson();
         when(personRepositoryMock.findById(id)).thenReturn(Optional.of(person));
@@ -62,14 +65,14 @@ class PersonServiceFindTest {
     }
 
     @Test
-    void findByIdNullTest() {
+    public void findByIdNullTest() {
         Long id = GetRandomLong();
         when(personRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(personService.findById(id));
     }
 
     @Test
-    void findAllTest() {
+    public void findAllTest() {
         List<Person> personList = new ArrayList<>();
         personList.add(GetRandomPerson());
         when(personRepositoryMock.findAll()).thenReturn(personList);

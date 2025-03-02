@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.domains.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 
@@ -18,45 +19,45 @@ import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCe
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
-class PersonTest {
+public class PersonTest {
     Person person;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         person = new Person();
     }
 
     @Test
-    void getFirstName() {
+    public void getFirstName() {
         assertNull(person.getFirstName());
     }
 
     @Test
-    void setFirstName() {
+    public void setFirstName() {
         String name = GetRandomString();
         person.setFirstName(name);
         assertEquals(name, person.getFirstName());
     }
 
     @Test
-    void getLastName() {
+    public void getLastName() {
         assertNull(person.getLastName());
     }
 
     @Test
-    void setLastName() {
+    public void setLastName() {
         String name = GetRandomString();
         person.setLastName(name);
         assertEquals(name, person.getLastName());
     }
 
     @Test
-    void getCensusEntriesTest() {
+    public void getCensusEntriesTest() {
         assertNull(person.getCensusEntries());
     }
 
     @Test
-    void setCensusEntries() {
+    public void setCensusEntries() {
         Set<CensusEntry> censusEntries = new HashSet<>();
         censusEntries.add(GetRandomCensusEntry());
         person.setCensusEntries(censusEntries);
@@ -64,7 +65,7 @@ class PersonTest {
     }
 
     @Test
-    void toStringTest() {
+    public void toStringTest() {
         person.setLastName(GetRandomString());
         person.setFirstName(GetRandomString());
         assertEquals(person.getLastName() + ", " + person.getFirstName(), person.toString());

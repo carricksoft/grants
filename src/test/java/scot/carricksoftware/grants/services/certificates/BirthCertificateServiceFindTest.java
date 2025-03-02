@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.services.certificates;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
@@ -26,7 +28,8 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
-class BirthCertificateServiceFindTest {
+@RunWith(SpringRunner.class)
+public class BirthCertificateServiceFindTest {
 
     BirthCertificateService birthCertificateService;
 
@@ -39,8 +42,8 @@ class BirthCertificateServiceFindTest {
     @Mock
     BirthCertificateCommandConverterImpl birthCertificateCommandConverterImplMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         birthCertificateService = new BirthCertificateServiceImpl(
                 birthCertificateRepositoryMock,
                 birthCertificateConverterImplMock,
@@ -54,7 +57,7 @@ class BirthCertificateServiceFindTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void findByIdTest() {
+    public void findByIdTest() {
         Long id = GetRandomLong();
         BirthCertificate birthCertificate = GetRandomBirthCertificate();
         when(birthCertificateRepositoryMock.findById(id)).thenReturn(Optional.of(birthCertificate));
@@ -62,14 +65,14 @@ class BirthCertificateServiceFindTest {
     }
 
     @Test
-    void findByIdNullTest() {
+    public void findByIdNullTest() {
         Long id = GetRandomLong();
         when(birthCertificateRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(birthCertificateService.findById(id));
     }
 
     @Test
-    void findAllTest() {
+    public void findAllTest() {
         List<BirthCertificate> birthCertificateList = new ArrayList<>();
         birthCertificateList.add(GetRandomBirthCertificate());
         when(birthCertificateRepositoryMock.findAll()).thenReturn(birthCertificateList);

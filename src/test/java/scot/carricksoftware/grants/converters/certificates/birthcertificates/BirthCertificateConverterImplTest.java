@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.converters.certificates.birthcertificates;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
@@ -16,18 +17,18 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
 
 
-class BirthCertificateConverterImplTest {
+public class BirthCertificateConverterImplTest {
 
     final BirthCertificateConverterImpl converter = new BirthCertificateConverterImpl();
     BirthCertificate source;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         source = new BirthCertificate();
     }
 
     @Test
-    void convert() {
+    public void convert() {
         Long id = GetRandomLong();
         Person person = GetRandomPerson();
 

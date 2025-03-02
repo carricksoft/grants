@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.domains.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 
@@ -15,27 +16,27 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
-class PersonEqualsTest {
+public class PersonEqualsTest {
     Person person;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         person = new Person();
     }
 
     @Test
-    void nullTest() {
+    public void nullTest() {
         assertNotEquals(null, person);
     }
 
     @SuppressWarnings("AssertBetweenInconvertibleTypes")
     @Test
-    void wrongTypeTest() {
+    public void wrongTypeTest() {
         assertNotEquals(person, GetRandomString());
     }
 
     @Test
-    void equalsTest() {
+    public void equalsTest() {
         Person testPerson = new Person();
         person.setFirstName(GetRandomString());
         testPerson.setFirstName(person.getFirstName());
@@ -46,7 +47,7 @@ class PersonEqualsTest {
     }
 
     @Test
-    void firstNameNotEqualTest() {
+    public void firstNameNotEqualTest() {
         Person testPerson = new Person();
         person.setFirstName(GetRandomString());
         testPerson.setFirstName("");
@@ -58,7 +59,7 @@ class PersonEqualsTest {
     }
 
     @Test
-    void lastNameNotEqualTest() {
+    public void lastNameNotEqualTest() {
         Person testPerson = new Person();
         person.setLastName(GetRandomString());
         person.setLastName("");

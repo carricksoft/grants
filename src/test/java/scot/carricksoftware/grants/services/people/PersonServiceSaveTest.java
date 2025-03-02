@@ -5,11 +5,14 @@
 
 package scot.carricksoftware.grants.services.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
@@ -22,7 +25,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
-class PersonServiceSaveTest {
+@RunWith(SpringRunner.class)
+public class PersonServiceSaveTest {
 
     PersonService personService;
 
@@ -36,8 +40,8 @@ class PersonServiceSaveTest {
     PersonCommandConverterImpl personCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         personService = new PersonServiceImpl(personRepositoryMock,
                 personConverterImplMock,
                 personCommandConverterImplMock);
@@ -47,9 +51,9 @@ class PersonServiceSaveTest {
     @Mock
     Pageable pageableMock;
 
-    @SuppressWarnings("EmptyMethod")
+
     @Test
-    void saveTest() {
+    public void saveTest() {
         Person person = new Person();
         person.setFirstName(GetRandomString());
         person.setLastName(GetRandomString());
@@ -60,7 +64,7 @@ class PersonServiceSaveTest {
     }
 
     @Test
-    void savePersonCommandTest() {
+    public void savePersonCommandTest() {
         Person person = GetRandomPerson();
         PersonCommand personCommand = new PersonCommand();
         when(personCommandConverterImplMock.convert(personCommand)).thenReturn(person);

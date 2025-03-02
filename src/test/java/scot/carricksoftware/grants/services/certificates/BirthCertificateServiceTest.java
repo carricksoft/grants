@@ -5,12 +5,15 @@
 
 package scot.carricksoftware.grants.services.certificates;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
@@ -27,7 +30,8 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
-class BirthCertificateServiceTest {
+@RunWith(SpringRunner.class)
+public class BirthCertificateServiceTest {
 
     BirthCertificateService birthCertificateService;
 
@@ -41,8 +45,8 @@ class BirthCertificateServiceTest {
     BirthCertificateCommandConverterImpl birthCertificateCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         birthCertificateService = new BirthCertificateServiceImpl(birthCertificateRepositoryMock,
                 birthCertificateConverterImplMock,
                 birthCertificateCommandConverterImplMock);
@@ -58,21 +62,21 @@ class BirthCertificateServiceTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void deleteByIdTest() {
+    public void deleteByIdTest() {
         Long id = GetRandomLong();
         birthCertificateService.deleteById(id);
         verify(birthCertificateRepositoryMock).deleteById(id);
     }
 
     @Test
-    void CountTest() {
+    public void CountTest() {
         long result = GetRandomLong();
         when(birthCertificateRepositoryMock.count()).thenReturn(result);
         assertEquals(result, birthCertificateService.count());
     }
 
     @Test
-    void getPagedBirthCertificateEntriesTest() {
+    public void getPagedBirthCertificateEntriesTest() {
         List<BirthCertificate> result = new ArrayList<>();
         BirthCertificate birthCertificate = GetRandomBirthCertificate();
         result.add(birthCertificate);

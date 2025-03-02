@@ -5,8 +5,8 @@
 
 package scot.carricksoftware.grants.services.places.countries;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
@@ -24,7 +24,7 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCountry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
-class CountryServiceSaveTest {
+public class CountryServiceSaveTest {
 
     CountryService countryService;
 
@@ -38,8 +38,8 @@ class CountryServiceSaveTest {
     CountryCommandConverterImpl countryCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         countryService = new CountryServiceImpl(countryRepositoryMock,
                 countryConverterImplMock,
                 countryCommandConverterImplMock);
@@ -49,9 +49,9 @@ class CountryServiceSaveTest {
     @Mock
     Pageable pageableMock;
 
-    @SuppressWarnings("EmptyMethod")
+
     @Test
-    void saveTest() {
+    public void saveTest() {
         Country country = new Country();
         country.setName(GetRandomString());
 
@@ -61,7 +61,7 @@ class CountryServiceSaveTest {
     }
 
     @Test
-    void saveCountryCommandTest() {
+    public void saveCountryCommandTest() {
         Country country = GetRandomCountry();
         CountryCommand countryCommand = new CountryCommand();
         when(countryCommandConverterImplMock.convert(countryCommand)).thenReturn(country);

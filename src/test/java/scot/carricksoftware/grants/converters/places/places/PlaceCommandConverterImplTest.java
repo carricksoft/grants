@@ -5,8 +5,8 @@
 
 package scot.carricksoftware.grants.converters.places.places;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import scot.carricksoftware.grants.commands.places.PlaceCommand;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Place;
@@ -18,18 +18,18 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomRegion;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
-class PlaceCommandConverterImplTest {
+public class PlaceCommandConverterImplTest {
 
     final PlaceCommandConverterImpl converter = new PlaceCommandConverterImpl();
     PlaceCommand source;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         source = new PlaceCommand();
     }
 
     @Test
-    void convert() {
+    public void convert() {
         Long id = GetRandomLong();
         String name = GetRandomString();
         Country country = GetRandomCountry();

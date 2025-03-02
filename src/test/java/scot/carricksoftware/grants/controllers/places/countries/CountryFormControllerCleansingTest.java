@@ -5,10 +5,13 @@
 
 package scot.carricksoftware.grants.controllers.places.countries;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -22,7 +25,8 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-class CountryFormControllerCleansingTest {
+@RunWith(SpringRunner.class)
+public class CountryFormControllerCleansingTest {
 
     @SuppressWarnings("unused")
     private CountryFormControllerImpl countryController;
@@ -46,8 +50,8 @@ class CountryFormControllerCleansingTest {
     BindingResult bindingResultMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         countryController = new CountryFormControllerImpl(countryServiceMock,
                 countryCommandConverterMock,
                 countryConverterMock,
@@ -56,7 +60,7 @@ class CountryFormControllerCleansingTest {
 
 
     @Test
-    void saveOrUpdateCleansingTest() {
+    public void saveOrUpdateCleansingTest() {
         String name = "goat";
         String uName = "Goat";
         when(countryServiceMock.saveCountryCommand(any())).thenReturn(countryCommandMock);

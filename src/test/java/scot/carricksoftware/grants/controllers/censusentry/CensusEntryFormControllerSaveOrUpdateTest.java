@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.controllers.censusentry;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -25,7 +27,8 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-class CensusEntryFormControllerSaveOrUpdateTest {
+@RunWith(SpringRunner.class)
+public class CensusEntryFormControllerSaveOrUpdateTest {
 
     @SuppressWarnings("unused")
     private CensusEntryFormControllerImpl censusEntryController;
@@ -56,8 +59,8 @@ class CensusEntryFormControllerSaveOrUpdateTest {
     private CensusEntryCommand censusEntryCommand;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
                 censusServiceMock,
                 censusEntryCommandConverterMock,
@@ -67,7 +70,7 @@ class CensusEntryFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateNoErrorsTest() {
+    public void saveOrUpdateNoErrorsTest() {
         Long id = 4L;
         censusEntryCommand.setId(id);
         when(censusEntryServiceMock.saveCensusEntryCommand(any(CensusEntryCommand.class))).thenReturn(censusEntryCommand);
@@ -75,11 +78,12 @@ class CensusEntryFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateErrorsTest() {
+    public void saveOrUpdateErrorsTest() {
         Long id = 4L;
         censusEntryCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
         when(censusEntryServiceMock.saveCensusEntryCommand(any(CensusEntryCommand.class))).thenReturn(censusEntryCommand);
+        //noinspection SpellCheckingInspection
         assertEquals("censusentry/form", censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock));
     }
 

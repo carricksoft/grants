@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
@@ -30,7 +32,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPersonCo
 
 
 @SpringBootTest
-class PersonFormControllerTest {
+@RunWith(SpringRunner.class)
+public class PersonFormControllerTest {
 
     @SuppressWarnings("unused")
     private PersonFormControllerImpl personController;
@@ -50,8 +53,8 @@ class PersonFormControllerTest {
     @Mock
     private Model modelMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         personController = new PersonFormControllerImpl(personServiceMock,
                 personCommandConverterMock,
                 personConverterMock,
@@ -59,14 +62,14 @@ class PersonFormControllerTest {
     }
 
     @Test
-    void getNewPersonTest() {
+    public void getNewPersonTest() {
         Model model = new ExtendedModelMap();
         assertEquals("person/form", personController.getNewPerson(model));
         assertEquals(PersonCommand.class, Objects.requireNonNull(model.getAttribute(AttributeConstants.PERSON_COMMAND)).getClass());
     }
 
     @Test
-    void personEditTestEditTest() {
+    public void personEditTestEditTest() {
         Long id = GetRandomLong();
         Person person = GetRandomPerson();
         when(personServiceMock.findById(id)).thenReturn(person);
@@ -76,7 +79,7 @@ class PersonFormControllerTest {
     }
 
     @Test
-    void showByIdTest() {
+    public void showByIdTest() {
         Long id = GetRandomLong();
         Person person = GetRandomPerson();
         PersonCommand personCommand = GetRandomPersonCommand();

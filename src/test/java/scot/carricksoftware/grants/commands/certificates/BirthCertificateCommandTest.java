@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.commands.certificates;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.domains.people.Person;
 
@@ -17,30 +18,30 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
 
 
 @SpringBootTest
-class BirthCertificateCommandTest {
+public class BirthCertificateCommandTest {
 
     BirthCertificateCommand birthCertificateCommand;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         birthCertificateCommand = new BirthCertificateCommand();
     }
 
 
     @Test
-    void setIdTest() {
+    public void setIdTest() {
         Long id = GetRandomLong();
         birthCertificateCommand.setId(id);
         assertEquals(id, birthCertificateCommand.getId());
     }
 
     @Test
-    void getPersonTest() {
+    public void getPersonTest() {
         assertNull(birthCertificateCommand.getPerson());
     }
 
     @Test
-    void setPersonTest() {
+    public void setPersonTest() {
         Person person = GetRandomPerson();
         birthCertificateCommand.setPerson(person);
         assertEquals(person, birthCertificateCommand.getPerson());

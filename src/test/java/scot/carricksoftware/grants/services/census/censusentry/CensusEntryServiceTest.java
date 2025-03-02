@@ -5,12 +5,14 @@
 
 package scot.carricksoftware.grants.services.census.censusentry;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
@@ -29,7 +31,8 @@ import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCe
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
-class CensusEntryServiceTest {
+@RunWith(SpringRunner.class)
+public class CensusEntryServiceTest {
 
     CensusEntryService censusEntryService;
 
@@ -43,8 +46,8 @@ class CensusEntryServiceTest {
     CensusEntryCommandConverterImpl censusEntryCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusEntryService = new CensusEntryServiceImpl(censusEntryRepositoryMock,
                 censusEntryConverterImplMock,
                 censusEntryCommandConverterImplMock);
@@ -60,21 +63,21 @@ class CensusEntryServiceTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void deleteByIdTest() {
+    public void deleteByIdTest() {
         Long id = GetRandomLong();
         censusEntryService.deleteById(id);
         verify(censusEntryRepositoryMock).deleteById(id);
     }
 
     @Test
-    void CountTest() {
+    public void CountTest() {
         long result = GetRandomLong();
         when(censusEntryRepositoryMock.count()).thenReturn(result);
         assertEquals(result, censusEntryService.count());
     }
 
     @Test
-    void getPagedCensusEntryEntriesTest() {
+    public void getPagedCensusEntryEntriesTest() {
         List<CensusEntry> result = new ArrayList<>();
         CensusEntry censusEntry = GetRandomCensusEntry();
         result.add(censusEntry);

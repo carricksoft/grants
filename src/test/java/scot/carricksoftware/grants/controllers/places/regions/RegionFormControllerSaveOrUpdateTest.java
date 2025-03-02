@@ -5,8 +5,8 @@
 
 package scot.carricksoftware.grants.controllers.places.regions;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-class RegionFormControllerSaveOrUpdateTest {
+public class RegionFormControllerSaveOrUpdateTest {
 
     @SuppressWarnings("unused")
     private RegionFormControllerImpl regionController;
@@ -49,8 +49,8 @@ class RegionFormControllerSaveOrUpdateTest {
     private RegionCommand regionCommand;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         regionController = new RegionFormControllerImpl(regionServiceMock,
                 regionCommandConverterMock,
                 regionConverterMock,
@@ -58,7 +58,7 @@ class RegionFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateNoErrorsTest() {
+    public void saveOrUpdateNoErrorsTest() {
         Long id = 4L;
         regionCommand.setId(id);
         when(regionServiceMock.saveRegionCommand(any(RegionCommand.class))).thenReturn(regionCommand);
@@ -66,7 +66,7 @@ class RegionFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateErrorsTest() {
+    public void saveOrUpdateErrorsTest() {
         Long id = 4L;
         regionCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
@@ -75,7 +75,7 @@ class RegionFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void CleaningTakesPlaceTest() {
+    public void CleaningTakesPlaceTest() {
         RegionCommand regionCommand = new RegionCommand();
         regionCommand.setId(4L);
         regionCommand.setName("england");

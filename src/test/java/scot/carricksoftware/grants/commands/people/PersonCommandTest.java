@@ -5,72 +5,74 @@
 
 package scot.carricksoftware.grants.commands.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import scot.carricksoftware.grants.domains.places.Place;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static junit.framework.TestCase.assertNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
-class PersonCommandTest {
+public class PersonCommandTest {
 
     PersonCommand command;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         command = new PersonCommand();
     }
 
     @Test
-    void getIdTest() {
+    public void getIdTest() {
         assertNull(command.getId());
     }
 
     @Test
-    void setIdTest() {
+    public void setIdTest() {
         Long Id = GetRandomLong();
         command.setId(Id);
         assertEquals(Id, command.getId());
     }
 
     @Test
-    void getFirstNameTest() {
+    public void getFirstNameTest() {
         assertNull(command.getFirstName());
     }
 
     @Test
-    void setFirstNameTest() {
+    public void setFirstNameTest() {
         String name = GetRandomString();
         command.setFirstName(name);
         assertEquals(name, command.getFirstName());
     }
 
     @Test
-    void getLastNameTest() {
+    public void getLastNameTest() {
         assertNull(command.getLastName());
     }
 
     @Test
-    void setLastNameTest() {
+    public void setLastNameTest() {
         String name = GetRandomString();
         command.setLastName(name);
         assertEquals(name, command.getLastName());
     }
 
     @Test
-    void getPlacesTest() {
+    public void getPlacesTest() {
         assertNull(command.getPlaces());
     }
 
     @Test
-    void setPlacesTest() {
+    public void setPlacesTest() {
         Set<Place> places = new HashSet<>();
         places.add(GetRandomPlace());
         command.setPlaces(places);

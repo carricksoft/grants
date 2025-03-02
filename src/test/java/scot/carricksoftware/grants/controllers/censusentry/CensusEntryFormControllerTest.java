@@ -5,8 +5,8 @@
 
 package scot.carricksoftware.grants.controllers.censusentry;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.ExtendedModelMap;
@@ -31,8 +31,9 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensusEn
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 
+@SuppressWarnings("SpellCheckingInspection")
 @SpringBootTest
-class CensusEntryFormControllerTest {
+public class CensusEntryFormControllerTest {
 
     @SuppressWarnings("unused")
     private CensusEntryFormControllerImpl censusEntryController;
@@ -59,8 +60,8 @@ class CensusEntryFormControllerTest {
     private Model modelMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
                 censusServiceMock,
                 censusEntryCommandConverterMock,
@@ -70,14 +71,14 @@ class CensusEntryFormControllerTest {
     }
 
     @Test
-    void getNewCensusEntryTest() {
+    public void getNewCensusEntryTest() {
         Model model = new ExtendedModelMap();
         assertEquals("censusentry/form", censusEntryController.getNewCensusEntry(model));
         assertEquals(CensusEntryCommand.class, Objects.requireNonNull(model.getAttribute(AttributeConstants.CENSUSENTRY_COMMAND)).getClass());
     }
 
     @Test
-    void censusEntryEditTestEditTest() {
+    public void censusEntryEditTestEditTest() {
         Long id = GetRandomLong();
         CensusEntry censusEntry = GetRandomCensusEntry();
         CensusEntryCommand censusEntryCommand = GetRandomCensusEntryCommand();
@@ -89,7 +90,7 @@ class CensusEntryFormControllerTest {
     }
 
     @Test
-    void showByIdTest() {
+    public void showByIdTest() {
         Long id = GetRandomLong();
         CensusEntry censusEntry = GetRandomCensusEntry();
         CensusEntryCommand censusEntryCommand = GetRandomCensusEntryCommand();

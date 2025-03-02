@@ -5,11 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.censuses;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.controllers.census.CensusFormControllerImpl;
@@ -25,7 +26,8 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-class CensusFormControllerSaveOrUpdateTest {
+@RunWith(SpringRunner.class)
+public class CensusFormControllerSaveOrUpdateTest {
 
     @SuppressWarnings("unused")
     private CensusFormControllerImpl censusController;
@@ -36,7 +38,6 @@ class CensusFormControllerSaveOrUpdateTest {
     @Mock
     private PlaceService placeServiceMock;
 
-
     @Mock
     private CensusCommandConverterImpl censusCommandConverterMock;
 
@@ -46,16 +47,19 @@ class CensusFormControllerSaveOrUpdateTest {
     @Mock
     private CapitalisationImpl capitalisationMock;
 
-
     @Mock
     BindingResult bindingResultMock;
 
-    @Autowired
-    private CensusCommand censusCommand;
+    CensusCommand censusCommand;
+
+    @Before
+    public void setup() {
+        censusCommand = new CensusCommand();
+    }
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusController = new CensusFormControllerImpl(censusServiceMock,
                 censusCommandConverterMock,
                 censusConverterMock,
@@ -65,7 +69,7 @@ class CensusFormControllerSaveOrUpdateTest {
 
 
     @Test
-    void saveOrUpdateNoErrorsTest() {
+    public void saveOrUpdateNoErrorsTest() {
         Long id = 4L;
         censusCommand.setId(id);
         when(censusServiceMock.saveCensusCommand(any(CensusCommand.class))).thenReturn(censusCommand);
@@ -73,7 +77,7 @@ class CensusFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateErrorsTest() {
+    public void saveOrUpdateErrorsTest() {
         Long id = 4L;
         censusCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);

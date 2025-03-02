@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.places.places;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.commands.places.PlaceCommand;
@@ -32,7 +34,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlaceCom
 
 
 @SpringBootTest
-class PlaceFormControllerTest {
+@RunWith(SpringRunner.class)
+public class PlaceFormControllerTest {
 
     @SuppressWarnings("unused")
     private PlaceFormControllerImpl placeController;
@@ -59,8 +62,8 @@ class PlaceFormControllerTest {
     private Model modelMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         placeController = new PlaceFormControllerImpl(placeServiceMock,
                 placeCommandConverterMock,
                 placeConverterMock,
@@ -70,14 +73,14 @@ class PlaceFormControllerTest {
     }
 
     @Test
-    void getNewPlaceTest() {
+    public void getNewPlaceTest() {
         Model model = new ExtendedModelMap();
         assertEquals("place/form", placeController.getNewPlace(model));
         assertEquals(PlaceCommand.class, Objects.requireNonNull(model.getAttribute(AttributeConstants.PLACE_COMMAND)).getClass());
     }
 
     @Test
-    void placeEditTestEditTest() {
+    public void placeEditTestEditTest() {
         Long id = GetRandomLong();
         Place place = GetRandomPlace();
         when(placeServiceMock.findById(id)).thenReturn(place);
@@ -87,7 +90,7 @@ class PlaceFormControllerTest {
     }
 
     @Test
-    void showByIdTest() {
+    public void showByIdTest() {
         Long id = GetRandomLong();
         Place place = GetRandomPlace();
         PlaceCommand placeCommand = GetRandomPlaceCommand();

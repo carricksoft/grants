@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.places.places;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -28,7 +30,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 
 @SpringBootTest
-class PlaceFormControllerITest {
+@RunWith(SpringRunner.class)
+public class PlaceFormControllerITest {
 
     @SuppressWarnings("unused")
     private PlaceFormController placeController;
@@ -51,8 +54,8 @@ class PlaceFormControllerITest {
     @Mock
     private CapitalisationImpl capitalisationMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         placeController = new PlaceFormControllerImpl(placeServiceMock,
                 placeCommandConverterMock,
                 placeConverterMock,
@@ -62,7 +65,7 @@ class PlaceFormControllerITest {
     }
 
     @Test
-    void getNewPlaceTest() throws Exception {
+    public void getNewPlaceTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(placeController).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.PLACE_NEW))
@@ -71,7 +74,7 @@ class PlaceFormControllerITest {
     }
 
     @Test
-    void PostPlaceTest() throws Exception {
+    public void PostPlaceTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(placeController).build();
         Long id = GetRandomLong();
         PlaceCommand placeCommand = new PlaceCommand();

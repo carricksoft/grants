@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.services.places.places;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
@@ -29,7 +30,7 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 
 @SpringBootTest
-class PlaceServiceFindTest {
+public class PlaceServiceFindTest {
 
     PlaceService placeService;
 
@@ -42,8 +43,8 @@ class PlaceServiceFindTest {
     @Mock
     PlaceCommandConverterImpl placeCommandConverterImplMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         placeService = new PlaceServiceImpl(
                 placeRepositoryMock,
                 placeConverterImplMock,
@@ -57,7 +58,7 @@ class PlaceServiceFindTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void findByIdTest() {
+    public void findByIdTest() {
         Long id = GetRandomLong();
         Place place = GetRandomPlace();
         when(placeRepositoryMock.findById(id)).thenReturn(Optional.of(place));
@@ -65,14 +66,14 @@ class PlaceServiceFindTest {
     }
 
     @Test
-    void findByIdNullTest() {
+    public void findByIdNullTest() {
         Long id = GetRandomLong();
         when(placeRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(placeService.findById(id));
     }
 
     @Test
-    void findAllTest() {
+    public void findAllTest() {
         List<Place> testList = new ArrayList<>();
         Place testPlace = new Place();
         testList.add(testPlace);

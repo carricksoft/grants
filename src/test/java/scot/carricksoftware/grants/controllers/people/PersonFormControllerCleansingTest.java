@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -22,7 +24,8 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-class PersonFormControllerCleansingTest {
+@RunWith(SpringRunner.class)
+public class PersonFormControllerCleansingTest {
 
     @SuppressWarnings("unused")
     private PersonFormControllerImpl personController;
@@ -46,8 +49,8 @@ class PersonFormControllerCleansingTest {
     BindingResult bindingResultMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         personController = new PersonFormControllerImpl(personServiceMock,
                 personCommandConverterMock,
                 personConverterMock,
@@ -55,7 +58,7 @@ class PersonFormControllerCleansingTest {
     }
 
     @Test
-    void saveOrUpdateCleansingFirstNameTest() {
+    public void saveOrUpdateCleansingFirstNameTest() {
         String name = "goat";
         String uName = "Goat";
         when(personServiceMock.savePersonCommand(any())).thenReturn(personCommandMock);
@@ -67,7 +70,7 @@ class PersonFormControllerCleansingTest {
     }
 
     @Test
-    void saveOrUpdateCleansingLastNameTest() {
+    public void saveOrUpdateCleansingLastNameTest() {
         String name = "goat";
         String uName = "Goat";
         when(personServiceMock.savePersonCommand(any())).thenReturn(personCommandMock);

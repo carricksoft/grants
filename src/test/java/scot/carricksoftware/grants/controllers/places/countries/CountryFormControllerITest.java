@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.places.countries;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -26,7 +28,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 
 @SpringBootTest
-class CountryFormControllerITest {
+@RunWith(SpringRunner.class)
+public class CountryFormControllerITest {
 
     @SuppressWarnings("unused")
     private CountryFormController countryController;
@@ -43,8 +46,8 @@ class CountryFormControllerITest {
     @Mock
     private CapitalisationImpl capitalisationMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         countryController = new CountryFormControllerImpl(countryServiceMock,
                 countryCommandConverterMock,
                 countryConverterMock,
@@ -52,7 +55,7 @@ class CountryFormControllerITest {
     }
 
     @Test
-    void getNewCountryTest() throws Exception {
+    public void getNewCountryTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(countryController).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.COUNTRY_NEW))
@@ -61,7 +64,7 @@ class CountryFormControllerITest {
     }
 
     @Test
-    void PostCountryTest() throws Exception {
+    public void PostCountryTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(countryController).build();
         Long id = GetRandomLong();
         CountryCommand countryCommand = new CountryCommand();

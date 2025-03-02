@@ -5,11 +5,14 @@
 
 package scot.carricksoftware.grants.services.census.census;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.converters.census.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
@@ -28,7 +31,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
-class CensusServiceFindTest {
+@RunWith(SpringRunner.class)
+public class CensusServiceFindTest {
 
     CensusService censusService;
 
@@ -41,8 +45,8 @@ class CensusServiceFindTest {
     @Mock
     CensusCommandConverterImpl censusCommandConverterImplMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusService = new CensusServiceImpl(
                 censusRepositoryMock,
                 censusConverterImplMock,
@@ -56,7 +60,7 @@ class CensusServiceFindTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void findByIdTest() {
+    public void findByIdTest() {
         Long id = GetRandomLong();
         Census census = GetRandomCensus();
         when(censusRepositoryMock.findById(id)).thenReturn(Optional.of(census));
@@ -64,14 +68,14 @@ class CensusServiceFindTest {
     }
 
     @Test
-    void findByIdNullTest() {
+    public void findByIdNullTest() {
         Long id = GetRandomLong();
         when(censusRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(censusService.findById(id));
     }
 
     @Test
-    void findAllTest() {
+    public void findAllTest() {
         List<Census> censusList = new ArrayList<>();
         censusList.add(GetRandomCensus());
         when(censusRepositoryMock.findAll()).thenReturn(censusList);

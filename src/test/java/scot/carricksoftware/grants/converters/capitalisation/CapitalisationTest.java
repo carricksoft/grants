@@ -5,72 +5,73 @@
 
 package scot.carricksoftware.grants.converters.capitalisation;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class CapitalisationTest {
+public class CapitalisationTest {
 
     private Capitalisation capitalisation;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         capitalisation = new CapitalisationImpl();
     }
 
     @Test
-    void firstTest() {
+    public void firstTest() {
         assertEquals("Smith", capitalisation.getCapitalisation("Smith"));
     }
 
     @Test
-    void secondTest() {
+    public void secondTest() {
         assertEquals("Smith", capitalisation.getCapitalisation("smith"));
     }
 
     @Test
-    void thirdTest() {
+    public void thirdTest() {
         assertEquals("Smith", capitalisation.getCapitalisation("SMITH"));
     }
 
     @Test
-    void fourthTest() {
+    public void fourthTest() {
         assertEquals("Smith Jones", capitalisation.getCapitalisation("smith jones"));
     }
 
     @Test
-    void fifthTest() {
+    public void fifthTest() {
         assertEquals("Smith-Jones", capitalisation.getCapitalisation("smith-jones"));
     }
 
     @Test
-    void sixthTest() {
+    public void sixthTest() {
         assertEquals("McSmith", capitalisation.getCapitalisation("mcSmith"));
     }
 
     @Test
-    void seventhTest() {
+    public void seventhTest() {
         //noinspection SpellCheckingInspection
         assertEquals("Macsmith", capitalisation.getCapitalisation("macsmith"));
     }
 
     @Test
-    void eighthTest() {
+    public void eighthTest() {
         assertEquals("MacSmith", capitalisation.getCapitalisation("macSmith"));
     }
 
     @Test
-    void ninthTest() {
+    public void ninthTest() {
         //noinspection SpellCheckingInspection
         assertEquals("McSmith", capitalisation.getCapitalisation("mcsmith"));
     }
 
     @Test
-    void nullTest() {
+    public void nullTest() {
         assertEquals("", capitalisation.getCapitalisation(null));
     }
 

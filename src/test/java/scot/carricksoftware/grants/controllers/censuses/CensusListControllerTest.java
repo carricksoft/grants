@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.censuses;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
@@ -23,7 +25,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class CensusListControllerTest {
+@RunWith(SpringRunner.class)
+public class CensusListControllerTest {
 
     private CensusListControllerImpl controller;
 
@@ -39,13 +42,13 @@ class CensusListControllerTest {
     @Mock
     List<Census> censusListMock;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         controller = new CensusListControllerImpl(controllerHelperMock, censusServiceImplMock);
     }
 
     @Test
-    void getListPageTest() {
+    public void getListPageTest() {
         when(censusServiceImplMock.getPagedCensuses(0)).thenReturn(censusListMock);
         assertEquals("census/list", controller.getListPage(modelMock));
         verify(modelMock).addAttribute("censuses", censusListMock);
@@ -53,7 +56,7 @@ class CensusListControllerTest {
     }
 
     @Test
-    void getLastPageTest() {
+    public void getLastPageTest() {
         int page = 25;
         int count = page * ApplicationConstants.DEFAULT_PAGE_SIZE;
         when(censusServiceImplMock.count()).thenReturn((long) count);

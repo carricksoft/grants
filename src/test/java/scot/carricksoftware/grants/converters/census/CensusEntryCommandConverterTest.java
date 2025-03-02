@@ -5,8 +5,8 @@
 
 package scot.carricksoftware.grants.converters.census;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryCommandConverter;
@@ -22,17 +22,17 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
-class CensusEntryCommandConverterTest {
+public class CensusEntryCommandConverterTest {
 
     private CensusEntryCommandConverter converter;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         converter = new CensusEntryCommandConverterImpl();
     }
 
     @Test
-    void convertTest() {
+    public void convertTest() {
         CensusEntryCommand source = new CensusEntryCommand();
         Long id = GetRandomLong();
         Census census = GetRandomCensus();

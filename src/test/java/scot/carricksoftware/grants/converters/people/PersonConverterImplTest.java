@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.converters.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.domains.people.Person;
@@ -16,18 +17,18 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @Component
-class PersonConverterImplTest {
+public class PersonConverterImplTest {
 
     final PersonConverterImpl converter = new PersonConverterImpl();
     Person source;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         source = new Person();
     }
 
     @Test
-    void convertTest() {
+    public void convertTest() {
         Long id = GetRandomLong();
         String firstName = GetRandomString();
         String lastName = GetRandomString();

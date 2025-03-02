@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.services.places.places;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.commands.places.PlaceCommand;
 import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
@@ -24,7 +26,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
-class PlaceServiceSaveTest {
+@RunWith(SpringRunner.class)
+public class PlaceServiceSaveTest {
 
     PlaceService placeService;
 
@@ -38,8 +41,8 @@ class PlaceServiceSaveTest {
     PlaceCommandConverterImpl placeCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         placeService = new PlaceServiceImpl(placeRepositoryMock,
                 placeConverterImplMock,
                 placeCommandConverterImplMock);
@@ -51,7 +54,7 @@ class PlaceServiceSaveTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void saveTest() {
+    public void saveTest() {
         Place place = new Place();
         place.setName(GetRandomString());
 
@@ -61,7 +64,7 @@ class PlaceServiceSaveTest {
     }
 
     @Test
-    void savePlaceCommandTest() {
+    public void savePlaceCommandTest() {
         Place place = GetRandomPlace();
         PlaceCommand placeCommand = new PlaceCommand();
         when(placeCommandConverterImplMock.convert(placeCommand)).thenReturn(place);

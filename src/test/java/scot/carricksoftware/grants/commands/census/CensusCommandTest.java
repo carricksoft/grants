@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.commands.census;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+
+import org.junit.Test;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.places.Place;
@@ -21,58 +22,58 @@ import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCe
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 
-class CensusCommandTest {
+public class CensusCommandTest {
 
     private CensusCommand censusCommand;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusCommand = new CensusCommand();
     }
 
     @Test
-    void getId() {
+    public void getId() {
         assertNull(censusCommand.getId());
     }
 
     @Test
-    void setId() {
+    public void setId() {
         Long id = GetRandomLong();
         censusCommand.setId(id);
         assertEquals(id, censusCommand.getId());
     }
 
     @Test
-    void getPlace() {
+    public void getPlace() {
         assertNull(censusCommand.getPlace());
     }
 
     @Test
-    void setPlace() {
+    public void setPlace() {
         Place place = GetRandomPlace();
         censusCommand.setPlace(place);
         assertEquals(place, censusCommand.getPlace());
     }
 
     @Test
-    void getDate() {
+    public void getDate() {
         assertNull(censusCommand.getDate());
     }
 
     @Test
-    void setDate() {
+    public void setDate() {
         String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
         censusCommand.setDate(date);
         assertEquals(date, censusCommand.getDate());
     }
 
     @Test
-    void getCensusEntriesTest() {
+    public void getCensusEntriesTest() {
         assertNull(censusCommand.getCensusEntries());
     }
 
     @Test
-    void setCensusEntriesTest() {
+    public void setCensusEntriesTest() {
         Set<CensusEntry> censusEntries = new HashSet<>();
         censusEntries.add(GetRandomCensusEntry());
         censusCommand.setCensusEntries(censusEntries);

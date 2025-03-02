@@ -5,8 +5,8 @@
 
 package scot.carricksoftware.grants.domains.places;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.domains.census.Census;
 
@@ -23,69 +23,69 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomRegion;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
-class PlaceTest {
+public class PlaceTest {
     Place place;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         place = new Place();
     }
 
     @Test
-    void getNameTest() {
+    public void getNameTest() {
         assertNull(place.getName());
     }
 
     @Test
-    void setNameTest() {
+    public void setNameTest() {
         String name = GetRandomString();
         place.setName(name);
         assertEquals(name, place.getName());
     }
 
     @Test
-    void getCountryTest() {
+    public void getCountryTest() {
         assertNull(place.getCountry());
     }
 
     @Test
-    void setCountryTest() {
+    public void setCountryTest() {
         Country country = GetRandomCountry();
         place.setCountry(country);
         assertEquals(country, place.getCountry());
     }
 
     @Test
-    void getRegionTest() {
+    public void getRegionTest() {
         assertNull(place.getRegion());
     }
 
     @Test
-    void setRegionTest() {
+    public void setRegionTest() {
         Region region = GetRandomRegion();
         place.setRegion(region);
         assertEquals(region, place.getRegion());
     }
 
     @Test
-    void getIdTest() {
+    public void getIdTest() {
         assertNull(place.getId());
     }
 
     @Test
-    void setIdTest() {
+    public void setIdTest() {
         Long id = GetRandomLong();
         place.setId(id);
         assertEquals(id, place.getId());
     }
 
     @Test
-    void getCensusesTest() {
+    public void getCensusesTest() {
         assertNull(place.getCensuses());
     }
 
     @Test
-    void setCensusesTest() {
+    public void setCensusesTest() {
         Census census = GetRandomCensus();
         Set<Census> censusSet = new HashSet<>();
         censusSet.add(census);
@@ -96,12 +96,12 @@ class PlaceTest {
     }
 
     @Test
-    void getGetToStringNullTest() {
+    public void getGetToStringNullTest() {
         assertEquals("", place.toString());
     }
 
     @Test
-    void getGetToStringNotNullTest() {
+    public void getGetToStringNotNullTest() {
         Region region = GetRandomRegion();
         Country country = GetRandomCountry();
         String name = GetRandomString();

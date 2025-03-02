@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.services.places.regions;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.converters.places.regions.RegionCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl;
 import scot.carricksoftware.grants.domains.places.Region;
@@ -29,7 +31,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomRegion;
 
 @SpringBootTest
-class RegionServiceFindTest {
+@RunWith(SpringRunner.class)
+public class RegionServiceFindTest {
 
     RegionService regionService;
 
@@ -42,8 +45,8 @@ class RegionServiceFindTest {
     @Mock
     RegionCommandConverterImpl regionCommandConverterImplMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         regionService = new RegionServiceImpl(
                 regionRepositoryMock,
                 regionConverterImplMock,
@@ -57,7 +60,7 @@ class RegionServiceFindTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void findByIdTest() {
+    public void findByIdTest() {
         Long id = GetRandomLong();
         Region region = GetRandomRegion();
         when(regionRepositoryMock.findById(id)).thenReturn(Optional.of(region));
@@ -65,14 +68,14 @@ class RegionServiceFindTest {
     }
 
     @Test
-    void findByIdNullTest() {
+    public void findByIdNullTest() {
         Long id = GetRandomLong();
         when(regionRepositoryMock.findById(id)).thenReturn(Optional.empty());
         assertNull(regionService.findById(id));
     }
 
     @Test
-    void findAllTest() {
+    public void findAllTest() {
         List<Region> testList = new ArrayList<>();
         Region testRegion = GetRandomRegion();
         testList.add(testRegion);

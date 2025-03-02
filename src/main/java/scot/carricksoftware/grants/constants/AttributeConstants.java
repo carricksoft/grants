@@ -29,11 +29,13 @@ public class AttributeConstants {
     public static final String CENSUSES = "censuses";
     public static final String CENSUS_COMMAND = "censusCommand";
 
+    @SuppressWarnings("SpellCheckingInspection")
     public static final String CENSUSENTRIES = "censusEntries";
+    @SuppressWarnings("SpellCheckingInspection")
     public static final String CENSUSENTRY_COMMAND = "censusEntryCommand";
 
     @SuppressWarnings({"SpellCheckingInspection", "unused"})
     public static final String BIRTHCERTIFICATES = "birthcertificates";
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "SpellCheckingInspection"})
     public static final String BIRTHCERTIFICATE_COMMAND = "birthCertificateCommand";
 }

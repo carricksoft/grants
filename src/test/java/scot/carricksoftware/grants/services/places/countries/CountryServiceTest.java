@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.services.places.countries;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -29,7 +30,7 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCountry;
 
 @SpringBootTest
-class CountryServiceTest {
+public class CountryServiceTest {
 
     CountryService countryService;
 
@@ -43,8 +44,8 @@ class CountryServiceTest {
     CountryCommandConverterImpl countryCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         countryService = new CountryServiceImpl(countryRepositoryMock,
                 countryConverterImplMock,
                 countryCommandConverterImplMock);
@@ -57,24 +58,22 @@ class CountryServiceTest {
     @Mock
     Page<Country> pageMock;
 
-
-    @SuppressWarnings("EmptyMethod")
     @Test
-    void deleteByIdTest() {
+    public void deleteByIdTest() {
         Long id = GetRandomLong();
         countryService.deleteById(id);
         verify(countryRepositoryMock).deleteById(id);
     }
 
     @Test
-    void CountTest() {
+    public void CountTest() {
         long result = GetRandomLong();
         when(countryRepositoryMock.count()).thenReturn(result);
         assertEquals(result, countryService.count());
     }
 
     @Test
-    void getPagedCountriesTest() {
+    public void getPagedCountriesTest() {
         List<Country> result = new ArrayList<>();
         Country country = GetRandomCountry();
         result.add(country);

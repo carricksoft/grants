@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
@@ -22,7 +24,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class PersonListControllerTest {
+@RunWith(SpringRunner.class)
+public class PersonListControllerTest {
 
     private PersonListControllerImpl controller;
 
@@ -38,13 +41,13 @@ class PersonListControllerTest {
     @Mock
     List<Person> personListMock;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         controller = new PersonListControllerImpl(controllerHelperMock, personServiceImplMock);
     }
 
     @Test
-    void getListPageTest() {
+    public void getListPageTest() {
         when(personServiceImplMock.getPagedPersons(0)).thenReturn(personListMock);
         assertEquals("person/list", controller.getListPage(modelMock));
         verify(modelMock).addAttribute("people", personListMock);
@@ -52,7 +55,7 @@ class PersonListControllerTest {
     }
 
     @Test
-    void getLastPageTest() {
+    public void getLastPageTest() {
         int page = 25;
         int count = page * ApplicationConstants.DEFAULT_PAGE_SIZE;
         when(personServiceImplMock.count()).thenReturn((long) count);

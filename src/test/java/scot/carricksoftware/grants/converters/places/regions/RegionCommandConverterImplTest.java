@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.converters.places.regions;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
@@ -18,18 +19,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
-class RegionCommandConverterImplTest {
+public class RegionCommandConverterImplTest {
 
     final RegionCommandConverterImpl converter = new RegionCommandConverterImpl();
     RegionCommand source;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         source = new RegionCommand();
     }
 
     @Test
-    void convert() {
+    public void convert() {
         Long id = GetRandomLong();
         String name = GetRandomString();
         Set<Place> places = new HashSet<>();

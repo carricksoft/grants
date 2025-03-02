@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.commands.census;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 
@@ -17,65 +18,65 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
-class CensusEntryCommandTest {
+public class CensusEntryCommandTest {
 
     CensusEntryCommand censusEntryCommand;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusEntryCommand = new CensusEntryCommand();
     }
 
     @Test
-    void getIdTest() {
+    public void getIdTest() {
         assertNull(censusEntryCommand.getId());
     }
 
     @Test
-    void setIdTest() {
+    public void setIdTest() {
         Long id = GetRandomLong();
         censusEntryCommand.setId(id);
         assertEquals(id, censusEntryCommand.getId());
     }
 
     @Test
-    void getCensusTest() {
+    public void getCensusTest() {
         assertNull(censusEntryCommand.getCensus());
     }
 
     @Test
-    void setCensusTest() {
+    public void setCensusTest() {
         Census census = GetRandomCensus();
         censusEntryCommand.setCensus(census);
         assertEquals(census, censusEntryCommand.getCensus());
     }
 
     @Test
-    void getPersonTest() {
+    public void getPersonTest() {
         assertNull(censusEntryCommand.getPerson());
     }
 
     @Test
-    void setPersonTest() {
+    public void setPersonTest() {
         Person person = GetRandomPerson();
         censusEntryCommand.setPerson(person);
         assertEquals(person, censusEntryCommand.getPerson());
     }
 
     @Test
-    void getOtherPersonTest() {
+    public void getOtherPersonTest() {
         assertNull(censusEntryCommand.getOtherPerson());
     }
 
     @Test
-    void setOtherPersonTest() {
+    public void setOtherPersonTest() {
         String OtherPerson = GetRandomString();
         censusEntryCommand.setOtherPerson(OtherPerson);
         assertEquals(OtherPerson, censusEntryCommand.getOtherPerson());
     }
 
     @Test
-    void testToStringTest() {
+    public void testToStringTest() {
         Person person = GetRandomPerson();
         Census census = GetRandomCensus();
         String otherPerson = GetRandomString();

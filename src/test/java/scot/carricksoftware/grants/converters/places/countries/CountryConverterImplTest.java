@@ -5,8 +5,8 @@
 
 package scot.carricksoftware.grants.converters.places.countries;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.domains.places.Country;
@@ -22,18 +22,18 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 
 @Component
-class CountryConverterImplTest {
+public class CountryConverterImplTest {
 
     final CountryConverterImpl converter = new CountryConverterImpl();
     Country source;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         source = new Country();
     }
 
     @Test
-    void convertTest() {
+    public void convertTest() {
         Long id = GetRandomLong();
         String name = GetRandomString();
         Set<Place> places = new HashSet<>();

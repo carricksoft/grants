@@ -5,10 +5,13 @@
 
 package scot.carricksoftware.grants.controllers.places.regions;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -22,7 +25,8 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-class RegionFormControllerCleansingTest {
+@RunWith(SpringRunner.class)
+public class RegionFormControllerCleansingTest {
 
     @SuppressWarnings("unused")
     private RegionFormControllerImpl regionController;
@@ -46,8 +50,8 @@ class RegionFormControllerCleansingTest {
     BindingResult bindingResultMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         regionController = new RegionFormControllerImpl(regionServiceMock,
                 regionCommandConverterMock,
                 regionConverterMock,
@@ -56,7 +60,7 @@ class RegionFormControllerCleansingTest {
 
 
     @Test
-    void saveOrUpdateCleansingTest() {
+    public void saveOrUpdateCleansingTest() {
         String name = "goat";
         String uName = "Goat";
         when(regionServiceMock.saveRegionCommand(any())).thenReturn(regionCommandMock);

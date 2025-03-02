@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.controllers.censusentry;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
@@ -28,7 +29,7 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 
 @SpringBootTest
-class CensusEntryFormControllerITest {
+public class CensusEntryFormControllerITest {
 
     @SuppressWarnings("unused")
     private CensusEntryFormController censusEntryController;
@@ -50,8 +51,8 @@ class CensusEntryFormControllerITest {
     @Mock
     private CapitalisationImpl capitalisationMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
                 censusServiceMock,
                 censusEntryCommandConverterMock,
@@ -61,16 +62,17 @@ class CensusEntryFormControllerITest {
     }
 
     @Test
-    void getNewCensusEntryTest() throws Exception {
+    public void getNewCensusEntryTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(censusEntryController).build();
 
+        //noinspection SpellCheckingInspection
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.CENSUSENTRY_NEW))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.view().name("censusentry/form"));
     }
 
     @Test
-    void PostCensusEntryTest() throws Exception {
+    public void PostCensusEntryTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(censusEntryController).build();
         Long id = GetRandomLong();
         CensusEntryCommand censusEntryCommand = new CensusEntryCommand();

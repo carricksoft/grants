@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.places.countries;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
@@ -22,7 +24,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
-class CountryListControllerTest {
+@RunWith(SpringRunner.class)
+public class CountryListControllerTest {
 
     private CountryListControllerImpl controller;
 
@@ -38,13 +41,13 @@ class CountryListControllerTest {
     @Mock
     List<Country> countryListMock;
 
-    @BeforeEach
+    @Before
     public void setUp() {
         controller = new CountryListControllerImpl(controllerHelperMock, countryServiceImplMock);
     }
 
     @Test
-    void getListPageTest() {
+    public void getListPageTest() {
         when(countryServiceImplMock.getPagedCountries(0)).thenReturn(countryListMock);
         assertEquals("country/list", controller.getListPage(modelMock));
         verify(modelMock).addAttribute("countries", countryListMock);
@@ -52,7 +55,7 @@ class CountryListControllerTest {
     }
 
     @Test
-    void getLastPageTest() {
+    public void getLastPageTest() {
         int page = 25;
         int count = page * ApplicationConstants.DEFAULT_PAGE_SIZE;
         when(countryServiceImplMock.count()).thenReturn((long) count);

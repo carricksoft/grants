@@ -5,10 +5,12 @@
 
 package scot.carricksoftware.grants.controllers.places.regions;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -26,7 +28,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 
 @SpringBootTest
-class RegionFormControllerITest {
+@RunWith(SpringRunner.class)
+public class RegionFormControllerITest {
 
     @SuppressWarnings("unused")
     private RegionFormController regionController;
@@ -43,8 +46,8 @@ class RegionFormControllerITest {
     @Mock
     private CapitalisationImpl capitalisationMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         regionController = new RegionFormControllerImpl(regionServiceMock,
                 regionCommandConverterMock,
                 regionConverterMock,
@@ -52,7 +55,7 @@ class RegionFormControllerITest {
     }
 
     @Test
-    void getNewRegionTest() throws Exception {
+    public void getNewRegionTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(regionController).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.REGION_NEW))
@@ -61,7 +64,7 @@ class RegionFormControllerITest {
     }
 
     @Test
-    void PostRegionTest() throws Exception {
+    public void PostRegionTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(regionController).build();
         Long id = GetRandomLong();
         RegionCommand regionCommand = new RegionCommand();

@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.controllers.places.places;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.ui.Model;
@@ -26,7 +27,7 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-class PlaceFormControllerSaveOrUpdateTest {
+public class PlaceFormControllerSaveOrUpdateTest {
 
     @SuppressWarnings("unused")
     private PlaceFormControllerImpl placeController;
@@ -57,8 +58,8 @@ class PlaceFormControllerSaveOrUpdateTest {
     Model modelMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         placeController = new PlaceFormControllerImpl(placeServiceMock,
                 placeCommandConverterMock,
                 placeConverterMock,
@@ -68,7 +69,7 @@ class PlaceFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateNoErrorsTest() {
+    public void saveOrUpdateNoErrorsTest() {
         PlaceCommand placeCommand = new PlaceCommand();
         Long id = 4L;
         placeCommand.setId(id);
@@ -77,7 +78,7 @@ class PlaceFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateErrorsTest() {
+    public void saveOrUpdateErrorsTest() {
         PlaceCommand placeCommand = new PlaceCommand();
         Long id = 4L;
         placeCommand.setId(id);
@@ -87,7 +88,7 @@ class PlaceFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void CleaningTakesPlaceTest() {
+    public void CleaningTakesPlaceTest() {
         PlaceCommand placeCommand = new PlaceCommand();
         placeCommand.setId(4L);
         placeCommand.setName("england");

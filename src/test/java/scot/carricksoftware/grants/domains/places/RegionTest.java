@@ -5,8 +5,8 @@
 
 package scot.carricksoftware.grants.domains.places;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.HashSet;
@@ -19,33 +19,33 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
-class RegionTest {
+public class RegionTest {
     Region region;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         region = new Region();
     }
 
     @Test
-    void getNameTest() {
+    public void getNameTest() {
         assertNull(region.getName());
     }
 
     @Test
-    void setNameTest() {
+    public void setNameTest() {
         String name = GetRandomString();
         region.setName(name);
         assertEquals(name, region.getName());
     }
 
     @Test
-    void getPlacesTest() {
+    public void getPlacesTest() {
         assertNull(region.getPlaces());
     }
 
     @Test
-    void setPlacesTest() {
+    public void setPlacesTest() {
         Place place = GetRandomPlace();
         Set<Place> places = new HashSet<>();
         places.add(place);

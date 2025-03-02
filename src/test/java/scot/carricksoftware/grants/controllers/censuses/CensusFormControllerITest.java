@@ -5,10 +5,13 @@
 
 package scot.carricksoftware.grants.controllers.censuses;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -29,7 +32,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 
 @SpringBootTest
-class CensusFormControllerITest {
+@RunWith(SpringRunner.class)
+public class CensusFormControllerITest {
 
     @SuppressWarnings("unused")
     private CensusFormController censusController;
@@ -49,8 +53,8 @@ class CensusFormControllerITest {
     @Mock
     private CapitalisationImpl capitalisationMock;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusController = new CensusFormControllerImpl(censusServiceMock,
                 censusCommandConverterMock,
                 censusConverterMock,
@@ -59,7 +63,7 @@ class CensusFormControllerITest {
     }
 
     @Test
-    void getNewCensusTest() throws Exception {
+    public void getNewCensusTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(censusController).build();
 
         mockMvc.perform(MockMvcRequestBuilders.get(MappingConstants.CENSUS_NEW))
@@ -68,7 +72,7 @@ class CensusFormControllerITest {
     }
 
     @Test
-    void PostCensusTest() throws Exception {
+    public void PostCensusTest() throws Exception {
         MockMvc mockMvc = MockMvcBuilders.standaloneSetup(censusController).build();
         Long id = GetRandomLong();
         CensusCommand censusCommand = new CensusCommand();

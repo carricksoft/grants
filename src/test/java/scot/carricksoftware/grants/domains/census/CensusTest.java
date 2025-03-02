@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.domains.census;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.places.Place;
 
@@ -18,41 +19,41 @@ import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPlace;
 
-class CensusTest {
+public class CensusTest {
 
     private Census census;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         census = new Census();
     }
 
     @Test
-    void getPlace() {
+    public void getPlace() {
         assertNull(census.getPlace());
     }
 
     @Test
-    void setPlace() {
+    public void setPlace() {
         Place place = GetRandomPlace();
         census.setPlace(place);
         assertEquals(place, census.getPlace());
     }
 
     @Test
-    void getDate() {
+    public void getDate() {
         assertNull(census.getDate());
     }
 
     @Test
-    void setDate() {
+    public void setDate() {
         String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
         census.setDate(date);
         assertEquals(date, census.getDate());
     }
 
     @Test
-    void toStringTest() {
+    public void toStringTest() {
         Place place = GetRandomPlace();
         String date = LocalDate.now().format(ApplicationConstants.FORMATTER);
         Census census = new Census();
@@ -62,12 +63,12 @@ class CensusTest {
     }
 
     @Test
-    void getCensusEntriesTest() {
+    public void getCensusEntriesTest() {
         assertNull(census.getCensusEntries());
     }
 
     @Test
-    void setCensusEntriesTest() {
+    public void setCensusEntriesTest() {
         Set<CensusEntry> censusEntries = new HashSet<>();
         censusEntries.add(GetRandomCensusEntry());
         census.setCensusEntries(censusEntries);

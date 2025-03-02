@@ -5,8 +5,9 @@
 
 package scot.carricksoftware.grants.services.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -27,7 +28,7 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomPerson;
 
 @SpringBootTest
-class PersonServiceTest {
+public class PersonServiceTest {
 
     PersonService personService;
 
@@ -41,8 +42,8 @@ class PersonServiceTest {
     PersonCommandConverterImpl personCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         personService = new PersonServiceImpl(personRepositoryMock,
                 personConverterImplMock,
                 personCommandConverterImplMock);
@@ -56,23 +57,22 @@ class PersonServiceTest {
     Page<Person> pageMock;
 
 
-    @SuppressWarnings("EmptyMethod")
     @Test
-    void deleteByIdTest() {
+    public void deleteByIdTest() {
         Long id = GetRandomLong();
         personService.deleteById(id);
         verify(personRepositoryMock).deleteById(id);
     }
 
     @Test
-    void CountTest() {
+    public void CountTest() {
         long result = GetRandomLong();
         when(personRepositoryMock.count()).thenReturn(result);
         assertEquals(result, personService.count());
     }
 
     @Test
-    void getPagedPersonsTest() {
+    public void getPagedPersonsTest() {
         List<Person> result = new ArrayList<>();
         Person person = GetRandomPerson();
         result.add(person);

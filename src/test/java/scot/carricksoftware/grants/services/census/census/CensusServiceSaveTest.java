@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.services.census.census;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.converters.census.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.census.CensusConverterImpl;
@@ -23,7 +25,8 @@ import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
 
 @SpringBootTest
-class CensusServiceSaveTest {
+@RunWith(SpringRunner.class)
+public class CensusServiceSaveTest {
 
     CensusService censusService;
 
@@ -37,8 +40,8 @@ class CensusServiceSaveTest {
     CensusCommandConverterImpl censusCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusService = new CensusServiceImpl(censusRepositoryMock,
                 censusConverterImplMock,
                 censusCommandConverterImplMock);
@@ -50,14 +53,14 @@ class CensusServiceSaveTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void saveTest() {
+    public void saveTest() {
         Census census = new Census();
         when(censusRepositoryMock.save(census)).thenReturn(census);
         assertEquals(census, censusService.save(census));
     }
 
     @Test
-    void saveCensusCommandTest() {
+    public void saveCensusCommandTest() {
         Census census = GetRandomCensus();
         CensusCommand censusCommand = new CensusCommand();
         when(censusCommandConverterImplMock.convert(censusCommand)).thenReturn(census);

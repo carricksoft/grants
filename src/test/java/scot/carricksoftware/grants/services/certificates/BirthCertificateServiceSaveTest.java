@@ -5,11 +5,14 @@
 
 package scot.carricksoftware.grants.services.certificates;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
@@ -21,7 +24,8 @@ import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomBirthCertificate;
 
 @SpringBootTest
-class BirthCertificateServiceSaveTest {
+@RunWith(SpringRunner.class)
+public class BirthCertificateServiceSaveTest {
 
     BirthCertificateService birthCertificateService;
 
@@ -35,8 +39,8 @@ class BirthCertificateServiceSaveTest {
     BirthCertificateCommandConverterImpl birthCertificateCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         birthCertificateService = new BirthCertificateServiceImpl(birthCertificateRepositoryMock,
                 birthCertificateConverterImplMock,
                 birthCertificateCommandConverterImplMock);
@@ -46,16 +50,15 @@ class BirthCertificateServiceSaveTest {
     @Mock
     Pageable pageableMock;
 
-    @SuppressWarnings("EmptyMethod")
     @Test
-    void saveTest() {
+    public void saveTest() {
         BirthCertificate birthCertificate = new BirthCertificate();
         when(birthCertificateRepositoryMock.save(birthCertificate)).thenReturn(birthCertificate);
         assertEquals(birthCertificate, birthCertificateService.save(birthCertificate));
     }
 
     @Test
-    void saveBirthCertificateCommandTest() {
+    public void saveBirthCertificateCommandTest() {
         BirthCertificate birthCertificate = GetRandomBirthCertificate();
         BirthCertificateCommand birthCertificateCommand = new BirthCertificateCommand();
         when(birthCertificateCommandConverterImplMock.convert(birthCertificateCommand)).thenReturn(birthCertificate);

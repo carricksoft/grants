@@ -5,35 +5,36 @@
 
 package scot.carricksoftware.grants.converters.capitalisation;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
 import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-class CapitalisationLengthTest {
+public class CapitalisationLengthTest {
 
     private Capitalisation capitalisation;
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         capitalisation = new CapitalisationImpl();
     }
 
     @Test
-    void lowLengthTest() {
+    public void lowLengthTest() {
         assertEquals("ab", capitalisation.getCapitalisation("ab"));
     }
 
     @Test
-    void topLengthTest() {
+    public void topLengthTest() {
         assertEquals("Abc", capitalisation.getCapitalisation("abc"));
     }
 
     @Test
-    void highLengthTest() {
+    public void highLengthTest() {
         //noinspection SpellCheckingInspection
         assertEquals("Abcd", capitalisation.getCapitalisation("abcd"));
     }

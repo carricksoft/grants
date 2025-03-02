@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.services.census.censusentry;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.censusentry.CensusEntryConverterImpl;
@@ -23,7 +25,8 @@ import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 
 @SpringBootTest
-class CensusEntryServiceSaveTest {
+@RunWith(SpringRunner.class)
+public class CensusEntryServiceSaveTest {
 
     CensusEntryService censusEntryService;
 
@@ -37,8 +40,8 @@ class CensusEntryServiceSaveTest {
     CensusEntryCommandConverterImpl censusEntryCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusEntryService = new CensusEntryServiceImpl(censusEntryRepositoryMock,
                 censusEntryConverterImplMock,
                 censusEntryCommandConverterImplMock);
@@ -50,14 +53,14 @@ class CensusEntryServiceSaveTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void saveTest() {
+    public void saveTest() {
         CensusEntry censusEntry = new CensusEntry();
         when(censusEntryRepositoryMock.save(censusEntry)).thenReturn(censusEntry);
         assertEquals(censusEntry, censusEntryService.save(censusEntry));
     }
 
     @Test
-    void saveCensusEntryCommandTest() {
+    public void saveCensusEntryCommandTest() {
         CensusEntry censusEntry = GetRandomCensusEntry();
         CensusEntryCommand censusEntryCommand = new CensusEntryCommand();
         when(censusEntryCommandConverterImplMock.convert(censusEntryCommand)).thenReturn(censusEntry);

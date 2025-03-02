@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.controllers.people;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -24,7 +26,8 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
-class PersonFormControllerSaveOrUpdateTest {
+@RunWith(SpringRunner.class)
+public class PersonFormControllerSaveOrUpdateTest {
 
     @SuppressWarnings("unused")
     private PersonFormControllerImpl personController;
@@ -49,8 +52,8 @@ class PersonFormControllerSaveOrUpdateTest {
     private PersonCommand personCommand;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         personController = new PersonFormControllerImpl(personServiceMock,
                 personCommandConverterMock,
                 personConverterMock,
@@ -58,7 +61,7 @@ class PersonFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateNoErrorsTest() {
+    public void saveOrUpdateNoErrorsTest() {
         Long id = 4L;
         personCommand.setId(id);
         when(personServiceMock.savePersonCommand(any(PersonCommand.class))).thenReturn(personCommand);
@@ -66,7 +69,7 @@ class PersonFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void saveOrUpdateErrorsTest() {
+    public void saveOrUpdateErrorsTest() {
         Long id = 4L;
         personCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
@@ -75,7 +78,7 @@ class PersonFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    void CleaningTakesPlaceTest() {
+    public void CleaningTakesPlaceTest() {
         PersonCommand personCommand = new PersonCommand();
         personCommand.setId(4L);
         personCommand.setFirstName("john");

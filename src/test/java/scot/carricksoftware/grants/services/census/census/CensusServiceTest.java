@@ -5,12 +5,15 @@
 
 package scot.carricksoftware.grants.services.census.census;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.converters.census.census.CensusCommandConverterImpl;
 import scot.carricksoftware.grants.converters.census.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
@@ -29,7 +32,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
-class CensusServiceTest {
+@RunWith(SpringRunner.class)
+public class CensusServiceTest {
 
     CensusService censusService;
 
@@ -43,8 +47,8 @@ class CensusServiceTest {
     CensusCommandConverterImpl censusCommandConverterImplMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         censusService = new CensusServiceImpl(censusRepositoryMock,
                 censusConverterImplMock,
                 censusCommandConverterImplMock);
@@ -60,21 +64,21 @@ class CensusServiceTest {
 
     @SuppressWarnings("EmptyMethod")
     @Test
-    void deleteByIdTest() {
+    public void deleteByIdTest() {
         Long id = GetRandomLong();
         censusService.deleteById(id);
         verify(censusRepositoryMock).deleteById(id);
     }
 
     @Test
-    void CountTest() {
+    public void CountTest() {
         long result = GetRandomLong();
         when(censusRepositoryMock.count()).thenReturn(result);
         assertEquals(result, censusService.count());
     }
 
     @Test
-    void getPagedCensusesTest() {
+    public void getPagedCensusesTest() {
         List<Census> result = new ArrayList<>();
         Census census = GetRandomCensus();
         result.add(census);

@@ -5,10 +5,13 @@
 
 package scot.carricksoftware.grants.controllers.places.regions;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.ExtendedModelMap;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
@@ -30,7 +33,8 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomRegionCo
 
 
 @SpringBootTest
-class RegionFormControllerTest {
+@RunWith(SpringRunner.class)
+public class RegionFormControllerTest {
 
     @SuppressWarnings("unused")
     private RegionFormControllerImpl regionController;
@@ -51,8 +55,8 @@ class RegionFormControllerTest {
     private Model modelMock;
 
 
-    @BeforeEach
-    void setUp() {
+    @Before
+    public void setUp() {
         regionController = new RegionFormControllerImpl(regionServiceMock,
                 regionCommandConverterMock,
                 regionConverterMock,
@@ -60,14 +64,14 @@ class RegionFormControllerTest {
     }
 
     @Test
-    void getNewRegionTest() {
+    public void getNewRegionTest() {
         Model model = new ExtendedModelMap();
         assertEquals("region/form", regionController.getNewRegion(model));
         assertEquals(RegionCommand.class, Objects.requireNonNull(model.getAttribute(AttributeConstants.REGION_COMMAND)).getClass());
     }
 
     @Test
-    void regionEditTestEditTest() {
+    public void regionEditTestEditTest() {
         Long id = GetRandomLong();
         Region region = GetRandomRegion();
         when(regionServiceMock.findById(id)).thenReturn(region);
@@ -77,7 +81,7 @@ class RegionFormControllerTest {
     }
 
     @Test
-    void showByIdTest() {
+    public void showByIdTest() {
         Long id = GetRandomLong();
         Region region = GetRandomRegion();
         RegionCommand regionCommand = GetRandomRegionCommand();
