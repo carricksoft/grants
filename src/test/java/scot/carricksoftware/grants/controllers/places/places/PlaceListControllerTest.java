@@ -70,7 +70,7 @@ public class PlaceListControllerTest {
         List<Place> placeList = new ArrayList<>();
         placeList.add(new Place());
         when(placeServiceImplMock.getPagedPlaces(0)).thenReturn(placeList);
-        assertEquals("place/list",controller.getFirstPage(modelMock));
+        assertEquals("place/list", controller.getFirstPage(modelMock));
         assertEquals(0, controller.getPageNumber());
         verify(modelMock).addAttribute("places", placeList);
     }
@@ -82,7 +82,7 @@ public class PlaceListControllerTest {
         when(placeServiceImplMock.getPagedPlaces(0)).thenReturn(placeList);
         when(placeServiceImplMock.getPagedPlaces(1)).thenReturn(placeList);
         controller.getFirstPage(modelMock);
-        assertEquals("place/list",controller.getNextPage(modelMock));
+        assertEquals("place/list", controller.getNextPage(modelMock));
         assertEquals(1, controller.getPageNumber());
         verify(modelMock, times(2)).addAttribute("places", placeList);
     }
@@ -93,5 +93,6 @@ public class PlaceListControllerTest {
         assertEquals("redirect:/places", controller.placeDelete(Long.toString(id)));
         verify(placeServiceImplMock).deleteById(id);
     }
+
 
 }

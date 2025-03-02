@@ -22,6 +22,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -63,5 +64,13 @@ public class CountryListControllerTest {
         controller.getPreviousPage(modelMock);
         verify(countryServiceImplMock).getPagedCountries(page);
     }
+
+    @Test
+    public void placeDeleteTest() {
+        Long id = GetRandomLong();
+        assertEquals("redirect:/countries", controller.countryDelete(Long.toString(id)));
+        verify(countryServiceImplMock).deleteById(id);
+    }
+
 
 }
