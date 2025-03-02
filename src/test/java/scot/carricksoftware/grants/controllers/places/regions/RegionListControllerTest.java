@@ -22,8 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
@@ -76,12 +75,24 @@ public class RegionListControllerTest {
     }
 
     @Test
-    public void regionUpdateGetFirstPageTest() {
+    public void GetPageTest() {
         List<Region> regionList = new ArrayList<>();
         regionList.add(new Region());
         when(regionServiceImplMock.getPagedRegions(0)).thenReturn(regionList);
         assertEquals("region/list",controller.getFirstPage(modelMock));
         assertEquals(0, controller.getPageNumber());
         verify(modelMock).addAttribute("regions", regionList);
+    }
+
+    @Test
+    public void getNextPageTest() {
+        List<Region> regionList = new ArrayList<>();
+        regionList.add(new Region());
+        when(regionServiceImplMock.getPagedRegions(0)).thenReturn(regionList);
+        when(regionServiceImplMock.getPagedRegions(1)).thenReturn(regionList);
+        controller.getFirstPage(modelMock);
+        assertEquals("region/list",controller.getNextPage(modelMock));
+        assertEquals(1, controller.getPageNumber());
+        verify(modelMock, times(2)).addAttribute("regions", regionList);
     }
 }
