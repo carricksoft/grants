@@ -22,7 +22,7 @@ public interface PlaceService {
     void deleteById(Long id);
 
     @SuppressWarnings("unused")
-    List<Place> getPagedCountries(int pageNumber);
+    List<Place> getPagedPlaces(int pageNumber);
 
     @SuppressWarnings("unused")
     long count();

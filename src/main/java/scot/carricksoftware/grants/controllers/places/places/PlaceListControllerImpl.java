@@ -48,7 +48,7 @@ public class PlaceListControllerImpl implements PlaceListController {
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.PLACES, placeService.getPagedCountries(currentPage));
+        model.addAttribute(AttributeConstants.PLACES, placeService.getPagedPlaces(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.PLACE_LIST;
     }
@@ -98,6 +98,11 @@ public class PlaceListControllerImpl implements PlaceListController {
         logger.debug("PlaceListControllerImpl::placeDelete");
         placeService.deleteById(Long.valueOf(id));
         return MappingConstants.REDIRECT + MappingConstants.PLACE_LIST;
+    }
+
+    @Override
+    public int getPageNumber() {
+        return currentPage;
     }
 
 

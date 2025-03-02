@@ -64,7 +64,7 @@ public class PlaceServiceImpl implements PlaceService {
 
 
     @Override
-    public List<Place> getPagedCountries(int pageNumber) {
+    public List<Place> getPagedPlaces(int pageNumber) {
         logger.debug("PlaceServiceImpl::getPagedCountries");
         Pageable paging = PageRequest.of(pageNumber, ApplicationConstants.DEFAULT_PAGE_SIZE, getSort());
         Page<Place> pagedResult = placeRepository.findAll(paging);

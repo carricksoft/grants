@@ -17,11 +17,11 @@ import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.places.PlaceServiceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -48,7 +48,7 @@ public class PlaceListControllerTest {
 
     @Test
     public void getListPageTest() {
-        when(placeServiceImplMock.getPagedCountries(0)).thenReturn(placeListMock);
+        when(placeServiceImplMock.getPagedPlaces(0)).thenReturn(placeListMock);
         assertEquals("place/list", controller.getListPage(modelMock));
         verify(modelMock).addAttribute("places", placeListMock);
         verify(controllerHelperMock).addAttributes(modelMock);
@@ -61,7 +61,29 @@ public class PlaceListControllerTest {
         when(placeServiceImplMock.count()).thenReturn((long) count);
         controller.getLastPage(modelMock);
         controller.getPreviousPage(modelMock);
-        verify(placeServiceImplMock).getPagedCountries(page);
+        verify(placeServiceImplMock).getPagedPlaces(page);
+    }
+
+    @Test
+    public void GetPageTest() {
+        List<Place> placeList = new ArrayList<>();
+        placeList.add(new Place());
+        when(placeServiceImplMock.getPagedPlaces(0)).thenReturn(placeList);
+        assertEquals("place/list",controller.getFirstPage(modelMock));
+        assertEquals(0, controller.getPageNumber());
+        verify(modelMock).addAttribute("places", placeList);
+    }
+
+    @Test
+    public void getNextPageTest() {
+        List<Place> placeList = new ArrayList<>();
+        placeList.add(new Place());
+        when(placeServiceImplMock.getPagedPlaces(0)).thenReturn(placeList);
+        when(placeServiceImplMock.getPagedPlaces(1)).thenReturn(placeList);
+        controller.getFirstPage(modelMock);
+        assertEquals("place/list",controller.getNextPage(modelMock));
+        assertEquals(1, controller.getPageNumber());
+        verify(modelMock, times(2)).addAttribute("places", placeList);
     }
 
 }

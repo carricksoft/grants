@@ -77,13 +77,13 @@ public class PlaceServiceTest {
     }
 
     @Test
-    public void getPagedCountriesTest() {
+    public void getPagedPlacesTest() {
         List<Place> result = new ArrayList<>();
         Place place = GetRandomPlace();
         result.add(place);
         when(pageMock.getContent()).thenReturn(result);
         when(placeRepositoryMock.findAll(any(Pageable.class))).thenReturn(pageMock);
-        assertEquals(result, placeService.getPagedCountries(0));
+        assertEquals(result, placeService.getPagedPlaces(0));
     }
 
 }
