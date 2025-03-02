@@ -8,8 +8,10 @@ package scot.carricksoftware.grants.controllers.places.places;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.PlaceCommand;
@@ -27,6 +29,7 @@ import static org.mockito.Mockito.when;
 
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
 public class PlaceFormControllerSaveOrUpdateTest {
 
     @SuppressWarnings("unused")

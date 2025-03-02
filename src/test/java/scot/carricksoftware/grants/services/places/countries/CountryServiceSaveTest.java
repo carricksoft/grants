@@ -7,9 +7,11 @@ package scot.carricksoftware.grants.services.places.countries;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
@@ -24,6 +26,7 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCountry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomString;
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
 public class CountryServiceSaveTest {
 
     CountryService countryService;

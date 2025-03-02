@@ -8,7 +8,9 @@ package scot.carricksoftware.grants.services.places.countries;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -30,6 +32,7 @@ import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCountry;
 
 @SpringBootTest
+@RunWith(MockitoJUnitRunner.class)
 public class CountryServiceTest {
 
     CountryService countryService;
