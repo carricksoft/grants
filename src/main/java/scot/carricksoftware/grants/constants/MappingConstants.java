@@ -75,24 +75,24 @@ public class MappingConstants {
     public static final String CENSUS_DELETE = "/census/{id}/delete";
     public static final String CENSUS_EDIT = "census/{id}/edit";
 
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String CENSUSENTRY_LIST = "/censusEntries";
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String CENSUSENTRY_NEXT = "/censusEntries/next";
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String CENSUSENTRY_PREVIOUS = "/censusEntries/prev";
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String CENSUSENTRY_REWIND = "/censusEntries/rewind";
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String CENSUSENTRY_FF = "/censusEntries/ff";
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String CENSUSENTRY_NEW = "/censusEntry/new";
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String CENSUSENTRY = "/censusEntry";
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String CENSUSENTRY_SHOW = "/censusEntry/{id}/show";
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String CENSUSENTRY_DELETE = "/censusEntry/{id}/delete";
-    @SuppressWarnings({"unused", "SpellCheckingInspection"})
+    @SuppressWarnings({"unused"})
     public static final String CENSUSENTRY_EDIT = "censusEntry/{id}/edit";
 }

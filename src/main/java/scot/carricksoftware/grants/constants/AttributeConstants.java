@@ -31,7 +31,6 @@ public class AttributeConstants {
 
     @SuppressWarnings("SpellCheckingInspection")
     public static final String CENSUSENTRIES = "censusEntries";
-    @SuppressWarnings("SpellCheckingInspection")
     public static final String CENSUSENTRY_COMMAND = "censusEntryCommand";
 
     @SuppressWarnings({"SpellCheckingInspection", "unused"})
