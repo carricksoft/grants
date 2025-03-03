@@ -18,11 +18,12 @@ import scot.carricksoftware.grants.controllers.census.CensusListControllerImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.services.census.CensusServiceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -64,5 +65,29 @@ public class CensusListControllerTest {
         controller.getPreviousPage(modelMock);
         verify(censusServiceImplMock).getPagedCensuses(page);
     }
+
+    @Test
+    public void getFirstPlaceTest() {
+        List<Census> list = new ArrayList<>();
+        list.add(GetRandomCensus());
+        when(censusServiceImplMock.getPagedCensuses(0)).thenReturn(list);
+
+        assertEquals("census/list", controller.getFirstPage(modelMock));
+        assertEquals("census/list", controller.getListPage(modelMock));
+        verify(modelMock, times(2)).addAttribute("censuses", list);
+    }
+
+    @Test
+    public void getNextPlaceTest() {
+        List<Census> list = new ArrayList<>();
+        list.add(GetRandomCensus());
+        when(censusServiceImplMock.getPagedCensuses(0)).thenReturn(list);
+
+        controller.getFirstPage(modelMock);
+        assertEquals("census/list", controller.getNextPage(modelMock));
+        assertEquals("census/list", controller.getListPage(modelMock));
+        verify(modelMock, times(2)).addAttribute("censuses", list);
+    }
+
 
 }
