@@ -18,11 +18,13 @@ import scot.carricksoftware.grants.controllers.censusentry.CensusEntryListContro
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.services.censusentry.CensusEntryServiceImpl;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
@@ -73,5 +75,27 @@ public class CensusEntryListControllerTest {
         verify(censusEntryServiceImplMock).deleteById(id);
     }
 
+    @Test
+    public void getFirstPlaceTest() {
+        List<CensusEntry> list = new ArrayList<>();
+        list.add(GetRandomCensusEntry());
+        when(censusEntryServiceImplMock.getPagedCensusEntries(0)).thenReturn(list);
+
+        assertEquals("censusentry/list", controller.getFirstPage(modelMock));
+        assertEquals("censusentry/list", controller.getListPage(modelMock));
+        verify(modelMock, times(2)).addAttribute("censusEntries", list);
+    }
+
+    @Test
+    public void getNextPlaceTest() {
+        List<CensusEntry> list = new ArrayList<>();
+        list.add(GetRandomCensusEntry());
+        when(censusEntryServiceImplMock.getPagedCensusEntries(0)).thenReturn(list);
+
+        controller.getFirstPage(modelMock);
+        assertEquals("censusentry/list", controller.getNextPage(modelMock));
+        assertEquals(1, controller.getPageNumber());
+        verify(modelMock).addAttribute("censusEntries", list);
+    }
 
 }

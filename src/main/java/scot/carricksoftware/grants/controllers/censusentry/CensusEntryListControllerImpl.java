@@ -95,4 +95,7 @@ public class CensusEntryListControllerImpl implements CensusEntryListController 
     }
 
 
+    public int getPageNumber() {
+        return currentPage;
+    }
 }
