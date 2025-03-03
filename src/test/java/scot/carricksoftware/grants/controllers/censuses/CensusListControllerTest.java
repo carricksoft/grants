@@ -24,6 +24,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomCensus;
+import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -87,6 +88,13 @@ public class CensusListControllerTest {
         assertEquals("census/list", controller.getNextPage(modelMock));
         assertEquals("census/list", controller.getListPage(modelMock));
         verify(modelMock, times(2)).addAttribute("censuses", list);
+    }
+
+    @Test
+    public void censusDeleteTest() {
+        Long id = GetRandomLong();
+        assertEquals("redirect:/censuses", controller.censusDelete(Long.toString(id)));
+        verify(censusServiceImplMock).deleteById(id);
     }
 
 
