@@ -52,7 +52,7 @@ public class DataLoaderTest {
     @Test
     public void dataLoadCensusIsCalled() {
         dataLoader.run();
-        verify(dataLoadPlacesMock).load();
+        verify(dataLoadCensusMock).load();
     }
 
     @Test
