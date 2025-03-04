@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants.domains.places;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
@@ -18,7 +19,7 @@ public class Region extends BaseEntity {
 
 
     @SuppressWarnings("JpaDataSourceORMInspection")
-    @OneToMany
+    @OneToMany(cascade = CascadeType.DETACH)
     @JoinColumn(name = "region_id")
     private Set<Place> places;
 
