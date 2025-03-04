@@ -58,11 +58,8 @@ public class DataLoadCensus {
     void loadCensus() {
         CensusCommand censusCommand = new CensusCommand();
         censusCommand.setDate(LocalDate.now().format(ApplicationConstants.FORMATTER));
-        CensusCommand savedCensusCommand = censusService.saveCensusCommand(censusCommand);
-
-// doing an update stops a detached fault
-        savedCensusCommand.setPlace(placeService.findById(1L));
-        censusService.saveCensusCommand(savedCensusCommand);
+        censusCommand.setPlace(placeService.findById(1L));
+        censusService.saveCensusCommand(censusCommand);
     }
 
 }

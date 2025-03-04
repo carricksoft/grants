@@ -32,7 +32,7 @@ public class Place extends BaseEntity {
     private Region region;
 
     @SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
-    @OneToMany(fetch= FetchType.LAZY)
+    @OneToMany(fetch= FetchType.EAGER)
     @JoinColumn(name = "place_id")
     private Set<Census> censuses;
 

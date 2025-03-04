@@ -5,11 +5,7 @@
 
 package scot.carricksoftware.grants.domains.census;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.places.Place;
@@ -21,7 +17,7 @@ import java.util.Set;
 public class Census extends BaseEntity {
 
     @SuppressWarnings({"JpaDataSourceORMInspection", "unused"})
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "place_id")
     Place place;
 
