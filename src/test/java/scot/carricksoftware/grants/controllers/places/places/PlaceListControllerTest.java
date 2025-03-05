@@ -22,7 +22,6 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static scot.carricksoftware.grants.GenerateRandomValues.GetRandomLong;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -38,6 +37,7 @@ public class PlaceListControllerTest {
 
     @Mock
     private Model modelMock;
+
 
     @Mock
     List<Place> placeListMock;
@@ -87,12 +87,7 @@ public class PlaceListControllerTest {
         verify(modelMock, times(2)).addAttribute("places", placeList);
     }
 
-    @Test
-    public void placeDeleteTest() {
-        Long id = GetRandomLong();
-        assertEquals("redirect:/places", controller.placeDelete(Long.toString(id)));
-        verify(placeServiceImplMock).deleteById(id);
-    }
+
 
 
 }

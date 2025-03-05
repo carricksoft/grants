@@ -5,11 +5,7 @@
 
 package scot.carricksoftware.grants.domains.places;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.census.Census;
 

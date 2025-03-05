@@ -40,9 +40,6 @@
                 <td th:text="${place.country != null} ? ${place.country.name}"></td>
                 <td th:text="${place.region != null} ? ${place.region.name}"></td>
                 <td><span>
-                        <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                           th:href="'place/' + ${place.id} + '/delete'"
-                           th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
                        th:href="'place/' + ${place.id} + '/edit'"
                        th:text="Edit"></a>

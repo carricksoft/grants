@@ -30,6 +30,7 @@ public class PlaceListControllerImpl implements PlaceListController {
 
     private final PlaceServiceImpl placeService;
 
+
     public PlaceListControllerImpl(ControllerHelper controllerHelper,
                                    PlaceServiceImpl placeService) {
         this.controllerHelper = controllerHelper;
@@ -89,12 +90,6 @@ public class PlaceListControllerImpl implements PlaceListController {
         return sendAttributesAndReturn(model);
     }
 
-    @Override
-    public String placeDelete(String id) {
-        logger.debug("PlaceListControllerImpl::placeDelete");
-        placeService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.PLACE_LIST;
-    }
 
     @Override
     public int getPageNumber() {
