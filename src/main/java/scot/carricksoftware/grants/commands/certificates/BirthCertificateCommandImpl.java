@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.commands.certificates;
 
 import org.springframework.stereotype.Component;
 
+@SuppressWarnings("unused")
 @Component
 public class BirthCertificateCommandImpl {
 
