@@ -9,20 +9,10 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 
-import java.util.Optional;
-
+@SuppressWarnings("unused")
 @Repository
 public interface BirthCertificateRepository extends PagingAndSortingRepository<BirthCertificate, Long> {
 
-    BirthCertificate save(BirthCertificate birthCertificate);
 
-    long count();
-
-    void deleteById(Long id);
-
-    Optional<BirthCertificate> findById(Long id);
-
-    @SuppressWarnings("unused")
-    Iterable<BirthCertificate> findAll();
 
 }

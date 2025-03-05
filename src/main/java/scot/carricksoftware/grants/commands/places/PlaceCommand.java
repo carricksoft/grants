@@ -5,74 +5,7 @@
 
 package scot.carricksoftware.grants.commands.places;
 
-import jakarta.validation.constraints.Size;
-import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBlank;
-import scot.carricksoftware.grants.domains.places.Country;
-import scot.carricksoftware.grants.domains.places.Region;
-
-import java.time.LocalDate;
-
-@SuppressWarnings("DuplicatedCode")
+@SuppressWarnings("unused")
 public class PlaceCommand {
-    private Long id;
-    @SuppressWarnings("unused")
-    LocalDate date;
-
-    @NotBlank
-    @Size(min = 3, max = 40, message = "Name must be between 3 and 40 characters.")
-    private String name;
-
-    private Country country;
-
-    private Region region;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Country getCountry() {
-        return country;
-    }
-
-    public void setCountry(Country country) {
-        this.country = country;
-    }
-
-    public Region getRegion() {
-        return region;
-    }
-
-    public void setRegion(Region region) {
-        this.region = region;
-    }
-
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();
-        if (name != null) {
-            builder.append(name);
-        }
-        if (region != null) {
-            builder.append(", ");
-            builder.append(region.getName());
-        }
-        if (country != null) {
-            builder.append(", ");
-            builder.append(country.getName());
-        }
-        return builder.toString();
-    }
 
 }

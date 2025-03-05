@@ -9,18 +9,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import scot.carricksoftware.grants.domains.places.Place;
 
-import java.util.Optional;
-
+@SuppressWarnings("unused")
 @Repository
 public interface PlaceRepository extends PagingAndSortingRepository<Place, Long> {
 
-    Place save(Place place);
 
-    long count();
-
-    void deleteById(Long id);
-
-    Optional<Place> findById(Long id);
-
-    Iterable<Place> findAll();
 }

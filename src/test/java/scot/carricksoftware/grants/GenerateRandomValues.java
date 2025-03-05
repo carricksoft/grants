@@ -51,6 +51,7 @@ public class GenerateRandomValues {
         return person;
     }
 
+    @SuppressWarnings("unused")
     public static PersonCommand GetRandomPersonCommand() {
         PersonCommand personCommand = new PersonCommand();
         personCommand.setFirstName(GetRandomString());
@@ -66,6 +67,7 @@ public class GenerateRandomValues {
         return place;
     }
 
+    @SuppressWarnings("unused")
     public static PlaceCommand GetRandomPlaceCommand() {
         PlaceCommand placeCommand = new PlaceCommand();
         placeCommand.setCountry(GetRandomCountry());
@@ -80,6 +82,7 @@ public class GenerateRandomValues {
         return country;
     }
 
+    @SuppressWarnings("unused")
     public static CountryCommand GetRandomCountryCommand() {
         CountryCommand countryCommand = new CountryCommand();
         countryCommand.setName(GetRandomString());
@@ -92,6 +95,7 @@ public class GenerateRandomValues {
         return region;
     }
 
+    @SuppressWarnings("unused")
     public static RegionCommand GetRandomRegionCommand() {
         RegionCommand regionCommand = new RegionCommand();
         regionCommand.setName(GetRandomString());

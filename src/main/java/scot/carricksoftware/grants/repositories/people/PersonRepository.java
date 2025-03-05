@@ -9,19 +9,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import scot.carricksoftware.grants.domains.people.Person;
 
-import java.util.List;
-import java.util.Optional;
-
+@SuppressWarnings("unused")
 @Repository
 public interface PersonRepository extends PagingAndSortingRepository<Person, Long> {
 
-    Person save(Person person);
 
-    long count();
-
-    void deleteById(Long id);
-
-    Optional<Person> findById(Long id);
-
-    List<Person> findAll();
 }

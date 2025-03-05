@@ -9,18 +9,9 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 import scot.carricksoftware.grants.domains.places.Region;
 
-import java.util.Optional;
-
+@SuppressWarnings("unused")
 @Repository
 public interface RegionRepository extends PagingAndSortingRepository<Region, Long> {
 
-    Region save(Region region);
 
-    long count();
-
-    void deleteById(Long id);
-
-    Optional<Region> findById(Long id);
-
-    Iterable<Region> findAll();
 }
