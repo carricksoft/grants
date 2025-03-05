@@ -13,7 +13,6 @@ import static org.junit.Assert.assertTrue;
 public class DataLoadPlacesTest {
 
 
-
     @Test
     public void dummyTest() {
         assertTrue(true);

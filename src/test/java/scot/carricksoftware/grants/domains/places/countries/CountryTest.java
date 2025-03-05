@@ -1,36 +1,38 @@
-package scot.carricksoftware.grants.domains.people;
+package scot.carricksoftware.grants.domains.places.countries;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
+import scot.carricksoftware.grants.domains.places.Country;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
-public class PersonTest {
+public class CountryTest {
 
 
-    private Person person;
+    private Country country;
 
 
     @Before
     public void setUp() {
-        person = new Person();
+        country = new Country();
     }
 
     @Test
     public void getIdTest() {
-        assertNull(person.getId());
+        assertNull(country.getId());
     }
 
     @Test
     public void setIdTest() {
         Long id = GetRandomLong();
-        person.setId(id);
-        assertEquals(id, person.getId());
+        country.setId(id);
+        assertEquals(id, country.getId());
     }
 }

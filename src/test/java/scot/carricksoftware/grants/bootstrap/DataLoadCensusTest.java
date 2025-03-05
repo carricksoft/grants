@@ -13,8 +13,6 @@ import static org.junit.Assert.assertTrue;
 public class DataLoadCensusTest {
 
 
-
-
     @Test
     public void dummyTest() {
         assertTrue(true);
