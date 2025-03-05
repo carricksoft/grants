@@ -8,8 +8,8 @@ package scot.carricksoftware.grants.bootstrap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.commands.census.CensusCommand;
-import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
+import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
+import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
@@ -45,21 +45,21 @@ public class DataLoadCensus {
 
 
     private void loadCensusEntry() {
-        CensusEntryCommand censusEntryCommand = new CensusEntryCommand();
+        CensusEntryCommandImpl censusEntryCommandImpl = new CensusEntryCommandImpl();
         Census census = censusService.findById(1L);
         Person person = personService.findById(1L);
-        censusEntryCommand.setOtherPerson("Dad");
-        censusEntryCommand.setPerson(person);
-        censusEntryCommand.setCensus(census);
-        censusEntryService.saveCensusEntryCommand(censusEntryCommand);
+        censusEntryCommandImpl.setOtherPerson("Dad");
+        censusEntryCommandImpl.setPerson(person);
+        censusEntryCommandImpl.setCensus(census);
+        censusEntryService.saveCensusEntryCommand(censusEntryCommandImpl);
     }
 
 
     void loadCensus() {
-        CensusCommand censusCommand = new CensusCommand();
-        censusCommand.setDate(LocalDate.now().format(ApplicationConstants.FORMATTER));
-        censusCommand.setPlace(placeService.findById(1L));
-        censusService.saveCensusCommand(censusCommand);
+        CensusCommandImpl censusCommandImpl = new CensusCommandImpl();
+        censusCommandImpl.setDate(LocalDate.now().format(ApplicationConstants.FORMATTER));
+        censusCommandImpl.setPlace(placeService.findById(1L));
+        censusService.saveCensusCommand(censusCommandImpl);
     }
 
 }

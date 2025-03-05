@@ -9,5 +9,4 @@ package scot.carricksoftware.grants.services.certificates;
 public interface BirthCertificateService {
 
 
-
 }

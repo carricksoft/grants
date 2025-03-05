@@ -6,8 +6,7 @@
 package scot.carricksoftware.grants.domains.census;
 
 
-public class Census  {
-
+public class Census {
 
 
 }

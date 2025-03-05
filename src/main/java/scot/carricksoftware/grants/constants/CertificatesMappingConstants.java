@@ -15,7 +15,7 @@ public class CertificatesMappingConstants {
         // to stop checkstyle complaining
     }
 
- 
+
     @SuppressWarnings("unused")
     public static final String BIRTHCERTIFICATE_LIST = "/birthCertificates";
     @SuppressWarnings("unused")

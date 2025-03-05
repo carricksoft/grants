@@ -3,12 +3,12 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.commands.places.countries;
+package scot.carricksoftware.grants.commands.places.places;
 
 import org.springframework.stereotype.Component;
 
 @SuppressWarnings("unused")
 @Component
-public class CountryCommand {
+public class PlaceCommandImpl {
 
 }

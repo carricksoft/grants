@@ -9,9 +9,7 @@ import org.springframework.stereotype.Controller;
 
 @SuppressWarnings({"unused"})
 @Controller
-public class CensusFormControllerImpl{
-
-
+public class CensusFormControllerImpl {
 
 
 }

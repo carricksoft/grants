@@ -7,11 +7,11 @@ package scot.carricksoftware.grants.controllers.people;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import scot.carricksoftware.grants.commands.people.PersonCommand;
+import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
 
 @SuppressWarnings("unused")
 
 public interface PersonFormController {
 
-    String saveOrUpdate(@ModelAttribute PersonCommand personCommand, BindingResult bindingResult);
+    String saveOrUpdate(@ModelAttribute PersonCommandImpl personCommandImpl, BindingResult bindingResult);
 }

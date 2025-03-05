@@ -7,8 +7,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import scot.carricksoftware.grants.commands.census.CensusCommand;
-import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
+import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
+import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
@@ -51,18 +51,18 @@ public class DataLoadCensusTest {
 
     @Test
     public void censusWasCreated() {
-        CensusCommand censusCommand = new CensusCommand();
+        CensusCommandImpl censusCommandImpl = new CensusCommandImpl();
         Place place = GetRandomPlace();
-        when(censusServiceMock.saveCensusCommand(any())).thenReturn(censusCommand);
+        when(censusServiceMock.saveCensusCommand(any())).thenReturn(censusCommandImpl);
         when(placeServiceMock.findById(1L)).thenReturn(place);
-        ArgumentCaptor<CensusCommand> censusCommandCaptor = ArgumentCaptor.forClass(CensusCommand.class);
+        ArgumentCaptor<CensusCommandImpl> censusCommandCaptor = ArgumentCaptor.forClass(CensusCommandImpl.class);
         dataLoadCensus.load();
         verify(censusServiceMock, atLeast(1)).saveCensusCommand(censusCommandCaptor.capture());
 
         boolean found = false;
-        for (CensusCommand   censusCommandCaptured : censusCommandCaptor.getAllValues()) {
-            if (censusCommandCaptured.getPlace().toString().equals(place.toString()) &&
-                    censusCommandCaptured.getDate().equals(LocalDate.now().format(ApplicationConstants.FORMATTER))) {
+        for (CensusCommandImpl censusCommandImplCaptured : censusCommandCaptor.getAllValues()) {
+            if (censusCommandImplCaptured.getPlace().toString().equals(place.toString()) &&
+                    censusCommandImplCaptured.getDate().equals(LocalDate.now().format(ApplicationConstants.FORMATTER))) {
                 found = true;
                 break;
             }
@@ -80,12 +80,12 @@ public class DataLoadCensusTest {
     when(personServiceMock.findById(1L)).thenReturn(person);
 
 
-        ArgumentCaptor<CensusEntryCommand> censusEntryCommandCaptor = ArgumentCaptor.forClass(CensusEntryCommand.class);
+        ArgumentCaptor<CensusEntryCommandImpl> censusEntryCommandCaptor = ArgumentCaptor.forClass(CensusEntryCommandImpl.class);
         dataLoadCensus.load();
         verify(censusEntryServiceMock, atLeast(1)).saveCensusEntryCommand(censusEntryCommandCaptor.capture());
 
         boolean found = false;
-        for (CensusEntryCommand   censusCommandCaptured : censusEntryCommandCaptor.getAllValues()) {
+        for (CensusEntryCommandImpl censusCommandCaptured : censusEntryCommandCaptor.getAllValues()) {
             if (censusCommandCaptured.getOtherPerson().equals("Dad") &&
                     censusCommandCaptured.getPerson().toString().equals(person.toString())  &&
                     censusCommandCaptured.getCensus().toString().equals(census.toString()))

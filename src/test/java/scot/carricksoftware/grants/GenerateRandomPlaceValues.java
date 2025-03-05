@@ -6,9 +6,8 @@
 package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.commands.places.PlaceCommand;
-import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
-import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
+import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
+import scot.carricksoftware.grants.commands.places.regions.RegionCommandImpl;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
@@ -45,10 +44,10 @@ public class GenerateRandomPlaceValues {
     }
 
     @SuppressWarnings("unused")
-    public static CountryCommand GetRandomCountryCommand() {
-        CountryCommand countryCommand = new CountryCommand();
-        countryCommand.setName(GetRandomString());
-        return countryCommand;
+    public static CountryCommandImpl GetRandomCountryCommand() {
+        CountryCommandImpl countryCommandImpl = new CountryCommandImpl();
+        countryCommandImpl.setName(GetRandomString());
+        return countryCommandImpl;
     }
 
     public static Region GetRandomRegion() {
@@ -58,10 +57,10 @@ public class GenerateRandomPlaceValues {
     }
 
     @SuppressWarnings("unused")
-    public static RegionCommand GetRandomRegionCommand() {
-        RegionCommand regionCommand = new RegionCommand();
-        regionCommand.setName(GetRandomString());
-        return regionCommand;
+    public static RegionCommandImpl GetRandomRegionCommand() {
+        RegionCommandImpl regionCommandImpl = new RegionCommandImpl();
+        regionCommandImpl.setName(GetRandomString());
+        return regionCommandImpl;
     }
 
 

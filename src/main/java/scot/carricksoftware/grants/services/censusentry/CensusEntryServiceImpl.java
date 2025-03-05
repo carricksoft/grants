@@ -12,5 +12,4 @@ import org.springframework.stereotype.Service;
 public class CensusEntryServiceImpl implements CensusEntryService {
 
 
-
 }

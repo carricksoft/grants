@@ -3,10 +3,11 @@
  * All rights reserved.
  */
 
-
 package scot.carricksoftware.grants.domains.people;
 
-public class Persony {
+
+@SuppressWarnings("unused")
+public class People {
 
 
 }

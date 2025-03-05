@@ -7,7 +7,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.certificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -38,11 +38,11 @@ public class DataLoadCertificatesTest {
     public void aNewCertificateIsGeneratedTest() {
         Person person = GetRandomPerson();
         when(personServiceMock.findById(1L)).thenReturn(person);
-        ArgumentCaptor<BirthCertificateCommand> certificateCaptor = ArgumentCaptor.forClass(BirthCertificateCommand.class);
+        ArgumentCaptor<BirthCertificateCommandImpl> certificateCaptor = ArgumentCaptor.forClass(BirthCertificateCommandImpl.class);
         dataLoadCertificates.load();
         verify(birthCertificateServiceMock, atLeast(1)).saveBirthCertificateCommand(certificateCaptor.capture());
         boolean found = false;
-        for (BirthCertificateCommand certificate : certificateCaptor.getAllValues()) {
+        for (BirthCertificateCommandImpl certificate : certificateCaptor.getAllValues()) {
             if (certificate.getPerson().toString().equals(person.toString())) {
                 found = true;
                 break;

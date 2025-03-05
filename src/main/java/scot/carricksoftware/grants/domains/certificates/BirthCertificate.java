@@ -6,7 +6,7 @@
 package scot.carricksoftware.grants.domains.certificates;
 
 @SuppressWarnings("unused")
-public class BirthCertificate  {
+public class BirthCertificate {
 
 
 }

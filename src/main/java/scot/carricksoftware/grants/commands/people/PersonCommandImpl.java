@@ -9,6 +9,6 @@ import org.springframework.stereotype.Component;
 
 @SuppressWarnings("unused")
 @Component
-public class PersonCommand {
+public class PersonCommandImpl {
 
 }

@@ -14,22 +14,29 @@ public class MappingConstants {
         // to stop checkstyle complaining
     }
 
+    @SuppressWarnings("unused")
     public static final String PEOPLE_LIST = "/people";
     @SuppressWarnings("unused")
     public static final String PEOPLE_NEXT = "/people/next";
+    @SuppressWarnings("unused")
     public static final String PEOPLE_PREVIOUS = "/people/prev";
+    @SuppressWarnings("unused")
     public static final String PEOPLE_REWIND = "/people/rewind";
+    @SuppressWarnings("unused")
     public static final String PEOPLE_FF = "/people/ff";
     @SuppressWarnings("unused")
     public static final String PERSON_NEW = "/person/new";
     @SuppressWarnings("unused")
     public static final String PERSON = "/person";
+    @SuppressWarnings("unused")
     public static final String PEOPLE = "/people";
     @SuppressWarnings("unused")
     public static final String PERSON_SHOW = "/person/{id}/show";
+    @SuppressWarnings("unused")
     public static final String PERSON_DELETE = "/person/{id}/delete";
     @SuppressWarnings("unused")
     public static final String PERSON_EDIT = "/person/{id}/edit";
+    @SuppressWarnings("unused")
     public static final String REDIRECT = "redirect:";
 
     @SuppressWarnings("unused")
@@ -99,10 +106,15 @@ public class MappingConstants {
     @SuppressWarnings("unused")
     public static final String PLACE_EDIT = "place/{id}/edit";
 
+    @SuppressWarnings("unused")
     public static final String CENSUS_LIST = "/censuses";
+    @SuppressWarnings("unused")
     public static final String CENSUS_NEXT = "/censuses/next";
+    @SuppressWarnings("unused")
     public static final String CENSUS_PREVIOUS = "/censuses/prev";
+    @SuppressWarnings("unused")
     public static final String CENSUS_REWIND = "/censuses/rewind";
+    @SuppressWarnings("unused")
     public static final String CENSUS_FF = "/censuses/ff";
     @SuppressWarnings("unused")
     public static final String CENSUS_NEW = "/census/new";
@@ -110,6 +122,7 @@ public class MappingConstants {
     public static final String CENSUS = "/census";
     @SuppressWarnings("unused")
     public static final String CENSUS_SHOW = "/census/{id}/show";
+    @SuppressWarnings("unused")
     public static final String CENSUS_DELETE = "/census/{id}/delete";
     @SuppressWarnings("unused")
     public static final String CENSUS_EDIT = "census/{id}/edit";

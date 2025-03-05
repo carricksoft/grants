@@ -3,12 +3,12 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.commands.places.regions;
+package scot.carricksoftware.grants.commands.twoperson;
 
 import org.springframework.stereotype.Component;
 
 @SuppressWarnings("unused")
 @Component
-public class RegionCommand {
+public class MarriageCommandImpl {
 
 }

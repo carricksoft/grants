@@ -23,7 +23,6 @@ public class DataLoader implements CommandLineRunner {
     private final DataLoadCertificates dataLoadCertificates;
 
 
-
     public DataLoader(DataLoadPersons dataLoadPersons,
                       DataLoadPlaces dataLoadPlaces,
                       DataLoadCensus dataLoadCensus, DataLoadCertificates dataLoadCertificates) {

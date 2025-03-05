@@ -7,7 +7,7 @@ package scot.carricksoftware.grants.domains.census;
 
 
 @SuppressWarnings("unused")
-public class CensusEntry  {
+public class CensusEntry {
 
 
 }

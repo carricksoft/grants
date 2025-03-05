@@ -6,12 +6,11 @@
 package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.commands.census.CensusCommand;
-import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
-import scot.carricksoftware.grants.commands.people.PersonCommand;
-import scot.carricksoftware.grants.commands.places.PlaceCommand;
-import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
-import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
+import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
+import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
+import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
+import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
+import scot.carricksoftware.grants.commands.places.regions.RegionCommandImpl;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
@@ -52,11 +51,11 @@ public class GenerateRandomValues {
     }
 
     @SuppressWarnings("unused")
-    public static PersonCommand GetRandomPersonCommand() {
-        PersonCommand personCommand = new PersonCommand();
-        personCommand.setFirstName(GetRandomString());
-        personCommand.setLastName(GetRandomString());
-        return personCommand;
+    public static PersonCommandImpl GetRandomPersonCommand() {
+        PersonCommandImpl personCommandImpl = new PersonCommandImpl();
+        personCommandImpl.setFirstName(GetRandomString());
+        personCommandImpl.setLastName(GetRandomString());
+        return personCommandImpl;
     }
 
     public static Place GetRandomPlace() {
@@ -83,10 +82,10 @@ public class GenerateRandomValues {
     }
 
     @SuppressWarnings("unused")
-    public static CountryCommand GetRandomCountryCommand() {
-        CountryCommand countryCommand = new CountryCommand();
-        countryCommand.setName(GetRandomString());
-        return countryCommand;
+    public static CountryCommandImpl GetRandomCountryCommand() {
+        CountryCommandImpl countryCommandImpl = new CountryCommandImpl();
+        countryCommandImpl.setName(GetRandomString());
+        return countryCommandImpl;
     }
 
     public static Region GetRandomRegion() {
@@ -96,10 +95,10 @@ public class GenerateRandomValues {
     }
 
     @SuppressWarnings("unused")
-    public static RegionCommand GetRandomRegionCommand() {
-        RegionCommand regionCommand = new RegionCommand();
-        regionCommand.setName(GetRandomString());
-        return regionCommand;
+    public static RegionCommandImpl GetRandomRegionCommand() {
+        RegionCommandImpl regionCommandImpl = new RegionCommandImpl();
+        regionCommandImpl.setName(GetRandomString());
+        return regionCommandImpl;
     }
 
     @SuppressWarnings("unused")
@@ -112,22 +111,22 @@ public class GenerateRandomValues {
     }
 
     @SuppressWarnings("unused")
-    public static CensusCommand GetRandomCensusCommand() {
-        CensusCommand censusCommand = new CensusCommand();
-        censusCommand.setPlace(GetRandomPlace());
-        censusCommand.setId(GetRandomLong());
-        censusCommand.setDate(LocalDate.now().format(ApplicationConstants.FORMATTER));
-        return censusCommand;
+    public static CensusCommandImpl GetRandomCensusCommand() {
+        CensusCommandImpl censusCommandImpl = new CensusCommandImpl();
+        censusCommandImpl.setPlace(GetRandomPlace());
+        censusCommandImpl.setId(GetRandomLong());
+        censusCommandImpl.setDate(LocalDate.now().format(ApplicationConstants.FORMATTER));
+        return censusCommandImpl;
     }
 
     @SuppressWarnings("unused")
-    public static CensusEntryCommand GetRandomCensusEntryCommand() {
-        CensusEntryCommand censusEntryCommand = new CensusEntryCommand();
-        censusEntryCommand.setCensus(GetRandomCensus());
-        censusEntryCommand.setId(GetRandomLong());
-        censusEntryCommand.setPerson(GetRandomPerson());
-        censusEntryCommand.setOtherPerson(GetRandomString());
-        return censusEntryCommand;
+    public static CensusEntryCommandImpl GetRandomCensusEntryCommand() {
+        CensusEntryCommandImpl censusEntryCommandImpl = new CensusEntryCommandImpl();
+        censusEntryCommandImpl.setCensus(GetRandomCensus());
+        censusEntryCommandImpl.setId(GetRandomLong());
+        censusEntryCommandImpl.setPerson(GetRandomPerson());
+        censusEntryCommandImpl.setOtherPerson(GetRandomString());
+        return censusEntryCommandImpl;
     }
 
 }

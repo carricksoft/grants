@@ -7,8 +7,9 @@ package scot.carricksoftware.grants.commands.certificates;
 
 import org.springframework.stereotype.Component;
 
+@SuppressWarnings("ALL")
 @Component
-public class BirthCertificateCommand {
+public class DeathCertificateCommandImpl {
 
 
 }

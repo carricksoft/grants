@@ -8,5 +8,4 @@ package scot.carricksoftware.grants.services.census;
 public interface CensusService {
 
 
-
 }

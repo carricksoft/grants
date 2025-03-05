@@ -14,5 +14,4 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 public interface BirthCertificateRepository extends PagingAndSortingRepository<BirthCertificate, Long> {
 
 
-
 }

@@ -9,7 +9,7 @@ package scot.carricksoftware.grants.commands.census;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CensusCommand {
+public class CensusCommandImpl {
 
 }
 

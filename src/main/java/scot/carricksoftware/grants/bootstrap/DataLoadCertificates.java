@@ -8,7 +8,7 @@ package scot.carricksoftware.grants.bootstrap;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.services.certificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 
@@ -34,11 +34,10 @@ public class DataLoadCertificates {
 
 
     private void loadBirthCertificate() {
-        BirthCertificateCommand birthCertificateCommand = new BirthCertificateCommand();
-        birthCertificateCommand.setPerson(personService.findById(1L));
-        birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
+        BirthCertificateCommandImpl birthCertificateCommandImpl = new BirthCertificateCommandImpl();
+        birthCertificateCommandImpl.setPerson(personService.findById(1L));
+        birthCertificateService.saveBirthCertificateCommand(birthCertificateCommandImpl);
     }
-
 
 
 }

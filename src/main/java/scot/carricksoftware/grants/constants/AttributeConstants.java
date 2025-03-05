@@ -14,6 +14,7 @@ public class AttributeConstants {
         // to stop checkstyle complaining
     }
 
+    @SuppressWarnings("unused")
     public static final String PEOPLE = "people";
     @SuppressWarnings("unused")
     public static final String PERSON_COMMAND = "personCommand";
@@ -33,6 +34,7 @@ public class AttributeConstants {
     @SuppressWarnings("unused")
     public static final String PLACE_COMMAND = "placeCommand";
 
+    @SuppressWarnings("unused")
     public static final String CENSUSES = "censuses";
     @SuppressWarnings("unused")
     public static final String CENSUS_COMMAND = "censusCommand";
