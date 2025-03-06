@@ -7,19 +7,10 @@ package scot.carricksoftware.grants.domains.places;
 
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import scot.carricksoftware.grants.BaseEntity;
 
 @Entity
-public class Region {
+public class Region extends BaseEntity {
 
-    @Id
-    private Long id;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }

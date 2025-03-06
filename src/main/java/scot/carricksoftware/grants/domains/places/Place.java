@@ -6,7 +6,11 @@
 package scot.carricksoftware.grants.domains.places;
 
 
-public class Place {
+import jakarta.persistence.Entity;
+import scot.carricksoftware.grants.BaseEntity;
+
+@Entity
+public class Place extends BaseEntity {
 
 
 }

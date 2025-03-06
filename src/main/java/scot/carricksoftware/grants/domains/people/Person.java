@@ -7,21 +7,10 @@ package scot.carricksoftware.grants.domains.people;
 
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import scot.carricksoftware.grants.BaseEntity;
 
 @Entity
-public class Person {
+public class Person extends BaseEntity {
 
 
-    @Id
-    private Long id;
-
-    @SuppressWarnings("unused")
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }

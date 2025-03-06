@@ -5,8 +5,11 @@
 
 package scot.carricksoftware.grants.domains.census;
 
+import jakarta.persistence.Entity;
+import scot.carricksoftware.grants.BaseEntity;
 
-public class Census {
+@Entity
+public class Census extends BaseEntity {
 
 
 }

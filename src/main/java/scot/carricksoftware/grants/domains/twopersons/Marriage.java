@@ -5,8 +5,11 @@
 
 package scot.carricksoftware.grants.domains.twopersons;
 
-@SuppressWarnings("unused")
-public class Marriage {
+import jakarta.persistence.Entity;
+import scot.carricksoftware.grants.BaseEntity;
+
+@Entity
+public class Marriage extends BaseEntity {
 
 
 }

@@ -5,8 +5,10 @@
 
 package scot.carricksoftware.grants.domains.certificates;
 
-@SuppressWarnings("unused")
-public class DeathCertificate {
+
+import scot.carricksoftware.grants.BaseEntity;
+
+public class DeathCertificate extends BaseEntity {
 
 
 }

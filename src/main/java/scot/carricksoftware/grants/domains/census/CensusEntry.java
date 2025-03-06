@@ -6,8 +6,10 @@
 package scot.carricksoftware.grants.domains.census;
 
 
-@SuppressWarnings("unused")
-public class CensusEntry {
+import scot.carricksoftware.grants.BaseEntity;
+
+
+public class CensusEntry extends BaseEntity {
 
 
 }

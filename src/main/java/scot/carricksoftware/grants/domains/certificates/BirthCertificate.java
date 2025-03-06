@@ -5,8 +5,11 @@
 
 package scot.carricksoftware.grants.domains.certificates;
 
-@SuppressWarnings("unused")
-public class BirthCertificate {
+import jakarta.persistence.Entity;
+import scot.carricksoftware.grants.BaseEntity;
+
+@Entity
+public class BirthCertificate extends BaseEntity {
 
 
 }
