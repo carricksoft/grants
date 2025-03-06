@@ -6,8 +6,10 @@
 package scot.carricksoftware.grants.domains.certificates;
 
 
+import jakarta.persistence.Entity;
 import scot.carricksoftware.grants.BaseEntity;
 
+@Entity
 public class DeathCertificate extends BaseEntity {
 
 
