@@ -9,6 +9,7 @@ import scot.carricksoftware.grants.domains.places.Region;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 @SpringBootTest
@@ -34,5 +35,17 @@ public class RegionTest {
         Long id = GetRandomLong();
         region.setId(id);
         assertEquals(id, region.getId());
+    }
+
+    @Test
+    public void getNameTest() {
+        assertNull(region.getName());
+    }
+
+    @Test
+    public void setLastNameTest() {
+        String name = GetRandomString();
+        region.setName(name);
+        assertEquals(name, region.getName());
     }
 }

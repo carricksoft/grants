@@ -1,11 +1,11 @@
-package scot.carricksoftware.grants.domains.places.countries;
+package scot.carricksoftware.grants.domains.places.places;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.domains.places.Place;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -14,38 +14,38 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
-public class CountryTest {
+public class PlaceTest {
 
 
-    private Country country;
+    private Place place;
 
 
     @Before
     public void setUp() {
-        country = new Country();
+        place = new Place();
     }
 
     @Test
     public void getIdTest() {
-        assertNull(country.getId());
+        assertNull(place.getId());
     }
 
     @Test
     public void setIdTest() {
         Long id = GetRandomLong();
-        country.setId(id);
-        assertEquals(id, country.getId());
+        place.setId(id);
+        assertEquals(id, place.getId());
     }
 
     @Test
     public void getNameTest() {
-        assertNull(country.getName());
+        assertNull(place.getName());
     }
 
     @Test
     public void setLastNameTest() {
         String name = GetRandomString();
-        country.setName(name);
-        assertEquals(name, country.getName());
+        place.setName(name);
+        assertEquals(name, place.getName());
     }
 }

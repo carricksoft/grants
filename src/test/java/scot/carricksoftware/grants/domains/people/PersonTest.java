@@ -7,6 +7,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.*;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 @SpringBootTest
@@ -32,5 +33,29 @@ public class PersonTest {
         Long id = GetRandomLong();
         person.setId(id);
         assertEquals(id, person.getId());
+    }
+
+    @Test
+    public void getFirstnameTest() {
+        assertNull(person.getFirstName());
+    }
+
+    @Test
+    public void setFirstNameTest() {
+        String firstName = GetRandomString();
+        person.setFirstName(firstName);
+        assertEquals(firstName, person.getFirstName());
+    }
+
+    @Test
+    public void getLastNameTest() {
+        assertNull(person.getLastName());
+    }
+
+    @Test
+    public void setLastNameTest() {
+        String lastName = GetRandomString();
+        person.setLastName(lastName);
+        assertEquals(lastName, person.getLastName());
     }
 }
