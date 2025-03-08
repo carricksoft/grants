@@ -34,9 +34,7 @@
     <properties>
         <java.version>17</java.version>
         <sonar.host.url>http://git.carricksoftware.co.uk:9000/</sonar.host.url>
-        <sonar.login>sqp_5fd793974320e959869ae4122c6e77a7e50f2943</sonar.login>
-        <sonar.user>apg</sonar.user>
-        <sonar.password>Sjki27Sjki27#</sonar.password>
+        <sonar.token>sqp_5fd793974320e959869ae4122c6e77a7e50f2943</sonar.token>
     </properties>
     <dependencies>
         <dependency>
