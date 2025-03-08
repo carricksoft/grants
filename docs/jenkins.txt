@@ -1,0 +1,1 @@
+sonar:sonar org.pitest:pitest-maven:mutationCoverage

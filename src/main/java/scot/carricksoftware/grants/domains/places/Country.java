@@ -6,12 +6,18 @@
 package scot.carricksoftware.grants.domains.places;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import scot.carricksoftware.grants.BaseEntity;
+
+import java.util.Set;
 
 @Entity
 public class Country extends BaseEntity {
 
     private String name;
+
+    @OneToMany(mappedBy = "country")
+    private Set<Region> regions;
 
     public String getName() {
         return name;
