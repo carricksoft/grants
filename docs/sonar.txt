@@ -4,4 +4,9 @@ mvn clean verify sonar:sonar \
   -Dsonar.projectKey=grants \
   -Dsonar.projectName='grants' \
   -Dsonar.host.url=http://sonar.carricksoftware.co.uk:9000 \
-  -Dsonar.token=sqp_2adb13ac23dadfbbbb73a24f2e60330444cd377c
+  -Dsonar.token=sqp_4b22537b2ca8585e941d74370cd5bebffa9b9391
+
+
+
+
+  sqp_4b22537b2ca8585e941d74370cd5bebffa9b9391
