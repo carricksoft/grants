@@ -33,8 +33,6 @@
     </scm>
     <properties>
         <java.version>17</java.version>
-        <sonar.host.url>http://git.carricksoftware.co.uk:9000/</sonar.host.url>
-        <sonar.token>sqp_4b22537b2ca8585e941d74370cd5bebffa9b9391</sonar.token>
     </properties>
     <dependencies>
         <dependency>

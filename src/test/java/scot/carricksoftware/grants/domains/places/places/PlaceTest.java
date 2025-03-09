@@ -6,11 +6,13 @@ import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.places.Region;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -42,9 +44,21 @@ public class PlaceTest {
     }
 
     @Test
-    public void setLastNameTest() {
+    public void setNameTest() {
         String name = GetRandomString();
         place.setName(name);
         assertEquals(name, place.getName());
+    }
+
+    @Test
+    public void getRegionTest() {
+        assertNull(place.getRegion());
+    }
+
+    @Test
+    public void setRegionTest() {
+        Region region = GetRandomRegion();
+        place.setRegion(region);
+        assertEquals(region, place.getRegion());
     }
 }

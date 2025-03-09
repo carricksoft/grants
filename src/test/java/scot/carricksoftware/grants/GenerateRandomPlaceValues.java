@@ -25,14 +25,14 @@ public class GenerateRandomPlaceValues {
     }
 
     public static Region GetRandomRegion() {
-        Region region  = new Region();
+        Region region = new Region();
         region.setCountry(GetRandomCountry());
         region.setName(GetRandomString());
         return region;
     }
 
     public static Country GetRandomCountry() {
-        Country country  = new Country();
+        Country country = new Country();
         country.setName(GetRandomString());
         return country;
     }
