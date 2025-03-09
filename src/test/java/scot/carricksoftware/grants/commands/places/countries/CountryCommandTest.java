@@ -1,47 +1,45 @@
-package scot.carricksoftware.grants.domains.places.countries;
+package scot.carricksoftware.grants.commands.places.countries;
 
 import org.junit.Before;
 import org.junit.Test;
-import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
+import scot.carricksoftware.grants.commands.places.regions.RegionCommandImpl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-public class CountryTest {
+public class CountryCommandTest {
 
-
-    private Country country;
-
-
+    RegionCommand command;
     @Before
     public void setUp() {
-        country = new Country();
+        command = new RegionCommandImpl();
     }
 
     @Test
     public void getIdTest() {
-        assertNull(country.getId());
+       assertNull(command.getId());
     }
 
     @Test
     public void setIdTest() {
         Long id = GetRandomLong();
-        country.setId(id);
-        assertEquals(id, country.getId());
+        command.setId(id);
+        assertEquals(id,command.getId());
     }
 
     @Test
     public void getNameTest() {
-        assertNull(country.getName());
+        assertNull(command.getName());
     }
 
     @Test
-    public void setLastNameTest() {
+    public void setNameTest() {
         String name = GetRandomString();
-        country.setName(name);
-        assertEquals(name, country.getName());
+        command.setName(name);
+        assertEquals(name,command.getName());
     }
 
 

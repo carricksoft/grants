@@ -9,7 +9,6 @@ package scot.carricksoftware.grants.converters.capitalisation;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -17,8 +16,6 @@ import scot.carricksoftware.grants.converters.CapitalisationImpl;
 
 import static org.junit.Assert.assertEquals;
 
-
-@SpringBootTest
 @RunWith(SpringRunner.class)
 public class CapitalisationLengthTest {
 

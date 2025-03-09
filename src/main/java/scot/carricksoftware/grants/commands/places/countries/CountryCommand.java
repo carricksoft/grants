@@ -3,13 +3,12 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.commands.places.regions;
+package scot.carricksoftware.grants.commands.places.countries;
 
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.domains.places.Country;
 
 @Component
-public interface RegionCommand {
+public interface CountryCommand {
 
     Long getId();
 
@@ -22,7 +21,4 @@ public interface RegionCommand {
     @SuppressWarnings("unused")
     void setName(String name);
 
-    Country getCountry();
-
-    void setCountry(Country country);
 }

@@ -1,21 +1,23 @@
-package scot.carricksoftware.grants.commands.places.regions;
+package scot.carricksoftware.grants.commands.places.places;
 
 import org.junit.Before;
 import org.junit.Test;
-import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.domains.places.Region;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomCountry;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
-public class RegionCommandTest {
+public class PlaceCommandTest {
 
-    RegionCommand command;
+    PlaceCommand command;
+
     @Before
     public void setUp() {
-        command = new RegionCommandImpl();
+        command = new PlaceCommandImpl();
     }
 
     @Test
@@ -43,18 +45,16 @@ public class RegionCommandTest {
     }
 
     @Test
-    public void getCountryTest() {
-        assertNull(command.getCountry());
+    public void getRegionTest() {
+        assertNull(command.getRegion());
     }
 
     @Test
-    public void setCountryTest() {
-        Country country = GetRandomCountry();
-        command.setCountry(country);
-        assertEquals(country,command.getCountry());
+    public void setRegionTest() {
+        Region region = GetRandomRegion();
+        command.setRegion(region);
+        assertEquals(region,command.getRegion());
     }
-
-
 
 
 }
