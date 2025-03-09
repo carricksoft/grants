@@ -22,14 +22,14 @@ public class PlaceCommandTest {
 
     @Test
     public void getIdTest() {
-       assertNull(command.getId());
+        assertNull(command.getId());
     }
 
     @Test
     public void setIdTest() {
         Long id = GetRandomLong();
         command.setId(id);
-        assertEquals(id,command.getId());
+        assertEquals(id, command.getId());
     }
 
     @Test
@@ -41,7 +41,7 @@ public class PlaceCommandTest {
     public void setNameTest() {
         String name = GetRandomString();
         command.setName(name);
-        assertEquals(name,command.getName());
+        assertEquals(name, command.getName());
     }
 
     @Test
@@ -53,7 +53,7 @@ public class PlaceCommandTest {
     public void setRegionTest() {
         Region region = GetRandomRegion();
         command.setRegion(region);
-        assertEquals(region,command.getRegion());
+        assertEquals(region, command.getRegion());
     }
 
 

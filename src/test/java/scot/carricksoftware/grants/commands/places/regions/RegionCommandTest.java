@@ -13,6 +13,7 @@ import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomCou
 public class RegionCommandTest {
 
     RegionCommand command;
+
     @Before
     public void setUp() {
         command = new RegionCommandImpl();
@@ -20,14 +21,14 @@ public class RegionCommandTest {
 
     @Test
     public void getIdTest() {
-       assertNull(command.getId());
+        assertNull(command.getId());
     }
 
     @Test
     public void setIdTest() {
         Long id = GetRandomLong();
         command.setId(id);
-        assertEquals(id,command.getId());
+        assertEquals(id, command.getId());
     }
 
     @Test
@@ -39,7 +40,7 @@ public class RegionCommandTest {
     public void setNameTest() {
         String name = GetRandomString();
         command.setName(name);
-        assertEquals(name,command.getName());
+        assertEquals(name, command.getName());
     }
 
     @Test
@@ -51,10 +52,8 @@ public class RegionCommandTest {
     public void setCountryTest() {
         Country country = GetRandomCountry();
         command.setCountry(country);
-        assertEquals(country,command.getCountry());
+        assertEquals(country, command.getCountry());
     }
-
-
 
 
 }

@@ -12,6 +12,7 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 public class CountryCommandTest {
 
     CountryCommand command;
+
     @Before
     public void setUp() {
         command = new CountryCommandImpl();
@@ -19,14 +20,14 @@ public class CountryCommandTest {
 
     @Test
     public void getIdTest() {
-       assertNull(command.getId());
+        assertNull(command.getId());
     }
 
     @Test
     public void setIdTest() {
         Long id = GetRandomLong();
         command.setId(id);
-        assertEquals(id,command.getId());
+        assertEquals(id, command.getId());
     }
 
     @Test
@@ -38,7 +39,7 @@ public class CountryCommandTest {
     public void setNameTest() {
         String name = GetRandomString();
         command.setName(name);
-        assertEquals(name,command.getName());
+        assertEquals(name, command.getName());
     }
 
 
