@@ -34,5 +34,4 @@ public class Region extends BaseEntity {
         this.name = name;
     }
 
-
 }

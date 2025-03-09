@@ -19,7 +19,6 @@ public class PlaceTest {
 
     private Place place;
 
-
     @Before
     public void setUp() {
         place = new Place();
