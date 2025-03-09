@@ -2,8 +2,7 @@ package scot.carricksoftware.grants.commands.places.countries;
 
 import org.junit.Before;
 import org.junit.Test;
-import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
-import scot.carricksoftware.grants.commands.places.regions.RegionCommandImpl;
+
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -12,10 +11,10 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 
 public class CountryCommandTest {
 
-    RegionCommand command;
+    CountryCommand command;
     @Before
     public void setUp() {
-        command = new RegionCommandImpl();
+        command = new CountryCommandImpl();
     }
 
     @Test
