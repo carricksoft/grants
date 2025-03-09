@@ -2,9 +2,6 @@ package scot.carricksoftware.grants.domains.places.countries;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.domains.places.Country;
 
 import static org.junit.Assert.assertEquals;
@@ -12,8 +9,6 @@ import static org.junit.Assert.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-@SpringBootTest
-@RunWith(MockitoJUnitRunner.class)
 public class CountryTest {
 
 

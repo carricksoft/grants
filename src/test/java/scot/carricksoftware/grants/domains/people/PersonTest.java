@@ -2,16 +2,12 @@ package scot.carricksoftware.grants.domains.people;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.Assert.*;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-@SpringBootTest
-@RunWith(MockitoJUnitRunner.class)
+
 public class PersonTest {
 
 

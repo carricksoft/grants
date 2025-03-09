@@ -2,9 +2,6 @@ package scot.carricksoftware.grants.domains.places.places;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.boot.test.context.SpringBootTest;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
 
@@ -14,8 +11,7 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
-@SpringBootTest
-@RunWith(MockitoJUnitRunner.class)
+
 public class PlaceTest {
 
 
