@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
+import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Region;
 
 import static org.junit.Assert.assertEquals;
@@ -47,5 +48,17 @@ public class RegionTest {
         String name = GetRandomString();
         region.setName(name);
         assertEquals(name, region.getName());
+    }
+
+    @Test
+    public void getCountryTest() {
+        assertNull(region.getCountry());
+    }
+
+    @Test
+    public void setCountryTest() {
+        Country country = new Country();
+        region.setCountry(country);
+        assertEquals(country, region.getCountry());
     }
 }
