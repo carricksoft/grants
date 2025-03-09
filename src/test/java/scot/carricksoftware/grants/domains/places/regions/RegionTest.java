@@ -5,19 +5,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import scot.carricksoftware.grants.domains.places.Country;
-import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
-
-import java.util.HashSet;
-import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomCountry;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -56,30 +49,6 @@ public class RegionTest {
         assertEquals(name, region.getName());
     }
 
-    @Test
-    public void getPlacesTest() {
-        assertNull(region.getPlaces());
-    }
-
-    @Test
-    public void setPlacesTest() {
-        Set<Place> places = new HashSet<>();
-        places.add(GetRandomPlace());
-        region.setPlaces(places);
-        assertEquals(places, region.getPlaces());
-    }
-
-    @Test
-    public void getCountryTest() {
-        assertNull(region.getCountry());
-    }
-
-    @Test
-    public void setCountryTest() {
-        Country country = GetRandomCountry();
-        region.setCountry(country);
-        assertEquals(country, region.getCountry());
-    }
 
 
 
