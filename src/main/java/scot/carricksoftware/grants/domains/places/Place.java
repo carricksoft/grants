@@ -7,8 +7,7 @@ package scot.carricksoftware.grants.domains.places;
 
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import scot.carricksoftware.grants.BaseEntity;
 
 @Entity
@@ -16,9 +15,7 @@ public class Place extends BaseEntity {
 
     private String name;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
-    @ManyToOne
-    @JoinColumn(name = "region_id")
+    @OneToOne
     private Region region;
 
     public Region getRegion() {

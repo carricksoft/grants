@@ -19,12 +19,14 @@ public class GenerateRandomPlaceValues {
 
     public static Place GetRandomPlace() {
         Place place = new Place();
+        Region region = GetRandomRegion();
         place.setName(GetRandomString());
         return place;
     }
 
     public static Region GetRandomRegion() {
         Region region  = new Region();
+        region.setCountry(GetRandomCountry());
         region.setName(GetRandomString());
         return region;
     }
