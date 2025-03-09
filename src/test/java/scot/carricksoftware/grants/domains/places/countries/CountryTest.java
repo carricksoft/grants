@@ -15,6 +15,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
 @SpringBootTest
 @RunWith(MockitoJUnitRunner.class)
@@ -61,7 +62,7 @@ public class CountryTest {
     @Test
     public void RegionsTest() {
         Set<Region> regionSet = new HashSet<>();
-        regionSet.add(new Region());
+        regionSet.add(GetRandomRegion());
         country.setRegions(regionSet);
         assertEquals(regionSet, country.getRegions());
     }
