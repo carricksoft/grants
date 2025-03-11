@@ -1,3 +1,9 @@
+
+/*
+ * Copyright (c) Andrew Grant of Carrick Software 11/03/2025, 14:33.
+ *
+ */
+
 package scot.carricksoftware.grants.domains.places;
 
 import org.junit.jupiter.api.BeforeEach;
