@@ -18,10 +18,12 @@ public class Place extends BaseEntity {
     @OneToOne
     private Region region;
 
+    @SuppressWarnings("unused")
     public Region getRegion() {
         return region;
     }
 
+    @SuppressWarnings("unused")
     public void setRegion(Region region) {
         this.region = region;
     }

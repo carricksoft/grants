@@ -18,18 +18,22 @@ public class Region extends BaseEntity {
     @OneToOne
     private Country country;
 
+    @SuppressWarnings("unused")
     public Country getCountry() {
         return country;
     }
 
+    @SuppressWarnings("unused")
     public void setCountry(Country country) {
         this.country = country;
     }
 
+    @SuppressWarnings("unused")
     public String getName() {
         return name;
     }
 
+    @SuppressWarnings("unused")
     public void setName(String name) {
         this.name = name;
     }

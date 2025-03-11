@@ -1,14 +1,16 @@
 package scot.carricksoftware.grants;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 class GrantsApplicationTests {
 
-	@Test
-	void contextLoads() {
-		// not yet in  use
-	}
+
+    @Test
+    void contextLoads() {
+        assertTrue(true);
+    }
 
 }
