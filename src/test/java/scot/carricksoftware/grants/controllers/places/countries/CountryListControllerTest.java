@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomCountry;
 
@@ -64,7 +63,8 @@ public class CountryListControllerTest {
         when(countryServiceMock.count()).thenReturn((long) count);
         controller.getLastPage(modelMock);
         controller.getPreviousPage(modelMock);
-        verify(countryServiceMock).getPagedCountries(page);
+        assertEquals("country/list", controller.getLastPage(modelMock));
+        verify(countryServiceMock, times(2)).getPagedCountries(page);
     }
 
     @Test
@@ -95,7 +95,31 @@ public class CountryListControllerTest {
         assertEquals("country/list", controller.getNextPage(modelMock));
         assertEquals(1, controller.getPageNumber());
         verify(modelMock).addAttribute("countries", countryList);
+
     }
+
+    @Test
+    public void getPreviousFromFirstTest() {
+        List<Country> countryList = new ArrayList<>();
+        countryList.add(GetRandomCountry());
+        when(countryServiceMock.getPagedCountries(0)).thenReturn(countryList);
+
+        controller.getFirstPage(modelMock);
+        assertEquals("country/list", controller.getPreviousPage(modelMock));
+        assertEquals(0, controller.getPageNumber());
+        verify(modelMock, times(2)).addAttribute("countries", countryList);
+    }
+
+    @Test
+    public void getPreviousFromLastTest() {
+        int page = 25;
+        int count = page * ApplicationConstants.DEFAULT_PAGE_SIZE;
+        when(countryServiceMock.count()).thenReturn((long) count);
+        controller.getLastPage(modelMock);
+        assertEquals("country/list", controller.getPreviousPage(modelMock));
+        assertEquals(24, controller.getPageNumber());
+    }
+
 
 
 }
