@@ -1,9 +1,9 @@
 /*
- * Copyright (c)  28 Feb 2025, Andrew Grant of Carrick Software .
- * All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 11/03/2025, 20:23. All rights reserved.
+ *
  */
 
-package scot.carricksoftware.grants.services.countries;
+package scot.carricksoftware.grants.services.places.countries;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
