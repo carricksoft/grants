@@ -1,9 +1,9 @@
 /*
- * Copyright (c)  20 Feb 2025, Andrew Grant of Carrick Software .
- * All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 11/03/2025, 22:25. All rights reserved.
+ *
  */
 
-package scot.carricksoftware.grants.controllers;
+package scot.carricksoftware.grants.controllers.places.countries;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,7 +15,8 @@ import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.services.places.countries.CountryServiceImpl;
+import scot.carricksoftware.grants.controllers.ControllerHelper;
+import scot.carricksoftware.grants.services.places.countries.CountryService;
 
 
 import static java.lang.Integer.max;
@@ -27,13 +28,12 @@ public class CountryListControllerImpl implements CountryListController {
 
 
     private int currentPage = 0;
-    private final ControllerHelperImpl controllerHelperImpl;
+    private final ControllerHelper controllerHelper;
+    private final CountryService countryService;
 
-    private final CountryServiceImpl countryService;
-
-    public CountryListControllerImpl(ControllerHelperImpl controllerHelperImpl,
-                                     CountryServiceImpl countryService) {
-        this.controllerHelperImpl = controllerHelperImpl;
+    public CountryListControllerImpl(ControllerHelper controllerHelper,
+                                     CountryService countryService) {
+        this.controllerHelper = controllerHelper;
         this.countryService = countryService;
     }
 
@@ -49,7 +49,7 @@ public class CountryListControllerImpl implements CountryListController {
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
         model.addAttribute(AttributeConstants.COUNTRIES, countryService.getPagedCountries(currentPage));
-        controllerHelperImpl.addAttributes(model);
+        controllerHelper.addAttributes(model);
         return ViewConstants.COUNTRY_LIST;
     }
 
