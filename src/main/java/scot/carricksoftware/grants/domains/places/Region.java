@@ -3,15 +3,28 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.domains;
+package scot.carricksoftware.grants.domains.places;
+
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToOne;
 import scot.carricksoftware.grants.BaseEntity;
 
 @Entity
-public class Country extends BaseEntity {
+public class Region extends BaseEntity {
 
     private String name;
+
+    @OneToOne
+    private Country country;
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
 
     public String getName() {
         return name;
