@@ -7,6 +7,10 @@ package scot.carricksoftware.grants.commands.places.countries;
 
 public interface CountryCommand {
 
+    Long getId();
+
+    void setId(Long id);
+
     @SuppressWarnings("unused")
     String getName();
 

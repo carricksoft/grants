@@ -16,12 +16,12 @@ public class RegionCommandImpl implements RegionCommand {
     @Size(min = 3, max = 40, message = "Name must be between 3 and 40 characters.")
     private String name;
 
-    @SuppressWarnings("unused")
+    @Override
     public Long getId() {
         return id;
     }
 
-    @SuppressWarnings("unused")
+    @Override
     public void setId(Long id) {
         this.id = id;
     }

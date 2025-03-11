@@ -12,9 +12,14 @@ import org.springframework.stereotype.Component;
 public interface RegionCommand {
 
 
+    Long getId();
+
+    void setId(Long id);
+
     @SuppressWarnings("unused")
     String getName();
 
     @SuppressWarnings("unused")
     void setName(String name);
+
 }
