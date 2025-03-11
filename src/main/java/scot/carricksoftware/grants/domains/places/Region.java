@@ -7,26 +7,12 @@ package scot.carricksoftware.grants.domains.places;
 
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
 import scot.carricksoftware.grants.BaseEntity;
 
 @Entity
 public class Region extends BaseEntity {
 
     private String name;
-
-    @OneToOne
-    private Country country;
-
-    @SuppressWarnings("unused")
-    public Country getCountry() {
-        return country;
-    }
-
-    @SuppressWarnings("unused")
-    public void setCountry(Country country) {
-        this.country = country;
-    }
 
     @SuppressWarnings("unused")
     public String getName() {
