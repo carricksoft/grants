@@ -3,7 +3,7 @@
  * All rights reserved.
  */
 
-package scot.carricksoftware.grants.bootloader;
+package scot.carricksoftware.grants.bootstrap;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
