@@ -59,7 +59,7 @@ public class CountryFormControllerImpl implements CountryFormController {
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.COUNTRY_EDIT)
-    public final String countryEdit(@PathVariable final String id, Model model) {
+    public final String countryEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("CountryFormControllerImpl::countryEdit");
         model.addAttribute(AttributeConstants.COUNTRY_COMMAND, countryService.findById(Long.valueOf(id)));
         return ViewConstants.COUNTRY_FORM;

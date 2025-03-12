@@ -1,0 +1,114 @@
+<!doctype html>
+<!--suppress HtmlUnknownTarget -->
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!--suppress SpellCheckingInspection -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Grants Application - home page</title>
+</head>
+<body>
+
+<div th:insert="~{fragments/layout::banner}"></div>
+
+<div class="mx-auto" style="width:50%">
+    <h1 id="pageHeader">Available Functions</h1>
+    <table class="table table-bordered">
+
+        <tbody>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <a class="btn btn-primary btn-lg btn-block" href="people">People</a>
+            </td>
+            <td>
+                <a class="btn btn-primary btn-lg btn-block" href="places">Places</a>
+            </td>
+            <td>
+                <a class="btn btn-primary btn-lg btn-block" href="censuses">Censuses</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+
+            <td>
+                <a class="btn btn-outline-secondary btn-sm btn-block" href="date/list">Dates</a>
+            </td>
+            <td>
+                <a class="btn btn-outline-secondary btn-sm btn-block" href="countries">Countries</a>
+            </td>
+            <td>
+                <a class="btn btn-primary btn-lg btn-block" href="censusEntries">Census Entries</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm btn-block" href="birth_certificate/list">Birth Certificates</a>
+            </td>
+            <td>
+                <!--suppress HtmlUnknownTarget -->
+                <a class="btn btn-outline-secondary btn-sm btn-block" href="regions">Regions></a>
+            </td>
+            <td>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm btn-block" href="death_certificate/list">Death Certificates</a>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm btn-block"
+                   href="marriage_certificate/list">Marriage Certificates (Groom)</a>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+            <td>
+                <a class="btn btn-primary btn-sm btn-block"
+                   href="marriage_certificate/brideList">Marriage Certificates (Bride)</a>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
