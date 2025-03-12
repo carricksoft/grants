@@ -21,8 +21,8 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.Capitalisation;
-import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
-import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
+import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverter;
+import scot.carricksoftware.grants.converters.places.countries.CountryConverter;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -32,18 +32,20 @@ public class CountryFormControllerImpl implements CountryFormController {
     private static final Logger logger = LogManager.getLogger(CountryFormControllerImpl.class);
     private final CountryService countryService;
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
-    private final CountryCommandConverterImpl countryCommandConverterImpl;
-    private final CountryConverterImpl countryConverterImpl;
+    private final CountryCommandConverter countryCommandConverter;
+    private final CountryConverter countryConverter;
     private final Capitalisation capitalisation;
 
 
     public CountryFormControllerImpl(CountryService countryService,
-                                     CountryCommandConverterImpl countryCommandConverterImpl,
-                                     CountryConverterImpl countryConverterImpl,
+                                     CountryCommandConverter countryCommandConverter,
+                                     CountryConverter countryConverter,
                                      Capitalisation capitalisation) {
         this.countryService = countryService;
-        this.countryCommandConverterImpl = countryCommandConverterImpl;
-        this.countryConverterImpl = countryConverterImpl;
+        this.countryCommandConverter = countryCommandConverter;
+
+
+        this.countryConverter = countryConverter;
         this.capitalisation = capitalisation;
     }
 
@@ -87,7 +89,7 @@ public class CountryFormControllerImpl implements CountryFormController {
     @GetMapping(MappingConstants.COUNTRY_SHOW)
     public String showById(@PathVariable String id, Model model) {
         logger.debug("CountryFormControllerImpl::saveOrUpdate");
-        CountryCommand savedCommand = countryConverterImpl.convert(countryService.findById(Long.valueOf(id)));
+        CountryCommand savedCommand = countryConverter.convert(countryService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.COUNTRY_COMMAND, savedCommand);
         return ViewConstants.COUNTRY_FORM;
     }
