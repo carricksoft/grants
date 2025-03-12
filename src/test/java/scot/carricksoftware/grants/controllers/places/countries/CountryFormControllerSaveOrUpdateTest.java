@@ -14,8 +14,8 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
 import scot.carricksoftware.grants.converters.Capitalisation;
-import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverter;
-import scot.carricksoftware.grants.converters.places.countries.CountryConverter;
+import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,10 +35,10 @@ public class CountryFormControllerSaveOrUpdateTest {
     private CountryService countryServiceMock;
 
     @Mock
-    private CountryCommandConverter countryCommandConverterMock;
+    private CountryCommandConverterImpl countryCommandConverterMock;
 
     @Mock
-    private CountryConverter countryConverterMock;
+    private CountryConverterImpl countryConverterMock;
 
     @Mock
     private Capitalisation capitalisationMock;

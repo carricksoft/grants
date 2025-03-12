@@ -16,8 +16,8 @@ import org.springframework.ui.Model;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.converters.Capitalisation;
-import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverter;
-import scot.carricksoftware.grants.converters.places.countries.CountryConverter;
+import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
 
@@ -39,10 +39,10 @@ public class CountryFormControllerTest {
     private CountryService countryServiceMock;
 
     @Mock
-    private CountryCommandConverter countryCommandConverterMock;
+    private CountryCommandConverterImpl countryCommandConverterMock;
 
     @Mock
-    private CountryConverter countryConverterMock;
+    private CountryConverterImpl countryConverterMock;
 
     @Mock
     private Capitalisation capitalisationMock;

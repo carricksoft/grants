@@ -15,8 +15,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
-import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverter;
-import scot.carricksoftware.grants.converters.places.countries.CountryConverter;
+import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
 
 import static org.mockito.ArgumentMatchers.any;
@@ -34,10 +34,10 @@ public class CountryFormControllerCleansingTest {
     private CountryService countryServiceMock;
 
     @Mock
-    private CountryCommandConverter countryCommandConverterMock;
+    private CountryCommandConverterImpl countryCommandConverterMock;
 
     @Mock
-    private CountryConverter countryConverterMock;
+    private CountryConverterImpl countryConverterMock;
 
     @Mock
     private CapitalisationImpl capitalisationMock;

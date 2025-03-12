@@ -21,8 +21,8 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.Capitalisation;
-import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverter;
-import scot.carricksoftware.grants.converters.places.countries.CountryConverter;
+import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -32,14 +32,14 @@ public class CountryFormControllerImpl implements CountryFormController {
     private static final Logger logger = LogManager.getLogger(CountryFormControllerImpl.class);
     private final CountryService countryService;
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
-    private final CountryCommandConverter countryCommandConverter;
-    private final CountryConverter countryConverter;
+    private final CountryCommandConverterImpl countryCommandConverter;
+    private final CountryConverterImpl countryConverter;
     private final Capitalisation capitalisation;
 
 
     public CountryFormControllerImpl(CountryService countryService,
-                                     CountryCommandConverter countryCommandConverter,
-                                     CountryConverter countryConverter,
+                                     CountryCommandConverterImpl countryCommandConverter,
+                                     CountryConverterImpl countryConverter,
                                      Capitalisation capitalisation) {
         this.countryService = countryService;
         this.countryCommandConverter = countryCommandConverter;

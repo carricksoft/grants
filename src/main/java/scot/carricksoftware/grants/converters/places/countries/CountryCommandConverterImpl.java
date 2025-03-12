@@ -7,13 +7,12 @@ package scot.carricksoftware.grants.converters.places.countries;
 
 
 import jakarta.validation.constraints.NotNull;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.domains.places.Country;
 
 @Component
-public class CountryCommandConverterImpl implements Converter<CountryCommand, Country> {
+public class CountryCommandConverterImpl implements CountryCommandConverter {
 
     @Override
     public Country convert(@NotNull CountryCommand source) {
