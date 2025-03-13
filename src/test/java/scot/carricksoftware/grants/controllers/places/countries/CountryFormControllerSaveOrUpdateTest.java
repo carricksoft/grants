@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
+import scot.carricksoftware.grants.validators.CountryCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -47,6 +48,9 @@ public class CountryFormControllerSaveOrUpdateTest {
     @Mock
     BindingResult bindingResultMock;
 
+    @Mock
+    CountryCommandValidator countryCommandValidatorMock;
+
     private CountryCommand countryCommand;
 
 
@@ -55,7 +59,8 @@ public class CountryFormControllerSaveOrUpdateTest {
         countryController = new CountryFormControllerImpl(countryServiceMock,
                 countryCommandConverterMock,
                 countryConverterMock,
-                capitalisationMock);
+                capitalisationMock,
+        countryCommandValidatorMock);
         countryCommand = new CountryCommandImpl();
     }
 

@@ -24,6 +24,7 @@ import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
+import scot.carricksoftware.grants.validators.CountryCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -35,18 +36,20 @@ public class CountryFormControllerImpl implements CountryFormController {
     private final CountryCommandConverterImpl countryCommandConverter;
     private final CountryConverterImpl countryConverter;
     private final Capitalisation capitalisation;
+    private final CountryCommandValidator countryCommandValidator;
 
 
     public CountryFormControllerImpl(CountryService countryService,
                                      CountryCommandConverterImpl countryCommandConverter,
                                      CountryConverterImpl countryConverter,
-                                     Capitalisation capitalisation) {
+                                     Capitalisation capitalisation, CountryCommandValidator countryCommandValidator) {
         this.countryService = countryService;
         this.countryCommandConverter = countryCommandConverter;
 
 
         this.countryConverter = countryConverter;
         this.capitalisation = capitalisation;
+        this.countryCommandValidator = countryCommandValidator;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -70,6 +73,9 @@ public class CountryFormControllerImpl implements CountryFormController {
     @PostMapping(MappingConstants.COUNTRY)
     public String saveOrUpdate(@Valid @ModelAttribute CountryCommand countryCommand, BindingResult bindingResult) {
         logger.debug("CountryFormControllerImpl::saveOrUpdate");
+
+        countryCommandValidator.validate(countryCommand, bindingResult);
+
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));

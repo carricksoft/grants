@@ -18,6 +18,7 @@ import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
+import scot.carricksoftware.grants.validators.CountryCommandValidator;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -48,13 +49,17 @@ public class CountryFormControllerCleansingTest {
     @Mock
     BindingResult bindingResultMock;
 
+    @Mock
+    CountryCommandValidator countryCommandValidatorMock;
+
 
     @BeforeEach
     public void setUp() {
         countryController = new CountryFormControllerImpl(countryServiceMock,
                 countryCommandConverterMock,
                 countryConverterMock,
-                capitalisationMock);
+                capitalisationMock,
+                countryCommandValidatorMock);
     }
 
 
