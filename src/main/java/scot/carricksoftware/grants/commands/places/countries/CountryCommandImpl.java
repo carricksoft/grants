@@ -5,7 +5,7 @@
 
 package scot.carricksoftware.grants.commands.places.countries;
 
-import jakarta.validation.constraints.Size;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,7 +13,6 @@ public class CountryCommandImpl implements CountryCommand {
 
     private Long id;
 
-    @Size(min = 3, max = 40, message = "Name must be between 3 and 40 characters.")
     private String name;
 
     @Override

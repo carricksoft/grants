@@ -74,5 +74,16 @@ public class CountryFormControllerCleansingTest {
         verify(countryCommandMock).setName(uName);
     }
 
+    @Test
+    public void saveOrUpdateValidationTest() {
+        String name = "goat";
+        String uName = "Goat";
+        when(countryServiceMock.saveCountryCommand(any())).thenReturn(countryCommandMock);
+        when(countryCommandMock.getName()).thenReturn(name);
+        when(capitalisationMock.getCapitalisation(name)).thenReturn(uName);
+        countryController.saveOrUpdate(countryCommandMock, bindingResultMock);
+        verify(countryCommandValidatorMock).validate(countryCommandMock, bindingResultMock);
+    }
+
 
 }
