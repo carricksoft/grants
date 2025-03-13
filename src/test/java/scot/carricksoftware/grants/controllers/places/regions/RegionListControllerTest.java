@@ -13,10 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.controllers.places.countries.CountryListControllerImpl;
-import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Region;
-import scot.carricksoftware.grants.services.places.countries.CountryService;
 import scot.carricksoftware.grants.services.places.regions.RegionService;
 
 import java.util.ArrayList;
@@ -25,7 +22,6 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomCountry;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
 
@@ -55,7 +51,7 @@ public class RegionListControllerTest {
     public void getListPageTest() {
         when(regionServiceMock.getPagedRegions(0)).thenReturn(regionListMock);
         assertEquals("region/list", controller.getListPage(modelMock));
-        verify(modelMock).addAttribute("countries", regionListMock);
+        verify(modelMock).addAttribute("regions", regionListMock);
         verify(controllerHelperMock).addAttributes(modelMock);
     }
 
@@ -73,7 +69,7 @@ public class RegionListControllerTest {
     @Test
     public void placeDeleteTest() {
         Long id = GetRandomLong();
-        assertEquals("redirect:/countries", controller.regionDelete(Long.toString(id)));
+        assertEquals("redirect:/regions", controller.regionDelete(Long.toString(id)));
         verify(regionServiceMock).deleteById(id);
     }
 
@@ -85,7 +81,7 @@ public class RegionListControllerTest {
 
         assertEquals("region/list", controller.getFirstPage(modelMock));
         assertEquals(0, controller.getPageNumber());
-        verify(modelMock).addAttribute("countries", regionList);
+        verify(modelMock).addAttribute("regions", regionList);
     }
 
     @Test
@@ -97,7 +93,7 @@ public class RegionListControllerTest {
         controller.getFirstPage(modelMock);
         assertEquals("region/list", controller.getNextPage(modelMock));
         assertEquals(1, controller.getPageNumber());
-        verify(modelMock).addAttribute("countries", regionList);
+        verify(modelMock).addAttribute("regions", regionList);
 
     }
 
@@ -110,7 +106,7 @@ public class RegionListControllerTest {
         controller.getFirstPage(modelMock);
         assertEquals("region/list", controller.getPreviousPage(modelMock));
         assertEquals(0, controller.getPageNumber());
-        verify(modelMock, times(2)).addAttribute("countries", regionList);
+        verify(modelMock, times(2)).addAttribute("regions", regionList);
     }
 
     @Test

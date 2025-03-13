@@ -7,7 +7,6 @@ package scot.carricksoftware.grants.validators;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;

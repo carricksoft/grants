@@ -7,7 +7,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.services.places.countries.CountryServiceImpl;
+import scot.carricksoftware.grants.services.places.regions.RegionServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.atLeast;
@@ -22,9 +24,12 @@ public class DataLoadPlacesTest {
     @Mock
     private CountryServiceImpl countryServiceMock;
 
+    @Mock
+    private RegionServiceImpl regionServiceMock;
+
     @BeforeEach
     public void setUp() {
-        dataLoadPlaces = new DataLoadPlaces(countryServiceMock);
+        dataLoadPlaces = new DataLoadPlaces(countryServiceMock, regionServiceMock);
     }
 
     @Test
@@ -41,6 +46,22 @@ public class DataLoadPlacesTest {
         dataLoadPlaces.load();
         verify(countryServiceMock, atLeast(2)).save(captor.capture());
         assertTrue(captor.getAllValues().stream().anyMatch(country -> country.getName().equals("England")));
+    }
+
+    @Test
+    public void invernessIsCreatedTest() {
+        ArgumentCaptor<Region> captor = ArgumentCaptor.forClass(Region.class);
+        dataLoadPlaces.load();
+        verify(regionServiceMock, atLeast(2)).save(captor.capture());
+        assertTrue(captor.getAllValues().stream().anyMatch(region -> region.getName().equals("Inverness")));
+    }
+
+    @Test
+    public void midlothianIsCreatedTest() {
+        ArgumentCaptor<Region> captor = ArgumentCaptor.forClass(Region.class);
+        dataLoadPlaces.load();
+        verify(regionServiceMock, atLeast(2)).save(captor.capture());
+        assertTrue(captor.getAllValues().stream().anyMatch(region -> region.getName().equals("Midlothian")));
     }
 
 

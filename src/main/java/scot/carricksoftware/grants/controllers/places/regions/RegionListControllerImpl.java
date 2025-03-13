@@ -16,8 +16,6 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.controllers.places.countries.CountryListController;
-import scot.carricksoftware.grants.services.places.countries.CountryService;
 import scot.carricksoftware.grants.services.places.regions.RegionService;
 
 import static java.lang.Integer.max;
@@ -49,7 +47,7 @@ public class RegionListControllerImpl implements RegionListController {
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.COUNTRIES, regionService.getPagedRegions(currentPage));
+        model.addAttribute(AttributeConstants.REGIONS, regionService.getPagedRegions(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.REGION_LIST;
     }
@@ -97,7 +95,7 @@ public class RegionListControllerImpl implements RegionListController {
     public final String regionDelete(@PathVariable final String id) {
         logger.debug("RegionListControllerImpl::regionDelete");
         regionService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.COUNTRIES;
+        return MappingConstants.REDIRECT + MappingConstants.REGIONS;
     }
 
     @Override
