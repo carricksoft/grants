@@ -19,8 +19,8 @@ public class DataLoadPlacesTest {
     private DataLoadPlaces dataLoadPlaces;
 
 
-@Mock
-private CountryServiceImpl countryServiceMock;
+    @Mock
+    private CountryServiceImpl countryServiceMock;
 
     @BeforeEach
     public void setUp() {

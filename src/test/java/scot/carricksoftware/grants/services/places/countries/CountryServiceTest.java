@@ -6,7 +6,6 @@
 package scot.carricksoftware.grants.services.places.countries;
 
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

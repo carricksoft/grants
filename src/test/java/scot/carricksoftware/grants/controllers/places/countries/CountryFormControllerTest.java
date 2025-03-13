@@ -68,10 +68,10 @@ public class CountryFormControllerTest {
     public void getNewCountryTest() {
         ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
         ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
-        assertEquals("country/form",countryController.getNewCountry(modelMock));
+        assertEquals("country/form", countryController.getNewCountry(modelMock));
         verify(modelMock).addAttribute(stringCaptor.capture(), objectCaptor.capture());
-        assertEquals("countryCommand",stringCaptor.getValue() );
-        assertEquals("CountryCommandImpl",objectCaptor.getValue().getClass().getSimpleName());
+        assertEquals("countryCommand", stringCaptor.getValue());
+        assertEquals("CountryCommandImpl", objectCaptor.getValue().getClass().getSimpleName());
     }
 
     @Test

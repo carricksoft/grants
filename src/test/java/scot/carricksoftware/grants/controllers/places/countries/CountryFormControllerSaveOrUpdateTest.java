@@ -25,7 +25,6 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
-
 @ExtendWith(MockitoExtension.class)
 public class CountryFormControllerSaveOrUpdateTest {
 
@@ -60,7 +59,7 @@ public class CountryFormControllerSaveOrUpdateTest {
                 countryCommandConverterMock,
                 countryConverterMock,
                 capitalisationMock,
-        countryCommandValidatorMock);
+                countryCommandValidatorMock);
         countryCommand = new CountryCommandImpl();
     }
 
