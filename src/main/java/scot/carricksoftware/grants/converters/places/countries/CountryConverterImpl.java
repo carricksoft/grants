@@ -6,14 +6,13 @@
 package scot.carricksoftware.grants.converters.places.countries;
 
 
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
 import scot.carricksoftware.grants.domains.places.Country;
 
 @Component
-public class CountryConverterImpl implements Converter<Country, CountryCommand> {
+public class CountryConverterImpl implements CountryConverter {
 
     @Override
     public CountryCommand convert(Country source) {
