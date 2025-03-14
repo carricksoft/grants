@@ -9,11 +9,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
+import scot.carricksoftware.grants.domains.places.Region;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
 
 class CountryCommandTest {
@@ -48,6 +52,21 @@ class CountryCommandTest {
         command.setName(name);
         assertEquals(name, command.getName());
     }
+
+    @Test
+    public void getRegionsTest() {
+        assertNull(command.getRegions());
+    }
+
+    @Test
+    public void setRegionsTest() {
+        List<Region> regions = new ArrayList<>();
+        regions.add(GetRandomRegion());
+        command.setRegions(regions);
+        assertEquals(regions, command.getRegions());
+    }
+
+
 
 
 }

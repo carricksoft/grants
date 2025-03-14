@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomCountry;
 
 public class RegionTest {
 
@@ -31,6 +32,18 @@ public class RegionTest {
         String name = GetRandomString();
         region.setName(name);
         assertEquals(name, region.getName());
+    }
+
+    @Test
+    public void getCountryTest() {
+        assertNull(region.getCountry());
+    }
+
+    @Test
+    public void setCountryTest() {
+        Country country = GetRandomCountry();
+        region.setCountry(country);
+        assertEquals( country, region.getCountry());
     }
 
 }

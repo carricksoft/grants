@@ -34,10 +34,10 @@ public class DataLoadPlaces {
     }
 
 
-    private void loadCountries() {
-        final Country scotland = new Country();
-        final Country england = new Country();
+    final Country scotland = new Country();
+    final Country england = new Country();
 
+    private void loadCountries() {
         scotland.setName("Scotland");
         countryService.save(scotland);
         england.setName("England");
@@ -49,8 +49,11 @@ public class DataLoadPlaces {
         final Region midlothian = new Region();
 
         inverness.setName("Inverness");
+        inverness.setCountry(scotland);
         regionService.save(inverness);
+
         midlothian.setName("Midlothian");
+        midlothian.setCountry(scotland);
         regionService.save(midlothian);
     }
 

@@ -5,6 +5,10 @@
 
 package scot.carricksoftware.grants.commands.places.countries;
 
+import scot.carricksoftware.grants.domains.places.Region;
+
+import java.util.List;
+
 public interface CountryCommand {
 
     Long getId();
@@ -16,6 +20,10 @@ public interface CountryCommand {
 
     @SuppressWarnings("unused")
     void setName(String name);
+
+    List<Region> getRegions();
+
+    void setRegions(List<Region> regions);
 }
 
 

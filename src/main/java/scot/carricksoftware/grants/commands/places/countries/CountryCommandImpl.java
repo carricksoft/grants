@@ -7,6 +7,9 @@ package scot.carricksoftware.grants.commands.places.countries;
 
 
 import org.springframework.stereotype.Component;
+import scot.carricksoftware.grants.domains.places.Region;
+
+import java.util.List;
 
 @Component
 public class CountryCommandImpl implements CountryCommand {
@@ -14,6 +17,8 @@ public class CountryCommandImpl implements CountryCommand {
     private Long id;
 
     private String name;
+
+    private List<Region> regions;
 
     @Override
     public Long getId() {
@@ -33,5 +38,15 @@ public class CountryCommandImpl implements CountryCommand {
     @Override
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public List<Region> getRegions() {
+        return regions;
+    }
+
+    @Override
+    public void setRegions(List<Region> regions) {
+        this.regions = regions;
     }
 }

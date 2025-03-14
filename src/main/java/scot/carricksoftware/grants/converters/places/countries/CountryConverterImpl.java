@@ -19,6 +19,7 @@ public class CountryConverterImpl implements CountryConverter {
         CountryCommand target = new CountryCommandImpl();
         target.setId(source.getId());
         target.setName(source.getName());
+        target.setRegions(source.getRegions());
         return target;
     }
 }

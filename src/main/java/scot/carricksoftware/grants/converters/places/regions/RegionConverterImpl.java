@@ -19,6 +19,7 @@ public class RegionConverterImpl implements RegionConverter {
         RegionCommand target = new RegionCommandImpl();
         target.setId(source.getId());
         target.setName(source.getName());
+        target.setCountry(source.getCountry());
         return target;
     }
 }

@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 @SuppressWarnings("unused")
 @Component
 public class ApplicationConstants {
+
     private ApplicationConstants() {
         // to stop checkstyle complaining
     }
