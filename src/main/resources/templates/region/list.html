@@ -24,14 +24,15 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>Country</th>
                 <th></th>
-            </tr>
             </thead>
 
             <tr th:each="region   : ${regions}">
                 <!--/*@thymesVar id="country" type="scot.carricksoftware.grants.domains.places.Region"*/-->
                 <td th:text="${region.id}">123</td>
                 <td th:text="${region.name}"> First</td>
+                <td th:text="${region.country.name}"></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'region/' + ${region.id} + '/delete'"
