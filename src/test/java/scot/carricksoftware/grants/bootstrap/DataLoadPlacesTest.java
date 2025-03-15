@@ -49,11 +49,12 @@ public class DataLoadPlacesTest {
     }
 
     @Test
-    public void invernessIsCreatedTest() {
+    public void invernessIsCorrectlyCreatedTest() {
         ArgumentCaptor<Region> captor = ArgumentCaptor.forClass(Region.class);
         dataLoadPlaces.load();
         verify(regionServiceMock, atLeast(2)).save(captor.capture());
-        assertTrue(captor.getAllValues().stream().anyMatch(region -> region.getName().equals("Inverness")));
+        assertTrue(captor.getAllValues().stream().anyMatch(region -> region.getName().equals("Inverness")
+                && region.getCountry().getName().equals("Scotland")));
     }
 
     @Test
@@ -61,7 +62,8 @@ public class DataLoadPlacesTest {
         ArgumentCaptor<Region> captor = ArgumentCaptor.forClass(Region.class);
         dataLoadPlaces.load();
         verify(regionServiceMock, atLeast(2)).save(captor.capture());
-        assertTrue(captor.getAllValues().stream().anyMatch(region -> region.getName().equals("Midlothian")));
+        assertTrue(captor.getAllValues().stream().anyMatch(region -> region.getName().equals("Midlothian")
+                && region.getCountry().getName().equals("Scotland")));
     }
 
 

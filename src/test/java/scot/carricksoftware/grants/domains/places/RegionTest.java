@@ -43,7 +43,7 @@ public class RegionTest {
     public void setCountryTest() {
         Country country = GetRandomCountry();
         region.setCountry(country);
-        assertEquals( country, region.getCountry());
+        assertEquals(country, region.getCountry());
     }
 
 }

@@ -60,9 +60,8 @@ class RegionCommandTest {
     public void setCountryTest() {
         Country country = GetRandomCountry();
         command.setCountry(country);
-        assertEquals( country, command.getCountry());
+        assertEquals(country, command.getCountry());
     }
-
 
 
 }

@@ -32,8 +32,8 @@ public class ControllerHelperTest {
     @Test
     public void addAttributesTest() {
         controllerHelper.addAttributes(modelMock);
-        verify(modelMock).addAttribute("BUTTON_BACK", ButtonConstants.BACK );
-       verify( modelMock).addAttribute("BUTTON_DELETE", ButtonConstants.DELETE);
+        verify(modelMock).addAttribute("BUTTON_BACK", ButtonConstants.BACK);
+        verify(modelMock).addAttribute("BUTTON_DELETE", ButtonConstants.DELETE);
         verify(modelMock).addAttribute("BUTTON_EDIT", ButtonConstants.EDIT);
         verify(modelMock).addAttribute("BUTTON_NEW", ButtonConstants.NEW);
         verify(modelMock).addAttribute("BUTTON_HOME", ButtonConstants.HOME);
