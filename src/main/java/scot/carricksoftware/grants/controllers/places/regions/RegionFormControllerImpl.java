@@ -23,6 +23,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.regions.RegionCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl;
+import scot.carricksoftware.grants.services.places.countries.CountryService;
 import scot.carricksoftware.grants.services.places.regions.RegionService;
 import scot.carricksoftware.grants.validators.RegionCommandValidator;
 
@@ -37,12 +38,14 @@ public class RegionFormControllerImpl implements RegionFormController {
     private final RegionConverterImpl regionConverter;
     private final Capitalisation capitalisation;
     private final RegionCommandValidator regionCommandValidator;
+    private final CountryService countryService;
 
 
     public RegionFormControllerImpl(RegionService regionService,
                                     RegionCommandConverterImpl regionCommandConverter,
                                     RegionConverterImpl regionConverter,
-                                    Capitalisation capitalisation, RegionCommandValidator regionCommandValidator) {
+                                    Capitalisation capitalisation, RegionCommandValidator regionCommandValidator,
+                                    CountryService countryService) {
         this.regionService = regionService;
         this.regionCommandConverter = regionCommandConverter;
 
@@ -50,6 +53,7 @@ public class RegionFormControllerImpl implements RegionFormController {
         this.regionConverter = regionConverter;
         this.capitalisation = capitalisation;
         this.regionCommandValidator = regionCommandValidator;
+        this.countryService = countryService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -57,6 +61,7 @@ public class RegionFormControllerImpl implements RegionFormController {
     public final String getNewRegion(final Model model) {
         logger.debug("RegionFormControllerImpl::getNewRegion");
         model.addAttribute(AttributeConstants.REGION_COMMAND, new RegionCommandImpl());
+        model.addAttribute(AttributeConstants.COUNTRIES, countryService.findAll());
         return ViewConstants.REGION_FORM;
     }
 
@@ -65,6 +70,7 @@ public class RegionFormControllerImpl implements RegionFormController {
     public final String regionEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("RegionFormControllerImpl::regionEdit");
         model.addAttribute(AttributeConstants.REGION_COMMAND, regionService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.COUNTRIES, countryService.findAll());
         return ViewConstants.REGION_FORM;
     }
 

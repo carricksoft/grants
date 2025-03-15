@@ -16,6 +16,7 @@ import scot.carricksoftware.grants.commands.places.regions.RegionCommandImpl;
 import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.regions.RegionCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl;
+import scot.carricksoftware.grants.services.places.countries.CountryService;
 import scot.carricksoftware.grants.services.places.regions.RegionService;
 import scot.carricksoftware.grants.validators.RegionCommandValidator;
 
@@ -35,10 +36,14 @@ public class RegionFormControllerSaveOrUpdateTest {
     private RegionService regionServiceMock;
 
     @Mock
+    private CountryService countryServiceMock;
+
+    @Mock
     private RegionCommandConverterImpl regionCommandConverterMock;
 
     @Mock
     private RegionConverterImpl regionConverterMock;
+
 
     @Mock
     private Capitalisation capitalisationMock;
@@ -59,7 +64,8 @@ public class RegionFormControllerSaveOrUpdateTest {
                 regionCommandConverterMock,
                 regionConverterMock,
                 capitalisationMock,
-                regionCommandValidatorMock);
+                regionCommandValidatorMock,
+                countryServiceMock);
         regionCommand = new RegionCommandImpl();
     }
 
