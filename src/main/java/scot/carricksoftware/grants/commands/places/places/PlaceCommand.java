@@ -6,6 +6,8 @@
 package scot.carricksoftware.grants.commands.places.places;
 
 
+import scot.carricksoftware.grants.domains.places.Region;
+
 public interface PlaceCommand {
 
     @SuppressWarnings("unused")
@@ -20,4 +22,7 @@ public interface PlaceCommand {
     @SuppressWarnings("unused")
     void setName(String name);
 
+    Region getRegion();
+
+    void setRegion(Region region);
 }

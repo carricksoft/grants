@@ -5,13 +5,14 @@
 
 package scot.carricksoftware.grants.commands.places.places;
 
-import jakarta.validation.constraints.Size;
+import scot.carricksoftware.grants.domains.places.Region;
 
 @SuppressWarnings("unused")
 public class PlaceCommandImpl implements PlaceCommand {
     private Long id;
 
-    @Size(min = 3, max = 40, message = "Name must be between 3 and 40 characters.")
+    private Region region;
+
     private String name;
 
     @Override
@@ -34,5 +35,13 @@ public class PlaceCommandImpl implements PlaceCommand {
         this.name = name;
     }
 
+    @Override
+    public Region getRegion() {
+        return region;
+    }
 
+    @Override
+    public void setRegion(Region region) {
+        this.region = region;
+    }
 }
