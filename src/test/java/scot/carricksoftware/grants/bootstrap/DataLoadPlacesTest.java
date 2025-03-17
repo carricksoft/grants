@@ -7,6 +7,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.services.places.countries.CountryServiceImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceServiceImpl;
@@ -69,6 +70,25 @@ public class DataLoadPlacesTest {
         assertTrue(captor.getAllValues().stream().anyMatch(region -> region.getName().equals("Midlothian")
                 && region.getCountry().getName().equals("Scotland")));
     }
+
+    @Test
+    public void bellFieldParkIsCreatedTest() {
+        ArgumentCaptor<Place> captor = ArgumentCaptor.forClass(Place.class);
+        dataLoadPlaces.load();
+        verify(placeServiceMock, atLeast(2)).save(captor.capture());
+        assertTrue(captor.getAllValues().stream().anyMatch(place -> place.getName().equals("5 Bellfield Park")
+                && place.getRegion().getName().equals("Inverness")));
+    }
+
+    @Test
+    public void wilsonAvenueIsCreatedTest() {
+        ArgumentCaptor<Place> captor = ArgumentCaptor.forClass(Place.class);
+        dataLoadPlaces.load();
+        verify(placeServiceMock, atLeast(2)).save(captor.capture());
+        assertTrue(captor.getAllValues().stream().anyMatch(place -> place.getName().equals("2 Wilson Avenue")
+                && place.getRegion().getName().equals("Midlothian")));
+    }
+
 
 
 }
