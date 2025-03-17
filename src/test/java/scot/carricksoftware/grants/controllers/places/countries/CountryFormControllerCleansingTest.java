@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -51,6 +52,9 @@ public class CountryFormControllerCleansingTest {
     @Mock
     CountryCommandValidator countryCommandValidatorMock;
 
+    @Mock
+    Model modelMock;
+
 
     @BeforeEach
     public void setUp() {
@@ -69,7 +73,7 @@ public class CountryFormControllerCleansingTest {
         when(countryServiceMock.saveCountryCommand(any())).thenReturn(countryCommandMock);
         when(countryCommandMock.getName()).thenReturn(name);
         when(capitalisationMock.getCapitalisation(name)).thenReturn(uName);
-        countryController.saveOrUpdate(countryCommandMock, bindingResultMock);
+        countryController.saveOrUpdate(countryCommandMock, bindingResultMock, modelMock);
         verify(countryCommandMock).setName(uName);
     }
 
@@ -80,7 +84,7 @@ public class CountryFormControllerCleansingTest {
         when(countryServiceMock.saveCountryCommand(any())).thenReturn(countryCommandMock);
         when(countryCommandMock.getName()).thenReturn(name);
         when(capitalisationMock.getCapitalisation(name)).thenReturn(uName);
-        countryController.saveOrUpdate(countryCommandMock, bindingResultMock);
+        countryController.saveOrUpdate(countryCommandMock, bindingResultMock, modelMock);
         verify(countryCommandValidatorMock).validate(countryCommandMock, bindingResultMock);
     }
 

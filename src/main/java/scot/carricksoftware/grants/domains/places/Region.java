@@ -18,7 +18,7 @@ public class Region extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "department_id")
+    @JoinColumn(name = "country_id")
     private Country country;
 
     @SuppressWarnings("unused")

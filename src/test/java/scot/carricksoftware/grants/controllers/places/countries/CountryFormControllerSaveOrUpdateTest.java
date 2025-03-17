@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
@@ -43,6 +44,8 @@ public class CountryFormControllerSaveOrUpdateTest {
     @Mock
     private Capitalisation capitalisationMock;
 
+@Mock
+Model modelMock;
 
     @Mock
     BindingResult bindingResultMock;
@@ -68,7 +71,7 @@ public class CountryFormControllerSaveOrUpdateTest {
         Long id = 4L;
         countryCommand.setId(id);
         when(countryServiceMock.saveCountryCommand(any(CountryCommand.class))).thenReturn(countryCommand);
-        assertEquals("redirect:/country/4/show", countryController.saveOrUpdate(countryCommand, bindingResultMock));
+        assertEquals("redirect:/country/4/show", countryController.saveOrUpdate(countryCommand, bindingResultMock,modelMock));
     }
 
     @Test
@@ -76,7 +79,7 @@ public class CountryFormControllerSaveOrUpdateTest {
         Long id = 4L;
         countryCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
-        assertEquals("country/form", countryController.saveOrUpdate(countryCommand, bindingResultMock));
+        assertEquals("country/form", countryController.saveOrUpdate(countryCommand, bindingResultMock, modelMock));
     }
 
     @Test
@@ -86,7 +89,7 @@ public class CountryFormControllerSaveOrUpdateTest {
         countryCommand.setName("england");
         when(bindingResultMock.hasErrors()).thenReturn(false);
         when(countryServiceMock.saveCountryCommand(any(CountryCommand.class))).thenReturn(countryCommand);
-        countryController.saveOrUpdate(countryCommand, bindingResultMock);
+        countryController.saveOrUpdate(countryCommand, bindingResultMock, modelMock);
         verify(capitalisationMock).getCapitalisation("england");
     }
 

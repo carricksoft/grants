@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommandImpl;
@@ -48,6 +49,9 @@ public class RegionFormControllerSaveOrUpdateTest {
     @Mock
     private Capitalisation capitalisationMock;
 
+    @Mock
+    private Model modelMock;
+
 
     @Mock
     BindingResult bindingResultMock;
@@ -74,7 +78,7 @@ public class RegionFormControllerSaveOrUpdateTest {
         Long id = 4L;
         regionCommand.setId(id);
         when(regionServiceMock.saveRegionCommand(any(RegionCommand.class))).thenReturn(regionCommand);
-        assertEquals("redirect:/region/4/show", regionController.saveOrUpdate(regionCommand, bindingResultMock));
+        assertEquals("redirect:/region/4/show", regionController.saveOrUpdate(regionCommand, bindingResultMock, modelMock));
     }
 
     @Test
@@ -82,7 +86,7 @@ public class RegionFormControllerSaveOrUpdateTest {
         Long id = 4L;
         regionCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
-        assertEquals("region/form", regionController.saveOrUpdate(regionCommand, bindingResultMock));
+        assertEquals("region/form", regionController.saveOrUpdate(regionCommand, bindingResultMock,modelMock));
     }
 
     @Test
@@ -92,7 +96,7 @@ public class RegionFormControllerSaveOrUpdateTest {
         regionCommand.setName("england");
         when(bindingResultMock.hasErrors()).thenReturn(false);
         when(regionServiceMock.saveRegionCommand(any(RegionCommand.class))).thenReturn(regionCommand);
-        regionController.saveOrUpdate(regionCommand, bindingResultMock);
+        regionController.saveOrUpdate(regionCommand, bindingResultMock,modelMock);
         verify(capitalisationMock).getCapitalisation("england");
     }
 

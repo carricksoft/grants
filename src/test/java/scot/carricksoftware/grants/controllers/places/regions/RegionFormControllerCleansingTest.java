@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.converters.CapitalisationImpl;
@@ -57,6 +58,9 @@ public class RegionFormControllerCleansingTest {
     @Mock
     RegionCommandValidator regionCommandValidatorMock;
 
+    @Mock
+    Model modelMock;
+
 
     @BeforeEach
     public void setUp() {
@@ -76,7 +80,7 @@ public class RegionFormControllerCleansingTest {
         when(regionServiceMock.saveRegionCommand(any())).thenReturn(regionCommandMock);
         when(regionCommandMock.getName()).thenReturn(name);
         when(capitalisationMock.getCapitalisation(name)).thenReturn(uName);
-        regionController.saveOrUpdate(regionCommandMock, bindingResultMock);
+        regionController.saveOrUpdate(regionCommandMock, bindingResultMock, modelMock);
         verify(regionCommandMock).setName(uName);
     }
 
@@ -87,7 +91,7 @@ public class RegionFormControllerCleansingTest {
         when(regionServiceMock.saveRegionCommand(any())).thenReturn(regionCommandMock);
         when(regionCommandMock.getName()).thenReturn(name);
         when(capitalisationMock.getCapitalisation(name)).thenReturn(uName);
-        regionController.saveOrUpdate(regionCommandMock, bindingResultMock);
+        regionController.saveOrUpdate(regionCommandMock, bindingResultMock, modelMock);
         verify(regionCommandValidatorMock).validate(regionCommandMock, bindingResultMock);
     }
 

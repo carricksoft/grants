@@ -71,7 +71,7 @@ public class CountryFormControllerImpl implements CountryFormController {
 
     @Override
     @PostMapping(MappingConstants.COUNTRY)
-    public String saveOrUpdate(@Valid @ModelAttribute CountryCommand countryCommand, BindingResult bindingResult) {
+    public String saveOrUpdate(@Valid @ModelAttribute CountryCommand countryCommand, BindingResult bindingResult, Model model) {
         logger.debug("CountryFormControllerImpl::saveOrUpdate");
 
         countryCommandValidator.validate(countryCommand, bindingResult);
@@ -84,6 +84,7 @@ public class CountryFormControllerImpl implements CountryFormController {
 
         cleanUp(countryCommand);
         CountryCommand savedCommand = countryService.saveCountryCommand(countryCommand);
+        model.addAttribute(AttributeConstants.COUNTRY_COMMAND, savedCommand);
         return MappingConstants.REDIRECT + MappingConstants.COUNTRY_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 

@@ -77,11 +77,10 @@ public class RegionFormControllerImpl implements RegionFormController {
 
     @Override
     @PostMapping(MappingConstants.REGION)
-    public String saveOrUpdate(@Valid @ModelAttribute RegionCommand regionCommand, BindingResult bindingResult) {
+    public String saveOrUpdate(@Valid @ModelAttribute RegionCommand regionCommand, BindingResult bindingResult,Model model) {
         logger.debug("RegionFormControllerImpl::saveOrUpdate");
 
         regionCommandValidator.validate(regionCommand, bindingResult);
-
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
@@ -90,6 +89,7 @@ public class RegionFormControllerImpl implements RegionFormController {
 
         cleanUp(regionCommand);
         RegionCommand savedCommand = regionService.saveRegionCommand(regionCommand);
+        model.addAttribute(AttributeConstants.REGION_COMMAND, savedCommand);
         return MappingConstants.REDIRECT + MappingConstants.REGION_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -101,8 +101,9 @@ public class RegionFormControllerImpl implements RegionFormController {
     @GetMapping(MappingConstants.REGION_SHOW)
     public String showById(@PathVariable String id, Model model) {
         logger.debug("RegionFormControllerImpl::saveOrUpdate");
-        RegionCommand savedCommand = regionConverter.convert(regionService.findById(Long.valueOf(id)));
-        model.addAttribute(AttributeConstants.REGION_COMMAND, savedCommand);
+        RegionCommand regionCommand = regionConverter.convert(regionService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.REGION_COMMAND, regionCommand);
+        model.addAttribute(AttributeConstants.COUNTRIES, countryService.findAll());
         return ViewConstants.REGION_FORM;
     }
 

@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants.controllers.places.countries;
 
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
@@ -13,5 +14,5 @@ import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 
 public interface CountryFormController {
 
-    String saveOrUpdate(@ModelAttribute CountryCommand countryCommand, BindingResult bindingResult);
+    String saveOrUpdate(@ModelAttribute CountryCommand countryCommand, BindingResult bindingResult, Model model);
 }
