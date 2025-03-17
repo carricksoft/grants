@@ -37,7 +37,6 @@
 
                 <td th:text="${place.id}">123</td>
                 <td th:text="${place.name}"> First</td>
-                <td th:text="${place.country != null} ? ${place.country.name}"></td>
                 <td th:text="${place.region != null} ? ${place.region.name}"></td>
                 <td><span>
                     <a th:action="edit" class="btn btn-warning btn-sm"

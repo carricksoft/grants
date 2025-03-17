@@ -9,6 +9,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.services.places.countries.CountryServiceImpl;
+import scot.carricksoftware.grants.services.places.places.PlaceServiceImpl;
 import scot.carricksoftware.grants.services.places.regions.RegionServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -27,9 +28,12 @@ public class DataLoadPlacesTest {
     @Mock
     private RegionServiceImpl regionServiceMock;
 
+    @Mock
+    private PlaceServiceImpl placeServiceMock;
+
     @BeforeEach
     public void setUp() {
-        dataLoadPlaces = new DataLoadPlaces(countryServiceMock, regionServiceMock);
+        dataLoadPlaces = new DataLoadPlaces(countryServiceMock, regionServiceMock, placeServiceMock);
     }
 
     @Test

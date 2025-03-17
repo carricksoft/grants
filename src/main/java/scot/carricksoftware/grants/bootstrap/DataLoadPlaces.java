@@ -9,8 +9,10 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.services.places.regions.RegionService;
 
 @Component
@@ -20,22 +22,29 @@ public class DataLoadPlaces {
 
     private final CountryService countryService;
     private final RegionService regionService;
+    private final PlaceService placeService;
 
     public DataLoadPlaces(CountryService countryService,
-                          RegionService regionService) {
+                          RegionService regionService,
+                          PlaceService placeService) {
         this.countryService = countryService;
         this.regionService = regionService;
+        this.placeService = placeService;
     }
 
     public void load() {
         logger.debug("DataLoadPlaces::load");
         loadCountries();
         loadRegions();
+        loadPlaces();
     }
 
 
     final Country scotland = new Country();
     final Country england = new Country();
+
+    final Region inverness = new Region();
+    final Region midlothian = new Region();
 
     private void loadCountries() {
         scotland.setName("Scotland");
@@ -45,8 +54,7 @@ public class DataLoadPlaces {
     }
 
     private void loadRegions() {
-        final Region inverness = new Region();
-        final Region midlothian = new Region();
+
 
         inverness.setName("Inverness");
         inverness.setCountry(scotland);
@@ -56,6 +64,20 @@ public class DataLoadPlaces {
         midlothian.setCountry(scotland);
         regionService.save(midlothian);
     }
+
+    private void loadPlaces() {
+        final Place bellFieldPark = new Place();
+        final Place wilsonAvenue = new Place();
+
+        bellFieldPark.setName("5 Bellfield Park");
+        bellFieldPark.setRegion(inverness);
+        placeService.save(bellFieldPark);
+
+        wilsonAvenue.setName("2 Wilson Avenue");
+        wilsonAvenue.setRegion(midlothian);
+        placeService.save(wilsonAvenue);
+    }
+
 
 
 
