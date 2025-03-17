@@ -13,6 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
 public class PlaceTest {
 
@@ -46,6 +47,18 @@ public class PlaceTest {
         String name = GetRandomString();
         place.setName(name);
         assertEquals(name, place.getName());
+    }
+
+    @Test
+    public void getRegionTest() {
+        assertNull(place.getRegion());
+    }
+
+    @Test
+    public void setRegionTest() {
+        Region region = GetRandomRegion();
+        place.setRegion(region);
+        assertEquals(region, place.getRegion());
     }
 
 

@@ -8,10 +8,12 @@ package scot.carricksoftware.grants.domains.places;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomCountry;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.*;
 
 public class RegionTest {
 
@@ -44,6 +46,19 @@ public class RegionTest {
         Country country = GetRandomCountry();
         region.setCountry(country);
         assertEquals(country, region.getCountry());
+    }
+
+    @Test
+    public void getPlacesTest() {
+        assertTrue(region.getPlaces().isEmpty());
+    }
+
+    @Test
+    public void setRegionsTest() {
+        List<Place> places = new ArrayList<>();
+        places.add(GetRandomPlace());
+        region.setPlaces(places);
+        assertEquals(places, region.getPlaces());
     }
 
 }
