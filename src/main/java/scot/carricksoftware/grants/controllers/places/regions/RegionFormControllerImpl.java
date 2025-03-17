@@ -84,6 +84,7 @@ public class RegionFormControllerImpl implements RegionFormController {
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
+            model.addAttribute(AttributeConstants.COUNTRIES, countryService.findAll());
             return ViewConstants.REGION_FORM;
         }
 
