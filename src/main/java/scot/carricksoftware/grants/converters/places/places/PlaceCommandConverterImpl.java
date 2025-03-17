@@ -19,6 +19,7 @@ public class PlaceCommandConverterImpl implements PlaceCommandConverter {
         Place target = new Place();
         target.setId(source.getId());
         target.setName(source.getName());
+        target.setRegion(source.getRegion());
         return target;
     }
 

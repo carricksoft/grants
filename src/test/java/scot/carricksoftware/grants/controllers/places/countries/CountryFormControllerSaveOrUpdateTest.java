@@ -44,8 +44,8 @@ public class CountryFormControllerSaveOrUpdateTest {
     @Mock
     private Capitalisation capitalisationMock;
 
-@Mock
-Model modelMock;
+    @Mock
+    Model modelMock;
 
     @Mock
     BindingResult bindingResultMock;
@@ -71,7 +71,7 @@ Model modelMock;
         Long id = 4L;
         countryCommand.setId(id);
         when(countryServiceMock.saveCountryCommand(any(CountryCommand.class))).thenReturn(countryCommand);
-        assertEquals("redirect:/country/4/show", countryController.saveOrUpdate(countryCommand, bindingResultMock,modelMock));
+        assertEquals("redirect:/country/4/show", countryController.saveOrUpdate(countryCommand, bindingResultMock, modelMock));
     }
 
     @Test

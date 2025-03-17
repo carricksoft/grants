@@ -20,6 +20,7 @@ public class RegionConverterImpl implements RegionConverter {
         target.setId(source.getId());
         target.setName(source.getName());
         target.setCountry(source.getCountry());
+        target.setPlaces(source.getPlaces());
         return target;
     }
 }

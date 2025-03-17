@@ -86,7 +86,7 @@ public class RegionFormControllerSaveOrUpdateTest {
         Long id = 4L;
         regionCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
-        assertEquals("region/form", regionController.saveOrUpdate(regionCommand, bindingResultMock,modelMock));
+        assertEquals("region/form", regionController.saveOrUpdate(regionCommand, bindingResultMock, modelMock));
     }
 
     @Test
@@ -96,7 +96,7 @@ public class RegionFormControllerSaveOrUpdateTest {
         regionCommand.setName("england");
         when(bindingResultMock.hasErrors()).thenReturn(false);
         when(regionServiceMock.saveRegionCommand(any(RegionCommand.class))).thenReturn(regionCommand);
-        regionController.saveOrUpdate(regionCommand, bindingResultMock,modelMock);
+        regionController.saveOrUpdate(regionCommand, bindingResultMock, modelMock);
         verify(capitalisationMock).getCapitalisation("england");
     }
 
