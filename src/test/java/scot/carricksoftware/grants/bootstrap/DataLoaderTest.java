@@ -21,9 +21,13 @@ class DataLoaderTest {
     @Mock
     private DataLoadPlaces dataLoadPlacesMock;
 
+    @Mock
+    private DataLoadPeople dataLoadPeopleMock;
+
+
     @BeforeEach
     void setUp() {
-        dataLoader = new DataLoader(dataLoadPlacesMock);
+        dataLoader = new DataLoader(dataLoadPlacesMock, dataLoadPeopleMock);
     }
 
     @Test
