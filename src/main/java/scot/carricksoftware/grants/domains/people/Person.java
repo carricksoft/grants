@@ -5,8 +5,10 @@
 
 package scot.carricksoftware.grants.domains.people;
 
+import jakarta.persistence.Entity;
 import scot.carricksoftware.grants.BaseEntity;
 
+@Entity
 public class Person extends BaseEntity {
 
     String firstName;

@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.services.people;
 
+import org.springframework.stereotype.Service;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.domains.people.Person;
 
 import java.util.List;
 
+@Service
 public interface PersonService {
 
     @SuppressWarnings("unused")
