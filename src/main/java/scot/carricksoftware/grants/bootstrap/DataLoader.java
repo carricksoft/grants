@@ -18,9 +18,12 @@ public class DataLoader implements CommandLineRunner {
     private static final Logger logger = LogManager.getLogger(DataLoader.class);
 
     private final DataLoadPlaces dataLoadPlaces;
+    private final DataLoadPeople dataLoadPeople;
 
-    public DataLoader(DataLoadPlaces dataLoadPlaces) {
+    public DataLoader(DataLoadPlaces dataLoadPlaces,
+                      DataLoadPeople dataLoadPeople) {
         this.dataLoadPlaces = dataLoadPlaces;
+        this.dataLoadPeople = dataLoadPeople;
     }
 
 
@@ -28,6 +31,7 @@ public class DataLoader implements CommandLineRunner {
     public void run(String... args) {
         logger.debug("DataLoader::run");
         dataLoadPlaces.load();
+        dataLoadPeople.load();
     }
 
 }
