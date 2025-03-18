@@ -73,7 +73,7 @@ public class PersonServiceImpl implements PersonService {
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.ASC, "name");
+        return Sort.by(Sort.Direction.ASC, "lastName");
     }
 
     @Override
