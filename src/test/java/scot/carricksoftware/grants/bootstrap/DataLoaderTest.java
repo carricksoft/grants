@@ -27,12 +27,19 @@ class DataLoaderTest {
 
     @BeforeEach
     void setUp() {
-        dataLoader = new DataLoader(dataLoadPlacesMock, dataLoadPeopleMock);
+        dataLoader = new DataLoader(dataLoadPlacesMock,
+                dataLoadPeopleMock);
     }
 
     @Test
     void loadPlacesIsCalledTest() {
         dataLoader.run();
         verify(dataLoadPlacesMock).load();
+    }
+
+    @Test
+    void loadPeopleIsCalledTest() {
+        dataLoader.run();
+        verify(dataLoadPeopleMock).load();
     }
 }
