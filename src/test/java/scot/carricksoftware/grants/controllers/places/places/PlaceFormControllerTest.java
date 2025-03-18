@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverte
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
+import scot.carricksoftware.grants.services.places.regions.RegionService;
 import scot.carricksoftware.grants.validators.PlaceCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,6 +38,9 @@ public class PlaceFormControllerTest {
 
     @Mock
     private PlaceService placeServiceMock;
+
+    @Mock
+    private RegionService regionServiceMock;
 
     @Mock
     private PlaceCommandConverterImpl placeCommandConverterMock;
@@ -60,7 +64,8 @@ public class PlaceFormControllerTest {
                 placeCommandConverterMock,
                 placeConverterMock,
                 capitalisationMock,
-                placeCommandValidatorMock);
+                placeCommandValidatorMock,
+                regionServiceMock);
     }
 
     @Test

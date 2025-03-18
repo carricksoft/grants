@@ -27,8 +27,8 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
-                <th></th>
-                <th></th>
+                <th>Region</th>
+                <th>Country</th>
                 <th></th>
             </tr>
             </thead>
@@ -38,6 +38,7 @@
                 <td th:text="${place.id}">123</td>
                 <td th:text="${place.name}"> First</td>
                 <td th:text="${place.region != null} ? ${place.region.name}"></td>
+                <td th:text="${place.region.country != null} ? ${place.region.country.name}"></td>
                 <td><span>
                     <a th:action="edit" class="btn btn-warning btn-sm"
                        th:href="'place/' + ${place.id} + '/edit'"

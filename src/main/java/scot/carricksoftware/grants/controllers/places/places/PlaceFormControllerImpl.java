@@ -24,6 +24,7 @@ import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
+import scot.carricksoftware.grants.services.places.regions.RegionService;
 import scot.carricksoftware.grants.validators.PlaceCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -37,12 +38,15 @@ public class PlaceFormControllerImpl implements PlaceFormController {
     private final PlaceConverterImpl placeConverter;
     private final Capitalisation capitalisation;
     private final PlaceCommandValidator placeCommandValidator;
+    private final RegionService regionService;
 
 
     public PlaceFormControllerImpl(PlaceService placeService,
                                    PlaceCommandConverterImpl placeCommandConverter,
                                    PlaceConverterImpl placeConverter,
-                                   Capitalisation capitalisation, PlaceCommandValidator placeCommandValidator) {
+                                   Capitalisation capitalisation,
+                                   PlaceCommandValidator placeCommandValidator,
+                                   RegionService regionService) {
         this.placeService = placeService;
         this.placeCommandConverter = placeCommandConverter;
 
@@ -50,6 +54,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
         this.placeConverter = placeConverter;
         this.capitalisation = capitalisation;
         this.placeCommandValidator = placeCommandValidator;
+        this.regionService = regionService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -57,6 +62,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
     public final String getNewPlace(final Model model) {
         logger.debug("PlaceFormControllerImpl::getNewPlace");
         model.addAttribute(AttributeConstants.PLACE_COMMAND, new PlaceCommandImpl());
+        model.addAttribute(AttributeConstants.REGIONS, regionService.findAll());
         return ViewConstants.PLACE_FORM;
     }
 
@@ -65,6 +71,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
     public final String placeEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("PlaceFormControllerImpl::placeEdit");
         model.addAttribute(AttributeConstants.PLACE_COMMAND, placeService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.REGIONS, regionService.findAll());
         return ViewConstants.PLACE_FORM;
     }
 
@@ -76,8 +83,8 @@ public class PlaceFormControllerImpl implements PlaceFormController {
 
         placeCommandValidator.validate(placeCommand, bindingResult);
 
-
         if (bindingResult.hasErrors()) {
+            model.addAttribute(AttributeConstants.REGIONS, regionService.findAll());
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             return ViewConstants.PLACE_FORM;
         }
@@ -85,6 +92,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
         cleanUp(placeCommand);
         PlaceCommand savedCommand = placeService.savePlaceCommand(placeCommand);
         model.addAttribute(AttributeConstants.PLACE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.REGIONS, regionService.findAll());
         return MappingConstants.REDIRECT + MappingConstants.PLACE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -98,6 +106,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
         logger.debug("PlaceFormControllerImpl::saveOrUpdate");
         PlaceCommand savedCommand = placeConverter.convert(placeService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PLACE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.REGIONS, regionService.findAll());
         return ViewConstants.PLACE_FORM;
     }
 

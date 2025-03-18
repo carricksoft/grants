@@ -19,6 +19,7 @@
 </head>
 <body>
 <!--/*@thymesVar id="placeCommand" type="scot.carricksoftware.grants.commands.places.PlaceCommand"*/-->
+<!--/*@thymesVar id="region" type="scot.carricksoftware.grants.domains.places.Region"*/-->
 <div th:insert="~{fragments/layout::banner}"></div>
 
 <div class="container border border-info
@@ -46,21 +47,7 @@ rounded-3 text-center p-4">
         </div>
         <div class="form-group row justify-content-center">
             <div class="col-xs-3" style="margin-right:20px;">
-                <label for="country">Country:</label>
-                <select id="country" name="country" th:field="*{country}"
-                        class="form-control" th:errorclass="has-error">
-                    <option th:value="${''}" th:text="${''}"></option>
-                    <option th:each="country : ${countries}"
-                            th:value="${country.id}" th:text="${country.name}"></option>
-                </select>
-                <div th:if="${#fields.hasErrors('country')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('name')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-3" style="margin-right:20px;">
-                <label for="region">Region/Location</label>
+                <label for="region">Region:</label>
                 <select id="region" name="region" th:field="*{region}"
                         class="form-control" th:errorclass="has-error">
                     <option th:value="${''}" th:text="${''}"></option>
@@ -73,7 +60,6 @@ rounded-3 text-center p-4">
                     </ul>
                 </div>
             </div>
-
         </div>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/places}" th:text="${'List all'}">List all</a>
