@@ -25,7 +25,6 @@ public class PeopleListControllerImpl implements PeopleListController {
 
     private static final Logger logger = LogManager.getLogger(PeopleListControllerImpl.class);
 
-
     private int currentPage = 0;
     private final ControllerHelper controllerHelper;
     private final PersonService personService;
@@ -95,7 +94,7 @@ public class PeopleListControllerImpl implements PeopleListController {
     public final String personDelete(@PathVariable final String id) {
         logger.debug("PersonListControllerImpl::personDelete");
         personService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.COUNTRIES;
+        return MappingConstants.REDIRECT + MappingConstants.PEOPLE;
     }
 
     @Override
