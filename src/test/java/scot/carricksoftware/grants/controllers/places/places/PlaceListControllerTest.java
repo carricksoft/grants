@@ -51,7 +51,7 @@ public class PlaceListControllerTest {
     public void getListPageTest() {
         when(placeServiceMock.getPagedPlaces(0)).thenReturn(placeListMock);
         assertEquals("place/list", controller.getListPage(modelMock));
-        verify(modelMock).addAttribute("countries", placeListMock);
+        verify(modelMock).addAttribute("places", placeListMock);
         verify(controllerHelperMock).addAttributes(modelMock);
     }
 
@@ -81,7 +81,7 @@ public class PlaceListControllerTest {
 
         assertEquals("place/list", controller.getFirstPage(modelMock));
         assertEquals(0, controller.getPageNumber());
-        verify(modelMock).addAttribute("countries", placeList);
+        verify(modelMock).addAttribute("places", placeList);
     }
 
     @Test
@@ -93,7 +93,7 @@ public class PlaceListControllerTest {
         controller.getFirstPage(modelMock);
         assertEquals("place/list", controller.getNextPage(modelMock));
         assertEquals(1, controller.getPageNumber());
-        verify(modelMock).addAttribute("countries", placeList);
+        verify(modelMock).addAttribute("places", placeList);
 
     }
 
@@ -106,7 +106,7 @@ public class PlaceListControllerTest {
         controller.getFirstPage(modelMock);
         assertEquals("place/list", controller.getPreviousPage(modelMock));
         assertEquals(0, controller.getPageNumber());
-        verify(modelMock, times(2)).addAttribute("countries", placeList);
+        verify(modelMock, times(2)).addAttribute("places", placeList);
     }
 
     @Test

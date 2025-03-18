@@ -24,8 +24,8 @@ import scot.carricksoftware.grants.services.places.regions.RegionService;
 import scot.carricksoftware.grants.validators.PlaceCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.*;
 
@@ -73,9 +73,22 @@ public class PlaceFormControllerTest {
         ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
         ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
         assertEquals("place/form", placeController.getNewPlace(modelMock));
-        verify(modelMock).addAttribute(stringCaptor.capture(), objectCaptor.capture());
-        assertEquals("placeCommand", stringCaptor.getValue());
-        assertEquals("PlaceCommandImpl", objectCaptor.getValue().getClass().getSimpleName());
+        verify(modelMock, atLeast(1)).addAttribute(stringCaptor.capture(), objectCaptor.capture());
+        boolean foundPlaceCommand = false;
+        boolean foundRegions = false;
+        for (int i = 0; i < stringCaptor.getAllValues().size(); i++) {
+            if (stringCaptor.getAllValues().get(i).equals("placeCommand")
+                    &&
+                    objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("PlaceCommandImpl")) {
+                foundPlaceCommand = true;
+            } else if (stringCaptor.getAllValues().get(i).equals("regions")
+                    &&
+                    objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("LinkedList")) {
+                foundRegions = true;
+            }
+        }
+        assertTrue(foundPlaceCommand && foundRegions);
+
     }
 
     @Test
