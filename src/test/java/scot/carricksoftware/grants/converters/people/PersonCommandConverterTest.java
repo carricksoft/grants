@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.converters.people;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
+import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -27,7 +28,7 @@ class PersonCommandConverterTest {
         Long id = GetRandomLong();
         String firstName = GetRandomString();
         String lastName = GetRandomString();
-        PersonCommand source = new PersonCommand();
+        PersonCommand source = new PersonCommandImpl();
         source.setId(id);
         source.setFirstName(firstName);
         source.setLastName(lastName);

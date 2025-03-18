@@ -5,36 +5,17 @@
 
 package scot.carricksoftware.grants.commands.people;
 
-public class PersonCommand {
+public interface PersonCommand {
 
-    Long Id;
+    Long getId();
 
-    String firstName;
+    void setId(Long id);
 
-    String lastName;
+    String getFirstName();
 
+    void setFirstName(String firstName);
 
-    public Long getId() {
-        return Id;
-    }
+    String getLastName();
 
-    public void setId(Long id) {
-        Id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    void setLastName(String lastName);
 }

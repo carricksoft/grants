@@ -20,7 +20,7 @@ class PersonCommandTest {
 
     @BeforeEach
     void setUp() {
-        command = new PersonCommand();
+        command = new PersonCommandImpl();
     }
 
     @Test

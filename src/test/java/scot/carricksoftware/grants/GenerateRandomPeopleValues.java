@@ -7,6 +7,7 @@ package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
+import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
@@ -26,7 +27,7 @@ public class GenerateRandomPeopleValues {
     }
 
     public static PersonCommand GetRandomPersonCommand() {
-        PersonCommand personCommand = new PersonCommand();
+        PersonCommand personCommand = new PersonCommandImpl();
         personCommand.setId(GetRandomLong());
         personCommand.setFirstName(GetRandomString());
         personCommand.setLastName(GetRandomString());
