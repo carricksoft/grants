@@ -46,4 +46,10 @@ class DataLoaderTest {
         dataLoader.run();
         verify(dataLoadPeopleMock).load();
     }
+
+    @Test
+    void loadCensusIsCalledTest() {
+        dataLoader.run();
+        verify(dataLoadCensusMock).load();
+    }
 }
