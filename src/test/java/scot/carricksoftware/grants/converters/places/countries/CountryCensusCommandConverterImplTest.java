@@ -21,7 +21,7 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
 
-public class CountryCommandConverterImplTest {
+public class CountryCensusCommandConverterImplTest {
 
     final CountryCommandConverterImpl converter = new CountryCommandConverterImpl();
     CountryCommand source;

@@ -20,7 +20,7 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
 
-class CountryCommandTest {
+class CountryCensusCommandTest {
 
     CountryCommand command;
 

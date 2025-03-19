@@ -23,7 +23,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 @ExtendWith(MockitoExtension.class)
-class RegionCommandValidatorTest {
+class RegionCensusCommandValidatorTest {
 
     private RegionCommandValidator validator;
 

@@ -23,7 +23,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 @ExtendWith(MockitoExtension.class)
-class PersonCommandValidatorFirstNameTest {
+class PersonCensusCommandValidatorFirstNameTest {
 
     private PersonCommandValidator validator;
 

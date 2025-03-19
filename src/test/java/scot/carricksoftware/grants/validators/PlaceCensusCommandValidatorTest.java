@@ -12,8 +12,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.commands.people.PersonCommand;
-import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
+import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
+import scot.carricksoftware.grants.commands.places.places.PlaceCommandImpl;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
@@ -23,63 +23,62 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 @ExtendWith(MockitoExtension.class)
-class PersonCommandValidatorLastNameTest {
+class PlaceCensusCommandValidatorTest {
 
-    private PersonCommandValidator validator;
+    private PlaceCommandValidator validator;
 
-    private PersonCommand personCommand;
+    private PlaceCommand placeCommand;
 
     @Mock
     private BindingResult bindingResultMock;
 
     @BeforeEach
     void setUp() {
-        validator = new PersonCommandValidator();
-        personCommand = new PersonCommandImpl();
-        personCommand.setFirstName("Valid");
+        validator = new PlaceCommandValidator();
+        placeCommand = new PlaceCommandImpl();
     }
 
     @Test
-    public void lastNameMinimumSizeIsAllowedTest() {
+    public void minimumSizeIsAllowedTest() {
         String repeated = new String(new char[ApplicationConstants.MINIMUM_NAME_LENGTH]).replace("\0", "x");
-        personCommand.setLastName(repeated);
-        validator.validate(personCommand, bindingResultMock);
+        placeCommand.setName(repeated);
+        validator.validate(placeCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
-    public void LastNameMaximumSizeIsAllowedTest() {
+    public void maximumSizeIsAllowedTest() {
         String repeated = new String(new char[ApplicationConstants.MAXIMUM_NAME_LENGTH]).replace("\0", "x");
-        personCommand.setLastName(repeated);
-        validator.validate(personCommand, bindingResultMock);
+        placeCommand.setName(repeated);
+        validator.validate(placeCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
-    public void lastNameGreaterThanMaximumSizeIsRejectedTest() {
+    public void greaterThanMaximumSizeIsRejectedTest() {
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Object[]> objectArgumentCaptor = ArgumentCaptor.forClass(Object[].class);
 
         String repeated = new String(new char[ApplicationConstants.MAXIMUM_NAME_LENGTH + 1]).replace("\0", "x");
-        personCommand.setLastName(repeated);
-        validator.validate(personCommand, bindingResultMock);
+        placeCommand.setName(repeated);
+        validator.validate(placeCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor.capture());
-        assertEquals("lastName", stringArgumentCaptor.getAllValues().get(0));
+        assertEquals("name", stringArgumentCaptor.getAllValues().get(0));
         assertEquals(ApplicationConstants.EMPTY_STRING, stringArgumentCaptor.getAllValues().get(1));
         assertEquals(ValidationConstants.NAME_IS_TOO_LONG, stringArgumentCaptor.getAllValues().get(2));
         assertNull(objectArgumentCaptor.getAllValues().get(0));
     }
 
     @Test
-    public void lastNameSmallerThanMinimumSizeIsRejectedTest() {
+    public void smallerThanMinimumSizeIsRejectedTest() {
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Object[]> objectArgumentCaptor = ArgumentCaptor.forClass(Object[].class);
 
         String repeated = new String(new char[ApplicationConstants.MINIMUM_NAME_LENGTH - 1]).replace("\0", "x");
-        personCommand.setLastName(repeated);
-        validator.validate(personCommand, bindingResultMock);
+        placeCommand.setName(repeated);
+        validator.validate(placeCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor.capture());
-        assertEquals("lastName", stringArgumentCaptor.getAllValues().get(0));
+        assertEquals("name", stringArgumentCaptor.getAllValues().get(0));
         assertEquals(ApplicationConstants.EMPTY_STRING, stringArgumentCaptor.getAllValues().get(1));
         assertEquals(ValidationConstants.NAME_IS_TOO_SHORT, stringArgumentCaptor.getAllValues().get(2));
         assertNull(objectArgumentCaptor.getAllValues().get(0));

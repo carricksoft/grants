@@ -18,7 +18,7 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomCountry;
 
-class RegionCommandTest {
+class RegionCensusCommandTest {
 
     RegionCommand command;
 

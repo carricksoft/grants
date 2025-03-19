@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-class PersonCommandConverterTest {
+class PersonCensusCommandConverterTest {
     private PersonCommandConverter converter;
 
     @BeforeEach

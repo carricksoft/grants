@@ -18,7 +18,7 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
 
-public class PlaceCommandConverterImplTest {
+public class PlaceCensusCommandConverterImplTest {
 
     final PlaceCommandConverterImpl converter = new PlaceCommandConverterImpl();
     PlaceCommand source;

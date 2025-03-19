@@ -19,7 +19,7 @@ import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommandImpl;
 import scot.carricksoftware.grants.domains.places.Region;
 
-public class PlaceCommandTest {
+public class PlaceCensusCommandTest {
 
     PlaceCommand command;
 
