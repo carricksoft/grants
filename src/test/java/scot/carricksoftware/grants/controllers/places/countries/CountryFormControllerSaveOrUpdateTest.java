@@ -18,7 +18,7 @@ import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
-import scot.carricksoftware.grants.validators.CountryCommandValidator;
+import scot.carricksoftware.grants.validators.places.CountryCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;

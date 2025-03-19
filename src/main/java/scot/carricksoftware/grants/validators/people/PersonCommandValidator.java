@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 13/03/2025, 15:23. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 19/03/2025, 09:50. All rights reserved.
  *
  */
 
-package scot.carricksoftware.grants.validators;
+package scot.carricksoftware.grants.validators.people;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;

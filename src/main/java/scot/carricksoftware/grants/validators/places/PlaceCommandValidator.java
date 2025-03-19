@@ -1,26 +1,26 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 13/03/2025, 15:23. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 19/03/2025, 09:51. All rights reserved.
  *
  */
 
-package scot.carricksoftware.grants.validators;
+package scot.carricksoftware.grants.validators.places;
 
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
+import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
 @Component
-public class RegionCommandValidator {
+public class PlaceCommandValidator {
 
-    public void validate(RegionCommand regionCommand, BindingResult bindingResult) {
-        if (regionCommand.getName().length() < ApplicationConstants.MINIMUM_NAME_LENGTH) {
+    public void validate(PlaceCommand placeCommand, BindingResult bindingResult) {
+        if (placeCommand.getName().length() < ApplicationConstants.MINIMUM_NAME_LENGTH) {
             bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.NAME_IS_TOO_SHORT);
         } else {
-            if (regionCommand.getName().length() > ApplicationConstants.MAXIMUM_NAME_LENGTH) {
+            if (placeCommand.getName().length() > ApplicationConstants.MAXIMUM_NAME_LENGTH) {
                 bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
                         null,
                         ValidationConstants.NAME_IS_TOO_LONG);

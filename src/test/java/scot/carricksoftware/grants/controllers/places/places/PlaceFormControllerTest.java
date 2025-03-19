@@ -21,7 +21,7 @@ import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.services.places.regions.RegionService;
-import scot.carricksoftware.grants.validators.PlaceCommandValidator;
+import scot.carricksoftware.grants.validators.places.PlaceCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

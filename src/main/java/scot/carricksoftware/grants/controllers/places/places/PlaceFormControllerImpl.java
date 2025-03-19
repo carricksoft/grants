@@ -25,7 +25,7 @@ import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverte
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.services.places.regions.RegionService;
-import scot.carricksoftware.grants.validators.PlaceCommandValidator;
+import scot.carricksoftware.grants.validators.places.PlaceCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller

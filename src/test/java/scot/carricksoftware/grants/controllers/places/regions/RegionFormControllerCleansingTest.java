@@ -19,7 +19,7 @@ import scot.carricksoftware.grants.converters.places.regions.RegionCommandConver
 import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
 import scot.carricksoftware.grants.services.places.regions.RegionService;
-import scot.carricksoftware.grants.validators.RegionCommandValidator;
+import scot.carricksoftware.grants.validators.places.RegionCommandValidator;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
