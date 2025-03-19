@@ -19,11 +19,14 @@ public class DataLoader implements CommandLineRunner {
 
     private final DataLoadPlaces dataLoadPlaces;
     private final DataLoadPeople dataLoadPeople;
+    private final DataLoadCensus dataLoadCensus;
 
     public DataLoader(DataLoadPlaces dataLoadPlaces,
-                      DataLoadPeople dataLoadPeople) {
+                      DataLoadPeople dataLoadPeople,
+                      DataLoadCensus dataLoadCensus) {
         this.dataLoadPlaces = dataLoadPlaces;
         this.dataLoadPeople = dataLoadPeople;
+        this.dataLoadCensus = dataLoadCensus;
     }
 
 
@@ -32,6 +35,7 @@ public class DataLoader implements CommandLineRunner {
         logger.debug("DataLoader::run");
         dataLoadPlaces.load();
         dataLoadPeople.load();
+        dataLoadCensus.load();
     }
 
 }

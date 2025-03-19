@@ -24,11 +24,15 @@ class DataLoaderTest {
     @Mock
     private DataLoadPeople dataLoadPeopleMock;
 
+    @Mock
+    private DataLoadCensus dataLoadCensusMock;
+
 
     @BeforeEach
     void setUp() {
         dataLoader = new DataLoader(dataLoadPlacesMock,
-                dataLoadPeopleMock);
+                dataLoadPeopleMock,
+                dataLoadCensusMock);
     }
 
     @Test
