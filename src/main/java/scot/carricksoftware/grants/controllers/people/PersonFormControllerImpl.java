@@ -77,7 +77,6 @@ public class PersonFormControllerImpl implements PersonFormController {
 
         personCommandValidator.validate(personCommand, bindingResult);
 
-
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             return ViewConstants.PERSON_FORM;

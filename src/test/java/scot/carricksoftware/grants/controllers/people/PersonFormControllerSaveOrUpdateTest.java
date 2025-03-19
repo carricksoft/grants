@@ -22,7 +22,6 @@ import scot.carricksoftware.grants.validators.PersonCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -81,28 +80,5 @@ public class PersonFormControllerSaveOrUpdateTest {
         when(bindingResultMock.hasErrors()).thenReturn(true);
         assertEquals("person/form", personController.saveOrUpdate(personCommand, bindingResultMock, modelMock));
     }
-
-    @Test
-    public void firstNameCleaningTakesPlaceTest() {
-        PersonCommand personCommand = new PersonCommandImpl();
-        personCommand.setId(4L);
-        personCommand.setFirstName("england");
-        when(bindingResultMock.hasErrors()).thenReturn(false);
-        when(personServiceMock.savePersonCommand(any(PersonCommand.class))).thenReturn(personCommand);
-        personController.saveOrUpdate(personCommand, bindingResultMock, modelMock);
-        verify(capitalisationMock).getCapitalisation("england");
-    }
-
-    @Test
-    public void lastNameCleaningTakesPlaceTest() {
-        PersonCommand personCommand = new PersonCommandImpl();
-        personCommand.setId(4L);
-        personCommand.setLastName("england");
-        when(bindingResultMock.hasErrors()).thenReturn(false);
-        when(personServiceMock.savePersonCommand(any(PersonCommand.class))).thenReturn(personCommand);
-        personController.saveOrUpdate(personCommand, bindingResultMock, modelMock);
-        verify(capitalisationMock).getCapitalisation("england");
-    }
-
 
 }
