@@ -18,7 +18,7 @@ public class ValidationConstants {
 
     public static final String NAME_IS_TOO_SHORT = "Name must be at least " + ApplicationConstants.MINIMUM_NAME_LENGTH + " characters long.";
     public static final String NAME_IS_TOO_LONG = "Name must be no more than " + ApplicationConstants.MAXIMUM_NAME_LENGTH + " characters long.";
-    public static final String DATE_IS_NULL = "Name must exists.";
-    public static final String DATE_IN_FUTURE = "Name should not be in the future.";
+    public static final String DATE_IS_NULL = "Name must exist.";
+    public static final String DATE_IN_FUTURE = "Date should not be in the future.";
 
 }

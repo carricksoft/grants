@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 13/03/2025, 16:35. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 19/03/2025, 11:41. All rights reserved.
  *
  */
 
-package scot.carricksoftware.grants.validators;
+package scot.carricksoftware.grants.validators.people;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,6 @@ import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
-import scot.carricksoftware.grants.validators.people.PersonCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -24,7 +23,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 @ExtendWith(MockitoExtension.class)
-class PersonCensusCommandValidatorLastNameTest {
+class PersonCommandValidatorLastNameTest {
 
     private PersonCommandValidator validator;
 

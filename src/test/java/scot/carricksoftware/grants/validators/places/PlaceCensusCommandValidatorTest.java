@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 13/03/2025, 16:35. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 19/03/2025, 11:41. All rights reserved.
  *
  */
 
-package scot.carricksoftware.grants.validators;
+package scot.carricksoftware.grants.validators.places;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,6 @@ import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommandImpl;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
-import scot.carricksoftware.grants.validators.places.PlaceCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
