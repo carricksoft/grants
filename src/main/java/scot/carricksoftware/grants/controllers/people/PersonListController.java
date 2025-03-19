@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @SuppressWarnings("unused")
 @Controller
-public interface PeopleListController {
+public interface PersonListController {
 
     String getListPage(final Model model);
 

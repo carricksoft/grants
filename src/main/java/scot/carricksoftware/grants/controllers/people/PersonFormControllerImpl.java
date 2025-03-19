@@ -91,6 +91,7 @@ public class PersonFormControllerImpl implements PersonFormController {
 
     private void cleanUp(PersonCommand personCommand) {
         personCommand.setFirstName(capitalisation.getCapitalisation(personCommand.getFirstName()));
+        personCommand.setLastName(capitalisation.getCapitalisation(personCommand.getLastName()));
     }
 
     @SuppressWarnings("SameReturnValue")

@@ -21,15 +21,15 @@ import scot.carricksoftware.grants.services.people.PersonService;
 import static java.lang.Integer.max;
 
 @Controller
-public class PeopleListControllerImpl implements PeopleListController {
+public class PersonListControllerImpl implements PersonListController {
 
-    private static final Logger logger = LogManager.getLogger(PeopleListControllerImpl.class);
+    private static final Logger logger = LogManager.getLogger(PersonListControllerImpl.class);
 
     private int currentPage = 0;
     private final ControllerHelper controllerHelper;
     private final PersonService personService;
 
-    public PeopleListControllerImpl(ControllerHelper controllerHelper,
+    public PersonListControllerImpl(ControllerHelper controllerHelper,
                                     PersonService personService) {
         this.controllerHelper = controllerHelper;
         this.personService = personService;
