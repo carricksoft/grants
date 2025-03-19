@@ -73,7 +73,7 @@ public class CensusServiceImpl implements CensusService {
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.ASC, "lastName");
+        return Sort.by(Sort.Direction.ASC, "id");
     }
 
     @Override
