@@ -34,20 +34,6 @@ rounded-3 text-center p-4">
                 <input class="form-control" id="id"
                        th:field="*{id}" type="text" readonly>
             </div>
-            <div class="col-md3-3" style="margin-right:20px;">
-                <label for="place">Place:</label>
-                <select id="place" name="place" th:field="*{place}"
-                        class="form-control" th:errorclass="has-error">
-                    <option th:value="${''}" th:text="${''}"></option>
-                    <option th:each="place : ${places}"
-                            th:value="${place.id}" th:text="${place.toString()}"></option>
-                </select>
-                <div th:if="${#fields.hasErrors('place')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('name')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
             <div class="col-md-3">
                 <label for="date">Date</label>
                 <input class="form-control" id="date" th:value="*{date}"
