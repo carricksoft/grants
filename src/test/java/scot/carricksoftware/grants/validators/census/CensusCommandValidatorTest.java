@@ -61,7 +61,7 @@ class CensusCommandValidatorTest {
                 stringArgumentCaptor3.capture());
 
         assertEquals("date", stringArgumentCaptor.getValue());
-        assertEquals("Name must exist.", stringArgumentCaptor3.getValue());
+        assertEquals("Date must exist.", stringArgumentCaptor3.getValue());
 
     }
 
