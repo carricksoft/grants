@@ -10,6 +10,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.constants.ValidationConstants;
 
 @SuppressWarnings("unused")
 @Component
@@ -25,8 +27,18 @@ public class CensusEntryCommandValidator {
 
     @SuppressWarnings("unused")
     private void validateNameAndPerson(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
-            logger.debug("censusEntryCommandValidator::validateNameAndPerson");
-       // This will be updated later
+        logger.debug("censusEntryCommandValidator::validateNameAndPerson");
+        if (censusEntryCommand.getName().length() < ApplicationConstants.MINIMUM_NAME_LENGTH) {
+            bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.NAME_IS_TOO_SHORT);
+        } else {
+            if (censusEntryCommand.getName().length() > ApplicationConstants.MAXIMUM_NAME_LENGTH) {
+                bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.NAME_IS_TOO_LONG);
+            }
+        }
     }
 }
 
