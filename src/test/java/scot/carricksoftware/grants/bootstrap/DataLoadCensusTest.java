@@ -7,7 +7,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
-import scot.carricksoftware.grants.services.census.CensusServiceImpl;
+import scot.carricksoftware.grants.services.census.CensusEntryService;
+import scot.carricksoftware.grants.services.census.CensusService;
 
 import java.time.LocalDate;
 
@@ -20,11 +21,15 @@ public class DataLoadCensusTest {
     private DataLoadCensus dataLoadCensus;
 
     @Mock
-    private CensusServiceImpl censusServiceMock;
+    private CensusEntryService censusEntryServiceMock;
+
+    @Mock
+    private CensusService censusServiceMock;
+
 
     @BeforeEach
     public void setUp() {
-        dataLoadCensus = new DataLoadCensus(censusServiceMock);
+        dataLoadCensus = new DataLoadCensus(censusServiceMock, censusEntryServiceMock);
     }
 
     @Test

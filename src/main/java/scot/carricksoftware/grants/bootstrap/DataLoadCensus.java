@@ -10,6 +10,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
+import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
+import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
+import scot.carricksoftware.grants.services.census.CensusEntryService;
 import scot.carricksoftware.grants.services.census.CensusService;
 
 import java.time.LocalDate;
@@ -21,14 +24,18 @@ public class DataLoadCensus {
 
 
     private final CensusService censusService;
+    private final CensusEntryService censusEntryService;
 
-    public DataLoadCensus(CensusService censusService) {
+    public DataLoadCensus(CensusService censusService,
+                          CensusEntryService censusEntryService) {
         this.censusService = censusService;
+        this.censusEntryService = censusEntryService;
     }
 
     public void load() {
         logger.debug("DataLoadCensus::load");
         loadCensus();
+        loadCensusEntry();
     }
 
     private void loadCensus() {
@@ -38,6 +45,12 @@ public class DataLoadCensus {
         censusService.saveCensusCommand(censusCommand);
     }
 
+    private void loadCensusEntry() {
+        logger.debug("DataLoadCensus::loadCensusEntry");
+        CensusEntryCommand censusEntryCommand = new CensusEntryCommandImpl();
+        censusEntryCommand.setName("Archie Grant");
+        censusEntryService.saveCensusEntryCommand(censusEntryCommand);
+    }
 
 
 }
