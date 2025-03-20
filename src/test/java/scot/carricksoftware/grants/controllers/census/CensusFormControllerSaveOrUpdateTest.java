@@ -72,14 +72,13 @@ public class CensusFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    public void validationTakesPlaceTest(){
+    public void validationTakesPlaceTest() {
         Long id = 4L;
         censusCommand.setId(id);
         when(censusServiceMock.saveCensusCommand(any(CensusCommand.class))).thenReturn(censusCommand);
         censusController.saveOrUpdate(censusCommand, bindingResultMock, modelMock);
         verify(censusCommandValidatorMock).validate(censusCommand, bindingResultMock);
     }
-
 
 
 }

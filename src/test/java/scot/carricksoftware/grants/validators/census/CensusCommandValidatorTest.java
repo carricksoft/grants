@@ -68,7 +68,7 @@ class CensusCommandValidatorTest {
     @Test
     public void DateInTheFutureTest() {
         censusCommand.setId(GetRandomLong());
-        censusCommand.setDate(LocalDate.now().plusDays(1) );
+        censusCommand.setDate(LocalDate.now().plusDays(1));
 
         censusCommandValidator.validate(censusCommand, bindingResultMock);
 
