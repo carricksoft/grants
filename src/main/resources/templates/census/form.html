@@ -14,7 +14,17 @@
     <!--suppress SpellCheckingInspection -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title>Grants - person</title>
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.14.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <!--suppress JSUnresolvedReference -->
+    <script>
+        $( function() {
+            $( "#datepicker" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
+        } );
+    </script>
+    <title>Grants - census form</title>
 
 </head>
 <body>
@@ -35,9 +45,10 @@ rounded-3 text-center p-4">
                        th:field="*{id}" type="text" readonly>
             </div>
             <div class="col-md-3">
-                <label for="date">Date</label>
-                <input class="form-control" id="date" th:value="*{date}"
-                       th:field="*{date}" th:type="date">
+               <!-- >https://jqueryui.com/datepicker/-->
+                <label for="datepicker">Date</label>
+                <input class="form-control" id="datepicker" th:value="*{date}"
+                       th:field="*{date}" th:type="text">
                 <div th:if="${#fields.hasErrors('date')}">
                     <ul class="text-danger">
                         <li th:each="err : ${#fields.errors('date')}" th:text="${err}"/>
