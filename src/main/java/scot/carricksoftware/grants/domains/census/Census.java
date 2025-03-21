@@ -5,15 +5,22 @@
 
 package scot.carricksoftware.grants.domains.census;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
 import scot.carricksoftware.grants.BaseEntity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Census extends BaseEntity {
 
     private LocalDate date;
+
+    @OneToMany(mappedBy = "census", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CensusEntry> censusEntries = new ArrayList<>();
 
     public LocalDate getDate() {
         return date;

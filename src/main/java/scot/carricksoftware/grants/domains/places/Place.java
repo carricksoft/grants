@@ -18,7 +18,7 @@ public class Place extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "region_id")
+    @JoinColumn(name = "place_region_id")
     private Region region;
 
     public String getName() {

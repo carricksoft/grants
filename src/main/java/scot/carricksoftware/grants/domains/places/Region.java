@@ -19,7 +19,7 @@ public class Region extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "country_id")
+    @JoinColumn(name = "region_country_id")
     private Country country;
 
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL, orphanRemoval = true)

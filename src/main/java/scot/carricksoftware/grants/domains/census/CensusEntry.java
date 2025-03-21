@@ -6,12 +6,19 @@
 package scot.carricksoftware.grants.domains.census;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import scot.carricksoftware.grants.BaseEntity;
 
 @Entity
 public class CensusEntry extends BaseEntity {
 
    private String name;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @ManyToOne
+    @JoinColumn(name = "censusEntry_census_id")
+    private Census census;
 
     public String getName() {
         return name;
