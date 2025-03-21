@@ -1,9 +1,9 @@
 /*
- * Copyright (c)  20 Feb 2025, Andrew Grant of Carrick Software .
- * All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 21/03/2025, 00:08. All rights reserved.
+ *
  */
 
-package scot.carricksoftware.grants.controllers.census;
+package scot.carricksoftware.grants.controllers.census.census;
 
 import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
