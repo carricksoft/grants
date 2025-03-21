@@ -51,10 +51,12 @@ public class PlaceCommandImpl implements PlaceCommand {
         this.region = region;
     }
 
+    @Override
     public List<Census> getCensuses() {
         return censuses;
     }
 
+    @Override
     public void setCensuses(List<Census> censuses) {
         this.censuses = censuses;
     }

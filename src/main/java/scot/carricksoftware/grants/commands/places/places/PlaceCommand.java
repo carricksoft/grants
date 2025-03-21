@@ -6,7 +6,10 @@
 package scot.carricksoftware.grants.commands.places.places;
 
 
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.places.Region;
+
+import java.util.List;
 
 public interface PlaceCommand {
 
@@ -25,4 +28,8 @@ public interface PlaceCommand {
     Region getRegion();
 
     void setRegion(Region region);
+
+    List<Census> getCensuses();
+
+    void setCensuses(List<Census> censuses);
 }
