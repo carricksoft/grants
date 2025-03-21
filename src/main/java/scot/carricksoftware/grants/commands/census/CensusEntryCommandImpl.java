@@ -5,11 +5,15 @@
 
 package scot.carricksoftware.grants.commands.census;
 
+import scot.carricksoftware.grants.domains.census.Census;
+
 public class CensusEntryCommandImpl implements CensusEntryCommand {
 
     Long id;
 
     String name;
+
+    private Census census;
 
     public Long getId() {
         return id;
@@ -27,8 +31,15 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
     @Override
     public void setName(String name) {
         this.name = name;
-
     }
 
+    @Override
+    public Census getCensus() {
+        return census;
+    }
 
+    @Override
+    public void setCensus(Census census) {
+        this.census = census;
+    }
 }

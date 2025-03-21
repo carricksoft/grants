@@ -5,7 +5,10 @@
 
 package scot.carricksoftware.grants.commands.census;
 
+import scot.carricksoftware.grants.domains.census.CensusEntry;
+
 import java.time.LocalDate;
+import java.util.List;
 
 public interface CensusCommand {
     Long getId();
@@ -15,4 +18,8 @@ public interface CensusCommand {
     LocalDate getDate();
 
     void setDate(LocalDate date);
+
+    List<CensusEntry> getCensusEntries();
+
+    void setCensusEntries(List<CensusEntry> censusEntries);
 }

@@ -5,6 +5,8 @@
 
 package scot.carricksoftware.grants.commands.census;
 
+import scot.carricksoftware.grants.domains.census.Census;
+
 public interface CensusEntryCommand {
 
     Long getId();
@@ -15,4 +17,7 @@ public interface CensusEntryCommand {
 
     void setName(String name);
 
+    Census getCensus();
+
+    void setCensus(Census census);
 }
