@@ -5,7 +5,11 @@
 
 package scot.carricksoftware.grants.commands.places.places;
 
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.places.Region;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class PlaceCommandImpl implements PlaceCommand {
@@ -14,6 +18,8 @@ public class PlaceCommandImpl implements PlaceCommand {
     private Region region;
 
     private String name;
+
+    private List<Census> censuses = new ArrayList<>();
 
     @Override
     public Long getId() {
@@ -43,5 +49,13 @@ public class PlaceCommandImpl implements PlaceCommand {
     @Override
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    public List<Census> getCensuses() {
+        return censuses;
+    }
+
+    public void setCensuses(List<Census> censuses) {
+        this.censuses = censuses;
     }
 }

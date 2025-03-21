@@ -82,4 +82,5 @@ public class CensusTest {
         census.setDate(LocalDate.now());
         assertEquals("Census " + LocalDate.now(), census.toString());
     }
+
 }

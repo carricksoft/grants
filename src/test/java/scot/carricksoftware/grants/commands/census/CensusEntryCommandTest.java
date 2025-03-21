@@ -57,4 +57,5 @@ class CensusEntryCommandTest {
         assertEquals(census, command.getCensus());
     }
 
+
 }

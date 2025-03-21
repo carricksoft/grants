@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.commands.census;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
+import scot.carricksoftware.grants.domains.places.Place;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 class CensusCommandTest {
 
@@ -61,5 +63,17 @@ class CensusCommandTest {
         censusEntries.add(GetRandomCensusEntry());
         command.setCensusEntries(censusEntries);
         assertEquals(censusEntries, command.getCensusEntries());
+    }
+
+    @Test
+    public void getPlaceTest() {
+        assertNull(command.getPlace());
+    }
+
+    @Test
+    public void setPlaceTest() {
+        Place place = GetRandomPlace();
+        command.setPlace(place);
+        assertEquals(place, command.getPlace());
     }
 }
