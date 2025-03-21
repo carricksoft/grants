@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
 import scot.carricksoftware.grants.services.census.CensusService;
 
@@ -15,6 +16,8 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 
 @ExtendWith(MockitoExtension.class)
 public class DataLoadCensusTest {
@@ -44,9 +47,12 @@ public class DataLoadCensusTest {
     @Test
     public void censusEntryIsCreatedTest() {
         ArgumentCaptor<CensusEntryCommand> captor = ArgumentCaptor.forClass(CensusEntryCommand.class);
+        Census census = GetRandomCensus();
+        when(censusServiceMock.findById(1L)).thenReturn(census);
         dataLoadCensus.load();
         verify(censusEntryServiceMock).saveCensusEntryCommand(captor.capture());
         assertEquals("Archie Grant", captor.getValue().getName());
+        assertEquals(census, captor.getValue().getCensus());
     }
 
 
