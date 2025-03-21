@@ -71,12 +71,10 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         censusEntryCommandValidator.validate(censusEntryCommand, bindingResult);
         censusEntryCommand.setName(capitalisation.getCapitalisation(censusEntryCommand.getName()));
 
-
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             return ViewConstants.CENSUSENTRY_FORM;
         }
-
 
         CensusEntryCommand savedCommand = censusEntryService.saveCensusEntryCommand(censusEntryCommand);
         model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, savedCommand);

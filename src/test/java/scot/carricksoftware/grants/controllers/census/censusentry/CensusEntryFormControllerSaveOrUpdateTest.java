@@ -21,9 +21,9 @@ import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -50,7 +50,7 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
     @Mock
     BindingResult bindingResultMock;
 
-    private CensusEntryCommand censusEntryCommand;
+    CensusEntryCommand censusEntryCommand;
 
     @BeforeEach
     public void setUp() {
@@ -89,12 +89,19 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
     @Test
     public void capitalisationTakesPlaceTest() {
         Long id = 4L;
-        String name = GetRandomString();
+        String name = "test";
+        String uname = "Test";
         censusEntryCommand.setId(id);
         censusEntryCommand.setName(name);
+        when(capitalisationMock.getCapitalisation(anyString())).thenReturn(uname);
         when(censusEntryServiceMock.saveCensusEntryCommand(any(CensusEntryCommand.class))).thenReturn(censusEntryCommand);
+
         censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock, modelMock);
+
         verify(capitalisationMock).getCapitalisation(name);
+
+        assertEquals(uname, censusEntryCommand.getName());
+
     }
 
 
