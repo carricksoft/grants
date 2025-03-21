@@ -29,4 +29,12 @@ public class Census extends BaseEntity {
     public void setDate(LocalDate date) {
         this.date = date;
     }
+
+    public List<CensusEntry> getCensusEntries() {
+        return censusEntries;
+    }
+
+    public void setCensusEntries(List<CensusEntry> censusEntries) {
+        this.censusEntries = censusEntries;
+    }
 }

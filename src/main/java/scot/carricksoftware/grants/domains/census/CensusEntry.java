@@ -27,4 +27,12 @@ public class CensusEntry extends BaseEntity {
     public void setName(String name) {
         this.name = name;
     }
+
+    public Census getCensus() {
+        return census;
+    }
+
+    public void setCensus(Census census) {
+        this.census = census;
+    }
 }

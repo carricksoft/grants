@@ -9,9 +9,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 public class CensusTest {
@@ -45,5 +47,18 @@ public class CensusTest {
         Long id = GetRandomLong();
         census.setId(id);
         assertEquals(id, census.getId());
+    }
+
+    @Test
+    public void getCensusEntriesTest() {
+        assertTrue(census.getCensusEntries().isEmpty());
+    }
+
+    @Test
+    public void setCensusEntriesTest() {
+        List<CensusEntry> censusEntries = new ArrayList<>();
+        censusEntries.add(GetRandomCensusEntry());
+        census.setCensusEntries(censusEntries);
+        assertEquals(censusEntries, census.getCensusEntries());
     }
 }

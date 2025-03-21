@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 
 
 class CensusEntryTest {
@@ -32,6 +33,18 @@ class CensusEntryTest {
         String name = GetRandomString();
         entry.setName(name);
         assertEquals(name, entry.getName());
+    }
+
+    @Test
+    void getCensusTest() {
+        assertNull(entry.getCensus());
+    }
+
+    @Test
+    void setCensusTest() {
+        Census census = GetRandomCensus();
+        entry.setCensus(census);
+        assertEquals(census, entry.getCensus());
     }
 
 
