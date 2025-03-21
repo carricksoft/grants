@@ -40,6 +40,6 @@ public class Census extends BaseEntity {
 
     @Override
     public String toString() {
-        return "Census  ?" + date.toString();
+        return "Census " + date.toString();
     }
 }

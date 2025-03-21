@@ -45,7 +45,7 @@ class CensusCommandConverterTest {
         assert target != null;
         assertEquals(id, target.getId());
         assertEquals(date, target.getDate());
-        assertEquals(censusEntries,target.getCensusEntries());
+        assertEquals(censusEntries, target.getCensusEntries());
         assertEquals(censusEntries, target.getCensusEntries());
     }
 }

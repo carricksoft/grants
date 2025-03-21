@@ -47,5 +47,11 @@ class CensusEntryTest {
         assertEquals(census, entry.getCensus());
     }
 
+    @Test
+    void toStringTest() {
+        entry.setName(GetRandomString());
+        assertEquals("CensusEntry " + entry.getName(), entry.toString());
+    }
+
 
 }

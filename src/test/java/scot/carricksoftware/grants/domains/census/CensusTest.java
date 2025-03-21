@@ -61,4 +61,10 @@ public class CensusTest {
         census.setCensusEntries(censusEntries);
         assertEquals(censusEntries, census.getCensusEntries());
     }
+
+    @Test
+    public void toStringTest() {
+        census.setDate(LocalDate.now());
+        assertEquals("Census " + LocalDate.now(), census.toString());
+    }
 }

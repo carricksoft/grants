@@ -38,8 +38,6 @@ public class CensusEntry extends BaseEntity {
 
     @Override
     public String toString() {
-        return "CensusEntry{" +
-                "census=" + census +
-                '}';
+        return "CensusEntry " + name ;
     }
 }
