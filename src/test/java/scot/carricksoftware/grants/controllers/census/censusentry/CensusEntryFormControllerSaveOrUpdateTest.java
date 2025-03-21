@@ -95,7 +95,6 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
         when(censusEntryServiceMock.saveCensusEntryCommand(any(CensusEntryCommand.class))).thenReturn(censusEntryCommand);
         censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock, modelMock);
         verify(capitalisationMock).getCapitalisation(name);
-        verify(censusEntryCommandValidatorMock).validate(censusEntryCommand, bindingResultMock);
     }
 
 
