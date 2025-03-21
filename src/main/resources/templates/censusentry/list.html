@@ -24,8 +24,6 @@
             <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>Census</th>
-                <th>Person</th>
                 <th>Other Person</th>
                 <th></th>
             </tr>
@@ -33,9 +31,7 @@
 
             <tr th:each="entry   : ${censusEntries}">
                 <td th:text="${entry.id}">123</td>
-                <td th:text="${entry.census?.toString()}"></td>
-                <td th:text="${entry.person?.toString()}">123</td>
-                <td th:text="${entry.otherPerson}">123</td>
+                <td th:text="${entry.name}">123</td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'censusEntry/' + ${entry.id} + '/delete'"
