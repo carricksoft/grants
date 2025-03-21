@@ -9,10 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.census.CensusEntry;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 class CensusConverterTest {
@@ -29,13 +33,18 @@ class CensusConverterTest {
         Long id = GetRandomLong();
         LocalDate date = LocalDate.now();
         Census source = new Census();
+        List<CensusEntry> censusEntries = new ArrayList<>();
+        censusEntries.add(GetRandomCensusEntry());
+
         source.setId(id);
         source.setDate(date);
+        source.setCensusEntries(censusEntries);
 
         CensusCommand target = converter.convert(source);
 
         assert target != null;
         assertEquals(id, target.getId());
         assertEquals(date, target.getDate());
+        assertEquals(censusEntries, target.getCensusEntries());
     }
 }

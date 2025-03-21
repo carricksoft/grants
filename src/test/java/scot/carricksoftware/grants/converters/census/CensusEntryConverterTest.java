@@ -8,10 +8,12 @@ package scot.carricksoftware.grants.converters.census;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 class CensusEntryConverterTest {
@@ -27,14 +29,17 @@ class CensusEntryConverterTest {
     void convertTest() {
         Long id = GetRandomLong();
         String name = GetRandomString();
+        Census census = GetRandomCensus();
         CensusEntry source = new CensusEntry();
         source.setId(id);
         source.setName(name);
+        source.setCensus(census);
 
         CensusEntryCommand target = converter.convert(source);
 
         assert target != null;
         assertEquals(id, target.getId());
         assertEquals(name, target.getName());
+        assertEquals(census, target.getCensus());
     }
 }

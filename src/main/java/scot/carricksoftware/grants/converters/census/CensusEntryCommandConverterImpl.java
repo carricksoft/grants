@@ -17,6 +17,7 @@ public class CensusEntryCommandConverterImpl implements CensusEntryCommandConver
         CensusEntry result = new CensusEntry();
         result.setId(source.getId());
         result.setName(source.getName());
+        result.setCensus(source.getCensus());
         return result;
     }
 
