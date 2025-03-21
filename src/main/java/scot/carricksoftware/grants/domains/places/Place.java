@@ -6,10 +6,11 @@
 package scot.carricksoftware.grants.domains.places;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Place extends BaseEntity {
@@ -20,6 +21,9 @@ public class Place extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "place_region_id")
     private Region region;
+
+    @OneToMany(mappedBy = "census", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Place> places = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -35,5 +39,13 @@ public class Place extends BaseEntity {
 
     public void setRegion(Region region) {
         this.region = region;
+    }
+
+    public List<Place> getPlaces() {
+        return places;
+    }
+
+    public void setPlaces(List<Place> places) {
+        this.places = places;
     }
 }
