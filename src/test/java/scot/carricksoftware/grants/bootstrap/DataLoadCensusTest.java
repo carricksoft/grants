@@ -7,6 +7,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
+import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
 import scot.carricksoftware.grants.services.census.CensusService;
 
@@ -38,6 +39,14 @@ public class DataLoadCensusTest {
         dataLoadCensus.load();
         verify(censusServiceMock).saveCensusCommand(captor.capture());
         assertEquals(captor.getValue().getDate(), LocalDate.now());
+    }
+
+    @Test
+    public void censusEntryIsCreatedTest() {
+        ArgumentCaptor<CensusEntryCommand> captor = ArgumentCaptor.forClass(CensusEntryCommand.class);
+        dataLoadCensus.load();
+        verify(censusEntryServiceMock).saveCensusEntryCommand(captor.capture());
+        assertEquals("Archie Grant", captor.getValue().getName());
     }
 
 
