@@ -49,6 +49,7 @@ public class DataLoadCensus {
         logger.debug("DataLoadCensus::loadCensusEntry");
         CensusEntryCommand censusEntryCommand = new CensusEntryCommandImpl();
         censusEntryCommand.setName("Archie Grant");
+        censusEntryCommand.setCensus(censusService.findById(1L));
         censusEntryService.saveCensusEntryCommand(censusEntryCommand);
     }
 

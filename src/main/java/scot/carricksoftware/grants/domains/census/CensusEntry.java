@@ -35,4 +35,11 @@ public class CensusEntry extends BaseEntity {
     public void setCensus(Census census) {
         this.census = census;
     }
+
+    @Override
+    public String toString() {
+        return "CensusEntry{" +
+                "census=" + census +
+                '}';
+    }
 }

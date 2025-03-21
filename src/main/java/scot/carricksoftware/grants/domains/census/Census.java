@@ -37,4 +37,9 @@ public class Census extends BaseEntity {
     public void setCensusEntries(List<CensusEntry> censusEntries) {
         this.censusEntries = censusEntries;
     }
+
+    @Override
+    public String toString() {
+        return "Census  ?" + date.toString();
+    }
 }
