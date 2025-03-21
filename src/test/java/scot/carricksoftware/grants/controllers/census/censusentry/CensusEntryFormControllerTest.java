@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
@@ -47,12 +48,16 @@ public class CensusEntryFormControllerTest {
     @Mock
     CensusEntryCommandValidator censusEntryCommandValidatorMock;
 
+    @Mock
+    Capitalisation capitalisationMock;
+
 
     @BeforeEach
     public void setUp() {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
                 censusEntryCommandValidatorMock,
-                censusEntryConverterMock);
+                censusEntryConverterMock,
+                capitalisationMock);
     }
 
     @Test

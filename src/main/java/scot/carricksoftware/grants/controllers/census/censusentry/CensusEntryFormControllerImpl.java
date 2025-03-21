@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
+import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverter;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
 import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
@@ -32,14 +33,17 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     private final CensusEntryService censusEntryService;
     private final CensusEntryCommandValidator censusEntryCommandValidator;
     private final CensusEntryConverter censusEntryConverter;
+    private final Capitalisation capitalisation;
 
 
     public CensusEntryFormControllerImpl(CensusEntryService censusEntryService,
                                          CensusEntryCommandValidator censusEntryCommandValidator,
-                                         CensusEntryConverter censusEntryConverter) {
+                                         CensusEntryConverter censusEntryConverter,
+                                         Capitalisation capitalisation) {
         this.censusEntryService = censusEntryService;
         this.censusEntryCommandValidator = censusEntryCommandValidator;
         this.censusEntryConverter = censusEntryConverter;
+        this.capitalisation = capitalisation;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -65,6 +69,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         logger.debug("CensusEntryFormControllerImpl::saveOrUpdate");
 
         censusEntryCommandValidator.validate(censusEntryCommand, bindingResult);
+        censusEntryCommand.setName(capitalisation.getCapitalisation(censusEntryCommand.getName()));
 
 
         if (bindingResult.hasErrors()) {

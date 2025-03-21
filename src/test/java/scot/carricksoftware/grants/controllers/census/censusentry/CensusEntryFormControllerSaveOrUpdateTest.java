@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
+import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
 import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
@@ -22,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -40,6 +42,9 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
     private CensusEntryConverterImpl censusEntryConverterMock;
 
     @Mock
+    private Capitalisation capitalisationMock;
+
+    @Mock
     Model modelMock;
 
     @Mock
@@ -51,7 +56,8 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
     public void setUp() {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
                 censusEntryCommandValidatorMock,
-                censusEntryConverterMock);
+                censusEntryConverterMock,
+                capitalisationMock);
         censusEntryCommand = new CensusEntryCommandImpl();
     }
 
@@ -77,6 +83,18 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
         censusEntryCommand.setId(id);
         when(censusEntryServiceMock.saveCensusEntryCommand(any(CensusEntryCommand.class))).thenReturn(censusEntryCommand);
         censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock, modelMock);
+        verify(censusEntryCommandValidatorMock).validate(censusEntryCommand, bindingResultMock);
+    }
+
+    @Test
+    public void capitalisationTakesPlaceTest() {
+        Long id = 4L;
+        String name = GetRandomString();
+        censusEntryCommand.setId(id);
+        censusEntryCommand.setName(name);
+        when(censusEntryServiceMock.saveCensusEntryCommand(any(CensusEntryCommand.class))).thenReturn(censusEntryCommand);
+        censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock, modelMock);
+        verify(capitalisationMock).getCapitalisation(name);
         verify(censusEntryCommandValidatorMock).validate(censusEntryCommand, bindingResultMock);
     }
 
