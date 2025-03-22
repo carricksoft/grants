@@ -9,8 +9,10 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
 import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
 
 import java.time.LocalDate;
 
@@ -18,6 +20,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
 public class DataLoadCensusTest {
@@ -30,18 +33,27 @@ public class DataLoadCensusTest {
     @Mock
     private CensusService censusServiceMock;
 
+    @Mock
+    private PlaceService placeServiceMock;
+
 
     @BeforeEach
     public void setUp() {
-        dataLoadCensus = new DataLoadCensus(censusServiceMock, censusEntryServiceMock);
+        dataLoadCensus = new DataLoadCensus(censusServiceMock,
+                censusEntryServiceMock,
+                placeServiceMock);
     }
 
     @Test
     public void censusIsCreatedTest() {
+        Place place = GetRandomPlace();
         ArgumentCaptor<CensusCommand> captor = ArgumentCaptor.forClass(CensusCommand.class);
+        when(placeServiceMock.findById(1L)).thenReturn(place);
         dataLoadCensus.load();
         verify(censusServiceMock).saveCensusCommand(captor.capture());
+
         assertEquals(captor.getValue().getDate(), LocalDate.now());
+        assertEquals(captor.getValue().getPlace(), place);
     }
 
     @Test
