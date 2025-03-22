@@ -8,20 +8,32 @@ package scot.carricksoftware.grants.domains.places;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.domains.census.Census;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
+
+@ExtendWith(MockitoExtension.class)
 public class PlaceTest {
 
     private Place place;
+
+    @Mock
+    private Country countryMock;
+
+     @Mock
+     private Region regionMock;
 
 
     @BeforeEach
@@ -76,6 +88,24 @@ public class PlaceTest {
         censuses.add(GetRandomCensus());
         place.setCensuses(censuses);
         assertEquals(censuses, place.getCensuses());
+    }
+
+    @Test
+    public void toStringTest() {
+        String string = GetRandomString();
+        String string2 = GetRandomString();
+        String string3 = GetRandomString();
+
+        place.setName(string3);
+        when(regionMock.getName()).thenReturn(string);
+        when(regionMock.getCountry()).thenReturn(countryMock);
+        when(countryMock.getName()).thenReturn(string2);
+
+        place.setRegion(regionMock);
+
+        assertEquals(string3 + ", "
+                + string + ", "
+                + string2, place.toString());
     }
 
 
