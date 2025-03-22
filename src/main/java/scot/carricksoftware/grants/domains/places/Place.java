@@ -8,10 +8,6 @@ package scot.carricksoftware.grants.domains.places;
 
 import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
-import scot.carricksoftware.grants.domains.census.Census;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Place extends BaseEntity {
@@ -23,8 +19,6 @@ public class Place extends BaseEntity {
     @JoinColumn(name = "place_region_id")
     private Region region;
 
-    @OneToMany(mappedBy = "census", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Census> censuses = new ArrayList<>();
 
     public String getName() {
         return name;
@@ -42,11 +36,4 @@ public class Place extends BaseEntity {
         this.region = region;
     }
 
-    public List<Census> getCensuses() {
-        return censuses;
-    }
-
-    public void setCensuses(List<Census> censuses) {
-        this.censuses = censuses;
-    }
 }

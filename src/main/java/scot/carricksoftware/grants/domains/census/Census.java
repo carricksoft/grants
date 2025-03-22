@@ -7,7 +7,6 @@ package scot.carricksoftware.grants.domains.census;
 
 import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
-import scot.carricksoftware.grants.domains.places.Place;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,10 +20,6 @@ public class Census extends BaseEntity {
     @OneToMany(mappedBy = "census", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CensusEntry> censusEntries = new ArrayList<>();
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
-    @ManyToOne
-    @JoinColumn(name = "place_census_id")
-    private Place place;
 
     public LocalDate getDate() {
         return date;
@@ -47,11 +42,4 @@ public class Census extends BaseEntity {
         return "Census " + date.toString();
     }
 
-    public Place getPlace() {
-        return place;
-    }
-
-    public void setPlace(Place place) {
-        this.place = place;
-    }
 }

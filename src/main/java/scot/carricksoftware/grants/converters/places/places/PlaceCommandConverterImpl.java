@@ -20,7 +20,6 @@ public class PlaceCommandConverterImpl implements PlaceCommandConverter {
         target.setId(source.getId());
         target.setName(source.getName());
         target.setRegion(source.getRegion());
-        target.setCensuses(source.getCensuses());
         return target;
     }
 
