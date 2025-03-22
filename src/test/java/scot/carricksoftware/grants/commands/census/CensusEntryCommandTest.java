@@ -9,6 +9,7 @@ package scot.carricksoftware.grants.commands.census;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.people.Person;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 class CensusEntryCommandTest {
 
@@ -55,6 +57,18 @@ class CensusEntryCommandTest {
         Census census = GetRandomCensus();
         command.setCensus(census);
         assertEquals(census, command.getCensus());
+    }
+
+    @Test
+    void getPersonTest() {
+        assertNull(command.getPerson());
+    }
+
+    @Test
+    void setPersonTest() {
+        Person person = GetRandomPerson();
+        command.setPerson(person);
+        assertEquals(person, command.getPerson());
     }
 
 

@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants.commands.census;
 
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.people.Person;
 
 public interface CensusEntryCommand {
 
@@ -20,4 +21,8 @@ public interface CensusEntryCommand {
     Census getCensus();
 
     void setCensus(Census census);
+
+    Person getPerson();
+
+    void setPerson(Person person);
 }

@@ -6,14 +6,17 @@
 package scot.carricksoftware.grants.commands.census;
 
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.people.Person;
 
 public class CensusEntryCommandImpl implements CensusEntryCommand {
 
-    Long id;
+    private Long id;
 
-    String name;
+    private String name;
 
     private Census census;
+
+    private Person person;
 
     public Long getId() {
         return id;
@@ -41,5 +44,15 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
     @Override
     public void setCensus(Census census) {
         this.census = census;
+    }
+
+    @Override
+    public Person getPerson() {
+       return this.person;
+    }
+
+    @Override
+    public void setPerson(Person person) {
+        this.person = person;
     }
 }

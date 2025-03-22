@@ -32,8 +32,8 @@ public class PlaceTest {
     @Mock
     private Country countryMock;
 
-     @Mock
-     private Region regionMock;
+    @Mock
+    private Region regionMock;
 
 
     @BeforeEach
