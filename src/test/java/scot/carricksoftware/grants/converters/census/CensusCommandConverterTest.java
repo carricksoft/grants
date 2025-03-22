@@ -11,6 +11,7 @@ import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
+import scot.carricksoftware.grants.domains.places.Place;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 class CensusCommandConverterTest {
     private CensusCommandConverter converter;
@@ -35,10 +37,12 @@ class CensusCommandConverterTest {
         CensusCommand source = new CensusCommandImpl();
         List<CensusEntry> censusEntries = new ArrayList<>();
         censusEntries.add(GetRandomCensusEntry());
+        Place place = GetRandomPlace();
 
         source.setId(id);
         source.setDate(date);
         source.setCensusEntries(censusEntries);
+        source.setPlace(place);
 
         Census target = converter.convert(source);
 
@@ -46,5 +50,6 @@ class CensusCommandConverterTest {
         assertEquals(id, target.getId());
         assertEquals(date, target.getDate());
         assertEquals(censusEntries, target.getCensusEntries());
+        assertEquals(place, target.getPlace());
     }
 }

@@ -32,9 +32,12 @@ class CensusEntryCommandConverterTest {
         String name = GetRandomString();
         CensusEntryCommand source = new CensusEntryCommandImpl();
         Census census = GetRandomCensus();
+
+
         source.setId(id);
         source.setName(name);
         source.setCensus(census);
+
 
         CensusEntry target = converter.convert(source);
 
