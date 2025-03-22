@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import scot.carricksoftware.grants.BaseEntity;
+import scot.carricksoftware.grants.domains.people.Person;
 
 @Entity
 public class CensusEntry extends BaseEntity {
@@ -18,7 +19,20 @@ public class CensusEntry extends BaseEntity {
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "censusEntry_census_id")
-    private Census census;
+    private Census  census;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @ManyToOne
+    @JoinColumn(name = "person_id")
+    private Person person;
+
+    public Person getPerson() {
+        return person;
+    }
+
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 
     public String getName() {
         return name;
@@ -39,4 +53,6 @@ public class CensusEntry extends BaseEntity {
     public String toString() {
         return census.toString();
     }
+
+
 }

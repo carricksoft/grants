@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -64,5 +65,17 @@ class CensusEntryTest {
         assertEquals(string, entry.toString());
     }
 
+
+    @Test
+    void getPersonTest() {
+        assertNull(entry.getPerson());
+    }
+
+    @Test
+    void setPersonTest() {
+        Person person = new Person();
+        entry.setPerson(person);
+        assertEquals(person, entry.getPerson());
+    }
 
 }
