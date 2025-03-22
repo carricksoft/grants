@@ -15,6 +15,7 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
 import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
 import java.time.LocalDate;
@@ -28,12 +29,17 @@ public class DataLoadCensus {
     private final CensusService censusService;
     private final CensusEntryService censusEntryService;
     private final PlaceService placeService;
+    private final PersonService personService;
 
     public DataLoadCensus(CensusService censusService,
-                          CensusEntryService censusEntryService, PlaceService placeService) {
+                          CensusEntryService censusEntryService,
+                          PlaceService placeService,
+                          PersonService personService) {
+
         this.censusService = censusService;
         this.censusEntryService = censusEntryService;
         this.placeService = placeService;
+        this.personService = personService;
     }
 
     public void load() {
@@ -56,6 +62,7 @@ public class DataLoadCensus {
         CensusEntryCommand censusEntryCommand = new CensusEntryCommandImpl();
         censusEntryCommand.setName("Archie Grant");
         censusEntryCommand.setCensus(censusService.findById(1L));
+        censusEntryCommand.setPerson(personService.findById(1L));
         censusEntryService.saveCensusEntryCommand(censusEntryCommand);
     }
 
