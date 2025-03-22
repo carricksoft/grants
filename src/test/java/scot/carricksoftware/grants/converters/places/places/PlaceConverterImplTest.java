@@ -10,16 +10,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
-import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
-import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
@@ -40,8 +35,6 @@ public class PlaceConverterImplTest {
         Long id = GetRandomLong();
         String name = GetRandomString();
         Region region = GetRandomRegion();
-        List<Census> censuses = new ArrayList<>();
-        censuses.add(GetRandomCensus());
 
         source.setId(id);
         source.setName(name);
@@ -53,7 +46,6 @@ public class PlaceConverterImplTest {
         assertEquals(id, target.getId());
         assertEquals(name, target.getName());
         assertEquals(region, target.getRegion());
-        assertEquals(censuses, target.getCensuses());
     }
 
 }
