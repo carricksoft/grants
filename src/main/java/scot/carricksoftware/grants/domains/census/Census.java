@@ -48,4 +48,11 @@ public class Census extends BaseEntity {
         return "Census " + date.toString();
     }
 
+    public Place getPlace() {
+        return place;
+    }
+
+    public void setPlace(Place place) {
+        this.place = place;
+    }
 }
