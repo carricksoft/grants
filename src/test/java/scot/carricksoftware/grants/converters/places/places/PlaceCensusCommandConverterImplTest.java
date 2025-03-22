@@ -45,6 +45,7 @@ public class PlaceCensusCommandConverterImplTest {
         source.setId(id);
         source.setName(name);
         source.setRegion(region);
+        source.setCensuses(censuses);
 
         Place target = converter.convert(source);
 
@@ -52,5 +53,6 @@ public class PlaceCensusCommandConverterImplTest {
         assertEquals(id, target.getId());
         assertEquals(name, target.getName());
         assertEquals(region, target.getRegion());
+        assertEquals(censuses, target.getCensuses());
     }
 }

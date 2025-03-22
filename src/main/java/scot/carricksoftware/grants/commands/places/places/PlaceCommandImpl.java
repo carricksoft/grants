@@ -21,6 +21,7 @@ public class PlaceCommandImpl implements PlaceCommand {
 
     private List<Census> censuses = new ArrayList<>();
 
+
     @Override
     public Long getId() {
         return id;
