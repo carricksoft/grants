@@ -7,16 +7,23 @@ package scot.carricksoftware.grants.domains.census;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 
-
+@ExtendWith(MockitoExtension.class)
 class CensusEntryTest {
 
     private CensusEntry entry;
+
+    @Mock
+    private Census censusMock;
 
     @BeforeEach
     void setUp() {
@@ -49,8 +56,12 @@ class CensusEntryTest {
 
     @Test
     void toStringTest() {
+        String string = GetRandomString();
+        entry.setCensus(censusMock);
+        when(censusMock.toString()).thenReturn(string);
+
         entry.setName(GetRandomString());
-        assertEquals("CensusEntry " + entry.getName(), entry.toString());
+        assertEquals(string, entry.toString());
     }
 
 

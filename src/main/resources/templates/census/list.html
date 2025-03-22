@@ -24,16 +24,16 @@
             <thead class="table-dark">
             <tr>
                 <th>ID</th>
+                <th>Place</th>
                 <th>Date</th>
-                <th></th>
                 <th></th>
             </tr>
             </thead>
 
             <tr th:each="census   : ${censuses}">
                 <td th:text="${census.id}">123</td>
+                <td th:text="${census.place.toString()}">123</td>
                 <td th:text="${#temporals.format(census.date, 'dd-MMM-yyyy')}"></td>
-                <td></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'census/' + ${census.id} + '/delete'"

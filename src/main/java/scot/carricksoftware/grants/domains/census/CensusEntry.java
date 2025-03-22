@@ -36,8 +36,7 @@ public class CensusEntry extends BaseEntity {
         this.census = census;
     }
 
-    @Override
     public String toString() {
-        return "CensusEntry " + name ;
+        return census.toString();
     }
 }

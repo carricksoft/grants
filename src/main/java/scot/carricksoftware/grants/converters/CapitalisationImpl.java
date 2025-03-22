@@ -23,7 +23,7 @@ public class CapitalisationImpl implements Capitalisation {
         } else if (input.length() < 3) {
             return input;
         } else {
-            logger.info("CapitalisationImpl.getCapitalisation");
+            logger.debug("CapitalisationImpl.getCapitalisation");
             String[] parts = input.split(" ");
             StringBuilder result = new StringBuilder();
             for (String part : parts) {

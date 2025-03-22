@@ -34,7 +34,7 @@
             <tr th:each="entry   : ${censusEntries}">
                 <td th:text="${entry.id}">123</td>
                 <td th:text="${entry.name}">123</td>
-                <td th:text="${entry.census.toString()}">123</td>
+                <td th:text="${entry.toString()}">123</td>
 
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""

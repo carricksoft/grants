@@ -50,4 +50,11 @@ public class Place extends BaseEntity {
     public void setCensuses(List<Census> censuses) {
         this.censuses = censuses;
     }
+
+    @Override
+    public String toString() {
+        return  name  +
+                ", " + region.getName() +
+                ", " + region.getCountry().getName();
+    }
 }

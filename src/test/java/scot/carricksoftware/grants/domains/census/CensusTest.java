@@ -7,6 +7,9 @@ package scot.carricksoftware.grants.domains.census;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.domains.places.Place;
 
 import java.time.LocalDate;
@@ -14,14 +17,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
+@ExtendWith(MockitoExtension.class)
 public class CensusTest {
 
     private Census census;
 
+    @Mock
+    Place placeMock;
+
+    @Mock
+    LocalDate dateMock;
 
     @BeforeEach
     public void setUp() {
@@ -68,8 +79,15 @@ public class CensusTest {
 
     @Test
     public void toStringTest() {
-        census.setDate(LocalDate.now());
-        assertEquals("Census " + LocalDate.now(), census.toString());
+        String string = GetRandomString();
+        String string2 = GetRandomString();
+        census.setPlace(placeMock);
+        census.setDate(dateMock);
+
+        when(placeMock.toString()).thenReturn(string);
+        when(dateMock.toString()).thenReturn(string2);
+
+        assertEquals(string + ", " + string2, census.toString());
     }
 
     @Test
