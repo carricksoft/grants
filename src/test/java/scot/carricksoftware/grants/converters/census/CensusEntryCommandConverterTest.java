@@ -11,11 +11,13 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
+import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 class CensusEntryCommandConverterTest {
 
@@ -32,11 +34,13 @@ class CensusEntryCommandConverterTest {
         String name = GetRandomString();
         CensusEntryCommand source = new CensusEntryCommandImpl();
         Census census = GetRandomCensus();
+        Person person = GetRandomPerson();
 
 
         source.setId(id);
         source.setName(name);
         source.setCensus(census);
+        source.setPerson(person);
 
 
         CensusEntry target = converter.convert(source);
@@ -45,5 +49,6 @@ class CensusEntryCommandConverterTest {
         assertEquals(id, target.getId());
         assertEquals(name, target.getName());
         assertEquals(census, target.getCensus());
+        assertEquals(person, target.getPerson());
     }
 }
