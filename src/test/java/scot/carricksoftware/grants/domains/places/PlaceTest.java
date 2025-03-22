@@ -8,9 +8,14 @@ package scot.carricksoftware.grants.domains.places;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.domains.census.Census;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
@@ -58,6 +63,19 @@ public class PlaceTest {
         Region region = GetRandomRegion();
         place.setRegion(region);
         assertEquals(region, place.getRegion());
+    }
+
+    @Test
+    public void getCensusesTest() {
+        assertTrue(place.getCensuses().isEmpty());
+    }
+
+    @Test
+    public void setCensusesTest() {
+        List<Census> censuses = new ArrayList<>();
+        censuses.add(GetRandomCensus());
+        place.setCensuses(censuses);
+        assertEquals(censuses, place.getCensuses());
     }
 
 

@@ -84,4 +84,6 @@ public class CensusTest {
         assertEquals(place, census.getPlace());
     }
 
+
+
 }

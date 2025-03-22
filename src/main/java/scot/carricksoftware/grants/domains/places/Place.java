@@ -43,4 +43,11 @@ public class Place extends BaseEntity {
         this.region = region;
     }
 
+    public List<Census> getCensuses() {
+        return censuses;
+    }
+
+    public void setCensuses(List<Census> censuses) {
+        this.censuses = censuses;
+    }
 }
