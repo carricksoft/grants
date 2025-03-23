@@ -20,6 +20,8 @@
 <body>
 <!--/*@thymesVar id="censusEntryCommand" type="scot.carricksoftware.grants.commands.census.CensusEntryCommand"*/-->
 <!--/*@thymesVar id="person" type="scot.carricksoftware.grants.domains.people.Person"*/-->
+<!--/*@thymesVar id="census" type="scot.carricksoftware.grants.domains.census.Census"*/-->
+
 <div th:insert="~{fragments/layout::banner}"></div>
 
 <div class="container border border-info
@@ -41,6 +43,16 @@ rounded-3 text-center p-4">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="person : ${people}"
                                 th:value="${person.id}" th:text="${person.toString()}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-xs-4" style="margin-right:20px;">
+                <label for="census">Census</label>
+                <div>
+                    <select id="census" style="width: 300px;" name="census" th:field="*{person}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="census : ${censuses}"
+                                th:value="${census.id}" th:text="${census.toString()}"></option>
                     </select>
                 </div>
             </div>

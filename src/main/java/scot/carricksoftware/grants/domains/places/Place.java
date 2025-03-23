@@ -53,7 +53,7 @@ public class Place extends BaseEntity {
 
     @Override
     public String toString() {
-        return  name  +
+        return name +
                 ", " + region.getName() +
                 ", " + region.getCountry().getName();
     }

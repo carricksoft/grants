@@ -19,12 +19,13 @@ import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
+import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.*;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
@@ -47,6 +48,9 @@ public class CensusEntryFormControllerTest {
     private Model modelMock;
 
     @Mock
+    private CensusService censusServiceMock;
+
+    @Mock
     private CensusEntryCommandValidator censusEntryCommandValidatorMock;
 
     @Mock
@@ -62,7 +66,8 @@ public class CensusEntryFormControllerTest {
                 censusEntryCommandValidatorMock,
                 censusEntryConverterMock,
                 capitalisationMock,
-                personServiceMock);
+                personServiceMock,
+        censusServiceMock);
     }
 
     @Test
@@ -70,13 +75,30 @@ public class CensusEntryFormControllerTest {
         ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
         ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
         assertEquals("censusentry/form", censusEntryController.getNewCensusEntry(modelMock));
-        verify(modelMock).addAttribute(stringCaptor.capture(), objectCaptor.capture());
-        assertEquals("censusEntryCommand", stringCaptor.getValue());
-        assertEquals("CensusEntryCommandImpl", objectCaptor.getValue().getClass().getSimpleName());
+        verify(modelMock, atLeast(2)).addAttribute(stringCaptor.capture(), objectCaptor.capture());
+
+        boolean foundCensusEntryCommand = false;
+        boolean foundPeople = false;
+        for (int i = 0; i < stringCaptor.getAllValues().size(); i++) {
+            if (stringCaptor.getAllValues().get(i).equals("censusEntryCommand")) {
+                if(objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("CensusEntryCommandImpl")) {
+                   foundCensusEntryCommand = true;
+                }
+            }
+            if (stringCaptor.getAllValues().get(i).equals("people")) {
+                if(objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("LinkedList")) {
+                    foundPeople = true;
+                }
+            }
+        }
+
+        assertTrue(foundCensusEntryCommand && foundPeople);
+       // assertEquals("censusEntryCommand", stringCaptor.getValue());
+       // assertEquals("CensusEntryCommandImpl", objectCaptor.getValue().getClass().getSimpleName());
     }
 
     @Test
-    public void censusEntryEditTestEditTest() {
+    public void censusEntryEditTest() {
         Long id = GetRandomLong();
         CensusEntry censusEntry = GetRandomCensusEntry();
         when(censusEntryServiceMock.findById(id)).thenReturn(censusEntry);

@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
+import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
 
@@ -49,6 +50,9 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
     private PersonService  personServiceMock;
 
     @Mock
+    private CensusService censusServiceMock;
+
+    @Mock
     Model modelMock;
 
     @Mock
@@ -62,7 +66,8 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
                 censusEntryCommandValidatorMock,
                 censusEntryConverterMock,
                 capitalisationMock,
-                personServiceMock);
+                personServiceMock,
+                censusServiceMock);
         censusEntryCommand = new CensusEntryCommandImpl();
     }
 

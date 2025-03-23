@@ -19,6 +19,7 @@
 <div class="container text-center">
     <!--/*@thymesVar id="censusEntry" type="scot.carricksoftware.grants.domains.census.CensusEntry"*/-->
     <!--/*@thymesVar id="person" type="scot.carricksoftware.grants.domains.people.Person"*/-->
+    <!--/*@thymesVar id="person" type="scot.carricksoftware.grants.domains.census.CensusEntry"*/-->
 
     <div class="container border border-info
                     rounded-3 text-center p-4">
@@ -38,7 +39,7 @@
                 <td th:text="${entry.id}">123</td>
                 <td th:text="${entry.person}">123</td>
                 <td th:text="${entry.name}">123</td>
-                <td th:text="${entry.toString()}">123</td>
+                <td th:text="${entry.name}">123</td>
 
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
