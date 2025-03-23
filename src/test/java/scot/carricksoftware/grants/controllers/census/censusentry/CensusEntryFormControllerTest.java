@@ -19,6 +19,7 @@ import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.services.census.CensusEntryService;
+import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,10 +47,13 @@ public class CensusEntryFormControllerTest {
     private Model modelMock;
 
     @Mock
-    CensusEntryCommandValidator censusEntryCommandValidatorMock;
+    private CensusEntryCommandValidator censusEntryCommandValidatorMock;
 
     @Mock
-    Capitalisation capitalisationMock;
+    private Capitalisation capitalisationMock;
+
+    @Mock
+    private PersonService personServiceMock;
 
 
     @BeforeEach
@@ -57,7 +61,8 @@ public class CensusEntryFormControllerTest {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
                 censusEntryCommandValidatorMock,
                 censusEntryConverterMock,
-                capitalisationMock);
+                capitalisationMock,
+                personServiceMock);
     }
 
     @Test

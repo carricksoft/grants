@@ -34,6 +34,16 @@ rounded-3 text-center p-4">
                 <input class="form-control" id="id"
                        th:field="*{id}" type="text" readonly>
             </div>
+            <div class="col-xs-4" style="margin-right:20px;">
+                <label for="person">Person</label>
+                <div>
+                    <select id="person" style="width: 300px;" name="person" th:field="*{person}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="person : ${people}"
+                                th:value="${person.id}" th:text="${person.toString()}"></option>
+                    </select>
+                </div>
+            </div>
             <div class="col-md-3" style="margin-right:20px;">
                 <label for="name">Name</label>
                 <input class="form-control" id="name"
