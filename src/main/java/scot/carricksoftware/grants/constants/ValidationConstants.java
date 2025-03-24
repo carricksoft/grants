@@ -20,5 +20,9 @@ public class ValidationConstants {
     public static final String NAME_IS_TOO_LONG = "Name must be no more than " + ApplicationConstants.MAXIMUM_NAME_LENGTH + " characters long.";
     public static final String DATE_IS_NULL = "Date must exist.";
     public static final String DATE_IN_FUTURE = "Date should not be in the future.";
+    public static final String CENSUS_IS_NULL = "The census should be specified";
+    public static final String CENSUS_NAME_IS_NULL = "Either Person or Untracked Person must be given";
+    public static final String CENSUS_NAME_IS_NOT_NULL = "Both Person and Untracked Person cannot be given";
+
 
 }

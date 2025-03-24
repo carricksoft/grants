@@ -13,7 +13,6 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
-@SuppressWarnings("unused")
 @Component
 public class CensusEntryCommandValidator {
 
@@ -22,12 +21,43 @@ public class CensusEntryCommandValidator {
     @SuppressWarnings("unused")
     public void validate(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
         logger.debug("censusEntryCommandValidator::validate");
+        validateCensus(censusEntryCommand, bindingResult);
         validateNameAndPerson(censusEntryCommand, bindingResult);
     }
 
-    @SuppressWarnings("unused")
     private void validateNameAndPerson(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
-        logger.debug("censusEntryCommandValidator::validateNameAndPerson");
+      if (censusEntryCommand.getPerson() == null) {
+          if (censusEntryCommand.getName() == null || censusEntryCommand.getName().isEmpty()) {
+              bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
+                      null,
+                      ValidationConstants.CENSUS_NAME_IS_NULL);
+              bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
+                      null,
+                      ValidationConstants.CENSUS_NAME_IS_NULL);
+          } else {
+              validateUntrackedPerson(censusEntryCommand, bindingResult);
+          }
+      } else {
+          if (censusEntryCommand.getName() != null && !censusEntryCommand.getName().isEmpty()) {
+              bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
+                      null,
+                      ValidationConstants.CENSUS_NAME_IS_NOT_NULL);
+              bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
+                      null,
+                      ValidationConstants.CENSUS_NAME_IS_NOT_NULL);
+          }
+      }
+    }
+
+    private void validateCensus(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
+        if (censusEntryCommand.getCensus() == null) {
+            bindingResult.rejectValue("census", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.CENSUS_IS_NULL);
+        }
+    }
+
+    private void validateUntrackedPerson(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
         if (censusEntryCommand.getName().length() < ApplicationConstants.MINIMUM_NAME_LENGTH) {
             bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
                     null,
@@ -40,5 +70,7 @@ public class CensusEntryCommandValidator {
             }
         }
     }
+
+
 }
 

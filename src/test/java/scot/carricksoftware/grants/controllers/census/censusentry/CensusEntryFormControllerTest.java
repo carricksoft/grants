@@ -93,8 +93,7 @@ public class CensusEntryFormControllerTest {
         }
 
         assertTrue(foundCensusEntryCommand && foundPeople);
-       // assertEquals("censusEntryCommand", stringCaptor.getValue());
-       // assertEquals("CensusEntryCommandImpl", objectCaptor.getValue().getClass().getSimpleName());
+
     }
 
     @Test
