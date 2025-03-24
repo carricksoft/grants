@@ -20,9 +20,9 @@
     <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
     <!--suppress JSUnresolvedReference -->
     <script>
-        $( function() {
-            $( "#datepicker" ).datepicker({ dateFormat: "dd-mm-yy" }).val();
-        } );
+        $(function () {
+            $("#datepicker").datepicker({dateFormat: "dd-mm-yy"}).val();
+        });
     </script>
     <title>Grants - census form</title>
 
@@ -45,7 +45,7 @@ rounded-3 text-center p-4">
                        th:field="*{id}" type="text" readonly>
             </div>
             <div class="col-md-3">
-               <!-- >https://jqueryui.com/datepicker/-->
+                <!-- >https://jqueryui.com/datepicker/-->
                 <label for="datepicker">Date</label>
                 <input class="form-control" id="datepicker" th:value="*{date}"
                        th:field="*{date}" th:type="text">

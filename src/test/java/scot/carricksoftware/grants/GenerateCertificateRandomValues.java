@@ -6,8 +6,11 @@
 package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
+import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 
 import java.util.Random;
+
+import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 @SuppressWarnings("unused")
 @Component
@@ -22,6 +25,12 @@ public class GenerateCertificateRandomValues {
     public static String GetRandomString() {
         int random = rand.nextInt(names.length);
         return names[random];
+    }
+
+    public static BirthCertificate GetRandomBirthCertificate() {
+        BirthCertificate birthCertificate = new BirthCertificate();
+        birthCertificate.setId(GetRandomLong());
+        return birthCertificate;
     }
 
 
