@@ -18,6 +18,7 @@ import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
 import static org.mockito.Mockito.verify;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
@@ -65,5 +66,26 @@ class CensusEntryCommandValidatorTest {
         validator.validate(censusEntryCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue("name", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.CENSUS_NAME_IS_NULL);
     }
+
+    @Test
+    public void personAndNameAreGivenNameTest() {
+        censusEntryCommand.setCensus(GetRandomCensus());
+        censusEntryCommand.setName(GetRandomString());
+        censusEntryCommand.setPerson(GetRandomPerson());
+
+        validator.validate(censusEntryCommand, bindingResultMock);
+        verify(bindingResultMock).rejectValue("name", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.CENSUS_NAME_IS_NOT_NULL);
+    }
+
+    @Test
+    public void personAndNameAreGivenPersonTest() {
+        censusEntryCommand.setCensus(GetRandomCensus());
+        censusEntryCommand.setName(GetRandomString());
+        censusEntryCommand.setPerson(GetRandomPerson());
+
+        validator.validate(censusEntryCommand, bindingResultMock);
+        verify(bindingResultMock).rejectValue("person", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.CENSUS_NAME_IS_NOT_NULL);
+    }
+
 
 }
