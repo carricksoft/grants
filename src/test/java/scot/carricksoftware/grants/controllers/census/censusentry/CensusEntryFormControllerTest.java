@@ -67,7 +67,7 @@ public class CensusEntryFormControllerTest {
                 censusEntryConverterMock,
                 capitalisationMock,
                 personServiceMock,
-        censusServiceMock);
+                censusServiceMock);
     }
 
     @Test
@@ -81,12 +81,12 @@ public class CensusEntryFormControllerTest {
         boolean foundPeople = false;
         for (int i = 0; i < stringCaptor.getAllValues().size(); i++) {
             if (stringCaptor.getAllValues().get(i).equals("censusEntryCommand")) {
-                if(objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("CensusEntryCommandImpl")) {
-                   foundCensusEntryCommand = true;
+                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("CensusEntryCommandImpl")) {
+                    foundCensusEntryCommand = true;
                 }
             }
             if (stringCaptor.getAllValues().get(i).equals("people")) {
-                if(objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("LinkedList")) {
+                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("LinkedList")) {
                     foundPeople = true;
                 }
             }

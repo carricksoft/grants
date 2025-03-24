@@ -47,7 +47,7 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
     private Capitalisation capitalisationMock;
 
     @Mock
-    private PersonService  personServiceMock;
+    private PersonService personServiceMock;
 
     @Mock
     private CensusService censusServiceMock;
