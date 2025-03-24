@@ -5,10 +5,11 @@
 
 package scot.carricksoftware.grants.converters.certificates.birthcertificates;
 
+import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 
-@SuppressWarnings("unused")
+@Component
 public class BirthCertificateCommandConverterImpl implements BirthCertificateCommandConverter {
 
     @Override
