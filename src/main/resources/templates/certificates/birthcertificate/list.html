@@ -28,7 +28,7 @@
             </tr>
             </thead>
 
-            <tr th:each="certificate   : ${birthcertificates}">
+            <tr th:each="certificate   : ${birthCertificates}">
 
                 <td th:text="${certificate.id}">123</td>
                 <td></td>
@@ -47,13 +47,13 @@
                         <a th:action="rewind" class="btn btn-secondary btn-sm" th:href="@{/birthCertificates/rewind}"
                            th:text="'<<'"></a>
                          <a th:action="back" class="btn btn-secondary btn-sm"
-                            th:href="@{/birthCertificate/prev}" th:text="'<'"></a>
-                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{birthCertificate/new}"
+                            th:href="@{/birthCertificates/prev}" th:text="'<'"></a>
+                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{birthCertificates/new}"
                             th:text="'New Certificate'"></a>
                          <a th:action="home" class="btn btn-success btn-sm"
                             th:href="@{/}" th:text="'Home'"></a>
                          <a th:action="forward" class="btn btn-secondary btn-sm"
-                            th:href="@{/birthCertificate/next}" th:text="'>'"></a>
+                            th:href="@{/birthCertificates/next}" th:text="'>'"></a>
                          <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/birthCertificates/ff}"
                             th:text="'>>'"></a>
                         </span></td>
