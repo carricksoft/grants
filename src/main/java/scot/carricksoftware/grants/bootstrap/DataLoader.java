@@ -20,15 +20,17 @@ public class DataLoader implements CommandLineRunner {
     private final DataLoadPlaces dataLoadPlaces;
     private final DataLoadPeople dataLoadPeople;
     private final DataLoadCensus dataLoadCensus;
+    private final DataLoadCertificates dataLoadCertificates;
 
     public DataLoader(DataLoadPlaces dataLoadPlaces,
                       DataLoadPeople dataLoadPeople,
-                      DataLoadCensus dataLoadCensus) {
+                      DataLoadCensus dataLoadCensus,
+                      DataLoadCertificates dataLoadCertificates) {
         this.dataLoadPlaces = dataLoadPlaces;
         this.dataLoadPeople = dataLoadPeople;
         this.dataLoadCensus = dataLoadCensus;
+        this.dataLoadCertificates = dataLoadCertificates;
     }
-
 
     @Override
     public void run(String... args) {
@@ -36,6 +38,7 @@ public class DataLoader implements CommandLineRunner {
         dataLoadPlaces.load();
         dataLoadPeople.load();
         dataLoadCensus.load();
+        dataLoadCertificates.load();
     }
 
 }
