@@ -52,7 +52,7 @@ public class BirthCertificateListControllerTest {
     @Test
     public void getListPageTest() {
         when(birthCertificateServiceMock.getPagedBirthCertificates(0)).thenReturn(birthCertificateListMock);
-        assertEquals("certificates/birthcertificate/list", controller.getListPage(modelMock));
+        assertEquals("certificates/birthCertificate/list", controller.getListPage(modelMock));
         verify(modelMock).addAttribute("birthCertificates", birthCertificateListMock);
         verify(controllerHelperMock).addAttributes(modelMock);
     }
@@ -64,7 +64,7 @@ public class BirthCertificateListControllerTest {
         when(birthCertificateServiceMock.count()).thenReturn((long) count);
         controller.getLastPage(modelMock);
         controller.getPreviousPage(modelMock);
-        assertEquals("certificates/birthcertificate/list", controller.getLastPage(modelMock));
+        assertEquals("certificates/birthCertificate/list", controller.getLastPage(modelMock));
         verify(birthCertificateServiceMock, times(2)).getPagedBirthCertificates(page);
     }
 
@@ -81,7 +81,7 @@ public class BirthCertificateListControllerTest {
         birthCertificateList.add(GetRandomBirthCertificate());
         when(birthCertificateServiceMock.getPagedBirthCertificates(0)).thenReturn(birthCertificateList);
 
-        assertEquals("certificates/birthcertificate/list", controller.getFirstPage(modelMock));
+        assertEquals("certificates/birthCertificate/list", controller.getFirstPage(modelMock));
         assertEquals(0, controller.getPageNumber());
         verify(modelMock).addAttribute("birthCertificates", birthCertificateList);
     }
@@ -93,7 +93,7 @@ public class BirthCertificateListControllerTest {
         when(birthCertificateServiceMock.getPagedBirthCertificates(0)).thenReturn(birthCertificateList);
 
         controller.getFirstPage(modelMock);
-        assertEquals("certificates/birthcertificate/list", controller.getNextPage(modelMock));
+        assertEquals("certificates/birthCertificate/list", controller.getNextPage(modelMock));
         assertEquals(1, controller.getPageNumber());
         verify(modelMock).addAttribute("birthCertificates", birthCertificateList);
 
@@ -106,7 +106,7 @@ public class BirthCertificateListControllerTest {
         when(birthCertificateServiceMock.getPagedBirthCertificates(0)).thenReturn(birthCertificateList);
 
         controller.getFirstPage(modelMock);
-        assertEquals("certificates/birthcertificate/list", controller.getPreviousPage(modelMock));
+        assertEquals("certificates/birthCertificate/list", controller.getPreviousPage(modelMock));
         assertEquals(0, controller.getPageNumber());
         verify(modelMock, times(2)).addAttribute("birthCertificates", birthCertificateList);
     }
@@ -117,7 +117,7 @@ public class BirthCertificateListControllerTest {
         int count = page * ApplicationConstants.DEFAULT_PAGE_SIZE;
         when(birthCertificateServiceMock.count()).thenReturn((long) count);
         controller.getLastPage(modelMock);
-        assertEquals("certificates/birthcertificate/list", controller.getPreviousPage(modelMock));
+        assertEquals("certificates/birthCertificate/list", controller.getPreviousPage(modelMock));
         assertEquals(24, controller.getPageNumber());
     }
 

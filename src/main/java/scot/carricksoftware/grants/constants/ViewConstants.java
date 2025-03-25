@@ -36,6 +36,6 @@ public class ViewConstants {
     public static final String CENSUSENTRY_FORM = "censusentry/form";
 
     @SuppressWarnings("unused")
-    public static final String BIRTHCERTIFICATE_LIST = "certificates/birthcertificate/list";
-    public static final String BIRTHCERTIFICATE_FORM = "certificates/birthcertificate/form";
+    public static final String BIRTHCERTIFICATE_LIST = "certificates/birthCertificate/list";
+    public static final String BIRTHCERTIFICATE_FORM = "certificates/birthCertificate/form";
 }
