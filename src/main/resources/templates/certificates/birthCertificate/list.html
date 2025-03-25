@@ -34,10 +34,10 @@
                 <td></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                           th:href="'birthCertificate/' + ${certificate.id} + '/delete'"
+                           th:href="@{'birthCertificate/' + ${certificate.id} + '/delete'}"
                            th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="'birthCertificate/' + ${certificate.id} + '/edit'"
+                       th:href="@{'birthCertificate/' + ${certificate.id} + '/edit'}"
                        th:text="Edit"></a>
                     </span></td>
             </tr>
@@ -48,7 +48,7 @@
                            th:text="'<<'"></a>
                          <a th:action="back" class="btn btn-secondary btn-sm"
                             th:href="@{/birthCertificates/prev}" th:text="'<'"></a>
-                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{birthCertificates/new}"
+                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{/birthCertificate/new}"
                             th:text="'New Certificate'"></a>
                          <a th:action="home" class="btn btn-success btn-sm"
                             th:href="@{/}" th:text="'Home'"></a>
