@@ -18,7 +18,7 @@
 <div class="container text-center">
     <div class="container border border-info
                     rounded-3 text-center p-4">
-        <h3>Countries</h3>
+        <h3>Birth Certificates</h3>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
             <tr>
@@ -28,7 +28,7 @@
             </tr>
             </thead>
 
-            <tr th:each="certificate   : ${certificate}">
+            <tr th:each="certificate   : ${birthcertificates}">
 
                 <td th:text="${certificate.id}">123</td>
                 <td></td>
