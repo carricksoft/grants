@@ -44,7 +44,7 @@ public class AttributeConstants {
     public static final String CENSUSENTRY_COMMAND = "censusEntryCommand";
 
     @SuppressWarnings({"SpellCheckingInspection", "unused"})
-    public static final String BIRTHCERTIFICATES = "birthcertificates";
+    public static final String BIRTHCERTIFICATES = "birthCertificates";
     @SuppressWarnings({"unused"})
     public static final String BIRTHCERTIFICATE_COMMAND = "birthCertificateCommand";
 }

@@ -16,27 +16,22 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.controllers.census.census.CensusListController;
-import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.certificates.BirthCertificateService;
 
 import static java.lang.Integer.max;
 
 @Controller
-public class BirthCertificateListControllerImpl implements CensusListController {
+public class BirthCertificateListControllerImpl implements BirthCertificateListController {
 
     private static final Logger logger = LogManager.getLogger(BirthCertificateListControllerImpl.class);
     private final BirthCertificateService birthCertificateService;
 
-
     private int currentPage = 0;
     private final ControllerHelper controllerHelper;
-    private final CensusService censusService;
 
     public BirthCertificateListControllerImpl(ControllerHelper controllerHelper,
-                                              CensusService censusService, BirthCertificateService birthCertificateService) {
+                                              BirthCertificateService birthCertificateService) {
         this.controllerHelper = controllerHelper;
-        this.censusService = censusService;
         this.birthCertificateService = birthCertificateService;
     }
 
@@ -87,8 +82,8 @@ public class BirthCertificateListControllerImpl implements CensusListController 
     @Override
     public final String getLastPage(final Model model) {
         logger.debug("BirthCertificateListControllerImpl::getLastPage");
-        long censusCount = censusService.count();
-        currentPage = (int) (censusCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
+        long certificateCount = birthCertificateService.count();
+        currentPage = (int) (certificateCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
         return sendAttributesAndReturn(model);
     }
 
@@ -96,9 +91,9 @@ public class BirthCertificateListControllerImpl implements CensusListController 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.BIRTHCERTIFICATE_DELETE)
     @Override
-    public final String censusDelete(@PathVariable final String id) {
+    public final String birthCertificateDelete(@PathVariable final String id) {
         logger.debug("BirthCertificateControllerImpl::censusDelete");
-        censusService.deleteById(Long.valueOf(id));
+        birthCertificateService.deleteById(Long.valueOf(id));
         return MappingConstants.REDIRECT + MappingConstants.BIRTHCERTIFICATE_LIST;
     }
 

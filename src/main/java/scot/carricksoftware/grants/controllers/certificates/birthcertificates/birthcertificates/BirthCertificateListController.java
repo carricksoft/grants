@@ -23,7 +23,7 @@ public interface BirthCertificateListController {
 
     String getLastPage(final Model model);
 
-    String censusDelete(@PathVariable String id);
+    String birthCertificateDelete(@PathVariable String id);
 
     int getPageNumber();
 }
