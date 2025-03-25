@@ -51,6 +51,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.BIRTHCERTIFICATE_NEW)
+    @Override
     public final String getNewBirthCertificate(final Model model) {
         logger.debug("BirthCertificateFormControllerImpl::getNewBirthCertificate");
         model.addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, new BirthCertificateCommandImpl());
@@ -59,6 +60,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.BIRTHCERTIFICATE_EDIT)
+    @Override
     public final String birthCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::birthCertificateEdit");
         model.addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, birthCertificateService.findById(Long.valueOf(id)));
@@ -87,6 +89,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.BIRTHCERTIFICATE_SHOW)
+    @Override
     public String showById(@PathVariable String id, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
         BirthCertificateCommand savedCommand = birthCertificateConverter.convert(birthCertificateService.findById(Long.valueOf(id)));
