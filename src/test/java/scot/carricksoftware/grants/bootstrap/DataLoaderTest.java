@@ -56,4 +56,10 @@ class DataLoaderTest {
         dataLoader.run();
         verify(dataLoadCensusMock).load();
     }
+
+    @Test
+    void loadCertificatesIsCalledTest() {
+        dataLoader.run();
+        verify(dataLoadCertificatesMock).load();
+    }
 }
