@@ -3,16 +3,21 @@ package scot.carricksoftware.grants.bootstrap;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
+import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
 public class DataLoadCertificatesTest {
@@ -38,8 +43,14 @@ public class DataLoadCertificatesTest {
 
     @Test
     public void birthCertificatesAreLoadedTest() {
+        Person person = GetRandomPerson();
+        when(personServiceMock.findById(1L)).thenReturn(person);
+        ArgumentCaptor<BirthCertificate> captor = ArgumentCaptor.forClass(BirthCertificate.class);
+
         dataLoadCertificates.load();
-        verify(birthCertificateServiceMock).save(any(BirthCertificate.class));
+
+        verify(birthCertificateServiceMock).save(captor.capture());
+        assertEquals(person, captor.getValue().getPerson());
     }
 
     @Test

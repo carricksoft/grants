@@ -31,4 +31,8 @@ class DeathCertificateCommandImplTest {
         command.setId(id);
         assertEquals(id, command.getId());
     }
+
+
+
+
 }

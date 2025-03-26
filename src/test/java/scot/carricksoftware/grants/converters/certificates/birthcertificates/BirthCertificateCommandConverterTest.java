@@ -11,9 +11,11 @@ import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
+import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 class BirthCertificateCommandConverterTest {
 
@@ -27,14 +29,17 @@ class BirthCertificateCommandConverterTest {
     @Test
     void convertTest() {
         Long id = GetRandomLong();
+        Person person = GetRandomPerson();
         BirthCertificateCommand source = new BirthCertificateCommandImpl();
 
         source.setId(id);
+        source.setPerson(person);
 
 
         BirthCertificate target = converter.convert(source);
 
         assert target != null;
         assertEquals(id, target.getId());
+        assertEquals(person, target.getPerson());
     }
 }
