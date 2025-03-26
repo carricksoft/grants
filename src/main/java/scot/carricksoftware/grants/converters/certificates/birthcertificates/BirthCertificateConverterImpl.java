@@ -19,6 +19,7 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
         BirthCertificateCommand target = new BirthCertificateCommandImpl();
 
         target.setId(source.getId());
+        target.setPerson(source.getPerson());
 
         return target;
     }

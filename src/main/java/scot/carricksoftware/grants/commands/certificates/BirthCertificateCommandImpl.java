@@ -5,9 +5,13 @@
 
 package scot.carricksoftware.grants.commands.certificates;
 
+import scot.carricksoftware.grants.domains.people.Person;
+
 public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     Long Id;
+
+    Person person;
 
 
     public Long getId() {
@@ -18,4 +22,13 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
         Id = id;
     }
 
+    @Override
+    public Person getPerson() {
+        return person;
+    }
+
+    @Override
+    public void setPerson(Person person) {
+        this.person = person;
+    }
 }

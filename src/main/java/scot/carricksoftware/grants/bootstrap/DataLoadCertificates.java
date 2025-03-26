@@ -12,6 +12,7 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
+import scot.carricksoftware.grants.services.people.PersonService;
 
 @Component
 public class DataLoadCertificates {
@@ -20,11 +21,14 @@ public class DataLoadCertificates {
 
     private final BirthCertificateService birthCertificateService;
     private final DeathCertificateService deathCertificateService;
+    private final PersonService personService;
 
     public DataLoadCertificates(BirthCertificateService birthCertificateService,
-                                DeathCertificateService deathCertificateService) {
+                                DeathCertificateService deathCertificateService,
+                                PersonService personService) {
         this.birthCertificateService = birthCertificateService;
         this.deathCertificateService = deathCertificateService;
+        this.personService = personService;
     }
 
 
@@ -37,7 +41,9 @@ public class DataLoadCertificates {
 
     private void loadBirthCertificates() {
        BirthCertificate birthCertificate = new BirthCertificate();
+       birthCertificate.setPerson(personService.findById(1L));
         birthCertificateService.save(birthCertificate);
+
     }
 
     private void loadDeathCertificates() {
