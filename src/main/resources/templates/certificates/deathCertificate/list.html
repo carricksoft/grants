@@ -17,6 +17,7 @@
 
 <div class="container text-center">
     <!--/*@thymesVar id="deathCertificate" type="scot.carricksoftware.grants.domains.certificates.DeathCertificate"*/-->
+    <!--/*@thymesVar id="person" type="scot.carricksoftware.grants.domains.people.Person"*/-->
     <div class="container border border-info
                     rounded-3 text-center p-4">
         <h3>Death Certificates</h3>
@@ -24,7 +25,7 @@
             <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th></th>
+                <th>Person</th>
                 <th></th>
             </tr>
             </thead>
@@ -32,7 +33,7 @@
             <tr th:each="certificate   : ${deathCertificates}">
 
                 <td th:text="${certificate.id}">123</td>
-                <td></td>
+                <td th:text="${certificate.person.toString()}">who</td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="@{'/deathCertificate/' + ${certificate.id} + '/delete'}"
