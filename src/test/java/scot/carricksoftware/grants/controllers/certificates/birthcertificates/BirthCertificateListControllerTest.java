@@ -13,10 +13,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.controllers.certificates.birthcertificates.birthcertificates.BirthCertificateListController;
-import scot.carricksoftware.grants.controllers.certificates.birthcertificates.birthcertificates.BirthCertificateListControllerImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
-import scot.carricksoftware.grants.services.certificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 
 import java.util.ArrayList;
 import java.util.List;

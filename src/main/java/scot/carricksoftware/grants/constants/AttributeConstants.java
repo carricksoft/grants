@@ -47,4 +47,9 @@ public class AttributeConstants {
     public static final String BIRTHCERTIFICATES = "birthCertificates";
     @SuppressWarnings({"unused"})
     public static final String BIRTHCERTIFICATE_COMMAND = "birthCertificateCommand";
+
+    @SuppressWarnings({"SpellCheckingInspection", "unused"})
+    public static final String DEATHCERTIFICATES = "deathCertificates";
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE_COMMAND = "deathCertificateCommand";
 }

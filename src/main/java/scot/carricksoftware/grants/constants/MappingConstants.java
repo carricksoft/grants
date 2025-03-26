@@ -160,4 +160,25 @@ public class MappingConstants {
     public static final String BIRTHCERTIFICATE_DELETE = "/birthCertificate/{id}/delete";
     @SuppressWarnings({"unused"})
     public static final String BIRTHCERTIFICATE_EDIT = "birthCertificate/{id}/edit";
+
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE_LIST = "/deathCertificates";
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE_NEXT = "/deathCertificates/next";
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE_PREVIOUS = "/deathCertificates/prev";
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE_REWIND = "/deathCertificates/rewind";
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE_FF = "/deathCertificates/ff";
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE_NEW = "/deathCertificate/new";
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE = "/deathCertificate";
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE_SHOW = "/deathCertificate/{id}/show";
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE_DELETE = "/deathCertificate/{id}/delete";
+    @SuppressWarnings({"unused"})
+    public static final String DEATHCERTIFICATE_EDIT = "deathCertificate/{id}/edit";
 }

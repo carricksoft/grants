@@ -17,6 +17,8 @@ import scot.carricksoftware.grants.converters.certificates.deathcertificates.Dea
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.repositories.certificates.DeathCertificateRepository;
+import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
+import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;

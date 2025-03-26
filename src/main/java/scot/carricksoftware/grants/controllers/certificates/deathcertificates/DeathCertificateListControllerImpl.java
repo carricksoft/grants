@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 21/03/2025, 00:09. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 25/03/2025, 19:58. All rights reserved.
  *
  */
 
-package scot.carricksoftware.grants.controllers.certificates.birthcertificates.birthcertificates;
+package scot.carricksoftware.grants.controllers.certificates.deathcertificates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,85 +16,85 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.services.certificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 
 import static java.lang.Integer.max;
 
 @Controller
-public class BirthCertificateListControllerImpl implements BirthCertificateListController {
+public class DeathCertificateListControllerImpl implements DeathCertificateListController {
 
-    private static final Logger logger = LogManager.getLogger(BirthCertificateListControllerImpl.class);
-    private final BirthCertificateService birthCertificateService;
+    private static final Logger logger = LogManager.getLogger(DeathCertificateListControllerImpl.class);
+    private final DeathCertificateService deathCertificateService;
 
     private int currentPage = 0;
     private final ControllerHelper controllerHelper;
 
-    public BirthCertificateListControllerImpl(ControllerHelper controllerHelper,
-                                              BirthCertificateService birthCertificateService) {
+    public DeathCertificateListControllerImpl(ControllerHelper controllerHelper,
+                                              DeathCertificateService deathCertificateService) {
         this.controllerHelper = controllerHelper;
-        this.birthCertificateService = birthCertificateService;
+        this.deathCertificateService = deathCertificateService;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_LIST)
+    @GetMapping(MappingConstants.DEATHCERTIFICATE_LIST)
     @Override
     public final String getListPage(final Model model) {
-        logger.debug("BirthCertificateListControllerImpl::getCensusPage");
+        logger.debug("DeathCertificateListControllerImpl::getCensusPage");
         currentPage = 0;
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.BIRTHCERTIFICATES, birthCertificateService.getPagedBirthCertificates(currentPage));
+        model.addAttribute(AttributeConstants.DEATHCERTIFICATES, deathCertificateService.getPagedDeathCertificates(currentPage));
         controllerHelper.addAttributes(model);
-        return ViewConstants.BIRTHCERTIFICATE_LIST;
+        return ViewConstants.DEATHCERTIFICATE_LIST;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_NEXT)
+    @GetMapping(MappingConstants.DEATHCERTIFICATE_NEXT)
     @Override
     public final String getNextPage(final Model model) {
-        logger.debug("BirthCertificateListControllerImpl::getNextPage");
+        logger.debug("DeathCertificateListControllerImpl::getNextPage");
         currentPage++;
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_PREVIOUS)
+    @GetMapping(MappingConstants.DEATHCERTIFICATE_PREVIOUS)
     @Override
     public final String getPreviousPage(final Model model) {
-        logger.debug("BirthCertificateListControllerImpl::getPreviousPage");
+        logger.debug("DeathCertificateListControllerImpl::getPreviousPage");
         currentPage = max(0, currentPage - 1);
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_REWIND)
+    @GetMapping(MappingConstants.DEATHCERTIFICATE_REWIND)
     public final String getFirstPage(final Model model) {
-        logger.debug("BirthCertificateListControllerImpl::getFirstPage");
+        logger.debug("DeathCertificateListControllerImpl::getFirstPage");
         currentPage = 0;
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_FF)
+    @GetMapping(MappingConstants.DEATHCERTIFICATE_FF)
     @Override
     public final String getLastPage(final Model model) {
-        logger.debug("BirthCertificateListControllerImpl::getLastPage");
-        long certificateCount = birthCertificateService.count();
+        logger.debug("DeathCertificateListControllerImpl::getLastPage");
+        long certificateCount = deathCertificateService.count();
         currentPage = (int) (certificateCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
         return sendAttributesAndReturn(model);
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_DELETE)
+    @GetMapping(MappingConstants.DEATHCERTIFICATE_DELETE)
     @Override
-    public final String birthCertificateDelete(@PathVariable final String id) {
-        logger.debug("BirthCertificateControllerImpl::censusDelete");
-        birthCertificateService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.BIRTHCERTIFICATE_LIST;
+    public final String deathCertificateDelete(@PathVariable final String id) {
+        logger.debug("DeathCertificateControllerImpl::censusDelete");
+        deathCertificateService.deleteById(Long.valueOf(id));
+        return MappingConstants.REDIRECT + MappingConstants.DEATHCERTIFICATE_LIST;
     }
 
     @Override

@@ -10,8 +10,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
-import scot.carricksoftware.grants.services.certificates.BirthCertificateService;
-import scot.carricksoftware.grants.services.certificates.DeathCertificateService;
+import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 
 @Component
 public class DataLoadCertificates {

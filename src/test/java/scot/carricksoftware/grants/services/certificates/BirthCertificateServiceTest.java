@@ -17,6 +17,8 @@ import scot.carricksoftware.grants.converters.certificates.birthcertificates.Bir
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.repositories.certificates.BirthCertificateRepository;
+import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;

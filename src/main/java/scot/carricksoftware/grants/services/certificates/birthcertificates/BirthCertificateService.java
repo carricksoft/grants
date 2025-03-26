@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 11/03/2025, 20:23. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 25/03/2025, 19:52. All rights reserved.
  *
  */
 
-package scot.carricksoftware.grants.services.certificates;
+package scot.carricksoftware.grants.services.certificates.birthcertificates;
 
 import org.springframework.stereotype.Service;
 import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;

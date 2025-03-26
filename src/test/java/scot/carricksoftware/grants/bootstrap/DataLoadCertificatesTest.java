@@ -7,8 +7,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
-import scot.carricksoftware.grants.services.certificates.BirthCertificateService;
-import scot.carricksoftware.grants.services.certificates.DeathCertificateService;
+import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;

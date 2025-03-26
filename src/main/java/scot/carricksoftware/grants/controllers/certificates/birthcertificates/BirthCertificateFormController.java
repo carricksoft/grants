@@ -1,9 +1,9 @@
 /*
- * Copyright (c)  20 Feb 2025, Andrew Grant of Carrick Software .
- * All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 25/03/2025, 19:58. All rights reserved.
+ *
  */
 
-package scot.carricksoftware.grants.controllers.certificates.birthcertificates.birthcertificates;
+package scot.carricksoftware.grants.controllers.certificates.birthcertificates;
 
 import jakarta.validation.Valid;
 import org.springframework.ui.Model;

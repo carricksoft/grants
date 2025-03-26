@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 21/03/2025, 00:08. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 25/03/2025, 19:58. All rights reserved.
  *
  */
 
-package scot.carricksoftware.grants.controllers.certificates.birthcertificates.birthcertificates;
+package scot.carricksoftware.grants.controllers.certificates.deathcertificates;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @SuppressWarnings("unused")
 @Controller
-public interface BirthCertificateListController {
+public interface DeathCertificateListController {
 
     String getListPage(final Model model);
 
@@ -23,7 +23,7 @@ public interface BirthCertificateListController {
 
     String getLastPage(final Model model);
 
-    String birthCertificateDelete(@PathVariable String id);
+    String deathCertificateDelete(@PathVariable String id);
 
     int getPageNumber();
 }

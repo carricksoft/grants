@@ -8,6 +8,8 @@ package scot.carricksoftware.grants;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommandImpl;
+import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 
@@ -46,6 +48,12 @@ public class GenerateCertificateRandomValues {
         DeathCertificate deathCertificate = new DeathCertificate();
         deathCertificate.setId(GetRandomLong());
         return deathCertificate;
+    }
+
+    public static DeathCertificateCommand GetRandomDeathCertificateCommand() {
+        DeathCertificateCommand deathCertificateCommand = new DeathCertificateCommandImpl();
+        deathCertificateCommand.setId(GetRandomLong());
+        return deathCertificateCommand;
     }
 
 
