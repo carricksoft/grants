@@ -7,10 +7,12 @@ package scot.carricksoftware.grants.domains.certificates;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 
 class DeathCertificateTest {
@@ -32,5 +34,17 @@ class DeathCertificateTest {
         Long id = GetRandomLong();
         certificate.setId(id);
         assertEquals(id, certificate.getId());
+    }
+
+    @Test
+    void getPersonTest() {
+        assertNull(certificate.getId());
+    }
+
+    @Test
+    void setPersonTest() {
+        Person person = GetRandomPerson();
+        certificate.setPerson(person);
+        assertEquals(person, certificate.getPerson());
     }
 }

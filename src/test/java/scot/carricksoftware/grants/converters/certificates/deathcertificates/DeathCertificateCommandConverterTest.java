@@ -11,9 +11,11 @@ import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
+import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 class DeathCertificateCommandConverterTest {
 
@@ -27,14 +29,17 @@ class DeathCertificateCommandConverterTest {
     @Test
     void convertTest() {
         Long id = GetRandomLong();
+        Person person = GetRandomPerson();
         DeathCertificateCommand source = new DeathCertificateCommandImpl();
 
         source.setId(id);
+        source.setPerson(person);
 
 
         DeathCertificate target = converter.convert(source);
 
         assert target != null;
         assertEquals(id, target.getId());
+        assertEquals(person, target.getPerson());
     }
 }

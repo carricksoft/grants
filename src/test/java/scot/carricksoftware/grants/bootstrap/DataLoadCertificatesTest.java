@@ -14,7 +14,6 @@ import scot.carricksoftware.grants.services.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.services.people.PersonService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
@@ -55,8 +54,15 @@ public class DataLoadCertificatesTest {
 
     @Test
     public void deathCertificatesAreLoadedTest() {
+        Person person = GetRandomPerson();
+        when(personServiceMock.findById(1L)).thenReturn(person);
+        ArgumentCaptor<DeathCertificate> captor = ArgumentCaptor.forClass(DeathCertificate.class);
+
         dataLoadCertificates.load();
-        verify(deathCertificateServiceMock).save(any(DeathCertificate.class));
+
+        verify(deathCertificateServiceMock).save(captor.capture());
+        assertEquals(person, captor.getValue().getPerson());
+
     }
 
 
