@@ -10,6 +10,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.constants.ValidationConstants;
 
 
 @Component
@@ -18,7 +20,12 @@ public class BirthCertificateCommandValidator {
 
     @SuppressWarnings("unused")
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
-       logger.debug("Validating birth certificate command");
+        logger.debug("Validating birth certificate command");
+       if (birthCertificateCommand.getPerson() == null) {
+           bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
+                   null,
+                   ValidationConstants.PERSON_IS_NULL);
+       }
     }
 
 

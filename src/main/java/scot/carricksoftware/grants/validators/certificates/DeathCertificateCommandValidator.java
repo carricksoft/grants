@@ -10,15 +10,21 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommand;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.constants.ValidationConstants;
 
 
 @Component
 public class DeathCertificateCommandValidator {
     private static final Logger logger = LogManager.getLogger(DeathCertificateCommandValidator.class);
 
-    @SuppressWarnings("unused")
-    public void validate(DeathCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+    public void validate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
        logger.debug("Validating death certificate command");
+        if (deathCertificateCommand.getPerson() == null) {
+            bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.PERSON_IS_NULL);
+        }
     }
 
 
