@@ -16,7 +16,7 @@
 
 
 <div class="container text-center">
-    <!--/*@thymesVar id="birthCertificate" type="scot.carricksoftware.grants.domains.certificates.BirthCertificate"*/-->
+    <!--/*@thymesVar id="deathCertificate" type="scot.carricksoftware.grants.domains.certificates.DeathCertificate"*/-->
     <div class="container border border-info
                     rounded-3 text-center p-4">
         <h3>Birth Certificates</h3>
@@ -29,33 +29,33 @@
             </tr>
             </thead>
 
-            <tr th:each="certificate   : ${birthCertificates}">
+            <tr th:each="certificate   : ${deathCertificates}">
 
                 <td th:text="${certificate.id}">123</td>
                 <td></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                           th:href="@{'/birthCertificate/' + ${certificate.id} + '/delete'}"
+                           th:href="@{'/deathCertificate/' + ${certificate.id} + '/delete'}"
                            th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="@{'/birthCertificate/' + ${certificate.id} + '/edit'}"
+                       th:href="@{'/deathCertificate/' + ${certificate.id} + '/edit'}"
                        th:text="Edit"></a>
                     </span></td>
             </tr>
             <tfoot>
             <tr>
                 <td colspan="4"><span>
-                        <a th:action="rewind" class="btn btn-secondary btn-sm" th:href="@{/birthCertificates/rewind}"
+                        <a th:action="rewind" class="btn btn-secondary btn-sm" th:href="@{/deathCertificates/rewind}"
                            th:text="'<<'"></a>
                          <a th:action="back" class="btn btn-secondary btn-sm"
-                            th:href="@{/birthCertificates/prev}" th:text="'<'"></a>
-                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{/birthCertificate/new}"
+                            th:href="@{/deathCertificates/prev}" th:text="'<'"></a>
+                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{/deathCertificate/new}"
                             th:text="'New Certificate'"></a>
                          <a th:action="home" class="btn btn-success btn-sm"
                             th:href="@{/}" th:text="'Home'"></a>
                          <a th:action="forward" class="btn btn-secondary btn-sm"
-                            th:href="@{/birthCertificates/next}" th:text="'>'"></a>
-                         <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/birthCertificates/ff}"
+                            th:href="@{/deathCertificates/next}" th:text="'>'"></a>
+                         <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/deathCertificates/ff}"
                             th:text="'>>'"></a>
                         </span></td>
             </tr>
