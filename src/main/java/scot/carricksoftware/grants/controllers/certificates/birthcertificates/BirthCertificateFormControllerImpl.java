@@ -23,6 +23,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.certificates.BirthCertificateCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -35,18 +36,21 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     private final BirthCertificateCommandConverterImpl birthCertificateCommandConverter;
     private final BirthCertificateConverterImpl birthCertificateConverter;
     private final BirthCertificateCommandValidator birthCertificateCommandValidator;
+    private final PersonService personService;
 
 
     public BirthCertificateFormControllerImpl(BirthCertificateService birthCertificateService,
                                               BirthCertificateCommandConverterImpl birthCertificateCommandConverter,
                                               BirthCertificateConverterImpl birthCertificateConverter,
-                                              BirthCertificateCommandValidator birthCertificateCommandValidator) {
+                                              BirthCertificateCommandValidator birthCertificateCommandValidator,
+                                              PersonService personService) {
         this.birthCertificateService = birthCertificateService;
         this.birthCertificateCommandConverter = birthCertificateCommandConverter;
 
 
         this.birthCertificateConverter = birthCertificateConverter;
         this.birthCertificateCommandValidator = birthCertificateCommandValidator;
+        this.personService = personService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -55,6 +59,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     public final String getNewBirthCertificate(final Model model) {
         logger.debug("BirthCertificateFormControllerImpl::getNewBirthCertificate");
         model.addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, new BirthCertificateCommandImpl());
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.BIRTHCERTIFICATE_FORM;
     }
 
@@ -64,6 +69,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     public final String birthCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::birthCertificateEdit");
         model.addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, birthCertificateService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.BIRTHCERTIFICATE_FORM;
     }
 
@@ -78,11 +84,13 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
+            model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
             return ViewConstants.BIRTHCERTIFICATE_FORM;
         }
 
         BirthCertificateCommand savedCommand = birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
         model.addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return MappingConstants.REDIRECT + MappingConstants.BIRTHCERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -94,6 +102,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
         BirthCertificateCommand savedCommand = birthCertificateConverter.convert(birthCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.BIRTHCERTIFICATE_FORM;
     }
 

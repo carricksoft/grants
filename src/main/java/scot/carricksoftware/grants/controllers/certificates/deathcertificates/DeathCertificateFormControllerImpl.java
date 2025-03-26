@@ -23,6 +23,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
+import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.certificates.DeathCertificateCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -35,18 +36,20 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     private final DeathCertificateCommandConverterImpl deathCertificateCommandConverter;
     private final DeathCertificateConverterImpl deathCertificateConverter;
     private final DeathCertificateCommandValidator deathCertificateCommandValidator;
+    private final PersonService personService;
 
 
     public DeathCertificateFormControllerImpl(DeathCertificateService deathCertificateService,
                                               DeathCertificateCommandConverterImpl deathCertificateCommandConverter,
                                               DeathCertificateConverterImpl deathCertificateConverter,
-                                              DeathCertificateCommandValidator deathCertificateCommandValidator) {
+                                              DeathCertificateCommandValidator deathCertificateCommandValidator, PersonService personService) {
         this.deathCertificateService = deathCertificateService;
         this.deathCertificateCommandConverter = deathCertificateCommandConverter;
 
 
         this.deathCertificateConverter = deathCertificateConverter;
         this.deathCertificateCommandValidator = deathCertificateCommandValidator;
+        this.personService = personService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -55,6 +58,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     public final String getNewDeathCertificate(final Model model) {
         logger.debug("DeathCertificateFormControllerImpl::getNewDeathCertificate");
         model.addAttribute(AttributeConstants.DEATHCERTIFICATE_COMMAND, new DeathCertificateCommandImpl());
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.DEATHCERTIFICATE_FORM;
     }
 
@@ -64,6 +68,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     public final String deathCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::deathCertificateEdit");
         model.addAttribute(AttributeConstants.DEATHCERTIFICATE_COMMAND, deathCertificateService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.DEATHCERTIFICATE_FORM;
     }
 
@@ -78,11 +83,13 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
+            model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
             return ViewConstants.DEATHCERTIFICATE_FORM;
         }
 
         DeathCertificateCommand savedCommand = deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
         model.addAttribute(AttributeConstants.DEATHCERTIFICATE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return MappingConstants.REDIRECT + MappingConstants.DEATHCERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -94,6 +101,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
         DeathCertificateCommand savedCommand = deathCertificateConverter.convert(deathCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.DEATHCERTIFICATE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.DEATHCERTIFICATE_FORM;
     }
 

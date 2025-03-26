@@ -18,6 +18,7 @@ import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommand
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
+import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.certificates.DeathCertificateCommandValidator;
 
 import static org.mockito.Mockito.verify;
@@ -45,6 +46,9 @@ public class DeathCertificateFormControllerValidationTest {
     private BindingResult bindingResultMock;
 
     @Mock
+    private PersonService personServiceMock;
+
+    @Mock
     private DeathCertificateCommandValidator deathCertificateCommandValidatorMock;
 
     @Mock
@@ -56,7 +60,8 @@ public class DeathCertificateFormControllerValidationTest {
         deathCertificateController = new DeathCertificateFormControllerImpl(deathCertificateServiceMock,
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
-                deathCertificateCommandValidatorMock);
+                deathCertificateCommandValidatorMock,
+        personServiceMock);
     }
 
 

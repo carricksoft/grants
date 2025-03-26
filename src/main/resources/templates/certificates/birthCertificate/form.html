@@ -18,19 +18,37 @@
 
 </head>
 <body>
-<!--/*@thymesVar id="countryCommand" type="scot.carricksoftware.grants.commands.places.countries.CountryCommand"*/-->
+<!--/*@thymesVar id="birthCertificateCommand" type="scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand"*/-->
+<!--/*@thymesVar id="person" type="scot.carricksoftware.grants.domains.people.Person"*/-->
 <div th:insert="~{fragments/layout::banner}"></div>
 
-<div class="container border border-info
-rounded-3 text-center p-4">
+<div class="container border border-info rounded-3 text-center p-4">
     <form th:object="${birthCertificateCommand}" th:action="@{/birthCertificate}" method="post">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p>Please Correct The Errors Below</p>
         </div>
-        <div class="col-xs-2">
-            <label for="id">Database Id<span style="color: rgb(255,0,0);">*</span></label>
-            <input class="form-control" id="id"
-                   th:field="*{id}" type="text" readonly>
+
+        <div class="form-group row justify-content-center">
+            <div class="col-xs-4" style="margin-right:20px;">
+                <label for="person">Person</label>
+                <div>
+                    <select id="person" style="width: 300px;" name="person" th:field="*{person}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="person : ${people}"
+                                th:value="${person.id}" th:text="${person.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('person')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('person')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-2">
+                <label for="id">Database Id<span style="color: rgb(255,0,0);">*</span></label>
+                <input class="form-control" id="id"
+                       th:field="*{id}" type="text" readonly>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/birthCertificates}" th:text="${'List all'}">List all</a>
