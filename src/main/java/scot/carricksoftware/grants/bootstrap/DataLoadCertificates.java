@@ -48,6 +48,7 @@ public class DataLoadCertificates {
 
     private void loadDeathCertificates() {
         DeathCertificate deathCertificate = new DeathCertificate();
+        deathCertificate.setPerson(personService.findById(1L));
         deathCertificateService.save(deathCertificate);
     }
 

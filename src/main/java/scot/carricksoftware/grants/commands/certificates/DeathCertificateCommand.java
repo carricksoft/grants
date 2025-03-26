@@ -5,6 +5,8 @@
 
 package scot.carricksoftware.grants.commands.certificates;
 
+import scot.carricksoftware.grants.domains.people.Person;
+
 public interface DeathCertificateCommand {
 
 
@@ -12,4 +14,7 @@ public interface DeathCertificateCommand {
 
     void setId(Long id);
 
+    Person getPerson();
+
+    void setPerson(Person person);
 }
