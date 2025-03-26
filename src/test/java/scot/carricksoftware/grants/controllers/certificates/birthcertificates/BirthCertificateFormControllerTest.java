@@ -23,8 +23,8 @@ import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.certificates.BirthCertificateCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomBirthCertificate;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomBirthCertificateCommand;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
@@ -69,9 +69,24 @@ public class BirthCertificateFormControllerTest {
         ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
         ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
         assertEquals("certificates/birthCertificate/form", birthCertificateFormController.getNewBirthCertificate(modelMock));
-        verify(modelMock).addAttribute(stringCaptor.capture(), objectCaptor.capture());
-        assertEquals("birthCertificateCommand", stringCaptor.getValue());
-        assertEquals("BirthCertificateCommandImpl", objectCaptor.getValue().getClass().getSimpleName());
+        verify(modelMock, atLeast(1)).addAttribute(stringCaptor.capture(), objectCaptor.capture());
+        boolean foundBirthCertificateCommand = false;
+        boolean foundPeople = false;
+        for (int i = 0; i < stringCaptor.getAllValues().size(); i++) {
+            if (stringCaptor.getAllValues().get(i).equals("birthCertificateCommand")) {
+                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("BirthCertificateCommandImpl")) {
+                    foundBirthCertificateCommand= true;
+                }
+            }
+            if (stringCaptor.getAllValues().get(i).equals("people")) {
+                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("LinkedList")) {
+                    foundPeople = true;
+                }
+            }
+        }
+
+        assertTrue(foundBirthCertificateCommand &&  foundPeople);
+
     }
 
     @Test
