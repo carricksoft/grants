@@ -17,7 +17,7 @@ import scot.carricksoftware.grants.constants.MappingConstants;
 @SuppressWarnings("unused")
 
 public interface DivorceCertificateFormController {
-    
+
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_NEW)
     String getNewDivorceCertificate(Model model);

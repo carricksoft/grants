@@ -37,14 +37,16 @@ class DeathCertificateTest {
     }
 
     @Test
-    void getPersonTest() {
-        assertNull(certificate.getId());
+    void getDeceasedTest() {
+        assertNull(certificate.getDeceased());
     }
 
     @Test
-    void setPersonTest() {
+    void setDeceasedTest() {
         Person person = GetRandomPerson();
         certificate.setDeceased(person);
         assertEquals(person, certificate.getDeceased());
     }
+
+
 }

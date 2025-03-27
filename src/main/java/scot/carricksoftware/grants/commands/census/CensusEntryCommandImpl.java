@@ -48,7 +48,7 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
 
     @Override
     public Person getPerson() {
-       return this.person;
+        return this.person;
     }
 
     @Override

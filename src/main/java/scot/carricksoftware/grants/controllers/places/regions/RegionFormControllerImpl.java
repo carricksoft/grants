@@ -77,7 +77,7 @@ public class RegionFormControllerImpl implements RegionFormController {
 
     @Override
     @PostMapping(MappingConstants.REGION)
-    public String saveOrUpdate(@Valid @ModelAttribute RegionCommand regionCommand, BindingResult bindingResult,Model model) {
+    public String saveOrUpdate(@Valid @ModelAttribute RegionCommand regionCommand, BindingResult bindingResult, Model model) {
         logger.debug("RegionFormControllerImpl::saveOrUpdate");
 
         regionCommandValidator.validate(regionCommand, bindingResult);

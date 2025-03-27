@@ -12,6 +12,6 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 public interface BirthCertificateConverter extends Converter<BirthCertificate, BirthCertificateCommand> {
 
     @Override
-    BirthCertificateCommand convert(@SuppressWarnings("NullableProblems") BirthCertificate source) ;
+    BirthCertificateCommand convert(@SuppressWarnings("NullableProblems") BirthCertificate source);
 
 }

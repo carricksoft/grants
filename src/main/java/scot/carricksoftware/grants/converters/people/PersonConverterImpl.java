@@ -15,7 +15,7 @@ public class PersonConverterImpl implements PersonConverter {
 
     @Override
     public PersonCommand convert(Person source) {
-        PersonCommand result= new PersonCommandImpl();
+        PersonCommand result = new PersonCommandImpl();
         result.setId(source.getId());
         result.setFirstName(source.getFirstName());
         result.setLastName(source.getLastName());

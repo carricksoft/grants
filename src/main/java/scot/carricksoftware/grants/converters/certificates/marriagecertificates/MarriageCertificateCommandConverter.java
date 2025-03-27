@@ -12,6 +12,6 @@ import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 public interface MarriageCertificateCommandConverter extends Converter<MarriageCertificateCommand, MarriageCertificate> {
 
     @Override
-    MarriageCertificate convert(@SuppressWarnings("NullableProblems") MarriageCertificateCommand source) ;
+    MarriageCertificate convert(@SuppressWarnings("NullableProblems") MarriageCertificateCommand source);
 
 }

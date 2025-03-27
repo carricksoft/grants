@@ -18,10 +18,9 @@ public class DivorceCertificateCommandValidator {
 
     @SuppressWarnings("unused")
     public void validate(@SuppressWarnings("unused") DivorceCertificateCommand divorceCertificateCommand, BindingResult bindingResult) {
-       logger.debug("Validating death certificate command");
+        logger.debug("Validating death certificate command");
     }
 
 
-    
 }
 

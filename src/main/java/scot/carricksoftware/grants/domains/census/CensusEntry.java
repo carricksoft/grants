@@ -14,12 +14,12 @@ import scot.carricksoftware.grants.domains.people.Person;
 @Entity
 public class CensusEntry extends BaseEntity {
 
-   private String name;
+    private String name;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "censusEntry_census_id")
-    private Census  census;
+    private Census census;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne

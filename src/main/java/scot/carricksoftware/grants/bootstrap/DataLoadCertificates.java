@@ -40,8 +40,8 @@ public class DataLoadCertificates {
 
 
     private void loadBirthCertificates() {
-       BirthCertificate birthCertificate = new BirthCertificate();
-       birthCertificate.setNewBorn(personService.findById(1L));
+        BirthCertificate birthCertificate = new BirthCertificate();
+        birthCertificate.setNewBorn(personService.findById(1L));
         birthCertificateService.save(birthCertificate);
 
     }
@@ -51,8 +51,6 @@ public class DataLoadCertificates {
         deathCertificate.setDeceased(personService.findById(1L));
         deathCertificateService.save(deathCertificate);
     }
-
-
 
 
 }

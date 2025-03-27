@@ -12,6 +12,6 @@ import scot.carricksoftware.grants.domains.certificates.DivorceCertificate;
 public interface DivorceCertificateCommandConverter extends Converter<DivorceCertificateCommand, DivorceCertificate> {
 
     @Override
-    DivorceCertificate convert(@SuppressWarnings("NullableProblems") DivorceCertificateCommand source) ;
+    DivorceCertificate convert(@SuppressWarnings("NullableProblems") DivorceCertificateCommand source);
 
 }

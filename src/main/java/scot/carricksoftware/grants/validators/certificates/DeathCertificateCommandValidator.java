@@ -19,7 +19,7 @@ public class DeathCertificateCommandValidator {
     private static final Logger logger = LogManager.getLogger(DeathCertificateCommandValidator.class);
 
     public void validate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
-       logger.debug("Validating death certificate command");
+        logger.debug("Validating death certificate command");
         if (deathCertificateCommand.getDeceased() == null) {
             bindingResult.rejectValue("deceased", ApplicationConstants.EMPTY_STRING,
                     null,
@@ -28,6 +28,5 @@ public class DeathCertificateCommandValidator {
     }
 
 
-    
 }
 

@@ -36,8 +36,8 @@ public class DataLoadTwoPartyCertificates {
 
 
     private void loadBirthCertificates() {
-       MarriageCertificate marriageCertificate = new MarriageCertificate();
-       marriageCertificateService.save(marriageCertificate);
+        MarriageCertificate marriageCertificate = new MarriageCertificate();
+        marriageCertificateService.save(marriageCertificate);
 
     }
 
@@ -45,8 +45,6 @@ public class DataLoadTwoPartyCertificates {
         DivorceCertificate divorceCertificate = new DivorceCertificate();
         divorceCertificateService.save(divorceCertificate);
     }
-
-
 
 
 }

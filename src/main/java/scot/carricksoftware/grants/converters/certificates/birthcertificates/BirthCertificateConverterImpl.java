@@ -12,7 +12,8 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 
 @SuppressWarnings("unused")
 
-@Component public class BirthCertificateConverterImpl implements BirthCertificateConverter {
+@Component
+public class BirthCertificateConverterImpl implements BirthCertificateConverter {
 
     @Override
     public BirthCertificateCommand convert(BirthCertificate source) {

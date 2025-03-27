@@ -21,14 +21,13 @@ public class BirthCertificateCommandValidator {
     @SuppressWarnings("unused")
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate command");
-       if (birthCertificateCommand.getNewBorn() == null) {
-           bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
-                   null,
-                   ValidationConstants.PERSON_IS_NULL);
-       }
+        if (birthCertificateCommand.getNewBorn() == null) {
+            bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.PERSON_IS_NULL);
+        }
     }
 
 
-    
 }
 

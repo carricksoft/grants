@@ -27,7 +27,7 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     }
 
     @Override
-    public void setNewBorn (Person newBorn) {
+    public void setNewBorn(Person newBorn) {
         this.newBorn = newBorn;
     }
 }

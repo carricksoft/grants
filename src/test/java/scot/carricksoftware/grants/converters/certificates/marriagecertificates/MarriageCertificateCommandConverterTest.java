@@ -11,9 +11,11 @@ import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
+import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 class MarriageCertificateCommandConverterTest {
 
@@ -27,13 +29,19 @@ class MarriageCertificateCommandConverterTest {
     @Test
     void convertTest() {
         Long id = GetRandomLong();
+        Person bride = GetRandomPerson();
+        Person groom = GetRandomPerson();
         MarriageCertificateCommand source = new MarriageCertificateCommandImpl();
 
         source.setId(id);
+        source.setBride(bride);
+        source.setGroom(groom);
 
         MarriageCertificate target = converter.convert(source);
 
         assert target != null;
         assertEquals(id, target.getId());
+        assertEquals(bride, target.getBride());
+        assertEquals(groom, target.getGroom());
     }
 }

@@ -31,7 +31,6 @@ public class CensusEntryListControllerImpl implements CensusEntryListController 
     private final CensusEntryService censusEntryService;
 
 
-
     public CensusEntryListControllerImpl(ControllerHelper controllerHelper,
                                          CensusEntryService censusEntryService) {
         this.controllerHelper = controllerHelper;

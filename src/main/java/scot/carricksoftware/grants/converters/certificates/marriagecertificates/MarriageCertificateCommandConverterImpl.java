@@ -17,6 +17,8 @@ public class MarriageCertificateCommandConverterImpl implements MarriageCertific
         MarriageCertificate target = new MarriageCertificate();
 
         target.setId(source.getId());
+        target.setBride(source.getBride());
+        target.setGroom(source.getGroom());
 
         return target;
     }

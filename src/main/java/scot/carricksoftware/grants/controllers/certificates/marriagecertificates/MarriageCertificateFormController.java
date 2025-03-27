@@ -19,7 +19,6 @@ import scot.carricksoftware.grants.constants.MappingConstants;
 public interface MarriageCertificateFormController {
 
 
-
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_NEW)
     String getNewMarriageCertificate(Model model);

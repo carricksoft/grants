@@ -12,13 +12,16 @@ import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 
 @SuppressWarnings("unused")
 
-@Component public class MarriageCertificateConverterImpl implements MarriageCertificateConverter {
+@Component
+public class MarriageCertificateConverterImpl implements MarriageCertificateConverter {
 
     @Override
     public MarriageCertificateCommand convert(MarriageCertificate source) {
         MarriageCertificateCommand target = new MarriageCertificateCommandImpl();
 
         target.setId(source.getId());
+        target.setBride(source.getBride());
+        target.setGroom(source.getGroom());
 
         return target;
     }

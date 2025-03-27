@@ -26,27 +26,27 @@ public class CensusEntryCommandValidator {
     }
 
     private void validateNameAndPerson(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
-      if (censusEntryCommand.getPerson() == null) {
-          if (censusEntryCommand.getName() == null || censusEntryCommand.getName().isEmpty()) {
-              bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
-                      null,
-                      ValidationConstants.CENSUS_NAME_IS_NULL);
-              bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
-                      null,
-                      ValidationConstants.CENSUS_NAME_IS_NULL);
-          } else {
-              validateUntrackedPerson(censusEntryCommand, bindingResult);
-          }
-      } else {
-          if (censusEntryCommand.getName() != null && !censusEntryCommand.getName().isEmpty()) {
-              bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
-                      null,
-                      ValidationConstants.CENSUS_NAME_IS_NOT_NULL);
-              bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
-                      null,
-                      ValidationConstants.CENSUS_NAME_IS_NOT_NULL);
-          }
-      }
+        if (censusEntryCommand.getPerson() == null) {
+            if (censusEntryCommand.getName() == null || censusEntryCommand.getName().isEmpty()) {
+                bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.CENSUS_NAME_IS_NULL);
+                bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.CENSUS_NAME_IS_NULL);
+            } else {
+                validateUntrackedPerson(censusEntryCommand, bindingResult);
+            }
+        } else {
+            if (censusEntryCommand.getName() != null && !censusEntryCommand.getName().isEmpty()) {
+                bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.CENSUS_NAME_IS_NOT_NULL);
+                bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.CENSUS_NAME_IS_NOT_NULL);
+            }
+        }
     }
 
     private void validateCensus(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {

@@ -12,6 +12,6 @@ import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 public interface DeathCertificateConverter extends Converter<DeathCertificate, DeathCertificateCommand> {
 
     @Override
-    DeathCertificateCommand convert(@SuppressWarnings("NullableProblems") DeathCertificate source) ;
+    DeathCertificateCommand convert(@SuppressWarnings("NullableProblems") DeathCertificate source);
 
 }

@@ -25,7 +25,6 @@ public interface CountryService {
     List<Country> getPagedCountries(int pageNumber);
 
 
-
     @SuppressWarnings("unused")
     long count();
 

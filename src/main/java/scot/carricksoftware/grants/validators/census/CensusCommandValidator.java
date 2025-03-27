@@ -21,15 +21,15 @@ public class CensusCommandValidator {
     }
 
     private void validateDate(CensusCommand censusCommand, BindingResult bindingResult) {
-       if (censusCommand.getDate() == null) {
-           bindingResult.rejectValue("date", ApplicationConstants.EMPTY_STRING,
-                   null,
-                   ValidationConstants.DATE_IS_NULL);
-       } else if (censusCommand.getDate().isAfter(LocalDate.now()) ) {
-           bindingResult.rejectValue("date", ApplicationConstants.EMPTY_STRING,
-                   null,
-                   ValidationConstants.DATE_IN_FUTURE);
-       }
+        if (censusCommand.getDate() == null) {
+            bindingResult.rejectValue("date", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.DATE_IS_NULL);
+        } else if (censusCommand.getDate().isAfter(LocalDate.now())) {
+            bindingResult.rejectValue("date", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.DATE_IN_FUTURE);
+        }
     }
 }
 

@@ -24,5 +24,4 @@ public class CensusCommandConverterImpl implements CensusCommandConverter {
     }
 
 
-
 }

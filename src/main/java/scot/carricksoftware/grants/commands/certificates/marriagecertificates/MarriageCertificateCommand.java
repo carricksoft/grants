@@ -5,6 +5,8 @@
 
 package scot.carricksoftware.grants.commands.certificates.marriagecertificates;
 
+import scot.carricksoftware.grants.domains.people.Person;
+
 public interface MarriageCertificateCommand {
 
 
@@ -13,4 +15,11 @@ public interface MarriageCertificateCommand {
     void setId(Long id);
 
 
+    Person getBride();
+
+    void setBride(Person bride);
+
+    Person getGroom();
+
+    void setGroom(Person groom);
 }
