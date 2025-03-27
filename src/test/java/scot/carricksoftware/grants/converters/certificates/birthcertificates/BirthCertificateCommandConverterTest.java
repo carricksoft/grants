@@ -33,13 +33,13 @@ class BirthCertificateCommandConverterTest {
         BirthCertificateCommand source = new BirthCertificateCommandImpl();
 
         source.setId(id);
-        source.setPerson(person);
+        source.setNewBorn(person);
 
 
         BirthCertificate target = converter.convert(source);
 
         assert target != null;
         assertEquals(id, target.getId());
-        assertEquals(person, target.getPerson());
+        assertEquals(person, target.getNewBorn());
     }
 }

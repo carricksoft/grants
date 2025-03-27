@@ -23,7 +23,7 @@
         <thead class="table-dark">
         <tr>
             <th>ID</th>
-            <th>Person</th>
+            <th>New Born</th>
             <th></th>
         </tr>
         </thead>
@@ -31,7 +31,7 @@
         <tr th:each="certificate   : ${birthCertificates}">
 
             <td th:text="${certificate.id}">123</td>
-            <td th:text="${certificate.person.toString()}">who</td>
+            <td th:text="${certificate.newBorn.toString()}">who</td>
             <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="@{'/birthCertificate/' + ${certificate.id} + '/delete'}"

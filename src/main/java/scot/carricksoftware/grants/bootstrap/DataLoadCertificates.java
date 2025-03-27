@@ -41,7 +41,7 @@ public class DataLoadCertificates {
 
     private void loadBirthCertificates() {
        BirthCertificate birthCertificate = new BirthCertificate();
-       birthCertificate.setPerson(personService.findById(1L));
+       birthCertificate.setNewBorn(personService.findById(1L));
         birthCertificateService.save(birthCertificate);
 
     }

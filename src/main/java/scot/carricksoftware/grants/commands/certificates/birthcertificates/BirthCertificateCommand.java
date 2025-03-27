@@ -14,7 +14,7 @@ public interface BirthCertificateCommand {
 
     void setId(Long id);
 
-    Person getPerson();
+    Person getNewBorn();
 
-    void setPerson(Person person);
+    void setNewBorn(Person newBorn);
 }

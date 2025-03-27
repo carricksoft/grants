@@ -45,7 +45,7 @@ class BirthCertificateCommandImplTest {
     @Test
     void setPersonTest() {
         Person person = GetRandomPerson();
-        command.setPerson(person);
-        assertEquals(person, command.getPerson());
+        command.setNewBorn(person);
+        assertEquals(person, command.getNewBorn());
     }
 }

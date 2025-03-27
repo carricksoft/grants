@@ -11,8 +11,7 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     Long Id;
 
-    Person person;
-
+    Person newBorn;
 
     public Long getId() {
         return Id;
@@ -23,12 +22,12 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     }
 
     @Override
-    public Person getPerson() {
-        return person;
+    public Person getNewBorn() {
+        return this.newBorn;
     }
 
     @Override
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setNewBorn (Person newBorn) {
+        this.newBorn = newBorn;
     }
 }

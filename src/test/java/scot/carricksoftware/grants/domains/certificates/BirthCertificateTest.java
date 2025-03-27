@@ -44,7 +44,7 @@ class BirthCertificateTest {
     @Test
     void setPersonTest() {
         Person person = GetRandomPerson();
-        certificate.setPerson(person);
-        assertEquals(person, certificate.getPerson());
+        certificate.setNewBorn(person);
+        assertEquals(person, certificate.getNewBorn());
     }
 }

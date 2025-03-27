@@ -17,7 +17,7 @@ public class BirthCertificateCommandConverterImpl implements BirthCertificateCom
         BirthCertificate target = new BirthCertificate();
 
         target.setId(source.getId());
-        target.setPerson(source.getPerson());
+        target.setNewBorn(source.getNewBorn());
 
         return target;
     }

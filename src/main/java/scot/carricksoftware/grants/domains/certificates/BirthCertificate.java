@@ -14,14 +14,14 @@ public class BirthCertificate extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "person_id")
-    private Person person;
+    @JoinColumn(name = "new_born_id")
+    private Person newBorn;
 
-    public Person getPerson() {
-        return person;
+    public Person getNewBorn() {
+        return newBorn;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setNewBorn(Person newBorn) {
+        this.newBorn = newBorn;
     }
 }
