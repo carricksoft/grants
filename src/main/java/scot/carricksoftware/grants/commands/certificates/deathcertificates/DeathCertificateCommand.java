@@ -14,7 +14,7 @@ public interface DeathCertificateCommand {
 
     void setId(Long id);
 
-    Person getPerson();
+    Person getDeceased();
 
-    void setPerson(Person person);
+    void setDeceased(Person deceased);
 }

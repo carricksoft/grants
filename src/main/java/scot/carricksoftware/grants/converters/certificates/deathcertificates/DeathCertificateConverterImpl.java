@@ -20,7 +20,7 @@ public class DeathCertificateConverterImpl implements DeathCertificateConverter 
         DeathCertificateCommand target = new DeathCertificateCommandImpl();
 
         target.setId(source.getId());
-        target.setPerson(source.getPerson());
+        target.setDeceased(source.getDeceased());
 
         return target;
     }

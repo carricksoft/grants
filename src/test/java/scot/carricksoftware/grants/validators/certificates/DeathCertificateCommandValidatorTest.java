@@ -55,7 +55,7 @@ class DeathCertificateCommandValidatorTest {
                 objectArgumentCaptor.capture(),
                 stringArgumentCaptor3.capture());
 
-        assertEquals("person", stringArgumentCaptor.getValue());
+        assertEquals("deceased", stringArgumentCaptor.getValue());
         assertEquals("The person cannot be null.", stringArgumentCaptor3.getValue());
 
     }

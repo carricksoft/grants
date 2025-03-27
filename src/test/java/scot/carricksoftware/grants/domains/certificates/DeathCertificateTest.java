@@ -44,7 +44,7 @@ class DeathCertificateTest {
     @Test
     void setPersonTest() {
         Person person = GetRandomPerson();
-        certificate.setPerson(person);
-        assertEquals(person, certificate.getPerson());
+        certificate.setDeceased(person);
+        assertEquals(person, certificate.getDeceased());
     }
 }

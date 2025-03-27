@@ -11,7 +11,7 @@ public class DeathCertificateCommandImpl implements DeathCertificateCommand {
 
     Long Id;
 
-    Person person;
+    Person deceased;
 
 
     public Long getId() {
@@ -23,13 +23,13 @@ public class DeathCertificateCommandImpl implements DeathCertificateCommand {
     }
 
     @Override
-    public Person getPerson() {
-        return person;
+    public Person getDeceased() {
+        return deceased;
     }
 
     @Override
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setDeceased(Person deceased) {
+        this.deceased = deceased;
     }
 
 }

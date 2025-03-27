@@ -17,13 +17,13 @@ public class DeathCertificate extends BaseEntity {
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "person_id")
-    private Person person;
+    private Person deceased;
 
-    public Person getPerson() {
-        return person;
+    public Person getDeceased() {
+        return deceased;
     }
 
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setDeceased(Person deceased) {
+        this.deceased = deceased;
     }
 }

@@ -20,8 +20,8 @@ public class DeathCertificateCommandValidator {
 
     public void validate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
        logger.debug("Validating death certificate command");
-        if (deathCertificateCommand.getPerson() == null) {
-            bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
+        if (deathCertificateCommand.getDeceased() == null) {
+            bindingResult.rejectValue("deceased", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.PERSON_IS_NULL);
         }

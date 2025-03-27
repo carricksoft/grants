@@ -33,13 +33,13 @@ class DeathCertificateCommandConverterTest {
         DeathCertificateCommand source = new DeathCertificateCommandImpl();
 
         source.setId(id);
-        source.setPerson(person);
+        source.setDeceased(person);
 
 
         DeathCertificate target = converter.convert(source);
 
         assert target != null;
         assertEquals(id, target.getId());
-        assertEquals(person, target.getPerson());
+        assertEquals(person, target.getDeceased());
     }
 }
