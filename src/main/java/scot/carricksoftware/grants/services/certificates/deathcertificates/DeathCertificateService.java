@@ -6,7 +6,7 @@
 package scot.carricksoftware.grants.services.certificates.deathcertificates;
 
 import org.springframework.stereotype.Service;
-import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 
 import java.util.List;

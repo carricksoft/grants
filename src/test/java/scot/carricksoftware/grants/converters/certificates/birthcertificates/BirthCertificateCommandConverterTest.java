@@ -8,8 +8,8 @@ package scot.carricksoftware.grants.converters.certificates.birthcertificates;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;
-import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommandImpl;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 

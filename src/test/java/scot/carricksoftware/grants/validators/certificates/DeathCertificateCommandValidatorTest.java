@@ -13,8 +13,8 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommand;
-import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommandImpl;
+import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;

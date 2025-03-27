@@ -6,7 +6,7 @@
 package scot.carricksoftware.grants.services.certificates.birthcertificates;
 
 import org.springframework.stereotype.Service;
-import scot.carricksoftware.grants.commands.certificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 
 import java.util.List;

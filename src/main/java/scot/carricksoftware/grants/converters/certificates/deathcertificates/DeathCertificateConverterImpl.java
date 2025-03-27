@@ -6,8 +6,8 @@
 package scot.carricksoftware.grants.converters.certificates.deathcertificates;
 
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommand;
-import scot.carricksoftware.grants.commands.certificates.DeathCertificateCommandImpl;
+import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 

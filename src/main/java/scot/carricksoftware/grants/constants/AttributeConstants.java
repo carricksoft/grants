@@ -43,12 +43,12 @@ public class AttributeConstants {
     @SuppressWarnings("unused")
     public static final String CENSUSENTRY_COMMAND = "censusEntryCommand";
 
-    @SuppressWarnings({"SpellCheckingInspection", "unused"})
+    @SuppressWarnings({"unused"})
     public static final String BIRTHCERTIFICATES = "birthCertificates";
     @SuppressWarnings({"unused"})
     public static final String BIRTHCERTIFICATE_COMMAND = "birthCertificateCommand";
 
-    @SuppressWarnings({"SpellCheckingInspection", "unused"})
+    @SuppressWarnings({"unused"})
     public static final String DEATHCERTIFICATES = "deathCertificates";
     @SuppressWarnings({"unused"})
     public static final String DEATHCERTIFICATE_COMMAND = "deathCertificateCommand";
