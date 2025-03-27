@@ -75,7 +75,7 @@ public class BirthCertificateFormControllerTest {
         for (int i = 0; i < stringCaptor.getAllValues().size(); i++) {
             if (stringCaptor.getAllValues().get(i).equals("birthCertificateCommand")) {
                 if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("BirthCertificateCommandImpl")) {
-                    foundBirthCertificateCommand= true;
+                    foundBirthCertificateCommand = true;
                 }
             }
             if (stringCaptor.getAllValues().get(i).equals("people")) {
@@ -85,7 +85,7 @@ public class BirthCertificateFormControllerTest {
             }
         }
 
-        assertTrue(foundBirthCertificateCommand &&  foundPeople);
+        assertTrue(foundBirthCertificateCommand && foundPeople);
 
     }
 

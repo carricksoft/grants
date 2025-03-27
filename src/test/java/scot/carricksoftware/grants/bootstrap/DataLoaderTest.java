@@ -30,13 +30,17 @@ class DataLoaderTest {
     @Mock
     private DataLoadCertificates dataLoadCertificatesMock;
 
+    @Mock
+    private DataLoadTwoPartyCertificates dataLoadTwoPartyCertificates;
+
 
     @BeforeEach
     void setUp() {
         dataLoader = new DataLoader(dataLoadPlacesMock,
                 dataLoadPeopleMock,
                 dataLoadCensusMock,
-                dataLoadCertificatesMock);
+                dataLoadCertificatesMock,
+                dataLoadTwoPartyCertificates);
     }
 
     @Test
@@ -61,5 +65,11 @@ class DataLoaderTest {
     void loadCertificatesIsCalledTest() {
         dataLoader.run();
         verify(dataLoadCertificatesMock).load();
+    }
+
+    @Test
+    void loadCertificatesTwPartyIsCalledTest() {
+        dataLoader.run();
+        verify(dataLoadTwoPartyCertificates).load();
     }
 }

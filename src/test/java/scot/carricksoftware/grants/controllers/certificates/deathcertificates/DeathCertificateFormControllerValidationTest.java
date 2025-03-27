@@ -61,7 +61,7 @@ public class DeathCertificateFormControllerValidationTest {
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
                 deathCertificateCommandValidatorMock,
-        personServiceMock);
+                personServiceMock);
     }
 
 

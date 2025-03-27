@@ -60,7 +60,7 @@ public class DeathCertificateFormControllerTest {
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
                 deathCertificateCommandValidatorMock,
-        personServiceMock);
+                personServiceMock);
     }
 
     @Test
@@ -74,7 +74,7 @@ public class DeathCertificateFormControllerTest {
         for (int i = 0; i < stringCaptor.getAllValues().size(); i++) {
             if (stringCaptor.getAllValues().get(i).equals("deathCertificateCommand")) {
                 if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("DeathCertificateCommandImpl")) {
-                    foundDeathCertificateCommand= true;
+                    foundDeathCertificateCommand = true;
                 }
             }
             if (stringCaptor.getAllValues().get(i).equals("people")) {
@@ -83,7 +83,7 @@ public class DeathCertificateFormControllerTest {
                 }
             }
         }
-        assertTrue(foundDeathCertificateCommand &&  foundPeople);
+        assertTrue(foundDeathCertificateCommand && foundPeople);
     }
 
     @Test
