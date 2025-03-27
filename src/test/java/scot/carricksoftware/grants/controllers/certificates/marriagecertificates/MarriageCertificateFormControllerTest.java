@@ -30,7 +30,7 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 
 
 @ExtendWith(MockitoExtension.class)
-public class BirthCertificateFormControllerTest {
+public class MarriageCertificateFormControllerTest {
 
     @SuppressWarnings("unused")
     private MarriageCertificateFormControllerImpl marriageCertificateFormController;

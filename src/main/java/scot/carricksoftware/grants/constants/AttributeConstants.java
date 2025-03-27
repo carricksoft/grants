@@ -57,4 +57,9 @@ public class AttributeConstants {
     public static final String MARRIAGE_CERTIFICATES = "marriageCertificates";
     @SuppressWarnings({"unused"})
     public static final String MARRIAGE_CERTIFICATE_COMMAND = "marriageCertificateCommand";
+
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATES = "divorceCertificates";
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE_COMMAND = "divorceCertificateCommand";
 }

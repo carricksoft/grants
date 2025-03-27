@@ -202,4 +202,25 @@ public class MappingConstants {
     public static final String MARRIAGE_CERTIFICATE_DELETE = "/marriageCertificate/{id}/delete";
     @SuppressWarnings({"unused"})
     public static final String MARRIAGE_CERTIFICATE_EDIT = "marriageCertificate/{id}/edit";
+
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE_LIST = "/divorceCertificates";
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE_NEXT = "/divorceCertificates/next";
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE_PREVIOUS = "/divorceCertificates/prev";
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE_REWIND = "/divorceCertificates/rewind";
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE_FF = "/divorceCertificates/ff";
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE_NEW = "/divorceCertificate/new";
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE = "/divorceCertificate";
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE_SHOW = "/divorceCertificate/{id}/show";
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE_DELETE = "/divorceCertificate/{id}/delete";
+    @SuppressWarnings({"unused"})
+    public static final String DIVORCE_CERTIFICATE_EDIT = "divorceCertificate/{id}/edit";
 }
