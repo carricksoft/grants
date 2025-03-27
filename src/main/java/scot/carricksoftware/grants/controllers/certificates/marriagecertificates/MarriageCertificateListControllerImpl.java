@@ -36,7 +36,7 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_LIST)
+    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_LIST)
     @Override
     public final String getListPage(final Model model) {
         logger.debug("MarriageCertificateListControllerImpl::getCensusPage");
@@ -52,7 +52,7 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_NEXT)
+    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_NEXT)
     @Override
     public final String getNextPage(final Model model) {
         logger.debug("MarriageCertificateListControllerImpl::getNextPage");
@@ -61,7 +61,7 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_PREVIOUS)
+    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_PREVIOUS)
     @Override
     public final String getPreviousPage(final Model model) {
         logger.debug("MarriageCertificateListControllerImpl::getPreviousPage");
@@ -70,7 +70,7 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_REWIND)
+    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_REWIND)
     public final String getFirstPage(final Model model) {
         logger.debug("MarriageCertificateListControllerImpl::getFirstPage");
         currentPage = 0;
@@ -78,7 +78,7 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_FF)
+    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_FF)
     @Override
     public final String getLastPage(final Model model) {
         logger.debug("MarriageCertificateListControllerImpl::getLastPage");
@@ -89,12 +89,12 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_DELETE)
+    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_DELETE)
     @Override
     public final String marriageCertificateDelete(@PathVariable final String id) {
         logger.debug("MarriageCertificateControllerImpl::censusDelete");
         marriageCertificateService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.MARRIAGECERTIFICATE_LIST;
+        return MappingConstants.REDIRECT + MappingConstants.MARRIAGE_CERTIFICATE_LIST;
     }
 
     @Override

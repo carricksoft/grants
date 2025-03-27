@@ -162,44 +162,44 @@ public class MappingConstants {
     public static final String BIRTH_CERTIFICATE_EDIT = "birthCertificate/{id}/edit";
 
     @SuppressWarnings({"unused"})
-    public static final String DEATHCERTIFICATE_LIST = "/deathCertificates";
+    public static final String DEATH_CERTIFICATE_LIST = "/deathCertificates";
     @SuppressWarnings({"unused"})
-    public static final String DEATHCERTIFICATE_NEXT = "/deathCertificates/next";
+    public static final String DEATH_CERTIFICATE_NEXT = "/deathCertificates/next";
     @SuppressWarnings({"unused"})
-    public static final String DEATHCERTIFICATE_PREVIOUS = "/deathCertificates/prev";
+    public static final String DEATH_CERTIFICATE_PREVIOUS = "/deathCertificates/prev";
     @SuppressWarnings({"unused"})
-    public static final String DEATHCERTIFICATE_REWIND = "/deathCertificates/rewind";
+    public static final String DEATH_CERTIFICATE_REWIND = "/deathCertificates/rewind";
     @SuppressWarnings({"unused"})
-    public static final String DEATHCERTIFICATE_FF = "/deathCertificates/ff";
+    public static final String DEATH_CERTIFICATE_FF = "/deathCertificates/ff";
     @SuppressWarnings({"unused"})
-    public static final String DEATHCERTIFICATE_NEW = "/deathCertificate/new";
+    public static final String DEATH_CERTIFICATE_NEW = "/deathCertificate/new";
     @SuppressWarnings({"unused"})
-    public static final String DEATHCERTIFICATE = "/deathCertificate";
+    public static final String DEATH_CERTIFICATE = "/deathCertificate";
     @SuppressWarnings({"unused"})
-    public static final String DEATHCERTIFICATE_SHOW = "/deathCertificate/{id}/show";
+    public static final String DEATH_CERTIFICATE_SHOW = "/deathCertificate/{id}/show";
     @SuppressWarnings({"unused"})
-    public static final String DEATHCERTIFICATE_DELETE = "/deathCertificate/{id}/delete";
+    public static final String DEATH_CERTIFICATE_DELETE = "/deathCertificate/{id}/delete";
     @SuppressWarnings({"unused"})
-    public static final String DEATHCERTIFICATE_EDIT = "deathCertificate/{id}/edit";
+    public static final String DEATH_CERTIFICATE_EDIT = "deathCertificate/{id}/edit";
 
     @SuppressWarnings({"unused"})
-    public static final String MARRIAGECERTIFICATE_LIST = "/marriageCertificates";
+    public static final String MARRIAGE_CERTIFICATE_LIST = "/marriageCertificates";
     @SuppressWarnings({"unused"})
-    public static final String MARRIAGECERTIFICATE_NEXT = "/marriageCertificates/next";
+    public static final String MARRIAGE_CERTIFICATE_NEXT = "/marriageCertificates/next";
     @SuppressWarnings({"unused"})
-    public static final String MARRIAGECERTIFICATE_PREVIOUS = "/marriageCertificates/prev";
+    public static final String MARRIAGE_CERTIFICATE_PREVIOUS = "/marriageCertificates/prev";
     @SuppressWarnings({"unused"})
-    public static final String MARRIAGECERTIFICATE_REWIND = "/marriageCertificates/rewind";
+    public static final String MARRIAGE_CERTIFICATE_REWIND = "/marriageCertificates/rewind";
     @SuppressWarnings({"unused"})
-    public static final String MARRIAGECERTIFICATE_FF = "/marriageCertificates/ff";
+    public static final String MARRIAGE_CERTIFICATE_FF = "/marriageCertificates/ff";
     @SuppressWarnings({"unused"})
-    public static final String MARRIAGECERTIFICATE_NEW = "/marriageCertificate/new";
+    public static final String MARRIAGE_CERTIFICATE_NEW = "/marriageCertificate/new";
     @SuppressWarnings({"unused"})
-    public static final String MARRIAGECERTIFICATE = "/marriageCertificate";
+    public static final String MARRIAGE_CERTIFICATE = "/marriageCertificate";
     @SuppressWarnings({"unused"})
-    public static final String MARRIAGECERTIFICATE_SHOW = "/marriageCertificate/{id}/show";
+    public static final String MARRIAGE_CERTIFICATE_SHOW = "/marriageCertificate/{id}/show";
     @SuppressWarnings({"unused"})
-    public static final String MARRIAGECERTIFICATE_DELETE = "/marriageCertificate/{id}/delete";
+    public static final String MARRIAGE_CERTIFICATE_DELETE = "/marriageCertificate/{id}/delete";
     @SuppressWarnings({"unused"})
-    public static final String MARRIAGECERTIFICATE_EDIT = "marriageCertificate/{id}/edit";
+    public static final String MARRIAGE_CERTIFICATE_EDIT = "marriageCertificate/{id}/edit";
 }

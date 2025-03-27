@@ -48,7 +48,7 @@ public class BirthCertificateListControllerImpl implements BirthCertificateListC
     private String sendAttributesAndReturn(Model model) {
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATES, birthCertificateService.getPagedBirthCertificates(currentPage));
         controllerHelper.addAttributes(model);
-        return ViewConstants.BIRTHCERTIFICATE_LIST;
+        return ViewConstants.BIRTH_CERTIFICATE_LIST;
     }
 
     @SuppressWarnings("SameReturnValue")

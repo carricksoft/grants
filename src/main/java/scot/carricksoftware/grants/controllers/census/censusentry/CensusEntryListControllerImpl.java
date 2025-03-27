@@ -51,7 +51,7 @@ public class CensusEntryListControllerImpl implements CensusEntryListController 
     private String sendAttributesAndReturn(Model model) {
         model.addAttribute(AttributeConstants.CENSUS_ENTRIES, censusEntryService.getPagedCensusEntries(currentPage));
         controllerHelper.addAttributes(model);
-        return ViewConstants.CENSUSENTRY_LIST;
+        return ViewConstants.CENSUS_ENTRY_LIST;
     }
 
     @SuppressWarnings("SameReturnValue")

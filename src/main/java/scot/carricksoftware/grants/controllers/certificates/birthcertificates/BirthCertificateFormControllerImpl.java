@@ -60,7 +60,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::getNewBirthCertificate");
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, new BirthCertificateCommandImpl());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return ViewConstants.BIRTHCERTIFICATE_FORM;
+        return ViewConstants.BIRTH_CERTIFICATE_FORM;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -70,7 +70,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::birthCertificateEdit");
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, birthCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return ViewConstants.BIRTHCERTIFICATE_FORM;
+        return ViewConstants.BIRTH_CERTIFICATE_FORM;
     }
 
 
@@ -85,7 +85,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-            return ViewConstants.BIRTHCERTIFICATE_FORM;
+            return ViewConstants.BIRTH_CERTIFICATE_FORM;
         }
 
         BirthCertificateCommand savedCommand = birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
@@ -103,7 +103,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         BirthCertificateCommand savedCommand = birthCertificateConverter.convert(birthCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return ViewConstants.BIRTHCERTIFICATE_FORM;
+        return ViewConstants.BIRTH_CERTIFICATE_FORM;
     }
 
 

@@ -32,15 +32,15 @@ public class ViewConstants {
     public static final String CENSUS_LIST = "census/list";
     public static final String CENSUS_FORM = "census/form";
 
-    public static final String CENSUSENTRY_LIST = "censusentry/list";
-    public static final String CENSUSENTRY_FORM = "censusentry/form";
+    public static final String CENSUS_ENTRY_LIST = "censusentry/list";
+    public static final String CENSUS_ENTRY_FORM = "censusentry/form";
 
     @SuppressWarnings("unused")
-    public static final String BIRTHCERTIFICATE_LIST = "certificates/birthCertificate/list";
-    public static final String BIRTHCERTIFICATE_FORM = "certificates/birthCertificate/form";
+    public static final String BIRTH_CERTIFICATE_LIST = "certificates/birthCertificate/list";
+    public static final String BIRTH_CERTIFICATE_FORM = "certificates/birthCertificate/form";
 
-    public static final String DEATHCERTIFICATE_LIST = "certificates/deathCertificate/list";
-    public static final String DEATHCERTIFICATE_FORM = "certificates/deathCertificate/form";
+    public static final String DEATH_CERTIFICATE_LIST = "certificates/deathCertificate/list";
+    public static final String DEATH_CERTIFICATE_FORM = "certificates/deathCertificate/form";
 
     public static final String MARRIAGE_CERTIFICATE_LIST = "certificates/marriageCertificate/list";
     public static final String MARRIAGE_CERTIFICATE_FORM = "certificates/marriageCertificate/form";

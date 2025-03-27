@@ -59,7 +59,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, new CensusEntryCommandImpl());
         model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return ViewConstants.CENSUSENTRY_FORM;
+        return ViewConstants.CENSUS_ENTRY_FORM;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -69,7 +69,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, censusEntryService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return ViewConstants.CENSUSENTRY_FORM;
+        return ViewConstants.CENSUS_ENTRY_FORM;
     }
 
 
@@ -85,7 +85,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
             model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
-            return ViewConstants.CENSUSENTRY_FORM;
+            return ViewConstants.CENSUS_ENTRY_FORM;
         }
 
         CensusEntryCommand savedCommand = censusEntryService.saveCensusEntryCommand(censusEntryCommand);
@@ -102,7 +102,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
-        return ViewConstants.CENSUSENTRY_FORM;
+        return ViewConstants.CENSUS_ENTRY_FORM;
     }
 
 

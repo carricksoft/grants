@@ -19,16 +19,16 @@ import scot.carricksoftware.grants.constants.MappingConstants;
 public interface DeathCertificateFormController {
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATHCERTIFICATE_NEW)
+    @GetMapping(MappingConstants.DEATH_CERTIFICATE_NEW)
     String getNewDeathCertificate(Model model);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATHCERTIFICATE_EDIT)
+    @GetMapping(MappingConstants.DEATH_CERTIFICATE_EDIT)
     String deathCertificateEdit(@Valid @PathVariable String id, Model model);
 
     String saveOrUpdate(@ModelAttribute DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult, Model model);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATHCERTIFICATE_SHOW)
+    @GetMapping(MappingConstants.DEATH_CERTIFICATE_SHOW)
     String showById(@PathVariable String id, Model model);
 }

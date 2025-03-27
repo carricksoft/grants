@@ -53,28 +53,28 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATHCERTIFICATE_NEW)
+    @GetMapping(MappingConstants.DEATH_CERTIFICATE_NEW)
     @Override
     public final String getNewDeathCertificate(final Model model) {
         logger.debug("DeathCertificateFormControllerImpl::getNewDeathCertificate");
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, new DeathCertificateCommandImpl());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return ViewConstants.DEATHCERTIFICATE_FORM;
+        return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATHCERTIFICATE_EDIT)
+    @GetMapping(MappingConstants.DEATH_CERTIFICATE_EDIT)
     @Override
     public final String deathCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::deathCertificateEdit");
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, deathCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return ViewConstants.DEATHCERTIFICATE_FORM;
+        return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
 
 
     @Override
-    @PostMapping(MappingConstants.DEATHCERTIFICATE)
+    @PostMapping(MappingConstants.DEATH_CERTIFICATE)
     public String saveOrUpdate(@Valid @ModelAttribute DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
 
@@ -84,25 +84,25 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-            return ViewConstants.DEATHCERTIFICATE_FORM;
+            return ViewConstants.DEATH_CERTIFICATE_FORM;
         }
 
         DeathCertificateCommand savedCommand = deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return MappingConstants.REDIRECT + MappingConstants.DEATHCERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
+        return MappingConstants.REDIRECT + MappingConstants.DEATH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATHCERTIFICATE_SHOW)
+    @GetMapping(MappingConstants.DEATH_CERTIFICATE_SHOW)
     @Override
     public String showById(@PathVariable String id, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
         DeathCertificateCommand savedCommand = deathCertificateConverter.convert(deathCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return ViewConstants.DEATHCERTIFICATE_FORM;
+        return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
 
 
