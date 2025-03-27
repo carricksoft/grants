@@ -12,6 +12,7 @@ import scot.carricksoftware.grants.domains.certificates.DivorceCertificate;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 import scot.carricksoftware.grants.services.certificates.divorcecertificates.DivorceCertificateService;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.MarriageCertificateService;
+import scot.carricksoftware.grants.services.people.PersonService;
 
 @Component
 public class DataLoadTwoPartyCertificates {
@@ -20,23 +21,28 @@ public class DataLoadTwoPartyCertificates {
 
     private final MarriageCertificateService marriageCertificateService;
     private final DivorceCertificateService divorceCertificateService;
+    private final PersonService personService;
 
     public DataLoadTwoPartyCertificates(MarriageCertificateService marriageCertificateService,
-                                        DivorceCertificateService divorceCertificateService) {
+                                        DivorceCertificateService divorceCertificateService,
+                                        PersonService personService) {
 
         this.marriageCertificateService = marriageCertificateService;
         this.divorceCertificateService = divorceCertificateService;
+        this.personService = personService;
     }
 
     public void load() {
         logger.debug("DataLoadPlaces::load");
-        loadBirthCertificates();
+        loadMarriageCertificates();
         loadDivorceCertificates();
     }
 
 
-    private void loadBirthCertificates() {
+    private void loadMarriageCertificates() {
         MarriageCertificate marriageCertificate = new MarriageCertificate();
+        marriageCertificate.setGroom(personService.findById(1L));
+        marriageCertificate.setBride(personService.findById(2L));
         marriageCertificateService.save(marriageCertificate);
 
     }
