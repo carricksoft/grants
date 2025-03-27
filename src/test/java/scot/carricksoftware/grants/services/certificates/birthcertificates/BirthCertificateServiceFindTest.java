@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 11/03/2025, 20:24. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 27/03/2025, 01:24. All rights reserved.
  *
  */
 
-package scot.carricksoftware.grants.services.certificates;
+package scot.carricksoftware.grants.services.certificates.birthcertificates;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,8 +14,6 @@ import scot.carricksoftware.grants.converters.certificates.birthcertificates.Bir
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.repositories.certificates.BirthCertificateRepository;
-import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
-import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;

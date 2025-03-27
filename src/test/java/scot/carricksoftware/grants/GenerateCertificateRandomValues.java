@@ -10,8 +10,14 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
+import scot.carricksoftware.grants.commands.certificates.divorcecertificates.DivorceCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.divorcecertificates.DivorceCertificateCommandImpl;
+import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
+import scot.carricksoftware.grants.domains.certificates.DivorceCertificate;
+import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 
 import java.util.Random;
 
@@ -56,5 +62,28 @@ public class GenerateCertificateRandomValues {
         return deathCertificateCommand;
     }
 
+    public static MarriageCertificate GetRandomMarriageCertificate() {
+        MarriageCertificate marriageCertificate = new MarriageCertificate();
+        marriageCertificate.setId(GetRandomLong());
+        return marriageCertificate;
+    }
+
+    public static MarriageCertificateCommand GetRandomMarriageCertificateCommand() {
+        MarriageCertificateCommand marriageCertificateCommand = new MarriageCertificateCommandImpl();
+        marriageCertificateCommand.setId(GetRandomLong());
+        return marriageCertificateCommand;
+    }
+
+    public static DivorceCertificate GetRandomDivorceCertificate() {
+        DivorceCertificate divorceCertificate = new DivorceCertificate();
+        divorceCertificate.setId(GetRandomLong());
+        return divorceCertificate;
+    }
+
+    public static DivorceCertificateCommand GetRandomDivorceCertificateCommand() {
+        DivorceCertificateCommand divorceCertificateCommand = new DivorceCertificateCommandImpl();
+        divorceCertificateCommand.setId(GetRandomLong());
+        return divorceCertificateCommand;
+    }
 
 }
