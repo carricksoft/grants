@@ -19,16 +19,16 @@ import scot.carricksoftware.grants.constants.MappingConstants;
 public interface BirthCertificateFormController {
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_NEW)
+    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_NEW)
     String getNewBirthCertificate(Model model);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_EDIT)
+    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_EDIT)
     String birthCertificateEdit(@Valid @PathVariable String id, Model model);
 
     String saveOrUpdate(@ModelAttribute BirthCertificateCommand countryCommand, BindingResult bindingResult, Model model);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_SHOW)
+    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_SHOW)
     String showById(@PathVariable String id, Model model);
 }

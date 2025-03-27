@@ -54,28 +54,28 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_NEW)
+    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_NEW)
     @Override
     public final String getNewBirthCertificate(final Model model) {
         logger.debug("BirthCertificateFormControllerImpl::getNewBirthCertificate");
-        model.addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, new BirthCertificateCommandImpl());
+        model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, new BirthCertificateCommandImpl());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.BIRTHCERTIFICATE_FORM;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_EDIT)
+    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_EDIT)
     @Override
     public final String birthCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::birthCertificateEdit");
-        model.addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, birthCertificateService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, birthCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.BIRTHCERTIFICATE_FORM;
     }
 
 
     @Override
-    @PostMapping(MappingConstants.BIRTHCERTIFICATE)
+    @PostMapping(MappingConstants.BIRTH_CERTIFICATE)
     public String saveOrUpdate(@Valid @ModelAttribute BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
 
@@ -89,19 +89,19 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         }
 
         BirthCertificateCommand savedCommand = birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
-        model.addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return MappingConstants.REDIRECT + MappingConstants.BIRTHCERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
+        return MappingConstants.REDIRECT + MappingConstants.BIRTH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTHCERTIFICATE_SHOW)
+    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_SHOW)
     @Override
     public String showById(@PathVariable String id, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
         BirthCertificateCommand savedCommand = birthCertificateConverter.convert(birthCertificateService.findById(Long.valueOf(id)));
-        model.addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.BIRTHCERTIFICATE_FORM;
     }

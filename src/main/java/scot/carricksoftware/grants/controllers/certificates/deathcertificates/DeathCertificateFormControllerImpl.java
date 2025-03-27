@@ -57,7 +57,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     @Override
     public final String getNewDeathCertificate(final Model model) {
         logger.debug("DeathCertificateFormControllerImpl::getNewDeathCertificate");
-        model.addAttribute(AttributeConstants.DEATHCERTIFICATE_COMMAND, new DeathCertificateCommandImpl());
+        model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, new DeathCertificateCommandImpl());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.DEATHCERTIFICATE_FORM;
     }
@@ -67,7 +67,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     @Override
     public final String deathCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::deathCertificateEdit");
-        model.addAttribute(AttributeConstants.DEATHCERTIFICATE_COMMAND, deathCertificateService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, deathCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.DEATHCERTIFICATE_FORM;
     }
@@ -88,7 +88,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         }
 
         DeathCertificateCommand savedCommand = deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
-        model.addAttribute(AttributeConstants.DEATHCERTIFICATE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return MappingConstants.REDIRECT + MappingConstants.DEATHCERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
@@ -100,7 +100,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     public String showById(@PathVariable String id, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
         DeathCertificateCommand savedCommand = deathCertificateConverter.convert(deathCertificateService.findById(Long.valueOf(id)));
-        model.addAttribute(AttributeConstants.DEATHCERTIFICATE_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.DEATHCERTIFICATE_FORM;
     }

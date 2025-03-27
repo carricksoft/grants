@@ -53,20 +53,20 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.CENSUSENTRY_NEW)
+    @GetMapping(MappingConstants.CENSUS_ENTRY_NEW)
     public final String getNewCensusEntry(final Model model) {
         logger.debug("CensusEntryFormControllerImpl::getNewCensusEntry");
-        model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, new CensusEntryCommandImpl());
+        model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, new CensusEntryCommandImpl());
         model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.CENSUSENTRY_FORM;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.CENSUSENTRY_EDIT)
+    @GetMapping(MappingConstants.CENSUS_ENTRY_EDIT)
     public final String censusEntryEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("CensusEntryFormControllerImpl::censusEntryEdit");
-        model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, censusEntryService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, censusEntryService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         return ViewConstants.CENSUSENTRY_FORM;
@@ -74,7 +74,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
 
 
     @Override
-    @PostMapping(MappingConstants.CENSUSENTRY)
+    @PostMapping(MappingConstants.CENSUS_ENTRY)
     public String saveOrUpdate(@Valid @ModelAttribute CensusEntryCommand censusEntryCommand, BindingResult bindingResult, Model model) {
         logger.debug("CensusEntryFormControllerImpl::saveOrUpdate");
 
@@ -89,18 +89,18 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         }
 
         CensusEntryCommand savedCommand = censusEntryService.saveCensusEntryCommand(censusEntryCommand);
-        model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, savedCommand);
-        return MappingConstants.REDIRECT + MappingConstants.CENSUSENTRY_SHOW.replace("{id}", "" + savedCommand.getId());
+        model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, savedCommand);
+        return MappingConstants.REDIRECT + MappingConstants.CENSUS_ENTRY_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.CENSUSENTRY_SHOW)
+    @GetMapping(MappingConstants.CENSUS_ENTRY_SHOW)
     public String showById(@PathVariable String id, Model model) {
         logger.debug("CensusEntryFormControllerImpl::saveOrUpdate");
         CensusEntryCommand savedCommand = censusEntryConverter.convert(censusEntryService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        model.addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.CENSUSES, censusService.findAll());
         return ViewConstants.CENSUSENTRY_FORM;
     }

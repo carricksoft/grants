@@ -93,7 +93,7 @@ public class DeathCertificateFormControllerTest {
         when(deathCertificateServiceMock.findById(id)).thenReturn(deathCertificate);
 
         assertEquals("certificates/deathCertificate/form", deathCertificateFormController.deathCertificateEdit(id + "", modelMock));
-        verify(modelMock).addAttribute(AttributeConstants.DEATHCERTIFICATE_COMMAND, deathCertificate);
+        verify(modelMock).addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, deathCertificate);
     }
 
     @Test
@@ -105,7 +105,7 @@ public class DeathCertificateFormControllerTest {
         when(deathCertificateServiceMock.findById(id)).thenReturn(deathCertificate);
         when(deathCertificateConverterMock.convert(deathCertificate)).thenReturn(deathCertificateCommand);
         assertEquals("certificates/deathCertificate/form", deathCertificateFormController.showById(id + "", modelMock));
-        verify(modelMock).addAttribute(AttributeConstants.DEATHCERTIFICATE_COMMAND, deathCertificateCommand);
+        verify(modelMock).addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, deathCertificateCommand);
     }
 
 }

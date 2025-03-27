@@ -46,7 +46,7 @@ public class DeathCertificateListControllerImpl implements DeathCertificateListC
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.DEATHCERTIFICATES, deathCertificateService.getPagedDeathCertificates(currentPage));
+        model.addAttribute(AttributeConstants.DEATH_CERTIFICATES, deathCertificateService.getPagedDeathCertificates(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.DEATHCERTIFICATE_LIST;
     }

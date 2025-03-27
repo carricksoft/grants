@@ -120,46 +120,46 @@ public class MappingConstants {
     public static final String CENSUS_EDIT = "census/{id}/edit";
 
     @SuppressWarnings({"unused"})
-    public static final String CENSUSENTRY_LIST = "/censusEntries";
+    public static final String CENSUS_ENTRY_LIST = "/censusEntries";
     @SuppressWarnings({"unused"})
-    public static final String CENSUSENTRY_NEXT = "/censusEntries/next";
+    public static final String CENSUS_ENTRY_NEXT = "/censusEntries/next";
     @SuppressWarnings({"unused"})
-    public static final String CENSUSENTRY_PREVIOUS = "/censusEntries/prev";
+    public static final String CENSUS_ENTRY_PREVIOUS = "/censusEntries/prev";
     @SuppressWarnings({"unused"})
-    public static final String CENSUSENTRY_REWIND = "/censusEntries/rewind";
+    public static final String CENSUS_ENTRY_REWIND = "/censusEntries/rewind";
     @SuppressWarnings({"unused"})
-    public static final String CENSUSENTRY_FF = "/censusEntries/ff";
+    public static final String CENSUS_ENTRY_FF = "/censusEntries/ff";
     @SuppressWarnings({"unused"})
-    public static final String CENSUSENTRY_NEW = "/censusEntry/new";
+    public static final String CENSUS_ENTRY_NEW = "/censusEntry/new";
     @SuppressWarnings({"unused"})
-    public static final String CENSUSENTRY = "/censusEntry";
+    public static final String CENSUS_ENTRY = "/censusEntry";
     @SuppressWarnings({"unused"})
-    public static final String CENSUSENTRY_SHOW = "/censusEntry/{id}/show";
+    public static final String CENSUS_ENTRY_SHOW = "/censusEntry/{id}/show";
     @SuppressWarnings({"unused"})
-    public static final String CENSUSENTRY_DELETE = "/censusEntry/{id}/delete";
+    public static final String CENSUS_ENTRY_DELETE = "/censusEntry/{id}/delete";
     @SuppressWarnings({"unused"})
-    public static final String CENSUSENTRY_EDIT = "censusEntry/{id}/edit";
+    public static final String CENSUS_ENTRY_EDIT = "censusEntry/{id}/edit";
 
     @SuppressWarnings({"unused"})
-    public static final String BIRTHCERTIFICATE_LIST = "/birthCertificates";
+    public static final String BIRTH_CERTIFICATE_LIST = "/birthCertificates";
     @SuppressWarnings({"unused"})
-    public static final String BIRTHCERTIFICATE_NEXT = "/birthCertificates/next";
+    public static final String BIRTH_CERTIFICATE_NEXT = "/birthCertificates/next";
     @SuppressWarnings({"unused"})
-    public static final String BIRTHCERTIFICATE_PREVIOUS = "/birthCertificates/prev";
+    public static final String BIRTH_CERTIFICATE_PREVIOUS = "/birthCertificates/prev";
     @SuppressWarnings({"unused"})
-    public static final String BIRTHCERTIFICATE_REWIND = "/birthCertificates/rewind";
+    public static final String BIRTH_CERTIFICATE_REWIND = "/birthCertificates/rewind";
     @SuppressWarnings({"unused"})
-    public static final String BIRTHCERTIFICATE_FF = "/birthCertificates/ff";
+    public static final String BIRTH_CERTIFICATE_FF = "/birthCertificates/ff";
     @SuppressWarnings({"unused"})
-    public static final String BIRTHCERTIFICATE_NEW = "/birthCertificate/new";
+    public static final String BIRTH_CERTIFICATE_NEW = "/birthCertificate/new";
     @SuppressWarnings({"unused"})
-    public static final String BIRTHCERTIFICATE = "/birthCertificate";
+    public static final String BIRTH_CERTIFICATE = "/birthCertificate";
     @SuppressWarnings({"unused"})
-    public static final String BIRTHCERTIFICATE_SHOW = "/birthCertificate/{id}/show";
+    public static final String BIRTH_CERTIFICATE_SHOW = "/birthCertificate/{id}/show";
     @SuppressWarnings({"unused"})
-    public static final String BIRTHCERTIFICATE_DELETE = "/birthCertificate/{id}/delete";
+    public static final String BIRTH_CERTIFICATE_DELETE = "/birthCertificate/{id}/delete";
     @SuppressWarnings({"unused"})
-    public static final String BIRTHCERTIFICATE_EDIT = "birthCertificate/{id}/edit";
+    public static final String BIRTH_CERTIFICATE_EDIT = "birthCertificate/{id}/edit";
 
     @SuppressWarnings({"unused"})
     public static final String DEATHCERTIFICATE_LIST = "/deathCertificates";
@@ -181,4 +181,25 @@ public class MappingConstants {
     public static final String DEATHCERTIFICATE_DELETE = "/deathCertificate/{id}/delete";
     @SuppressWarnings({"unused"})
     public static final String DEATHCERTIFICATE_EDIT = "deathCertificate/{id}/edit";
+
+    @SuppressWarnings({"unused"})
+    public static final String MARRIAGECERTIFICATE_LIST = "/marriageCertificates";
+    @SuppressWarnings({"unused"})
+    public static final String MARRIAGECERTIFICATE_NEXT = "/marriageCertificates/next";
+    @SuppressWarnings({"unused"})
+    public static final String MARRIAGECERTIFICATE_PREVIOUS = "/marriageCertificates/prev";
+    @SuppressWarnings({"unused"})
+    public static final String MARRIAGECERTIFICATE_REWIND = "/marriageCertificates/rewind";
+    @SuppressWarnings({"unused"})
+    public static final String MARRIAGECERTIFICATE_FF = "/marriageCertificates/ff";
+    @SuppressWarnings({"unused"})
+    public static final String MARRIAGECERTIFICATE_NEW = "/marriageCertificate/new";
+    @SuppressWarnings({"unused"})
+    public static final String MARRIAGECERTIFICATE = "/marriageCertificate";
+    @SuppressWarnings({"unused"})
+    public static final String MARRIAGECERTIFICATE_SHOW = "/marriageCertificate/{id}/show";
+    @SuppressWarnings({"unused"})
+    public static final String MARRIAGECERTIFICATE_DELETE = "/marriageCertificate/{id}/delete";
+    @SuppressWarnings({"unused"})
+    public static final String MARRIAGECERTIFICATE_EDIT = "marriageCertificate/{id}/edit";
 }

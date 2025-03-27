@@ -41,4 +41,7 @@ public class ViewConstants {
 
     public static final String DEATHCERTIFICATE_LIST = "certificates/deathCertificate/list";
     public static final String DEATHCERTIFICATE_FORM = "certificates/deathCertificate/form";
+
+    public static final String MARRIAGE_CERTIFICATE_LIST = "certificates/marriageCertificate/list";
+    public static final String MARRIAGE_CERTIFICATE_FORM = "certificates/marriageCertificate/form";
 }

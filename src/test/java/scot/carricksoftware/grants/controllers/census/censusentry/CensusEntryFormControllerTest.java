@@ -103,7 +103,7 @@ public class CensusEntryFormControllerTest {
         when(censusEntryServiceMock.findById(id)).thenReturn(censusEntry);
 
         assertEquals("censusentry/form", censusEntryController.censusEntryEdit(id + "", modelMock));
-        verify(modelMock).addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, censusEntry);
+        verify(modelMock).addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, censusEntry);
     }
 
     @Test
@@ -115,7 +115,7 @@ public class CensusEntryFormControllerTest {
         when(censusEntryServiceMock.findById(id)).thenReturn(censusEntry);
         when(censusEntryConverterMock.convert(censusEntry)).thenReturn(censusEntryCommand);
         assertEquals("censusentry/form", censusEntryController.showById(id + "", modelMock));
-        verify(modelMock).addAttribute(AttributeConstants.CENSUSENTRY_COMMAND, censusEntryCommand);
+        verify(modelMock).addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, censusEntryCommand);
     }
 
 }

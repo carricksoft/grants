@@ -96,7 +96,7 @@ public class BirthCertificateFormControllerTest {
         when(birthCertificateServiceMock.findById(id)).thenReturn(birthCertificate);
 
         assertEquals("certificates/birthCertificate/form", birthCertificateFormController.birthCertificateEdit(id + "", modelMock));
-        verify(modelMock).addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, birthCertificate);
+        verify(modelMock).addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, birthCertificate);
     }
 
     @Test
@@ -108,7 +108,7 @@ public class BirthCertificateFormControllerTest {
         when(birthCertificateServiceMock.findById(id)).thenReturn(birthCertificate);
         when(birthCertificateConverterMock.convert(birthCertificate)).thenReturn(birthCertificateCommand);
         assertEquals("certificates/birthCertificate/form", birthCertificateFormController.showById(id + "", modelMock));
-        verify(modelMock).addAttribute(AttributeConstants.BIRTHCERTIFICATE_COMMAND, birthCertificateCommand);
+        verify(modelMock).addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, birthCertificateCommand);
     }
 
 }

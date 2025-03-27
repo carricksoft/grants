@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.controllers.certificates.birthcertificates;
+package scot.carricksoftware.grants.controllers.certificates.marriagecertificates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -16,85 +16,85 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.certificates.marriagecertificates.MarriageCertificateService;
 
 import static java.lang.Integer.max;
 
 @Controller
-public class BirthCertificateListControllerImpl implements BirthCertificateListController {
+public class MarriageCertificateListControllerImpl implements MarriageCertificateListController {
 
-    private static final Logger logger = LogManager.getLogger(BirthCertificateListControllerImpl.class);
-    private final BirthCertificateService birthCertificateService;
+    private static final Logger logger = LogManager.getLogger(MarriageCertificateListControllerImpl.class);
+    private final MarriageCertificateService marriageCertificateService;
 
     private int currentPage = 0;
     private final ControllerHelper controllerHelper;
 
-    public BirthCertificateListControllerImpl(ControllerHelper controllerHelper,
-                                              BirthCertificateService birthCertificateService) {
+    public MarriageCertificateListControllerImpl(ControllerHelper controllerHelper,
+                                                 MarriageCertificateService marriageCertificateService) {
         this.controllerHelper = controllerHelper;
-        this.birthCertificateService = birthCertificateService;
+        this.marriageCertificateService = marriageCertificateService;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_LIST)
+    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_LIST)
     @Override
     public final String getListPage(final Model model) {
-        logger.debug("BirthCertificateListControllerImpl::getCensusPage");
+        logger.debug("MarriageCertificateListControllerImpl::getCensusPage");
         currentPage = 0;
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.BIRTH_CERTIFICATES, birthCertificateService.getPagedBirthCertificates(currentPage));
+        model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATES, marriageCertificateService.getPagedMarriageCertificates(currentPage));
         controllerHelper.addAttributes(model);
-        return ViewConstants.BIRTHCERTIFICATE_LIST;
+        return ViewConstants.MARRIAGE_CERTIFICATE_LIST;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_NEXT)
+    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_NEXT)
     @Override
     public final String getNextPage(final Model model) {
-        logger.debug("BirthCertificateListControllerImpl::getNextPage");
+        logger.debug("MarriageCertificateListControllerImpl::getNextPage");
         currentPage++;
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_PREVIOUS)
+    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_PREVIOUS)
     @Override
     public final String getPreviousPage(final Model model) {
-        logger.debug("BirthCertificateListControllerImpl::getPreviousPage");
+        logger.debug("MarriageCertificateListControllerImpl::getPreviousPage");
         currentPage = max(0, currentPage - 1);
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_REWIND)
+    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_REWIND)
     public final String getFirstPage(final Model model) {
-        logger.debug("BirthCertificateListControllerImpl::getFirstPage");
+        logger.debug("MarriageCertificateListControllerImpl::getFirstPage");
         currentPage = 0;
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_FF)
+    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_FF)
     @Override
     public final String getLastPage(final Model model) {
-        logger.debug("BirthCertificateListControllerImpl::getLastPage");
-        long certificateCount = birthCertificateService.count();
+        logger.debug("MarriageCertificateListControllerImpl::getLastPage");
+        long certificateCount = marriageCertificateService.count();
         currentPage = (int) (certificateCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
         return sendAttributesAndReturn(model);
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_DELETE)
+    @GetMapping(MappingConstants.MARRIAGECERTIFICATE_DELETE)
     @Override
-    public final String birthCertificateDelete(@PathVariable final String id) {
-        logger.debug("BirthCertificateControllerImpl::censusDelete");
-        birthCertificateService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.BIRTH_CERTIFICATE_LIST;
+    public final String marriageCertificateDelete(@PathVariable final String id) {
+        logger.debug("MarriageCertificateControllerImpl::censusDelete");
+        marriageCertificateService.deleteById(Long.valueOf(id));
+        return MappingConstants.REDIRECT + MappingConstants.MARRIAGECERTIFICATE_LIST;
     }
 
     @Override
