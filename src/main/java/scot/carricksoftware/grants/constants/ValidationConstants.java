@@ -26,5 +26,9 @@ public class ValidationConstants {
 
     public static final String PERSON_IS_NULL = "The person cannot be null.";
 
+    public static final String BRIDE_IS_NULL = "The bride cannot be null.";
+    public static final String GROOM_IS_NULL = "The groom cannot be null.";
+    public static final String SAME_BRIDE_AND_GROOM = "The bride and groom cannot be the same person.";
+
 
 }
