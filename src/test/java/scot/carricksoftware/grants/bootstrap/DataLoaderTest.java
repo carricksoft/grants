@@ -33,6 +33,9 @@ class DataLoaderTest {
     @Mock
     private DataLoadTwoPartyCertificates dataLoadTwoPartyCertificates;
 
+    @Mock
+    private DataLoadImages dataLoadImagesMock;
+
 
     @BeforeEach
     void setUp() {
@@ -40,7 +43,8 @@ class DataLoaderTest {
                 dataLoadPeopleMock,
                 dataLoadCensusMock,
                 dataLoadCertificatesMock,
-                dataLoadTwoPartyCertificates);
+                dataLoadTwoPartyCertificates,
+                dataLoadImagesMock);
     }
 
     @Test

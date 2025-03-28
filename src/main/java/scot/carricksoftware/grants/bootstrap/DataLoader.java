@@ -22,18 +22,21 @@ public class DataLoader implements CommandLineRunner {
     private final DataLoadCensus dataLoadCensus;
     private final DataLoadCertificates dataLoadCertificates;
     private final DataLoadTwoPartyCertificates dataLoadTwoPartyCertificates;
+    private final DataLoadImages dataLoadImages;
 
 
     public DataLoader(DataLoadPlaces dataLoadPlaces,
                       DataLoadPeople dataLoadPeople,
                       DataLoadCensus dataLoadCensus,
                       DataLoadCertificates dataLoadCertificates,
-                      DataLoadTwoPartyCertificates dataLoadTwoPartyCertificates) {
+                      DataLoadTwoPartyCertificates dataLoadTwoPartyCertificates,
+                      DataLoadImages dataLoadImages) {
         this.dataLoadPlaces = dataLoadPlaces;
         this.dataLoadPeople = dataLoadPeople;
         this.dataLoadCensus = dataLoadCensus;
         this.dataLoadCertificates = dataLoadCertificates;
         this.dataLoadTwoPartyCertificates = dataLoadTwoPartyCertificates;
+        this.dataLoadImages = dataLoadImages;
     }
 
     @Override
@@ -44,6 +47,7 @@ public class DataLoader implements CommandLineRunner {
         dataLoadCensus.load();
         dataLoadCertificates.load();
         dataLoadTwoPartyCertificates.load();
+        dataLoadImages.load();
     }
 
 }
