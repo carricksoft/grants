@@ -49,6 +49,8 @@ public class DataLoadTwoPartyCertificates {
 
     private void loadDivorceCertificates() {
         DivorceCertificate divorceCertificate = new DivorceCertificate();
+        divorceCertificate.setFirstParty(personService.findById(1L));
+        divorceCertificate.setSecondParty(personService.findById(2L));
         divorceCertificateService.save(divorceCertificate);
     }
 

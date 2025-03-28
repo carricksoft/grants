@@ -23,7 +23,8 @@
         <thead class="table-dark">
         <tr>
             <th>ID</th>
-            <th></th>
+            <th>First Party</th>
+            <th>Second Party</th>
             <th></th>
         </tr>
         </thead>
@@ -31,6 +32,8 @@
         <tr th:each="certificate   : ${divorceCertificates}">
 
             <td th:text="${certificate.id}">123</td>
+            <td th:text="${certificate.firstParty.toString()}">123</td>
+            <td th:text="${certificate.secondParty.toString()}">123</td>
             <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="@{'/divorceCertificate/' + ${certificate.id} + '/delete'}"

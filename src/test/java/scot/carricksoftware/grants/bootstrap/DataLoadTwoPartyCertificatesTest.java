@@ -56,12 +56,17 @@ public class DataLoadTwoPartyCertificatesTest {
 
     @Test
     public void divorceCertificatesAreLoadedTest() {
-
         ArgumentCaptor<DivorceCertificate> captor = ArgumentCaptor.forClass(DivorceCertificate.class);
+        Person person1 = GetRandomPerson();
+        Person person2 = GetRandomPerson();
+        when(personServiceMock.findById(1L)).thenReturn(person1);
+        when(personServiceMock.findById(2L)).thenReturn(person2);
 
         dataLoadTwoPartyCertificates.load();
 
         verify(divorceCertificateServiceMock).save(captor.capture());
+        assertEquals(person1, captor.getValue().getFirstParty());
+        assertEquals(person2, captor.getValue().getSecondParty());
     }
 
 
