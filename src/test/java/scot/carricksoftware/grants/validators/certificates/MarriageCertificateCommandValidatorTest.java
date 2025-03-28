@@ -81,7 +81,7 @@ class MarriageCertificateCommandValidatorTest {
         marriageCertificateCommand.setBride(person);
         marriageCertificateCommand.setGroom(person);
 
-       runAndCapture();
+        runAndCapture();
 
         boolean foundGroom = false;
         boolean foundBride = false;

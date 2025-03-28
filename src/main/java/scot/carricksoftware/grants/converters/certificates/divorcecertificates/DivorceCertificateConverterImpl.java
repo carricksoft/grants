@@ -20,6 +20,8 @@ public class DivorceCertificateConverterImpl implements DivorceCertificateConver
         DivorceCertificateCommand target = new DivorceCertificateCommandImpl();
 
         target.setId(source.getId());
+        target.setFirstParty(source.getFirstParty());
+        target.setSecondParty(source.getSecondParty());
 
         return target;
     }
