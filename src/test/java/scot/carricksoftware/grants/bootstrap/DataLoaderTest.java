@@ -72,8 +72,14 @@ class DataLoaderTest {
     }
 
     @Test
-    void loadCertificatesTwPartyIsCalledTest() {
+    void loadCertificatesTwoPartyIsCalledTest() {
         dataLoader.run();
         verify(dataLoadTwoPartyCertificates).load();
+    }
+
+    @Test
+    void loadCertificatesImagesIsCalledTest() {
+        dataLoader.run();
+        verify(dataLoadImagesMock).load();
     }
 }
