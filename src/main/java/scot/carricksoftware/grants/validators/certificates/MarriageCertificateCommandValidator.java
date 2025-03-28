@@ -23,7 +23,10 @@ public class MarriageCertificateCommandValidator {
         logger.debug("Validating death certificate command");
         validateBrideAndGroomInIsolation(marriageCertificateCommand, bindingResult);
         if (!bindingResult.hasErrors()) {
-            validateBrideAndGroomTogether(marriageCertificateCommand, bindingResult);
+            if (marriageCertificateCommand.getBride() != null &&
+                    marriageCertificateCommand.getGroom() != null) {
+                validateBrideAndGroomTogether(marriageCertificateCommand, bindingResult);
+            }
         }
     }
 
@@ -41,7 +44,7 @@ public class MarriageCertificateCommandValidator {
     }
 
     private void validateBrideAndGroomTogether(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
-        if (marriageCertificateCommand.getBride().equals( marriageCertificateCommand.getBride())) {
+        if (marriageCertificateCommand.getBride().equals(marriageCertificateCommand.getBride())) {
             bindingResult.rejectValue("groom", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.SAME_BRIDE_AND_GROOM);
@@ -50,8 +53,6 @@ public class MarriageCertificateCommandValidator {
                     ValidationConstants.SAME_BRIDE_AND_GROOM);
         }
     }
-
-
 
 
 }
