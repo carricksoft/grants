@@ -9,8 +9,8 @@ public enum CensusBoundaryType {
 
     CIVIL_PARISH("Civil Parish"),
     PARISH_WARD("Parish Ward"),
-    ECCLESIASTICAL_PARISH("Ecclesical Parish"),
-    QUOAD_SACRA__PARISH ("Quoad Sacra Parish"),
+    @SuppressWarnings("SpellCheckingInspection") ECCLESIASTICAL_PARISH("Ecclesical Parish"),
+    @SuppressWarnings("SpellCheckingInspection") QUOAD_SACRA__PARISH ("Quoad Sacra Parish"),
     SCHOOL_BOARD_DISTRICT ("School Board District"),
     PARLIAMENTARY_BURGH  ("Parliamentary Burgh"),
     PARLIAMENTARY_DIVISION("Parliamentary Division"),

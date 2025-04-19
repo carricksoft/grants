@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.commands.census;
 
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ public class CensusCommandImpl implements CensusCommand {
     private List<CensusEntry> censusEntries = new ArrayList<>();
 
     private Place place;
+
+    private CensusBoundaryType boundaryType;
 
     @Override
     public Long getId() {
@@ -60,5 +63,15 @@ public class CensusCommandImpl implements CensusCommand {
     @Override
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    @Override
+    public CensusBoundaryType getBoundaryType() {
+        return boundaryType;
+    }
+
+    @Override
+    public void setBoundaryType(CensusBoundaryType boundaryType) {
+        this.boundaryType = boundaryType;
     }
 }
