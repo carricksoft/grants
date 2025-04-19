@@ -1,0 +1,32 @@
+/*
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
+ *
+ */
+
+package scot.carricksoftware.grants.enums.census;
+
+public enum CensusBoundaryType {
+
+    CIVIL_PARISH("Civil Parish"),
+    PARISH_WARD("Parish Ward"),
+    ECCLESIASTICAL_PARISH("Ecclesical Parish"),
+    QUOAD_SACRA__PARISH ("Quoad Sacra Parish"),
+    SCHOOL_BOARD_DISTRICT ("School Board District"),
+    PARLIAMENTARY_BURGH  ("Parliamentary Burgh"),
+    PARLIAMENTARY_DIVISION("Parliamentary Division"),
+    ROYAL_BURGH  ("Royal Burgh"),
+    MUNICIPAL_BURGH("Municipal Burgh"),
+    POLICE_BURGH  ("Police Burgh"),
+    BURGH_WARD ("Burgh Ward"),
+    TOWN ("Town"),
+    VILLAGE_OR_HAMLET ("Village or Hamlet"),
+    ISLAND ("Island");
+
+    @SuppressWarnings("unused")
+    public final String label;
+
+    @SuppressWarnings("unused")
+    CensusBoundaryType(String label) {
+        this.label = label;
+    }
+}

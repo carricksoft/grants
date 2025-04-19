@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.domains.census;
 import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class Census extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "census_place_id")
     private Place place;
+
+    private CensusBoundaryType boundaryType;
 
 
     public LocalDate getDate() {
@@ -53,5 +56,13 @@ public class Census extends BaseEntity {
 
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    public CensusBoundaryType getBoundaryType() {
+        return boundaryType;
+    }
+
+    public void setBoundaryType(CensusBoundaryType boundaryType) {
+        this.boundaryType = boundaryType;
     }
 }

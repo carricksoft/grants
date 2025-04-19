@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants.enums.censusentry;
 
 public enum CensusEntryCondition {
+
     @SuppressWarnings("unused") WIDOW("Widow"),
     @SuppressWarnings("unused") WIDOWER("Widower"),
     @SuppressWarnings("unused") MARRIED("Married"),
