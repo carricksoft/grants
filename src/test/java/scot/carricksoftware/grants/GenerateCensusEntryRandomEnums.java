@@ -22,7 +22,7 @@ public class GenerateCensusEntryRandomEnums {
         CensusEntryCondition[] conditions = CensusEntryCondition.values();
 
         Random random = new Random();
-        int randomInt = random.nextInt(0, conditions.length);
+        int randomInt = random.nextInt(0, conditions.length );
         return conditions[randomInt];
     }
 
@@ -30,7 +30,7 @@ public class GenerateCensusEntryRandomEnums {
         CensusEntryGaelic[] gaelicArray = CensusEntryGaelic.values();
 
         Random random = new Random();
-        int randomInt = random.nextInt(0, gaelicArray.length);
+        int randomInt = random.nextInt(0, gaelicArray.length );
         return gaelicArray[randomInt];
     }
 
@@ -38,7 +38,7 @@ public class GenerateCensusEntryRandomEnums {
         CensusEntryRelationship[] relationships = CensusEntryRelationship.values();
 
         Random random = new Random();
-        int randomInt = random.nextInt(0, relationships.length);
+        int randomInt = random.nextInt(0, relationships.length );
         return relationships[randomInt];
     }
 
@@ -46,7 +46,7 @@ public class GenerateCensusEntryRandomEnums {
         CensusEntryWorker[] workers = CensusEntryWorker.values();
 
         Random random = new Random();
-        int randomInt = random.nextInt(0, workers.length);
+        int randomInt = random.nextInt(0, workers.length );
         return workers[randomInt];
     }
 }

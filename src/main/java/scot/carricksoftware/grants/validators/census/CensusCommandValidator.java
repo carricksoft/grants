@@ -11,8 +11,6 @@ import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
-import java.time.LocalDate;
-
 @Component
 public class CensusCommandValidator {
 
@@ -25,10 +23,6 @@ public class CensusCommandValidator {
             bindingResult.rejectValue("date", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.DATE_IS_NULL);
-        } else if (censusCommand.getDate().isAfter(LocalDate.now())) {
-            bindingResult.rejectValue("date", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.DATE_IN_FUTURE);
         }
     }
 }

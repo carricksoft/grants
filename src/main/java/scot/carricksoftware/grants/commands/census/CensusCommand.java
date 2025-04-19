@@ -8,8 +8,8 @@ package scot.carricksoftware.grants.commands.census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
+import scot.carricksoftware.grants.enums.census.CensusDate;
 
-import java.time.LocalDate;
 import java.util.List;
 
 public interface CensusCommand {
@@ -17,9 +17,9 @@ public interface CensusCommand {
 
     void setId(Long id);
 
-    LocalDate getDate();
+    CensusDate getDate();
 
-    void setDate(LocalDate date);
+    void setDate(CensusDate date);
 
     List<CensusEntry> getCensusEntries();
 

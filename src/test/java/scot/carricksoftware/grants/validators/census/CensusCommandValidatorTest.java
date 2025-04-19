@@ -16,8 +16,6 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
 
-import java.time.LocalDate;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
@@ -65,21 +63,5 @@ class CensusCommandValidatorTest {
 
     }
 
-    @Test
-    public void DateInTheFutureTest() {
-        censusCommand.setId(GetRandomLong());
-        censusCommand.setDate(LocalDate.now().plusDays(1));
-
-        censusCommandValidator.validate(censusCommand, bindingResultMock);
-
-        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
-                stringArgumentCaptor2.capture(),
-                objectArgumentCaptor.capture(),
-                stringArgumentCaptor3.capture());
-
-        assertEquals("date", stringArgumentCaptor.getValue());
-        assertEquals("Date should not be in the future.", stringArgumentCaptor3.getValue());
-
-    }
 
 }

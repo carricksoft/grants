@@ -10,13 +10,11 @@ import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.places.Place;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
-import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 class CensusCommandTest {
@@ -28,29 +26,8 @@ class CensusCommandTest {
         command = new CensusCommandImpl();
     }
 
-    @Test
-    void getIdTest() {
-        assertNull(command.getId());
-    }
 
-    @Test
-    void setIdTest() {
-        Long id = GetRandomLong();
-        command.setId(id);
-        assertEquals(id, command.getId());
-    }
 
-    @Test
-    void getDateTest() {
-        assertNull(command.getDate());
-    }
-
-    @Test
-    void setDateTest() {
-        LocalDate date = LocalDate.now();
-        command.setDate(date);
-        assertEquals(date, command.getDate());
-    }
 
     @Test
     void getCensusEntriesTest() {

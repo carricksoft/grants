@@ -13,8 +13,7 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 
-import java.time.LocalDate;
-
+import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusDate;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
@@ -32,7 +31,7 @@ public class GenerateRandomCensusValues {
     public static CensusCommand GetRandomCensusCommand() {
         CensusCommand censusCommand = new CensusCommandImpl();
         censusCommand.setId(GetRandomLong());
-        censusCommand.setDate(LocalDate.now());
+        censusCommand.setDate(GetRandomCensusDate());
         return censusCommand;
     }
 

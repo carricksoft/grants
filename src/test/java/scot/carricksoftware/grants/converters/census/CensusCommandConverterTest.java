@@ -13,13 +13,14 @@ import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
+import scot.carricksoftware.grants.enums.census.CensusDate;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusBoundaryType;
+import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusDate;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
@@ -35,7 +36,7 @@ class CensusCommandConverterTest {
     @Test
     void convertTest() {
         Long id = GetRandomLong();
-        LocalDate date = LocalDate.now();
+        CensusDate date = GetRandomCensusDate();
         CensusCommand source = new CensusCommandImpl();
         List<CensusEntry> censusEntries = new ArrayList<>();
         censusEntries.add(GetRandomCensusEntry());

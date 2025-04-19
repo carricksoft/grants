@@ -12,6 +12,7 @@ import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
+import scot.carricksoftware.grants.enums.census.CensusDate;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
@@ -21,8 +22,6 @@ import scot.carricksoftware.grants.services.census.CensusService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
-
-import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -66,7 +65,7 @@ public class DataLoadCensusTest {
         dataLoadCensus.load();
         verify(censusServiceMock).saveCensusCommand(captor.capture());
 
-        assertEquals(captor.getValue().getDate(), LocalDate.now());
+        assertEquals( CensusDate.CENSUS_1881, captor.getValue().getDate());
         assertEquals(captor.getValue().getPlace(), place);
         assertEquals(CensusBoundaryType.ISLAND, captor.getValue().getBoundaryType());
     }
