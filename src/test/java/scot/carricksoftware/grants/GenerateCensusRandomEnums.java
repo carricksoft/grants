@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants;import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
+import scot.carricksoftware.grants.enums.census.CensusDate;
 
 import java.util.Random;
 
@@ -19,6 +20,15 @@ public class GenerateCensusRandomEnums {
         Random random = new Random();
         int randomInt = random.nextInt(0, boundaryTypes.length );
         return boundaryTypes[randomInt];
+    }
+
+    public static CensusDate GetRandomCensusDate() {
+
+        CensusDate[] dates = CensusDate.values();
+
+        Random random = new Random();
+        int randomInt = random.nextInt(0, dates.length );
+        return dates[randomInt];
     }
 
 

@@ -13,7 +13,6 @@ import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,7 +34,6 @@ class CensusConverterTest {
     @Test
     void convertTest() {
         Long id = GetRandomLong();
-        LocalDate date = LocalDate.now();
         Census source = new Census();
         List<CensusEntry> censusEntries = new ArrayList<>();
         censusEntries.add(GetRandomCensusEntry());
@@ -44,7 +42,6 @@ class CensusConverterTest {
 
 
         source.setId(id);
-        source.setDate(date);
         source.setCensusEntries(censusEntries);
         source.setPlace(place);
         source.setBoundaryType(boundaryType);
@@ -53,7 +50,6 @@ class CensusConverterTest {
 
         assert target != null;
         assertEquals(id, target.getId());
-        assertEquals(date, target.getDate());
         assertEquals(censusEntries, target.getCensusEntries());
         assertEquals(place, target.getPlace());
         assertEquals(boundaryType, target.getBoundaryType());

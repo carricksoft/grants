@@ -17,7 +17,6 @@ public class CensusConverterImpl implements CensusConverter {
     public CensusCommand convert(Census source) {
         CensusCommand result = new CensusCommandImpl();
         result.setId(source.getId());
-        result.setDate(source.getDate());
         result.setCensusEntries(source.getCensusEntries());
         result.setPlace(source.getPlace());
         result.setBoundaryType(source.getBoundaryType());

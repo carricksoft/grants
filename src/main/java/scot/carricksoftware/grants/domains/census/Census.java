@@ -9,15 +9,16 @@ import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
+import scot.carricksoftware.grants.enums.census.CensusDate;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Census extends BaseEntity {
 
-    private LocalDate date;
+    @Enumerated(EnumType.STRING)
+    private CensusDate date;
 
     @OneToMany(mappedBy = "census", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CensusEntry> censusEntries = new ArrayList<>();
@@ -29,12 +30,11 @@ public class Census extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private CensusBoundaryType boundaryType;
 
-
-    public LocalDate getDate() {
+    public CensusDate getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(CensusDate date) {
         this.date = date;
     }
 

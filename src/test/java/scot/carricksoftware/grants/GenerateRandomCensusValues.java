@@ -26,7 +26,6 @@ public class GenerateRandomCensusValues {
     public static Census GetRandomCensus() {
         Census census = new Census();
         census.setId(GetRandomLong());
-        census.setDate(LocalDate.now());
         return census;
     }
 

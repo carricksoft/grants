@@ -10,10 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
+import scot.carricksoftware.grants.enums.census.CensusDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusBoundaryType;
+import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusDate;
 
 @ExtendWith(MockitoExtension.class)
 class CensusEnumTest {
@@ -35,6 +37,18 @@ class CensusEnumTest {
         CensusBoundaryType boundaryType = GetRandomCensusBoundaryType();
         census.setBoundaryType(boundaryType);
         assertEquals(boundaryType, census.getBoundaryType());
+    }
+
+    @Test
+    public void getDateTest() {
+        assertNull(census.getDate());
+    }
+
+    @Test
+    public void setDateTest() {
+        CensusDate date = GetRandomCensusDate();
+        census.setDate(date);
+        assertEquals(date, census.getDate());
     }
 
 }

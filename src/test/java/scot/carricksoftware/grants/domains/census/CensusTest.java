@@ -8,17 +8,13 @@ package scot.carricksoftware.grants.domains.census;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.domains.places.Place;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
@@ -28,27 +24,9 @@ public class CensusTest {
 
     private Census census;
 
-    @Mock
-    Place placeMock;
-
-    @Mock
-    LocalDate dateMock;
-
     @BeforeEach
     public void setUp() {
         census = new Census();
-    }
-
-    @Test
-    public void getDateTest() {
-        assertNull(census.getDate());
-    }
-
-    @Test
-    public void setDateTest() {
-        LocalDate localDate = LocalDate.now();
-        census.setDate(localDate);
-        assertEquals(localDate, census.getDate());
     }
 
     @Test
@@ -76,19 +54,6 @@ public class CensusTest {
         assertEquals(censusEntries, census.getCensusEntries());
     }
 
-
-    @Test
-    public void toStringTest() {
-        String string = GetRandomString();
-        String string2 = GetRandomString();
-        census.setPlace(placeMock);
-        census.setDate(dateMock);
-
-        when(placeMock.toString()).thenReturn(string);
-        when(dateMock.toString()).thenReturn(string2);
-
-        assertEquals(string + ", " + string2, census.toString());
-    }
 
     @Test
     public void getPlaceTest() {

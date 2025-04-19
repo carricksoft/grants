@@ -16,4 +16,5 @@
 15: Generate changelog (ctrl-shift-A) as sql
 16: Add the new file to master.xml
 16: Run in terminal  mvn clean test liquibase:update
+17: Check using dbeaver that the database has changed
 
