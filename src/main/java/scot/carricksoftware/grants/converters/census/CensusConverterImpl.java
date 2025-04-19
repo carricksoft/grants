@@ -20,6 +20,7 @@ public class CensusConverterImpl implements CensusConverter {
         result.setDate(source.getDate());
         result.setCensusEntries(source.getCensusEntries());
         result.setPlace(source.getPlace());
+        result.setBoundaryType(source.getBoundaryType());
         return result;
     }
 }
