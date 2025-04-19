@@ -26,6 +26,7 @@ public class Census extends BaseEntity {
     @JoinColumn(name = "census_place_id")
     private Place place;
 
+    @Enumerated(EnumType.STRING)
     private CensusBoundaryType boundaryType;
 
 

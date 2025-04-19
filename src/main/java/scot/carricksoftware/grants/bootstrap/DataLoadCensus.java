@@ -14,6 +14,7 @@ import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
@@ -62,6 +63,7 @@ public class DataLoadCensus {
         Place place = placeService.findById(1L);
         censusCommand.setDate(LocalDate.now());
         censusCommand.setPlace(place);
+        censusCommand.setBoundaryType(CensusBoundaryType.ISLAND);
         censusService.saveCensusCommand(censusCommand);
     }
 

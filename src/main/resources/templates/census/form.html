@@ -55,6 +55,16 @@ rounded-3 text-center p-4">
                     </ul>
                 </div>
             </div>
+            <div class="col-md-3">
+                <label for="boundaryType">Boundary Type</label>
+                <div>
+                    <select id="boundaryType" style="width: 200px;" name="boundaryType" th:field="*{boundaryType}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="value : ${T(scot.carricksoftware.grants.enums.census.CensusBoundaryType).values()}"
+                                th:value="${value}" th:text="${value}"></option>
+                    </select>
+                </div>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/censuses}" th:text="${'List all'}">List all</a>

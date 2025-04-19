@@ -11,6 +11,7 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
@@ -67,6 +68,7 @@ public class DataLoadCensusTest {
 
         assertEquals(captor.getValue().getDate(), LocalDate.now());
         assertEquals(captor.getValue().getPlace(), place);
+        assertEquals(CensusBoundaryType.ISLAND, captor.getValue().getBoundaryType());
     }
 
     @Test

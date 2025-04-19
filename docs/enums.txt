@@ -1,6 +1,6 @@
 0:Switch to dev
 1:Create Enum
-2: Domain
+2: Domain (enumerated as a string)
 3: Domain getter and setter
 4 :Random Value
 5: Test getter and setter in Domain Enums Test
@@ -10,6 +10,7 @@
 10: Converter Test
 11: Bootstrap
 12: Bootstrap Test
+12a: Check using the h2 console
 13: Modify the form
 14: Switch to uat
 15: Generate changelog (ctrl-shift-A) as sql
