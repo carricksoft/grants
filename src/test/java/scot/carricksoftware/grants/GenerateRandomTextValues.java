@@ -21,9 +21,9 @@ import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPla
 public class GenerateRandomTextValues {
 
     public static DocumentText GetRandomDocumentText() {
-       DocumentText documentText = new DocumentText();
-       documentText.setId(GetRandomLong());
-       return documentText;
+        DocumentText documentText = new DocumentText();
+        documentText.setId(GetRandomLong());
+        return documentText;
     }
 
     @SuppressWarnings("unused")

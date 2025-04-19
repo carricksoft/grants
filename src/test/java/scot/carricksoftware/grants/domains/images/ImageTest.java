@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 class ImageTest {
-private Image image;
+    private Image image;
 
     @BeforeEach
     void setUp() {

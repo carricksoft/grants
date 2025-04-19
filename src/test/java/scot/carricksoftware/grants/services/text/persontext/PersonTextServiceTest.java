@@ -81,6 +81,6 @@ public class PersonTextServiceTest {
         when(personTextRepositoryMock.findAll(any(Pageable.class))).thenReturn(pageMock);
         assertEquals(result, personTextService.getPagedPersonTexts(0));
     }
-    
+
 
 }

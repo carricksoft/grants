@@ -36,7 +36,6 @@ class PersonImageCommandConverterTest {
         source.setId(Id);
 
 
-
         PersonImage target = converter.convert(source);
 
         assertNotNull(target);

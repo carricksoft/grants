@@ -16,7 +16,7 @@ import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPla
 
 class PlaceImageTest {
 
-private PlaceImage image;
+    private PlaceImage image;
 
     @BeforeEach
     void setUp() {
@@ -41,7 +41,7 @@ private PlaceImage image;
     }
 
     @Test
-    public  void setPlaceTest() {
+    public void setPlaceTest() {
         Place place = GetRandomPlace();
         image.setPlace(place);
         assertEquals(place, image.getPlace());

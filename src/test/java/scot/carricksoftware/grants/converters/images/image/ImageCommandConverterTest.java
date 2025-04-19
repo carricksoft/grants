@@ -31,7 +31,6 @@ class ImageCommandConverterTest {
         source.setId(Id);
 
 
-
         Image target = converter.convert(source);
 
         assertNotNull(target);

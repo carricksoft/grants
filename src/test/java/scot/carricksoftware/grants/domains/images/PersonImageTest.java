@@ -14,7 +14,7 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 
 class PersonImageTest {
 
-private PersonImage image;
+    private PersonImage image;
 
     @BeforeEach
     void setUp() {

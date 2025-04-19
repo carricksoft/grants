@@ -38,7 +38,6 @@ class PlaceImageCommandConverterTest {
         source.setPlace(place);
 
 
-
         PlaceImage target = converter.convert(source);
 
         assertNotNull(target);

@@ -81,6 +81,6 @@ public class DocumentTextServiceTest {
         when(documentTextRepositoryMock.findAll(any(Pageable.class))).thenReturn(pageMock);
         assertEquals(result, documentTextService.getPagedDocumentTexts(0));
     }
-    
+
 
 }

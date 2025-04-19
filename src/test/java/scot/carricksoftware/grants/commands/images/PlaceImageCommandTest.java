@@ -41,7 +41,7 @@ class PlaceImageCommandTest {
     }
 
     @Test
-    void  setPlaceTest() {
+    void setPlaceTest() {
         Place place = GetRandomPlace();
         imageCommand.setPlace(place);
         assertEquals(place, imageCommand.getPlace());

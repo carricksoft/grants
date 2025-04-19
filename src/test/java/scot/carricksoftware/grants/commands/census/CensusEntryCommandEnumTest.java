@@ -36,8 +36,8 @@ class CensusEntryCommandEnumTest {
         CensusEntryRelationship relationship = GetRandomCensusEntryRelationship();
         command.setRelationship(relationship);
         assertEquals(relationship, command.getRelationship());
-    } 
-    
+    }
+
     @Test
     void getConditionTest() {
         assertNull(command.getCondition());
@@ -73,5 +73,5 @@ class CensusEntryCommandEnumTest {
         command.setWorker(worker);
         assertEquals(worker, command.getWorker());
     }
-    
+
 }

@@ -81,6 +81,6 @@ public class PlaceTextServiceTest {
         when(placeTextRepositoryMock.findAll(any(Pageable.class))).thenReturn(pageMock);
         assertEquals(result, placeTextService.getPagedPlaceTexts(0));
     }
-    
+
 
 }
