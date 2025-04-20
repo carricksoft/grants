@@ -58,7 +58,7 @@ public class DataLoadCensus {
         logger.debug("DataLoadCensus::loadCensus");
         CensusCommand censusCommand = new CensusCommandImpl();
         Place place = placeService.findById(1L);
-        censusCommand.setDate(CensusDate.CENSUS_1881);
+        censusCommand.setCensusDate(CensusDate.CENSUS_1881);
         censusCommand.setPlace(place);
         censusCommand.setBoundaryType(CensusBoundaryType.ISLAND);
         censusService.saveCensusCommand(censusCommand);

@@ -31,7 +31,7 @@ public class GenerateRandomCensusValues {
     public static CensusCommand GetRandomCensusCommand() {
         CensusCommand censusCommand = new CensusCommandImpl();
         censusCommand.setId(GetRandomLong());
-        censusCommand.setDate(GetRandomCensusDate());
+        censusCommand.setCensusDate(GetRandomCensusDate());
         return censusCommand;
     }
 

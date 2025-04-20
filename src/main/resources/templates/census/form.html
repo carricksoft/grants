@@ -45,16 +45,16 @@ rounded-3 text-center p-4">
                        th:field="*{id}" type="text" readonly>
             </div>
             <div class="col-md-3">
-                <label for="date">Date</label>
+                <label for="censusDate">Date</label>
                 <div>
-                    <select id="date" style="width: 200px;" name="date" th:field="*{date}">
+                    <select id="censusDate" style="width: 200px;" name="censusDate" th:field="*{censusDate}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="value : ${T(scot.carricksoftware.grants.enums.census.CensusDate).values()}"
                                 th:value="${value}" th:text="${value.label}"></option>
                     </select>
-                    <div th:if="${#fields.hasErrors('date')}">
+                    <div th:if="${#fields.hasErrors('censusDate')}">
                         <ul class="text-danger">
-                            <li th:each="err : ${#fields.errors('date')}" th:text="${err}"/>
+                            <li th:each="err : ${#fields.errors('censusDate')}" th:text="${err}"/>
                         </ul>
                     </div>
                 </div>

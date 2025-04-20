@@ -18,7 +18,7 @@ import java.util.List;
 public class Census extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
-    private CensusDate date;
+    private CensusDate censusDate;
 
     @OneToMany(mappedBy = "census", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CensusEntry> censusEntries = new ArrayList<>();
@@ -30,12 +30,12 @@ public class Census extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private CensusBoundaryType boundaryType;
 
-    public CensusDate getDate() {
-        return date;
+    public CensusDate getCensusDate() {
+        return censusDate;
     }
 
-    public void setDate(CensusDate date) {
-        this.date = date;
+    public void setCensusDate(CensusDate date) {
+        this.censusDate = date;
     }
 
     public List<CensusEntry> getCensusEntries() {
@@ -48,7 +48,7 @@ public class Census extends BaseEntity {
 
     @Override
     public String toString() {
-        return place.toString() + ", " + date.label;
+        return place.toString() + ", " + censusDate.label;
     }
 
     public Place getPlace() {

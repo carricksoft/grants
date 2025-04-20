@@ -38,14 +38,14 @@ class CensusCommandEnumTest {
     }
 
     @Test
-    void getDateTest() {
-        assertNull(command.getDate());
+    void getVCensusDateTest() {
+        assertNull(command.getCensusDate());
     }
 
     @Test
-    void setDateTest() {
-        CensusDate date = GetRandomCensusDate();
-        command.setDate(date);
-        assertEquals(date, command.getDate());
+    void setCensusDateTest() {
+        CensusDate censusDate = GetRandomCensusDate();
+        command.setCensusDate(censusDate);
+        assertEquals(censusDate, command.getCensusDate());
     }
 }

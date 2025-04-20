@@ -36,7 +36,7 @@ class CensusCommandConverterTest {
     @Test
     void convertTest() {
         Long id = GetRandomLong();
-        CensusDate date = GetRandomCensusDate();
+        CensusDate censusDate = GetRandomCensusDate();
         CensusCommand source = new CensusCommandImpl();
         List<CensusEntry> censusEntries = new ArrayList<>();
         censusEntries.add(GetRandomCensusEntry());
@@ -44,7 +44,7 @@ class CensusCommandConverterTest {
         CensusBoundaryType boundaryType = GetRandomCensusBoundaryType();
 
         source.setId(id);
-        source.setDate(date);
+        source.setCensusDate(censusDate);
         source.setCensusEntries(censusEntries);
         source.setPlace(place);
         source.setBoundaryType(boundaryType);
@@ -56,6 +56,6 @@ class CensusCommandConverterTest {
         assertEquals(censusEntries, target.getCensusEntries());
         assertEquals(place, target.getPlace());
         assertEquals(boundaryType, target.getBoundaryType());
-        assertEquals(date, target.getDate());
+        assertEquals(censusDate, target.getCensusDate());
     }
 }

@@ -17,7 +17,7 @@
             <column autoIncrement="true" name="id" type="BIGINT">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_census"/>
             </column>
-            <column name="date" type="DATE"/>
+            <column name="censusDate" type="DATE"/>
             <column name="census_place_id" type="BIGINT"/>
         </createTable>
     </changeSet>

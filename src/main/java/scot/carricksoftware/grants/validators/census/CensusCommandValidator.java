@@ -19,7 +19,7 @@ public class CensusCommandValidator {
     }
 
     private void validateDate(CensusCommand censusCommand, BindingResult bindingResult) {
-        if (censusCommand.getDate() == null) {
+        if (censusCommand.getCensusDate() == null) {
             bindingResult.rejectValue("date", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.DATE_IS_NULL);

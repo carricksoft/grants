@@ -63,7 +63,7 @@ class CensusCommandValidatorTest {
     @Test
     public void nullBoundaryTest() {
         censusCommand.setPlace(GetRandomPlace());
-        censusCommand.setDate(GetRandomCensusDate());
+        censusCommand.setCensusDate(GetRandomCensusDate());
         censusCommandValidator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
         assertEquals("boundaryType", stringArgumentCaptor.getValue());
@@ -74,7 +74,7 @@ class CensusCommandValidatorTest {
 
     @Test
     public void nullPlaceTest() {
-        censusCommand.setDate(GetRandomCensusDate());
+        censusCommand.setCensusDate(GetRandomCensusDate());
         censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
         censusCommandValidator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());

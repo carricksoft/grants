@@ -77,12 +77,12 @@ public class CensusTest {
 
     @Test
     public void toStringTest() {
-        CensusDate date = GetRandomCensusDate();
+        CensusDate censusDate = GetRandomCensusDate();
         String placeString =  GetRandomString();
         when(placeMock.toString()).thenReturn(placeString);
-        census.setDate(date);
+        census.setCensusDate(censusDate);
         census.setPlace(placeMock);
-        assertEquals(placeString + ", " + date.label, census.toString());
+        assertEquals(placeString + ", " + censusDate.label, census.toString());
     }
 
 }

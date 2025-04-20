@@ -33,7 +33,7 @@
             <tr th:each="census   : ${censuses}">
                 <td th:text="${census.id}">123</td>
                 <td th:text="${census.place}">123</td>
-                <td th:text="${census.date.label}"></td>
+                <td th:text="${census.censusDate.label}"></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'census/' + ${census.id} + '/delete'"

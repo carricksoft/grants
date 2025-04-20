@@ -40,15 +40,15 @@ class CensusEnumTest {
     }
 
     @Test
-    public void getDateTest() {
-        assertNull(census.getDate());
+    public void getCensusDateTest() {
+        assertNull(census.getCensusDate());
     }
 
     @Test
-    public void setDateTest() {
+    public void setCensusDateTest() {
         CensusDate date = GetRandomCensusDate();
-        census.setDate(date);
-        assertEquals(date, census.getDate());
+        census.setCensusDate(date);
+        assertEquals(date, census.getCensusDate());
     }
 
 }

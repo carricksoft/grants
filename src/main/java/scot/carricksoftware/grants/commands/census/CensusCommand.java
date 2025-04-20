@@ -17,9 +17,9 @@ public interface CensusCommand {
 
     void setId(Long id);
 
-    CensusDate getDate();
+    CensusDate getCensusDate();
 
-    void setDate(CensusDate date);
+    void setCensusDate(CensusDate date);
 
     List<CensusEntry> getCensusEntries();
 

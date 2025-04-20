@@ -17,7 +17,7 @@ public class CensusCommandImpl implements CensusCommand {
 
     private Long id;
 
-    private CensusDate date;
+    private CensusDate censusDate;
 
     private List<CensusEntry> censusEntries = new ArrayList<>();
 
@@ -36,13 +36,13 @@ public class CensusCommandImpl implements CensusCommand {
     }
 
     @Override
-    public CensusDate getDate() {
-        return date;
+    public CensusDate getCensusDate() {
+        return censusDate;
     }
 
     @Override
-    public void setDate(CensusDate date) {
-        this.date = date;
+    public void setCensusDate(CensusDate censusDate) {
+        this.censusDate = censusDate;
     }
 
     @Override
