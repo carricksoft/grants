@@ -45,14 +45,33 @@ rounded-3 text-center p-4">
                        th:field="*{id}" type="text" readonly>
             </div>
             <div class="col-md-3">
-                <!-- >https://jqueryui.com/datepicker/-->
-                <label for="datepicker">Date</label>
-                <input class="form-control" id="datepicker" th:value="*{date}"
-                       th:field="*{date}" th:type="text">
-                <div th:if="${#fields.hasErrors('date')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('date')}" th:text="${err}"/>
-                    </ul>
+                <label for="date">Date</label>
+                <div>
+                    <select id="date" style="width: 200px;" name="date" th:field="*{date}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="value : ${T(scot.carricksoftware.grants.enums.census.CensusDate).values()}"
+                                th:value="${value}" th:text="${value.label}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('date')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('date')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="place">Place</label>
+                <div>
+                    <select id="place" style="width: 200px;" name="place" th:field="*{place}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="place : ${places}"
+                                th:value="${place.id}" th:text="${place.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('place')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('place')}" th:text="${err}"/>
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3">
@@ -61,8 +80,13 @@ rounded-3 text-center p-4">
                     <select id="boundaryType" style="width: 200px;" name="boundaryType" th:field="*{boundaryType}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="value : ${T(scot.carricksoftware.grants.enums.census.CensusBoundaryType).values()}"
-                                th:value="${value}" th:text="${value}"></option>
+                                th:value="${value}" th:text="${value.label}"></option>
                     </select>
+                    <div th:if="${#fields.hasErrors('boundaryType')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('boundaryType')}" th:text="${err}"/>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

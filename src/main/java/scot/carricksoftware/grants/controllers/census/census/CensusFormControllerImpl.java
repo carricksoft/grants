@@ -22,6 +22,7 @@ import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.census.CensusConverter;
 import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.census.CensusCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -32,14 +33,16 @@ public class CensusFormControllerImpl implements CensusFormController {
     private final CensusService censusService;
     private final CensusCommandValidator censusCommandValidator;
     private final CensusConverter censusConverter;
+    private final PlaceService placeService;
 
 
     public CensusFormControllerImpl(CensusService censusService,
                                     CensusCommandValidator censusCommandValidator,
-                                    CensusConverter censusConverter) {
+                                    CensusConverter censusConverter, PlaceService placeService) {
         this.censusService = censusService;
         this.censusCommandValidator = censusCommandValidator;
         this.censusConverter = censusConverter;
+        this.placeService = placeService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -47,6 +50,7 @@ public class CensusFormControllerImpl implements CensusFormController {
     public final String getNewCensus(final Model model) {
         logger.debug("CensusFormControllerImpl::getNewCensus");
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, new CensusCommandImpl());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return ViewConstants.CENSUS_FORM;
     }
 
@@ -55,6 +59,7 @@ public class CensusFormControllerImpl implements CensusFormController {
     public final String censusEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("CensusFormControllerImpl::censusEdit");
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, censusService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return ViewConstants.CENSUS_FORM;
     }
 
@@ -69,12 +74,14 @@ public class CensusFormControllerImpl implements CensusFormController {
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
+            model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
             return ViewConstants.CENSUS_FORM;
         }
 
 
         CensusCommand savedCommand = censusService.saveCensusCommand(censusCommand);
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return MappingConstants.REDIRECT + MappingConstants.CENSUS_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -85,6 +92,7 @@ public class CensusFormControllerImpl implements CensusFormController {
         logger.debug("CensusFormControllerImpl::saveOrUpdate");
         CensusCommand savedCommand = censusConverter.convert(censusService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return ViewConstants.CENSUS_FORM;
     }
 

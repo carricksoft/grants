@@ -24,6 +24,17 @@ public class CensusCommandValidator {
                     null,
                     ValidationConstants.DATE_IS_NULL);
         }
+        if (censusCommand.getBoundaryType() == null) {
+            bindingResult.rejectValue("boundaryType", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.BOUNDARY_TYPE_IS_NULL);
+        }
+        if (censusCommand.getPlace() == null) {
+            bindingResult.rejectValue("place", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.PLACE_IS_NULL);
+        }
+
     }
 }
 
