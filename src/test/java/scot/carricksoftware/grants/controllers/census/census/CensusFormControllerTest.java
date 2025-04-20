@@ -18,11 +18,12 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.census.CensusCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusCommand;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
@@ -36,6 +37,9 @@ public class CensusFormControllerTest {
 
     @Mock
     private CensusService censusServiceMock;
+
+    @Mock
+    private PlaceService placeServiceMock;
 
 
     @Mock
@@ -53,7 +57,8 @@ public class CensusFormControllerTest {
     public void setUp() {
         censusController = new CensusFormControllerImpl(censusServiceMock,
                 censusCommandValidatorMock,
-                censusConverterMock);
+                censusConverterMock,
+                placeServiceMock);
     }
 
     @Test
@@ -61,9 +66,24 @@ public class CensusFormControllerTest {
         ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
         ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
         assertEquals("census/form", censusController.getNewCensus(modelMock));
-        verify(modelMock).addAttribute(stringCaptor.capture(), objectCaptor.capture());
-        assertEquals("censusCommand", stringCaptor.getValue());
-        assertEquals("CensusCommandImpl", objectCaptor.getValue().getClass().getSimpleName());
+        verify(modelMock, atLeast(1)).addAttribute(stringCaptor.capture(), objectCaptor.capture());
+
+        boolean foundCensusCommand = false;
+        boolean foundPlaces = false;
+        for (int i = 0; i < stringCaptor.getAllValues().size(); i++) {
+            if (stringCaptor.getAllValues().get(i).equals("places")) {
+                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("LinkedList")) {
+                    foundPlaces = true;
+                }
+            }
+            if (stringCaptor.getAllValues().get(i).equals("censusCommand")) {
+                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("CensusCommandImpl")) {
+                    foundCensusCommand = true;
+                }
+            }
+        }
+
+        assertTrue(foundPlaces && foundCensusCommand);
     }
 
     @Test

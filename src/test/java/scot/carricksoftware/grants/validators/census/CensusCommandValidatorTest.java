@@ -16,9 +16,11 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
-import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusBoundaryType;
+import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusDate;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
 class CensusCommandValidatorTest {
@@ -48,20 +50,38 @@ class CensusCommandValidatorTest {
 
     @Test
     public void nullDateTest() {
-        censusCommand.setId(GetRandomLong());
-        censusCommand.setDate(null);
-
+        censusCommand.setPlace(GetRandomPlace());
+        censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
         censusCommandValidator.validate(censusCommand, bindingResultMock);
-
-        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
-                stringArgumentCaptor2.capture(),
-                objectArgumentCaptor.capture(),
-                stringArgumentCaptor3.capture());
-
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
         assertEquals("date", stringArgumentCaptor.getValue());
+        assertEquals("", stringArgumentCaptor2.getValue());
+        assertNull(objectArgumentCaptor.getValue());
         assertEquals("Date must exist.", stringArgumentCaptor3.getValue());
-
     }
 
+    @Test
+    public void nullBoundaryTest() {
+        censusCommand.setPlace(GetRandomPlace());
+        censusCommand.setDate(GetRandomCensusDate());
+        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
+        assertEquals("boundaryType", stringArgumentCaptor.getValue());
+        assertEquals("", stringArgumentCaptor2.getValue());
+        assertNull(objectArgumentCaptor.getValue());
+        assertEquals("The boundary type cannot be null.", stringArgumentCaptor3.getValue());
+    }
+
+    @Test
+    public void nullPlaceTest() {
+        censusCommand.setDate(GetRandomCensusDate());
+        censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
+        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
+        assertEquals("place", stringArgumentCaptor.getValue());
+        assertEquals("", stringArgumentCaptor2.getValue());
+        assertNull(objectArgumentCaptor.getValue());
+        assertEquals("The place cannot be null.", stringArgumentCaptor3.getValue());
+    }
 
 }
