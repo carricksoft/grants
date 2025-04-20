@@ -56,5 +56,6 @@ class CensusCommandConverterTest {
         assertEquals(censusEntries, target.getCensusEntries());
         assertEquals(place, target.getPlace());
         assertEquals(boundaryType, target.getBoundaryType());
+        assertEquals(date, target.getDate());
     }
 }

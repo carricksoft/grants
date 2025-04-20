@@ -12,12 +12,14 @@ import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
+import scot.carricksoftware.grants.enums.census.CensusDate;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusBoundaryType;
+import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusDate;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
@@ -35,6 +37,7 @@ class CensusConverterTest {
     void convertTest() {
         Long id = GetRandomLong();
         Census source = new Census();
+        CensusDate date = GetRandomCensusDate();
         List<CensusEntry> censusEntries = new ArrayList<>();
         censusEntries.add(GetRandomCensusEntry());
         Place place = GetRandomPlace();
@@ -45,6 +48,7 @@ class CensusConverterTest {
         source.setCensusEntries(censusEntries);
         source.setPlace(place);
         source.setBoundaryType(boundaryType);
+        source.setDate(date);
 
         CensusCommand target = converter.convert(source);
 
@@ -53,5 +57,6 @@ class CensusConverterTest {
         assertEquals(censusEntries, target.getCensusEntries());
         assertEquals(place, target.getPlace());
         assertEquals(boundaryType, target.getBoundaryType());
+        assertEquals(date, target.getDate());
     }
 }
