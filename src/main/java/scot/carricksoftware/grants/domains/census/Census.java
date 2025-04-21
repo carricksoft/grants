@@ -30,6 +30,10 @@ public class Census extends BaseEntity {
     @Enumerated(EnumType.STRING)
     private CensusBoundaryType boundaryType;
 
+    private String inhabitedRooms;
+
+    private String roomsWithWindows;
+
     public CensusDate getCensusDate() {
         return censusDate;
     }
@@ -65,5 +69,21 @@ public class Census extends BaseEntity {
 
     public void setBoundaryType(CensusBoundaryType boundaryType) {
         this.boundaryType = boundaryType;
+    }
+
+    public String getInhabitedRooms() {
+        return inhabitedRooms;
+    }
+
+    public void setInhabitedRooms(String inhabitedRooms) {
+        this.inhabitedRooms = inhabitedRooms;
+    }
+
+    public String getRoomsWithWindows() {
+        return roomsWithWindows;
+    }
+
+    public void setRoomsWithWindows(String roomsWithWindows) {
+        this.roomsWithWindows = roomsWithWindows;
     }
 }
