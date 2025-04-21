@@ -12,6 +12,7 @@ import scot.carricksoftware.grants.domains.census.Census;
 @Component
 public class CensusCommandConverterImpl implements CensusCommandConverter {
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public Census convert(CensusCommand source) {
         Census result = new Census();
@@ -21,6 +22,8 @@ public class CensusCommandConverterImpl implements CensusCommandConverter {
         result.setPlace(source.getPlace());
         result.setBoundaryType(source.getBoundaryType());
         result.setCensusDate(source.getCensusDate());
+        result.setInhabitedRooms(source.getInhabitedRooms());
+        result.setRoomsWithWindows(source.getRoomsWithWindows());
 
 
         return result;
