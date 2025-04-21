@@ -68,6 +68,8 @@ public class DataLoadCensusTest {
         assertEquals( CensusDate.CENSUS_1881, captor.getValue().getCensusDate());
         assertEquals(captor.getValue().getPlace(), place);
         assertEquals(CensusBoundaryType.ISLAND, captor.getValue().getBoundaryType());
+        assertEquals("2", captor.getValue().getInhabitedRooms());
+        assertEquals("1", captor.getValue().getRoomsWithWindows());
     }
 
     @Test
@@ -90,6 +92,7 @@ public class DataLoadCensusTest {
         assertEquals(CensusEntryWorker.WORKER, captor.getValue().getWorker());
         assertEquals("72", captor.getValue().getAge());
         assertEquals("Edinburgh", captor.getValue().getWhereBorn());
+
     }
 
 

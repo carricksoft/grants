@@ -61,6 +61,8 @@ public class DataLoadCensus {
         censusCommand.setCensusDate(CensusDate.CENSUS_1881);
         censusCommand.setPlace(place);
         censusCommand.setBoundaryType(CensusBoundaryType.ISLAND);
+        censusCommand.setRoomsWithWindows("1");
+        censusCommand.setInhabitedRooms("2");
         censusService.saveCensusCommand(censusCommand);
     }
 
