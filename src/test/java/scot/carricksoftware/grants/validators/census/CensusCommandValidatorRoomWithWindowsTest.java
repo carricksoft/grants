@@ -16,15 +16,15 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusBoundaryType;
 import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCensusDate;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-class CensusCommandValidatorTest {
+class CensusCommandValidatorRoomWithWindowsTest {
 
     private CensusCommandValidator censusCommandValidator = new CensusCommandValidator();
 
@@ -47,44 +47,42 @@ class CensusCommandValidatorTest {
         objectArgumentCaptor = ArgumentCaptor.forClass(Object[].class);
 
         censusCommand = new CensusCommandImpl();
+        censusCommand.setPlace(GetRandomPlace());
+        censusCommand.setCensusDate(GetRandomCensusDate());
+        censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
+    }
+
+   @Test
+    public void validateRoomsWithWindowsNegativeTest() {
         censusCommand.setInhabitedRooms("1");
-        censusCommand.setRoomsWithWindows("1");
-    }
+        censusCommand.setRoomsWithWindows("-5");
+       censusCommandValidator.validate(censusCommand, bindingResultMock);
+       verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
+       assertEquals("roomsWithWindows", stringArgumentCaptor.getValue());
+       assertEquals("", stringArgumentCaptor2.getValue());
+       assertNull(objectArgumentCaptor.getValue());
+       assertEquals("Not a non negative integer.", stringArgumentCaptor3.getValue());
+   }
+
 
     @Test
-    public void nullDateTest() {
-        censusCommand.setPlace(GetRandomPlace());
-        censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
-        censusCommandValidator.validate(censusCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
-        assertEquals("date", stringArgumentCaptor.getValue());
-        assertEquals("", stringArgumentCaptor2.getValue());
-        assertNull(objectArgumentCaptor.getValue());
-        assertEquals("Date must exist.", stringArgumentCaptor3.getValue());
-    }
-
-    @Test
-    public void nullBoundaryTest() {
-        censusCommand.setPlace(GetRandomPlace());
-        censusCommand.setCensusDate(GetRandomCensusDate());
-        censusCommandValidator.validate(censusCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
-        assertEquals("boundaryType", stringArgumentCaptor.getValue());
-        assertEquals("", stringArgumentCaptor2.getValue());
-        assertNull(objectArgumentCaptor.getValue());
-        assertEquals("The boundary type cannot be null.", stringArgumentCaptor3.getValue());
-    }
-
-    @Test
-    public void nullPlaceTest() {
-        censusCommand.setCensusDate(GetRandomCensusDate());
-        censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
+    public void validateRoomsWithWindowsNonNumberTest() {
+        censusCommand.setInhabitedRooms("1");
+        censusCommand.setRoomsWithWindows("z");
         censusCommandValidator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
-        assertEquals("place", stringArgumentCaptor.getValue());
+        assertEquals("roomsWithWindows", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
         assertNull(objectArgumentCaptor.getValue());
-        assertEquals("The place cannot be null.", stringArgumentCaptor3.getValue());
+        assertEquals("Not a non negative integer.", stringArgumentCaptor3.getValue());
+    }
+
+    @Test
+    public void validateRoomsWithWindowsValidNumberTest() {
+        censusCommand.setInhabitedRooms("3");
+        censusCommand.setRoomsWithWindows("5");
+        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        verifyNoInteractions(bindingResultMock);
     }
 
 }

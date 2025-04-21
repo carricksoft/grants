@@ -16,6 +16,40 @@ public class CensusCommandValidator {
 
     public void validate(CensusCommand censusCommand, BindingResult bindingResult) {
         validateDate(censusCommand, bindingResult);
+        validateRoomsInhabited(censusCommand, bindingResult);
+        validateRoomsWithWindows(censusCommand, bindingResult);
+    }
+
+    private void validateRoomsWithWindows(CensusCommand censusCommand, BindingResult bindingResult) {
+        if (notANonNegativeInteger(censusCommand.getRoomsWithWindows())) {
+            bindingResult.rejectValue("roomsWithWindows", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        }
+    }
+
+    private void validateRoomsInhabited(CensusCommand censusCommand, BindingResult bindingResult) {
+        if (notANonNegativeInteger(censusCommand.getInhabitedRooms())) {
+            bindingResult.rejectValue("roomsInhabited", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        }
+    }
+
+    private boolean notANonNegativeInteger(String field) {
+        if (field == null || field.isEmpty()) {
+            return false;
+        } else {
+            try {
+                int number = Integer.parseInt(field);
+                if (number < 0) {
+                   return true;
+                }
+            } catch (NumberFormatException e) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void validateDate(CensusCommand censusCommand, BindingResult bindingResult) {

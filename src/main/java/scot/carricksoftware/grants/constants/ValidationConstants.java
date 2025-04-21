@@ -36,4 +36,6 @@ public class ValidationConstants {
     public static final String SAME_TWO_PARTIES = "The two parties cannot be the same person.";
 
     public static final String BOUNDARY_TYPE_IS_NULL = "The boundary type cannot be null.";
+
+    public static final String FIELD_NOT_NEGATIVE_INTEGER = "Not a non negative integer.";
 }
