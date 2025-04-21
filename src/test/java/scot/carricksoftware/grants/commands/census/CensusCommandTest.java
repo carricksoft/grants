@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
@@ -25,8 +26,6 @@ class CensusCommandTest {
     void setUp() {
         command = new CensusCommandImpl();
     }
-
-
 
 
     @Test
@@ -53,4 +52,29 @@ class CensusCommandTest {
         command.setPlace(place);
         assertEquals(place, command.getPlace());
     }
+
+    @Test
+    public void getInhabitedRoomsTest() {
+        assertNull(command.getInhabitedRooms());
+    }
+
+    @Test
+    public void setInhabitedRoomsTest() {
+        String string = GetRandomString();
+        command.setInhabitedRooms(string);
+        assertEquals(string, command.getInhabitedRooms());
+    }
+
+    @Test
+    public void getRoomsWithWidowsTest() {
+        assertNull(command.getRoomsWithWindows());
+    }
+
+    @Test
+    public void setRoomsWithWidowsTest() {
+        String string = GetRandomString();
+        command.setRoomsWithWindows(string);
+        assertEquals(string, command.getRoomsWithWindows());
+    }
+
 }

@@ -25,6 +25,10 @@ public class CensusCommandImpl implements CensusCommand {
 
     private CensusBoundaryType boundaryType;
 
+    private String inhabitedRooms;
+
+    private String roomsWithWindows;
+
     @Override
     public Long getId() {
         return id;
@@ -73,5 +77,25 @@ public class CensusCommandImpl implements CensusCommand {
     @Override
     public void setBoundaryType(CensusBoundaryType boundaryType) {
         this.boundaryType = boundaryType;
+    }
+
+    @Override
+    public String getInhabitedRooms() {
+        return inhabitedRooms;
+    }
+
+    @Override
+    public void setInhabitedRooms(String inhabitedRooms) {
+        this.inhabitedRooms = inhabitedRooms;
+    }
+
+    @Override
+    public String getRoomsWithWindows() {
+        return roomsWithWindows;
+    }
+
+    @Override
+    public void setRoomsWithWindows(String roomsWithWindows) {
+        this.roomsWithWindows = roomsWithWindows;
     }
 }

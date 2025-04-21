@@ -32,4 +32,12 @@ public interface CensusCommand {
     CensusBoundaryType getBoundaryType();
 
     void setBoundaryType(CensusBoundaryType boundaryType);
+
+    String getInhabitedRooms();
+
+    void setInhabitedRooms(String inhabitedRooms);
+
+    String getRoomsWithWindows();
+
+    void setRoomsWithWindows(String roomsWithWindows);
 }
