@@ -30,9 +30,13 @@ class PersonConverterTest {
         String firstName = GetRandomString();
         String lastName = GetRandomString();
         Person source = new Person();
+        String recordedYearOfBirth = GetRandomString();
+        String certifiedYearOfBirth = GetRandomString();
+
         source.setId(id);
         source.setFirstName(firstName);
-        source.setLastName(lastName);
+        source.setLastName(lastName);source.setRecordedYearOfBirth(recordedYearOfBirth);
+        source.setCertifiedYearOfBirth(certifiedYearOfBirth);
 
         PersonCommand target = converter.convert(source);
 
@@ -40,5 +44,7 @@ class PersonConverterTest {
         assertEquals(id, target.getId());
         assertEquals(firstName, target.getFirstName());
         assertEquals(lastName, target.getLastName());
+        assertEquals(recordedYearOfBirth, target.getRecordedYearOfBirth());
+        assertEquals(certifiedYearOfBirth, target.getCertifiedYearOfBirth());
     }
 }
