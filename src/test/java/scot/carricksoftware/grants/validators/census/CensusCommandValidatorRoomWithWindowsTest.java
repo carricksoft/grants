@@ -85,4 +85,13 @@ class CensusCommandValidatorRoomWithWindowsTest {
         verifyNoInteractions(bindingResultMock);
     }
 
+    @Test
+    public void validateRoomsWithWindowsNullTest() {
+        censusCommand.setInhabitedRooms("3");
+        censusCommand.setRoomsWithWindows(null);
+        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        verifyNoInteractions(bindingResultMock);
+    }
+
+
 }
