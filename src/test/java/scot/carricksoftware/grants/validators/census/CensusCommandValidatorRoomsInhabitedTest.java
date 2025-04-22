@@ -58,7 +58,7 @@ class CensusCommandValidatorRoomsInhabitedTest {
         censusCommand.setRoomsWithWindows("5");
        censusCommandValidator.validate(censusCommand, bindingResultMock);
        verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
-       assertEquals("roomsInhabited", stringArgumentCaptor.getValue());
+       assertEquals("inhabitedRooms", stringArgumentCaptor.getValue());
        assertEquals("", stringArgumentCaptor2.getValue());
        assertNull(objectArgumentCaptor.getValue());
        assertEquals("Not a non negative integer.", stringArgumentCaptor3.getValue());
@@ -71,7 +71,7 @@ class CensusCommandValidatorRoomsInhabitedTest {
         censusCommand.setRoomsWithWindows("5");
         censusCommandValidator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
-        assertEquals("roomsInhabited", stringArgumentCaptor.getValue());
+        assertEquals("inhabitedRooms", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
         assertNull(objectArgumentCaptor.getValue());
         assertEquals("Not a non negative integer.", stringArgumentCaptor3.getValue());
