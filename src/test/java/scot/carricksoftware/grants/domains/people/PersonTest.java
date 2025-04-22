@@ -5,7 +5,6 @@
 
 package scot.carricksoftware.grants.domains.people;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

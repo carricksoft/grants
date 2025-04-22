@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
+
 class PersonCensusCommandTest {
 
     PersonCommand command;
@@ -56,4 +57,29 @@ class PersonCensusCommandTest {
         String lastName = GetRandomString();
         command.setLastName(lastName);
     }
+
+    @Test
+    void getRecodedYearOfBirthTest() {
+        assertNull(command.getRecordedYearOfBirth());
+    }
+
+    @Test
+    void setRecordedYearOfBirthTest() {
+        String string = GetRandomString();
+        command.setRecordedYearOfBirth(string);
+        assertEquals(string, command.getRecordedYearOfBirth());
+    }
+
+    @Test
+    void getCertifiedYearOfBirthTest() {
+        assertNull(command.getCertifiedYearOfBirth());
+    }
+
+    @Test
+    void setCertifiedYearOfBirthTest() {
+        String string = GetRandomString();
+        command.setCertifiedYearOfBirth(string);
+        assertEquals(string, command.getCertifiedYearOfBirth());
+    }
+
 }

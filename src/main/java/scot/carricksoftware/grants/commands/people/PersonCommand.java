@@ -18,4 +18,12 @@ public interface PersonCommand {
     String getLastName();
 
     void setLastName(String lastName);
+
+    String getRecordedYearOfBirth();
+
+    void setRecordedYearOfBirth(String recordedYearOfBirth);
+
+    String getCertifiedYearOfBirth();
+
+    void setCertifiedYearOfBirth(String certifiedYearOfBirth);
 }
