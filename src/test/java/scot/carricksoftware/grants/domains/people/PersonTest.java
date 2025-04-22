@@ -55,6 +55,29 @@ class PersonTest {
 
         assertEquals(lastName + ", " + firstName, person.toString());
     }
+    
+    @Test
+    void getRecodedYearOfBirthTest() {
+        assertNull(person.getRecordedYearOfBirth());
+    }
 
+    @Test
+    void setRecordedYearOfBirthTest() {
+        String string = GetRandomString();
+        person.setRecordedYearOfBirth(string);
+        assertEquals(string, person.getRecordedYearOfBirth());
+    }
+
+    @Test
+    void getCertifiedYearOfBirthTest() {
+        assertNull(person.getCertifiedYearOfBirth());
+    }
+
+    @Test
+    void setCertifiedYearOfBirthTest() {
+        String string = GetRandomString();
+        person.setCertifiedYearOfBirth(string);
+        assertEquals(string, person.getCertifiedYearOfBirth());
+    }
 
 }

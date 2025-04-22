@@ -13,6 +13,8 @@ public class Person extends BaseEntity {
 
     String firstName;
     String lastName;
+    String recordedYearOfBirth;
+    String certifiedYearOfBirth;
 
     public String getFirstName() {
         return firstName;
@@ -33,5 +35,21 @@ public class Person extends BaseEntity {
     @Override
     public String toString() {
         return lastName + ", " + firstName;
+    }
+
+    public String getRecordedYearOfBirth() {
+        return recordedYearOfBirth;
+    }
+
+    public void setRecordedYearOfBirth(String recordedYearOfBirth) {
+        this.recordedYearOfBirth = recordedYearOfBirth;
+    }
+
+    public String getCertifiedYearOfBirth() {
+        return certifiedYearOfBirth;
+    }
+
+    public void setCertifiedYearOfBirth(String certifiedYearOfBirth) {
+        this.certifiedYearOfBirth = certifiedYearOfBirth;
     }
 }
