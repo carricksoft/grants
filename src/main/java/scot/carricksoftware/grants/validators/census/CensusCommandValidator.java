@@ -30,7 +30,7 @@ public class CensusCommandValidator {
 
     private void validateRoomsInhabited(CensusCommand censusCommand, BindingResult bindingResult) {
         if (notANonNegativeInteger(censusCommand.getInhabitedRooms())) {
-            bindingResult.rejectValue("roomsInhabited", ApplicationConstants.EMPTY_STRING,
+            bindingResult.rejectValue("inhabitedRooms", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
         }
