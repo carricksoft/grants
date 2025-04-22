@@ -1,0 +1,3 @@
+# Assumes both exist
+mysqldump -u apg -p grants_uat > dump.sql
+mysql -u apg -p grants_prod < dump.sql

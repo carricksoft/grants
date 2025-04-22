@@ -1,0 +1,15 @@
+as root mysql -u root
+CREATE DATABASE grants_uat;
+
+#Create database service accounts
+CREATE USER 'grants_uat_user'@'%' IDENTIFIED BY 'abigail';
+CREATE USER 'apg'@'%' IDENTIFIED BY <suzanne>;
+
+
+#Database grants
+GRANT ALL PRIVILEGES ON grants_uat.* to 'apg'@'%';
+GRANT SELECT ON grants_uat.* to 'grants_uat_user'@'%';
+GRANT INSERT ON grants_uat.* to 'grants_uat_user'@'%';
+GRANT DELETE ON grants_uat.* to 'grants_uat_user'@'%';
+GRANT UPDATE ON grants_uat.* to 'grants_uat_user'@'%';
+FLUSH PRIVILEGES;
