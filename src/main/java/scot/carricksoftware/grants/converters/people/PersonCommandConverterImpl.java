@@ -18,6 +18,8 @@ public class PersonCommandConverterImpl implements PersonCommandConverter {
         result.setId(source.getId());
         result.setFirstName(source.getFirstName());
         result.setLastName(source.getLastName());
+        result.setRecordedYearOfBirth(source.getRecordedYearOfBirth());
+        result.setCertifiedYearOfBirth(source.getCertifiedYearOfBirth());
         return result;
     }
 }
