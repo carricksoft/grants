@@ -34,7 +34,12 @@ public class DataLoadPeopleTest {
         verify(personServiceMock, atLeast(2)).save(captor.capture());
         assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getFirstName().equals("Andrew")));
         assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getLastName().equals("Grant")));
+        assertTrue(captor.getAllValues().stream().anyMatch(
+                person -> person.getCertifiedYearOfBirth().equals("dad's date of Birth")));
+        assertTrue(captor.getAllValues().stream().anyMatch(
+                person -> person.getRecordedYearOfBirth().equals("dad's reported Birth")));
     }
+
 
     @Test
     public void mumIsCreatedTest() {
@@ -44,6 +49,10 @@ public class DataLoadPeopleTest {
         assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getFirstName().equals("Dorothy")));
         //noinspection SpellCheckingInspection
         assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getLastName().equals("Bramall")));
+        assertTrue(captor.getAllValues().stream().anyMatch(
+                person -> person.getCertifiedYearOfBirth().equals("mum's date of Birth")));
+        assertTrue(captor.getAllValues().stream().anyMatch(
+                person -> person.getRecordedYearOfBirth().equals("mum's reported Birth")));
     }
 
 }

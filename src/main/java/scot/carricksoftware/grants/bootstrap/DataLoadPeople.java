@@ -35,6 +35,8 @@ public class DataLoadPeople {
         final Person dad = new Person();
         dad.setFirstName("Andrew");
         dad.setLastName("Grant");
+        dad.setCertifiedYearOfBirth("dad's date of Birth");
+        dad.setRecordedYearOfBirth("dad's reported Birth");
         personService.save(dad);
     }
 
@@ -43,6 +45,8 @@ public class DataLoadPeople {
         mum.setFirstName("Dorothy");
         //noinspection SpellCheckingInspection
         mum.setLastName("Bramall");
+        mum.setCertifiedYearOfBirth("mum's date of Birth");
+        mum.setRecordedYearOfBirth("mum's reported Birth");
         personService.save(mum);
 
     }
