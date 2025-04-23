@@ -21,7 +21,7 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.census.CensusConverter;
-import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.census.CensusCommandValidator;
 

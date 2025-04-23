@@ -17,7 +17,7 @@ import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
-import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.census.CensusCommandValidator;
 

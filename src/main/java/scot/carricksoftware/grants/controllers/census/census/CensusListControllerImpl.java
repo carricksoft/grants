@@ -16,7 +16,7 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.census.census.CensusService;
 
 import static java.lang.Integer.max;
 

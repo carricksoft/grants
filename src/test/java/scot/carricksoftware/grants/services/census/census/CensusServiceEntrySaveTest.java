@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 11/03/2025, 20:24. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.services.census;
+package scot.carricksoftware.grants.services.census.census;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -17,6 +17,8 @@ import scot.carricksoftware.grants.converters.census.CensusEntryCommandConverter
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.repositories.census.CensusEntryRepository;
+import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
+import scot.carricksoftware.grants.services.census.censusentry.CensusEntryServiceImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;

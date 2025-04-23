@@ -14,7 +14,7 @@ import org.springframework.ui.Model;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
-import scot.carricksoftware.grants.services.census.CensusEntryService;
+import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 
 import java.util.ArrayList;
 import java.util.List;

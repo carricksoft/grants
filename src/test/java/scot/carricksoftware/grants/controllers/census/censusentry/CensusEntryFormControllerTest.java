@@ -18,8 +18,8 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
-import scot.carricksoftware.grants.services.census.CensusEntryService;
-import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
+import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
 

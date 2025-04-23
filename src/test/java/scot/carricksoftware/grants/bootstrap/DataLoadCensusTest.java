@@ -17,8 +17,8 @@ import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntryWorker;
-import scot.carricksoftware.grants.services.census.CensusEntryService;
-import scot.carricksoftware.grants.services.census.CensusService;
+import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
+import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
