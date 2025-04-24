@@ -24,6 +24,7 @@ import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverter;
 import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.census.census.CensusService;
+import scot.carricksoftware.grants.services.census.censusentry.UpdateRecordedYearOfBirth;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
 
@@ -38,18 +39,23 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     private final Capitalisation capitalisation;
     private final PersonService personService;
     private final CensusService censusService;
+    private final UpdateRecordedYearOfBirth updateRecordedYearOfBirth;
+
 
 
     public CensusEntryFormControllerImpl(CensusEntryService censusEntryService,
                                          CensusEntryCommandValidator censusEntryCommandValidator,
                                          CensusEntryConverter censusEntryConverter,
-                                         Capitalisation capitalisation, PersonService personService, CensusService censusService) {
+                                         Capitalisation capitalisation,
+                                         PersonService personService,
+                                         CensusService censusService, UpdateRecordedYearOfBirth updateRecordedYearOfBirth) {
         this.censusEntryService = censusEntryService;
         this.censusEntryCommandValidator = censusEntryCommandValidator;
         this.censusEntryConverter = censusEntryConverter;
         this.capitalisation = capitalisation;
         this.personService = personService;
         this.censusService = censusService;
+        this.updateRecordedYearOfBirth = updateRecordedYearOfBirth;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -89,6 +95,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         }
 
         CensusEntryCommand savedCommand = censusEntryService.saveCensusEntryCommand(censusEntryCommand);
+        updateRecordedYearOfBirth.updateRecordedYearOfBirth(savedCommand);
         model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, savedCommand);
         return MappingConstants.REDIRECT + MappingConstants.CENSUS_ENTRY_SHOW.replace("{id}", "" + savedCommand.getId());
     }

@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.census.census.CensusService;
+import scot.carricksoftware.grants.services.census.censusentry.UpdateRecordedYearOfBirth;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
 
@@ -59,6 +60,9 @@ public class CensusEntryFormControllerTest {
     @Mock
     private PersonService personServiceMock;
 
+    @Mock
+    private UpdateRecordedYearOfBirth updateRecordedYearOfBirthMock;
+
 
     @BeforeEach
     public void setUp() {
@@ -67,7 +71,8 @@ public class CensusEntryFormControllerTest {
                 censusEntryConverterMock,
                 capitalisationMock,
                 personServiceMock,
-                censusServiceMock);
+                censusServiceMock,
+                updateRecordedYearOfBirthMock);
     }
 
     @Test
