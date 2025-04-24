@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.enums.census.CensusDate.CENSUS_1881;
 
 @ExtendWith(MockitoExtension.class)
-class UpdateRecordedYearOfBirthTest {
+class UpdateRecordedYearOfBirthFailingTest {
 
     private UpdateRecordedYearOfBirth updateRecordedYearOfBirth;
 
@@ -42,16 +42,6 @@ class UpdateRecordedYearOfBirthTest {
         when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
     }
 
-    @Test
-    public void theYearOfBirthIsUpdatedTest() {
-        updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock);
-        when(censusEntryCommandMock.getAge()).thenReturn("7");
-        when(personMock.getRecordedYearOfBirth()).thenReturn(null);
-        when(censusEntryCommandMock.getCensus()).thenReturn(censusMock);
-        when(censusMock.getCensusDate()).thenReturn(CENSUS_1881);
-       updateRecordedYearOfBirth.updateRecordedYearOfBirth(censusEntryCommandMock);
-       verify(personMock).setRecordedYearOfBirth("1874");
-    }
 
     @Test
     public void theYearOfBirthIsNotUpdatedIfAgeIsInvalidTest() {
