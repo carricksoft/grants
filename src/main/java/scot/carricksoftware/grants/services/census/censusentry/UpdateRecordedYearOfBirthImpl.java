@@ -49,11 +49,8 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
                             String dateString) {
         logger.info("UpdateRecordedYearOfBirthImpl::Date");
         PersonCommand personCommand = personConverter.convert(person);
-        if (personCommand != null) {
-            personCommand.setRecordedYearOfBirth(dateString);
-            personService.savePersonCommand(personCommand);
-        } else {
-            logger.error(" -- Person command is null");
-        }
+        assert (personCommand != null);
+        personCommand.setRecordedYearOfBirth(dateString);
+        personService.savePersonCommand(personCommand);
     }
 }
