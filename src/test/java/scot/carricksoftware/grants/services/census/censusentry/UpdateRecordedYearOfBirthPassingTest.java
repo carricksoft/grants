@@ -11,9 +11,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
+import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.converters.people.PersonConverter;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.services.people.PersonService;
 
 import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.enums.census.CensusDate.CENSUS_1881;
@@ -29,28 +31,35 @@ class UpdateRecordedYearOfBirthPassingTest {
     @Mock
     private Person personMock;
 
+    @Mock
+    private PersonCommand personCommandMock;
 
     @Mock
-    CensusEntryCommand censusEntryCommandMock;
+    private PersonService personServiceMock;
+
+    @Mock
+    private CensusEntryCommand censusEntryCommandMock;
 
     @Mock
     private PersonConverter personConverterMock;
 
     @BeforeEach
     void setUp() {
-        updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock);
+        updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock, personServiceMock);
         when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
+        when(personConverterMock.convert(personMock)).thenReturn(personCommandMock);
+        when(censusEntryCommandMock.getCensus()).thenReturn(censusMock);
     }
 
     @Test
     public void theYearOfBirthIsUpdatedTest() {
-        updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock);
         when(censusEntryCommandMock.getAge()).thenReturn("7");
         when(personMock.getRecordedYearOfBirth()).thenReturn(null);
-        when(censusEntryCommandMock.getCensus()).thenReturn(censusMock);
         when(censusMock.getCensusDate()).thenReturn(CENSUS_1881);
+
        updateRecordedYearOfBirth.updateRecordedYearOfBirth(censusEntryCommandMock);
-       verify(personMock).setRecordedYearOfBirth("1874");
+
+       verify(personCommandMock).setRecordedYearOfBirth("1874");
     }
 
 
