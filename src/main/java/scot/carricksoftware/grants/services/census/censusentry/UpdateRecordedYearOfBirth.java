@@ -6,9 +6,8 @@
 package scot.carricksoftware.grants.services.census.censusentry;
 
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
-import scot.carricksoftware.grants.domains.people.Person;
 
-public interface UpdateYearsOfBirth {
+public interface UpdateRecordedYearOfBirth {
      @SuppressWarnings({"EmptyMethod", "unused"})
-     void updateRecordedYearOfBirth(@SuppressWarnings("unused") CensusEntryCommand censusEntryCommand, @SuppressWarnings("unused") Person person);
+     void updateRecordedYearOfBirth(CensusEntryCommand censusEntryCommand);
 }
