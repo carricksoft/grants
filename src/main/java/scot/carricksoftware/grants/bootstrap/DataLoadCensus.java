@@ -76,6 +76,8 @@ public class DataLoadCensus {
         censusEntryCommand.setAge("72");
         censusEntryCommand.setWhereBorn("Edinburgh");
         censusEntryCommand.setSex(CensusEntrySex.MALE);
+        censusEntryCommand.setBirthDay("25/01");
+        censusEntryCommand.setBirthYear("1953");
 
         censusEntryService.saveCensusEntryCommand(censusEntryCommand);
     }
