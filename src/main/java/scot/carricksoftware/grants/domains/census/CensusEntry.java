@@ -8,10 +8,7 @@ package scot.carricksoftware.grants.domains.census;
 import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryWorker;
+import scot.carricksoftware.grants.enums.censusentry.*;
 
 @Entity
 public class CensusEntry extends BaseEntity {
@@ -39,6 +36,9 @@ public class CensusEntry extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private CensusEntryWorker worker;
+
+    @Enumerated(EnumType.STRING)
+    private CensusEntrySex Sex;
 
     private String age;
 
@@ -119,5 +119,13 @@ public class CensusEntry extends BaseEntity {
 
     public void setWhereBorn(String whereBorn) {
         this.whereBorn = whereBorn;
+    }
+
+    public CensusEntrySex getSex() {
+        return Sex;
+    }
+
+    public void setSex(CensusEntrySex sex) {
+        Sex = sex;
     }
 }

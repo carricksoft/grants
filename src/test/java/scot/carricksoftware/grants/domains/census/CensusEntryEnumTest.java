@@ -9,10 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryWorker;
+import scot.carricksoftware.grants.enums.censusentry.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -74,6 +71,18 @@ class CensusEntryEnumTest {
         CensusEntryWorker worker = GetRandomCensusEntryWorker();
         entry.setWorker(worker);
         assertEquals(worker, entry.getWorker());
+    }
+
+    @Test
+    void getSexTest() {
+        assertNull(entry.getSex());
+    }
+
+    @Test
+    void setSexTest() {
+        CensusEntrySex sex = GetRandomCensusEntrySex();
+        entry.setSex(sex);
+        assertEquals(sex, entry.getSex());
     }
 
 }

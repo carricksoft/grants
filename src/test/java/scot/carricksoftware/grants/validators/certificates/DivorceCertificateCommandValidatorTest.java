@@ -112,18 +112,18 @@ class DivorceCertificateCommandValidatorTest {
 
     @Test
     public void notTheSamePersonTest() {
-       Person firstParty = GetRandomPerson();
-       Person secondParty = GetRandomPerson();
-       while (!firstParty.getFirstName().equals(secondParty.getLastName())) {
-           secondParty = GetRandomPerson();
-       }
+        Person firstParty = GetRandomPerson();
+        Person secondParty = GetRandomPerson();
+        while (!firstParty.getFirstName().equals(secondParty.getLastName())) {
+            secondParty = GetRandomPerson();
+        }
 
-       divorceCertificateCommand.setFirstParty(firstParty);
-       divorceCertificateCommand.setSecondParty(secondParty);
+        divorceCertificateCommand.setFirstParty(firstParty);
+        divorceCertificateCommand.setSecondParty(secondParty);
 
-       commandValidator.validate(divorceCertificateCommand, bindingResultMock);
+        commandValidator.validate(divorceCertificateCommand, bindingResultMock);
 
-       verifyNoInteractions(bindingResultMock);
+        verifyNoInteractions(bindingResultMock);
     }
 
 

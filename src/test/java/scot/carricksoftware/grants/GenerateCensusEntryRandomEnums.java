@@ -6,10 +6,7 @@
 package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryWorker;
+import scot.carricksoftware.grants.enums.censusentry.*;
 
 import java.util.Random;
 
@@ -48,5 +45,13 @@ public class GenerateCensusEntryRandomEnums {
         Random random = new Random();
         int randomInt = random.nextInt(0, workers.length);
         return workers[randomInt];
+    }
+
+    public static CensusEntrySex GetRandomCensusEntrySex() {
+        CensusEntrySex[] sex = CensusEntrySex.values();
+
+        Random random = new Random();
+        int randomInt = random.nextInt(0, sex.length);
+        return sex[randomInt];
     }
 }
