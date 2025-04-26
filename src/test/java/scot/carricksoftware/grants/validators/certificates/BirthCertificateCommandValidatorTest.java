@@ -18,6 +18,8 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
 class BirthCertificateCommandValidatorTest {
@@ -47,8 +49,6 @@ class BirthCertificateCommandValidatorTest {
 
     @Test
     public void nullPersonTest() {
-
-
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
 
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
@@ -61,5 +61,12 @@ class BirthCertificateCommandValidatorTest {
 
     }
 
+    @Test
+    public void notNullPersonTest() {
+        birthCertificateCommand.setNewBorn(GetRandomPerson());
+        commandValidator.validate(birthCertificateCommand, bindingResultMock);
+
+        verifyNoInteractions(bindingResultMock);
+    }
 
 }
