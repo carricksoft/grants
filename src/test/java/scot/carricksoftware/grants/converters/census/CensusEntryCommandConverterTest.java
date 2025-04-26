@@ -12,10 +12,7 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryWorker;
+import scot.carricksoftware.grants.enums.censusentry.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCensusEntryRandomEnums.*;
@@ -46,6 +43,7 @@ class CensusEntryCommandConverterTest {
         Person person = GetRandomPerson();
         String age = GetRandomString();
         String whereBorn = GetRandomString();
+        CensusEntrySex sex = GetRandomCensusEntrySex();
 
 
         source.setId(id);
@@ -58,6 +56,7 @@ class CensusEntryCommandConverterTest {
         source.setWorker(worker);
         source.setAge(age);
         source.setWhereBorn(whereBorn);
+        source.setSex(sex);
 
         CensusEntry target = converter.convert(source);
 
@@ -72,5 +71,6 @@ class CensusEntryCommandConverterTest {
         assertEquals(worker, target.getWorker());
         assertEquals(age, target.getAge());
         assertEquals(whereBorn, target.getWhereBorn());
+        assertEquals(sex, target.getSex());
     }
 }
