@@ -52,6 +52,16 @@ rounded-3 text-center p-4">
                     </div>
                 </div>
             </div>
+            <div class="col-md-3">
+                <label for="sex">Male or Female</label>
+                <div>
+                    <select id="sex" style="width: 200px;" name="sex" th:field="*{sex}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="value : ${T(scot.carricksoftware.grants.enums.censusentry.CensusEntrySex).values()}"
+                                th:value="${value}" th:text="${value.label}"></option>
+                    </select>
+                </div>
+            </div>
         </div>
         <div class="form-group row justify-content-center">
             <div class="col-md-3" style="margin-right:20px;">
