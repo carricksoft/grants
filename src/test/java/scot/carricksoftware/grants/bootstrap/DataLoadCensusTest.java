@@ -65,7 +65,7 @@ public class DataLoadCensusTest {
         dataLoadCensus.load();
         verify(censusServiceMock).saveCensusCommand(captor.capture());
 
-        assertEquals( CensusDate.CENSUS_1881, captor.getValue().getCensusDate());
+        assertEquals(CensusDate.CENSUS_1881, captor.getValue().getCensusDate());
         assertEquals(captor.getValue().getPlace(), place);
         assertEquals(CensusBoundaryType.ISLAND, captor.getValue().getBoundaryType());
         assertEquals("2", captor.getValue().getInhabitedRooms());

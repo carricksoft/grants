@@ -35,7 +35,8 @@ class PersonConverterTest {
 
         source.setId(id);
         source.setFirstName(firstName);
-        source.setLastName(lastName);source.setRecordedYearOfBirth(recordedYearOfBirth);
+        source.setLastName(lastName);
+        source.setRecordedYearOfBirth(recordedYearOfBirth);
         source.setCertifiedYearOfBirth(certifiedYearOfBirth);
 
         PersonCommand target = converter.convert(source);

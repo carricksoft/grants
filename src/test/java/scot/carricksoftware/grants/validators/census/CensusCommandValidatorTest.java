@@ -56,7 +56,7 @@ class CensusCommandValidatorTest {
         censusCommand.setPlace(GetRandomPlace());
         censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
         censusCommandValidator.validate(censusCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
         assertEquals("date", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
         assertNull(objectArgumentCaptor.getValue());
@@ -68,7 +68,7 @@ class CensusCommandValidatorTest {
         censusCommand.setPlace(GetRandomPlace());
         censusCommand.setCensusDate(GetRandomCensusDate());
         censusCommandValidator.validate(censusCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
         assertEquals("boundaryType", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
         assertNull(objectArgumentCaptor.getValue());
@@ -80,7 +80,7 @@ class CensusCommandValidatorTest {
         censusCommand.setCensusDate(GetRandomCensusDate());
         censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
         censusCommandValidator.validate(censusCommand, bindingResultMock);
-        verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
+        verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
         assertEquals("place", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
         assertNull(objectArgumentCaptor.getValue());

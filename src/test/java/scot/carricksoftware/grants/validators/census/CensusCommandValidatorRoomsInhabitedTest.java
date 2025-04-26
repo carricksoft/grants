@@ -52,17 +52,17 @@ class CensusCommandValidatorRoomsInhabitedTest {
         censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
     }
 
-   @Test
+    @Test
     public void validateRoomsInhabitedNegativeTest() {
         censusCommand.setInhabitedRooms("-1");
         censusCommand.setRoomsWithWindows("5");
-       censusCommandValidator.validate(censusCommand, bindingResultMock);
-       verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
-       assertEquals("inhabitedRooms", stringArgumentCaptor.getValue());
-       assertEquals("", stringArgumentCaptor2.getValue());
-       assertNull(objectArgumentCaptor.getValue());
-       assertEquals("Not a non negative integer.", stringArgumentCaptor3.getValue());
-   }
+        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
+        assertEquals("inhabitedRooms", stringArgumentCaptor.getValue());
+        assertEquals("", stringArgumentCaptor2.getValue());
+        assertNull(objectArgumentCaptor.getValue());
+        assertEquals("Not a non negative integer.", stringArgumentCaptor3.getValue());
+    }
 
 
     @Test
@@ -70,7 +70,7 @@ class CensusCommandValidatorRoomsInhabitedTest {
         censusCommand.setInhabitedRooms("z");
         censusCommand.setRoomsWithWindows("5");
         censusCommandValidator.validate(censusCommand, bindingResultMock);
-        verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
+        verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
         assertEquals("inhabitedRooms", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
         assertNull(objectArgumentCaptor.getValue());

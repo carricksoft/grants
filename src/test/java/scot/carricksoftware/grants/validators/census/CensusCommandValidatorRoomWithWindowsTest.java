@@ -52,17 +52,17 @@ class CensusCommandValidatorRoomWithWindowsTest {
         censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
     }
 
-   @Test
+    @Test
     public void validateRoomsWithWindowsNegativeTest() {
         censusCommand.setInhabitedRooms("1");
         censusCommand.setRoomsWithWindows("-5");
-       censusCommandValidator.validate(censusCommand, bindingResultMock);
-       verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
-       assertEquals("roomsWithWindows", stringArgumentCaptor.getValue());
-       assertEquals("", stringArgumentCaptor2.getValue());
-       assertNull(objectArgumentCaptor.getValue());
-       assertEquals("Not a non negative integer.", stringArgumentCaptor3.getValue());
-   }
+        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
+        assertEquals("roomsWithWindows", stringArgumentCaptor.getValue());
+        assertEquals("", stringArgumentCaptor2.getValue());
+        assertNull(objectArgumentCaptor.getValue());
+        assertEquals("Not a non negative integer.", stringArgumentCaptor3.getValue());
+    }
 
 
     @Test
@@ -70,7 +70,7 @@ class CensusCommandValidatorRoomWithWindowsTest {
         censusCommand.setInhabitedRooms("1");
         censusCommand.setRoomsWithWindows("z");
         censusCommandValidator.validate(censusCommand, bindingResultMock);
-        verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(),stringArgumentCaptor3.capture());
+        verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
         assertEquals("roomsWithWindows", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
         assertNull(objectArgumentCaptor.getValue());

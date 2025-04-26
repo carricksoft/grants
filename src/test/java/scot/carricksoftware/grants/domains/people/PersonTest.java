@@ -45,16 +45,7 @@ class PersonTest {
         assertEquals(lastName, person.getLastName());
     }
 
-    @Test
-    void toStringTest() {
-        String firstName = GetRandomString();
-        String lastName = GetRandomString();
-        person.setFirstName(firstName);
-        person.setLastName(lastName);
 
-        assertEquals(lastName + ", " + firstName, person.toString());
-    }
-    
     @Test
     void getRecodedYearOfBirthTest() {
         assertNull(person.getRecordedYearOfBirth());

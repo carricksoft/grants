@@ -35,9 +35,9 @@ public class DataLoadPeopleTest {
         assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getFirstName().equals("Andrew")));
         assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getLastName().equals("Grant")));
         assertTrue(captor.getAllValues().stream().anyMatch(
-                person -> person.getCertifiedYearOfBirth().equals("dad's date of Birth")));
+                person -> person.getCertifiedYearOfBirth().equals("1920")));
         assertTrue(captor.getAllValues().stream().anyMatch(
-                person -> person.getRecordedYearOfBirth().equals("dad's reported Birth")));
+                person -> person.getRecordedYearOfBirth().equals("1925")));
     }
 
 
@@ -50,9 +50,9 @@ public class DataLoadPeopleTest {
         //noinspection SpellCheckingInspection
         assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getLastName().equals("Bramall")));
         assertTrue(captor.getAllValues().stream().anyMatch(
-                person -> person.getCertifiedYearOfBirth().equals("mum's date of Birth")));
+                person -> person.getCertifiedYearOfBirth().equals("1910")));
         assertTrue(captor.getAllValues().stream().anyMatch(
-                person -> person.getRecordedYearOfBirth().equals("mum's reported Birth")));
+                person -> person.getRecordedYearOfBirth().equals("1915")));
     }
 
 }
