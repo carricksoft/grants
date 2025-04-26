@@ -18,6 +18,8 @@ import scot.carricksoftware.grants.commands.certificates.deathcertificates.Death
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
 class DeathCertificateCommandValidatorTest {
@@ -57,6 +59,15 @@ class DeathCertificateCommandValidatorTest {
 
         assertEquals("deceased", stringArgumentCaptor.getValue());
         assertEquals("The person cannot be null.", stringArgumentCaptor3.getValue());
+
+    }
+
+    @Test
+    public void notNullPersonTest() {
+        deathCertificateCommand.setDeceased(GetRandomPerson());
+        commandValidator.validate(deathCertificateCommand, bindingResultMock);
+
+        verifyNoInteractions(bindingResultMock);
 
     }
 
