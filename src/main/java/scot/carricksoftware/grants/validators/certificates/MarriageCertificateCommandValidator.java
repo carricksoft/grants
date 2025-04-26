@@ -22,10 +22,12 @@ public class MarriageCertificateCommandValidator {
     public void validate(@SuppressWarnings("unused") MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating death certificate command");
         validateBrideAndGroomInIsolation(marriageCertificateCommand, bindingResult);
+
         if (!bindingResult.hasErrors()) {
-            if (marriageCertificateCommand.getBride() != null &&
-                    marriageCertificateCommand.getGroom() != null) {
-                validateBrideAndGroomTogether(marriageCertificateCommand, bindingResult);
+            if (marriageCertificateCommand.getGroom() != null) {
+                if (marriageCertificateCommand.getBride() != null) {
+                    validateBrideAndGroomTogether(marriageCertificateCommand, bindingResult);
+                }
             }
         }
     }
