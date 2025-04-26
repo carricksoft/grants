@@ -44,6 +44,9 @@ public class CensusEntry extends BaseEntity {
 
     private String whereBorn;
 
+    private String birthDay;
+
+    private String birthYear;
 
     public Person getPerson() {
         return person;
@@ -127,5 +130,21 @@ public class CensusEntry extends BaseEntity {
 
     public void setSex(CensusEntrySex sex) {
         Sex = sex;
+    }
+
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public String getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(String birthYear) {
+        this.birthYear = birthYear;
     }
 }

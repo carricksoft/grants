@@ -101,4 +101,29 @@ class CensusEntryTest {
         assertEquals(whereBorn, entry.getWhereBorn());
     }
 
+    @Test
+    void getBirthDayTest() {
+        assertNull(entry.getBirthDay());
+    }
+
+    @Test
+    void setBirthDayTest() {
+        String birthDay = GetRandomString();
+        entry.setBirthDay(birthDay);
+        assertEquals(birthDay, entry.getBirthDay());
+    }
+
+    @Test
+    void getBirthYearTest() {
+        assertNull(entry.getBirthYear());
+    }
+
+    @Test
+    void setBirthYearTest() {
+        String birthYear = GetRandomString();
+        entry.setBirthYear(birthYear);
+        assertEquals(birthYear, entry.getBirthYear());
+    }
+
+
 }
