@@ -33,6 +33,10 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
 
     private CensusEntrySex Sex;
 
+    private String birthDay;
+
+    private String birthYear;
+
     public Long getId() {
         return id;
     }
@@ -139,5 +143,25 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
     @Override
     public void setSex(CensusEntrySex sex) {
         Sex = sex;
+    }
+
+    @Override
+    public String getBirthDay() {
+        return birthDay;
+    }
+
+    @Override
+    public void setBirthDay(String birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    @Override
+    public String getBirthYear() {
+        return birthYear;
+    }
+
+    @Override
+    public void setBirthYear(String birthYear) {
+        this.birthYear = birthYear;
     }
 }

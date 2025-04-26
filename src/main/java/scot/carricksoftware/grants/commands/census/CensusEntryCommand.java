@@ -54,4 +54,12 @@ public interface CensusEntryCommand {
     CensusEntrySex getSex();
 
     void setSex(CensusEntrySex sex);
+
+    String getBirthDay();
+
+    void setBirthDay(String birthDay);
+
+    String getBirthYear();
+
+    void setBirthYear(String birthYear);
 }

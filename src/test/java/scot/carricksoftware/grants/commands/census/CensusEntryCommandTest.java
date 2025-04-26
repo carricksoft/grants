@@ -94,4 +94,29 @@ class CensusEntryCommandTest {
         command.setWhereBorn(whereBorn);
         assertEquals(whereBorn, command.getWhereBorn());
     }
+    
+    @Test
+    void getBirthDayTest() {
+        assertNull(command.getBirthDay());
+    }
+
+    @Test
+    void setBirthDayTest() {
+        String birthDay = GetRandomString();
+        command.setBirthDay(birthDay);
+        assertEquals(birthDay, command.getBirthDay());
+    }
+
+    @Test
+    void getBirthYearTest() {
+        assertNull(command.getBirthYear());
+    }
+
+    @Test
+    void setBirthYearTest() {
+        String birthYear = GetRandomString();
+        command.setBirthYear(birthYear);
+        assertEquals(birthYear, command.getBirthYear());
+    }
+
 }
