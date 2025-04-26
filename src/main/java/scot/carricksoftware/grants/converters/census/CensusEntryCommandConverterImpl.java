@@ -27,6 +27,8 @@ public class CensusEntryCommandConverterImpl implements CensusEntryCommandConver
         result.setAge(source.getAge());
         result.setWhereBorn(source.getWhereBorn());
         result.setSex(source.getSex());
+        result.setBirthYear(source.getBirthYear());
+        result.setBirthDay(source.getBirthDay());
         return result;
     }
 

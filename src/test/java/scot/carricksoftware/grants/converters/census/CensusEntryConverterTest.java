@@ -43,6 +43,8 @@ class CensusEntryConverterTest {
         String age = GetRandomString();
         String whereBorn = GetRandomString();
         CensusEntrySex sex = GetRandomCensusEntrySex();
+        String birthYear = GetRandomString();
+        String birthDay = GetRandomString();
 
         source.setId(id);
         source.setName(name);
@@ -55,6 +57,8 @@ class CensusEntryConverterTest {
         source.setAge(age);
         source.setWhereBorn(whereBorn);
         source.setSex(sex);
+        source.setBirthYear(birthYear);
+        source.setBirthDay(birthDay);
 
         CensusEntryCommand target = converter.convert(source);
 
@@ -70,5 +74,7 @@ class CensusEntryConverterTest {
         assertEquals(age, target.getAge());
         assertEquals(whereBorn, target.getWhereBorn());
         assertEquals(sex, target.getSex());
+        assertEquals(birthYear, target.getBirthYear());
+        assertEquals(birthDay, target.getBirthDay());
     }
 }
