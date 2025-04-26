@@ -13,10 +13,7 @@ import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
 import scot.carricksoftware.grants.enums.census.CensusDate;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryWorker;
+import scot.carricksoftware.grants.enums.censusentry.*;
 import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -92,6 +89,7 @@ public class DataLoadCensusTest {
         assertEquals(CensusEntryWorker.WORKER, captor.getValue().getWorker());
         assertEquals("72", captor.getValue().getAge());
         assertEquals("Edinburgh", captor.getValue().getWhereBorn());
+        assertEquals(CensusEntrySex.MALE, captor.getValue().getSex());
 
     }
 
