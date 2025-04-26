@@ -18,8 +18,7 @@ import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
@@ -109,6 +108,22 @@ class DivorceCertificateCommandValidatorTest {
         }
 
         assertTrue(foundFirstParty && foundSecondParty);
+    }
+
+    @Test
+    public void notTheSamePersonTest() {
+       Person firstParty = GetRandomPerson();
+       Person secondParty = GetRandomPerson();
+       while (!firstParty.getFirstName().equals(secondParty.getLastName())) {
+           secondParty = GetRandomPerson();
+       }
+
+       divorceCertificateCommand.setFirstParty(firstParty);
+       divorceCertificateCommand.setSecondParty(secondParty);
+
+       commandValidator.validate(divorceCertificateCommand, bindingResultMock);
+
+       verifyNoInteractions(bindingResultMock);
     }
 
 
