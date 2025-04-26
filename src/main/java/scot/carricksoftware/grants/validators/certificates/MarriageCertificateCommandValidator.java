@@ -44,7 +44,7 @@ public class MarriageCertificateCommandValidator {
     }
 
     private void validateBrideAndGroomTogether(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
-        if (marriageCertificateCommand.getBride().equals(marriageCertificateCommand.getBride())) {
+        if (marriageCertificateCommand.getBride().equals(marriageCertificateCommand.getGroom())) {
             bindingResult.rejectValue("groom", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.SAME_BRIDE_AND_GROOM);

@@ -18,8 +18,7 @@ import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.atLeast;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
@@ -45,7 +44,6 @@ class MarriageCertificateCommandValidatorTest {
         stringArgumentCaptor2 = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor3 = ArgumentCaptor.forClass(String.class);
         objectArgumentCaptor = ArgumentCaptor.forClass(Object[].class);
-
     }
 
     @Test
@@ -65,6 +63,21 @@ class MarriageCertificateCommandValidatorTest {
 
         assertEquals("groom", stringArgumentCaptor.getValue());
         assertEquals("The groom cannot be null.", stringArgumentCaptor3.getValue());
+    }
+
+    @Test
+    public void notNullPeopleTest() {
+        Person bride = GetRandomPerson();
+        Person groom = GetRandomPerson();
+        while (!bride.getFirstName().equals(groom.getFirstName())) {
+            groom = GetRandomPerson();
+        }
+
+        marriageCertificateCommand.setBride(bride);
+        marriageCertificateCommand.setGroom(groom);
+        commandValidator.validate(marriageCertificateCommand, bindingResultMock);
+
+        verify(bindingResultMock, times(0)).rejectValue(any(), any());
     }
 
     private void runAndCapture() {
