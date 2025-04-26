@@ -59,6 +59,15 @@ class DivorceCertificateCommandValidatorTest {
 
 
     @Test
+    public void notnullFirstPartyTest() {
+        divorceCertificateCommand.setSecondParty(GetRandomPerson());
+        runAndCapture();
+
+        assertEquals("firstParty", stringArgumentCaptor.getValue());
+        assertEquals("The first party cannot be null.", stringArgumentCaptor3.getValue());
+    }
+
+    @Test
     public void nullSecondPartyTest() {
         divorceCertificateCommand.setFirstParty(GetRandomPerson());
         runAndCapture();

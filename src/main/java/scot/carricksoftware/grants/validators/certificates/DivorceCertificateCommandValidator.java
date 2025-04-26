@@ -22,12 +22,13 @@ public class DivorceCertificateCommandValidator {
     public void validate(@SuppressWarnings("unused") DivorceCertificateCommand divorceCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating death certificate command");
         validateTheTwoPartiesInIsolation(divorceCertificateCommand, bindingResult);
-        if (!bindingResult.hasErrors()) {
-            if (divorceCertificateCommand.getFirstParty() != null &&
-                    divorceCertificateCommand.getSecondParty() != null) {
-                validateThePartiesTogether(divorceCertificateCommand, bindingResult);
-            }
+
+
+        if (divorceCertificateCommand.getFirstParty() != null &&
+                divorceCertificateCommand.getSecondParty() != null) {
+            validateThePartiesTogether(divorceCertificateCommand, bindingResult);
         }
+
     }
 
     private void validateThePartiesTogether(DivorceCertificateCommand divorceCertificateCommand, BindingResult bindingResult) {
