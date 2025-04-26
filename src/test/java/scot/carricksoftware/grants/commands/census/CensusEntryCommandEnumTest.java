@@ -8,10 +8,7 @@ package scot.carricksoftware.grants.commands.census;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryWorker;
+import scot.carricksoftware.grants.enums.censusentry.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -73,5 +70,18 @@ class CensusEntryCommandEnumTest {
         command.setWorker(worker);
         assertEquals(worker, command.getWorker());
     }
+
+    @Test
+    void getSexTest() {
+        assertNull(command.getSex());
+    }
+
+    @Test
+    void setSexTest() {
+        CensusEntrySex sex = GetRandomCensusEntrySex();
+        command.setSex(sex);
+        assertEquals(sex, command.getSex());
+    }
+
 
 }

@@ -7,10 +7,7 @@ package scot.carricksoftware.grants.commands.census;
 
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntryWorker;
+import scot.carricksoftware.grants.enums.censusentry.*;
 
 public class CensusEntryCommandImpl implements CensusEntryCommand {
 
@@ -33,6 +30,8 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
     private String age;
 
     private String whereBorn;
+
+    private CensusEntrySex Sex;
 
     public Long getId() {
         return id;
@@ -130,5 +129,15 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
     @Override
     public void setWhereBorn(String whereBorn) {
         this.whereBorn = whereBorn;
+    }
+
+    @Override
+    public CensusEntrySex getSex() {
+        return Sex;
+    }
+
+    @Override
+    public void setSex(CensusEntrySex sex) {
+        Sex = sex;
     }
 }
