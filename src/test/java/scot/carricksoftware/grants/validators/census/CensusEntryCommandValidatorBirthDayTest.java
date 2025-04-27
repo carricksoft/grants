@@ -62,6 +62,13 @@ class CensusEntryCommandValidatorBirthDayTest {
     }
 
     @Test
+    public void TooHighDaysTest() {
+        censusEntryCommand.setBirthDay("32/85");
+        validator.validate(censusEntryCommand, bindingResultMock);
+        verify(bindingResultMock).rejectValue("birthDay", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
+    }
+
+    @Test
     public void NonValidDaysTest() {
         censusEntryCommand.setBirthDay("z/85");
         validator.validate(censusEntryCommand, bindingResultMock);
