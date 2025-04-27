@@ -135,11 +135,36 @@ rounded-3 text-center p-4">
                 <label for="age">Age</label>
                 <input class="form-control" id="age"
                        th:field="*{age}" type="text">
+                <div th:if="${#fields.hasErrors('age')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('age')}" th:text="${err}" style="width: 300px;"/>
+                    </ul>
+                </div>
             </div>
             <div class="col-md-2">
                 <label for="whereBorn">Where Born</label>
                 <input class="form-control" id="whereBorn"
                        th:field="*{whereBorn}" type="text">
+            </div>
+            <div class="col-md-2">
+                <label for="birthDay">Birthday (dd/mm)</label>
+                <input class="form-control" id="birthDay"
+                       th:field="*{whereBorn}" type="text">
+                <div th:if="${#fields.hasErrors('birthDay')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('birthDay')}" th:text="${err}" style="width: 300px;"/>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="birthYear">Birth Year</label>
+                <input class="form-control" id="birthYear"
+                       th:field="*{birthYear}" type="text">
+                <div th:if="${#fields.hasErrors('birthYear')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('name')}" th:text="${err}" style="width: 300px;"/>
+                    </ul>
+                </div>
             </div>
         </div>
 
