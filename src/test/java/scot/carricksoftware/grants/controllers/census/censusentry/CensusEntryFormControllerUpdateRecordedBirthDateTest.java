@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.census.censusentry.UpdateRecordedYearOfBirth;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
+import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidatorImpl;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -37,7 +37,7 @@ public class CensusEntryFormControllerUpdateRecordedBirthDateTest {
     private CensusEntryService censusEntryServiceMock;
 
     @Mock
-    CensusEntryCommandValidator censusEntryCommandValidatorMock;
+    CensusEntryCommandValidatorImpl censusEntryCommandValidatorImplMock;
 
     @Mock
     private CensusEntryConverterImpl censusEntryConverterMock;
@@ -65,7 +65,7 @@ public class CensusEntryFormControllerUpdateRecordedBirthDateTest {
     @BeforeEach
     public void setUp() {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
-                censusEntryCommandValidatorMock,
+                censusEntryCommandValidatorImplMock,
                 censusEntryConverterMock,
                 capitalisationMock,
                 personServiceMock,

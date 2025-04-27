@@ -23,7 +23,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.census.CensusConverter;
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
-import scot.carricksoftware.grants.validators.census.CensusCommandValidator;
+import scot.carricksoftware.grants.validators.census.CensusCommandValidatorImpl;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -31,16 +31,16 @@ public class CensusFormControllerImpl implements CensusFormController {
 
     private static final Logger logger = LogManager.getLogger(CensusFormControllerImpl.class);
     private final CensusService censusService;
-    private final CensusCommandValidator censusCommandValidator;
+    private final CensusCommandValidatorImpl censusCommandValidatorImpl;
     private final CensusConverter censusConverter;
     private final PlaceService placeService;
 
 
     public CensusFormControllerImpl(CensusService censusService,
-                                    CensusCommandValidator censusCommandValidator,
+                                    CensusCommandValidatorImpl censusCommandValidatorImpl,
                                     CensusConverter censusConverter, PlaceService placeService) {
         this.censusService = censusService;
-        this.censusCommandValidator = censusCommandValidator;
+        this.censusCommandValidatorImpl = censusCommandValidatorImpl;
         this.censusConverter = censusConverter;
         this.placeService = placeService;
     }
@@ -69,7 +69,7 @@ public class CensusFormControllerImpl implements CensusFormController {
     public String saveOrUpdate(@Valid @ModelAttribute CensusCommand censusCommand, BindingResult bindingResult, Model model) {
         logger.debug("CensusFormControllerImpl::saveOrUpdate");
 
-        censusCommandValidator.validate(censusCommand, bindingResult);
+        censusCommandValidatorImpl.validate(censusCommand, bindingResult);
 
 
         if (bindingResult.hasErrors()) {

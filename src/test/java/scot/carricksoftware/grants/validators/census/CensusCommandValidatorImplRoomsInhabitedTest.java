@@ -24,9 +24,9 @@ import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCen
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-class CensusCommandValidatorRoomsInhabitedTest {
+class CensusCommandValidatorImplRoomsInhabitedTest {
 
-    private CensusCommandValidator censusCommandValidator = new CensusCommandValidator();
+    private CensusCommandValidatorImpl censusCommandValidatorImpl = new CensusCommandValidatorImpl();
 
     private ArgumentCaptor<String> stringArgumentCaptor;
     private ArgumentCaptor<String> stringArgumentCaptor2;
@@ -40,7 +40,7 @@ class CensusCommandValidatorRoomsInhabitedTest {
 
     @BeforeEach
     void setUp() {
-        censusCommandValidator = new CensusCommandValidator();
+        censusCommandValidatorImpl = new CensusCommandValidatorImpl();
         stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor2 = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor3 = ArgumentCaptor.forClass(String.class);
@@ -56,7 +56,7 @@ class CensusCommandValidatorRoomsInhabitedTest {
     public void validateRoomsInhabitedNegativeTest() {
         censusCommand.setInhabitedRooms("-1");
         censusCommand.setRoomsWithWindows("5");
-        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        censusCommandValidatorImpl.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
         assertEquals("inhabitedRooms", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
@@ -69,7 +69,7 @@ class CensusCommandValidatorRoomsInhabitedTest {
     public void validateRoomsInhabitedNonNumberTest() {
         censusCommand.setInhabitedRooms("z");
         censusCommand.setRoomsWithWindows("5");
-        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        censusCommandValidatorImpl.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
         assertEquals("inhabitedRooms", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
@@ -81,7 +81,7 @@ class CensusCommandValidatorRoomsInhabitedTest {
     public void validateRoomsInhabitedValidNumberTest() {
         censusCommand.setInhabitedRooms("3");
         censusCommand.setRoomsWithWindows("5");
-        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        censusCommandValidatorImpl.validate(censusCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 

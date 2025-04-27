@@ -19,7 +19,7 @@ import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
-import scot.carricksoftware.grants.validators.census.CensusCommandValidator;
+import scot.carricksoftware.grants.validators.census.CensusCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -50,13 +50,13 @@ public class CensusFormControllerTest {
     private Model modelMock;
 
     @Mock
-    CensusCommandValidator censusCommandValidatorMock;
+    CensusCommandValidatorImpl censusCommandValidatorImplMock;
 
 
     @BeforeEach
     public void setUp() {
         censusController = new CensusFormControllerImpl(censusServiceMock,
-                censusCommandValidatorMock,
+                censusCommandValidatorImplMock,
                 censusConverterMock,
                 placeServiceMock);
     }

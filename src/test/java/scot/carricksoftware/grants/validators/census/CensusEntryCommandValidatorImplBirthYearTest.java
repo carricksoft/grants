@@ -18,13 +18,12 @@ import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 
 @ExtendWith(MockitoExtension.class)
-class CensusEntryCommandValidatorNameTest {
+class CensusEntryCommandValidatorImplBirthYearTest {
 
-    private CensusEntryCommandValidator validator;
+    private CensusEntryCommandValidatorImpl validator;
 
     private CensusEntryCommand censusEntryCommand;
 
@@ -34,43 +33,39 @@ class CensusEntryCommandValidatorNameTest {
 
     @BeforeEach
     void setUp() {
-        validator = new CensusEntryCommandValidator();
+        validator = new CensusEntryCommandValidatorImpl();
         censusEntryCommand = new CensusEntryCommandImpl();
         censusEntryCommand.setCensus(GetRandomCensus());
     }
 
     @Test
-    public void minimumSizeIsAllowedTest() {
-        String repeated = new String(new char[ApplicationConstants.MINIMUM_NAME_LENGTH]).replace("\0", "x");
-        censusEntryCommand.setName(repeated);
+    public void NegativeTest() {
+        censusEntryCommand.setBirthYear("-5");
         validator.validate(censusEntryCommand, bindingResultMock);
-        verifyNoInteractions(bindingResultMock);
+        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
     }
 
     @Test
-    public void maximumSizeIsAllowedTest() {
-        String repeated = new String(new char[ApplicationConstants.MAXIMUM_NAME_LENGTH]).replace("\0", "x");
-        censusEntryCommand.setName(repeated);
+    public void ZeroTest() {
+        censusEntryCommand.setBirthYear("0");
         validator.validate(censusEntryCommand, bindingResultMock);
-        verifyNoInteractions(bindingResultMock);
+        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
     }
 
     @Test
-    public void greaterThanMaximumSizeIsRejectedTest() {
-        String repeated = new String(new char[ApplicationConstants.MAXIMUM_NAME_LENGTH + 1]).replace("\0", "x");
-        censusEntryCommand.setName(repeated);
+    public void NotIntegerTest() {
+        censusEntryCommand.setBirthYear("3.14");
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("name", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.NAME_IS_TOO_LONG);
-
+        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
     }
 
     @Test
-    public void smallerThanMinimumSizeIsRejectedTest() {
-        String repeated = new String(new char[ApplicationConstants.MINIMUM_NAME_LENGTH - 1]).replace("\0", "x");
-        censusEntryCommand.setName(repeated);
+    public void NotANumberTest() {
+        censusEntryCommand.setBirthYear("zzz");
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("name", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.NAME_IS_TOO_SHORT);
+        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
     }
+
 
 
 }

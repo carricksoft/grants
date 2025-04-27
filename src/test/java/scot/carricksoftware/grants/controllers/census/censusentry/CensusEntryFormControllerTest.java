@@ -22,7 +22,7 @@ import scot.carricksoftware.grants.services.census.censusentry.CensusEntryServic
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.census.censusentry.UpdateRecordedYearOfBirth;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
+import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -52,7 +52,7 @@ public class CensusEntryFormControllerTest {
     private CensusService censusServiceMock;
 
     @Mock
-    private CensusEntryCommandValidator censusEntryCommandValidatorMock;
+    private CensusEntryCommandValidatorImpl censusEntryCommandValidatorImplMock;
 
     @Mock
     private Capitalisation capitalisationMock;
@@ -67,7 +67,7 @@ public class CensusEntryFormControllerTest {
     @BeforeEach
     public void setUp() {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
-                censusEntryCommandValidatorMock,
+                censusEntryCommandValidatorImplMock,
                 censusEntryConverterMock,
                 capitalisationMock,
                 personServiceMock,

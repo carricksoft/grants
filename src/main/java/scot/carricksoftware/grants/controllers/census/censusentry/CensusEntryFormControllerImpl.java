@@ -26,7 +26,7 @@ import scot.carricksoftware.grants.services.census.censusentry.CensusEntryServic
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.census.censusentry.UpdateRecordedYearOfBirth;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
+import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidatorImpl;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -34,7 +34,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
 
     private static final Logger logger = LogManager.getLogger(CensusEntryFormControllerImpl.class);
     private final CensusEntryService censusEntryService;
-    private final CensusEntryCommandValidator censusEntryCommandValidator;
+    private final CensusEntryCommandValidatorImpl censusEntryCommandValidatorImpl;
     private final CensusEntryConverter censusEntryConverter;
     private final Capitalisation capitalisation;
     private final PersonService personService;
@@ -44,13 +44,13 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
 
 
     public CensusEntryFormControllerImpl(CensusEntryService censusEntryService,
-                                         CensusEntryCommandValidator censusEntryCommandValidator,
+                                         CensusEntryCommandValidatorImpl censusEntryCommandValidatorImpl,
                                          CensusEntryConverter censusEntryConverter,
                                          Capitalisation capitalisation,
                                          PersonService personService,
                                          CensusService censusService, UpdateRecordedYearOfBirth updateRecordedYearOfBirth) {
         this.censusEntryService = censusEntryService;
-        this.censusEntryCommandValidator = censusEntryCommandValidator;
+        this.censusEntryCommandValidatorImpl = censusEntryCommandValidatorImpl;
         this.censusEntryConverter = censusEntryConverter;
         this.capitalisation = capitalisation;
         this.personService = personService;
@@ -84,7 +84,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     public String saveOrUpdate(@Valid @ModelAttribute CensusEntryCommand censusEntryCommand, BindingResult bindingResult, Model model) {
         logger.debug("CensusEntryFormControllerImpl::saveOrUpdate");
 
-        censusEntryCommandValidator.validate(censusEntryCommand, bindingResult);
+        censusEntryCommandValidatorImpl.validate(censusEntryCommand, bindingResult);
         censusEntryCommand.setName(capitalisation.getCapitalisation(censusEntryCommand.getName()));
 
         if (bindingResult.hasErrors()) {

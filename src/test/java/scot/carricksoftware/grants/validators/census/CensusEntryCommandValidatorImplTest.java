@@ -23,9 +23,9 @@ import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCe
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
-class CensusEntryCommandValidatorTest {
+class CensusEntryCommandValidatorImplTest {
 
-    private CensusEntryCommandValidator validator;
+    private CensusEntryCommandValidatorImpl validator;
 
     private CensusEntryCommand censusEntryCommand;
 
@@ -34,7 +34,7 @@ class CensusEntryCommandValidatorTest {
 
     @BeforeEach
     void setUp() {
-        validator = new CensusEntryCommandValidator();
+        validator = new CensusEntryCommandValidatorImpl();
         censusEntryCommand = new CensusEntryCommandImpl();
     }
 

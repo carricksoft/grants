@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.services.census.censusentry.CensusEntryServic
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.census.censusentry.UpdateRecordedYearOfBirth;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
+import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -39,7 +39,7 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
     private CensusEntryService censusEntryServiceMock;
 
     @Mock
-    CensusEntryCommandValidator censusEntryCommandValidatorMock;
+    CensusEntryCommandValidatorImpl censusEntryCommandValidatorImplMock;
 
     @Mock
     private CensusEntryConverterImpl censusEntryConverterMock;
@@ -67,7 +67,7 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
     @BeforeEach
     public void setUp() {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
-                censusEntryCommandValidatorMock,
+                censusEntryCommandValidatorImplMock,
                 censusEntryConverterMock,
                 capitalisationMock,
                 personServiceMock,
@@ -99,7 +99,7 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
         censusEntryCommand.setId(id);
         when(censusEntryServiceMock.saveCensusEntryCommand(any(CensusEntryCommand.class))).thenReturn(censusEntryCommand);
         censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock, modelMock);
-        verify(censusEntryCommandValidatorMock).validate(censusEntryCommand, bindingResultMock);
+        verify(censusEntryCommandValidatorImplMock).validate(censusEntryCommand, bindingResultMock);
     }
 
     @Test

@@ -19,11 +19,12 @@ import scot.carricksoftware.grants.constants.ValidationConstants;
 
 import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
-class CensusEntryCommandValidatorBirthYearTest {
+class CensusEntryCommandValidatorImplBIrthYearAndAgeTest {
 
-    private CensusEntryCommandValidator validator;
+    private CensusEntryCommandValidatorImpl validator;
 
     private CensusEntryCommand censusEntryCommand;
 
@@ -33,38 +34,37 @@ class CensusEntryCommandValidatorBirthYearTest {
 
     @BeforeEach
     void setUp() {
-        validator = new CensusEntryCommandValidator();
+        validator = new CensusEntryCommandValidatorImpl();
         censusEntryCommand = new CensusEntryCommandImpl();
         censusEntryCommand.setCensus(GetRandomCensus());
+        censusEntryCommand.setPerson(GetRandomPerson());
     }
 
     @Test
-    public void NegativeTest() {
-        censusEntryCommand.setBirthYear("-5");
+    public void BirthYearAndAgeMustNotCoexistTest() {
+        censusEntryCommand.setBirthYear("1880");
+        censusEntryCommand.setAge("80");
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTH_YEAR_AND_AGE_CANNOT_COEXIST);
+        verify(bindingResultMock).rejectValue("age", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTH_YEAR_AND_AGE_CANNOT_COEXIST);
     }
 
     @Test
-    public void ZeroTest() {
-        censusEntryCommand.setBirthYear("0");
+    public void BirthDayAndAgeMustNotCoexistTest() {
+        censusEntryCommand.setBirthDay("25/01");
+        censusEntryCommand.setAge("80");
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        verify(bindingResultMock).rejectValue("birthDay", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTH_DAY_AND_AGE_CANNOT_COEXIST);
+        verify(bindingResultMock).rejectValue("age", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTH_DAY_AND_AGE_CANNOT_COEXIST);
     }
 
-    @Test
-    public void NotIntegerTest() {
-        censusEntryCommand.setBirthYear("3.14");
-        validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
-    }
 
-    @Test
-    public void NotANumberTest() {
-        censusEntryCommand.setBirthYear("zzz");
-        validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
-    }
+
+
+
+
+
+
 
 
 

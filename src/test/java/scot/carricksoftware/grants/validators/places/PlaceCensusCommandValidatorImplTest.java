@@ -12,44 +12,45 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
-import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
+import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
+import scot.carricksoftware.grants.commands.places.places.PlaceCommandImpl;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 @ExtendWith(MockitoExtension.class)
-class CountryCensusCommandValidatorTest {
+class PlaceCensusCommandValidatorImplTest {
 
-    private CountryCommandValidator validator;
+    private PlaceCommandValidator validator;
 
-    private CountryCommand countryCommand;
+    private PlaceCommand placeCommand;
 
     @Mock
     private BindingResult bindingResultMock;
 
     @BeforeEach
     void setUp() {
-        validator = new CountryCommandValidator();
-        countryCommand = new CountryCommandImpl();
+        validator = new PlaceCommandValidator();
+        placeCommand = new PlaceCommandImpl();
     }
 
     @Test
     public void minimumSizeIsAllowedTest() {
         String repeated = new String(new char[ApplicationConstants.MINIMUM_NAME_LENGTH]).replace("\0", "x");
-        countryCommand.setName(repeated);
-        validator.validate(countryCommand, bindingResultMock);
+        placeCommand.setName(repeated);
+        validator.validate(placeCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
     public void maximumSizeIsAllowedTest() {
         String repeated = new String(new char[ApplicationConstants.MAXIMUM_NAME_LENGTH]).replace("\0", "x");
-        countryCommand.setName(repeated);
-        validator.validate(countryCommand, bindingResultMock);
+        placeCommand.setName(repeated);
+        validator.validate(placeCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
@@ -59,8 +60,8 @@ class CountryCensusCommandValidatorTest {
         ArgumentCaptor<Object[]> objectArgumentCaptor = ArgumentCaptor.forClass(Object[].class);
 
         String repeated = new String(new char[ApplicationConstants.MAXIMUM_NAME_LENGTH + 1]).replace("\0", "x");
-        countryCommand.setName(repeated);
-        validator.validate(countryCommand, bindingResultMock);
+        placeCommand.setName(repeated);
+        validator.validate(placeCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor.capture());
         assertEquals("name", stringArgumentCaptor.getAllValues().get(0));
         assertEquals(ApplicationConstants.EMPTY_STRING, stringArgumentCaptor.getAllValues().get(1));
@@ -74,8 +75,8 @@ class CountryCensusCommandValidatorTest {
         ArgumentCaptor<Object[]> objectArgumentCaptor = ArgumentCaptor.forClass(Object[].class);
 
         String repeated = new String(new char[ApplicationConstants.MINIMUM_NAME_LENGTH - 1]).replace("\0", "x");
-        countryCommand.setName(repeated);
-        validator.validate(countryCommand, bindingResultMock);
+        placeCommand.setName(repeated);
+        validator.validate(placeCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor.capture());
         assertEquals("name", stringArgumentCaptor.getAllValues().get(0));
         assertEquals(ApplicationConstants.EMPTY_STRING, stringArgumentCaptor.getAllValues().get(1));

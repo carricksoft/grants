@@ -24,9 +24,9 @@ import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCen
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-class CensusCommandValidatorTest {
+class CensusCommandValidatorImplTest {
 
-    private CensusCommandValidator censusCommandValidator = new CensusCommandValidator();
+    private CensusCommandValidatorImpl censusCommandValidatorImpl = new CensusCommandValidatorImpl();
 
     private ArgumentCaptor<String> stringArgumentCaptor;
     private ArgumentCaptor<String> stringArgumentCaptor2;
@@ -40,7 +40,7 @@ class CensusCommandValidatorTest {
 
     @BeforeEach
     void setUp() {
-        censusCommandValidator = new CensusCommandValidator();
+        censusCommandValidatorImpl = new CensusCommandValidatorImpl();
         stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor2 = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor3 = ArgumentCaptor.forClass(String.class);
@@ -55,7 +55,7 @@ class CensusCommandValidatorTest {
     public void nullDateTest() {
         censusCommand.setPlace(GetRandomPlace());
         censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
-        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        censusCommandValidatorImpl.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
         assertEquals("date", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
@@ -67,7 +67,7 @@ class CensusCommandValidatorTest {
     public void nullBoundaryTest() {
         censusCommand.setPlace(GetRandomPlace());
         censusCommand.setCensusDate(GetRandomCensusDate());
-        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        censusCommandValidatorImpl.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
         assertEquals("boundaryType", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
@@ -79,7 +79,7 @@ class CensusCommandValidatorTest {
     public void nullPlaceTest() {
         censusCommand.setCensusDate(GetRandomCensusDate());
         censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
-        censusCommandValidator.validate(censusCommand, bindingResultMock);
+        censusCommandValidatorImpl.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
         assertEquals("place", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
