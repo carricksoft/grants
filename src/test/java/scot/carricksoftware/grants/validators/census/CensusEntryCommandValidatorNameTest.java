@@ -22,7 +22,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 
 @ExtendWith(MockitoExtension.class)
-class CensusEntryCommandValidatorImplNameTest {
+class CensusEntryCommandValidatorNameTest {
 
     private CensusEntryCommandValidatorImpl validator;
 

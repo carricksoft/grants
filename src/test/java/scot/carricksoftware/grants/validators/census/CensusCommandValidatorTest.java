@@ -24,7 +24,7 @@ import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCen
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-class CensusCommandValidatorImplTest {
+class CensusCommandValidatorTest {
 
     private CensusCommandValidatorImpl censusCommandValidatorImpl = new CensusCommandValidatorImpl();
 

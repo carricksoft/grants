@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 
 @ExtendWith(MockitoExtension.class)
-class CensusEntryCommandValidatorImplBirthYearTest {
+class CensusEntryCommandValidatorBirthYearTest {
 
     private CensusEntryCommandValidatorImpl validator;
 

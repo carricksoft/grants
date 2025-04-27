@@ -32,15 +32,23 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
         logger.info("UpdateRecordedYearOfBirthImpl::updateRecordedYearOfBirth");
         Person person = censusEntryCommand.getPerson();
         if (person.getRecordedYearOfBirth() == null) {
-            String dateString = censusEntryCommand.getCensus().getCensusDate().label;
+            if(censusEntryCommand.getBirthYear() != null) {
+                PersonCommand personCommand = personConverter.convert(person);
+                assert personCommand != null;
+                personCommand.setRecordedYearOfBirth(censusEntryCommand.getBirthYear());
+                personService.savePersonCommand(personCommand);
+            } else {
 
-            String[] dateStrings = dateString.split("/");
-            Integer year = Integer.valueOf(dateStrings[2]);
-            try {
-                Integer age = Integer.valueOf(censusEntryCommand.getAge());
-                updateDate(person, String.valueOf(year - age));
-            } catch (NumberFormatException e) {
-                logger.info(" -- Age cannot be parsed");
+                String dateString = censusEntryCommand.getCensus().getCensusDate().label;
+
+                String[] dateStrings = dateString.split("/");
+                Integer year = Integer.valueOf(dateStrings[2]);
+                try {
+                    Integer age = Integer.valueOf(censusEntryCommand.getAge());
+                    updateDate(person, String.valueOf(year - age));
+                } catch (NumberFormatException e) {
+                    logger.info(" -- Age cannot be parsed");
+                }
             }
         }
     }

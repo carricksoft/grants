@@ -22,7 +22,7 @@ import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCe
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
-class CensusEntryCommandValidatorImplBIrthYearAndAgeTest {
+class CensusEntryCommandValidatorBirthYearAndAgeTest {
 
     private CensusEntryCommandValidatorImpl validator;
 
