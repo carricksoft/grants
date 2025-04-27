@@ -149,7 +149,7 @@ rounded-3 text-center p-4">
             <div class="col-md-2">
                 <label for="birthDay">Birthday (dd/mm)</label>
                 <input class="form-control" id="birthDay"
-                       th:field="*{whereBorn}" type="text">
+                       th:field="*{birthDay}" type="text">
                 <div th:if="${#fields.hasErrors('birthDay')}">
                     <ul class="text-danger">
                         <li th:each="err : ${#fields.errors('birthDay')}" th:text="${err}" style="width: 300px;"/>
@@ -162,7 +162,7 @@ rounded-3 text-center p-4">
                        th:field="*{birthYear}" type="text">
                 <div th:if="${#fields.hasErrors('birthYear')}">
                     <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('name')}" th:text="${err}" style="width: 300px;"/>
+                        <li th:each="err : ${#fields.errors('birthYear')}" th:text="${err}" style="width: 300px;"/>
                     </ul>
                 </div>
             </div>

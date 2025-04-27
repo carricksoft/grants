@@ -23,6 +23,27 @@ public class CensusEntryCommandValidator {
         logger.debug("censusEntryCommandValidator::validate");
         validateCensus(censusEntryCommand, bindingResult);
         validateNameAndPerson(censusEntryCommand, bindingResult);
+        validateBirthYear(censusEntryCommand, bindingResult);
+    }
+
+    private void validateBirthYear(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
+        if (censusEntryCommand.getBirthYear() != null) {
+            if (!isPositiveInteger(censusEntryCommand.getBirthYear())) {
+                bindingResult.rejectValue("birthYear", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+            }
+        }
+    }
+
+    private boolean isPositiveInteger(String string) {
+        try {
+            int Number;
+            Number = Integer.parseInt(string);
+            return Number > 0;
+        } catch (RuntimeException e) {
+            return false;
+        }
     }
 
     private void validateNameAndPerson(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
