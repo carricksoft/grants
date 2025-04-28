@@ -13,6 +13,7 @@
 12: Validator Test
 13: Switch to uat
 14: Generate changelog (ctrl-shift-A) as sql
+14A:Edit the file to add COLUMN IF NOT EXISTS to the entries
 15: Add the new file to master.xml
 16: Run in terminal  mvn clean test liquibase:update
 
