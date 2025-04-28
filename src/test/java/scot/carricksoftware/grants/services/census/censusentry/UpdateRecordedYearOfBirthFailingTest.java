@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonService;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.enums.census.CensusDate.CENSUS_1881;
 
@@ -65,9 +66,26 @@ class UpdateRecordedYearOfBirthFailingTest {
     @Test
     public void theYearOfBirthIsNotResetTest() {
         when(personMock.getRecordedYearOfBirth()).thenReturn("1874");
-        when(personMock.getRecordedYearOfBirth()).thenReturn("1800");
         updateRecordedYearOfBirth.updateRecordedYearOfBirth(censusEntryCommandMock);
         verify(personCommandMock, times(0)).setRecordedYearOfBirth(anyString());
+    }
+
+    @Test
+    public void anExceptionsIsThrownOnNullPersonCommandWithABirthYearTest() {
+        when(personMock.getRecordedYearOfBirth()).thenReturn(null);
+        when(censusEntryCommandMock.getBirthYear()).thenReturn("1880");
+        when(personConverterMock.convert(personMock)).thenReturn(null);
+        assertThrows(NullPointerException.class, () -> updateRecordedYearOfBirth.updateRecordedYearOfBirth(censusEntryCommandMock));
+    }
+
+    @Test
+    public void anExceptionsIsThrownOnNullPersonCommandWithNoBirthYearTest() {
+        when(personMock.getRecordedYearOfBirth()).thenReturn(null);
+        when(censusEntryCommandMock.getBirthYear()).thenReturn(null);
+        when(censusEntryCommandMock.getCensus()).thenReturn(censusMock);
+        when(censusEntryCommandMock.getAge()).thenReturn("7");
+        when(censusMock.getCensusDate()).thenReturn(CENSUS_1881);
+        assertThrows(NullPointerException.class, () -> updateRecordedYearOfBirth.updateRecordedYearOfBirth(censusEntryCommandMock));
     }
 
 

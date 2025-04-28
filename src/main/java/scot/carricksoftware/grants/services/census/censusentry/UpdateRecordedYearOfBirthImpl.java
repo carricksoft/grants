@@ -67,6 +67,6 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
     }
 
     private void logNoCommandError(){
-        logger.info("Person could not be converted to PersonCommand");
+        throw new NullPointerException("Person Command is null");
     }
 }
