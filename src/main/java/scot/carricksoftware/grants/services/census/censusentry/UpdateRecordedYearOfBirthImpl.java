@@ -34,13 +34,14 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
         if (person.getRecordedYearOfBirth() == null) {
             if(censusEntryCommand.getBirthYear() != null) {
                 PersonCommand personCommand = personConverter.convert(person);
-                assert personCommand != null;
-                personCommand.setRecordedYearOfBirth(censusEntryCommand.getBirthYear());
-                personService.savePersonCommand(personCommand);
+                if (personCommand != null) {
+                    personCommand.setRecordedYearOfBirth(censusEntryCommand.getBirthYear());
+                    personService.savePersonCommand(personCommand);
+                } else {
+                   logNoCommandError();
+                }
             } else {
-
                 String dateString = censusEntryCommand.getCensus().getCensusDate().label;
-
                 String[] dateStrings = dateString.split("/");
                 Integer year = Integer.valueOf(dateStrings[2]);
                 try {
@@ -57,8 +58,15 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
                             String dateString) {
         logger.info("UpdateRecordedYearOfBirthImpl::Date");
         PersonCommand personCommand = personConverter.convert(person);
-        assert (personCommand != null);
-        personCommand.setRecordedYearOfBirth(dateString);
-        personService.savePersonCommand(personCommand);
+        if (personCommand != null) {
+            personCommand.setRecordedYearOfBirth(dateString);
+            personService.savePersonCommand(personCommand);
+        } else {
+            logNoCommandError();
+        }
+    }
+
+    private void logNoCommandError(){
+        logger.info("Person could not be converted to PersonCommand");
     }
 }
