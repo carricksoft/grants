@@ -23,8 +23,12 @@ public class CensusEntryCommandValidatorImpl implements CensusEntryCommandValida
         logger.debug("censusEntryCommandValidator::validate");
         validateCensus(censusEntryCommand, bindingResult);
         validateNameAndPerson(censusEntryCommand, bindingResult);
-        validateBirthYear(censusEntryCommand, bindingResult);
-        validateBirthDay(censusEntryCommand, bindingResult);
+        if (censusEntryCommand.getBirthDay() != null) {
+            validateBirthDay(censusEntryCommand, bindingResult);
+        }
+        if (censusEntryCommand.getBirthYear() != null) {
+            validateBirthYear(censusEntryCommand, bindingResult);
+        }
         validateAgeAndBirthYear(censusEntryCommand, bindingResult);
         validateAgeAndBirthDay(censusEntryCommand, bindingResult);
     }
@@ -58,79 +62,39 @@ public class CensusEntryCommandValidatorImpl implements CensusEntryCommandValida
     }
 
     private void validateBirthDay(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
-        if (censusEntryCommand.getBirthDay() != null) {
-            if (!censusEntryCommand.getBirthDay().contains("/")) {
-                bindingResult.rejectValue("birthDay", ApplicationConstants.EMPTY_STRING,
-                        null,
-                        ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
-            } else {
-                String[] parts = censusEntryCommand.getBirthDay().split("/");
-                if (parts.length == 2) {
-                    validateDays(parts[0], bindingResult);
-                    validateYears(parts[1], bindingResult);
-                } else {
-                    bindingResult.rejectValue("birthDay", ApplicationConstants.EMPTY_STRING,
-                            null,
-                            ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
-                }
-            }
-        }
-    }
-
-    private void validateYears(String part, BindingResult bindingResult) {
-        boolean invalidYear = false;
-        try {
-            int year = Integer.parseInt(part);
-            if (year <= 0) {
-                invalidYear = true;
-            }
-        } catch (RuntimeException e) {
-            invalidYear = true;
-        }
-        if (invalidYear) {
+        String[] parts = censusEntryCommand.getBirthDay().split("/");
+        if (parts.length != 2) {
             bindingResult.rejectValue("birthDay", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
+        } else {
+            validateInteger(parts[0], 1, 31, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT, "birthDay", bindingResult);
+            validateInteger(parts[1], 1, 12, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT, "birthDay", bindingResult);
+
         }
     }
 
-    private void validateDays(String part, BindingResult bindingResult) {
-        boolean invalidDay = false;
+    private void validateInteger(String part, int low, int high, String validationConstant, String field, BindingResult bindingResult) {
+        boolean invalid = false;
         try {
-            int day = Integer.parseInt(part);
-            if (day < 1 || day > 31) {
-                invalidDay = true;
+            int value = Integer.parseInt(part);
+            if (value < low || value > high) {
+                invalid = true;
             }
         } catch (RuntimeException e) {
-            invalidDay = true;
+            invalid = true;
         }
-        if (invalidDay) {
-            bindingResult.rejectValue("birthDay", ApplicationConstants.EMPTY_STRING,
+        if (invalid) {
+            bindingResult.rejectValue(field, ApplicationConstants.EMPTY_STRING,
                     null,
-                    ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
+                    validationConstant);
         }
     }
-
 
     private void validateBirthYear(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
-        if (censusEntryCommand.getBirthYear() != null) {
-            if (!isPositiveInteger(censusEntryCommand.getBirthYear())) {
-                bindingResult.rejectValue("birthYear", ApplicationConstants.EMPTY_STRING,
-                        null,
-                        ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
-            }
-        }
+        validateInteger(censusEntryCommand.getBirthYear(), 1800, 2050, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER, "birthYear", bindingResult);
     }
 
-    private boolean isPositiveInteger(String string) {
-        try {
-            int Number;
-            Number = Integer.parseInt(string);
-            return Number > 0;
-        } catch (RuntimeException e) {
-            return false;
-        }
-    }
 
     private void validateNameAndPerson(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
         if (censusEntryCommand.getPerson() == null) {

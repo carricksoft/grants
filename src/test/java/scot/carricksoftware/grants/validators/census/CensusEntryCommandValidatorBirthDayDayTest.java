@@ -17,12 +17,12 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
-class CensusEntryCommandValidatorBirthDayTest {
+class CensusEntryCommandValidatorBirthDayDayTest {
 
     private CensusEntryCommandValidatorImpl validator;
 
@@ -41,69 +41,53 @@ class CensusEntryCommandValidatorBirthDayTest {
     }
 
     @Test
-    public void NoSlashTest() {
+    public void noSlashTest() {
         censusEntryCommand.setBirthDay("2501");
         validator.validate(censusEntryCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue("birthDay", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
     }
 
     @Test
-    public void NoPartsTest() {
+    public void noPartsTest() {
         censusEntryCommand.setBirthDay("/");
         validator.validate(censusEntryCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue("birthDay", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
     }
 
     @Test
-    public void NegativeDaysTest() {
-        censusEntryCommand.setBirthDay("-12/85");
+    public void invalidBirthDayTest() {
+        censusEntryCommand.setBirthDay("z/04");
         validator.validate(censusEntryCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue("birthDay", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
     }
 
     @Test
-    public void TooHighDaysTest() {
-        censusEntryCommand.setBirthDay("32/85");
+    public void tooLowDayTest() {
+        censusEntryCommand.setBirthDay("0/04");
         validator.validate(censusEntryCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue("birthDay", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
     }
 
     @Test
-    public void NonValidDaysTest() {
-        censusEntryCommand.setBirthDay("z/85");
+    public void tooHighDayTest() {
+        censusEntryCommand.setBirthDay("32/04");
         validator.validate(censusEntryCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue("birthDay", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
     }
 
     @Test
-    public void ExcessiveDaysTest() {
-        censusEntryCommand.setBirthDay("55/85");
+    public void lowDayTest() {
+        censusEntryCommand.setBirthDay("1/04");
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthDay", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
+        verifyNoInteractions(bindingResultMock);
     }
+
 
     @Test
-    public void NegativeYearsTest() {
-        censusEntryCommand.setBirthDay("11/-7");
+    public void highDayTest() {
+        censusEntryCommand.setBirthDay("31/04");
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthDay", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
+        verifyNoInteractions(bindingResultMock);
     }
-
-    @Test
-    public void NonValidYearsTest() {
-        censusEntryCommand.setBirthDay("11/zz");
-        validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthDay", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTHDAY_INCORRECT_FORMAT);
-    }
-
-
-
-
-
-
-
-
-
-
 
 }
