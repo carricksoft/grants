@@ -95,7 +95,7 @@ public class PLaceListControllerImpl implements PlaceListController {
     public final String placeDelete(@PathVariable final String id) {
         logger.debug("placeListControllerImpl::placeDelete");
         placeService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.COUNTRIES;
+        return MappingConstants.REDIRECT + MappingConstants.PLACE_LIST;
     }
 
     @Override

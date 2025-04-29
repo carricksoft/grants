@@ -17,7 +17,7 @@ public class CensusEntry extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "censusEntry_census_id")
+    @JoinColumn(name = "census_id")
     private Census census;
 
     @SuppressWarnings("JpaDataSourceORMInspection")

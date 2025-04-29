@@ -23,8 +23,9 @@ public class Census extends BaseEntity {
     @OneToMany(mappedBy = "census", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CensusEntry> censusEntries = new ArrayList<>();
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "census_place_id")
+    @JoinColumn(name = "place_id")
     private Place place;
 
     @Enumerated(EnumType.STRING)

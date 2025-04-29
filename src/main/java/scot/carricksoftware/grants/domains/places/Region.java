@@ -17,13 +17,13 @@ public class Region extends BaseEntity {
 
     private String name;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "region_country_id")
+    @JoinColumn(name = "country_id")
     private Country country;
 
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Place> places = new ArrayList<>();
-
 
     @SuppressWarnings("unused")
     public String getName() {
