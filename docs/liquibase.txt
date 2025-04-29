@@ -1,3 +1,6 @@
 First run only: mvn clean test liquibase:updateSQL
 
+liquibase clear-checksums --url=jdbc:mariadb://git.carricksoftware.co.uk:3306/grants_uat --username=apg --password=sjkis27
+
+
 Then:   mvn clean test liquibase:update
