@@ -12,6 +12,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.images.PlaceImage;
+import scot.carricksoftware.grants.domains.text.PlaceText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,8 +22,10 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
+import static scot.carricksoftware.grants.GenerateRandomImageValues.GetRandomPlaceImage;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
+import static scot.carricksoftware.grants.GenerateRandomTextValues.GetRandomPlaceText;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -88,6 +92,32 @@ public class PlaceTest {
         censuses.add(GetRandomCensus());
         place.setCensuses(censuses);
         assertEquals(censuses, place.getCensuses());
+    }
+
+    @Test
+    public void getPLaceImagesTest() {
+        assertTrue(place.getPlaceImages().isEmpty());
+    }
+
+    @Test
+    public void setPlaceImagesTest() {
+        List<PlaceImage> placeImages = new ArrayList<>();
+        placeImages.add(GetRandomPlaceImage());
+        place.setPlaceImages(placeImages);
+        assertEquals(placeImages, place.getPlaceImages());
+    }
+
+    @Test
+    public void getPLaceTextsTest() {
+        assertTrue(place.getPlaceTexts().isEmpty());
+    }
+
+    @Test
+    public void setPlaceTextsTest() {
+        List<PlaceText> placeTexts = new ArrayList<>();
+        placeTexts.add(GetRandomPlaceText());
+        place.setPlaceTexts(placeTexts);
+        assertEquals(placeTexts, place.getPlaceTexts());
     }
 
     @Test

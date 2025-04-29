@@ -61,6 +61,22 @@ public class Place extends BaseEntity {
         this.censuses = censuses;
     }
 
+    public List<PlaceImage> getPlaceImages() {
+        return placeImages;
+    }
+
+    public void setPlaceImages(List<PlaceImage> placeImages) {
+        this.placeImages = placeImages;
+    }
+
+    public List<PlaceText> getPlaceTexts() {
+        return placeTexts;
+    }
+
+    public void setPlaceTexts(List<PlaceText> placeTexts) {
+        this.placeTexts = placeTexts;
+    }
+
     @Override
     public String toString() {
         return name +
