@@ -9,6 +9,8 @@ package scot.carricksoftware.grants.domains.places;
 import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.images.PlaceImage;
+import scot.carricksoftware.grants.domains.text.PlaceText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,14 @@ public class Place extends BaseEntity {
     @SuppressWarnings("unused")
     @OneToMany(mappedBy = "place", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Census> censuses = new ArrayList<>();
+
+    @SuppressWarnings("unused")
+    @OneToMany(mappedBy = "place", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PlaceImage> placeImages = new ArrayList<>();
+
+    @SuppressWarnings("unused")
+    @OneToMany(mappedBy = "place", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<PlaceText> placeTexts = new ArrayList<>();
 
     public String getName() {
         return name;
