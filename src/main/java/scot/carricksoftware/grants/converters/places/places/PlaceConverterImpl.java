@@ -14,6 +14,7 @@ import scot.carricksoftware.grants.domains.places.Place;
 @Component
 public class PlaceConverterImpl implements PlaceConverter {
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public PlaceCommand convert(Place source) {
         PlaceCommand target = new PlaceCommandImpl();
@@ -21,6 +22,8 @@ public class PlaceConverterImpl implements PlaceConverter {
         target.setName(source.getName());
         target.setRegion(source.getRegion());
         target.setCensuses(source.getCensuses());
+        target.setPlaceImages(source.getPlaceImages());
+        target.setPlaceTexts(source.getPlaceTexts());
         return target;
     }
 }
