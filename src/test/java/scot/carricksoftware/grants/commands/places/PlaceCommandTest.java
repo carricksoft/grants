@@ -11,13 +11,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
+import static scot.carricksoftware.grants.GenerateRandomImageValues.GetRandomPlaceImage;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
+import static scot.carricksoftware.grants.GenerateRandomTextValues.GetRandomPlaceText;
 
 import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommandImpl;
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.images.PlaceImage;
 import scot.carricksoftware.grants.domains.places.Region;
+import scot.carricksoftware.grants.domains.text.PlaceText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +83,27 @@ public class PlaceCommandTest {
         censuses.add(GetRandomCensus());
         command.setCensuses(censuses);
         assertEquals(censuses, command.getCensuses());
+    }
+
+    @Test
+    public void setPlaceImagesTest() {
+        List<PlaceImage> placeImages = new ArrayList<>();
+        placeImages.add(GetRandomPlaceImage());
+        command.setPlaceImages(placeImages);
+        assertEquals(placeImages, command.getPlaceImages());
+    }
+
+    @Test
+    public void getPLaceTextsTest() {
+        assertTrue(command.getPlaceTexts().isEmpty());
+    }
+
+    @Test
+    public void setPlaceTextsTest() {
+        List<PlaceText> placeTexts = new ArrayList<>();
+        placeTexts.add(GetRandomPlaceText());
+        command.setPlaceTexts(placeTexts);
+        assertEquals(placeTexts, command.getPlaceTexts());
     }
 
 

@@ -6,7 +6,9 @@
 package scot.carricksoftware.grants.commands.places.places;
 
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.images.PlaceImage;
 import scot.carricksoftware.grants.domains.places.Region;
+import scot.carricksoftware.grants.domains.text.PlaceText;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,10 @@ public class PlaceCommandImpl implements PlaceCommand {
     private String name;
 
     private List<Census> censuses = new ArrayList<>();
+
+    private List<PlaceImage> placeImages = new ArrayList<>();
+
+    private List<PlaceText> placeTexts = new ArrayList<>();
 
 
     @Override
@@ -60,5 +66,25 @@ public class PlaceCommandImpl implements PlaceCommand {
     @Override
     public void setCensuses(List<Census> censuses) {
         this.censuses = censuses;
+    }
+
+    @Override
+    public List<PlaceImage> getPlaceImages() {
+        return placeImages;
+    }
+
+    @Override
+    public void setPlaceImages(List<PlaceImage> placeImages) {
+        this.placeImages = placeImages;
+    }
+
+    @Override
+    public List<PlaceText> getPlaceTexts() {
+        return placeTexts;
+    }
+
+    @Override
+    public void setPlaceTexts(List<PlaceText> placeTexts) {
+        this.placeTexts = placeTexts;
     }
 }

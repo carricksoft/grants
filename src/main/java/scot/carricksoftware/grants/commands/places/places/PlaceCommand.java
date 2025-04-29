@@ -7,7 +7,9 @@ package scot.carricksoftware.grants.commands.places.places;
 
 
 import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.domains.images.PlaceImage;
 import scot.carricksoftware.grants.domains.places.Region;
+import scot.carricksoftware.grants.domains.text.PlaceText;
 
 import java.util.List;
 
@@ -32,4 +34,12 @@ public interface PlaceCommand {
     List<Census> getCensuses();
 
     void setCensuses(List<Census> censuses);
+
+    List<PlaceImage> getPlaceImages();
+
+    void setPlaceImages(List<PlaceImage> placeImages);
+
+    List<PlaceText> getPlaceTexts();
+
+    void setPlaceTexts(List<PlaceText> placeTexts);
 }
