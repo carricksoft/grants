@@ -69,7 +69,7 @@ public class PlaceListControllerTest {
     @Test
     public void placeDeleteTest() {
         Long id = GetRandomLong();
-        assertEquals("redirect:/countries", controller.placeDelete(Long.toString(id)));
+        assertEquals("redirect:/places", controller.placeDelete(Long.toString(id)));
         verify(placeServiceMock).deleteById(id);
     }
 
