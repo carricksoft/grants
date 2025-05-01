@@ -119,4 +119,16 @@ class CensusEntryCommandTest {
         assertEquals(birthYear, command.getBirthYear());
     }
 
+    @Test
+    void getPersonalOccupationTest() {
+        assertNull(command.getPersonalOccupation());
+    }
+
+    @Test
+    void setPersonalOccupationTest() {
+        String personalOccupation = GetRandomString();
+        command.setPersonalOccupation(personalOccupation);
+        assertEquals(personalOccupation, command.getPersonalOccupation());
+    }
+
 }

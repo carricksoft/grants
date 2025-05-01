@@ -62,4 +62,8 @@ public interface CensusEntryCommand {
     String getBirthYear();
 
     void setBirthYear(String birthYear);
+
+    String getPersonalOccupation();
+
+    void setPersonalOccupation(String personalOccupation);
 }

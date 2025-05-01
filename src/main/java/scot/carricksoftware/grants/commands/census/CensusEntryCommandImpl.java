@@ -37,6 +37,8 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
 
     private String birthYear;
 
+    private String personalOccupation;
+
     public Long getId() {
         return id;
     }
@@ -163,5 +165,15 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
     @Override
     public void setBirthYear(String birthYear) {
         this.birthYear = birthYear;
+    }
+
+    @Override
+    public String getPersonalOccupation() {
+        return this.personalOccupation;
+    }
+
+    @Override
+    public void setPersonalOccupation(String personalOccupation) {
+        this.personalOccupation = personalOccupation;
     }
 }
