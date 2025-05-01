@@ -38,7 +38,7 @@ public class CensusEntry extends BaseEntity {
     private CensusEntryWorker worker;
 
     @Enumerated(EnumType.STRING)
-    private CensusEntrySex Sex;
+    private CensusEntrySex sex;
 
     private String age;
 
@@ -47,6 +47,8 @@ public class CensusEntry extends BaseEntity {
     private String birthDay;
 
     private String birthYear;
+
+    private String personalOccupation;
 
     public Person getPerson() {
         return person;
@@ -101,7 +103,7 @@ public class CensusEntry extends BaseEntity {
     }
 
     public CensusEntryWorker getWorker() {
-        return worker;
+        return this.worker;
     }
 
     public void setWorker(CensusEntryWorker worker) {
@@ -109,7 +111,7 @@ public class CensusEntry extends BaseEntity {
     }
 
     public String getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(String age) {
@@ -117,7 +119,7 @@ public class CensusEntry extends BaseEntity {
     }
 
     public String getWhereBorn() {
-        return whereBorn;
+        return this.whereBorn;
     }
 
     public void setWhereBorn(String whereBorn) {
@@ -125,15 +127,15 @@ public class CensusEntry extends BaseEntity {
     }
 
     public CensusEntrySex getSex() {
-        return Sex;
+        return this.sex;
     }
 
     public void setSex(CensusEntrySex sex) {
-        Sex = sex;
+        this.sex = sex;
     }
 
     public String getBirthDay() {
-        return birthDay;
+        return this.birthDay;
     }
 
     public void setBirthDay(String birthDay) {
@@ -141,10 +143,18 @@ public class CensusEntry extends BaseEntity {
     }
 
     public String getBirthYear() {
-        return birthYear;
+        return this.birthYear;
     }
 
     public void setBirthYear(String birthYear) {
         this.birthYear = birthYear;
+    }
+
+    public String getPersonalOccupation() {
+        return this.personalOccupation;
+    }
+
+    public void setPersonalOccupation(String occupation) {
+        this.personalOccupation = occupation;
     }
 }

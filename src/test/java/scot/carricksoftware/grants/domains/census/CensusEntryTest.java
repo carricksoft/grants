@@ -125,5 +125,17 @@ class CensusEntryTest {
         assertEquals(birthYear, entry.getBirthYear());
     }
 
+    @Test
+    void getPersonalOccupationTest() {
+        assertNull(entry.getPersonalOccupation());
+    }
+
+    @Test
+    void setPersonalOccupationTest() {
+        String occupation = GetRandomString();
+        entry.setPersonalOccupation(occupation);
+        assertEquals(occupation, entry.getPersonalOccupation());
+    }
+
 
 }
