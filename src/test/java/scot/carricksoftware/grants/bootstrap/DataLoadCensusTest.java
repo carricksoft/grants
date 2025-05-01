@@ -92,6 +92,7 @@ public class DataLoadCensusTest {
         assertEquals(CensusEntrySex.MALE, captor.getValue().getSex());
         assertEquals("25/01", captor.getValue().getBirthDay());
         assertEquals("1953", captor.getValue().getBirthYear());
+        assertEquals("AA Patrol", captor.getValue().getPersonalOccupation());
 
     }
 

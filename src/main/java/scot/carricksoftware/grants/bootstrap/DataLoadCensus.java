@@ -78,6 +78,7 @@ public class DataLoadCensus {
         censusEntryCommand.setSex(CensusEntrySex.MALE);
         censusEntryCommand.setBirthDay("25/01");
         censusEntryCommand.setBirthYear("1953");
+        censusEntryCommand.setPersonalOccupation("AA Patrol");
 
         censusEntryService.saveCensusEntryCommand(censusEntryCommand);
     }
