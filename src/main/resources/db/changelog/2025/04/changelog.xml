@@ -1,0 +1,271 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="apg (generated)" id="1746129997959-1">
+        <createTable tableName="birth_certificate">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="NULL" name="new_born_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-2">
+        <createTable tableName="census">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="boundary_type" type="VARCHAR(255)"/>
+            <column name="census_date" type="VARCHAR(255)"/>
+            <column name="inhabited_rooms" type="VARCHAR(255)"/>
+            <column name="rooms_with_windows" type="VARCHAR(255)"/>
+            <column defaultValueComputed="NULL" name="place_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-3">
+        <createTable tableName="census_entry">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column defaultValueComputed="NULL" name="person_id" type="BIGINT"/>
+            <column name="relationship" type="VARCHAR(255)"/>
+            <column name="condition" type="VARCHAR(255)"/>
+            <column name="gaelic" type="VARCHAR(255)"/>
+            <column name="worker" type="VARCHAR(255)"/>
+            <column name="age" type="VARCHAR(255)"/>
+            <column name="where_born" type="VARCHAR(255)"/>
+            <column name="sex" type="VARCHAR(255)"/>
+            <column name="birth_day" type="VARCHAR(255)"/>
+            <column name="birth_year" type="VARCHAR(255)"/>
+            <column defaultValueComputed="NULL" name="census_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-4">
+        <createTable tableName="country">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-5">
+        <createTable tableName="death_certificate">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="NULL" name="person_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-6">
+        <createTable tableName="divorce_certificate">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="NULL" name="first_party_id" type="BIGINT"/>
+            <column defaultValueComputed="NULL" name="second_party_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-7">
+        <createTable tableName="document_text">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-8">
+        <createTable tableName="image">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-9">
+        <createTable tableName="marriage_certificate">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="NULL" name="bride_id" type="BIGINT"/>
+            <column defaultValueComputed="NULL" name="groom_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-10">
+        <createTable tableName="person">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="first_name" type="VARCHAR(255)"/>
+            <column name="last_name" type="VARCHAR(255)"/>
+            <column name="certified_year_of_birth" type="VARCHAR(255)"/>
+            <column name="recorded_year_of_birth" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-11">
+        <createTable tableName="person_image">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="NULL" name="person_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-12">
+        <createTable tableName="person_text">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="NULL" name="person_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-13">
+        <createTable tableName="place">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column defaultValueComputed="NULL" name="region_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-14">
+        <createTable tableName="place_image">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="NULL" name="place_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-15">
+        <createTable tableName="place_text">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column defaultValueComputed="NULL" name="place_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-16">
+        <createTable tableName="region">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(255)"/>
+            <column defaultValueComputed="NULL" name="country_id" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-17">
+        <createIndex associatedWith="" indexName="FK_BIRTHCERTIFICATE_ON_NEW_BORN" tableName="birth_certificate">
+            <column defaultValueComputed="NULL" name="new_born_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-18">
+        <createIndex associatedWith="" indexName="FK_CENSUSENTRY_ON_CENSUS" tableName="census_entry">
+            <column defaultValueComputed="NULL" name="census_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-19">
+        <createIndex associatedWith="" indexName="FK_CENSUSENTRY_ON_PERSON" tableName="census_entry">
+            <column defaultValueComputed="NULL" name="person_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-20">
+        <createIndex associatedWith="" indexName="FK_CENSUS_ON_PLACE" tableName="census">
+            <column defaultValueComputed="NULL" name="place_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-21">
+        <createIndex associatedWith="" indexName="FK_DEATHCERTIFICATE_ON_PERSON" tableName="death_certificate">
+            <column defaultValueComputed="NULL" name="person_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-22">
+        <createIndex associatedWith="" indexName="FK_DIVORCECERTIFICATE_ON_FIRST_PARTY" tableName="divorce_certificate">
+            <column defaultValueComputed="NULL" name="first_party_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-23">
+        <createIndex associatedWith="" indexName="FK_DIVORCECERTIFICATE_ON_SECOND_PARTY" tableName="divorce_certificate">
+            <column defaultValueComputed="NULL" name="second_party_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-24">
+        <createIndex associatedWith="" indexName="FK_MARRIAGECERTIFICATE_ON_BRIDE" tableName="marriage_certificate">
+            <column defaultValueComputed="NULL" name="bride_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-25">
+        <createIndex associatedWith="" indexName="FK_MARRIAGECERTIFICATE_ON_GROOM" tableName="marriage_certificate">
+            <column defaultValueComputed="NULL" name="groom_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-26">
+        <createIndex associatedWith="" indexName="FK_PERSONIMAGE_ON_PERSON" tableName="person_image">
+            <column defaultValueComputed="NULL" name="person_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-27">
+        <createIndex associatedWith="" indexName="FK_PERSONTEXT_ON_PERSON" tableName="person_text">
+            <column defaultValueComputed="NULL" name="person_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-28">
+        <createIndex associatedWith="" indexName="FK_PLACEIMAGE_ON_PLACE" tableName="place_image">
+            <column defaultValueComputed="NULL" name="place_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-29">
+        <createIndex associatedWith="" indexName="FK_PLACETEXT_ON_PLACE" tableName="place_text">
+            <column defaultValueComputed="NULL" name="place_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-30">
+        <createIndex associatedWith="" indexName="FK_PLACE_ON_REGION" tableName="place">
+            <column defaultValueComputed="NULL" name="region_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-31">
+        <createIndex associatedWith="" indexName="FK_REGION_ON_COUNTRY" tableName="region">
+            <column defaultValueComputed="NULL" name="country_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-32">
+        <addForeignKeyConstraint baseColumnNames="new_born_id" baseTableName="birth_certificate" constraintName="FK_BIRTHCERTIFICATE_ON_NEW_BORN" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="person"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-33">
+        <addForeignKeyConstraint baseColumnNames="census_id" baseTableName="census_entry" constraintName="FK_CENSUSENTRY_ON_CENSUS" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="census"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-34">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="census_entry" constraintName="FK_CENSUSENTRY_ON_PERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="person"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-35">
+        <addForeignKeyConstraint baseColumnNames="place_id" baseTableName="census" constraintName="FK_CENSUS_ON_PLACE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="place"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-36">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="death_certificate" constraintName="FK_DEATHCERTIFICATE_ON_PERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="person"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-37">
+        <addForeignKeyConstraint baseColumnNames="first_party_id" baseTableName="divorce_certificate" constraintName="FK_DIVORCECERTIFICATE_ON_FIRST_PARTY" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="person"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-38">
+        <addForeignKeyConstraint baseColumnNames="second_party_id" baseTableName="divorce_certificate" constraintName="FK_DIVORCECERTIFICATE_ON_SECOND_PARTY" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="person"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-39">
+        <addForeignKeyConstraint baseColumnNames="bride_id" baseTableName="marriage_certificate" constraintName="FK_MARRIAGECERTIFICATE_ON_BRIDE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="person"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-40">
+        <addForeignKeyConstraint baseColumnNames="groom_id" baseTableName="marriage_certificate" constraintName="FK_MARRIAGECERTIFICATE_ON_GROOM" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="person"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-41">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="person_image" constraintName="FK_PERSONIMAGE_ON_PERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="person"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-42">
+        <addForeignKeyConstraint baseColumnNames="person_id" baseTableName="person_text" constraintName="FK_PERSONTEXT_ON_PERSON" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="person"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-43">
+        <addForeignKeyConstraint baseColumnNames="place_id" baseTableName="place_image" constraintName="FK_PLACEIMAGE_ON_PLACE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="place"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-44">
+        <addForeignKeyConstraint baseColumnNames="place_id" baseTableName="place_text" constraintName="FK_PLACETEXT_ON_PLACE" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="place"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-45">
+        <addForeignKeyConstraint baseColumnNames="region_id" baseTableName="place" constraintName="FK_PLACE_ON_REGION" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="region"  />
+    </changeSet>
+    <changeSet author="apg (generated)" id="1746129997959-46">
+        <addForeignKeyConstraint baseColumnNames="country_id" baseTableName="region" constraintName="FK_REGION_ON_COUNTRY" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="id" referencedTableName="country" />
+    </changeSet>
+</databaseChangeLog>

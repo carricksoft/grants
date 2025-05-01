@@ -1,7 +1,16 @@
 First run only: mvn clean test liquibase:updateSQL
 
 liquibase clear-checksums --url=jdbc:mariadb://git.carricksoftware.co.uk:3306/grants_uat --username=apg --password=sjkis27
- liquibase generate-changelog --changelog-file=/home/apg/temp/changelog.xml --url=jdbc:mariadb://git.carricksoftware.co.uk:3306/grants_uat --username=apg --password=sjkis27
+
+liquibase generate-changelog --changelog-file=/home/apg/temp/01-01-01-01-changelog.mariadb.sql --url=jdbc:mariadb://git.carricksoftware.co.uk:3306/grants_uat --username=apg --password=sjkis27
+
+in emacs:
+M-% CREATE TABLE <RET> CREATE TABLE IF NOT EXISTS
+M-% CREATE TABLE <RET> CREATE TABLE IF NOT EXISTS
+M-% ADD CONSTRAINT <RET> ADD CONSTRAINT IF NOT EXISTS
+
+
+ liquibase generate-changelog --changelog-file=/src/apg/temp/01-01-01-01-01-01-changelog.mariadb.sql --url=jdbc:mariadb://git.carricksoftware.co.uk:3306/grants_uat --username=apg --password=sjkis27
 
 
 Then:   mvn clean test liquibase:update
