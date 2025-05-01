@@ -39,6 +39,7 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
 
     private String personalOccupation;
 
+
     public Long getId() {
         return id;
     }

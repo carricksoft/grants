@@ -34,8 +34,8 @@ public class CensusEntryCommandValidatorImpl implements CensusEntryCommandValida
     }
 
     private void validateAgeAndBirthDay(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
-        if (censusEntryCommand.getBirthDay() != null) {
-            if (censusEntryCommand.getAge() != null) {
+        if (censusEntryCommand.getBirthDay() != null && !censusEntryCommand.getBirthDay().isEmpty()) {
+            if (censusEntryCommand.getAge() != null && !censusEntryCommand.getAge().isEmpty() ) {
                 bindingResult.rejectValue("birthDay", ApplicationConstants.EMPTY_STRING,
                         null,
                         ValidationConstants.BIRTH_DAY_AND_AGE_CANNOT_COEXIST);
@@ -48,8 +48,8 @@ public class CensusEntryCommandValidatorImpl implements CensusEntryCommandValida
     }
 
     private void validateAgeAndBirthYear(CensusEntryCommand censusEntryCommand, BindingResult bindingResult) {
-        if (censusEntryCommand.getBirthYear() != null) {
-            if (censusEntryCommand.getAge() != null) {
+        if (censusEntryCommand.getBirthYear() != null && !censusEntryCommand.getBirthYear().isEmpty()) {
+            if (censusEntryCommand.getAge() != null && !censusEntryCommand.getAge().isEmpty() ) {
                 bindingResult.rejectValue("birthYear", ApplicationConstants.EMPTY_STRING,
                         null,
                         ValidationConstants.BIRTH_YEAR_AND_AGE_CANNOT_COEXIST);

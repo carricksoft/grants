@@ -49,6 +49,7 @@ class CensusEntryCommandValidatorBirthYearAndAgeTest {
         verify(bindingResultMock).rejectValue("age", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.BIRTH_YEAR_AND_AGE_CANNOT_COEXIST);
     }
 
+
     @Test
     public void BirthDayAndAgeMustNotCoexistTest() {
         censusEntryCommand.setBirthDay("25/01");
