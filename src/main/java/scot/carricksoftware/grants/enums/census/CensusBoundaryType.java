@@ -7,7 +7,7 @@ package scot.carricksoftware.grants.enums.census;
 
 public enum CensusBoundaryType {
 
-    BURGH("BURGH"),
+    BURGH("Burgh"),
     CIVIL_PARISH("Civil Parish"),
     PARISH_WARD("Parish Ward"),
     @SuppressWarnings("SpellCheckingInspection") ECCLESIASTICAL_PARISH("Ecclesical Parish"),
