@@ -168,10 +168,15 @@ rounded-3 text-center p-4">
             </div>
         </div>
         <div class="form-group row justify-content-center">
-            <div class="col-md-2">
+            <div class="col-xs-2">
                 <label for="personalOccupation">Personal Occupation</label>
-                <input class="form-control"  id="personalOccupation" style="width: 400px;"
+                <input class="form-control"  id="personalOccupation" style="width: 400px;margin-right:20px;"
                        th:field="*{personalOccupation}" type="text">
+            </div>
+            <div class="col-xs-2">
+                <label for="notes">Notes</label>
+                <input class="form-control"  id="notes" style="width: 400px;"
+                       th:field="*{notes}" type="text">
             </div>
         </div>
 
