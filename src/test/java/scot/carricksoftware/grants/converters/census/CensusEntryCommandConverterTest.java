@@ -47,6 +47,7 @@ class CensusEntryCommandConverterTest {
         String birthYear = GetRandomString();
         String birthDay = GetRandomString();
         String personalOccupation = GetRandomString();
+        String notes = GetRandomString();
 
 
         source.setId(id);
@@ -63,6 +64,7 @@ class CensusEntryCommandConverterTest {
         source.setBirthYear(birthYear);
         source.setBirthDay(birthDay);
         source.setPersonalOccupation(personalOccupation);
+        source.setNotes(notes);
 
         CensusEntry target = converter.convert(source);
 
@@ -81,5 +83,6 @@ class CensusEntryCommandConverterTest {
         assertEquals(birthYear, target.getBirthYear());
         assertEquals(birthDay, target.getBirthDay());
         assertEquals(personalOccupation, target.getPersonalOccupation());
+        assertEquals(notes, target.getNotes());
     }
 }

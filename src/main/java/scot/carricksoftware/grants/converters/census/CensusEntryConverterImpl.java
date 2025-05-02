@@ -31,6 +31,7 @@ public class CensusEntryConverterImpl implements CensusEntryConverter {
         result.setBirthYear(source.getBirthYear());
         result.setBirthDay(source.getBirthDay());
         result.setPersonalOccupation(source.getPersonalOccupation());
+        result.setNotes(source.getNotes());
         return result;
     }
 }
