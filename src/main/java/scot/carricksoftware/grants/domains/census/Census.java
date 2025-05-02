@@ -18,20 +18,24 @@ import java.util.List;
 public class Census extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "`census_date`")
     private CensusDate censusDate;
 
     @OneToMany(mappedBy = "census", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CensusEntry> censusEntries = new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "place_id")
+    @JoinColumn(name = "`place_id`")
     private Place place;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "`boundary_type`")
     private CensusBoundaryType boundaryType;
 
+    @Column(name = "`inhabited_rooms`")
     private String inhabitedRooms;
 
+    @Column(name = "`rooms_with_windows`")
     private String roomsWithWindows;
 
     public CensusDate getCensusDate() {
