@@ -17,12 +17,12 @@ public class DivorceCertificate extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "first_party_id")
+    @JoinColumn(name = "`first_party_id`")
     private Person firstParty;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "second_party_id")
+    @JoinColumn(name = "`second_party_id`")
     private Person secondParty;
 
     public Person getFirstParty() {

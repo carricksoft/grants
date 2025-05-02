@@ -16,12 +16,12 @@ public class MarriageCertificate extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "bride_id")
+    @JoinColumn(name = "`bride_id`")
     private Person bride;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "groom_id")
+    @JoinColumn(name = "`groom_id`")
     private Person groom;
 
     public Person getBride() {

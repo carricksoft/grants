@@ -16,7 +16,7 @@ public class DeathCertificate extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "`person_id`")
     private Person deceased;
 
     public Person getDeceased() {
