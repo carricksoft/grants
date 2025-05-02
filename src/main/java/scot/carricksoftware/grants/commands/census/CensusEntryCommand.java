@@ -66,4 +66,8 @@ public interface CensusEntryCommand {
     String getPersonalOccupation();
 
     void setPersonalOccupation(String personalOccupation);
+
+    String getNotes();
+
+    void setNotes(String notes);
 }

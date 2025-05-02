@@ -130,5 +130,18 @@ class CensusEntryCommandTest {
         command.setPersonalOccupation(personalOccupation);
         assertEquals(personalOccupation, command.getPersonalOccupation());
     }
+    @Test
+    void getNotesTest() {
+        assertNull(command.getNotes());
+    }
+
+    @Test
+    void setNotesTest() {
+        String notes = GetRandomString();
+        command.setNotes(notes);
+        assertEquals(notes, command.getNotes());
+    }
+
+
 
 }
