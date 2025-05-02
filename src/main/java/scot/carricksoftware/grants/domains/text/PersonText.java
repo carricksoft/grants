@@ -16,7 +16,7 @@ public class PersonText extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "person_id")
+    @JoinColumn(name = "`person_id`")
     private Person person;
 
     public Person getPerson() {

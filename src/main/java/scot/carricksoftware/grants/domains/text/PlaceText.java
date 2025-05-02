@@ -17,7 +17,7 @@ public class PlaceText extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
-    @JoinColumn(name = "place_id")
+    @JoinColumn(name = "`place_id`")
     private Place place;
 
     public Place getPlace() {

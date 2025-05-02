@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants.domains.places;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import scot.carricksoftware.grants.BaseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 @Entity
 public class Country extends BaseEntity {
 
+    @Column(name = "`name`")
     private String name;
 
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)

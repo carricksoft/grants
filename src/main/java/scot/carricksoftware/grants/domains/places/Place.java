@@ -18,10 +18,11 @@ import java.util.List;
 @Entity
 public class Place extends BaseEntity {
 
+    @Column(name = "`name`")
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "region_id")
+    @JoinColumn(name = "`region_id`")
     private Region region;
 
     @SuppressWarnings("unused")

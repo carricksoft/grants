@@ -15,10 +15,11 @@ import java.util.List;
 @Entity
 public class Region extends BaseEntity {
 
+    @Column(name = "`name`")
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "country_id")
+    @JoinColumn(name = "`country_id`")
     private Country country;
 
     @OneToMany(mappedBy = "region", cascade = CascadeType.ALL, orphanRemoval = true)
