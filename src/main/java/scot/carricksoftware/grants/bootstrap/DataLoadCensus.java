@@ -79,6 +79,7 @@ public class DataLoadCensus {
         censusEntryCommand.setBirthDay("25/01");
         censusEntryCommand.setBirthYear("1953");
         censusEntryCommand.setPersonalOccupation("AA Patrol");
+        censusEntryCommand.setNotes("Record Closed");
 
         censusEntryService.saveCensusEntryCommand(censusEntryCommand);
     }
