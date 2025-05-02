@@ -71,6 +71,10 @@ public class CensusEntry extends BaseEntity {
     @Column(name = "`personal_occupation`")
     private String personalOccupation;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`notes`")
+    private String notes;
+
     public Person getPerson() {
         return person;
     }
@@ -177,5 +181,13 @@ public class CensusEntry extends BaseEntity {
 
     public void setPersonalOccupation(String occupation) {
         this.personalOccupation = occupation;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 }

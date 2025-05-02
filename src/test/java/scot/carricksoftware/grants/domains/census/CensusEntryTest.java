@@ -137,5 +137,17 @@ class CensusEntryTest {
         assertEquals(occupation, entry.getPersonalOccupation());
     }
 
+    @Test
+    void getNotesTest() {
+        assertNull(entry.getNotes());
+    }
+
+    @Test
+    void setNotesTest() {
+        String notes = GetRandomString();
+        entry.setNotes(notes);
+        assertEquals(notes, entry.getNotes());
+    }
+
 
 }
