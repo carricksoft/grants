@@ -31,27 +31,30 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
     public void updateRecordedYearOfBirth(CensusEntryCommand censusEntryCommand) {
         logger.info("UpdateRecordedYearOfBirthImpl::updateRecordedYearOfBirth");
         Person person = censusEntryCommand.getPerson();
-        if (person.getRecordedYearOfBirth() == null) {
-            if(censusEntryCommand.getBirthYear() != null) {
-                PersonCommand personCommand = personConverter.convert(person);
-                if (personCommand != null) {
-                    personCommand.setRecordedYearOfBirth(censusEntryCommand.getBirthYear());
-                    personService.savePersonCommand(personCommand);
+        if (person != null) {
+            if (person.getRecordedYearOfBirth() == null) {
+                if (censusEntryCommand.getBirthYear() != null) {
+                    PersonCommand personCommand = personConverter.convert(person);
+                    if (personCommand != null) {
+                        personCommand.setRecordedYearOfBirth(censusEntryCommand.getBirthYear());
+                        personService.savePersonCommand(personCommand);
+                    } else {
+                        logNoCommandError();
+                    }
                 } else {
-                   logNoCommandError();
-                }
-            } else {
-                String dateString = censusEntryCommand.getCensus().getCensusDate().label;
-                String[] dateStrings = dateString.split("/");
-                Integer year = Integer.valueOf(dateStrings[2]);
-                try {
-                    Integer age = Integer.valueOf(censusEntryCommand.getAge());
-                    updateDate(person, String.valueOf(year - age));
-                } catch (NumberFormatException e) {
-                    logger.info(" -- Age cannot be parsed");
+                    String dateString = censusEntryCommand.getCensus().getCensusDate().label;
+                    String[] dateStrings = dateString.split("/");
+                    Integer year = Integer.valueOf(dateStrings[2]);
+                    try {
+                        Integer age = Integer.valueOf(censusEntryCommand.getAge());
+                        updateDate(person, String.valueOf(year - age));
+                    } catch (NumberFormatException e) {
+                        logger.info(" -- Age cannot be parsed");
+                    }
                 }
             }
         }
+
     }
 
     private void updateDate(Person person,

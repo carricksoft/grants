@@ -23,10 +23,10 @@ public class CensusEntryCommandValidatorImpl implements CensusEntryCommandValida
         logger.debug("censusEntryCommandValidator::validate");
         validateCensus(censusEntryCommand, bindingResult);
         validateNameAndPerson(censusEntryCommand, bindingResult);
-        if (censusEntryCommand.getBirthDay() != null) {
+        if (censusEntryCommand.getBirthDay() != null && !censusEntryCommand.getBirthDay().isEmpty()) {
             validateBirthDay(censusEntryCommand, bindingResult);
         }
-        if (censusEntryCommand.getBirthYear() != null) {
+        if (censusEntryCommand.getBirthYear() != null  && !censusEntryCommand.getBirthYear().isEmpty()) {
             validateBirthYear(censusEntryCommand, bindingResult);
         }
         validateAgeAndBirthYear(censusEntryCommand, bindingResult);
