@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 @SuppressWarnings("unused")
 @Controller
-public interface CensusEntriesListController {
+public interface SelectedCensusListController {
 
     String getListPage(final Model model);
 

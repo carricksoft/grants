@@ -19,22 +19,22 @@ import scot.carricksoftware.grants.services.census.census.CensusService;
 import static java.lang.Integer.max;
 
 @Controller
-public class CensusEntriesListControllerImpl implements CensusEntriesListController {
+public class SelectedSelectedCensusListControllerImpl implements SelectedCensusListController {
 
-    private static final Logger logger = LogManager.getLogger(CensusEntriesListControllerImpl.class);
+    private static final Logger logger = LogManager.getLogger(SelectedSelectedCensusListControllerImpl.class);
 
     private int currentPage = 0;
     private final ControllerHelper controllerHelper;
     private final CensusService censusService;
 
-    public CensusEntriesListControllerImpl(ControllerHelper controllerHelper,
-                                           CensusService censusService) {
+    public SelectedSelectedCensusListControllerImpl(ControllerHelper controllerHelper,
+                                                    CensusService censusService) {
         this.controllerHelper = controllerHelper;
         this.censusService = censusService;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_LIST)
+    @GetMapping(CensusMappingConstants.SELECTED_CENSUS_LIST)
     @Override
     public final String getListPage(final Model model) {
         logger.debug("PersonListControllerImpl::getCensusPage");
@@ -52,7 +52,7 @@ public class CensusEntriesListControllerImpl implements CensusEntriesListControl
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_NEXT)
+    @GetMapping(CensusMappingConstants.SELECTED_CENSUS_NEXT)
     @Override
     public final String getNextPage(final Model model) {
         logger.debug("CensusEntriesListControllerImpl::getNextPage");
@@ -62,7 +62,7 @@ public class CensusEntriesListControllerImpl implements CensusEntriesListControl
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_PREVIOUS)
+    @GetMapping(CensusMappingConstants.SELECTED_CENSUS_PREVIOUS)
     @Override
     public final String getPreviousPage(final Model model) {
         logger.debug("CensusEntriesListControllerImpl::getPreviousPage");
@@ -71,7 +71,7 @@ public class CensusEntriesListControllerImpl implements CensusEntriesListControl
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_REWIND)
+    @GetMapping(CensusMappingConstants.SELECTED_CENSUS_REWIND)
     public final String getFirstPage(final Model model) {
         logger.debug("CensusEntriesListControllerImpl::getFirstPage");
         currentPage = 0;
@@ -79,7 +79,7 @@ public class CensusEntriesListControllerImpl implements CensusEntriesListControl
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_FF)
+    @GetMapping(CensusMappingConstants.SELECTED_CENSUS_FF)
     public final String getLastPage(final Model model) {
         logger.debug("CensusEntriesListControllerImpl::getLastPage");
         long censusCount = censusService.count();
@@ -88,20 +88,20 @@ public class CensusEntriesListControllerImpl implements CensusEntriesListControl
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_DELETE)
+    @GetMapping(CensusMappingConstants.SELECTED_CENSUS_DELETE)
     @Override
     public final String censusDelete(@PathVariable final String id) {
         logger.debug("CensusEntriesListControllerImpl::censusDelete");
         censusService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + CensusMappingConstants.CENSUS_SELECTED_ENTRIES_LIST;
+        return MappingConstants.REDIRECT + CensusMappingConstants.SELECTED_CENSUS_LIST;
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_ENTRIES)
+    @GetMapping(CensusMappingConstants.SELECTED_CENSUS_ENTRIES)
     @Override
     public String censusEntriesEntries(@Valid @PathVariable final String id, Model model) {
         logger.debug("CensusEntriesListControllerImpl::censusEntriesEntries");
-        return ViewConstants.CENSUS_ENTRIES_LIST;
+        return ViewConstants.SELECTED_CENUS_LIST;
     }
 
 

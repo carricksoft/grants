@@ -58,25 +58,25 @@ public class CensusMappingConstants {
     public static final String CENSUS_ENTRY_EDIT = "censusEntry/{id}/edit";
 
 
-    public static final String CENSUS_SELECTED_ENTRIES_LIST = "/censusSelectedEntries";
+    public static final String SELECTED_CENSUS_LIST = "/selectedCensusList";
     @SuppressWarnings({"unused"})
-    public static final String CENSUS_SELECTED_ENTRIES_NEXT = "/censusSelectedEntries/next";
+    public static final String SELECTED_CENSUS_NEXT = "/selectedCensus/next";
     @SuppressWarnings({"unused"})
-    public static final String CENSUS_SELECTED_ENTRIES_PREVIOUS = "/censusSelectedEntries/prev";
+    public static final String SELECTED_CENSUS_PREVIOUS = "/selectedCensus/prev";
     @SuppressWarnings({"unused"})
-    public static final String CENSUS_SELECTED_ENTRIES_REWIND = "/censusSelectedEntries/rewind";
+    public static final String SELECTED_CENSUS_REWIND = "/selectedCensus/rewind";
     @SuppressWarnings({"unused"})
-    public static final String CENSUS_SELECTED_ENTRIES_FF = "/censusSelectedEntries/ff";
+    public static final String SELECTED_CENSUS_FF = "/selectedCensus/ff";
     @SuppressWarnings({"unused"})
-    public static final String CENSUS_SELECTED_ENTRIES_NEW = "/censusSelectedEntry/new";
+    public static final String SELECTED_CENSUS_NEW = "/selectedCensus/new";
     @SuppressWarnings({"unused"})
-    public static final String CENSUS_SELECTED_ENTRIES_ENTRY = "/censusSelectedEntry";
+    public static final String SELECTED_CENSUS_ENTRY = "/selectedCensusEntry";
     @SuppressWarnings({"unused"})
-    public static final String CENSUS_SELECTED_ENTRIES_SHOW = "/censusSelectedEntry/{id}/show";
+    public static final String SELECTED_CENSUS_SHOW = "/selectedCensusEntry/{id}/show";
     @SuppressWarnings({"unused"})
-    public static final String CENSUS_SELECTED_ENTRIES_DELETE = "/censusSelectedEntry/{id}/delete";
+    public static final String SELECTED_CENSUS_DELETE = "/selectedCensus/{id}/delete";
     @SuppressWarnings({"unused"})
-    public static final String CENSUS_SELECTED_ENTRIES_EDIT = "censusSelectedEntry/{id}/edit";
+    public static final String SELECTED_CENSUS_EDIT = "selectedCensus/{id}/edit";
 
-    public static final String CENSUS_SELECTED_ENTRIES_ENTRIES = "/censusSelectedEntry/{id}/entries";
+    public static final String SELECTED_CENSUS_ENTRIES = "/selectedCensus/{id}/entries";
 }
