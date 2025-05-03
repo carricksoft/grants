@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
@@ -53,7 +54,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATH_CERTIFICATE_NEW)
+    @GetMapping(CertificateMappingConstants.DEATH_CERTIFICATE_NEW)
     @Override
     public final String getNewDeathCertificate(final Model model) {
         logger.debug("DeathCertificateFormControllerImpl::getNewDeathCertificate");
@@ -63,7 +64,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATH_CERTIFICATE_EDIT)
+    @GetMapping(CertificateMappingConstants.DEATH_CERTIFICATE_EDIT)
     @Override
     public final String deathCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::deathCertificateEdit");
@@ -74,7 +75,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
 
 
     @Override
-    @PostMapping(MappingConstants.DEATH_CERTIFICATE)
+    @PostMapping(CertificateMappingConstants.DEATH_CERTIFICATE)
     public String saveOrUpdate(@Valid @ModelAttribute DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
 
@@ -90,12 +91,12 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         DeathCertificateCommand savedCommand = deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return MappingConstants.REDIRECT + MappingConstants.DEATH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
+        return MappingConstants.REDIRECT + CertificateMappingConstants.DEATH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATH_CERTIFICATE_SHOW)
+    @GetMapping(CertificateMappingConstants.DEATH_CERTIFICATE_SHOW)
     @Override
     public String showById(@PathVariable String id, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");

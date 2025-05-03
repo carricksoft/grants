@@ -33,7 +33,7 @@ public class CensusEntriesListControllerImpl implements CensusListController {
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_LIST)
+    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_LIST)
     @Override
     public final String getListPage(final Model model) {
         logger.debug("PersonListControllerImpl::getCensusPage");
@@ -49,7 +49,7 @@ public class CensusEntriesListControllerImpl implements CensusListController {
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_NEXT)
+    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_NEXT)
     @Override
     public final String getNextPage(final Model model) {
         logger.debug("CensusListControllerImpl::getNextPage");
@@ -58,7 +58,7 @@ public class CensusEntriesListControllerImpl implements CensusListController {
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_PREVIOUS)
+    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_PREVIOUS)
     @Override
     public final String getPreviousPage(final Model model) {
         logger.debug("CensusListControllerImpl::getPreviousPage");
@@ -67,7 +67,7 @@ public class CensusEntriesListControllerImpl implements CensusListController {
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_REWIND)
+    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_REWIND)
     public final String getFirstPage(final Model model) {
         logger.debug("CensusListControllerImpl::getFirstPage");
         currentPage = 0;
@@ -75,7 +75,7 @@ public class CensusEntriesListControllerImpl implements CensusListController {
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_FF)
+    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_FF)
     @Override
     public final String getLastPage(final Model model) {
         logger.debug("CensusListControllerImpl::getLastPage");
@@ -86,12 +86,12 @@ public class CensusEntriesListControllerImpl implements CensusListController {
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.CENSUS_DELETE)
+    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_DELETE)
     @Override
     public final String censusDelete(@PathVariable final String id) {
         logger.debug("CensusListControllerImpl::censusDelete");
         censusService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + CensusMappingConstants.CENSUS_LIST;
+        return MappingConstants.REDIRECT + CensusMappingConstants.CENSUS_SELECTED_ENTRIES_LIST;
     }
 
     @Override

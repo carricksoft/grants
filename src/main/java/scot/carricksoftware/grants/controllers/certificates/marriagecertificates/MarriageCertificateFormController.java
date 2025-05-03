@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
-import scot.carricksoftware.grants.constants.MappingConstants;
+import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 
 @SuppressWarnings("unused")
 
@@ -20,16 +20,16 @@ public interface MarriageCertificateFormController {
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_NEW)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_NEW)
     String getNewMarriageCertificate(Model model);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_EDIT)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_EDIT)
     String marriageCertificateEdit(@Valid @PathVariable String id, Model model);
 
     String saveOrUpdate(@ModelAttribute MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult, Model model);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_SHOW)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_SHOW)
     String showById(@PathVariable String id, Model model);
 }

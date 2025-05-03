@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateCommandConverterImpl;
@@ -54,7 +55,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_NEW)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_NEW)
     @Override
     public final String getNewMarriageCertificate(final Model model) {
         logger.debug("MarriageCertificateFormControllerImpl::getNewMarriageCertificate");
@@ -64,7 +65,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_EDIT)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_EDIT)
     @Override
     public final String marriageCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("MarriageCertificateFormControllerImpl::marriageCertificateEdit");
@@ -75,7 +76,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
 
 
     @Override
-    @PostMapping(MappingConstants.MARRIAGE_CERTIFICATE)
+    @PostMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE)
     public String saveOrUpdate(@Valid @ModelAttribute MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult, Model model) {
         logger.debug("MarriageCertificateFormControllerImpl::saveOrUpdate");
 
@@ -91,12 +92,12 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         MarriageCertificateCommand savedCommand = marriageCertificateService.saveMarriageCertificateCommand(marriageCertificateCommand);
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return MappingConstants.REDIRECT + MappingConstants.MARRIAGE_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
+        return MappingConstants.REDIRECT + CertificateMappingConstants.MARRIAGE_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_SHOW)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_SHOW)
     @Override
     public String showById(@PathVariable String id, Model model) {
         logger.debug("MarriageCertificateFormControllerImpl::saveOrUpdate");

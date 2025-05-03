@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import scot.carricksoftware.grants.commands.certificates.divorcecertificates.DivorceCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.divorcecertificates.DivorceCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.certificates.divorcecertificates.DivorceCertificateCommandConverterImpl;
@@ -25,6 +26,7 @@ import scot.carricksoftware.grants.converters.certificates.divorcecertificates.D
 import scot.carricksoftware.grants.services.certificates.divorcecertificates.DivorceCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.certificates.DivorceCertificateCommandValidator;
+
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -53,7 +55,7 @@ public class DivorceCertificateFormControllerImpl implements DivorceCertificateF
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_NEW)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_NEW)
     @Override
     public final String getNewDivorceCertificate(final Model model) {
         logger.debug("DivorceCertificateFormControllerImpl::getNewDivorceCertificate");
@@ -63,7 +65,7 @@ public class DivorceCertificateFormControllerImpl implements DivorceCertificateF
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_EDIT)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_EDIT)
     @Override
     public final String divorceCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("DivorceCertificateFormControllerImpl::divorceCertificateEdit");
@@ -74,7 +76,7 @@ public class DivorceCertificateFormControllerImpl implements DivorceCertificateF
 
 
     @Override
-    @PostMapping(MappingConstants.DIVORCE_CERTIFICATE)
+    @PostMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE)
     public String saveOrUpdate(@Valid @ModelAttribute DivorceCertificateCommand divorceCertificateCommand, BindingResult bindingResult, Model model) {
         logger.debug("DivorceCertificateFormControllerImpl::saveOrUpdate");
 
@@ -90,12 +92,12 @@ public class DivorceCertificateFormControllerImpl implements DivorceCertificateF
         DivorceCertificateCommand savedCommand = divorceCertificateService.saveDivorceCertificateCommand(divorceCertificateCommand);
         model.addAttribute(AttributeConstants.DIVORCE_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return MappingConstants.REDIRECT + MappingConstants.DIVORCE_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
+        return MappingConstants.REDIRECT + CertificateMappingConstants.DIVORCE_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_SHOW)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_SHOW)
     @Override
     public String showById(@PathVariable String id, Model model) {
         logger.debug("DivorceCertificateFormControllerImpl::saveOrUpdate");

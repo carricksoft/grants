@@ -11,10 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.constants.AttributeConstants;
-import scot.carricksoftware.grants.constants.MappingConstants;
-import scot.carricksoftware.grants.constants.ViewConstants;
+import scot.carricksoftware.grants.constants.*;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 
@@ -36,7 +33,7 @@ public class DeathCertificateListControllerImpl implements DeathCertificateListC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATH_CERTIFICATE_LIST)
+    @GetMapping(CertificateMappingConstants.DEATH_CERTIFICATE_LIST)
     @Override
     public final String getListPage(final Model model) {
         logger.debug("DeathCertificateListControllerImpl::getCensusPage");
@@ -52,7 +49,7 @@ public class DeathCertificateListControllerImpl implements DeathCertificateListC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATH_CERTIFICATE_NEXT)
+    @GetMapping(CertificateMappingConstants.DEATH_CERTIFICATE_NEXT)
     @Override
     public final String getNextPage(final Model model) {
         logger.debug("DeathCertificateListControllerImpl::getNextPage");
@@ -61,7 +58,7 @@ public class DeathCertificateListControllerImpl implements DeathCertificateListC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATH_CERTIFICATE_PREVIOUS)
+    @GetMapping(CertificateMappingConstants.DEATH_CERTIFICATE_PREVIOUS)
     @Override
     public final String getPreviousPage(final Model model) {
         logger.debug("DeathCertificateListControllerImpl::getPreviousPage");
@@ -70,7 +67,7 @@ public class DeathCertificateListControllerImpl implements DeathCertificateListC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATH_CERTIFICATE_REWIND)
+    @GetMapping(CertificateMappingConstants.DEATH_CERTIFICATE_REWIND)
     public final String getFirstPage(final Model model) {
         logger.debug("DeathCertificateListControllerImpl::getFirstPage");
         currentPage = 0;
@@ -78,7 +75,7 @@ public class DeathCertificateListControllerImpl implements DeathCertificateListC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATH_CERTIFICATE_FF)
+    @GetMapping(CertificateMappingConstants.DEATH_CERTIFICATE_FF)
     @Override
     public final String getLastPage(final Model model) {
         logger.debug("DeathCertificateListControllerImpl::getLastPage");
@@ -89,12 +86,12 @@ public class DeathCertificateListControllerImpl implements DeathCertificateListC
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DEATH_CERTIFICATE_DELETE)
+    @GetMapping(CertificateMappingConstants.DEATH_CERTIFICATE_DELETE)
     @Override
     public final String deathCertificateDelete(@PathVariable final String id) {
         logger.debug("DeathCertificateControllerImpl::censusDelete");
         deathCertificateService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.DEATH_CERTIFICATE_LIST;
+        return MappingConstants.REDIRECT + CertificateMappingConstants.DEATH_CERTIFICATE_LIST;
     }
 
     @Override

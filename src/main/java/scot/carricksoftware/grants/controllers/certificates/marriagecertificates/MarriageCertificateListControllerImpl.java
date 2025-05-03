@@ -11,10 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.constants.AttributeConstants;
-import scot.carricksoftware.grants.constants.MappingConstants;
-import scot.carricksoftware.grants.constants.ViewConstants;
+import scot.carricksoftware.grants.constants.*;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.MarriageCertificateService;
 
@@ -36,7 +33,7 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_LIST)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_LIST)
     @Override
     public final String getListPage(final Model model) {
         logger.debug("MarriageCertificateListControllerImpl::getCensusPage");
@@ -52,7 +49,7 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_NEXT)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_NEXT)
     @Override
     public final String getNextPage(final Model model) {
         logger.debug("MarriageCertificateListControllerImpl::getNextPage");
@@ -61,7 +58,7 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_PREVIOUS)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_PREVIOUS)
     @Override
     public final String getPreviousPage(final Model model) {
         logger.debug("MarriageCertificateListControllerImpl::getPreviousPage");
@@ -70,7 +67,7 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_REWIND)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_REWIND)
     public final String getFirstPage(final Model model) {
         logger.debug("MarriageCertificateListControllerImpl::getFirstPage");
         currentPage = 0;
@@ -78,7 +75,7 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_FF)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_FF)
     @Override
     public final String getLastPage(final Model model) {
         logger.debug("MarriageCertificateListControllerImpl::getLastPage");
@@ -89,12 +86,12 @@ public class MarriageCertificateListControllerImpl implements MarriageCertificat
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.MARRIAGE_CERTIFICATE_DELETE)
+    @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_DELETE)
     @Override
     public final String marriageCertificateDelete(@PathVariable final String id) {
         logger.debug("MarriageCertificateControllerImpl::censusDelete");
         marriageCertificateService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.MARRIAGE_CERTIFICATE_LIST;
+        return MappingConstants.REDIRECT + CertificateMappingConstants.MARRIAGE_CERTIFICATE_LIST;
     }
 
     @Override

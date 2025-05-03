@@ -11,10 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.constants.AttributeConstants;
-import scot.carricksoftware.grants.constants.MappingConstants;
-import scot.carricksoftware.grants.constants.ViewConstants;
+import scot.carricksoftware.grants.constants.*;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.services.certificates.divorcecertificates.DivorceCertificateService;
 
@@ -36,7 +33,7 @@ public class DivorceCertificateListControllerImpl implements DivorceCertificateL
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_LIST)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_LIST)
     @Override
     public final String getListPage(final Model model) {
         logger.debug("DivorceCertificateListControllerImpl::getCensusPage");
@@ -52,7 +49,7 @@ public class DivorceCertificateListControllerImpl implements DivorceCertificateL
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_NEXT)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_NEXT)
     @Override
     public final String getNextPage(final Model model) {
         logger.debug("DivorceCertificateListControllerImpl::getNextPage");
@@ -61,7 +58,7 @@ public class DivorceCertificateListControllerImpl implements DivorceCertificateL
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_PREVIOUS)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_PREVIOUS)
     @Override
     public final String getPreviousPage(final Model model) {
         logger.debug("DivorceCertificateListControllerImpl::getPreviousPage");
@@ -70,7 +67,7 @@ public class DivorceCertificateListControllerImpl implements DivorceCertificateL
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_REWIND)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_REWIND)
     public final String getFirstPage(final Model model) {
         logger.debug("DivorceCertificateListControllerImpl::getFirstPage");
         currentPage = 0;
@@ -78,7 +75,7 @@ public class DivorceCertificateListControllerImpl implements DivorceCertificateL
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_FF)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_FF)
     @Override
     public final String getLastPage(final Model model) {
         logger.debug("DivorceCertificateListControllerImpl::getLastPage");
@@ -89,12 +86,12 @@ public class DivorceCertificateListControllerImpl implements DivorceCertificateL
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_DELETE)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_DELETE)
     @Override
     public final String divorceCertificateDelete(@PathVariable final String id) {
         logger.debug("DivorceCertificateControllerImpl::censusDelete");
         divorceCertificateService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.DIVORCE_CERTIFICATE_LIST;
+        return MappingConstants.REDIRECT + CertificateMappingConstants.DIVORCE_CERTIFICATE_LIST;
     }
 
     @Override

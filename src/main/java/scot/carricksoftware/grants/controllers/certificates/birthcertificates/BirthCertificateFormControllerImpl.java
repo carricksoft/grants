@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
@@ -54,7 +55,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_NEW)
+    @GetMapping(CertificateMappingConstants.BIRTH_CERTIFICATE_NEW)
     @Override
     public final String getNewBirthCertificate(final Model model) {
         logger.debug("BirthCertificateFormControllerImpl::getNewBirthCertificate");
@@ -64,7 +65,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_EDIT)
+    @GetMapping(CertificateMappingConstants.BIRTH_CERTIFICATE_EDIT)
     @Override
     public final String birthCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::birthCertificateEdit");
@@ -75,7 +76,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
 
 
     @Override
-    @PostMapping(MappingConstants.BIRTH_CERTIFICATE)
+    @PostMapping(CertificateMappingConstants.BIRTH_CERTIFICATE)
     public String saveOrUpdate(@Valid @ModelAttribute BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
 
@@ -91,12 +92,12 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         BirthCertificateCommand savedCommand = birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        return MappingConstants.REDIRECT + MappingConstants.BIRTH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
+        return MappingConstants.REDIRECT + CertificateMappingConstants.BIRTH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_SHOW)
+    @GetMapping(CertificateMappingConstants.BIRTH_CERTIFICATE_SHOW)
     @Override
     public String showById(@PathVariable String id, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");

@@ -57,4 +57,24 @@ public class CensusMappingConstants {
     @SuppressWarnings({"unused"})
     public static final String CENSUS_ENTRY_EDIT = "censusEntry/{id}/edit";
 
+
+    public static final String CENSUS_SELECTED_ENTRIES_LIST = "/censusSelectedEntries";
+    @SuppressWarnings({"unused"})
+    public static final String CENSUS_SELECTED_ENTRIES_NEXT = "/censusSelectedEntries/next";
+    @SuppressWarnings({"unused"})
+    public static final String CENSUS_SELECTED_ENTRIES_PREVIOUS = "/censusSelectedEntries/prev";
+    @SuppressWarnings({"unused"})
+    public static final String CENSUS_SELECTED_ENTRIES_REWIND = "/censusSelectedEntries/rewind";
+    @SuppressWarnings({"unused"})
+    public static final String CENSUS_SELECTED_ENTRIES_FF = "/censusSelectedEntries/ff";
+    @SuppressWarnings({"unused"})
+    public static final String CENSUS_SELECTED_ENTRIES_NEW = "/censusSelectedEntry/new";
+    @SuppressWarnings({"unused"})
+    public static final String CENSUS_SELECTED_ENTRIES_ENTRY = "/censusSelectedEntry";
+    @SuppressWarnings({"unused"})
+    public static final String CENSUS_SELECTED_ENTRIES_SHOW = "/censusSelectedEntry/{id}/show";
+    @SuppressWarnings({"unused"})
+    public static final String CENSUS_SELECTED_ENTRIES_DELETE = "/censusSelectedEntry/{id}/delete";
+    @SuppressWarnings({"unused"})
+    public static final String CENSUS_SELECTED_ENTRIES_EDIT = "censusSelectedEntry/{id}/edit";
 }

@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import scot.carricksoftware.grants.commands.certificates.divorcecertificates.DivorceCertificateCommand;
-import scot.carricksoftware.grants.constants.MappingConstants;
+import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 
 @SuppressWarnings("unused")
 
 public interface DivorceCertificateFormController {
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_NEW)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_NEW)
     String getNewDivorceCertificate(Model model);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_EDIT)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_EDIT)
     String divorceCertificateEdit(@Valid @PathVariable String id, Model model);
 
     String saveOrUpdate(@ModelAttribute DivorceCertificateCommand divorceCertificateCommand, BindingResult bindingResult, Model model);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.DIVORCE_CERTIFICATE_SHOW)
+    @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_SHOW)
     String showById(@PathVariable String id, Model model);
 }

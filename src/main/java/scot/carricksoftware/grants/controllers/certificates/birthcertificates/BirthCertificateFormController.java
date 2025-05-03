@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
-import scot.carricksoftware.grants.constants.MappingConstants;
+import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 
 @SuppressWarnings("unused")
 
 public interface BirthCertificateFormController {
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_NEW)
+    @GetMapping(CertificateMappingConstants.BIRTH_CERTIFICATE_NEW)
     String getNewBirthCertificate(Model model);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_EDIT)
+    @GetMapping(CertificateMappingConstants.BIRTH_CERTIFICATE_EDIT)
     String birthCertificateEdit(@Valid @PathVariable String id, Model model);
 
     String saveOrUpdate(@ModelAttribute BirthCertificateCommand countryCommand, BindingResult bindingResult, Model model);
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.BIRTH_CERTIFICATE_SHOW)
+    @GetMapping(CertificateMappingConstants.BIRTH_CERTIFICATE_SHOW)
     String showById(@PathVariable String id, Model model);
 }
