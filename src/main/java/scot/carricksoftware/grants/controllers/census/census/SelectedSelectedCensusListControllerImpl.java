@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import scot.carricksoftware.grants.constants.*;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.services.census.census.CensusService;
+import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 
 import static java.lang.Integer.max;
 
@@ -26,11 +27,13 @@ public class SelectedSelectedCensusListControllerImpl implements SelectedCensusL
     private int currentPage = 0;
     private final ControllerHelper controllerHelper;
     private final CensusService censusService;
+    private final CensusEntryService censusEntryService;
 
     public SelectedSelectedCensusListControllerImpl(ControllerHelper controllerHelper,
-                                                    CensusService censusService) {
+                                                    CensusService censusService, CensusEntryService censusEntryService) {
         this.controllerHelper = controllerHelper;
         this.censusService = censusService;
+        this.censusEntryService = censusEntryService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -101,7 +104,9 @@ public class SelectedSelectedCensusListControllerImpl implements SelectedCensusL
     @Override
     public String censusEntriesEntries(@Valid @PathVariable final String id, Model model) {
         logger.debug("CensusEntriesListControllerImpl::censusEntriesEntries");
-        return ViewConstants.SELECTED_CENUS_LIST;
+        model.addAttribute(AttributeConstants.CENSUS_ENTRIES, censusEntryService.getPagedCensusEntries(currentPage));
+        model.addAttribute(AttributeConstants.CENSUS, censusService.findById(Long.valueOf(id)));
+        return ViewConstants.SELECTED_CENSUS_LIST;
     }
 
 

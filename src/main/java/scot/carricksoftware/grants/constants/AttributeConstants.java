@@ -38,6 +38,9 @@ public class AttributeConstants {
     @SuppressWarnings("unused")
     public static final String CENSUS_COMMAND = "censusCommand";
 
+    public static final String CENSUS = "census";
+
+
     @SuppressWarnings({"unused"})
     public static final String CENSUS_ENTRIES = "censusEntries";
     @SuppressWarnings("unused")
