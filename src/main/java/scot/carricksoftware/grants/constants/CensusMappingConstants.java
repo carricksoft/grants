@@ -77,4 +77,6 @@ public class CensusMappingConstants {
     public static final String CENSUS_SELECTED_ENTRIES_DELETE = "/censusSelectedEntry/{id}/delete";
     @SuppressWarnings({"unused"})
     public static final String CENSUS_SELECTED_ENTRIES_EDIT = "censusSelectedEntry/{id}/edit";
+
+    public static final String CENSUS_SELECTED_ENTRIES_ENTRIES = "/censusSelectedEntry/{id}/entries";
 }

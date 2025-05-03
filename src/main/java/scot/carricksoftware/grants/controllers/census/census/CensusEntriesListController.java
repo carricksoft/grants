@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants.controllers.census.census;
 
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +25,9 @@ public interface CensusEntriesListController {
     String getLastPage(final Model model);
 
     String censusDelete(@PathVariable String id);
+
+    @SuppressWarnings("SameReturnValue")
+    String censusEntriesEntries(@Valid @PathVariable String id, Model model);
 
     int getPageNumber();
 }

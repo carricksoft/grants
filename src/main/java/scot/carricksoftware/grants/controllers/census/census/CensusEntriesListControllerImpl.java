@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants.controllers.census.census;
 
+import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -18,7 +19,7 @@ import scot.carricksoftware.grants.services.census.census.CensusService;
 import static java.lang.Integer.max;
 
 @Controller
-public class CensusEntriesListControllerImpl implements CensusListController {
+public class CensusEntriesListControllerImpl implements CensusEntriesListController {
 
     private static final Logger logger = LogManager.getLogger(CensusEntriesListControllerImpl.class);
 
@@ -41,6 +42,8 @@ public class CensusEntriesListControllerImpl implements CensusListController {
         return sendAttributesAndReturn(model);
     }
 
+
+
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
         model.addAttribute(AttributeConstants.CENSUSES, censusService.getPagedCensuses(currentPage));
@@ -52,16 +55,17 @@ public class CensusEntriesListControllerImpl implements CensusListController {
     @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_NEXT)
     @Override
     public final String getNextPage(final Model model) {
-        logger.debug("CensusListControllerImpl::getNextPage");
+        logger.debug("CensusEntriesListControllerImpl::getNextPage");
         currentPage++;
         return sendAttributesAndReturn(model);
     }
+
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_PREVIOUS)
     @Override
     public final String getPreviousPage(final Model model) {
-        logger.debug("CensusListControllerImpl::getPreviousPage");
+        logger.debug("CensusEntriesListControllerImpl::getPreviousPage");
         currentPage = max(0, currentPage - 1);
         return sendAttributesAndReturn(model);
     }
@@ -69,30 +73,37 @@ public class CensusEntriesListControllerImpl implements CensusListController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_REWIND)
     public final String getFirstPage(final Model model) {
-        logger.debug("CensusListControllerImpl::getFirstPage");
+        logger.debug("CensusEntriesListControllerImpl::getFirstPage");
         currentPage = 0;
         return sendAttributesAndReturn(model);
     }
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_FF)
-    @Override
     public final String getLastPage(final Model model) {
-        logger.debug("CensusListControllerImpl::getLastPage");
+        logger.debug("CensusEntriesListControllerImpl::getLastPage");
         long censusCount = censusService.count();
         currentPage = (int) (censusCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
         return sendAttributesAndReturn(model);
     }
 
-
     @SuppressWarnings("SameReturnValue")
     @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_DELETE)
     @Override
     public final String censusDelete(@PathVariable final String id) {
-        logger.debug("CensusListControllerImpl::censusDelete");
+        logger.debug("CensusEntriesListControllerImpl::censusDelete");
         censusService.deleteById(Long.valueOf(id));
         return MappingConstants.REDIRECT + CensusMappingConstants.CENSUS_SELECTED_ENTRIES_LIST;
     }
+
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(CensusMappingConstants.CENSUS_SELECTED_ENTRIES_ENTRIES)
+    @Override
+    public String censusEntriesEntries(@Valid @PathVariable final String id, Model model) {
+        logger.debug("CensusEntriesListControllerImpl::censusEntriesEntries");
+        return ViewConstants.CENSUS_ENTRIES_LIST;
+    }
+
 
     @Override
     public int getPageNumber() {
