@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.constants.CensusMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.Capitalisation;
@@ -59,7 +60,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.CENSUS_ENTRY_NEW)
+    @GetMapping(CensusMappingConstants.CENSUS_ENTRY_NEW)
     public final String getNewCensusEntry(final Model model) {
         logger.debug("CensusEntryFormControllerImpl::getNewCensusEntry");
         model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, new CensusEntryCommandImpl());
@@ -69,7 +70,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.CENSUS_ENTRY_EDIT)
+    @GetMapping(CensusMappingConstants.CENSUS_ENTRY_EDIT)
     public final String censusEntryEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("CensusEntryFormControllerImpl::censusEntryEdit");
         model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, censusEntryService.findById(Long.valueOf(id)));
@@ -80,7 +81,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
 
 
     @Override
-    @PostMapping(MappingConstants.CENSUS_ENTRY)
+    @PostMapping(CensusMappingConstants.CENSUS_ENTRY)
     public String saveOrUpdate(@Valid @ModelAttribute CensusEntryCommand censusEntryCommand, BindingResult bindingResult, Model model) {
         logger.debug("CensusEntryFormControllerImpl::saveOrUpdate");
 
@@ -97,12 +98,12 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
         CensusEntryCommand savedCommand = censusEntryService.saveCensusEntryCommand(censusEntryCommand);
         updateRecordedYearOfBirth.updateRecordedYearOfBirth(savedCommand);
         model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, savedCommand);
-        return MappingConstants.REDIRECT + MappingConstants.CENSUS_ENTRY_SHOW.replace("{id}", "" + savedCommand.getId());
+        return MappingConstants.REDIRECT + CensusMappingConstants.CENSUS_ENTRY_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.CENSUS_ENTRY_SHOW)
+    @GetMapping(CensusMappingConstants.CENSUS_ENTRY_SHOW)
     public String showById(@PathVariable String id, Model model) {
         logger.debug("CensusEntryFormControllerImpl::saveOrUpdate");
         CensusEntryCommand savedCommand = censusEntryConverter.convert(censusEntryService.findById(Long.valueOf(id)));

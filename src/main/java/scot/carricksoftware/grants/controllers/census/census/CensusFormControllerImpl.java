@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.constants.CensusMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.census.CensusConverter;
@@ -46,7 +47,7 @@ public class CensusFormControllerImpl implements CensusFormController {
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.CENSUS_NEW)
+    @GetMapping(CensusMappingConstants.CENSUS_NEW)
     public final String getNewCensus(final Model model) {
         logger.debug("CensusFormControllerImpl::getNewCensus");
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, new CensusCommandImpl());
@@ -55,7 +56,7 @@ public class CensusFormControllerImpl implements CensusFormController {
     }
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.CENSUS_EDIT)
+    @GetMapping(CensusMappingConstants.CENSUS_EDIT)
     public final String censusEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("CensusFormControllerImpl::censusEdit");
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, censusService.findById(Long.valueOf(id)));
@@ -65,7 +66,7 @@ public class CensusFormControllerImpl implements CensusFormController {
 
 
     @Override
-    @PostMapping(MappingConstants.CENSUS)
+    @PostMapping(CensusMappingConstants.CENSUS)
     public String saveOrUpdate(@Valid @ModelAttribute CensusCommand censusCommand, BindingResult bindingResult, Model model) {
         logger.debug("CensusFormControllerImpl::saveOrUpdate");
 
@@ -82,12 +83,12 @@ public class CensusFormControllerImpl implements CensusFormController {
         CensusCommand savedCommand = censusService.saveCensusCommand(censusCommand);
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
-        return MappingConstants.REDIRECT + MappingConstants.CENSUS_SHOW.replace("{id}", "" + savedCommand.getId());
+        return MappingConstants.REDIRECT + CensusMappingConstants.CENSUS_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
 
     @SuppressWarnings("SameReturnValue")
-    @GetMapping(MappingConstants.CENSUS_SHOW)
+    @GetMapping(CensusMappingConstants.CENSUS_SHOW)
     public String showById(@PathVariable String id, Model model) {
         logger.debug("CensusFormControllerImpl::saveOrUpdate");
         CensusCommand savedCommand = censusConverter.convert(censusService.findById(Long.valueOf(id)));
