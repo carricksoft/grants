@@ -103,6 +103,7 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
     public final String censusEntryList(@Valid @PathVariable final String id, Model model) {
         logger.debug("");
         model.addAttribute(AttributeConstants.CENSUS, censusEntryService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.CENSUS_ENTRIES, censusEntryService.getPagedCensusEntries(currentPage));
         return ViewConstants.SELECTED_CENSUS_LIST;
     }
 
