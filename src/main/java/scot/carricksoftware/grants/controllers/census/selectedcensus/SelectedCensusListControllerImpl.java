@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import scot.carricksoftware.grants.constants.*;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.controllers.census.censusentry.CensusEntryListController;
+import scot.carricksoftware.grants.domains.census.Census;
+import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.census.selectedcensus.SelectedCensusService;
 
 import static java.lang.Integer.max;
@@ -26,14 +28,20 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
 
 
     private int currentPage = 0;
+    @SuppressWarnings("unused")
+    private Census census;
+
     private final ControllerHelper controllerHelper;
     private final SelectedCensusService censusEntryService;
+    private final CensusService censusService;
 
 
     public SelectedCensusListControllerImpl(ControllerHelper controllerHelper,
-                                            SelectedCensusService censusEntryService) {
+                                            SelectedCensusService censusEntryService,
+                                            CensusService censusService) {
         this.controllerHelper = controllerHelper;
         this.censusEntryService = censusEntryService;
+        this.censusService = censusService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -103,6 +111,7 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
     @GetMapping(CensusMappingConstants.SELECTED_CENSUS_ENTRIES)
     public final String censusEntryList(@Valid @PathVariable final String id, Model model) {
         logger.debug("");
+        census = censusService.findById(Long.valueOf(id));
         model.addAttribute(AttributeConstants.CENSUS, censusEntryService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.CENSUS_ENTRIES, censusEntryService.getPagedCensusEntries(currentPage));
         return ViewConstants.SELECTED_CENSUS_LIST;
