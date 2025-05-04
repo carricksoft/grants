@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import scot.carricksoftware.grants.constants.*;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.controllers.census.censusentry.CensusEntryListController;
-import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
+import scot.carricksoftware.grants.services.census.selectedcensus.SelectedCensusService;
 
 import static java.lang.Integer.max;
 
@@ -27,11 +27,11 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
 
     private int currentPage = 0;
     private final ControllerHelper controllerHelper;
-    private final CensusEntryService censusEntryService;
+    private final SelectedCensusService censusEntryService;
 
 
     public SelectedCensusListControllerImpl(ControllerHelper controllerHelper,
-                                            CensusEntryService censusEntryService) {
+                                            SelectedCensusService censusEntryService) {
         this.controllerHelper = controllerHelper;
         this.censusEntryService = censusEntryService;
     }
@@ -87,6 +87,7 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
         currentPage = (int) (censusEntryCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
         return sendAttributesAndReturn(model);
     }
+
 
 
     @SuppressWarnings("SameReturnValue")
