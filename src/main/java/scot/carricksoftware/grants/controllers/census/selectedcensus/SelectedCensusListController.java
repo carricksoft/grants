@@ -1,11 +1,10 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 21/03/2025, 00:08. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 21/03/2025, 00:07. All rights reserved.
  *
  */
 
-package scot.carricksoftware.grants.controllers.census.census;
+package scot.carricksoftware.grants.controllers.census.selectedcensus;
 
-import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,10 +23,7 @@ public interface SelectedCensusListController {
 
     String getLastPage(final Model model);
 
-    String censusDelete(@PathVariable String id);
-
-    @SuppressWarnings("SameReturnValue")
-    String censusEntriesEntries(@Valid @PathVariable String id, Model model);
+    String censusEntryDelete(@PathVariable String id);
 
     int getPageNumber();
 }
