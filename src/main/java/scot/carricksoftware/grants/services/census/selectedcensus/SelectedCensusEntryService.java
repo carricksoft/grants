@@ -12,7 +12,7 @@ import scot.carricksoftware.grants.domains.census.CensusEntry;
 import java.util.List;
 
 @Service
-public interface SelectedCensusService {
+public interface SelectedCensusEntryService {
 
     @SuppressWarnings("unused")
     CensusEntry findById(Long id);

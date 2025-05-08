@@ -19,22 +19,21 @@ import scot.carricksoftware.grants.converters.census.CensusEntryCommandConverter
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.repositories.census.CensusEntryRepository;
-import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class SelectedCensusServiceImpl implements CensusEntryService {
-    private static final Logger logger = LogManager.getLogger(SelectedCensusServiceImpl.class);
+public class SelectedCensusEntryServiceImpl implements SelectedCensusEntryService {
+    private static final Logger logger = LogManager.getLogger(SelectedCensusEntryServiceImpl.class);
 
     @SuppressWarnings({"unused"})
     private final CensusEntryRepository censusEntryRepository;
     private final CensusEntryConverterImpl censusEntryConverterImpl;
     private final CensusEntryCommandConverterImpl censusEntryCommandConverterImpl;
 
-    public SelectedCensusServiceImpl(CensusEntryRepository censusEntryRepository, CensusEntryConverterImpl censusEntryConverterImpl, CensusEntryCommandConverterImpl censusEntryCommandConverterImpl) {
+    public SelectedCensusEntryServiceImpl(CensusEntryRepository censusEntryRepository, CensusEntryConverterImpl censusEntryConverterImpl, CensusEntryCommandConverterImpl censusEntryCommandConverterImpl) {
         this.censusEntryRepository = censusEntryRepository;
         this.censusEntryConverterImpl = censusEntryConverterImpl;
         this.censusEntryCommandConverterImpl = censusEntryCommandConverterImpl;

@@ -17,7 +17,7 @@ import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.controllers.census.censusentry.CensusEntryListController;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.services.census.census.CensusService;
-import scot.carricksoftware.grants.services.census.selectedcensus.SelectedCensusService;
+import scot.carricksoftware.grants.services.census.selectedcensus.SelectedCensusEntryService;
 
 import static java.lang.Integer.max;
 
@@ -28,19 +28,19 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
 
 
     private int currentPage = 0;
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private Census census;
 
     private final ControllerHelper controllerHelper;
-    private final SelectedCensusService censusEntryService;
+    private final SelectedCensusEntryService selectedCensusEntryService;
     private final CensusService censusService;
 
 
     public SelectedCensusListControllerImpl(ControllerHelper controllerHelper,
-                                            SelectedCensusService censusEntryService,
+                                            SelectedCensusEntryService selectedCensusEntryService,
                                             CensusService censusService) {
         this.controllerHelper = controllerHelper;
-        this.censusEntryService = censusEntryService;
+        this.selectedCensusEntryService = selectedCensusEntryService;
         this.censusService = censusService;
     }
 
@@ -55,7 +55,7 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.CENSUS_ENTRIES, censusEntryService.getPagedCensusEntries(currentPage));
+        model.addAttribute(AttributeConstants.CENSUS_ENTRIES, selectedCensusEntryService.getPagedCensusEntries(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.SELECTED_CENSUS_LIST;
     }
@@ -91,7 +91,7 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
     @Override
     public final String getLastPage(final Model model) {
         logger.debug("SelectedCensusListControllerImpl:getLastPage");
-        long censusEntryCount = censusEntryService.count();
+        long censusEntryCount = selectedCensusEntryService.count();
         currentPage = (int) (censusEntryCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
         return sendAttributesAndReturn(model);
     }
@@ -103,7 +103,7 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
     @Override
     public final String censusEntryDelete(@PathVariable final String id) {
         logger.debug("SelectedCensusListControllerImpl::censusEntryDelete");
-        censusEntryService.deleteById(Long.valueOf(id));
+        selectedCensusEntryService.deleteById(Long.valueOf(id));
         return MappingConstants.REDIRECT + CensusMappingConstants.SELECTED_CENSUS_LIST;
     }
 
@@ -112,8 +112,8 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
     public final String censusEntryList(@Valid @PathVariable final String id, Model model) {
         logger.debug("");
         census = censusService.findById(Long.valueOf(id));
-        model.addAttribute(AttributeConstants.CENSUS, censusEntryService.findById(Long.valueOf(id)));
-        model.addAttribute(AttributeConstants.CENSUS_ENTRIES, censusEntryService.getPagedCensusEntries(currentPage));
+        model.addAttribute(AttributeConstants.CENSUS,  selectedCensusEntryService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.CENSUS_ENTRIES, selectedCensusEntryService.getPagedCensusEntries(currentPage));
         return ViewConstants.SELECTED_CENSUS_LIST;
     }
 

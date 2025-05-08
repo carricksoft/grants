@@ -79,8 +79,7 @@ public class CensusEntryFormControllerTest {
     public void getNewCensusEntryTest() {
         ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
         ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
-        //noinspection SpellCheckingInspection
-        assertEquals("censusentry/form", censusEntryController.getNewCensusEntry(modelMock));
+        assertEquals("censusEntry/form", censusEntryController.getNewCensusEntry(modelMock));
         verify(modelMock, atLeast(2)).addAttribute(stringCaptor.capture(), objectCaptor.capture());
 
         boolean foundCensusEntryCommand = false;
@@ -108,8 +107,7 @@ public class CensusEntryFormControllerTest {
         CensusEntry censusEntry = GetRandomCensusEntry();
         when(censusEntryServiceMock.findById(id)).thenReturn(censusEntry);
 
-        //noinspection SpellCheckingInspection
-        assertEquals("censusentry/form", censusEntryController.censusEntryEdit(id + "", modelMock));
+        assertEquals("censusEntry/form", censusEntryController.censusEntryEdit(id + "", modelMock));
         verify(modelMock).addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, censusEntry);
     }
 
@@ -121,8 +119,7 @@ public class CensusEntryFormControllerTest {
 
         when(censusEntryServiceMock.findById(id)).thenReturn(censusEntry);
         when(censusEntryConverterMock.convert(censusEntry)).thenReturn(censusEntryCommand);
-        //noinspection SpellCheckingInspection
-        assertEquals("censusentry/form", censusEntryController.showById(id + "", modelMock));
+        assertEquals("censusEntry/form", censusEntryController.showById(id + "", modelMock));
         verify(modelMock).addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, censusEntryCommand);
     }
 

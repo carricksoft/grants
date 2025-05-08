@@ -50,8 +50,7 @@ public class CensusEntryListControllerTest {
     @Test
     public void getListPageTest() {
         when(censusEntryServiceMock.getPagedCensusEntries(0)).thenReturn(censusEntryListMock);
-        //noinspection SpellCheckingInspection
-        assertEquals("censusentry/list", controller.getListPage(modelMock));
+        assertEquals("censusEntry/list", controller.getListPage(modelMock));
         verify(modelMock).addAttribute("censusEntries", censusEntryListMock);
         verify(controllerHelperMock).addAttributes(modelMock);
     }
@@ -63,8 +62,7 @@ public class CensusEntryListControllerTest {
         when(censusEntryServiceMock.count()).thenReturn((long) count);
         controller.getLastPage(modelMock);
         controller.getPreviousPage(modelMock);
-        //noinspection SpellCheckingInspection
-        assertEquals("censusentry/list", controller.getLastPage(modelMock));
+        assertEquals("censusEntry/list", controller.getLastPage(modelMock));
         verify(censusEntryServiceMock, times(2)).getPagedCensusEntries(page);
     }
 
@@ -81,8 +79,7 @@ public class CensusEntryListControllerTest {
         censusEntryList.add(GetRandomCensusEntry());
         when(censusEntryServiceMock.getPagedCensusEntries(0)).thenReturn(censusEntryList);
 
-        //noinspection SpellCheckingInspection
-        assertEquals("censusentry/list", controller.getFirstPage(modelMock));
+        assertEquals("censusEntry/list", controller.getFirstPage(modelMock));
         assertEquals(0, controller.getPageNumber());
         verify(modelMock).addAttribute("censusEntries", censusEntryList);
     }
@@ -94,8 +91,7 @@ public class CensusEntryListControllerTest {
         when(censusEntryServiceMock.getPagedCensusEntries(0)).thenReturn(censusEntryList);
 
         controller.getFirstPage(modelMock);
-        //noinspection SpellCheckingInspection
-        assertEquals("censusentry/list", controller.getNextPage(modelMock));
+        assertEquals("censusEntry/list", controller.getNextPage(modelMock));
         assertEquals(1, controller.getPageNumber());
         verify(modelMock).addAttribute("censusEntries", censusEntryList);
 
@@ -108,8 +104,7 @@ public class CensusEntryListControllerTest {
         when(censusEntryServiceMock.getPagedCensusEntries(0)).thenReturn(censusEntryList);
 
         controller.getFirstPage(modelMock);
-        //noinspection SpellCheckingInspection
-        assertEquals("censusentry/list", controller.getPreviousPage(modelMock));
+        assertEquals("censusEntry/list", controller.getPreviousPage(modelMock));
         assertEquals(0, controller.getPageNumber());
         verify(modelMock, times(2)).addAttribute("censusEntries", censusEntryList);
     }
@@ -120,8 +115,7 @@ public class CensusEntryListControllerTest {
         int count = page * ApplicationConstants.DEFAULT_PAGE_SIZE;
         when(censusEntryServiceMock.count()).thenReturn((long) count);
         controller.getLastPage(modelMock);
-        //noinspection SpellCheckingInspection
-        assertEquals("censusentry/list", controller.getPreviousPage(modelMock));
+        assertEquals("censusEntry/list", controller.getPreviousPage(modelMock));
         assertEquals(24, controller.getPageNumber());
     }
 
