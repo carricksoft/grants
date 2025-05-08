@@ -12,15 +12,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.converters.census.CensusEntryCommandConverterImpl;
-import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.repositories.census.CensusEntryRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,13 +25,9 @@ public class SelectedCensusEntryServiceImpl implements SelectedCensusEntryServic
 
     @SuppressWarnings({"unused"})
     private final CensusEntryRepository censusEntryRepository;
-    private final CensusEntryConverterImpl censusEntryConverterImpl;
-    private final CensusEntryCommandConverterImpl censusEntryCommandConverterImpl;
 
-    public SelectedCensusEntryServiceImpl(CensusEntryRepository censusEntryRepository, CensusEntryConverterImpl censusEntryConverterImpl, CensusEntryCommandConverterImpl censusEntryCommandConverterImpl) {
+    public SelectedCensusEntryServiceImpl(CensusEntryRepository censusEntryRepository) {
         this.censusEntryRepository = censusEntryRepository;
-        this.censusEntryConverterImpl = censusEntryConverterImpl;
-        this.censusEntryCommandConverterImpl = censusEntryCommandConverterImpl;
     }
 
     @Override
@@ -46,11 +37,6 @@ public class SelectedCensusEntryServiceImpl implements SelectedCensusEntryServic
         return censusEntry.orElse(null);
     }
 
-    @Override
-    public CensusEntry save(CensusEntry censusEntry) {
-        logger.debug("censusEntryServiceImpl::save");
-        return censusEntryRepository.save(censusEntry);
-    }
 
     @Override
     public void deleteById(Long id) {
@@ -77,22 +63,5 @@ public class SelectedCensusEntryServiceImpl implements SelectedCensusEntryServic
         return censusEntryRepository.count();
     }
 
-    @Transactional
-    @Override
-    public CensusEntryCommand saveCensusEntryCommand(CensusEntryCommand censusEntryCommand) {
-        logger.debug("censusEntryServiceImpl::saveCensusEntryCommand");
-        CensusEntry censusEntry = censusEntryCommandConverterImpl.convert(censusEntryCommand);
-        CensusEntry savedcensusEntry = censusEntryRepository.save(censusEntry);
-        return censusEntryConverterImpl.convert(savedcensusEntry);
-    }
-
-    @Override
-    public List<CensusEntry> findAll() {
-        logger.debug("censusEntryServiceImpl::findAll");
-        List<CensusEntry> result = new ArrayList<>();
-        Iterable<CensusEntry> censusEntryIterable = censusEntryRepository.findAll();
-        censusEntryIterable.forEach(result::add);
-        return result;
-    }
 
 }
