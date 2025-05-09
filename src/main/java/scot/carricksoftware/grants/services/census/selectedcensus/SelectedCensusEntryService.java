@@ -14,6 +14,7 @@ import java.util.List;
 @Service
 public interface SelectedCensusEntryService {
 
+    @SuppressWarnings("unused")
     CensusEntry findById(Long id);
 
     void deleteById(Long id);

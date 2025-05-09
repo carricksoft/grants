@@ -97,7 +97,6 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
     }
 
 
-
     @SuppressWarnings("SameReturnValue")
     @GetMapping(CensusMappingConstants.SELECTED_CENSUS_DELETE)
     @Override
