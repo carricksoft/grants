@@ -17,6 +17,7 @@ public interface SelectedCensusEntryService {
     @SuppressWarnings("unused")
     CensusEntry findById(Long id);
 
+    @SuppressWarnings("unused")
     void deleteById(Long id);
 
     List<CensusEntry> getPagedCensusEntries(Census census, int pageNumber);

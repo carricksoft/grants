@@ -7,7 +7,6 @@ package scot.carricksoftware.grants.controllers.census.selectedcensus;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 
 @SuppressWarnings("unused")
 @Controller
@@ -22,8 +21,6 @@ public interface SelectedCensusListController {
     String getFirstPage(final Model model);
 
     String getLastPage(final Model model);
-
-    String censusEntryDelete(@PathVariable String id);
 
     int getPageNumber();
 }

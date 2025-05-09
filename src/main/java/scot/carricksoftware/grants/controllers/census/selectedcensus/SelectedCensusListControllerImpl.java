@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import scot.carricksoftware.grants.constants.*;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
-import scot.carricksoftware.grants.controllers.census.censusentry.CensusEntryListController;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.census.selectedcensus.SelectedCensusEntryService;
@@ -22,7 +21,7 @@ import scot.carricksoftware.grants.services.census.selectedcensus.SelectedCensus
 import static java.lang.Integer.max;
 
 @Controller
-public class SelectedCensusListControllerImpl implements CensusEntryListController {
+public class SelectedCensusListControllerImpl implements SelectedCensusListController {
 
     private static final Logger logger = LogManager.getLogger(SelectedCensusListControllerImpl.class);
 
@@ -86,7 +85,6 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
         return sendAttributesAndReturn(model);
     }
 
-
     @GetMapping(CensusMappingConstants.SELECTED_CENSUS_FF)
     @Override
     public final String getLastPage(final Model model) {
@@ -96,15 +94,6 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
         return sendAttributesAndReturn(model);
     }
 
-
-    @SuppressWarnings("SameReturnValue")
-    @GetMapping(CensusMappingConstants.SELECTED_CENSUS_DELETE)
-    @Override
-    public final String censusEntryDelete(@PathVariable final String id) {
-        logger.debug("SelectedCensusListControllerImpl::censusEntryDelete");
-        selectedCensusEntryService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + CensusMappingConstants.SELECTED_CENSUS_LIST;
-    }
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(CensusMappingConstants.SELECTED_CENSUS_ENTRIES)
