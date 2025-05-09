@@ -23,7 +23,7 @@
 
     <div class="container border border-info
                     rounded-3 text-center p-4">
-        <h3>Census Entries for </h3>
+        <h3>Census Entries</h3>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
             <tr>
@@ -53,17 +53,17 @@
             <tfoot>
             <tr>
                 <td colspan="4"><span>
-                        <a th:action="rewind" class="btn btn-secondary btn-sm" th:href="@{/templates/censusEntry/rewind}"
+                        <a th:action="rewind" class="btn btn-secondary btn-sm" th:href="@{/censusEntries/rewind}"
                            th:text="'<<'"></a>
                          <a th:action="back" class="btn btn-secondary btn-sm"
-                            th:href="@{/templates/censusEntry/prev}" th:text="'<'"></a>
+                            th:href="@{/censusEntries/prev}" th:text="'<'"></a>
                          <a th:action="new" class="btn btn-primary btn-sm" th:href="@{censusEntry/new}"
                             th:text="'New Entry'"></a>
                          <a th:action="home" class="btn btn-success btn-sm"
                             th:href="@{/}" th:text="'Home'"></a>
                          <a th:action="forward" class="btn btn-secondary btn-sm"
-                            th:href="@{/templates/censusEntry/next}" th:text="'>'"></a>
-                         <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/templates/censusEntry/ff}"
+                            th:href="@{/censusEntries/next}" th:text="'>'"></a>
+                         <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/censusEntries/ff}"
                             th:text="'>>'"></a>
                         </span></td>
             </tr>
