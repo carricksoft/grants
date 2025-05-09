@@ -56,6 +56,7 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
     private String sendAttributesAndReturn(Model model) {
         model.addAttribute(AttributeConstants.CENSUS_ENTRIES, selectedCensusEntryService.getPagedCensusEntries(census, currentPage));
         controllerHelper.addAttributes(model);
+        model.addAttribute(AttributeConstants.CENSUS,  census);
         return ViewConstants.SELECTED_CENSUS_LIST;
     }
 
