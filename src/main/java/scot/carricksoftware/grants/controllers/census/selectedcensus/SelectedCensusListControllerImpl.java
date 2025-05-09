@@ -55,7 +55,7 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
 
     @SuppressWarnings("SameReturnValue")
     private String sendAttributesAndReturn(Model model) {
-        model.addAttribute(AttributeConstants.CENSUS_ENTRIES, selectedCensusEntryService.getPagedCensusEntries(currentPage));
+        model.addAttribute(AttributeConstants.CENSUS_ENTRIES, selectedCensusEntryService.getPagedCensusEntries(census, currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.SELECTED_CENSUS_LIST;
     }
@@ -113,7 +113,7 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
         logger.debug("");
         census = censusService.findById(Long.valueOf(id));
         model.addAttribute(AttributeConstants.CENSUS,  selectedCensusEntryService.findById(Long.valueOf(id)));
-        model.addAttribute(AttributeConstants.CENSUS_ENTRIES, selectedCensusEntryService.getPagedCensusEntries(currentPage));
+        model.addAttribute(AttributeConstants.CENSUS_ENTRIES, selectedCensusEntryService.getPagedCensusEntries(census, currentPage));
         return ViewConstants.SELECTED_CENSUS_LIST;
     }
 

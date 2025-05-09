@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants.services.census.selectedcensus;
 
 import org.springframework.stereotype.Service;
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface SelectedCensusEntryService {
 
     void deleteById(Long id);
 
-    List<CensusEntry> getPagedCensusEntries(int pageNumber);
+    List<CensusEntry> getPagedCensusEntries(Census census, int pageNumber);
 
 
     long count();

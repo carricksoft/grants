@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.repositories.census.CensusEntryRepository;
 
@@ -46,7 +47,7 @@ public class SelectedCensusEntryServiceImpl implements SelectedCensusEntryServic
 
 
     @Override
-    public List<CensusEntry> getPagedCensusEntries(int pageNumber) {
+    public List<CensusEntry> getPagedCensusEntries(Census census, int pageNumber) {
         logger.debug("censusEntryServiceImpl::getPagedCountries");
         Pageable paging = PageRequest.of(pageNumber, ApplicationConstants.DEFAULT_PAGE_SIZE, getSort());
         Page<CensusEntry> pagedResult = censusEntryRepository.findAll(paging);
