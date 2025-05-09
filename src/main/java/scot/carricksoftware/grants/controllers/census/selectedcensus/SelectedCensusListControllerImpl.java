@@ -28,7 +28,6 @@ public class SelectedCensusListControllerImpl implements CensusEntryListControll
 
 
     private int currentPage = 0;
-    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private Census census;
 
     private final ControllerHelper controllerHelper;

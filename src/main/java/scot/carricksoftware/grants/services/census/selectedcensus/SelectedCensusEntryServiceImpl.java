@@ -33,7 +33,7 @@ public class SelectedCensusEntryServiceImpl implements SelectedCensusEntryServic
 
     @Override
     public CensusEntry findById(Long id) {
-        logger.debug("censusEntryServiceImpl::findById");
+        logger.debug("SelectedCensusEntryServiceImpl::findById");
         Optional<CensusEntry> censusEntry = censusEntryRepository.findById(id);
         return censusEntry.orElse(null);
     }
@@ -41,16 +41,16 @@ public class SelectedCensusEntryServiceImpl implements SelectedCensusEntryServic
 
     @Override
     public void deleteById(Long id) {
-        logger.debug("censusEntryServiceImpl::deleteBy");
+        logger.debug("SelectedCensusEntryServiceImpl::deleteBy");
         censusEntryRepository.deleteById(id);
     }
 
 
     @Override
     public List<CensusEntry> getPagedCensusEntries(Census census, int pageNumber) {
-        logger.debug("censusEntryServiceImpl::getPagedCountries");
+        logger.debug("SelectedCensusEntryServiceImpl::getPagedCountries");
         Pageable paging = PageRequest.of(pageNumber, ApplicationConstants.DEFAULT_PAGE_SIZE, getSort());
-        Page<CensusEntry> pagedResult = censusEntryRepository.findAll(paging);
+        Page<CensusEntry> pagedResult = censusEntryRepository.findAllByCensus(census, paging);
         return pagedResult.getContent();
     }
 
@@ -60,7 +60,7 @@ public class SelectedCensusEntryServiceImpl implements SelectedCensusEntryServic
 
     @Override
     public long count() {
-        logger.debug("censusEntryServiceImpl::count");
+        logger.debug("SelectedCensusEntryServiceImpl::count");
         return censusEntryRepository.count();
     }
 

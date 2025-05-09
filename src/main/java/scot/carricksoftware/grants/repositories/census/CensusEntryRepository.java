@@ -5,8 +5,11 @@
 
 package scot.carricksoftware.grants.repositories.census;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 
 import java.util.Optional;
@@ -23,4 +26,6 @@ public interface CensusEntryRepository extends PagingAndSortingRepository<Census
     Optional<CensusEntry> findById(Long id);
 
     Iterable<CensusEntry> findAll();
+
+    Page<CensusEntry> findAllByCensus(Census census, Pageable paging);
 }
