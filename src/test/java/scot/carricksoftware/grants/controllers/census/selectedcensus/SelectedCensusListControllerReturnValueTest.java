@@ -16,6 +16,7 @@ import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.census.selectedcensus.SelectedCensusEntryService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -66,5 +67,11 @@ public class SelectedCensusListControllerReturnValueTest {
     public void getPreviousPageTest() {
         assertEquals("selectedCensus/list", controller.getPreviousPage(modelMock));
     }
+
+    @Test
+    public void getCensusEntryListTest() {
+        assertEquals("selectedCensus/list", controller.censusEntryList(GetRandomLong().toString(),modelMock));
+    }
+
 
 }
