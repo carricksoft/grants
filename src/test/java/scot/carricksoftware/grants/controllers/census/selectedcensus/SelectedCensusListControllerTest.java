@@ -17,14 +17,14 @@ import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.census.selectedcensus.SelectedCensusEntryService;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 
 @ExtendWith(MockitoExtension.class)
-public class SelectedCensusListControllerAttributeTest {
+public class SelectedCensusListControllerTest {
 
     private SelectedCensusListControllerImpl controller;
 
@@ -39,30 +39,52 @@ public class SelectedCensusListControllerAttributeTest {
 
     private Model model;
 
+    private Census census;
+
     @BeforeEach
     public void setUp() {
         controller = new SelectedCensusListControllerImpl(controllerHelperMock,
                 selectedCensusEntryServiceMock,
                 censusServiceMock);
         model = new ConcurrentModel();
-        Census census = new Census();
+        census = new Census();
+    }
+
+    @Test
+    public void controllerHelperIsCalledInCensusEntryListTest() {
         when(censusServiceMock.findById(any())).thenReturn(census);
+        controller.censusEntryList(GetRandomLong().toString(), model);
+        verify(controllerHelperMock).addAttributes(model);
     }
 
     @Test
-    public void censusEntryListTest() {
-        controller.censusEntryList(GetRandomLong().toString(), model);
-        assertTrue(model.containsAttribute("censusEntries"));
-    }
-
-    @Test
-    public void getListPageTest() {
-        controller.censusEntryList(GetRandomLong().toString(), model);
+    public void controllerHelperIsCalledInGetListPageTest() {
         controller.getListPage(model);
-        assertTrue(model.containsAttribute("censusEntries"));
-        assertTrue(model.containsAttribute("census"));
+        verify(controllerHelperMock).addAttributes(model);
     }
 
+    @Test
+    public void controllerHelperIsCalledInGetNextPageTest() {
+        controller.getNextPage(model);
+        verify(controllerHelperMock).addAttributes(model);
+    }
 
+    @Test
+    public void controllerHelperIsCalledInGetPreviousPageTest() {
+        controller.getPreviousPage(model);
+        verify(controllerHelperMock).addAttributes(model);
+    }
+
+    @Test
+    public void controllerHelperIsCalledInGetFirstPageTest() {
+        controller.getFirstPage(model);
+        verify(controllerHelperMock).addAttributes(model);
+    }
+
+    @Test
+    public void controllerHelperIsCalledInGetLastPageTest() {
+        controller.getLastPage(model);
+        verify(controllerHelperMock).addAttributes(model);
+    }
 
 }
