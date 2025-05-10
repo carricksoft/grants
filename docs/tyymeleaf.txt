@@ -1,0 +1,7 @@
+Buttons at the end of lists
+===========================
+
+<a th:action="delete" class="btn btn-danger btn-sm"
+                           th:href="@{/census/{id}/delete(id=${census.id})}"
+                           th:text="Delete"></a>
+

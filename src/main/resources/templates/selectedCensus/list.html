@@ -42,11 +42,11 @@
                 <td th:text="${entry.toString()}">123</td>
 
                 <td><span>
-                        <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                           th:href="'censusEntry/' + ${entry.id} + '/delete'"
+                        <a th:action="delete" class="btn btn-danger btn-sm"
+                           th:href="@{/censusEntry/{id}/delete(id=${entry.id})}"
                            th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="'censusEntry/' + ${entry.id} + '/edit'"
+                       th:href="@{/censusEntry/{id}/edit(id=${entry.id})}"
                        th:text="Edit"></a>
                     </span></td>
             </tr>
