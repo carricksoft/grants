@@ -18,7 +18,6 @@ import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.repositories.census.CensusEntryRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SelectedCensusEntryServiceImpl implements SelectedCensusEntryService {
@@ -30,21 +29,6 @@ public class SelectedCensusEntryServiceImpl implements SelectedCensusEntryServic
     public SelectedCensusEntryServiceImpl(CensusEntryRepository censusEntryRepository) {
         this.censusEntryRepository = censusEntryRepository;
     }
-
-    @Override
-    public CensusEntry findById(Long id) {
-        logger.debug("SelectedCensusEntryServiceImpl::findById");
-        Optional<CensusEntry> censusEntry = censusEntryRepository.findById(id);
-        return censusEntry.orElse(null);
-    }
-
-
-    @Override
-    public void deleteById(Long id) {
-        logger.debug("SelectedCensusEntryServiceImpl::deleteBy");
-        censusEntryRepository.deleteById(id);
-    }
-
 
     @Override
     public List<CensusEntry> getPagedCensusEntries(Census census, int pageNumber) {
