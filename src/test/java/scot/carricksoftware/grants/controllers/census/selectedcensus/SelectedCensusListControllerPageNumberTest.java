@@ -11,11 +11,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.census.selectedcensus.SelectedCensusEntryService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -75,5 +77,12 @@ public class SelectedCensusListControllerPageNumberTest {
         assertEquals(ten - 1, controller.getPageNumber());
     }
 
+    @Test
+    public void getLastPlaceTest() {
+        final int pageCount = 10;
+        when(selectedCensusEntryServiceMock.count()).thenReturn((long) (pageCount * ApplicationConstants.DEFAULT_PAGE_SIZE));
+        controller.getLastPage(modelMock);
+        assertEquals(pageCount, controller.getPageNumber());
+    }
 
 }
