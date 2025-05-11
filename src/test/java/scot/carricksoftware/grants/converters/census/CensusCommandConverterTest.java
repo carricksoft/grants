@@ -45,6 +45,7 @@ class CensusCommandConverterTest {
         CensusBoundaryType boundaryType = GetRandomCensusBoundaryType();
         String roomsWithWindows = GetRandomString();
         String inhabitedRooms = GetRandomString();
+        String filledInBy = GetRandomString();
 
         source.setId(id);
         source.setCensusDate(censusDate);
@@ -53,6 +54,7 @@ class CensusCommandConverterTest {
         source.setBoundaryType(boundaryType);
         source.setInhabitedRooms(inhabitedRooms);
         source.setRoomsWithWindows(roomsWithWindows);
+        source.setFilledInBy(filledInBy);
 
         Census target = converter.convert(source);
 
@@ -64,5 +66,6 @@ class CensusCommandConverterTest {
         assertEquals(censusDate, target.getCensusDate());
         assertEquals(roomsWithWindows, target.getRoomsWithWindows());
         assertEquals(inhabitedRooms, target.getInhabitedRooms());
+        assertEquals(filledInBy, target.getFilledInBy());
     }
 }
