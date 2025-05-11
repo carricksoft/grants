@@ -92,6 +92,11 @@ rounded-3 text-center p-4">
         </div>
         <div class="form-group row justify-content-center">
             <div class="col-md-3">
+                <label for="filledInBy">Filled in by:</label>
+                <input class="form-control" id="filledInBy"
+                       th:field="*{filledInBy}" type="text">
+            </div>
+            <div class="col-md-3">
                 <label for="inhabitedRooms">Inhabited Rooms</label>
                 <input class="form-control" id="inhabitedRooms"
                        th:field="*{inhabitedRooms}" type="text">
