@@ -42,6 +42,9 @@ public class Census extends BaseEntity {
     @Column(name = "`filled_in_by`")
     private String filledInBy;
 
+    @Column(name = "`total_rooms`")
+    private String totalRooms;
+
     public CensusDate getCensusDate() {
         return censusDate;
     }
@@ -101,5 +104,14 @@ public class Census extends BaseEntity {
 
     public void setFilledInBy(String filledInBy) {
         this.filledInBy = filledInBy;
+    }
+
+    public String getTotalRooms() {
+        return totalRooms;
+    }
+
+    @SuppressWarnings("unused")
+    public void setTotalRooms(String totalRooms) {
+        this.totalRooms = totalRooms;
     }
 }

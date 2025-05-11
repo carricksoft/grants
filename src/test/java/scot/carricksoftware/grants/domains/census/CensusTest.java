@@ -97,5 +97,17 @@ public class CensusTest {
         assertEquals(filledInBy, census.getFilledInBy());
     }
 
+    @Test
+    public void getTotalRoomsTest() {
+        assertNull(census.getTotalRooms());
+    }
+
+    @Test
+    public void setTotalRoomsTest() {
+        String totalRooms = GetRandomString();
+        census.setFilledInBy(totalRooms);
+        assertEquals(totalRooms, census.getFilledInBy());
+    }
+
 
 }
