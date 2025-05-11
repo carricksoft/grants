@@ -77,4 +77,17 @@ class CensusCommandTest {
         assertEquals(string, command.getRoomsWithWindows());
     }
 
+    @Test
+    public void getFilledInByTest() {
+        assertNull(command.getFilledInBy());
+    }
+
+    @Test
+    public void setFilledInByTest() {
+        String filledInBy = GetRandomString();
+        command.setFilledInBy(filledInBy);
+        assertEquals(filledInBy, command.getFilledInBy());
+    }
+
+
 }

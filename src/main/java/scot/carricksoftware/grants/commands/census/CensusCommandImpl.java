@@ -29,6 +29,8 @@ public class CensusCommandImpl implements CensusCommand {
 
     private String roomsWithWindows;
 
+    private String filledInBy;
+
     @Override
     public Long getId() {
         return id;
@@ -97,5 +99,15 @@ public class CensusCommandImpl implements CensusCommand {
     @Override
     public void setRoomsWithWindows(String roomsWithWindows) {
         this.roomsWithWindows = roomsWithWindows;
+    }
+
+    @Override
+    public String getFilledInBy() {
+        return filledInBy;
+    }
+
+    @Override
+    public void setFilledInBy(String filledInBy) {
+        this.filledInBy = filledInBy;
     }
 }

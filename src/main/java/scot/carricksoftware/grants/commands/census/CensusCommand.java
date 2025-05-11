@@ -40,4 +40,8 @@ public interface CensusCommand {
     String getRoomsWithWindows();
 
     void setRoomsWithWindows(String roomsWithWindows);
+
+    String getFilledInBy();
+
+    void setFilledInBy(String filledInBy);
 }
