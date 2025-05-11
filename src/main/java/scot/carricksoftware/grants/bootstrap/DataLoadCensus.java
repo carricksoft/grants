@@ -60,6 +60,7 @@ public class DataLoadCensus {
         censusCommand.setBoundaryType(CensusBoundaryType.ISLAND);
         censusCommand.setRoomsWithWindows("1");
         censusCommand.setInhabitedRooms("2");
+        censusCommand.setFilledInBy("Percy Grant");
         censusService.saveCensusCommand(censusCommand);
     }
 

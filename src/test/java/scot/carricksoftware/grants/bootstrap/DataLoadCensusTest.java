@@ -67,6 +67,7 @@ public class DataLoadCensusTest {
         assertEquals(CensusBoundaryType.ISLAND, captor.getValue().getBoundaryType());
         assertEquals("2", captor.getValue().getInhabitedRooms());
         assertEquals("1", captor.getValue().getRoomsWithWindows());
+        assertEquals("Percy Grant", captor.getValue().getFilledInBy());
     }
 
     @Test
