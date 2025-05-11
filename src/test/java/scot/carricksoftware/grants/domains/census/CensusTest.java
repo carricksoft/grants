@@ -85,5 +85,17 @@ public class CensusTest {
         assertEquals(placeString + ", " + censusDate.label, census.toString());
     }
 
+    @Test
+    public void getFilledInByTest() {
+        assertNull(census.getFilledInBy());
+    }
+
+    @Test
+    public void setFilledInByTest() {
+        String filledInBy = GetRandomString();
+        census.setFilledInBy(filledInBy);
+        assertEquals(filledInBy, census.getFilledInBy());
+    }
+
 
 }

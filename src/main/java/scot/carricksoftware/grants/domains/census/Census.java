@@ -14,6 +14,7 @@ import scot.carricksoftware.grants.enums.census.CensusDate;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
 public class Census extends BaseEntity {
 
@@ -37,6 +38,9 @@ public class Census extends BaseEntity {
 
     @Column(name = "`rooms_with_windows`")
     private String roomsWithWindows;
+
+    @Column(name = "`filled_in_by`")
+    private String filledInBy;
 
     public CensusDate getCensusDate() {
         return censusDate;
@@ -89,5 +93,13 @@ public class Census extends BaseEntity {
 
     public void setRoomsWithWindows(String roomsWithWindows) {
         this.roomsWithWindows = roomsWithWindows;
+    }
+
+    public String getFilledInBy() {
+        return filledInBy;
+    }
+
+    public void setFilledInBy(String filledInBy) {
+        this.filledInBy = filledInBy;
     }
 }
