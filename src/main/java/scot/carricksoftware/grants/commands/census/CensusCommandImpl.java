@@ -31,6 +31,8 @@ public class CensusCommandImpl implements CensusCommand {
 
     private String filledInBy;
 
+    private String totalRooms;
+
     @Override
     public Long getId() {
         return id;
@@ -109,5 +111,15 @@ public class CensusCommandImpl implements CensusCommand {
     @Override
     public void setFilledInBy(String filledInBy) {
         this.filledInBy = filledInBy;
+    }
+
+    @Override
+    public String getTotalRooms() {
+        return totalRooms;
+    }
+
+    @Override
+    public void setTotalRooms(String totalRooms) {
+        this.totalRooms = totalRooms;
     }
 }

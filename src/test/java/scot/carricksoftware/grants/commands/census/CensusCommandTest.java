@@ -89,5 +89,18 @@ class CensusCommandTest {
         assertEquals(filledInBy, command.getFilledInBy());
     }
 
+    @Test
+    public void getTotalRoomsTest() {
+        assertNull(command.getTotalRooms());
+    }
+
+    @Test
+    public void setTotalRoomsTest() {
+        String totalRooms = GetRandomString();
+        command.setTotalRooms(totalRooms);
+        assertEquals(totalRooms, command.getTotalRooms());
+    }
+
+
 
 }

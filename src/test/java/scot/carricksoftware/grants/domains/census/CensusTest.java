@@ -105,8 +105,8 @@ public class CensusTest {
     @Test
     public void setTotalRoomsTest() {
         String totalRooms = GetRandomString();
-        census.setFilledInBy(totalRooms);
-        assertEquals(totalRooms, census.getFilledInBy());
+        census.setTotalRooms(totalRooms);
+        assertEquals(totalRooms, census.getTotalRooms());
     }
 
 

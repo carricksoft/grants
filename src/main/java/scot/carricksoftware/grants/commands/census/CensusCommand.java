@@ -44,4 +44,8 @@ public interface CensusCommand {
     String getFilledInBy();
 
     void setFilledInBy(String filledInBy);
+
+    String getTotalRooms();
+
+    void setTotalRooms(String totalRooms);
 }

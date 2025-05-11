@@ -5,7 +5,15 @@
 
 package scot.carricksoftware.grants.domains.census;
 
-import jakarta.persistence.*;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
