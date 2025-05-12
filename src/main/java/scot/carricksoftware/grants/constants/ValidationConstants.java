@@ -40,6 +40,8 @@ public class ValidationConstants {
     public static final String FIELD_NOT_NEGATIVE_INTEGER = "Not a non negative integer.";
 
     public static final String BIRTHDAY_INCORRECT_FORMAT = "Format should be dd/mm";
-    public static final String BIRTH_YEAR_AND_AGE_CANNOT_COEXIST = "Birth Year and Age cannot exist.";
-    public static final String BIRTH_DAY_AND_AGE_CANNOT_COEXIST = "BirthDay and Age cannot exist.";
+    public static final String BIRTH_YEAR_AND_AGE_CANNOT_COEXIST = "Birth Year and Age cannot coexist.";
+    public static final String BIRTH_DAY_AND_AGE_CANNOT_COEXIST = "BirthDay and Age cannot coexist.";
+    public static final String TOTAL_ROOMS_AND_INHABITED_ROOMS_CANNOT_COEXIST =  "Total Rooms and Inhabited Rooms cannot coexist.";
+    public static final String TOTAL_ROOMS_AND_ROOMS_WITH_WINDOWS_CANNOT_COEXIST =  "Total Rooms and Rooms With Windows cannot coexist.";
 }

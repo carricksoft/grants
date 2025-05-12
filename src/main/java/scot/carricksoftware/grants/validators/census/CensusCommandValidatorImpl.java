@@ -18,6 +18,45 @@ public class CensusCommandValidatorImpl implements CensusCommandValidator {
         validateDate(censusCommand, bindingResult);
         validateRoomsInhabited(censusCommand, bindingResult);
         validateRoomsWithWindows(censusCommand, bindingResult);
+        validateTotalRooms(censusCommand, bindingResult);
+        validateTotalRoomsAndInhabitedRooms(censusCommand, bindingResult);
+        validateTotalRoomsAndRoomsWithWindows(censusCommand, bindingResult);
+    }
+
+    private void validateTotalRoomsAndRoomsWithWindows(CensusCommand censusCommand, BindingResult bindingResult) {
+        if ( censusCommand.getTotalRooms()!= null && !censusCommand.getTotalRooms().isEmpty()) {
+            if ( censusCommand.getRoomsWithWindows()!= null && !censusCommand.getRoomsWithWindows().isEmpty()) {
+                bindingResult.rejectValue("totalRooms", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.TOTAL_ROOMS_AND_ROOMS_WITH_WINDOWS_CANNOT_COEXIST);
+                bindingResult.rejectValue("roomsWithWindows", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.TOTAL_ROOMS_AND_ROOMS_WITH_WINDOWS_CANNOT_COEXIST);
+
+            }
+        }
+    }
+
+    private void validateTotalRoomsAndInhabitedRooms(CensusCommand censusCommand, BindingResult bindingResult) {
+        if ( censusCommand.getTotalRooms()!= null && !censusCommand.getTotalRooms().isEmpty()) {
+            if ( censusCommand.getInhabitedRooms()!= null && !censusCommand.getInhabitedRooms().isEmpty()) {
+                bindingResult.rejectValue("totalRooms", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.TOTAL_ROOMS_AND_INHABITED_ROOMS_CANNOT_COEXIST);
+                bindingResult.rejectValue("inhabitedRooms", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.TOTAL_ROOMS_AND_INHABITED_ROOMS_CANNOT_COEXIST);
+
+            }
+        }
+    }
+
+    private void validateTotalRooms(CensusCommand censusCommand, BindingResult bindingResult) {
+        if (notANonNegativeInteger(censusCommand.getTotalRooms())) {
+            bindingResult.rejectValue("totalRooms", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        }
     }
 
     private void validateRoomsWithWindows(CensusCommand censusCommand, BindingResult bindingResult) {
