@@ -25,6 +25,8 @@ public class CensusConverterImpl implements CensusConverter {
         result.setInhabitedRooms(source.getInhabitedRooms());
         result.setRoomsWithWindows(source.getRoomsWithWindows());
         result.setFilledInBy(source.getFilledInBy());
+        result.setTotalRooms(source.getTotalRooms());
+
         return result;
     }
 }

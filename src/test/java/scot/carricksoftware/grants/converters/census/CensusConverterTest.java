@@ -46,6 +46,7 @@ class CensusConverterTest {
         String roomsWithWindows = GetRandomString();
         String inhabitedRooms = GetRandomString();
         String filledInBy = GetRandomString();
+        String totalRooms = GetRandomString();
 
 
         source.setId(id);
@@ -56,6 +57,7 @@ class CensusConverterTest {
         source.setInhabitedRooms(inhabitedRooms);
         source.setRoomsWithWindows(roomsWithWindows);
         source.setFilledInBy(filledInBy);
+        source.setTotalRooms(totalRooms);
 
         CensusCommand target = converter.convert(source);
 
@@ -68,5 +70,6 @@ class CensusConverterTest {
         assertEquals(roomsWithWindows, target.getRoomsWithWindows());
         assertEquals(inhabitedRooms, target.getInhabitedRooms());
         assertEquals(filledInBy, target.getFilledInBy());
+        assertEquals(totalRooms, target.getTotalRooms());
     }
 }
