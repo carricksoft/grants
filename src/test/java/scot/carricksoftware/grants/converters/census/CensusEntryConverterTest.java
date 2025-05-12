@@ -47,6 +47,10 @@ class CensusEntryConverterTest {
         String birthDay = GetRandomString();
         String personalOccupation = GetRandomString();
         String notes = GetRandomString();
+        String childrenBornAlive = GetRandomString();
+        String childrenWhoHaveDied = GetRandomString();
+        String yearsCompletedMarriage = GetRandomString();
+        String childrenStillAlive = GetRandomString();
 
         source.setId(id);
         source.setName(name);
@@ -63,6 +67,10 @@ class CensusEntryConverterTest {
         source.setBirthDay(birthDay);
         source.setPersonalOccupation(personalOccupation);
         source.setNotes(notes);
+        source.setChildrenBornAlive(childrenBornAlive);
+        source.setChildrenWhoHaveDied(childrenWhoHaveDied);
+        source.setYearsCompletedMarriage(yearsCompletedMarriage);
+        source.setChildrenStillAlive(childrenStillAlive);
 
         CensusEntryCommand target = converter.convert(source);
 
@@ -82,5 +90,9 @@ class CensusEntryConverterTest {
         assertEquals(birthDay, target.getBirthDay());
         assertEquals(personalOccupation, target.getPersonalOccupation());
         assertEquals(notes, target.getNotes());
+        assertEquals(childrenBornAlive, target.getChildrenBornAlive());
+        assertEquals(childrenStillAlive, target.getChildrenStillAlive());
+        assertEquals(yearsCompletedMarriage, target.getYearsCompletedMarriage());
+        assertEquals(childrenWhoHaveDied, target.getChildrenWhoHaveDied());
     }
 }
