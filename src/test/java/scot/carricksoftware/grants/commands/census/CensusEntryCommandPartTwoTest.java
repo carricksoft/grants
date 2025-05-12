@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
@@ -19,7 +18,7 @@ import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCe
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
-class CensusEntryCommandTest {
+class CensusEntryCommandPartTwoTest {
 
     private CensusEntryCommand command;
 
@@ -29,22 +28,23 @@ class CensusEntryCommandTest {
     }
 
     @Test
-    void setId() {
+    void setIdTest() {
         Long id = GetRandomLong();
         command.setId(id);
         assertEquals(id, command.getId());
     }
 
+
     @Test
-    void getNameTest() {
-        assertNull(command.getName());
+    void getNotesTest() {
+        assertNull(command.getNotes());
     }
 
     @Test
-    void setNameTest() {
-        String name = GetRandomString();
-        command.setName(name);
-        assertEquals(name, command.getName());
+    void setNotesTest() {
+        String notes = GetRandomString();
+        command.setNotes(notes);
+        assertEquals(notes, command.getNotes());
     }
 
     @Test
@@ -94,53 +94,7 @@ class CensusEntryCommandTest {
         command.setWhereBorn(whereBorn);
         assertEquals(whereBorn, command.getWhereBorn());
     }
-    
-    @Test
-    void getBirthDayTest() {
-        assertNull(command.getBirthDay());
-    }
 
-    @Test
-    void setBirthDayTest() {
-        String birthDay = GetRandomString();
-        command.setBirthDay(birthDay);
-        assertEquals(birthDay, command.getBirthDay());
-    }
-
-    @Test
-    void getBirthYearTest() {
-        assertNull(command.getBirthYear());
-    }
-
-    @Test
-    void setBirthYearTest() {
-        String birthYear = GetRandomString();
-        command.setBirthYear(birthYear);
-        assertEquals(birthYear, command.getBirthYear());
-    }
-
-    @Test
-    void getPersonalOccupationTest() {
-        assertNull(command.getPersonalOccupation());
-    }
-
-    @Test
-    void setPersonalOccupationTest() {
-        String personalOccupation = GetRandomString();
-        command.setPersonalOccupation(personalOccupation);
-        assertEquals(personalOccupation, command.getPersonalOccupation());
-    }
-    @Test
-    void getNotesTest() {
-        assertNull(command.getNotes());
-    }
-
-    @Test
-    void setNotesTest() {
-        String notes = GetRandomString();
-        command.setNotes(notes);
-        assertEquals(notes, command.getNotes());
-    }
 
 
 

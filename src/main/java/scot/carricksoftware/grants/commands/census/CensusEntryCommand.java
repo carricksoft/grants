@@ -70,4 +70,20 @@ public interface CensusEntryCommand {
     String getNotes();
 
     void setNotes(String notes);
+
+    String getChildrenWhoHaveDied();
+
+    void setChildrenWhoHaveDied(String childrenWhoHaveDied);
+
+    String getChildrenStillAlive();
+
+    void setChildrenStillAlive(String childrenStillAlive);
+
+    String getChildrenBornAlive();
+
+    void setChildrenBornAlive(String childrenBornAlive);
+
+    String getYearsCompletedMarriage();
+
+    void setYearsCompletedMarriage(String yearsCompletedMarriage);
 }

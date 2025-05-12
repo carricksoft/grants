@@ -41,6 +41,13 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
 
     private String notes;
 
+    private String childrenWhoHaveDied;
+
+    private String childrenStillAlive;
+
+    private String childrenBornAlive;
+
+    private String yearsCompletedMarriage;
 
     public Long getId() {
         return id;
@@ -188,5 +195,45 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
     @Override
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    @Override
+    public String getChildrenWhoHaveDied() {
+        return childrenWhoHaveDied;
+    }
+
+    @Override
+    public void setChildrenWhoHaveDied(String childrenWhoHaveDied) {
+        this.childrenWhoHaveDied = childrenWhoHaveDied;
+    }
+
+    @Override
+    public String getChildrenStillAlive() {
+        return childrenStillAlive;
+    }
+
+    @Override
+    public void setChildrenStillAlive(String childrenStillAlive) {
+        this.childrenStillAlive = childrenStillAlive;
+    }
+
+    @Override
+    public String getChildrenBornAlive() {
+        return childrenBornAlive;
+    }
+
+    @Override
+    public void setChildrenBornAlive(String childrenBornAlive) {
+        this.childrenBornAlive = childrenBornAlive;
+    }
+
+    @Override
+    public String getYearsCompletedMarriage() {
+        return yearsCompletedMarriage;
+    }
+
+    @Override
+    public void setYearsCompletedMarriage(String yearsCompletedMarriage) {
+        this.yearsCompletedMarriage = yearsCompletedMarriage;
     }
 }
