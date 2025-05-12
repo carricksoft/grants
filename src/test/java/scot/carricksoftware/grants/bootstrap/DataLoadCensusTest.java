@@ -68,6 +68,7 @@ public class DataLoadCensusTest {
         assertEquals("2", captor.getValue().getInhabitedRooms());
         assertEquals("1", captor.getValue().getRoomsWithWindows());
         assertEquals("Percy Grant", captor.getValue().getFilledInBy());
+        assertEquals("4", captor.getValue().getTotalRooms());
     }
 
     @Test

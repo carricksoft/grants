@@ -61,6 +61,7 @@ public class DataLoadCensus {
         censusCommand.setRoomsWithWindows("1");
         censusCommand.setInhabitedRooms("2");
         censusCommand.setFilledInBy("Percy Grant");
+        censusCommand.setTotalRooms("4");
         censusService.saveCensusCommand(censusCommand);
     }
 
