@@ -19,7 +19,7 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 
 @ExtendWith(MockitoExtension.class)
-class CensusEntryTest {
+class CensusEntryPartOneTest {
 
     private CensusEntry entry;
 
@@ -99,54 +99,6 @@ class CensusEntryTest {
         String whereBorn = GetRandomString();
         entry.setWhereBorn(whereBorn);
         assertEquals(whereBorn, entry.getWhereBorn());
-    }
-
-    @Test
-    void getBirthDayTest() {
-        assertNull(entry.getBirthDay());
-    }
-
-    @Test
-    void setBirthDayTest() {
-        String birthDay = GetRandomString();
-        entry.setBirthDay(birthDay);
-        assertEquals(birthDay, entry.getBirthDay());
-    }
-
-    @Test
-    void getBirthYearTest() {
-        assertNull(entry.getBirthYear());
-    }
-
-    @Test
-    void setBirthYearTest() {
-        String birthYear = GetRandomString();
-        entry.setBirthYear(birthYear);
-        assertEquals(birthYear, entry.getBirthYear());
-    }
-
-    @Test
-    void getPersonalOccupationTest() {
-        assertNull(entry.getPersonalOccupation());
-    }
-
-    @Test
-    void setPersonalOccupationTest() {
-        String occupation = GetRandomString();
-        entry.setPersonalOccupation(occupation);
-        assertEquals(occupation, entry.getPersonalOccupation());
-    }
-
-    @Test
-    void getNotesTest() {
-        assertNull(entry.getNotes());
-    }
-
-    @Test
-    void setNotesTest() {
-        String notes = GetRandomString();
-        entry.setNotes(notes);
-        assertEquals(notes, entry.getNotes());
     }
 
 

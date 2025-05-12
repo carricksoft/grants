@@ -75,6 +75,22 @@ public class CensusEntry extends BaseEntity {
     @Column(name = "`notes`")
     private String notes;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`children_who_have_died`")
+    private String childrenWhoHaveDied;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`children_still_alive`")
+    private String childrenStillAlive;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`children_born_alive`")
+    private String childrenBornAlive;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`years_Completed_Marriage`")
+    private String yearsCompletedMarriage;
+
     public Person getPerson() {
         return person;
     }
@@ -189,5 +205,37 @@ public class CensusEntry extends BaseEntity {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    public String getChildrenWhoHaveDied() {
+        return childrenWhoHaveDied;
+    }
+
+    public void setChildrenWhoHaveDied(String childrenWhoHaveDied) {
+        this.childrenWhoHaveDied = childrenWhoHaveDied;
+    }
+
+    public String getChildrenStillAlive() {
+        return childrenStillAlive;
+    }
+
+    public void setChildrenStillAlive(String childrenStillAlive) {
+        this.childrenStillAlive = childrenStillAlive;
+    }
+
+    public String getChildrenBornAlive() {
+        return childrenBornAlive;
+    }
+
+    public void setChildrenBornAlive(String childrenBornAlive) {
+        this.childrenBornAlive = childrenBornAlive;
+    }
+
+    public String getYearsCompletedMarriage() {
+        return yearsCompletedMarriage;
+    }
+
+    public void setYearsCompletedMarriage(String yearsCompletedMarriage) {
+        this.yearsCompletedMarriage = yearsCompletedMarriage;
     }
 }
