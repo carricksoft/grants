@@ -116,6 +116,16 @@ rounded-3 text-center p-4">
                     </ul>
                 </div>
             </div>
+            <div class="col-md-3">
+                <label for="totalRooms">Total Rooms</label>
+                <input class="form-control" id="totalRooms"
+                       th:field="*{totalRooms}" type="text">
+                <div th:if="${#fields.hasErrors('totalRooms')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('totalRooms')}" th:text="${err}"/>
+                    </ul>
+                </div>
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/censuses}" th:text="${'List all'}">List all</a>
