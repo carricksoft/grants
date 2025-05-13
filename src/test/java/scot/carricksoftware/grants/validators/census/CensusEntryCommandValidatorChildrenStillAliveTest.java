@@ -19,9 +19,10 @@ import scot.carricksoftware.grants.constants.ValidationConstants;
 
 import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
-class CensusEntryCommandValidatorBirthYearTest {
+class CensusEntryCommandValidatorChildrenStillAliveTest {
 
     private CensusEntryCommandValidatorImpl validator;
 
@@ -40,30 +41,34 @@ class CensusEntryCommandValidatorBirthYearTest {
 
     @Test
     public void NegativeTest() {
-        censusEntryCommand.setBirthYear("-5");
+        censusEntryCommand.setChildrenStillAlive("-5");
+        censusEntryCommand.setPerson(GetRandomPerson());
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        verify(bindingResultMock).rejectValue("childrenStillAlive", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
     }
 
     @Test
     public void ZeroTest() {
-        censusEntryCommand.setBirthYear("0");
+        censusEntryCommand.setChildrenStillAlive("0");
+        censusEntryCommand.setPerson(GetRandomPerson());
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        verify(bindingResultMock).rejectValue("childrenStillAlive", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
     }
 
     @Test
     public void NotIntegerTest() {
-        censusEntryCommand.setBirthYear("3.14");
+        censusEntryCommand.setChildrenStillAlive("3.14");
+        censusEntryCommand.setPerson(GetRandomPerson());
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        verify(bindingResultMock).rejectValue("childrenStillAlive", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
     }
 
     @Test
     public void NotANumberTest() {
-        censusEntryCommand.setBirthYear("zzz");
+        censusEntryCommand.setChildrenStillAlive("zzz");
+        censusEntryCommand.setPerson(GetRandomPerson());
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("birthYear", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        verify(bindingResultMock).rejectValue("childrenStillAlive", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
     }
 
 

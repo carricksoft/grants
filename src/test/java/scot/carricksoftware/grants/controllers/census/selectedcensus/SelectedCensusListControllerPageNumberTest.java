@@ -55,7 +55,7 @@ public class SelectedCensusListControllerPageNumberTest {
         controller.getListPage(modelMock);
         int page = controller.getPageNumber();
         controller.getNextPage(modelMock);
-        assertEquals(page+1, controller.getPageNumber());
+        assertEquals(page + 1, controller.getPageNumber());
     }
 
     @Test

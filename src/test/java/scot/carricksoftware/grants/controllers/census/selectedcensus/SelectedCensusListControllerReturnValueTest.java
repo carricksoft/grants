@@ -70,7 +70,7 @@ public class SelectedCensusListControllerReturnValueTest {
 
     @Test
     public void getCensusEntryListTest() {
-        assertEquals("selectedCensus/list", controller.censusEntryList(GetRandomLong().toString(),modelMock));
+        assertEquals("selectedCensus/list", controller.censusEntryList(GetRandomLong().toString(), modelMock));
     }
 
 
