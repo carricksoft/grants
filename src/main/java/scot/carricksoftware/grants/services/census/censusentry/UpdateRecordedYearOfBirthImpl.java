@@ -35,7 +35,7 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
             if (person.getRecordedYearOfBirth() == null) {
                 if (censusEntryCommand.getBirthYear() != null) {
                     PersonCommand personCommand = personConverter.convert(person);
-                    if (personCommand != null) {
+                    if (!(personCommand == null)){
                         personCommand.setRecordedYearOfBirth(censusEntryCommand.getBirthYear());
                         personService.savePersonCommand(personCommand);
                     } else {
