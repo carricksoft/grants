@@ -14,6 +14,8 @@ import scot.carricksoftware.grants.converters.people.PersonConverter;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonService;
 
+import static java.util.Objects.isNull;
+
 @Component
 public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth {
 
@@ -31,11 +33,11 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
     public void updateRecordedYearOfBirth(CensusEntryCommand censusEntryCommand) {
         logger.info("UpdateRecordedYearOfBirthImpl::updateRecordedYearOfBirth");
         Person person = censusEntryCommand.getPerson();
-        if (person != null) {
-            if (person.getRecordedYearOfBirth() == null) {
+        if (!isNull(person)) {
+            if (isNull(person.getRecordedYearOfBirth())) {
                 if (censusEntryCommand.getBirthYear() != null) {
                     PersonCommand personCommand = personConverter.convert(person);
-                    if (!(personCommand == null)){
+                    if (!isNull(personCommand)) {
                         personCommand.setRecordedYearOfBirth(censusEntryCommand.getBirthYear());
                         personService.savePersonCommand(personCommand);
                     } else {
@@ -72,11 +74,11 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
         }
     }
 
-    private void logNoCommandError(){
+    private void logNoCommandError() {
         throw new NullPointerException("Person Command is null.");
     }
 
-    private void logNoPersonError(){
+    private void logNoPersonError() {
         throw new NullPointerException("Person is null.");
     }
 }
