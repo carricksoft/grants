@@ -64,7 +64,6 @@ class UpdateRecordedYearOfBirthFailingTest {
     }
 
 
-
     @Test
     public void theYearOfBirthIsNotResetTest() {
         when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
