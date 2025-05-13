@@ -63,11 +63,6 @@ class UpdateRecordedYearOfBirthFailingTest {
         verify(personCommandMock, times(0)).setRecordedYearOfBirth(anyString());
     }
 
-    @Test
-    public void theYearOfBirthIsNotUpdatedIfPersonIsNullTest() {
-        updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock, personServiceMock);
-        verifyNoInteractions(personCommandMock);
-    }
 
 
     @Test
