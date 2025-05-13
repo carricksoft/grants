@@ -56,10 +56,7 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
                 }
             }
 
-        } else {
-            logger.info("Cannot update recorded year of birth - person is null");
         }
-
     }
 
     private void updateDate(Person person,
