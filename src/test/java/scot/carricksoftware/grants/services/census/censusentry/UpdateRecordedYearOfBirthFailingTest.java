@@ -48,13 +48,13 @@ class UpdateRecordedYearOfBirthFailingTest {
     @BeforeEach
     void setUp() {
         updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock, personServiceMock);
-        when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
     }
 
 
     @Test
     public void theYearOfBirthIsNotUpdatedIfAgeIsInvalidTest() {
         updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock, personServiceMock);
+        when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
         when(censusEntryCommandMock.getAge()).thenReturn("3 months");
         when(personMock.getRecordedYearOfBirth()).thenReturn(null);
         when(censusEntryCommandMock.getCensus()).thenReturn(censusMock);
@@ -64,7 +64,15 @@ class UpdateRecordedYearOfBirthFailingTest {
     }
 
     @Test
+    public void theYearOfBirthIsNotUpdatedIfPersonIsNullTest() {
+        updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock, personServiceMock);
+        verifyNoInteractions(personCommandMock);
+    }
+
+
+    @Test
     public void theYearOfBirthIsNotResetTest() {
+        when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
         when(personMock.getRecordedYearOfBirth()).thenReturn("1874");
         updateRecordedYearOfBirth.updateRecordedYearOfBirth(censusEntryCommandMock);
         verify(personCommandMock, times(0)).setRecordedYearOfBirth(anyString());
@@ -72,6 +80,7 @@ class UpdateRecordedYearOfBirthFailingTest {
 
     @Test
     public void anExceptionsIsThrownOnNullPersonCommandWithABirthYearTest() {
+        when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
         when(personMock.getRecordedYearOfBirth()).thenReturn(null);
         when(censusEntryCommandMock.getBirthYear()).thenReturn("1880");
         when(personConverterMock.convert(personMock)).thenReturn(null);
@@ -81,6 +90,7 @@ class UpdateRecordedYearOfBirthFailingTest {
     @Test
     public void anExceptionsIsThrownOnNullPersonCommandWithNoBirthYearTest() {
         when(personMock.getRecordedYearOfBirth()).thenReturn(null);
+        when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
         when(censusEntryCommandMock.getBirthYear()).thenReturn(null);
         when(censusEntryCommandMock.getCensus()).thenReturn(censusMock);
         when(censusEntryCommandMock.getAge()).thenReturn("7");
