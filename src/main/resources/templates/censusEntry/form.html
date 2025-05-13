@@ -168,14 +168,60 @@ rounded-3 text-center p-4">
             </div>
         </div>
         <div class="form-group row justify-content-center">
+            <div class="col-md-2">
+                <label for="yearsCompletedMarriage">Completed Years of Marriage</label>
+                <input class="form-control" id="yearsCompletedMarriage"
+                       th:field="*{yearsCompletedMarriage}" type="text">
+                <div th:if="${#fields.hasErrors('yearsCompletedMarriage')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('yearsCompletedMarriage')}" th:text="${err}"
+                            style="width: 300px;"/>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="childrenBornAlive">Children Born Alive&#10;&#13;</label>
+                <input class="form-control" id="childrenBornAlive"
+                       th:field="*{childrenBornAlive}" type="text">
+                <div th:if="${#fields.hasErrors('childrenBornAlive')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('childrenBornAlive')}" th:text="${err}"
+                            style="width: 300px;"/>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="childrenStillAlive">Children Still Alive&#10;&#13;</label>
+                <input class="form-control" id="childrenStillAlive"
+                       th:field="*{childrenStillAlive}" type="text">
+                <div th:if="${#fields.hasErrors('childrenStillAlive')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('childrenStillAlive')}" th:text="${err}"
+                            style="width: 300px;"/>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <label for="childrenWhoHaveDied">Children Who Have Died</label>
+                <input class="form-control" id="childrenWhoHaveDied"
+                       th:field="*{childrenWhoHaveDied}" type="text">
+                <div th:if="${#fields.hasErrors('childrenWhoHaveDied')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('childrenWhoHaveDied')}" th:text="${err}"
+                            style="width: 300px;"/>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
             <div class="col-xs-2">
                 <label for="personalOccupation">Personal Occupation</label>
-                <input class="form-control"  id="personalOccupation" style="width: 400px;margin-right:20px;"
+                <input class="form-control" id="personalOccupation" style="width: 400px;margin-right:20px;"
                        th:field="*{personalOccupation}" type="text">
             </div>
             <div class="col-xs-2">
                 <label for="notes">Notes</label>
-                <input class="form-control"  id="notes" style="width: 400px;"
+                <input class="form-control" id="notes" style="width: 400px;"
                        th:field="*{notes}" type="text">
             </div>
         </div>
