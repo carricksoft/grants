@@ -57,7 +57,7 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
             }
 
         } else {
-            logNoPersonError();
+            logger.info("Cannot update recorded year of birth - person is null");
         }
 
     }
@@ -78,7 +78,5 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
         throw new NullPointerException("Person Command is null.");
     }
 
-    private void logNoPersonError() {
-        throw new NullPointerException("Person is null.");
-    }
+
 }
