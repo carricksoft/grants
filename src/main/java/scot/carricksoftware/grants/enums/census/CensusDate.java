@@ -9,6 +9,7 @@ public enum CensusDate {
 
     CENSUS_1881("03/04/1881"),
     CENSUS_1901("31/03/1901"),
+    CENSUS_1911("02/04/1911"),
     CENSUS_1939("02/09/1939");
 
 
