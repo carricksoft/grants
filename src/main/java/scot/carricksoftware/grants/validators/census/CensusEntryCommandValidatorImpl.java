@@ -115,7 +115,10 @@ public class CensusEntryCommandValidatorImpl implements CensusEntryCommandValida
     private void validateIntegerNoLimits(String part, String field, BindingResult bindingResult) {
         boolean invalid = false;
         try {
-            Integer.parseInt(part);
+            int value = Integer.parseInt(part);
+            if (value <= 0) {
+                invalid = true;
+            }
         } catch (RuntimeException e) {
             invalid = true;
         }
