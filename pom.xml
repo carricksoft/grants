@@ -120,6 +120,13 @@
     <build>
 
         <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>3.4.5</version>
+            </plugin>
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -163,9 +170,7 @@
                     <changeLogFile>src/main/resources/db/changelog/master.xml</changeLogFile>
                     <outputChangeLogFile>src/main/resources/db/changelog/migration/1.0_init.postgresql.sql
                     </outputChangeLogFile>
-                    <diffChangeLogFile>src/main/resources/db/changelog/migration/_${diff.version}_migrate.sql
-                    </diffChangeLogFile>
-                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
+                                       <propertyFile>src/main/resources/liquibase.properties</propertyFile>
                 </configuration>
 
                 <dependencies>
