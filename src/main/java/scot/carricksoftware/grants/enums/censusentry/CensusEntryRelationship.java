@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.enums.censusentry;
 public enum CensusEntryRelationship {
     @SuppressWarnings("unused") HEAD("Head"),
     @SuppressWarnings("unused") WIFE("Wife"),
+    @SuppressWarnings("unused") SON("Son"),
     @SuppressWarnings("unused") DAUGHTER("Daughter"),
     @SuppressWarnings("unused") NIECE("Niece"),
     @SuppressWarnings("unused") COUSIN("Cousin"),

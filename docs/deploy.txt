@@ -1,0 +1,6 @@
+run  mvn clean install
+copy the jar file from target directory to ???
+rename it to grants.jar
+run by:
+change to directory ???
+java -jar grants.jar
