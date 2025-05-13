@@ -38,6 +38,7 @@ class UpdateRecordedYearThrowsTest {
     @Mock
     private Person personMock;
 
+
     @BeforeEach
     void setUp() {
         updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock, personServiceMock);
@@ -55,9 +56,9 @@ class UpdateRecordedYearThrowsTest {
 
     @Test
     public void noPersonCommandIsThrownTest() {
-        when(personMock.getRecordedYearOfBirth()).thenReturn(null);
         when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
         when(censusEntryCommandMock.getBirthYear()).thenReturn(GetRandomString());
+        when(personConverterMock.convert(personMock)).thenReturn(null);
         Exception exception = assertThrows(NullPointerException.class,
                 () -> updateRecordedYearOfBirth.updateRecordedYearOfBirth(censusEntryCommandMock));
 
