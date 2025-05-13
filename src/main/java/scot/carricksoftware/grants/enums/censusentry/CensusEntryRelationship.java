@@ -13,7 +13,7 @@ public enum CensusEntryRelationship {
     @SuppressWarnings("unused") SON_IN_LAW("Son-in-law"),
     @SuppressWarnings("unused") NIECE("Niece"),
     @SuppressWarnings("unused") COUSIN("Cousin"),
-    @SuppressWarnings("unused") BORDER("Border"),
+    @SuppressWarnings("unused") BOARDER("Boarder"),
     @SuppressWarnings("unused") SERVANT("Servant");
 
     @SuppressWarnings("unused")
