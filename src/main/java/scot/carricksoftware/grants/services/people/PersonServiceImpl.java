@@ -98,7 +98,7 @@ public class PersonServiceImpl implements PersonService {
     public List<Person> findAll() {
         logger.debug("PersonServiceImpl::findAll");
         List<Person> result = new ArrayList<>();
-        Iterable<Person> personIterable = personRepository.findAll();
+        Iterable<Person> personIterable = personRepository.findAll(getSort());
         personIterable.forEach(result::add);
         return result;
     }

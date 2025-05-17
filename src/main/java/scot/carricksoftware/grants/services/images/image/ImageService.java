@@ -19,7 +19,7 @@ public interface ImageService {
     Image findById(Long id);
 
     @SuppressWarnings({"unused", "UnusedReturnValue"})
-Image save(Image image);
+    Image save(Image image);
 
     @SuppressWarnings("unused")
     void deleteById(Long id);

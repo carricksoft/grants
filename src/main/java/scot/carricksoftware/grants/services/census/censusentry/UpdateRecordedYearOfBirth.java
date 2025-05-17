@@ -9,5 +9,5 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 
 public interface UpdateRecordedYearOfBirth {
 
-     void updateRecordedYearOfBirth(CensusEntryCommand censusEntryCommand);
+    void updateRecordedYearOfBirth(CensusEntryCommand censusEntryCommand);
 }

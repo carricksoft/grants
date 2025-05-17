@@ -19,7 +19,7 @@ public interface DocumentTextService {
     DocumentText findById(Long id);
 
     @SuppressWarnings({"unused", "UnusedReturnValue"})
-DocumentText save(DocumentText documentText);
+    DocumentText save(DocumentText documentText);
 
     @SuppressWarnings("unused")
     void deleteById(Long id);
