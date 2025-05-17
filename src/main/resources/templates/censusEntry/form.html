@@ -180,7 +180,8 @@ rounded-3 text-center p-4">
                 </div>
             </div>
             <div class="col-md-2">
-                <label for="childrenBornAlive">Children Born Alive&#10;&#13;</label>
+                <label for="childrenBornAlive">Children Born Alive</label>
+                <div>&nbsp;</div>
                 <input class="form-control" id="childrenBornAlive"
                        th:field="*{childrenBornAlive}" type="text">
                 <div th:if="${#fields.hasErrors('childrenBornAlive')}">
@@ -191,7 +192,8 @@ rounded-3 text-center p-4">
                 </div>
             </div>
             <div class="col-md-2">
-                <label for="childrenStillAlive">Children Still Alive&#10;&#13;</label>
+                <label for="childrenStillAlive">Children Still Alive</label>
+                <div>&nbsp;</div>
                 <input class="form-control" id="childrenStillAlive"
                        th:field="*{childrenStillAlive}" type="text">
                 <div th:if="${#fields.hasErrors('childrenStillAlive')}">
