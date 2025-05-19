@@ -62,6 +62,9 @@ public class DataLoadCensus {
         censusCommand.setInhabitedRooms("2");
         censusCommand.setFilledInBy("Percy Grant");
         censusCommand.setTotalRooms("4");
+        censusCommand.setRoomsOccupied("52");
+        censusCommand.setUninhabitedHouses("51");
+        censusCommand.setInhabitedHouses("50");
         censusService.saveCensusCommand(censusCommand);
     }
 
