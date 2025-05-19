@@ -48,4 +48,16 @@ public interface CensusCommand {
     String getTotalRooms();
 
     void setTotalRooms(String totalRooms);
+
+    String getRoomsOccupied();
+
+    void setRoomsOccupied(String roomsOccupied);
+
+    String getInhabitedHouses();
+
+    void setInhabitedHouses(String inhabitedHouses);
+
+    String getUninhabitedHouses();
+
+    void setUninhabitedHouses(String uninhabitedHouses);
 }

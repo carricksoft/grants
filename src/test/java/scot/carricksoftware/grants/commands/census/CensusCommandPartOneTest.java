@@ -18,7 +18,7 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensusEntry;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
-class CensusCommandTest {
+class CensusCommandPartOneTest {
 
     private CensusCommand command;
 
@@ -65,41 +65,6 @@ class CensusCommandTest {
         assertEquals(string, command.getInhabitedRooms());
     }
 
-    @Test
-    public void getRoomsWithWidowsTest() {
-        assertNull(command.getRoomsWithWindows());
-    }
-
-    @Test
-    public void setRoomsWithWidowsTest() {
-        String string = GetRandomString();
-        command.setRoomsWithWindows(string);
-        assertEquals(string, command.getRoomsWithWindows());
-    }
-
-    @Test
-    public void getFilledInByTest() {
-        assertNull(command.getFilledInBy());
-    }
-
-    @Test
-    public void setFilledInByTest() {
-        String filledInBy = GetRandomString();
-        command.setFilledInBy(filledInBy);
-        assertEquals(filledInBy, command.getFilledInBy());
-    }
-
-    @Test
-    public void getTotalRoomsTest() {
-        assertNull(command.getTotalRooms());
-    }
-
-    @Test
-    public void setTotalRoomsTest() {
-        String totalRooms = GetRandomString();
-        command.setTotalRooms(totalRooms);
-        assertEquals(totalRooms, command.getTotalRooms());
-    }
 
 
 }

@@ -22,5 +22,6 @@ public interface PersonRepository extends PagingAndSortingRepository<Person, Lon
 
     Optional<Person> findById(Long id);
 
+    @SuppressWarnings("unused")
     Iterable<Person> findAll();
 }

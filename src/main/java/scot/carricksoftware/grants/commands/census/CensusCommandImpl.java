@@ -33,6 +33,12 @@ public class CensusCommandImpl implements CensusCommand {
 
     private String totalRooms;
 
+    private String roomsOccupied;
+
+    private String inhabitedHouses;
+
+    private String uninhabitedHouses;
+
     @Override
     public Long getId() {
         return id;
@@ -121,5 +127,35 @@ public class CensusCommandImpl implements CensusCommand {
     @Override
     public void setTotalRooms(String totalRooms) {
         this.totalRooms = totalRooms;
+    }
+
+    @Override
+    public String getRoomsOccupied() {
+        return roomsOccupied;
+    }
+
+    @Override
+    public void setRoomsOccupied(String roomsOccupied) {
+        this.roomsOccupied = roomsOccupied;
+    }
+
+    @Override
+    public String getInhabitedHouses() {
+        return inhabitedHouses;
+    }
+
+    @Override
+    public void setInhabitedHouses(String inhabitedHouses) {
+        this.inhabitedHouses = inhabitedHouses;
+    }
+
+    @Override
+    public String getUninhabitedHouses() {
+        return uninhabitedHouses;
+    }
+
+    @Override
+    public void setUninhabitedHouses(String uninhabitedHouses) {
+        this.uninhabitedHouses = uninhabitedHouses;
     }
 }
