@@ -127,6 +127,38 @@ rounded-3 text-center p-4">
                 </div>
             </div>
         </div>
+        <div class="form-group row justify-content-center">
+            <div class="col-md-3">
+                <label for="roomsOccupied">Rooms Occupied</label>
+                <input class="form-control" id="roomsOccupied"
+                       th:field="*{roomsOccupied}" type="text">
+                <div th:if="${#fields.hasErrors('roomsOccupied')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('roomsOccupied')}" th:text="${err}"/>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="uninhabitedHouses">Uninhabited Houses</label>
+                <input class="form-control" id="uninhabitedHouses"
+                       th:field="*{uninhabitedHouses}" type="text">
+                <div th:if="${#fields.hasErrors('uninhabitedHouses')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('uninhabitedHouses')}" th:text="${err}"/>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <label for="inhabitedHouses">Inhabited Houses</label>
+                <input class="form-control" id="inhabitedHouses"
+                       th:field="*{inhabitedHouses}" type="text">
+                <div th:if="${#fields.hasErrors('inhabitedHouses')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('inhabitedHouses')}" th:text="${err}"/>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/censuses}" th:text="${'List all'}">List all</a>
         <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
