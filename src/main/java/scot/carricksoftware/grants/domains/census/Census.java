@@ -53,6 +53,15 @@ public class Census extends BaseEntity {
     @Column(name = "`total_rooms`")
     private String totalRooms;
 
+    @Column(name= "`rooms_occupied`")
+    private String roomsOccupied;
+
+    @Column(name = "`inhabited_houses`")
+    private String inhabitedHouses;
+
+    @Column(name = "`uninhabited_houses`")
+    private String uninhabitedHouses;
+
     public CensusDate getCensusDate() {
         return censusDate;
     }
@@ -121,5 +130,29 @@ public class Census extends BaseEntity {
     @SuppressWarnings("unused")
     public void setTotalRooms(String totalRooms) {
         this.totalRooms = totalRooms;
+    }
+
+    public String getRoomsOccupied() {
+        return roomsOccupied;
+    }
+
+    public void setRoomsOccupied(String roomsOccupied) {
+        this.roomsOccupied = roomsOccupied;
+    }
+
+    public String getInhabitedHouses() {
+        return inhabitedHouses;
+    }
+
+    public void setInhabitedHouses(String inhabitedHouses) {
+        this.inhabitedHouses = inhabitedHouses;
+    }
+
+    public String getUninhabitedHouses() {
+        return uninhabitedHouses;
+    }
+
+    public void setUninhabitedHouses(String uninhabitedHouses) {
+        this.uninhabitedHouses = uninhabitedHouses;
     }
 }

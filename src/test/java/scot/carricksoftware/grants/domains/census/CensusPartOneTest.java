@@ -25,7 +25,7 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-public class CensusTest {
+public class CensusPartOneTest {
 
     private Census census;
 
@@ -85,29 +85,6 @@ public class CensusTest {
         assertEquals(placeString + ", " + censusDate.label, census.toString());
     }
 
-    @Test
-    public void getFilledInByTest() {
-        assertNull(census.getFilledInBy());
-    }
-
-    @Test
-    public void setFilledInByTest() {
-        String filledInBy = GetRandomString();
-        census.setFilledInBy(filledInBy);
-        assertEquals(filledInBy, census.getFilledInBy());
-    }
-
-    @Test
-    public void getTotalRoomsTest() {
-        assertNull(census.getTotalRooms());
-    }
-
-    @Test
-    public void setTotalRoomsTest() {
-        String totalRooms = GetRandomString();
-        census.setTotalRooms(totalRooms);
-        assertEquals(totalRooms, census.getTotalRooms());
-    }
 
 
 }
