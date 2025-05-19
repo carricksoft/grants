@@ -27,7 +27,7 @@ import scot.carricksoftware.grants.services.census.censusentry.CensusEntryServic
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.census.censusentry.UpdateRecordedYearOfBirth;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.census.CensusEntryCommandValidator;
+import scot.carricksoftware.grants.validators.census.censusentry.CensusEntryCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
