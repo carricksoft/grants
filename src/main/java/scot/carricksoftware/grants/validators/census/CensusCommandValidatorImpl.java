@@ -16,9 +16,14 @@ public class CensusCommandValidatorImpl implements CensusCommandValidator {
 
     public void validate(CensusCommand censusCommand, BindingResult bindingResult) {
         validateDate(censusCommand, bindingResult);
+
         validateRoomsInhabited(censusCommand, bindingResult);
         validateRoomsWithWindows(censusCommand, bindingResult);
         validateTotalRooms(censusCommand, bindingResult);
+        validateRoomsOccupied(censusCommand, bindingResult);
+        validateUninhabitedHouses(censusCommand, bindingResult);
+        validateInhabitedHouses(censusCommand, bindingResult);
+
         validateTotalRoomsAndInhabitedRooms(censusCommand, bindingResult);
         validateTotalRoomsAndRoomsWithWindows(censusCommand, bindingResult);
     }
@@ -74,6 +79,31 @@ public class CensusCommandValidatorImpl implements CensusCommandValidator {
                     ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
         }
     }
+
+    private void validateRoomsOccupied(CensusCommand censusCommand, BindingResult bindingResult) {
+        if (notANonNegativeInteger(censusCommand.getRoomsOccupied())) {
+            bindingResult.rejectValue("roomsOccupied", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        }
+    }
+
+    private void validateUninhabitedHouses(CensusCommand censusCommand, BindingResult bindingResult) {
+        if (notANonNegativeInteger(censusCommand.getUninhabitedHouses())) {
+            bindingResult.rejectValue("uninhabitedHouses", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        }
+    }
+
+    private void validateInhabitedHouses(CensusCommand censusCommand, BindingResult bindingResult) {
+        if (notANonNegativeInteger(censusCommand.getInhabitedHouses())) {
+            bindingResult.rejectValue("inhabitedHouses", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        }
+    }
+
 
     private boolean notANonNegativeInteger(String field) {
         if (field == null || field.isEmpty()) {
