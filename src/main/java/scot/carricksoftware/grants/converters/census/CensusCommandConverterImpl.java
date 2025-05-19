@@ -26,6 +26,10 @@ public class CensusCommandConverterImpl implements CensusCommandConverter {
         result.setRoomsWithWindows(source.getRoomsWithWindows());
         result.setFilledInBy(source.getFilledInBy());
         result.setTotalRooms(source.getTotalRooms());
+        result.setRoomsOccupied(source.getRoomsOccupied());
+        result.setInhabitedHouses(source.getInhabitedHouses());
+        result.setUninhabitedHouses(source.getUninhabitedHouses());
+
 
 
         return result;
