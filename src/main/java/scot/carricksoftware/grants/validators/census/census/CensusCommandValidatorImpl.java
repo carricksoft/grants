@@ -12,12 +12,12 @@ import scot.carricksoftware.grants.commands.census.CensusCommand;
 @Component
 public class CensusCommandValidatorImpl implements CensusCommandValidator {
 
-    private final CensusCommandValidatorNonNumericImpl validatorNonNumeric;
-    private final CensusCommandValidatorNumericImpl validatorNumeric;
+    private final CensusCommandValidatorNonNumeric validatorNonNumeric;
+    private final CensusCommandValidatorNumeric validatorNumeric;
 
 
-    public CensusCommandValidatorImpl(CensusCommandValidatorNonNumericImpl validatorNonNumeric,
-                                      CensusCommandValidatorNumericImpl validatorNumeric) {
+    public CensusCommandValidatorImpl(CensusCommandValidatorNonNumeric validatorNonNumeric,
+                                      CensusCommandValidatorNumeric validatorNumeric) {
         this.validatorNonNumeric = validatorNonNumeric;
         this.validatorNumeric = validatorNumeric;
     }
