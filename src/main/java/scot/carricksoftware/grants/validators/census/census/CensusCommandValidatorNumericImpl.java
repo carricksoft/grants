@@ -12,7 +12,7 @@ import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
 @Component
-public class CensusCommandValidatorNumericImpl {
+public class CensusCommandValidatorNumericImpl implements CensusCommandValidatorNumeric{
 
     public void validate(CensusCommand censusCommand, BindingResult bindingResult) {
 
@@ -22,7 +22,6 @@ public class CensusCommandValidatorNumericImpl {
         validateRoomsOccupied(censusCommand, bindingResult);
         validateUninhabitedHouses(censusCommand, bindingResult);
         validateInhabitedHouses(censusCommand, bindingResult);
-
     }
 
 

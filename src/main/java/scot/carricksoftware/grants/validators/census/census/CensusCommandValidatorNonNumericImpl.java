@@ -12,7 +12,7 @@ import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
 @Component
-public class CensusCommandValidatorNonNumericImpl  {
+public class CensusCommandValidatorNonNumericImpl implements CensusCommandValidatorNonNumeric {
 
     public void validate(CensusCommand censusCommand, BindingResult bindingResult) {
         validateDate(censusCommand, bindingResult);
