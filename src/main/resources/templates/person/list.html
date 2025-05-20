@@ -36,10 +36,10 @@
                 <td th:text="${person.lastName}">Last</td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                           th:href="'person/' + ${person.id} + '/delete'"
+                           th:href="@{/person/{id}/delete(id=${person.id})}"
                            th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="'person/' + ${person.id} + '/edit'"
+                       th:href="@{/person/{id}/edit(id=${person.id})}"
                        th:text="Edit"></a>
                     </span></td>
             </tr>

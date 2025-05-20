@@ -22,7 +22,6 @@ import scot.carricksoftware.grants.enums.census.CensusDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("JpaDataSourceORMInspection")
 @Entity
 public class Census extends BaseEntity {
 

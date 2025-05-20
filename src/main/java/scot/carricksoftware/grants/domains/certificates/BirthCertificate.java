@@ -13,7 +13,7 @@ import scot.carricksoftware.grants.domains.people.Person;
 public class BirthCertificate extends BaseEntity {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "`new_born_id`")
     private Person newBorn;
 
