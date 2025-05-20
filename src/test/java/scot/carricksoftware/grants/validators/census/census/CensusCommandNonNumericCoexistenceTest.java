@@ -50,7 +50,7 @@ public class CensusCommandNonNumericCoexistenceTest {
         censusCommand.setRoomsWithWindows("1");
     }
 
-   @Test
+    @Test
     public void testTotalRoomsAndInhabitedRoomsTest() {
         censusCommand.setTotalRooms("1");
         censusCommand.setInhabitedRooms("1");
@@ -59,20 +59,46 @@ public class CensusCommandNonNumericCoexistenceTest {
         censusCommand.setCensusDate(GetRandomCensusDate());
         validator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
-       boolean foundInhabitedRooms = false;
-       boolean foundTotalRooms = false;
-       for (int i = 0; i < stringArgumentCaptor.getAllValues().size(); i++) {
-           if (stringArgumentCaptor.getAllValues().get(i).equals("inhabitedRooms")) {
-               if (stringArgumentCaptor3.getAllValues().get(i).equals("Total Rooms and Inhabited Rooms cannot coexist.")) {
-                foundInhabitedRooms = true;
-               }
-           }
-           if (stringArgumentCaptor.getAllValues().get(i).equals("totalRooms")) {
-               if (stringArgumentCaptor3.getAllValues().get(i).equals("Total Rooms and Inhabited Rooms cannot coexist.")) {
-                   foundTotalRooms = true;
-               }
-           }
-       }
-       assertTrue(foundInhabitedRooms  && foundTotalRooms);
+        boolean foundInhabitedRooms = false;
+        boolean foundTotalRooms = false;
+        for (int i = 0; i < stringArgumentCaptor.getAllValues().size(); i++) {
+            if (stringArgumentCaptor.getAllValues().get(i).equals("inhabitedRooms")) {
+                if (stringArgumentCaptor3.getAllValues().get(i).equals("Total Rooms and Inhabited Rooms cannot coexist.")) {
+                    foundInhabitedRooms = true;
+                }
+            }
+            if (stringArgumentCaptor.getAllValues().get(i).equals("totalRooms")) {
+                if (stringArgumentCaptor3.getAllValues().get(i).equals("Total Rooms and Inhabited Rooms cannot coexist.")) {
+                    foundTotalRooms = true;
+                }
+            }
+        }
+        assertTrue(foundInhabitedRooms  && foundTotalRooms);
    }
+
+    @Test
+    public void testTotalRoomsAndRoomsWithWindowsTest() {
+        censusCommand.setTotalRooms("1");
+        censusCommand.setRoomsWithWindows("1");
+        censusCommand.setPlace(GetRandomPlace());
+        censusCommand.setBoundaryType(GetRandomCensusBoundaryType());
+        censusCommand.setCensusDate(GetRandomCensusDate());
+        validator.validate(censusCommand, bindingResultMock);
+        verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
+        boolean foundRoomsWithWindows = false;
+        boolean foundTotalRooms = false;
+        for (int i = 0; i < stringArgumentCaptor.getAllValues().size(); i++) {
+            if (stringArgumentCaptor.getAllValues().get(i).equals("roomsWithWindows")) {
+                if (stringArgumentCaptor3.getAllValues().get(i).equals("Total Rooms and Rooms With Windows cannot coexist.")) {
+                    foundRoomsWithWindows = true;
+                }
+            }
+            if (stringArgumentCaptor.getAllValues().get(i).equals("totalRooms")) {
+                if (stringArgumentCaptor3.getAllValues().get(i).equals("Total Rooms and Rooms With Windows cannot coexist.")) {
+                    foundTotalRooms = true;
+                }
+            }
+        }
+        assertTrue(foundRoomsWithWindows && foundTotalRooms);
+    }
 }
