@@ -55,7 +55,6 @@ public class CensusCommandNumericValidatorTotalRoomsTest {
 
     @Test
     public void validateTotalRoomsNegativeTest() {
-        censusCommand.setTotalRooms("1");
         censusCommand.setTotalRooms("-5");
         validator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
@@ -68,7 +67,6 @@ public class CensusCommandNumericValidatorTotalRoomsTest {
 
     @Test
     public void validateTotalRoomsNonNumberTest() {
-        censusCommand.setTotalRooms("1");
         censusCommand.setTotalRooms("z");
         validator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
@@ -80,7 +78,6 @@ public class CensusCommandNumericValidatorTotalRoomsTest {
 
     @Test
     public void validateTotalRoomsValidNumberTest() {
-        censusCommand.setTotalRooms("3");
         censusCommand.setTotalRooms("5");
         validator.validate(censusCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
@@ -88,7 +85,6 @@ public class CensusCommandNumericValidatorTotalRoomsTest {
 
     @Test
     public void validateTotalRoomsNullTest() {
-        censusCommand.setTotalRooms("3");
         censusCommand.setTotalRooms(null);
         validator.validate(censusCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
@@ -96,7 +92,6 @@ public class CensusCommandNumericValidatorTotalRoomsTest {
 
     @Test
     public void validateTotalRoomsZeroTest() {
-        censusCommand.setTotalRooms("3");
         censusCommand.setTotalRooms("0");
         validator.validate(censusCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);

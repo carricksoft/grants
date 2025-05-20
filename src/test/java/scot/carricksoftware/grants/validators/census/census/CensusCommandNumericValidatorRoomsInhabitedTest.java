@@ -55,7 +55,6 @@ public class CensusCommandNumericValidatorRoomsInhabitedTest {
 
     @Test
     public void validateInhabitedRoomsNegativeTest() {
-        censusCommand.setInhabitedRooms("1");
         censusCommand.setInhabitedRooms("-5");
         validator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
@@ -68,7 +67,6 @@ public class CensusCommandNumericValidatorRoomsInhabitedTest {
 
     @Test
     public void validateInhabitedRoomsNonNumberTest() {
-        censusCommand.setInhabitedRooms("1");
         censusCommand.setInhabitedRooms("z");
         validator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
@@ -80,7 +78,6 @@ public class CensusCommandNumericValidatorRoomsInhabitedTest {
 
     @Test
     public void validateInhabitedRoomsValidNumberTest() {
-        censusCommand.setInhabitedRooms("3");
         censusCommand.setInhabitedRooms("5");
         validator.validate(censusCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
@@ -88,7 +85,6 @@ public class CensusCommandNumericValidatorRoomsInhabitedTest {
 
     @Test
     public void validateInhabitedRoomsNullTest() {
-        censusCommand.setInhabitedRooms("3");
         censusCommand.setInhabitedRooms(null);
         validator.validate(censusCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
@@ -96,7 +92,6 @@ public class CensusCommandNumericValidatorRoomsInhabitedTest {
 
     @Test
     public void validateInhabitedRoomsZeroTest() {
-        censusCommand.setInhabitedRooms("3");
         censusCommand.setInhabitedRooms("0");
         validator.validate(censusCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);

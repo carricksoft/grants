@@ -25,7 +25,7 @@ import static scot.carricksoftware.grants.GenerateCensusRandomEnums.GetRandomCen
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-public class CensusCommandNumericValidatorRoomsWithWindowsTest {
+public class CensusCommandNumericValidatorUninhabitedHousesTest {
 
     private CensusCommandValidatorNumeric validator;
 
@@ -54,12 +54,11 @@ public class CensusCommandNumericValidatorRoomsWithWindowsTest {
     }
 
     @Test
-    public void validateRoomsWithWindowsNegativeTest() {
-        censusCommand.setInhabitedRooms("1");
-        censusCommand.setRoomsWithWindows("-5");
+    public void validateUninhabitedHousesNegativeTest() {
+        censusCommand.setUninhabitedHouses("-5");
         validator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
-        assertEquals("roomsWithWindows", stringArgumentCaptor.getValue());
+        assertEquals("uninhabitedHouses", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
         assertNull(objectArgumentCaptor.getValue());
         assertEquals("Not a non negative integer.", stringArgumentCaptor3.getValue());
@@ -67,33 +66,33 @@ public class CensusCommandNumericValidatorRoomsWithWindowsTest {
 
 
     @Test
-    public void validateRoomsWithWindowsNonNumberTest() {
-        censusCommand.setRoomsWithWindows("z");
+    public void validateUninhabitedHousesNonNumberTest() {
+        censusCommand.setUninhabitedHouses("z");
         validator.validate(censusCommand, bindingResultMock);
         verify(bindingResultMock, atLeast(1)).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor2.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor3.capture());
-        assertEquals("roomsWithWindows", stringArgumentCaptor.getValue());
+        assertEquals("uninhabitedHouses", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
         assertNull(objectArgumentCaptor.getValue());
         assertEquals("Not a non negative integer.", stringArgumentCaptor3.getValue());
     }
 
     @Test
-    public void validateRoomsWithWindowsValidNumberTest() {
-        censusCommand.setRoomsWithWindows("5");
+    public void validateUninhabitedHousesValidNumberTest() {
+        censusCommand.setUninhabitedHouses("5");
         validator.validate(censusCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
-    public void validateRoomsWithWindowsNullTest() {
-        censusCommand.setRoomsWithWindows(null);
+    public void validateUninhabitedHousesNullTest() {
+        censusCommand.setUninhabitedHouses(null);
         validator.validate(censusCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
-    public void validateRoomsWithWindowsZeroTest() {
-        censusCommand.setRoomsWithWindows("0");
+    public void validateUninhabitedHousesZeroTest() {
+        censusCommand.setUninhabitedHouses("0");
         validator.validate(censusCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
