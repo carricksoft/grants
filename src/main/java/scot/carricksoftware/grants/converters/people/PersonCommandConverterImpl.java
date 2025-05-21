@@ -20,6 +20,15 @@ public class PersonCommandConverterImpl implements PersonCommandConverter {
         result.setLastName(source.getLastName());
         result.setRecordedYearOfBirth(source.getRecordedYearOfBirth());
         result.setCertifiedYearOfBirth(source.getCertifiedYearOfBirth());
+
+        result.setCensusEntries(source.getCensusEntries());
+        result.setDeathCertificates(source.getDeathCertificates());
+        result.setBirthCertificates(source.getBirthCertificates());
+        result.setMarriageCertificates(source.getMarriageCertificates());
+        result.setDivorceCertificates(source.getDivorceCertificates());
+        result.setPersonImages(source.getPersonImages());
+        result.setPersonTexts(source.getPersonTexts());
+
         return result;
     }
 }
