@@ -65,6 +65,7 @@ public class DataLoadCensus {
         censusCommand.setRoomsOccupied("52");
         censusCommand.setUninhabitedHouses("51");
         censusCommand.setInhabitedHouses("50");
+        censusCommand.setPeopleInHouses("9");
         censusService.saveCensusCommand(censusCommand);
     }
 
