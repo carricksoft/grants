@@ -29,6 +29,7 @@ public class CensusConverterImpl implements CensusConverter {
         result.setRoomsOccupied(source.getRoomsOccupied());
         result.setInhabitedHouses(source.getInhabitedHouses());
         result.setUninhabitedHouses(source.getUninhabitedHouses());
+        result.setPeopleInHouses(source.getPeopleInHouses());
 
         return result;
     }

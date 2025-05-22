@@ -50,6 +50,7 @@ class CensusCommandConverterTest {
         String roomsOccupied = GetRandomString();
         String inhabitedHouses = GetRandomString();
         String uninhabitedHouses = GetRandomString();
+        String peopleInHouses = GetRandomString();
 
         source.setId(id);
         source.setCensusDate(censusDate);
@@ -63,6 +64,7 @@ class CensusCommandConverterTest {
         source.setRoomsOccupied(roomsOccupied);
         source.setInhabitedHouses(inhabitedHouses);
         source.setUninhabitedHouses(uninhabitedHouses);
+        source.setPeopleInHouses(peopleInHouses);
 
         Census target = converter.convert(source);
 
@@ -79,5 +81,6 @@ class CensusCommandConverterTest {
         assertEquals(roomsOccupied, target.getRoomsOccupied());
         assertEquals(inhabitedHouses, target.getInhabitedHouses());
         assertEquals(uninhabitedHouses, target.getUninhabitedHouses());
+        assertEquals(peopleInHouses, target.getPeopleInHouses());
     }
 }
