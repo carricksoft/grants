@@ -60,4 +60,8 @@ public interface CensusCommand {
     String getUninhabitedHouses();
 
     void setUninhabitedHouses(String uninhabitedHouses);
+
+    String getPeopleInHouses();
+
+    void setPeopleInHouses(String peopleInHouses);
 }

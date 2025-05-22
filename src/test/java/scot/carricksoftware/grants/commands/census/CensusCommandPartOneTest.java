@@ -65,6 +65,19 @@ class CensusCommandPartOneTest {
         assertEquals(string, command.getInhabitedRooms());
     }
 
+    @Test
+    public void getPeopleInHousesTest() {
+        assertNull(command.getUninhabitedHouses());
+    }
+
+    @Test
+    public void setPeopleInHousesTest() {
+        String string = GetRandomString();
+        command.setPeopleInHouses(string);
+        assertEquals(string, command.getPeopleInHouses());
+    }
+
+
 
 
 }

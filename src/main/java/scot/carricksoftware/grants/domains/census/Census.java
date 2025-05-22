@@ -61,6 +61,7 @@ public class Census extends BaseEntity {
     @Column(name = "`uninhabited_houses`")
     private String uninhabitedHouses;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`people_in_houses`")
     private String peopleInHouses;
 

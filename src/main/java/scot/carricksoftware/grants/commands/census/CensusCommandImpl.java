@@ -39,6 +39,8 @@ public class CensusCommandImpl implements CensusCommand {
 
     private String uninhabitedHouses;
 
+    private String peopleInHouses;
+
     @Override
     public Long getId() {
         return id;
@@ -157,5 +159,15 @@ public class CensusCommandImpl implements CensusCommand {
     @Override
     public void setUninhabitedHouses(String uninhabitedHouses) {
         this.uninhabitedHouses = uninhabitedHouses;
+    }
+
+    @Override
+    public String getPeopleInHouses() {
+        return peopleInHouses;
+    }
+
+    @Override
+    public void setPeopleInHouses(String peopleInHouses) {
+        this.peopleInHouses = peopleInHouses;
     }
 }
