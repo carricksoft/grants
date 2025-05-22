@@ -61,6 +61,9 @@ public class Census extends BaseEntity {
     @Column(name = "`uninhabited_houses`")
     private String uninhabitedHouses;
 
+    @Column(name = "`people_in_houses`")
+    private String peopleInHouses;
+
     public CensusDate getCensusDate() {
         return censusDate;
     }
@@ -153,5 +156,13 @@ public class Census extends BaseEntity {
 
     public void setUninhabitedHouses(String uninhabitedHouses) {
         this.uninhabitedHouses = uninhabitedHouses;
+    }
+
+    public String getPeopleInHouses() {
+        return peopleInHouses;
+    }
+
+    public void setPeopleInHouses(String peopleInHouses) {
+        this.peopleInHouses = peopleInHouses;
     }
 }

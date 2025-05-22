@@ -87,5 +87,17 @@ public class CensusPartTwoTest {
         assertEquals(uninhabitedHouses, census.getUninhabitedHouses());
     }
 
+    @Test
+    public void getPeopleInHousesTest() {
+        assertNull(census.getUninhabitedHouses());
+    }
+
+    @Test
+    public void setPeopleInHousesTest() {
+        String string = GetRandomString();
+        census.setPeopleInHouses(string);
+        assertEquals(string, census.getPeopleInHouses());
+    }
+
 
 }
