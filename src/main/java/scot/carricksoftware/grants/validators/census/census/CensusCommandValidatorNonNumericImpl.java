@@ -51,7 +51,7 @@ public class CensusCommandValidatorNonNumericImpl implements CensusCommandValida
 
     private void validateDate(CensusCommand censusCommand, BindingResult bindingResult) {
         if (censusCommand.getCensusDate() == null) {
-            bindingResult.rejectValue("date", ApplicationConstants.EMPTY_STRING,
+            bindingResult.rejectValue("censusDate", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.DATE_IS_NULL);
         }

@@ -22,6 +22,7 @@ public class CensusCommandValidatorNumericImpl implements CensusCommandValidator
         validateRoomsOccupied(censusCommand, bindingResult);
         validateUninhabitedHouses(censusCommand, bindingResult);
         validateInhabitedHouses(censusCommand, bindingResult);
+        validatePeopleInHouses(censusCommand, bindingResult);
     }
 
 
@@ -68,6 +69,14 @@ public class CensusCommandValidatorNumericImpl implements CensusCommandValidator
     private void validateInhabitedHouses(CensusCommand censusCommand, BindingResult bindingResult) {
         if (notANonNegativeInteger(censusCommand.getInhabitedHouses())) {
             bindingResult.rejectValue("inhabitedHouses", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        }
+    }
+
+    private void validatePeopleInHouses(CensusCommand censusCommand, BindingResult bindingResult) {
+        if (notANonNegativeInteger(censusCommand.getPeopleInHouses())) {
+            bindingResult.rejectValue("peopleInHouses", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
         }
