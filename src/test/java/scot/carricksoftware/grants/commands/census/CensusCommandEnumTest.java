@@ -48,4 +48,7 @@ class CensusCommandEnumTest {
         command.setCensusDate(censusDate);
         assertEquals(censusDate, command.getCensusDate());
     }
+
+
+
 }

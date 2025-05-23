@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.commands.census;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.YesNo;
 
 public class CensusEntryCommandImpl implements CensusEntryCommand {
 
@@ -48,6 +49,10 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
     private String childrenBornAlive;
 
     private String yearsCompletedMarriage;
+
+    private YesNo workingAtHome;
+
+    private String industryOrService;
 
     public Long getId() {
         return id;
@@ -235,5 +240,25 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
     @Override
     public void setYearsCompletedMarriage(String yearsCompletedMarriage) {
         this.yearsCompletedMarriage = yearsCompletedMarriage;
+    }
+
+    @Override
+    public YesNo getWorkingAtHome() {
+        return workingAtHome;
+    }
+
+    @Override
+    public void setWorkingAtHome(YesNo workingAtHome) {
+        this.workingAtHome = workingAtHome;
+    }
+
+    @Override
+    public String getIndustryOrService() {
+        return industryOrService;
+    }
+
+    @Override
+    public void setIndustryOrService(String industryOrService) {
+        this.industryOrService = industryOrService;
     }
 }
