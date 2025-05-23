@@ -73,8 +73,8 @@ public class CensusCommandNonNumericCoexistenceTest {
                 }
             }
         }
-        assertTrue(foundInhabitedRooms  && foundTotalRooms);
-   }
+        assertTrue(foundInhabitedRooms && foundTotalRooms);
+    }
 
     @Test
     public void testTotalRoomsAndRoomsWithWindowsTest() {

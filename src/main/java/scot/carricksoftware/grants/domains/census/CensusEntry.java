@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.YesNo;
 
 @Entity
 public class CensusEntry extends BaseEntity {
@@ -90,6 +91,15 @@ public class CensusEntry extends BaseEntity {
     @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`years_Completed_Marriage`")
     private String yearsCompletedMarriage;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Enumerated(EnumType.STRING)
+    @Column(name = "`working_at_home`")
+    private YesNo workingAtHome;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`industry_or_service`")
+    private String industryOrService;
 
     public Person getPerson() {
         return person;
@@ -237,5 +247,21 @@ public class CensusEntry extends BaseEntity {
 
     public void setYearsCompletedMarriage(String yearsCompletedMarriage) {
         this.yearsCompletedMarriage = yearsCompletedMarriage;
+    }
+
+    public YesNo getWorkingAtHome() {
+        return workingAtHome;
+    }
+
+    public void setWorkingAtHome(YesNo yesNo) {
+        this.workingAtHome = yesNo;
+    }
+
+    public String getIndustryOrService() {
+        return industryOrService;
+    }
+
+    public void setIndustryOrService(String industryOrService) {
+        this.industryOrService = industryOrService;
     }
 }

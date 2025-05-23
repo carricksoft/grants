@@ -10,10 +10,12 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.YesNo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCensusEntryRandomEnums.*;
+import static scot.carricksoftware.grants.GenerateGeneralRandomEnums.GetRandomGeneralYesNo;
 
 @ExtendWith(MockitoExtension.class)
 class CensusEntryEnumTest {
@@ -84,5 +86,18 @@ class CensusEntryEnumTest {
         entry.setSex(sex);
         assertEquals(sex, entry.getSex());
     }
+
+    @Test
+    void getWorkingAtHomeTest() {
+        assertNull(entry.getWorkingAtHome());
+    }
+
+    @Test
+    void setWorkingAtHomeTest() {
+        YesNo workingAtHome = GetRandomGeneralYesNo();
+        entry.setWorkingAtHome(workingAtHome);
+        assertEquals(workingAtHome, entry.getWorkingAtHome());
+    }
+
 
 }

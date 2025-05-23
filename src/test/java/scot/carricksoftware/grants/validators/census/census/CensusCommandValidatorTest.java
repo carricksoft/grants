@@ -29,7 +29,8 @@ class CensusCommandValidatorTest {
     @Mock
     private BindingResult bindingResultMock;
 
-    @Mock private CensusCommand censusCommandMock;
+    @Mock
+    private CensusCommand censusCommandMock;
 
     @BeforeEach
     void setUp() {

@@ -73,6 +73,17 @@ class CensusEntryPartThreeTest {
         assertEquals(string, entry.getYearsCompletedMarriage());
     }
 
+    @Test
+    public void getIndustryOrServiceTest() {
+        assertNull(entry.getIndustryOrService());
+    }
+
+    @Test
+    public void setIndustryOrServiceTest() {
+        String string = GetRandomString();
+        entry.setIndustryOrService(string);
+        assertEquals(string, entry.getIndustryOrService());
+    }
 
 
 }
