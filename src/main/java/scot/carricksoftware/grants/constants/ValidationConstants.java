@@ -28,6 +28,7 @@ public class ValidationConstants {
 
     public static final String PLACE_IS_NULL = "The place cannot be null.";
     public static final String COUNTRY_IS_NULL = "The country cannot be null.";
+    public static final String REGION_IS_NULL = "The region cannot be null.";
 
     public static final String BRIDE_IS_NULL = "The bride cannot be null.";
     public static final String GROOM_IS_NULL = "The groom cannot be null.";
