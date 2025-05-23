@@ -9,10 +9,12 @@ package scot.carricksoftware.grants.commands.census;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.YesNo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCensusEntryRandomEnums.*;
+import static scot.carricksoftware.grants.GenerateGeneralRandomEnums.GetRandomGeneralYesNo;
 
 class CensusEntryCommandEnumTest {
 
@@ -83,6 +85,17 @@ class CensusEntryCommandEnumTest {
         assertEquals(sex, command.getSex());
     }
 
+    @Test
+    void getWorkingAtHomeTest() {
+        assertNull(command.getWorkingAtHome());
+    }
+
+    @Test
+    void setWorkingAtHomeTest() {
+        YesNo workingAtHome = GetRandomGeneralYesNo();
+        command.setWorkingAtHome(workingAtHome);
+        assertEquals(workingAtHome, command.getWorkingAtHome());
+    }
 
 
 
