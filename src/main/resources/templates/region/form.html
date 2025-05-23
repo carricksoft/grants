@@ -53,6 +53,11 @@ rounded-3 text-center p-4">
                         <option th:each="country : ${countries}"
                                 th:value="${country.id}" th:text="${country.name}"></option>
                     </select>
+                    <div th:if="${#fields.hasErrors('country')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('country')}" th:text="${err}"/>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

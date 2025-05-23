@@ -21,6 +21,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomCountry;
 
 @ExtendWith(MockitoExtension.class)
 class RegionCensusCommandValidatorImplTest {
@@ -42,6 +44,7 @@ class RegionCensusCommandValidatorImplTest {
     public void minimumSizeIsAllowedTest() {
         String repeated = new String(new char[ApplicationConstants.MINIMUM_NAME_LENGTH]).replace("\0", "x");
         regionCommand.setName(repeated);
+        regionCommand.setCountry(GetRandomCountry());
         validator.validate(regionCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
@@ -50,6 +53,7 @@ class RegionCensusCommandValidatorImplTest {
     public void maximumSizeIsAllowedTest() {
         String repeated = new String(new char[ApplicationConstants.MAXIMUM_NAME_LENGTH]).replace("\0", "x");
         regionCommand.setName(repeated);
+        regionCommand.setCountry(GetRandomCountry());
         validator.validate(regionCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
@@ -61,6 +65,7 @@ class RegionCensusCommandValidatorImplTest {
 
         String repeated = new String(new char[ApplicationConstants.MAXIMUM_NAME_LENGTH + 1]).replace("\0", "x");
         regionCommand.setName(repeated);
+        regionCommand.setCountry(GetRandomCountry());
         validator.validate(regionCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor.capture());
         assertEquals("name", stringArgumentCaptor.getAllValues().get(0));
@@ -76,11 +81,28 @@ class RegionCensusCommandValidatorImplTest {
 
         String repeated = new String(new char[ApplicationConstants.MINIMUM_NAME_LENGTH - 1]).replace("\0", "x");
         regionCommand.setName(repeated);
+        regionCommand.setCountry(GetRandomCountry());
         validator.validate(regionCommand, bindingResultMock);
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor.capture());
         assertEquals("name", stringArgumentCaptor.getAllValues().get(0));
         assertEquals(ApplicationConstants.EMPTY_STRING, stringArgumentCaptor.getAllValues().get(1));
         assertEquals(ValidationConstants.NAME_IS_TOO_SHORT, stringArgumentCaptor.getAllValues().get(2));
         assertNull(objectArgumentCaptor.getAllValues().get(0));
+    }
+
+    @Test
+    public void nullCountryTest() {
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<Object[]> objectArgumentCaptor = ArgumentCaptor.forClass(Object[].class);
+        regionCommand.setCountry(null);
+        regionCommand.setName(GetRandomString());
+        validator.validate(regionCommand, bindingResultMock);
+
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(), stringArgumentCaptor.capture(), objectArgumentCaptor.capture(), stringArgumentCaptor.capture());
+        assertEquals("country", stringArgumentCaptor.getAllValues().get(0));
+        assertEquals(ApplicationConstants.EMPTY_STRING, stringArgumentCaptor.getAllValues().get(1));
+        assertEquals(ValidationConstants.COUNTRY_IS_NULL, stringArgumentCaptor.getAllValues().get(2));
+        assertNull(objectArgumentCaptor.getAllValues().get(0));
+
     }
 }

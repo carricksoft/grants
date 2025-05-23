@@ -15,6 +15,19 @@ import scot.carricksoftware.grants.constants.ValidationConstants;
 public class RegionCommandValidator {
 
     public void validate(RegionCommand regionCommand, BindingResult bindingResult) {
+        validateName(regionCommand, bindingResult);
+        validateCountry(regionCommand, bindingResult);
+    }
+
+    private void validateCountry(RegionCommand regionCommand, BindingResult bindingResult) {
+        if (regionCommand.getCountry() == null) {
+            bindingResult.rejectValue("country", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.COUNTRY_IS_NULL);
+        }
+    }
+
+    public void validateName(RegionCommand regionCommand, BindingResult bindingResult) {
         if (regionCommand.getName().length() < ApplicationConstants.MINIMUM_NAME_LENGTH) {
             bindingResult.rejectValue("name", ApplicationConstants.EMPTY_STRING,
                     null,
