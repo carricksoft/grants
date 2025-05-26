@@ -38,7 +38,7 @@ rounded-3 text-center p-4">
             </div>
 
             <div class="col-xs-4" style="margin-right:20px;">
-                <label for="census">Census</label>
+                <label for="census">Census</label>> Unsubscribe
                 <div>
                     <select id="census" style="width: 500px;" name="census" th:field="*{census}">
                         <option th:value="${''}" th:text="${''}"></option>
@@ -197,7 +197,7 @@ rounded-3 text-center p-4">
                 <input class="form-control" id="childrenStillAlive"
                        th:field="*{childrenStillAlive}" type="text">
                 <div th:if="${#fields.hasErrors('childrenStillAlive')}">
-                    <ul class="text-danger">
+                    <ul class="text-danger">> Unsubscribe
                         <li th:each="err : ${#fields.errors('childrenStillAlive')}" th:text="${err}"
                             style="width: 300px;"/>
                     </ul>
@@ -212,6 +212,23 @@ rounded-3 text-center p-4">
                         <li th:each="err : ${#fields.errors('childrenWhoHaveDied')}" th:text="${err}"
                             style="width: 300px;"/>
                     </ul>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row justify-content-center">
+            <div class="col-md-2">
+                <label for="industryOrService">Industry or Service</label>
+                <input class="form-control" id="industryOrService"
+                       th:field="*{industryOrService}" type="text">
+            </div>
+            <div class="col-md-3">
+                <label for="workingAtHome">Working at Home</label>
+                <div>
+                    <select id="workingAtHome" style="width: 200px;" name="workingAtHome" th:field="*{workingAtHome}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="value : ${T(scot.carricksoftware.grants.enums.general.YesNo).values()}"
+                                th:value="${value}" th:text="${value.label}"></option>
+                    </select>
                 </div>
             </div>
         </div>
