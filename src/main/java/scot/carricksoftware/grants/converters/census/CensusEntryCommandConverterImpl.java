@@ -35,6 +35,8 @@ public class CensusEntryCommandConverterImpl implements CensusEntryCommandConver
         result.setChildrenWhoHaveDied(source.getChildrenWhoHaveDied());
         result.setYearsCompletedMarriage(source.getYearsCompletedMarriage());
         result.setChildrenStillAlive(source.getChildrenStillAlive());
+        result.setIndustryOrService(source.getIndustryOrService());
+        result.setWorkingAtHome(source.getWorkingAtHome());
         return result;
     }
 

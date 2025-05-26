@@ -12,10 +12,12 @@ import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.YesNo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCensusEntryRandomEnums.*;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateGeneralRandomEnums.GetRandomGeneralYesNo;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
@@ -51,6 +53,9 @@ class CensusEntryConverterTest {
         String childrenWhoHaveDied = GetRandomString();
         String yearsCompletedMarriage = GetRandomString();
         String childrenStillAlive = GetRandomString();
+        String industryOrService = GetRandomString();
+        YesNo workingAtHome = GetRandomGeneralYesNo();
+
 
         source.setId(id);
         source.setName(name);
@@ -71,6 +76,8 @@ class CensusEntryConverterTest {
         source.setChildrenWhoHaveDied(childrenWhoHaveDied);
         source.setYearsCompletedMarriage(yearsCompletedMarriage);
         source.setChildrenStillAlive(childrenStillAlive);
+        source.setIndustryOrService(industryOrService);
+        source.setWorkingAtHome(workingAtHome);
 
         CensusEntryCommand target = converter.convert(source);
 
@@ -94,5 +101,7 @@ class CensusEntryConverterTest {
         assertEquals(childrenStillAlive, target.getChildrenStillAlive());
         assertEquals(yearsCompletedMarriage, target.getYearsCompletedMarriage());
         assertEquals(childrenWhoHaveDied, target.getChildrenWhoHaveDied());
+        assertEquals(workingAtHome, target.getWorkingAtHome());
+        assertEquals(industryOrService, target.getIndustryOrService());
     }
 }
