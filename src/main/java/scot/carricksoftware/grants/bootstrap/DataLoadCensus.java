@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
 import scot.carricksoftware.grants.enums.census.CensusDate;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.YesNo;
 import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -90,6 +91,8 @@ public class DataLoadCensus {
         censusEntryCommand.setChildrenStillAlive("3");
         censusEntryCommand.setChildrenWhoHaveDied("1");
         censusEntryCommand.setYearsCompletedMarriage("13");
+        censusEntryCommand.setIndustryOrService("Chauffeur");
+        censusEntryCommand.setWorkingAtHome(YesNo.NO);
 
         censusEntryService.saveCensusEntryCommand(censusEntryCommand);
     }
