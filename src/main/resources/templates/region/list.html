@@ -35,10 +35,10 @@
                 <td th:text="${region.country.name}"></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                           th:href="'region/' + ${region.id} + '/delete'"
+                           th:href="@{/region/{id}/delete(id=${region.id})}"
                            th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="'region/' + ${region.id} + '/edit'"
+                       th:href="@{/region/{id}/edit(id=${region.id})}"
                        th:text="Edit"></a>
                     </span></td>
             </tr>

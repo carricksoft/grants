@@ -41,10 +41,10 @@
                 <td th:text="${place.region.country != null} ? ${place.region.country.name}"></td>
                 <td><span>
                      <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                        th:href="'place/' + ${place.id} + '/delete'"
+                        th:href="@{/region/{id}/delete(id=${region.id})}"
                         th:text="Delete"></a>
-                    <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="'place/' + ${place.id} + '/edit'"
+                    <a> th:action="edit" class="btn btn-warning btn-sm" href =""
+                       th:href="@{/place/{id}/edit(id=${place.id})}"
                        th:text="Edit"></a>
                     </span></td>
             </tr>

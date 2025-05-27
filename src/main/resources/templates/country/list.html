@@ -36,8 +36,8 @@
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'country/' + ${country.id} + '/delete'"
                            th:text="Delete"></a>
-                    <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="'country/' + ${country.id} + '/edit'"
+                     <a> th:action="edit" class="btn btn-warning btn-sm" href =""
+                       th:href="@{/place/{id}/edit(id=${country.id})}"
                        th:text="Edit"></a>
                     </span></td>
             </tr>
