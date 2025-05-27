@@ -16,6 +16,7 @@ public enum CensusEntryRelationship {
     @SuppressWarnings("unused") NIECE("Niece"),
     @SuppressWarnings("unused") COUSIN("Cousin"),
     @SuppressWarnings("unused") BOARDER("Boarder"),
+    @SuppressWarnings("unused") VISITOR("Visitor"),
     @SuppressWarnings("unused") SERVANT("Servant");
 
     @SuppressWarnings("unused")
