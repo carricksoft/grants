@@ -33,12 +33,13 @@
                 <td th:text="${country.id}">123</td>
                 <td th:text="${country.name}"> First</td>
                 <td><span>
-                        <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                           th:href="'country/' + ${country.id} + '/delete'"
+                        <a th:action="delete" class="btn btn-danger btn-sm"
+                           th:href="@{/country/{id}/delete(id=${country.id})}"
                            th:text="Delete"></a>
-                     <a> th:action="edit" class="btn btn-warning btn-sm" href =""
-                       th:href="@{/place/{id}/edit(id=${country.id})}"
+                    <a th:action="edit" class="btn btn-warning btn-sm"
+                       th:href="@{/country/{id}/edit(id=${country.id})}"
                        th:text="Edit"></a>
+
                     </span></td>
             </tr>
             <tfoot>

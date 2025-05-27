@@ -34,12 +34,13 @@
                 <td th:text="${region.name}"> First</td>
                 <td th:text="${region.country.name}"></td>
                 <td><span>
-                        <a th:action="delete" class="btn btn-danger btn-sm" href=""
+                        <a th:action="delete" class="btn btn-danger btn-sm"
                            th:href="@{/region/{id}/delete(id=${region.id})}"
                            th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
                        th:href="@{/region/{id}/edit(id=${region.id})}"
                        th:text="Edit"></a>
+
                     </span></td>
             </tr>
             <tfoot>
