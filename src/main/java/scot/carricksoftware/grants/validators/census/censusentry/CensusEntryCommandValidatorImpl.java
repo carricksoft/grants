@@ -116,7 +116,7 @@ public class CensusEntryCommandValidatorImpl implements CensusEntryCommandValida
         boolean invalid = false;
         try {
             int value = Integer.parseInt(part);
-            if (value <= 0) {
+            if (value < 0) {
                 invalid = true;
             }
         } catch (RuntimeException e) {

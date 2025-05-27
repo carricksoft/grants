@@ -18,6 +18,7 @@ import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateRandomCensusValues.GetRandomCensus;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
@@ -52,7 +53,7 @@ class CensusEntryCommandValidatorChildrenStillWhoHaveDiedTest {
         censusEntryCommand.setChildrenWhoHaveDied("0");
         censusEntryCommand.setPerson(GetRandomPerson());
         validator.validate(censusEntryCommand, bindingResultMock);
-        verify(bindingResultMock).rejectValue("childrenWhoHaveDied", ApplicationConstants.EMPTY_STRING, null, ValidationConstants.FIELD_NOT_NEGATIVE_INTEGER);
+        verifyNoInteractions(bindingResultMock);
     }
 
     @Test
