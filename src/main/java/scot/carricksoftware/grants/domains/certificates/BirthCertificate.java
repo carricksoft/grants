@@ -5,7 +5,10 @@
 
 package scot.carricksoftware.grants.domains.certificates;
 
-import jakarta.persistence.*;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import scot.carricksoftware.grants.domains.people.Person;
 
 @Entity
