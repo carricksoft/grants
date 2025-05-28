@@ -6,6 +6,9 @@
 package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Place;
+
+import java.sql.Date;
 
 public interface BirthCertificateCommand {
 
@@ -17,4 +20,22 @@ public interface BirthCertificateCommand {
     Person getNewBorn();
 
     void setNewBorn(Person newBorn);
+
+    @SuppressWarnings("unused")
+    String getCertificateNumber();
+
+    @SuppressWarnings("unused")
+    void setCertificateNumber(String certificateNumber);
+
+    @SuppressWarnings("unused")
+    Place getCertificateIssuedAt();
+
+    @SuppressWarnings("unused")
+    void setCertificateIssuedAt(Place certificateIssuedAt);
+
+    @SuppressWarnings("unused")
+    Date getCertificateDate();
+
+    @SuppressWarnings("unused")
+    void setCertificateDate(Date certificateDate);
 }
