@@ -22,6 +22,10 @@ public class BirthCertificateConverterImpl implements BirthCertificateConverter 
         target.setId(source.getId());
         target.setNewBorn(source.getNewBorn());
 
+        target.setCertificateNumber(source.getCertificateNumber());
+        target.setCertificateDate(source.getCertificateDate());
+        target.setCertificateIssuedAt(source.getCertificateIssuedAt());
+
         return target;
     }
 }
