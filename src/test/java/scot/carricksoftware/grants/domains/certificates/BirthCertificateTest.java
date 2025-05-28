@@ -42,12 +42,12 @@ class BirthCertificateTest {
     }
 
     @Test
-    void getPersonTest() {
+    void getNewBornTest() {
         assertNull(certificate.getId());
     }
 
     @Test
-    void setPersonTest() {
+    void setNewBornTest() {
         Person person = GetRandomPerson();
         certificate.setNewBorn(person);
         assertEquals(person, certificate.getNewBorn());

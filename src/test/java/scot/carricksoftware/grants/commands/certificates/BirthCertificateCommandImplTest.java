@@ -10,11 +10,17 @@ import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Place;
+
+import java.sql.Date;
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 class BirthCertificateCommandImplTest {
 
@@ -38,7 +44,7 @@ class BirthCertificateCommandImplTest {
     }
 
     @Test
-    void getPersonTest() {
+    void getNewBornTest() {
         assertNull(command.getId());
     }
 
@@ -48,4 +54,36 @@ class BirthCertificateCommandImplTest {
         command.setNewBorn(person);
         assertEquals(person, command.getNewBorn());
     }
+    @Test
+    void getCertificateNumberTest() {
+        assertNull(command.getCertificateNumber());
+    }
+
+    @Test
+    void setCertificateNumberTest() {
+        String certificateNumber = GetRandomString();
+        command.setCertificateNumber(certificateNumber);
+        assertEquals(certificateNumber, command.getCertificateNumber());
+    }
+
+    @Test
+    void getCertificateDateTest() {
+        assertNull(command.getCertificateDate());
+    }
+
+    @Test
+    void setCertificateDateTest() {
+        Date certificateDate = Date.valueOf(LocalDate.now());
+        command.setCertificateDate(certificateDate);
+        assertEquals(certificateDate, command.getCertificateDate());
+    }
+
+    @Test
+    void getCertificateIssuedAtTest() {
+        Place place = GetRandomPlace();
+        command.setCertificateIssuedAt(place);
+        assertEquals(place, command.getCertificateIssuedAt());
+    }
+
+
 }
