@@ -6,11 +6,10 @@
 package scot.carricksoftware.grants.domains.certificates;
 
 import jakarta.persistence.*;
-import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.people.Person;
 
 @Entity
-public class BirthCertificate extends BaseEntity {
+public class BirthCertificate extends BaseCertificate {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne()
