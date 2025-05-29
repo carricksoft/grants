@@ -6,17 +6,23 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
+
+import java.sql.Date;
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
 public class DataLoadCertificatesTest {
@@ -32,24 +38,34 @@ public class DataLoadCertificatesTest {
     @Mock
     private PersonService personServiceMock;
 
+    @Mock
+    private PlaceService placeServiceMock;
+
 
     @BeforeEach
     public void setUp() {
         dataLoadCertificates = new DataLoadCertificates(birthCertificateServiceMock,
                 deathCertificateServiceMock,
-                personServiceMock);
+                personServiceMock,
+                placeServiceMock);
     }
 
     @Test
     public void birthCertificatesAreLoadedTest() {
         Person person = GetRandomPerson();
         when(personServiceMock.findById(1L)).thenReturn(person);
-        ArgumentCaptor<BirthCertificate> captor = ArgumentCaptor.forClass(BirthCertificate.class);
+        Place place = GetRandomPlace();
+        when(placeServiceMock.findById(1L)).thenReturn(place);
+
+        ArgumentCaptor<BirthCertificateCommand> captor = ArgumentCaptor.forClass(BirthCertificateCommand.class);
 
         dataLoadCertificates.load();
 
-        verify(birthCertificateServiceMock).save(captor.capture());
+        verify(birthCertificateServiceMock).saveBirthCertificateCommand(captor.capture());
         assertEquals(person, captor.getValue().getNewBorn());
+        assertEquals(place, captor.getValue().getCertificateIssuedAt());
+        assertEquals("999", captor.getValue().getCertificateNumber());
+        assertEquals(Date.valueOf(LocalDate.now()), captor.getValue().getCertificateDate());
     }
 
     @Test

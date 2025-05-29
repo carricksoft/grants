@@ -29,7 +29,7 @@ public class BaseCertificate extends BaseEntity {
     private Place certificateIssuedAt;
 
     @Column(name= "`certificate_date`")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date certificateDate;
 
     @SuppressWarnings("unused")

@@ -9,11 +9,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
+
+import java.sql.Date;
+import java.time.LocalDate;
 
 @Component
 @Profile("dev")
@@ -24,13 +30,15 @@ public class DataLoadCertificates {
     private final BirthCertificateService birthCertificateService;
     private final DeathCertificateService deathCertificateService;
     private final PersonService personService;
+    private final PlaceService placeService;
 
     public DataLoadCertificates(BirthCertificateService birthCertificateService,
                                 DeathCertificateService deathCertificateService,
-                                PersonService personService) {
+                                PersonService personService, PlaceService placeService) {
         this.birthCertificateService = birthCertificateService;
         this.deathCertificateService = deathCertificateService;
         this.personService = personService;
+        this.placeService = placeService;
     }
 
 
@@ -40,11 +48,16 @@ public class DataLoadCertificates {
         loadDeathCertificates();
     }
 
-
     private void loadBirthCertificates() {
-        BirthCertificate birthCertificate = new BirthCertificate();
-        birthCertificate.setNewBorn(personService.findById(1L));
-        birthCertificateService.save(birthCertificate);
+        BirthCertificateCommand birthCertificateCommand = new BirthCertificateCommandImpl();
+        birthCertificateCommand.setNewBorn(personService.findById(1L));
+        birthCertificateCommand.setCertificateDate(Date.valueOf(LocalDate.now()));
+        birthCertificateCommand.setCertificateNumber("999");
+        Place place = placeService.findById(1L);
+
+        birthCertificateCommand.setCertificateIssuedAt(place);
+
+        birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
 
     }
 
