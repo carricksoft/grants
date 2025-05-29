@@ -18,9 +18,6 @@ import scot.carricksoftware.grants.services.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
-import java.sql.Date;
-import java.time.LocalDate;
-
 @Component
 @Profile("dev")
 public class DataLoadCertificates {
@@ -51,7 +48,7 @@ public class DataLoadCertificates {
     private void loadBirthCertificates() {
         BirthCertificateCommand birthCertificateCommand = new BirthCertificateCommandImpl();
         birthCertificateCommand.setNewBorn(personService.findById(1L));
-        birthCertificateCommand.setCertificateDate(Date.valueOf(LocalDate.now()));
+        birthCertificateCommand.setCertificateDate("25/01/1953");
         birthCertificateCommand.setCertificateNumber("999");
         Place place = placeService.findById(1L);
 

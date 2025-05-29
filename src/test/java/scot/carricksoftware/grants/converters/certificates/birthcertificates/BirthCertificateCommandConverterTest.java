@@ -14,11 +14,8 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 
-import java.sql.Date;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
-import static scot.carricksoftware.grants.GenerateRandomDateValues.GetRandomDate;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
@@ -39,7 +36,7 @@ class BirthCertificateCommandConverterTest {
         BirthCertificateCommand source = new BirthCertificateCommandImpl();
         Place issuedAt = GetRandomPlace();
         String certificateNumber = GetRandomString();
-        Date certificateDate = GetRandomDate();
+        String certificateDate = GetRandomString();
 
         source.setId(id);
         source.setNewBorn(person);

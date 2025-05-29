@@ -8,8 +8,6 @@ package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 
-import java.sql.Date;
-
 public interface BirthCertificateCommand {
 
 
@@ -34,8 +32,8 @@ public interface BirthCertificateCommand {
     void setCertificateIssuedAt(Place certificateIssuedAt);
 
     @SuppressWarnings("unused")
-    Date getCertificateDate();
+    String getCertificateDate();
 
     @SuppressWarnings("unused")
-    void setCertificateDate(Date certificateDate);
+    void setCertificateDate(String certificateDate);
 }

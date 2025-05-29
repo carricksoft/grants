@@ -15,9 +15,6 @@ import scot.carricksoftware.grants.services.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
-import java.sql.Date;
-import java.time.LocalDate;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -65,7 +62,7 @@ public class DataLoadCertificatesTest {
         assertEquals(person, captor.getValue().getNewBorn());
         assertEquals(place, captor.getValue().getCertificateIssuedAt());
         assertEquals("999", captor.getValue().getCertificateNumber());
-        assertEquals(Date.valueOf(LocalDate.now()), captor.getValue().getCertificateDate());
+        assertEquals("25/01/1953", captor.getValue().getCertificateDate());
     }
 
     @Test

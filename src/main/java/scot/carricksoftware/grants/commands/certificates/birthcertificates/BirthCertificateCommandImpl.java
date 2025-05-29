@@ -8,8 +8,6 @@ package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 
-import java.sql.Date;
-
 public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     Long Id;
@@ -20,7 +18,7 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     private Place certificateIssuedAt;
 
-    private Date certificateDate;
+    private String certificateDate;
 
     public Long getId() {
         return Id;
@@ -61,12 +59,12 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     }
 
     @Override
-    public Date getCertificateDate() {
+    public String getCertificateDate() {
         return certificateDate;
     }
 
     @Override
-    public void setCertificateDate(Date certificateDate) {
+    public void setCertificateDate(String certificateDate) {
         this.certificateDate = certificateDate;
     }
 }

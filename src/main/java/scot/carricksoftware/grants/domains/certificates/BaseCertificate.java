@@ -10,12 +10,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
+import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.BaseEntity;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.places.Place;
-
-import java.sql.Date;
 
 
 @MappedSuperclass
@@ -29,8 +27,8 @@ public class BaseCertificate extends BaseEntity {
     private Place certificateIssuedAt;
 
     @Column(name= "`certificate_date`")
-    @Temporal(TemporalType.DATE)
-    private Date certificateDate;
+    @DateTimeFormat(pattern = ApplicationConstants.DATE_TIME_FORMAT)
+    private String certificateDate;
 
     @SuppressWarnings("unused")
     public String getCertificateNumber() {
@@ -53,12 +51,12 @@ public class BaseCertificate extends BaseEntity {
     }
 
     @SuppressWarnings("unused")
-    public Date getCertificateDate() {
+    public String getCertificateDate() {
         return certificateDate;
     }
 
     @SuppressWarnings("unused")
-    public void setCertificateDate(Date certificateDate) {
+    public void setCertificateDate(String certificateDate) {
         this.certificateDate = certificateDate;
     }
 }

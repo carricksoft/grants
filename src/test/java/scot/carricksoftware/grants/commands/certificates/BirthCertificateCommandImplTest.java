@@ -12,9 +12,6 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 
-import java.sql.Date;
-import java.time.LocalDate;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
@@ -73,7 +70,7 @@ class BirthCertificateCommandImplTest {
 
     @Test
     void setCertificateDateTest() {
-        Date certificateDate = Date.valueOf(LocalDate.now());
+        String certificateDate = GetRandomString();
         command.setCertificateDate(certificateDate);
         assertEquals(certificateDate, command.getCertificateDate());
     }

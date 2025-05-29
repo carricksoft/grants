@@ -25,6 +25,7 @@ import scot.carricksoftware.grants.converters.certificates.birthcertificates.Bir
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.certificates.BirthCertificateCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -38,13 +39,15 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     private final BirthCertificateConverterImpl birthCertificateConverter;
     private final BirthCertificateCommandValidator birthCertificateCommandValidator;
     private final PersonService personService;
+    private final PlaceService placeService;
 
 
     public BirthCertificateFormControllerImpl(BirthCertificateService birthCertificateService,
                                               BirthCertificateCommandConverterImpl birthCertificateCommandConverter,
                                               BirthCertificateConverterImpl birthCertificateConverter,
                                               BirthCertificateCommandValidator birthCertificateCommandValidator,
-                                              PersonService personService) {
+                                              PersonService personService,
+                                              PlaceService placeService) {
         this.birthCertificateService = birthCertificateService;
         this.birthCertificateCommandConverter = birthCertificateCommandConverter;
 
@@ -52,6 +55,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         this.birthCertificateConverter = birthCertificateConverter;
         this.birthCertificateCommandValidator = birthCertificateCommandValidator;
         this.personService = personService;
+        this.placeService = placeService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -61,6 +65,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::getNewBirthCertificate");
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, new BirthCertificateCommandImpl());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return ViewConstants.BIRTH_CERTIFICATE_FORM;
     }
 
@@ -71,6 +76,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::birthCertificateEdit");
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, birthCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return ViewConstants.BIRTH_CERTIFICATE_FORM;
     }
 
@@ -86,12 +92,14 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+            model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
             return ViewConstants.BIRTH_CERTIFICATE_FORM;
         }
 
         BirthCertificateCommand savedCommand = birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return MappingConstants.REDIRECT + CertificateMappingConstants.BIRTH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -104,6 +112,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         BirthCertificateCommand savedCommand = birthCertificateConverter.convert(birthCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         return ViewConstants.BIRTH_CERTIFICATE_FORM;
     }
 
