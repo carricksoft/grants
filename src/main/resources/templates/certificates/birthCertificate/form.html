@@ -18,8 +18,8 @@
 
 </head>
 <body>
-<!--/*@thymesVar id="birthCertificateCommand" type="scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand"*/-->
-<!--/*@thymesVar id="person" type="scot.carricksoftware.grants.domains.people.Person"*/-->
+<!--/*@thymesVar id="birthCertificateCommand" type="scot.carricksoftware.grants.commands.certificates.birthCertificates.BirthCertificateCommand"*/-->
+<!--/*@thymesVar id="place" type="scot.carricksoftware.grants.domains.places.Place"*/-->
 <div th:insert="~{fragments/layout::banner}"></div>
 
 <div class="container border border-info rounded-3 text-center p-4">
@@ -29,12 +29,53 @@
         </div>
 
         <div class="form-group row justify-content-center">
-            <div class="col-xs-4" style="margin-right:20px;">
+            <div class="col-xl-3  col-md-3">
+                <label for="certificateNumber">Certificate Number</label>
+                <input class="form-control" id="certificateNumber"
+                       th:field="*{id}" type="text">
+                <div th:if="${#fields.hasErrors('certificateNumber')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('certificateNumber')}" th:text="${err}"/>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-xl-3  col-md-3">
+                <label for="certificateIssuedAt">Issued At</label>
+                <div>
+                    <select id="certificateIssuedAt"  name="certificateIssuedAt"
+                            th:field="*{certificateIssuedAt}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="place : ${places}"
+                                th:value="${place.id}" th:text="${place.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('certificateIssuedAt')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('certificateIssuedAt')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-4  col-md-4">
+                <label for="certificateDate">On</label>
+                <input class="form-control" id="certificateDate"
+                       th:field="*{certificateDate}" type="date" th:value="*{certificateDate}">
+                <div th:if="${#fields.hasErrors('certificateDate')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('certificateDate')}" th:text="${err}"/>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group row justify-content-center">
+            <div class="col-xl-6  col-md-6" style="margin-right:20px;">
                 <label for="newBorn">Person</label>
                 <div>
-                    <select id="newBorn" style="width: 300px;" name="newBorn" th:field="*{newBorn}">
+                    <select id="newBorn" name="newBorn" th:field="*{newBorn}">
                         <option th:value="${''}" th:text="${''}"></option>
-                        <option th:each="person : ${people}"
+                        <option th:each="person :   ${people}"
                                 th:value="${person.id}" th:text="${person.toString()}"></option>
                     </select>
                     <div th:if="${#fields.hasErrors('newBorn')}">
@@ -44,7 +85,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-2">
+            <div class="col-xl-2 col-md-4">
                 <label for="id">Database Id<span style="color: rgb(255,0,0);">*</span></label>
                 <input class="form-control" id="id"
                        th:field="*{id}" type="text" readonly>
