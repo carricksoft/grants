@@ -22,6 +22,7 @@ import scot.carricksoftware.grants.repositories.places.OrganisationRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrganisationServiceImpl implements OrganisationService {
@@ -86,6 +87,19 @@ public class OrganisationServiceImpl implements OrganisationService {
         Iterable<Organisation> organisationIterable = organisationRepository.findAll();
         organisationIterable.forEach(result::add);
         return result;
+    }
+
+    @Override
+    public Organisation findById(Long id) {
+        logger.debug("OrganisationServiceImpl::findById");
+        Optional<Organisation> organisation = organisationRepository.findById(id);
+        return organisation.orElse(null);
+    }
+
+    @Override
+    public Organisation save(Organisation organisation) {
+        logger.debug("OrganisationServiceImpl::save");
+        return organisationRepository.save(organisation);
     }
 
 }

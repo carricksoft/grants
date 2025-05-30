@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommandImpl;
 import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
 
@@ -60,6 +61,13 @@ public class GenerateRandomPlaceValues {
         RegionCommand regionCommand = new RegionCommandImpl();
         regionCommand.setName(GetRandomString());
         return regionCommand;
+    }
+
+    @SuppressWarnings("unused")
+    public static Organisation GetRandomOrganisation() {
+        Organisation organisation = new Organisation();
+        organisation.setName(GetRandomString());
+        return organisation;
     }
 
 

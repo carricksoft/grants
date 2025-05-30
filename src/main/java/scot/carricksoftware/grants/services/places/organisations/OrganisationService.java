@@ -16,7 +16,6 @@ public interface OrganisationService {
     @SuppressWarnings("unused")
     OrganisationCommand saveOrganisationCommand(OrganisationCommand organisationCommand);
 
-
     void deleteById(Long id);
 
     List<Organisation> getPagedOrganisations(int pageNumber);
@@ -26,4 +25,8 @@ public interface OrganisationService {
 
     @SuppressWarnings("unused")
     List<Organisation> findAll();
+
+    Organisation findById(Long id);
+
+    Organisation save(Organisation organisation);
 }
