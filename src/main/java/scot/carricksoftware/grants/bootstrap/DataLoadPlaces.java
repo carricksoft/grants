@@ -14,6 +14,7 @@ import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.services.places.regions.RegionService;
 
@@ -26,13 +27,15 @@ public class DataLoadPlaces {
     private final CountryService countryService;
     private final RegionService regionService;
     private final PlaceService placeService;
+    private final OrganisationService organisationService;
 
     public DataLoadPlaces(CountryService countryService,
                           RegionService regionService,
-                          PlaceService placeService) {
+                          PlaceService placeService, OrganisationService organisationService) {
         this.countryService = countryService;
         this.regionService = regionService;
         this.placeService = placeService;
+        this.organisationService = organisationService;
     }
 
     public void load() {
@@ -89,7 +92,7 @@ public class DataLoadPlaces {
 
     private void loadOrganisations() {
         army.setName("The army");
-
+        organisationService.save(army);
     }
 
 }
