@@ -54,6 +54,22 @@ public class MappingConstants {
     @SuppressWarnings("unused")
     public static final String COUNTRY_EDIT = "country/{id}/edit";
 
+    public static final String ORGANISATION_LIST = "/organisations";
+    public static final String ORGANISATION_NEXT = "/organisations/next";
+    public static final String ORGANISATION_PREVIOUS = "/organisations/prev";
+    public static final String ORGANISATION_REWIND = "/organisations/rewind";
+    public static final String ORGANISATION_FF = "/organisations/ff";
+    @SuppressWarnings("unused")
+    public static final String ORGANISATION_NEW = "/organisation/new";
+    @SuppressWarnings("unused")
+    public static final String ORGANISATION = "/organisation";
+    public static final String ORGANISATIONS = "/organisations";
+    @SuppressWarnings("unused")
+    public static final String ORGANISATION_SHOW = "/organisation/{id}/show";
+    public static final String ORGANISATION_DELETE = "/organisation/{id}/delete";
+    @SuppressWarnings("unused")
+    public static final String ORGANISATION_EDIT = "organisation/{id}/edit";
+
     @SuppressWarnings("unused")
     public static final String REGION_LIST = "/regions";
     @SuppressWarnings("unused")

@@ -23,6 +23,10 @@ public class AttributeConstants {
     @SuppressWarnings("unused")
     public static final String COUNTRY_COMMAND = "countryCommand";
 
+    public static final String ORGANISATIONS = "organisations";
+    @SuppressWarnings("unused")
+    public static final String ORGANISATION_COMMAND = "organisationCommand";
+
     @SuppressWarnings("unused")
     public static final String REGIONS = "regions";
     @SuppressWarnings("unused")
