@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
+import java.time.LocalDate;
 
 @Component
 public class BirthCertificateCommandValidator {
@@ -21,10 +22,65 @@ public class BirthCertificateCommandValidator {
     @SuppressWarnings("unused")
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate command");
-        if (birthCertificateCommand.getNewBorn() == null) {
-            bindingResult.rejectValue("person", ApplicationConstants.EMPTY_STRING,
+
+        validateNewBorn(birthCertificateCommand, bindingResult);
+        validateCertificateNumber(birthCertificateCommand, bindingResult);
+        validateCertificateIssuedAt(birthCertificateCommand, bindingResult);
+        validateCertificateDate(birthCertificateCommand, bindingResult);
+        if (!bindingResult.hasErrors()) {
+            validateCertificateLegitimateDate(birthCertificateCommand, bindingResult);
+        }
+    }
+
+    private void validateNewBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating birth certificate newBorn");
+        if (birthCertificateCommand.getNewBorn() == null ) {
+            bindingResult.rejectValue("newBorn", ApplicationConstants.EMPTY_STRING,
                     null,
-                    ValidationConstants.PERSON_IS_NULL);
+                    ValidationConstants.NEWBORN_IS_NULL);
+        }
+    }
+
+    private void validateCertificateNumber(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating birth certificate Certificate Number");
+        if (birthCertificateCommand.getCertificateNumber() == null || birthCertificateCommand.getCertificateNumber().isEmpty()) {
+            bindingResult.rejectValue("certificateNumber", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.CERTIFICATE_NUMBER_IS_NULL);
+        }
+    }
+
+    private void validateCertificateIssuedAt(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating birth certificate Certificate Issued At");
+        if (birthCertificateCommand.getCertificateIssuedAt() == null ) {
+            bindingResult.rejectValue("certificateIssuedAt", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.ISSUED_AT_IS_NULL);
+        }
+    }
+
+    private void validateCertificateDate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating birth certificate Certificate Date");
+        if (birthCertificateCommand.getCertificateDate() == null || birthCertificateCommand.getCertificateDate().isEmpty()) {
+            bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.CERTIFICATE_DATE_IS_NULL);
+        }
+        try {
+            LocalDate.parse(birthCertificateCommand.getCertificateDate(), ApplicationConstants.FORMATTER);
+        } catch (Exception e) {
+            bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.DATE_IS_INVALID);
+        }
+    }
+
+    private void validateCertificateLegitimateDate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        LocalDate testDate = LocalDate.parse(birthCertificateCommand.getCertificateDate(), ApplicationConstants.FORMATTER);
+        if (testDate.isAfter(LocalDate.now())) {
+            bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.DATE_IN_FUTURE);
         }
     }
 

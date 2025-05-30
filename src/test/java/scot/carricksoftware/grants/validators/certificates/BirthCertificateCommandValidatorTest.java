@@ -17,9 +17,12 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
 class BirthCertificateCommandValidatorTest {
@@ -45,6 +48,10 @@ class BirthCertificateCommandValidatorTest {
         objectArgumentCaptor = ArgumentCaptor.forClass(Object[].class);
 
         birthCertificateCommand = new BirthCertificateCommandImpl();
+        birthCertificateCommand.setCertificateDate("25/01/1953");
+        birthCertificateCommand.setCertificateNumber("1953");
+        birthCertificateCommand.setCertificateIssuedAt(GetRandomPlace());
+
     }
 
     @Test
@@ -56,17 +63,18 @@ class BirthCertificateCommandValidatorTest {
                 objectArgumentCaptor.capture(),
                 stringArgumentCaptor3.capture());
 
-        assertEquals("person", stringArgumentCaptor.getValue());
-        assertEquals("The person cannot be null.", stringArgumentCaptor3.getValue());
+        assertEquals("newBorn", stringArgumentCaptor.getValue());
+        assertEquals("The New Born cannot be null.", stringArgumentCaptor3.getValue());
 
     }
 
     @Test
     public void notNullPersonTest() {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
+        when(bindingResultMock.hasErrors()).thenReturn(false);
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
 
-        verifyNoInteractions(bindingResultMock);
+        verify(bindingResultMock, times(0)).rejectValue(any(), any(), any(), any());
     }
 
 }
