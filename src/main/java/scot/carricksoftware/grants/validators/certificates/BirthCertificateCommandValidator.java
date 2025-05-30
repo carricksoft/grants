@@ -76,11 +76,16 @@ public class BirthCertificateCommandValidator {
     }
 
     private void validateCertificateLegitimateDate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
-        LocalDate testDate = LocalDate.parse(birthCertificateCommand.getCertificateDate(), ApplicationConstants.FORMATTER);
-        if (testDate.isAfter(LocalDate.now())) {
-            bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.DATE_IN_FUTURE);
+        logger.debug("Validating birth Certificate valid date");
+        try {
+            LocalDate testDate = LocalDate.parse(birthCertificateCommand.getCertificateDate(), ApplicationConstants.FORMATTER);
+            if (testDate.isAfter(LocalDate.now())) {
+                bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.DATE_IN_FUTURE);
+            }
+        } catch (Exception e) {
+            logger.debug("Error trapped in  birth Certificate valid date");
         }
     }
 
