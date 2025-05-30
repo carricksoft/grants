@@ -10,6 +10,7 @@ import scot.carricksoftware.grants.domains.places.Country;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.services.places.countries.CountryServiceImpl;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationServiceImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceServiceImpl;
 import scot.carricksoftware.grants.services.places.regions.RegionServiceImpl;
 
@@ -32,9 +33,12 @@ public class DataLoadPlacesTest {
     @Mock
     private PlaceServiceImpl placeServiceMock;
 
+    @Mock
+    private OrganisationServiceImpl organisationServiceMock;
+
     @BeforeEach
     public void setUp() {
-        dataLoadPlaces = new DataLoadPlaces(countryServiceMock, regionServiceMock, placeServiceMock);
+        dataLoadPlaces = new DataLoadPlaces(countryServiceMock, regionServiceMock, placeServiceMock, organisationServiceMock);
     }
 
     @Test
