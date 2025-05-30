@@ -1,9 +1,9 @@
 /*
- * Copyright (c)  02 Feb 2025, Andrew Grant of Carrick Software .
- * All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
+ *
  */
 
-package scot.carricksoftware.grants.domains;
+package scot.carricksoftware.grants.domains.places;
 
 
 import jakarta.persistence.Column;

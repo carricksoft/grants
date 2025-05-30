@@ -1,14 +1,12 @@
 /*
- * Copyright (c)  19 Feb 2025, Andrew Grant of Carrick Software .
- * All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
+ *
  */
 
-package scot.carricksoftware.grants.commands.countries;
+package scot.carricksoftware.grants.commands.places.countries;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
-import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
 import scot.carricksoftware.grants.domains.places.Region;
 
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 
 
-class CountryCensusCommandTest {
+class CountryCommandTest {
 
     CountryCommand command;
 

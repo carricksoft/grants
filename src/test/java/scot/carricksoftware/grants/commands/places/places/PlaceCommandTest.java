@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 11/03/2025, 17:52. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.commands.places;
+package scot.carricksoftware.grants.commands.places.places;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,8 +16,6 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
 import static scot.carricksoftware.grants.GenerateRandomTextValues.GetRandomPlaceText;
 
-import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
-import scot.carricksoftware.grants.commands.places.places.PlaceCommandImpl;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.images.PlaceImage;
 import scot.carricksoftware.grants.domains.places.Region;

@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.domains;
+package scot.carricksoftware.grants.domains.places;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

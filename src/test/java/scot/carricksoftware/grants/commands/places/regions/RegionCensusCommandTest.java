@@ -1,14 +1,12 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 11/03/2025, 17:53. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.commands.regions;
+package scot.carricksoftware.grants.commands.places.regions;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
-import scot.carricksoftware.grants.commands.places.regions.RegionCommandImpl;
 import scot.carricksoftware.grants.domains.places.Country;
 
 
