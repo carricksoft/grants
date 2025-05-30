@@ -7,6 +7,8 @@ package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
+import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommand;
+import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommandImpl;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommandImpl;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
@@ -68,6 +70,13 @@ public class GenerateRandomPlaceValues {
         Organisation organisation = new Organisation();
         organisation.setName(GetRandomString());
         return organisation;
+    }
+
+    @SuppressWarnings("unused")
+    public static OrganisationCommand GetRandomOrganisationCommand() {
+        OrganisationCommand organisationCommand = new OrganisationCommandImpl();
+        organisationCommand.setName(GetRandomString());
+        return organisationCommand;
     }
 
 
