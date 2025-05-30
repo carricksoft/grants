@@ -88,6 +88,24 @@ class BirthCertificateCommandValidatorDateTest {
         assertEquals("Date should not be in the future.", stringArgumentCaptor3.getValue());
     }
 
+    @Test
+    public void certificateNullDateTest() {
+        birthCertificateCommand.setNewBorn(GetRandomPerson());
+        birthCertificateCommand.setCertificateNumber(GetRandomString());
+        birthCertificateCommand.setCertificateIssuedAt(GetRandomPlace());
+
+        when(bindingResultMock.hasErrors()).thenReturn(false);
+        commandValidator.validate(birthCertificateCommand, bindingResultMock);
+
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
+                stringArgumentCaptor2.capture(),
+                objectArgumentCaptor.capture(),
+                stringArgumentCaptor3.capture());
+
+        assertEquals("certificateDate", stringArgumentCaptor.getValue());
+        assertEquals("The certificate date cannot be null.", stringArgumentCaptor3.getValue());
+    }
+
 
 
 

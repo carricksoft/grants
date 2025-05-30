@@ -65,13 +65,14 @@ public class BirthCertificateCommandValidator {
             bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.CERTIFICATE_DATE_IS_NULL);
-        }
-        try {
-            LocalDate.parse(birthCertificateCommand.getCertificateDate(), ApplicationConstants.FORMATTER);
-        } catch (Exception e) {
-            bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.DATE_IS_INVALID);
+        } else {
+            try {
+                LocalDate.parse(birthCertificateCommand.getCertificateDate(), ApplicationConstants.FORMATTER);
+            } catch (Exception e) {
+                bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
+                        null,
+                        ValidationConstants.DATE_IS_INVALID);
+            }
         }
     }
 
