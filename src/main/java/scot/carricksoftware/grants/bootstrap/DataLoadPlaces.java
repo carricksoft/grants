@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.domains.places.Country;
+import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.domains.places.Region;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
@@ -39,14 +40,18 @@ public class DataLoadPlaces {
         loadCountries();
         loadRegions();
         loadPlaces();
+        loadOrganisations();
     }
-
 
     final Country scotland = new Country();
     final Country england = new Country();
 
     final Region inverness = new Region();
     final Region midlothian = new Region();
+
+    final Organisation army = new Organisation();
+
+
 
     private void loadCountries() {
         scotland.setName("Scotland");
@@ -81,5 +86,10 @@ public class DataLoadPlaces {
         placeService.save(wilsonAvenue);
     }
 
+
+    private void loadOrganisations() {
+        army.setName("The army");
+
+    }
 
 }

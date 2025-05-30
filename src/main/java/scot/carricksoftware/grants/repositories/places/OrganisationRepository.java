@@ -7,7 +7,6 @@ package scot.carricksoftware.grants.repositories.places;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommand;
 import scot.carricksoftware.grants.domains.places.Organisation;
 
 import java.util.Optional;
@@ -15,16 +14,13 @@ import java.util.Optional;
 @Repository
 public interface OrganisationRepository extends PagingAndSortingRepository<Organisation, Long> {
 
-    @SuppressWarnings("unused")
-    OrganisationCommand saveOrganisationCommand(OrganisationCommand organisationCommand);
-
-    Iterable<Organisation> findAll();
-
-    void deleteById(Long id);
+    Organisation save(Organisation organisation);
 
     long count();
 
-    Organisation save(Organisation organisation);
+    void deleteById(Long id);
 
     Optional<Organisation> findById(Long id);
+
+    Iterable<Organisation> findAll();
 }
