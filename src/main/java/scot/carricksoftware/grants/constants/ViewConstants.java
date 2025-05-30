@@ -23,7 +23,7 @@ public class ViewConstants {
     public static final String COUNTRY_LIST = "country/list";
     public static final String COUNTRY_FORM = "country/form";
 
-    public static final String ORGANISATIO_LIST = "organisation/list";
+    public static final String ORGANISATION_LIST = "organisation/list";
     public static final String ORGANISATION_FORM = "organisation/form";
 
     public static final String REGION_LIST = "region/list";
