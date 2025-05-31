@@ -10,11 +10,15 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.controllers.ControllerHelper;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
+
+import static java.lang.Math.max;
 
 @Controller
 public class OrganisationListControllerImpl implements OrganisationListController {
@@ -47,6 +51,57 @@ public class OrganisationListControllerImpl implements OrganisationListControlle
         model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.getPagedOrganisations(currentPage));
         controllerHelper.addAttributes(model);
         return ViewConstants.ORGANISATION_LIST;
+    }
+
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(MappingConstants.ORGANISATION_NEXT)
+    @Override
+    public final String getNextPage(final Model model) {
+        logger.debug("OrganisationListControllerImpl::getNextPage");
+        currentPage++;
+        return sendAttributesAndReturn(model);
+    }
+
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(MappingConstants.ORGANISATION_PREVIOUS)
+    @Override
+    public final String getPreviousPage(final Model model) {
+        logger.debug("OrganisationListControllerImpl::getPreviousPage");
+        currentPage = max(0, currentPage - 1);
+        return sendAttributesAndReturn(model);
+    }
+
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(MappingConstants.ORGANISATION_REWIND)
+    public final String getFirstPage(final Model model) {
+        logger.debug("OrganisationListControllerImpl::getFirstPage");
+        currentPage = 0;
+        return sendAttributesAndReturn(model);
+    }
+
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(MappingConstants.ORGANISATION_FF)
+    @Override
+    public final String getLastPage(final Model model) {
+        logger.debug("OrganisationListControllerImpl::getLastPage");
+        long organisationCount = organisationService.count();
+        currentPage = (int) (organisationCount / ApplicationConstants.DEFAULT_PAGE_SIZE);
+        return sendAttributesAndReturn(model);
+    }
+
+
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(MappingConstants.ORGANISATION_DELETE)
+    @Override
+    public final String organisationDelete(@PathVariable final String id) {
+        logger.debug("OrganisationListControllerImpl::organisationDelete");
+        organisationService.deleteById(Long.valueOf(id));
+        return MappingConstants.REDIRECT + MappingConstants.ORGANISATIONS;
+    }
+
+    @Override
+    public int getPageNumber() {
+        return currentPage;
     }
 
 }
