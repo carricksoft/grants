@@ -51,8 +51,9 @@ public class DataLoadCertificates {
         birthCertificateCommand.setNewBorn(personService.findById(1L));
         birthCertificateCommand.setCertificateDate("25/01/1953");
         birthCertificateCommand.setCertificateNumber("999");
-        Organisation organisation = organisationService.findById(1L);
+        birthCertificateCommand.setCertificateType("extract");
 
+        Organisation organisation = organisationService.findById(1L);
         birthCertificateCommand.setCertificateSource(organisation);
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
