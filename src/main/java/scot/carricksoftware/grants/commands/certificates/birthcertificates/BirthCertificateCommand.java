@@ -35,4 +35,8 @@ public interface BirthCertificateCommand {
 
     @SuppressWarnings("unused")
     void setCertificateDate(String certificateDate);
+
+    String getCertificateType();
+
+    void setCertificateType(String certificateType);
 }

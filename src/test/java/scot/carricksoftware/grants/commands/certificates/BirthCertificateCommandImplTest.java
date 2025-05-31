@@ -76,11 +76,21 @@ class BirthCertificateCommandImplTest {
     }
 
     @Test
-    void getCertificateIssuedAtTest() {
+    void getCertificateSourceTest() {
         Organisation certificateSource = GetRandomOrganisation();
         command.setCertificateSource(certificateSource);
         assertEquals(certificateSource, command.getCertificateSource());
     }
 
+    @Test
+    void getCertificateTypeTest() {
+        assertNull(command.getCertificateType());
+    }
 
+    @Test
+    void setCertificateTypeTest() {
+        String certificateType = GetRandomString();
+        command.setCertificateType(certificateType);
+        assertEquals(certificateType, command.getCertificateType());
+    }
 }

@@ -18,6 +18,3 @@
 15: Add the new file to master.xml
 16: Run in terminal  mvn clean test liquibase:update
 
-
-
-

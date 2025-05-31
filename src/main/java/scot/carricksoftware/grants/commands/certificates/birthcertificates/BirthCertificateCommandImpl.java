@@ -20,6 +20,8 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     private String certificateDate;
 
+    private String certificateType;
+
     public Long getId() {
         return Id;
     }
@@ -67,5 +69,15 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     @Override
     public void setCertificateSource(Organisation certificateSource) {
         this.certificateSource = certificateSource;
+    }
+
+    @Override
+    public String getCertificateType() {
+        return certificateType;
+    }
+
+    @Override
+    public void setCertificateType(String certificateType) {
+        this.certificateType = certificateType;
     }
 }
