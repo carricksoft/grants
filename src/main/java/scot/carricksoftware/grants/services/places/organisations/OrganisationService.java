@@ -26,5 +26,6 @@ public interface OrganisationService {
 
     Organisation findById(Long id);
 
+    @SuppressWarnings("UnusedReturnValue")
     Organisation save(Organisation organisation);
 }
