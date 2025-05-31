@@ -52,7 +52,7 @@ public class BirthCertificateCommandValidator {
 
     private void validateCertificateIssuedAt(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Certificate Issued At");
-        if (birthCertificateCommand.getCertificateIssuedAt() == null ) {
+        if (birthCertificateCommand.getCertificateSource() == null ) {
             bindingResult.rejectValue("certificateIssuedAt", ApplicationConstants.EMPTY_STRING,
                     null,
                     ValidationConstants.ISSUED_AT_IS_NULL);

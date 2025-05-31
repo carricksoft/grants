@@ -13,7 +13,7 @@ import jakarta.persistence.MappedSuperclass;
 import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.places.Organisation;
 
 
 @MappedSuperclass
@@ -23,8 +23,8 @@ public class BaseCertificate extends BaseEntity {
     private String certificateNumber;
 
     @ManyToOne
-    @JoinColumn(name = "`place_id`")
-    private Place certificateIssuedAt;
+    @JoinColumn(name = "`organisation_id`")
+    private Organisation certificateSource;
 
     @Column(name= "`certificate_date`")
     @DateTimeFormat(pattern = ApplicationConstants.DATE_TIME_FORMAT)
@@ -40,15 +40,10 @@ public class BaseCertificate extends BaseEntity {
         this.certificateNumber = certificateNumber;
     }
 
-    @SuppressWarnings("unused")
-    public Place getCertificateIssuedAt() {
-        return certificateIssuedAt;
+    public Organisation getCertificateSource() {
+        return certificateSource;
     }
 
-    @SuppressWarnings("unused")
-    public void setCertificateIssuedAt(Place certificateIssuedAt) {
-        this.certificateIssuedAt = certificateIssuedAt;
-    }
 
     @SuppressWarnings("unused")
     public String getCertificateDate() {
@@ -58,5 +53,9 @@ public class BaseCertificate extends BaseEntity {
     @SuppressWarnings("unused")
     public void setCertificateDate(String certificateDate) {
         this.certificateDate = certificateDate;
+    }
+
+    public void setCertificateSource(Organisation organisation) {
+        this.certificateSource = organisation;
     }
 }

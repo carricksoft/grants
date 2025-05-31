@@ -6,7 +6,7 @@
 package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.places.Organisation;
 
 public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
@@ -16,7 +16,7 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     private String certificateNumber;
 
-    private Place certificateIssuedAt;
+    private Organisation certificateSource;
 
     private String certificateDate;
 
@@ -48,15 +48,6 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
         this.certificateNumber = certificateNumber;
     }
 
-    @Override
-    public Place getCertificateIssuedAt() {
-        return certificateIssuedAt;
-    }
-
-    @Override
-    public void setCertificateIssuedAt(Place certificateIssuedAt) {
-        this.certificateIssuedAt = certificateIssuedAt;
-    }
 
     @Override
     public String getCertificateDate() {
@@ -66,5 +57,15 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     @Override
     public void setCertificateDate(String certificateDate) {
         this.certificateDate = certificateDate;
+    }
+
+    @Override
+    public Organisation getCertificateSource() {
+        return certificateSource;
+    }
+
+    @Override
+    public void setCertificateSource(Organisation certificateSource) {
+        this.certificateSource = certificateSource;
     }
 }

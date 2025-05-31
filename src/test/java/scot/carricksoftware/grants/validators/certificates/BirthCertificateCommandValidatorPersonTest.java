@@ -22,7 +22,7 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
 class BirthCertificateCommandValidatorPersonTest {
@@ -50,7 +50,7 @@ class BirthCertificateCommandValidatorPersonTest {
         birthCertificateCommand = new BirthCertificateCommandImpl();
         birthCertificateCommand.setCertificateDate("25/01/1953");
         birthCertificateCommand.setCertificateNumber("1953");
-        birthCertificateCommand.setCertificateIssuedAt(GetRandomPlace());
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
     }
 

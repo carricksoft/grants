@@ -12,13 +12,13 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.places.Organisation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 class BirthCertificateCommandConverterTest {
 
@@ -34,7 +34,7 @@ class BirthCertificateCommandConverterTest {
         Long id = GetRandomLong();
         Person person = GetRandomPerson();
         BirthCertificateCommand source = new BirthCertificateCommandImpl();
-        Place issuedAt = GetRandomPlace();
+        Organisation issuedAt = GetRandomOrganisation();
         String certificateNumber = GetRandomString();
         String certificateDate = GetRandomString();
 
@@ -42,7 +42,7 @@ class BirthCertificateCommandConverterTest {
         source.setNewBorn(person);
         source.setCertificateNumber(certificateNumber);
         source.setCertificateDate(certificateDate);
-        source.setCertificateIssuedAt(issuedAt);
+        source.setCertificateSource(issuedAt);
 
 
         BirthCertificate target = converter.convert(source);
@@ -52,7 +52,7 @@ class BirthCertificateCommandConverterTest {
         assertEquals(person, target.getNewBorn());
         assertEquals(certificateNumber, target.getCertificateNumber());
         assertEquals(certificateDate, target.getCertificateDate());
-        assertEquals(issuedAt, target.getCertificateIssuedAt());
+        assertEquals(issuedAt, target.getCertificateSource());
 
     }
 }

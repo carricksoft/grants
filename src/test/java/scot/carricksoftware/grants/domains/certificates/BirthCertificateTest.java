@@ -8,14 +8,14 @@ package scot.carricksoftware.grants.domains.certificates;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.places.Organisation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 class BirthCertificateTest {
 
@@ -76,8 +76,8 @@ class BirthCertificateTest {
 
     @Test
     void getCertificateIssuedAtTest() {
-        Place place = GetRandomPlace();
-        certificate.setCertificateIssuedAt(place);
-        assertEquals(place, certificate.getCertificateIssuedAt());
+        Organisation organisation = GetRandomOrganisation();
+        certificate.setCertificateSource(organisation);
+        assertEquals(organisation, certificate.getCertificateSource());
     }
 }

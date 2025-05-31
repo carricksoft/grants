@@ -9,17 +9,17 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
 public class DataLoadCertificatesTest {
@@ -36,7 +36,7 @@ public class DataLoadCertificatesTest {
     private PersonService personServiceMock;
 
     @Mock
-    private PlaceService placeServiceMock;
+    private OrganisationService organisationServiceMock;
 
 
     @BeforeEach
@@ -44,15 +44,15 @@ public class DataLoadCertificatesTest {
         dataLoadCertificates = new DataLoadCertificates(birthCertificateServiceMock,
                 deathCertificateServiceMock,
                 personServiceMock,
-                placeServiceMock);
+                organisationServiceMock);
     }
 
     @Test
     public void birthCertificatesAreLoadedTest() {
         Person person = GetRandomPerson();
         when(personServiceMock.findById(1L)).thenReturn(person);
-        Place place = GetRandomPlace();
-        when(placeServiceMock.findById(1L)).thenReturn(place);
+        Organisation organisation = GetRandomOrganisation();
+        when(organisationServiceMock.findById(1L)).thenReturn(organisation);
 
         ArgumentCaptor<BirthCertificateCommand> captor = ArgumentCaptor.forClass(BirthCertificateCommand.class);
 
@@ -60,7 +60,7 @@ public class DataLoadCertificatesTest {
 
         verify(birthCertificateServiceMock).saveBirthCertificateCommand(captor.capture());
         assertEquals(person, captor.getValue().getNewBorn());
-        assertEquals(place, captor.getValue().getCertificateIssuedAt());
+        assertEquals(organisation, captor.getValue().getCertificateSource());
         assertEquals("999", captor.getValue().getCertificateNumber());
         assertEquals("25/01/1953", captor.getValue().getCertificateDate());
     }

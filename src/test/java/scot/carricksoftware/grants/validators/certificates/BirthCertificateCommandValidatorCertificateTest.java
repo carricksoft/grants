@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
 class BirthCertificateCommandValidatorCertificateTest {
@@ -53,7 +53,7 @@ class BirthCertificateCommandValidatorCertificateTest {
     public void certificateNumberTest() {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateDate("25/01/1953");
-        birthCertificateCommand.setCertificateIssuedAt(GetRandomPlace());
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
 
@@ -89,7 +89,7 @@ class BirthCertificateCommandValidatorCertificateTest {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateNumber(GetRandomString());
         birthCertificateCommand.setCertificateDate(GetRandomString());
-        birthCertificateCommand.setCertificateIssuedAt(GetRandomPlace());
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
         when(bindingResultMock.hasErrors()).thenReturn(false);
         commandValidator.validate(birthCertificateCommand, bindingResultMock);

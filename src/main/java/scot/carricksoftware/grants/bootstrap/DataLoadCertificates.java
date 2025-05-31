@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
-import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 
 @Component
 @Profile("dev")
@@ -27,15 +27,16 @@ public class DataLoadCertificates {
     private final BirthCertificateService birthCertificateService;
     private final DeathCertificateService deathCertificateService;
     private final PersonService personService;
-    private final PlaceService placeService;
+    private final OrganisationService organisationService;
 
     public DataLoadCertificates(BirthCertificateService birthCertificateService,
                                 DeathCertificateService deathCertificateService,
-                                PersonService personService, PlaceService placeService) {
+                                PersonService personService,
+                                OrganisationService organisationService) {
         this.birthCertificateService = birthCertificateService;
         this.deathCertificateService = deathCertificateService;
         this.personService = personService;
-        this.placeService = placeService;
+        this.organisationService = organisationService;
     }
 
 
@@ -50,9 +51,9 @@ public class DataLoadCertificates {
         birthCertificateCommand.setNewBorn(personService.findById(1L));
         birthCertificateCommand.setCertificateDate("25/01/1953");
         birthCertificateCommand.setCertificateNumber("999");
-        Place place = placeService.findById(1L);
+        Organisation organisation = organisationService.findById(1L);
 
-        birthCertificateCommand.setCertificateIssuedAt(place);
+        birthCertificateCommand.setCertificateSource(organisation);
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
 

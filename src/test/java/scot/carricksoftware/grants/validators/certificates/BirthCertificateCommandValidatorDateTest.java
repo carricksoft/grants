@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
 class BirthCertificateCommandValidatorDateTest {
@@ -55,7 +55,7 @@ class BirthCertificateCommandValidatorDateTest {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateNumber(GetRandomString());
         birthCertificateCommand.setCertificateDate(GetRandomString());
-        birthCertificateCommand.setCertificateIssuedAt(GetRandomPlace());
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
         when(bindingResultMock.hasErrors()).thenReturn(false);
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
@@ -74,7 +74,7 @@ class BirthCertificateCommandValidatorDateTest {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateNumber(GetRandomString());
         birthCertificateCommand.setCertificateDate("01/01/2099");
-        birthCertificateCommand.setCertificateIssuedAt(GetRandomPlace());
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
         when(bindingResultMock.hasErrors()).thenReturn(false);
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
@@ -92,7 +92,7 @@ class BirthCertificateCommandValidatorDateTest {
     public void certificateNullDateTest() {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateNumber(GetRandomString());
-        birthCertificateCommand.setCertificateIssuedAt(GetRandomPlace());
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
         when(bindingResultMock.hasErrors()).thenReturn(false);
         commandValidator.validate(birthCertificateCommand, bindingResultMock);

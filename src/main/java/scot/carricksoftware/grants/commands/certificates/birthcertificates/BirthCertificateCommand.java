@@ -6,10 +6,9 @@
 package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.places.Organisation;
 
 public interface BirthCertificateCommand {
-
 
     Long getId();
 
@@ -26,10 +25,10 @@ public interface BirthCertificateCommand {
     void setCertificateNumber(String certificateNumber);
 
     @SuppressWarnings("unused")
-    Place getCertificateIssuedAt();
+    Organisation getCertificateSource();
 
     @SuppressWarnings("unused")
-    void setCertificateIssuedAt(Place certificateIssuedAt);
+    void setCertificateSource(Organisation certificateSource);
 
     @SuppressWarnings("unused")
     String getCertificateDate();
