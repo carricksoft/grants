@@ -18,26 +18,26 @@
 <div class="container text-center">
     <div class="container border border-info
                     rounded-3 text-center p-4">
-        <h3>Countries</h3>
+        <h3>Organisation</h3>
         <table class="table table-striped table-bordered">
             <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>Country</th>
+                <th>Organisation</th>
                 <th></th>
             </tr>
             </thead>
 
-            <tr th:each="country   : ${countries}">
+            <tr th:each="organisation   : ${organisations}">
                 <!--/*@thymesVar id="country" type="scot.carricksoftware.grants.domains.places.Country"*/-->
-                <td th:text="${country.id}">123</td>
-                <td th:text="${country.name}"> First</td>
+                <td th:text="${organisation.id}">123</td>
+                <td th:text="${organisation.name}"> First</td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm"
-                           th:href="@{/country/{id}/delete(id=${country.id})}"
+                           th:href="@{/orgaisation/{id}/delete(id=${organisation.id})}"
                            th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="@{/country/{id}/edit(id=${country.id})}"
+                       th:href="@{/organisation/{id}/edit(id=${organisation.id})}"
                        th:text="Edit"></a>
 
                     </span></td>
@@ -45,17 +45,17 @@
             <tfoot>
             <tr>
                 <td colspan="4"><span>
-                        <a th:action="rewind" class="btn btn-secondary btn-sm" th:href="@{/countries/rewind}"
+                        <a th:action="rewind" class="btn btn-secondary btn-sm" th:href="@{/organisations/rewind}"
                            th:text="'<<'"></a>
                          <a th:action="back" class="btn btn-secondary btn-sm"
-                            th:href="@{/countries/prev}" th:text="'<'"></a>
-                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{/country/new}"
-                            th:text="'New Country'"></a>
+                            th:href="@{/organisations/prev}" th:text="'<'"></a>
+                         <a th:action="new" class="btn btn-primary btn-sm" th:href="@{/organisation/new}"
+                            th:text="'New Organisation'"></a>
                          <a th:action="home" class="btn btn-success btn-sm"
                             th:href="@{/}" th:text="'Home'"></a>
                          <a th:action="forward" class="btn btn-secondary btn-sm"
-                            th:href="@{/countries/next}" th:text="'>'"></a>
-                         <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/countries/ff}"
+                            th:href="@{/organisations/next}" th:text="'>'"></a>
+                         <a th:action="end" class="btn btn-secondary btn-sm" th:href="@{/organisations/ff}"
                             th:text="'>>'"></a>
                         </span></td>
             </tr>
