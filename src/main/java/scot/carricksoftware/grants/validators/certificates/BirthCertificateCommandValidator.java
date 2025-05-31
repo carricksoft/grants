@@ -25,7 +25,8 @@ public class BirthCertificateCommandValidator {
 
         validateNewBorn(birthCertificateCommand, bindingResult);
         validateCertificateNumber(birthCertificateCommand, bindingResult);
-        validateCertificateIssuedAt(birthCertificateCommand, bindingResult);
+        validateCertificateSource(birthCertificateCommand, bindingResult);
+        validateCertificateType(birthCertificateCommand, bindingResult);
         validateCertificateDate(birthCertificateCommand, bindingResult);
         if (!bindingResult.hasErrors()) {
             validateCertificateLegitimateDate(birthCertificateCommand, bindingResult);
@@ -50,12 +51,21 @@ public class BirthCertificateCommandValidator {
         }
     }
 
-    private void validateCertificateIssuedAt(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
-        logger.debug("Validating birth certificate Certificate Issued At");
+    private void validateCertificateSource(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating birth certificate Certificate Source");
         if (birthCertificateCommand.getCertificateSource() == null ) {
-            bindingResult.rejectValue("certificateIssuedAt", ApplicationConstants.EMPTY_STRING,
+            bindingResult.rejectValue("certificateSource", ApplicationConstants.EMPTY_STRING,
                     null,
-                    ValidationConstants.ISSUED_AT_IS_NULL);
+                    ValidationConstants.SOURCE_IS_NULL);
+        }
+    }
+
+    private void validateCertificateType(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating birth certificate Certificate Type");
+        if (birthCertificateCommand.getCertificateType() == null ) {
+            bindingResult.rejectValue("certificateType", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.CERTIFICATE_TYPE_IS_NULL);
         }
     }
 

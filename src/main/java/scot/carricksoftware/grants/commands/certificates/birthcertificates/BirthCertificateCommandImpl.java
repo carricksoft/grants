@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
@@ -20,7 +21,7 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     private String certificateDate;
 
-    private String certificateType;
+    private CertificateType certificateType;
 
     public Long getId() {
         return Id;
@@ -72,12 +73,12 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     }
 
     @Override
-    public String getCertificateType() {
+    public CertificateType getCertificateType() {
         return certificateType;
     }
 
     @Override
-    public void setCertificateType(String certificateType) {
+    public void setCertificateType(CertificateType certificateType) {
         this.certificateType = certificateType;
     }
 }

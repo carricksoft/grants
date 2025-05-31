@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
@@ -37,7 +38,7 @@ class BirthCertificateCommandConverterTest {
         Organisation issuedAt = GetRandomOrganisation();
         String certificateNumber = GetRandomString();
         String certificateDate = GetRandomString();
-        String certificateType = GetRandomString();
+        CertificateType certificateType = CertificateType.EXTRACT;
 
 
         source.setId(id);

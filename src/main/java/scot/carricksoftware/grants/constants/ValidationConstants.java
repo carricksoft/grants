@@ -27,8 +27,9 @@ public class ValidationConstants {
     public static final String PERSON_IS_NULL = "The person cannot be null.";
     public static final String NEWBORN_IS_NULL = "The New Born cannot be null.";
     public static final String CERTIFICATE_NUMBER_IS_NULL = "The certificate number cannot be null.";
-    public static final String ISSUED_AT_IS_NULL = "The certificate source cannot be null.";
+    public static final String SOURCE_IS_NULL = "The certificate source cannot be null.";
     public static final String CERTIFICATE_DATE_IS_NULL = "The certificate date cannot be null.";
+    public static final String CERTIFICATE_TYPE_IS_NULL = "The certificate type cannot be null.";
     public static final String DATE_IS_INVALID = "The certificate date is invalid or of the wrong format.";
 
     public static final String PLACE_IS_NULL = "The place cannot be null.";

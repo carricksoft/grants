@@ -11,6 +11,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -89,7 +90,7 @@ class BirthCertificateCommandImplTest {
 
     @Test
     void setCertificateTypeTest() {
-        String certificateType = GetRandomString();
+        CertificateType certificateType = CertificateType.EXTRACT;
         command.setCertificateType(certificateType);
         assertEquals(certificateType, command.getCertificateType());
     }

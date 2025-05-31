@@ -56,7 +56,7 @@
             </tr>
             <tr>
                 <td style="text-align: right;">
-                    <label for="certificateSource">Issued From&nbsp;</label>
+                    <label for="certificateSource">Certificate Source&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
                     <div>
@@ -92,12 +92,13 @@
                     <label for="certificateType">Certificate Type&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
-                    <input class="form-control" id="certificateType"
-                           th:field="*{certificateType}" type="text">
-                    <div th:if="${#fields.hasErrors('certificateType')}">
-                        <ul class="text-danger">
-                            <li th:each="err : ${#fields.errors('certificateType')}" th:text="${err}"/>
-                        </ul>
+                    <div>
+                        <select id="certificateType" style="width: 200px;" name="certificateType"
+                                th:field="*{certificateType}">
+                            <option th:value="${''}" th:text="${''}"></option>
+                            <option th:each="value : ${T(scot.carricksoftware.grants.enums.certificates.CertificateType).values()}"
+                                    th:value="${value}" th:text="${value.label}"></option>
+                        </select>
                     </div>
                 </td>
             </tr>

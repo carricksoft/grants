@@ -10,6 +10,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -63,7 +64,7 @@ public class DataLoadCertificatesTest {
         assertEquals(organisation, captor.getValue().getCertificateSource());
         assertEquals("999", captor.getValue().getCertificateNumber());
         assertEquals("25/01/1953", captor.getValue().getCertificateDate());
-        assertEquals("extract", captor.getValue().getCertificateType());
+        assertEquals(CertificateType.EXTRACT, captor.getValue().getCertificateType());
     }
 
     @Test

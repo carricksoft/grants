@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -50,8 +51,8 @@ class BirthCertificateCommandValidatorPersonTest {
         birthCertificateCommand = new BirthCertificateCommandImpl();
         birthCertificateCommand.setCertificateDate("25/01/1953");
         birthCertificateCommand.setCertificateNumber("1953");
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
         birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
-
     }
 
     @Test

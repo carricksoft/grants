@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -86,11 +87,12 @@ class BirthCertificateTest {
         assertNull(certificate.getCertificateType());
     }
 
+    @SuppressWarnings("unused")
     @Test
     void setCertificateTypeTest() {
         String certificateType = GetRandomString();
-        certificate.setCertificateType(certificateType);
-        assertEquals(certificateType, certificate.getCertificateType());
+        certificate.setCertificateType(CertificateType.EXTRACT);
+        assertEquals(CertificateType.EXTRACT, certificate.getCertificateType());
     }
 
 

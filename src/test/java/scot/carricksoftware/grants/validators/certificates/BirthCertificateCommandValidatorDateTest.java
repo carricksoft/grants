@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -55,6 +56,7 @@ class BirthCertificateCommandValidatorDateTest {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateNumber(GetRandomString());
         birthCertificateCommand.setCertificateDate(GetRandomString());
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
         birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
         when(bindingResultMock.hasErrors()).thenReturn(false);
@@ -74,6 +76,7 @@ class BirthCertificateCommandValidatorDateTest {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateNumber(GetRandomString());
         birthCertificateCommand.setCertificateDate("01/01/2099");
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
         birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
         when(bindingResultMock.hasErrors()).thenReturn(false);
@@ -92,6 +95,7 @@ class BirthCertificateCommandValidatorDateTest {
     public void certificateNullDateTest() {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateNumber(GetRandomString());
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
         birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
         when(bindingResultMock.hasErrors()).thenReturn(false);

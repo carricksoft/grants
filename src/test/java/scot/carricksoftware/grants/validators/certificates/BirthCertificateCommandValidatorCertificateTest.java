@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -53,6 +54,7 @@ class BirthCertificateCommandValidatorCertificateTest {
     public void certificateNumberTest() {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateDate("25/01/1953");
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
         birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
@@ -71,6 +73,7 @@ class BirthCertificateCommandValidatorCertificateTest {
     public void certificateSourceTest() {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateNumber(GetRandomString());
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
         birthCertificateCommand.setCertificateDate("25/01/1953");
 
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
@@ -80,7 +83,7 @@ class BirthCertificateCommandValidatorCertificateTest {
                 objectArgumentCaptor.capture(),
                 stringArgumentCaptor3.capture());
 
-        assertEquals("certificateIssuedAt", stringArgumentCaptor.getValue());
+        assertEquals("certificateSource", stringArgumentCaptor.getValue());
         assertEquals("The certificate source cannot be null.", stringArgumentCaptor3.getValue());
     }
 
@@ -89,6 +92,7 @@ class BirthCertificateCommandValidatorCertificateTest {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateNumber(GetRandomString());
         birthCertificateCommand.setCertificateDate(GetRandomString());
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
         birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
 
         when(bindingResultMock.hasErrors()).thenReturn(false);

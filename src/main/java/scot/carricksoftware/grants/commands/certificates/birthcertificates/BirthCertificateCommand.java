@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 public interface BirthCertificateCommand {
 
@@ -36,7 +37,7 @@ public interface BirthCertificateCommand {
     @SuppressWarnings("unused")
     void setCertificateDate(String certificateDate);
 
-    String getCertificateType();
+    CertificateType getCertificateType();
 
-    void setCertificateType(String certificateType);
+    void setCertificateType(CertificateType certificateType);
 }

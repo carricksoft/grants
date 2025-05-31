@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -51,7 +52,7 @@ public class DataLoadCertificates {
         birthCertificateCommand.setNewBorn(personService.findById(1L));
         birthCertificateCommand.setCertificateDate("25/01/1953");
         birthCertificateCommand.setCertificateNumber("999");
-        birthCertificateCommand.setCertificateType("extract");
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
 
         Organisation organisation = organisationService.findById(1L);
         birthCertificateCommand.setCertificateSource(organisation);
