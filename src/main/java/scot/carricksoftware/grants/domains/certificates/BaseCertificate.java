@@ -22,6 +22,9 @@ public class BaseCertificate extends BaseEntity {
     @Column(name = "`certificate_number`")
     private String certificateNumber;
 
+    @Column(name = "`certificate_type`")
+    private String certificateType;
+
     @ManyToOne
     @JoinColumn(name = "`organisation_id`")
     private Organisation certificateSource;
@@ -57,5 +60,13 @@ public class BaseCertificate extends BaseEntity {
 
     public void setCertificateSource(Organisation organisation) {
         this.certificateSource = organisation;
+    }
+
+    public String getCertificateType() {
+        return certificateType;
+    }
+
+    public void setCertificateType(String certificateType) {
+        this.certificateType = certificateType;
     }
 }
