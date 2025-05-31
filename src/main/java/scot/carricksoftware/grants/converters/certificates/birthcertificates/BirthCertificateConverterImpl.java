@@ -15,6 +15,7 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 @Component
 public class BirthCertificateConverterImpl implements BirthCertificateConverter {
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public BirthCertificateCommand convert(BirthCertificate source) {
         BirthCertificateCommand target = new BirthCertificateCommandImpl();
@@ -25,6 +26,7 @@ public class BirthCertificateConverterImpl implements BirthCertificateConverter 
         target.setCertificateNumber(source.getCertificateNumber());
         target.setCertificateDate(source.getCertificateDate());
         target.setCertificateSource(source.getCertificateSource());
+        target.setCertificateType(source.getCertificateType());
 
         return target;
     }
