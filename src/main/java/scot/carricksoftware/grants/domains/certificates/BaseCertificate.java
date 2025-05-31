@@ -7,6 +7,8 @@ package scot.carricksoftware.grants.domains.certificates;
 
 import jakarta.persistence.Column;
 
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
@@ -23,6 +25,7 @@ public class BaseCertificate extends BaseEntity {
     @Column(name = "`certificate_number`")
     private String certificateNumber;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "`certificate_type`")
     private CertificateType certificateType;
 
