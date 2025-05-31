@@ -20,9 +20,14 @@ public interface OrganisationFormController {
     @GetMapping(MappingConstants.ORGANISATION_NEW)
     String getNewOrganisation(Model model);
 
+    @SuppressWarnings("unused")
     String saveOrUpdate(@Valid @ModelAttribute OrganisationCommand organisationCommand, BindingResult bindingResult, Model model);
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.ORGANISATION_SHOW)
     String showById(@PathVariable String id, Model model);
+
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(MappingConstants.ORGANISATION_EDIT)
+    String organisationEdit(@Valid @PathVariable String id, Model model);
 }

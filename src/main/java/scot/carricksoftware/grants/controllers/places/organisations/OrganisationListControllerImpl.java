@@ -89,7 +89,6 @@ public class OrganisationListControllerImpl implements OrganisationListControlle
         return sendAttributesAndReturn(model);
     }
 
-
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.ORGANISATION_DELETE)
     @Override
@@ -103,5 +102,6 @@ public class OrganisationListControllerImpl implements OrganisationListControlle
     public int getPageNumber() {
         return currentPage;
     }
+
 
 }

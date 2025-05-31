@@ -91,4 +91,14 @@ public class OrganisationFormControllerImpl implements OrganisationFormControlle
         return ViewConstants.ORGANISATION_FORM;
     }
 
+    @SuppressWarnings("SameReturnValue")
+    @GetMapping(MappingConstants.ORGANISATION_EDIT)
+    @Override
+    public final String organisationEdit(@Valid @PathVariable final String id, Model model) {
+        logger.debug("OrganisationFormControllerImpl::organisationEdit");
+        model.addAttribute(AttributeConstants.ORGANISATION_COMMAND, organisationService.findById(Long.valueOf(id)));
+        return ViewConstants.ORGANISATION_FORM;
+    }
+
+
 }

@@ -22,6 +22,7 @@ public interface OrganisationService {
 
     OrganisationCommand saveOrganisationCommand(OrganisationCommand organisationCommand);
 
+    @SuppressWarnings("unused")
     List<Organisation> findAll();
 
     Organisation findById(Long id);

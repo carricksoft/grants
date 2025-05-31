@@ -31,5 +31,6 @@ public interface OrganisationListController {
     @GetMapping(MappingConstants.ORGANISATION_DELETE)
     String organisationDelete(@PathVariable String id);
 
+    @SuppressWarnings("unused")
     int getPageNumber();
 }
