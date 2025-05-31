@@ -13,7 +13,6 @@ import scot.carricksoftware.grants.BaseEntity;
 @Entity
 public class Organisation extends BaseEntity {
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`name`")
     private String name;
 
