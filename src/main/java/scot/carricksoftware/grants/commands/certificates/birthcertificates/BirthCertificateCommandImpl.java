@@ -7,7 +7,6 @@ package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
-import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 public class BirthCertificateCommandImpl implements BirthCertificateCommand {
@@ -24,7 +23,7 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     private CertificateType certificateType;
 
-    private Place registrationAuthority;
+    private Organisation registrationAuthority;
 
     private String volume;
 
@@ -91,12 +90,12 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     }
 
     @Override
-    public Place getRegistrationAuthority() {
+    public Organisation getRegistrationAuthority() {
         return registrationAuthority;
     }
 
     @Override
-    public void setRegistrationAuthority(Place registrationAuthority) {
+    public void setRegistrationAuthority(Organisation registrationAuthority) {
         this.registrationAuthority = registrationAuthority;
     }
 

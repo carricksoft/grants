@@ -9,12 +9,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
-import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.domains.places.Organisation;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 class BirthCertificateCommandRegistrationTest {
 
@@ -32,7 +32,7 @@ class BirthCertificateCommandRegistrationTest {
 
     @Test
     void setRegistrationAuthorityTest() {
-        Place registrationAuthority = GetRandomPlace();
+        Organisation registrationAuthority = GetRandomOrganisation();
         command.setRegistrationAuthority(registrationAuthority);
         assertEquals(registrationAuthority, command.getRegistrationAuthority());
     }

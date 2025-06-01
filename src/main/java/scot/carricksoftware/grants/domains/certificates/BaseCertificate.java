@@ -16,7 +16,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.places.Organisation;
-import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 
@@ -40,7 +39,7 @@ public class BaseCertificate extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "`registration_authority`")
-    private Place registrationAuthority;
+    private Organisation registrationAuthority;
 
     @Column(name = "`volume`")
     private String volume;
@@ -85,11 +84,11 @@ public class BaseCertificate extends BaseEntity {
         this.certificateType = certificateType;
     }
 
-    public Place getRegistrationAuthority() {
+    public Organisation getRegistrationAuthority() {
         return registrationAuthority;
     }
 
-    public void setRegistrationAuthority(Place registrationAuthority) {
+    public void setRegistrationAuthority(Organisation registrationAuthority) {
         this.registrationAuthority = registrationAuthority;
     }
 
