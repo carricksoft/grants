@@ -110,5 +110,25 @@ class BirthCertificateCommandPartOneValidatorDateTest {
         assertEquals("The certificate date cannot be null.", stringArgumentCaptor3.getValue());
     }
 
+    @Test
+    public void certificateTypeNullTest() {
+        birthCertificateCommand.setNewBorn(GetRandomPerson());
+        birthCertificateCommand.setCertificateNumber(GetRandomString());
+        birthCertificateCommand.setCertificateType(null);
+        birthCertificateCommand.setCertificateDate("01/01/2019");
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
+
+        when(bindingResultMock.hasErrors()).thenReturn(false);
+        commandValidator.validate(birthCertificateCommand, bindingResultMock);
+
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
+                stringArgumentCaptor2.capture(),
+                objectArgumentCaptor.capture(),
+                stringArgumentCaptor3.capture());
+
+        assertEquals("certificateType", stringArgumentCaptor.getValue());
+        assertEquals("The certificate type cannot be null.", stringArgumentCaptor3.getValue());
+    }
+
 
 }
