@@ -44,4 +44,11 @@ class OrganisationTest {
         organisation.setName(name);
         assertEquals(name, organisation.getName());
     }
+
+    @Test
+    void toStringTest() {
+        String name = GetRandomString();
+        organisation.setName(name);
+        assertEquals(name, organisation.toString());
+    }
 }
