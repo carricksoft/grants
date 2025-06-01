@@ -39,6 +39,9 @@ class BirthCertificateCommandConverterTest {
         String certificateNumber = GetRandomString();
         String certificateDate = GetRandomString();
         CertificateType certificateType = CertificateType.EXTRACT;
+        Organisation registrationAuthority = GetRandomOrganisation();
+        String volume = GetRandomString();
+        String number = GetRandomString();
 
 
         source.setId(id);
@@ -47,6 +50,9 @@ class BirthCertificateCommandConverterTest {
         source.setCertificateDate(certificateDate);
         source.setCertificateSource(issuedAt);
         source.setCertificateType(certificateType);
+        source.setVolume(volume);
+        source.setNumber(number);
+        source.setRegistrationAuthority(registrationAuthority);
 
 
         BirthCertificate target = converter.convert(source);
@@ -58,6 +64,9 @@ class BirthCertificateCommandConverterTest {
         assertEquals(certificateDate, target.getCertificateDate());
         assertEquals(issuedAt, target.getCertificateSource());
         assertEquals(certificateType, target.getCertificateType());
+        assertEquals(volume, target.getVolume());
+        assertEquals(number, target.getNumber());
+        assertEquals(registrationAuthority, target.getRegistrationAuthority());
 
     }
 }
