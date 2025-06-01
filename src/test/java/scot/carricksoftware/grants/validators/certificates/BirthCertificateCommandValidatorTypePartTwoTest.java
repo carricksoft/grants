@@ -18,14 +18,15 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
-class BirthCertificateCommandValidatorCertificateTypePartTwoTest {
+class BirthCertificateCommandValidatorTypePartTwoTest {
 
-    private BirthCertificateCommandPartOneValidator commandValidator;
+    private BirthCertificateCommandPartTwoValidator commandValidator;
 
     private ArgumentCaptor<String> stringArgumentCaptor;
     private ArgumentCaptor<String> stringArgumentCaptor2;
@@ -39,7 +40,7 @@ class BirthCertificateCommandValidatorCertificateTypePartTwoTest {
 
     @BeforeEach
     void setUp() {
-        commandValidator = new BirthCertificateCommandPartOneValidator();
+        commandValidator = new BirthCertificateCommandPartTwoValidator();
         stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor2 = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor3 = ArgumentCaptor.forClass(String.class);
@@ -53,16 +54,45 @@ class BirthCertificateCommandValidatorCertificateTypePartTwoTest {
     }
 
     @Test
-    public void nullTypeTest() {
+    void aNullNumberIsInvalidTest() {
+        numberTest(null, "The number cannot be null.");
+    }
+
+    @Test
+    void anEmptyNumberIsInvalidTest() {
+        numberTest(" ", "The number must be a non negative integer.");
+    }
+
+    @Test
+    void anNegativeNumberIsInvalidTest() {
+        numberTest("-1", "The number must be a non negative integer.");
+    }
+
+    @Test
+    void aRealNumberIsInvalidTest() {
+        numberTest("3.15", "The number must be a non negative integer.");
+    }
+
+    @Test
+    void aNonNumberIsInvalidTest() {
+        numberTest("zzz", "The number must be a non negative integer.");
+    }
+
+
+    private void numberTest(String testValue, String error) {
+        birthCertificateCommand.setNumber(testValue);
+        birthCertificateCommand.setVolume(GetRandomString());
+        birthCertificateCommand.setRegistrationAuthority(GetRandomOrganisation());
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
+
 
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
                 stringArgumentCaptor2.capture(),
                 objectArgumentCaptor.capture(),
                 stringArgumentCaptor3.capture());
 
-        assertEquals("certificateType", stringArgumentCaptor.getValue());
-        assertEquals("The certificate type cannot be null.", stringArgumentCaptor3.getValue());
+        assertEquals("number", stringArgumentCaptor.getValue());
+        assertEquals(error, stringArgumentCaptor3.getValue());
 
     }
 

@@ -25,7 +25,7 @@ import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPe
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
-class BirthCertificateCommandValidatorCertificatePartOneTest {
+class BirthCertificateCommandValidatorPartOneTest {
 
     private BirthCertificateCommandPartOneValidator commandValidator;
 
