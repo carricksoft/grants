@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.converters.certificates.birthcertificates.Bir
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.validators.certificates.BirthCertificateCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,7 +50,7 @@ public class BirthCertificateFormControllerTest {
     private PersonService personServiceMock;
 
     @Mock
-    private PlaceService placeServiceMock;
+    private OrganisationService organisationServiceMock;
 
     @Mock
     private Model modelMock;
@@ -66,7 +66,7 @@ public class BirthCertificateFormControllerTest {
                 birthCertificateConverterMock,
                 birthCertificateCommandValidatorMock,
                 personServiceMock,
-                placeServiceMock);
+                organisationServiceMock);
     }
 
     @Test

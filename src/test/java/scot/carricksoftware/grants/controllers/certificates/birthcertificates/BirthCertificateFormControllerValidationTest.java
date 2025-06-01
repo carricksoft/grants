@@ -19,7 +19,7 @@ import scot.carricksoftware.grants.converters.certificates.birthcertificates.Bir
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.validators.certificates.BirthCertificateCommandValidator;
 
 import static org.mockito.Mockito.verify;
@@ -49,7 +49,7 @@ public class BirthCertificateFormControllerValidationTest {
     private PersonService personServiceMock;
 
     @Mock
-    private PlaceService placeServiceMock;
+    private OrganisationService organisationServiceMock;
 
     @Mock
     private BirthCertificateCommandValidator birthCertificateCommandValidatorMock;
@@ -65,7 +65,7 @@ public class BirthCertificateFormControllerValidationTest {
                 birthCertificateConverterMock,
                 birthCertificateCommandValidatorMock,
                 personServiceMock,
-                placeServiceMock);
+                organisationServiceMock);
     }
 
 
