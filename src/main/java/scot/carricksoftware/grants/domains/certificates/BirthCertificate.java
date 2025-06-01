@@ -19,6 +19,8 @@ public class BirthCertificate extends BaseCertificate {
     @JoinColumn(name = "`new_born_id`")
     private Person newBorn;
 
+
+
     public Person getNewBorn() {
         return newBorn;
     }
