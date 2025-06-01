@@ -20,7 +20,7 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
-class BirthCertificateCommandImplTest {
+class BirthCertificateCommandTest {
 
     private BirthCertificateCommand command;
 

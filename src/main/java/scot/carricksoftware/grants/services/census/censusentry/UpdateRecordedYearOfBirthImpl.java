@@ -31,7 +31,7 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
 
     @Override
     public void updateRecordedYearOfBirth(CensusEntryCommand censusEntryCommand) {
-        logger.info("UpdateRecordedYearOfBirthImpl::updateRecordedYearOfBirth");
+        logger.debug("UpdateRecordedYearOfBirthImpl::updateRecordedYearOfBirth");
         Person person = censusEntryCommand.getPerson();
         if (!isNull(person)) {
             if (isNull(person.getRecordedYearOfBirth())) {
@@ -55,13 +55,12 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
                     }
                 }
             }
-
         }
     }
 
     private void updateDate(Person person,
                             String dateString) {
-        logger.info("UpdateRecordedYearOfBirthImpl::Date");
+        logger.debug("UpdateRecordedYearOfBirthImpl::Date");
         PersonCommand personCommand = personConverter.convert(person);
         if (personCommand != null) {
             personCommand.setRecordedYearOfBirth(dateString);

@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
-class DivorceCertificateCommandImplTest {
+class DivorceCertificateCommandTest {
 
     private DivorceCertificateCommand command;
 

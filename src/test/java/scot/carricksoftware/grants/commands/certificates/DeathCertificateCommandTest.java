@@ -7,20 +7,19 @@ package scot.carricksoftware.grants.commands.certificates;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
-import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
+import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-class MarriageCertificateCommandImplTest {
+class DeathCertificateCommandTest {
 
-    private MarriageCertificateCommand command;
+    private DeathCertificateCommand command;
 
     @BeforeEach
     void setUp() {
-        command = new MarriageCertificateCommandImpl();
+        command = new DeathCertificateCommandImpl();
     }
 
     @Test

@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 public interface BirthCertificateCommand {
@@ -40,4 +41,16 @@ public interface BirthCertificateCommand {
     CertificateType getCertificateType();
 
     void setCertificateType(CertificateType certificateType);
+
+    Place getRegistrationAuthority();
+
+    void setRegistrationAuthority(Place registrationAuthority);
+
+    String getVolume();
+
+    void setVolume(String volume);
+
+    String getNumber();
+
+    void setNumber(String number);
 }
