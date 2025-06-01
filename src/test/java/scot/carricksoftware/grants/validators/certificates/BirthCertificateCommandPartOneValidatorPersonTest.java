@@ -15,17 +15,20 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
-import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
+import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
-class BirthCertificateCommandValidatorCertificateTypeTest {
+class BirthCertificateCommandPartOneValidatorPersonTest {
 
-    private BirthCertificateCommandValidator commandValidator;
+    private BirthCertificateCommandPartOneValidator commandValidator;
 
     private ArgumentCaptor<String> stringArgumentCaptor;
     private ArgumentCaptor<String> stringArgumentCaptor2;
@@ -39,7 +42,7 @@ class BirthCertificateCommandValidatorCertificateTypeTest {
 
     @BeforeEach
     void setUp() {
-        commandValidator = new BirthCertificateCommandValidator();
+        commandValidator = new BirthCertificateCommandPartOneValidator();
         stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor2 = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor3 = ArgumentCaptor.forClass(String.class);
@@ -47,13 +50,13 @@ class BirthCertificateCommandValidatorCertificateTypeTest {
 
         birthCertificateCommand = new BirthCertificateCommandImpl();
         birthCertificateCommand.setCertificateDate("25/01/1953");
-        birthCertificateCommand.setNewBorn(GetRandomPerson());
-        birthCertificateCommand.setCertificateNumber(Long.toString(GetRandomLong()));
+        birthCertificateCommand.setCertificateNumber("1953");
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
         birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
     }
 
     @Test
-    public void nullTypeTest() {
+    public void nullPersonTest() {
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
 
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
@@ -61,11 +64,18 @@ class BirthCertificateCommandValidatorCertificateTypeTest {
                 objectArgumentCaptor.capture(),
                 stringArgumentCaptor3.capture());
 
-        assertEquals("certificateType", stringArgumentCaptor.getValue());
-        assertEquals("The certificate type cannot be null.", stringArgumentCaptor3.getValue());
+        assertEquals("newBorn", stringArgumentCaptor.getValue());
+        assertEquals("The New Born cannot be null.", stringArgumentCaptor3.getValue());
 
     }
 
+    @Test
+    public void notNullPersonTest() {
+        birthCertificateCommand.setNewBorn(GetRandomPerson());
+        when(bindingResultMock.hasErrors()).thenReturn(false);
+        commandValidator.validate(birthCertificateCommand, bindingResultMock);
 
+        verify(bindingResultMock, times(0)).rejectValue(any(), any(), any(), any());
+    }
 
 }

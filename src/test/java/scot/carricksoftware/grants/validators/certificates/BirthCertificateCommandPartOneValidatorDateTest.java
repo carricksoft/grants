@@ -18,17 +18,16 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
-class BirthCertificateCommandValidatorPersonTest {
+class BirthCertificateCommandPartOneValidatorDateTest {
 
-    private BirthCertificateCommandValidator commandValidator;
+    private BirthCertificateCommandPartOneValidator commandValidator;
 
     private ArgumentCaptor<String> stringArgumentCaptor;
     private ArgumentCaptor<String> stringArgumentCaptor2;
@@ -42,21 +41,25 @@ class BirthCertificateCommandValidatorPersonTest {
 
     @BeforeEach
     void setUp() {
-        commandValidator = new BirthCertificateCommandValidator();
+        commandValidator = new BirthCertificateCommandPartOneValidator();
         stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor2 = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor3 = ArgumentCaptor.forClass(String.class);
         objectArgumentCaptor = ArgumentCaptor.forClass(Object[].class);
 
         birthCertificateCommand = new BirthCertificateCommandImpl();
-        birthCertificateCommand.setCertificateDate("25/01/1953");
-        birthCertificateCommand.setCertificateNumber("1953");
-        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
-        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
     }
 
+
     @Test
-    public void nullPersonTest() {
+    public void certificateInvalidDateTest() {
+        birthCertificateCommand.setNewBorn(GetRandomPerson());
+        birthCertificateCommand.setCertificateNumber(GetRandomString());
+        birthCertificateCommand.setCertificateDate(GetRandomString());
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
+
+        when(bindingResultMock.hasErrors()).thenReturn(false);
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
 
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
@@ -64,18 +67,52 @@ class BirthCertificateCommandValidatorPersonTest {
                 objectArgumentCaptor.capture(),
                 stringArgumentCaptor3.capture());
 
-        assertEquals("newBorn", stringArgumentCaptor.getValue());
-        assertEquals("The New Born cannot be null.", stringArgumentCaptor3.getValue());
-
+        assertEquals("certificateDate", stringArgumentCaptor.getValue());
+        assertEquals("The certificate date is invalid or of the wrong format.", stringArgumentCaptor3.getValue());
     }
 
     @Test
-    public void notNullPersonTest() {
+    public void certificateFutureDateTest() {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
+        birthCertificateCommand.setCertificateNumber(GetRandomString());
+        birthCertificateCommand.setCertificateDate("01/01/2099");
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
+
         when(bindingResultMock.hasErrors()).thenReturn(false);
         commandValidator.validate(birthCertificateCommand, bindingResultMock);
 
-        verify(bindingResultMock, times(0)).rejectValue(any(), any(), any(), any());
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
+                stringArgumentCaptor2.capture(),
+                objectArgumentCaptor.capture(),
+                stringArgumentCaptor3.capture());
+
+        assertEquals("certificateDate", stringArgumentCaptor.getValue());
+        assertEquals("Date should not be in the future.", stringArgumentCaptor3.getValue());
     }
+
+    @Test
+    public void certificateNullDateTest() {
+        birthCertificateCommand.setNewBorn(GetRandomPerson());
+        birthCertificateCommand.setCertificateNumber(GetRandomString());
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
+
+        when(bindingResultMock.hasErrors()).thenReturn(false);
+        commandValidator.validate(birthCertificateCommand, bindingResultMock);
+
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
+                stringArgumentCaptor2.capture(),
+                objectArgumentCaptor.capture(),
+                stringArgumentCaptor3.capture());
+
+        assertEquals("certificateDate", stringArgumentCaptor.getValue());
+        assertEquals("The certificate date cannot be null.", stringArgumentCaptor3.getValue());
+    }
+
+
+
+
+
 
 }
