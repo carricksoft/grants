@@ -52,6 +52,7 @@ class BirthCertificateCommandTest {
         command.setNewBorn(person);
         assertEquals(person, command.getNewBorn());
     }
+
     @Test
     void getCertificateNumberTest() {
         assertNull(command.getCertificateNumber());

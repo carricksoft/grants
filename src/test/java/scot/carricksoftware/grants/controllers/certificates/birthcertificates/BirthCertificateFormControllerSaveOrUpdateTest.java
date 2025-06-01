@@ -48,7 +48,6 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     private OrganisationService organisationServiceMock;
 
 
-
     @Mock
     Model modelMock;
 

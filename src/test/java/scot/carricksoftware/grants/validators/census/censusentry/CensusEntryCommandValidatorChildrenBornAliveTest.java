@@ -54,7 +54,7 @@ class CensusEntryCommandValidatorChildrenBornAliveTest {
         censusEntryCommand.setPerson(GetRandomPerson());
         validator.validate(censusEntryCommand, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
-       }
+    }
 
     @Test
     public void NotIntegerTest() {

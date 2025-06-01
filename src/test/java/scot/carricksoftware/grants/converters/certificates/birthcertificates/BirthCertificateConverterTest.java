@@ -47,7 +47,8 @@ class BirthCertificateConverterTest {
         source.setCertificateNumber(certificateNumber);
         source.setCertificateDate(certificateDate);
         source.setCertificateSource(certificateSource);
-        source.setCertificateType(certificateType); source.setVolume(volume);
+        source.setCertificateType(certificateType);
+        source.setVolume(volume);
         source.setNumber(number);
         source.setRegistrationAuthority(registrationAuthority);
 
