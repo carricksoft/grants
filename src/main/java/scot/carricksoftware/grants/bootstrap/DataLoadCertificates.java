@@ -56,6 +56,9 @@ public class DataLoadCertificates {
 
         Organisation organisation = organisationService.findById(1L);
         birthCertificateCommand.setCertificateSource(organisation);
+        birthCertificateCommand.setRegistrationAuthority(organisation);
+        birthCertificateCommand.setNumber("01");
+        birthCertificateCommand.setVolume("1953");
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
 

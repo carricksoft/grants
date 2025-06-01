@@ -65,6 +65,9 @@ public class DataLoadCertificatesTest {
         assertEquals("999", captor.getValue().getCertificateNumber());
         assertEquals("25/01/1953", captor.getValue().getCertificateDate());
         assertEquals(CertificateType.EXTRACT, captor.getValue().getCertificateType());
+        assertEquals(organisation, captor.getValue().getRegistrationAuthority());
+        assertEquals("01", captor.getValue().getNumber());
+        assertEquals("1953", captor.getValue().getVolume());
     }
 
     @Test
