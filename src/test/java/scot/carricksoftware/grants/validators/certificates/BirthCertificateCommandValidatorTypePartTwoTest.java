@@ -18,6 +18,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
@@ -93,6 +94,16 @@ class BirthCertificateCommandValidatorTypePartTwoTest {
 
         assertEquals("number", stringArgumentCaptor.getValue());
         assertEquals(error, stringArgumentCaptor3.getValue());
+    }
+
+    @Test
+    void zeroIsAnAValidNumberTest() {
+        birthCertificateCommand.setNumber("0");
+        birthCertificateCommand.setVolume(GetRandomString());
+        birthCertificateCommand.setRegistrationAuthority(GetRandomOrganisation());
+        commandValidator.validate(birthCertificateCommand, bindingResultMock);
+
+        verifyNoInteractions(bindingResultMock);
 
     }
 
