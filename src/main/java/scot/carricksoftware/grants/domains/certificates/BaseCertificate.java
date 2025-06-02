@@ -44,7 +44,7 @@ public class BaseCertificate extends BaseEntity {
     @Column(name = "`volume`")
     private String volume;
 
-    @Column(name = "`Number`")
+    @Column(name = "`number`")
     private String number;
 
     @SuppressWarnings("unused")
