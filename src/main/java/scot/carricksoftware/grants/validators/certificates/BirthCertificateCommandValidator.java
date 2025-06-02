@@ -17,11 +17,14 @@ public class BirthCertificateCommandValidator {
 
     private final BirthCertificateCommandPartOneValidator partOneValidator;
     private final BirthCertificateCommandPartTwoValidator partTwoValidator;
+    private final BirthCertificateCommandPartThreeValidator partThreeValidator;
 
     public BirthCertificateCommandValidator(BirthCertificateCommandPartOneValidator partOneValidator,
-                                            BirthCertificateCommandPartTwoValidator partTwoValidator) {
+                                            BirthCertificateCommandPartTwoValidator partTwoValidator,
+                                            BirthCertificateCommandPartThreeValidator partThreeValidator) {
         this.partOneValidator = partOneValidator;
         this.partTwoValidator = partTwoValidator;
+        this.partThreeValidator = partThreeValidator;
     }
 
 
@@ -30,6 +33,7 @@ public class BirthCertificateCommandValidator {
 
         partOneValidator.validate(birthCertificateCommand, bindingResult);
         partTwoValidator.validate(birthCertificateCommand, bindingResult);
+        partThreeValidator.validate(birthCertificateCommand, bindingResult);
     }
 
 

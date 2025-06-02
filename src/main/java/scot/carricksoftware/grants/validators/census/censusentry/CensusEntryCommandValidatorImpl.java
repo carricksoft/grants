@@ -95,6 +95,7 @@ public class CensusEntryCommandValidatorImpl implements CensusEntryCommandValida
         }
     }
 
+    @SuppressWarnings("DuplicatedCode")
     private void validateInteger(String part, int low, int high, String validationConstant, String field, BindingResult bindingResult) {
         boolean invalid = false;
         try {
