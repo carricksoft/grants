@@ -160,7 +160,7 @@
 
             <tr>
                 <td style="text-align: right;">
-                    <label for="newBorn">NewBorn</label>
+                    <label for="newBorn">NewBorn&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
                     <select id="newBorn" name="newBorn" th:field="*{newBorn}">
@@ -174,6 +174,55 @@
                         </ul>
                     </div>
                 </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="sex">Sex&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="sex" style="width: 200px;" name="sex" th:field="*{sex}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="value : ${T(scot.carricksoftware.grants.enums.censusentry.CensusEntrySex).values()}"
+                                th:value="${value}" th:text="${value.label}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('sex')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('newBorn')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+            <td style="text-align: right;">
+                <label for="whenBorn">When Born (dd/mm/yyyy hh:mm)&nbsp;</label>
+            </td>
+            <td style="text-align: left;">
+                <div>
+                    <input class="number" id="whenBorn"
+                           th:field="*{whenBorn}" type="text">
+                    <div th:if="${#fields.hasErrors('whenBorn')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('whenBorn')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+            <tr>
+            <td style="text-align: right;">
+                <label for="whereBorn">Where Born&nbsp;</label>
+            </td>
+            <td style="text-align: left;">
+                <div>
+                    <input class="number" id="whereBorn"
+                           th:field="*{whereBorn}" type="text">
+                    <div th:if="${#fields.hasErrors('whereBorn')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('whereBorn')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+
             </tr>
         </table>
 
