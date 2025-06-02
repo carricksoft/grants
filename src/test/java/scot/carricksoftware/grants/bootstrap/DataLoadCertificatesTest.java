@@ -10,6 +10,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
@@ -68,6 +69,9 @@ public class DataLoadCertificatesTest {
         assertEquals(organisation, captor.getValue().getRegistrationAuthority());
         assertEquals("01", captor.getValue().getNumber());
         assertEquals("1953", captor.getValue().getVolume());
+        assertEquals(CensusEntrySex.MALE, captor.getValue().getSex());
+        assertEquals("25/01/1953", captor.getValue().getWhenBorn());
+        assertEquals("Edinburgh", captor.getValue().getWhereBorn());
     }
 
     @Test

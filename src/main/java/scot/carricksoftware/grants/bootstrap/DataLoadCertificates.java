@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
@@ -59,6 +60,9 @@ public class DataLoadCertificates {
         birthCertificateCommand.setRegistrationAuthority(organisation);
         birthCertificateCommand.setNumber("01");
         birthCertificateCommand.setVolume("1953");
+        birthCertificateCommand.setSex(CensusEntrySex.MALE);
+        birthCertificateCommand.setWhenBorn("25/01/1953");
+        birthCertificateCommand.setWhereBorn("Edinburgh");
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
 
