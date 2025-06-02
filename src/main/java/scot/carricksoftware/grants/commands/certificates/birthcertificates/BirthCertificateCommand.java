@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 public interface BirthCertificateCommand {
@@ -52,4 +53,16 @@ public interface BirthCertificateCommand {
     String getNumber();
 
     void setNumber(String number);
+
+    String getWhenBorn();
+
+    void setWhenBorn(String whenBorn);
+
+    String getWhereBorn();
+
+    void setWhereBorn(String whereBorn);
+
+    CensusEntrySex getSex();
+
+    void setSex(CensusEntrySex sex);
 }

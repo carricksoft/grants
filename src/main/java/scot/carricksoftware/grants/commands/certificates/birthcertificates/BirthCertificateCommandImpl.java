@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 public class BirthCertificateCommandImpl implements BirthCertificateCommand {
@@ -28,6 +29,12 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     private String volume;
 
     private String number;
+
+    private String whenBorn;
+
+    private String whereBorn;
+
+    private CensusEntrySex sex;
 
 
     public Long getId() {
@@ -117,5 +124,35 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     @Override
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String getWhenBorn() {
+        return whenBorn;
+    }
+
+    @Override
+    public void setWhenBorn(String whenBorn) {
+        this.whenBorn = whenBorn;
+    }
+
+    @Override
+    public String getWhereBorn() {
+        return whereBorn;
+    }
+
+    @Override
+    public void setWhereBorn(String whereBorn) {
+        this.whereBorn = whereBorn;
+    }
+
+    @Override
+    public CensusEntrySex getSex() {
+        return sex;
+    }
+
+    @Override
+    public void setSex(CensusEntrySex sex) {
+        this.sex = sex;
     }
 }

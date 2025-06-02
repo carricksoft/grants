@@ -34,7 +34,7 @@ public class BaseCertificate extends BaseEntity {
     private Organisation certificateSource;
 
     @Column(name= "`certificate_date`")
-    @DateTimeFormat(pattern = ApplicationConstants.DATE_TIME_FORMAT)
+    @DateTimeFormat(pattern = ApplicationConstants.DATE_FORMAT)
     private String certificateDate;
 
     @ManyToOne
