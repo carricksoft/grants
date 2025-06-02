@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,7 +43,9 @@ class BirthCertificateCommandConverterTest {
         Organisation registrationAuthority = GetRandomOrganisation();
         String volume = GetRandomString();
         String number = GetRandomString();
-
+        CensusEntrySex sex = CensusEntrySex.MALE;
+        String whenBorn = GetRandomString();
+        String whereBorn = GetRandomString();
 
         source.setId(id);
         source.setNewBorn(person);
@@ -53,6 +56,9 @@ class BirthCertificateCommandConverterTest {
         source.setVolume(volume);
         source.setNumber(number);
         source.setRegistrationAuthority(registrationAuthority);
+        source.setSex(sex);
+        source.setWhenBorn(whenBorn);
+        source.setWhereBorn(whereBorn);
 
 
         BirthCertificate target = converter.convert(source);
@@ -67,6 +73,8 @@ class BirthCertificateCommandConverterTest {
         assertEquals(volume, target.getVolume());
         assertEquals(number, target.getNumber());
         assertEquals(registrationAuthority, target.getRegistrationAuthority());
-
+        assertEquals(sex, target.getSex());
+        assertEquals(whereBorn, target.getWhereBorn());
+        assertEquals(whenBorn, target.getWhenBorn());
     }
 }
