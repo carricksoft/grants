@@ -12,7 +12,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
-import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 import java.time.LocalDate;
 
@@ -20,6 +20,12 @@ import java.time.LocalDate;
 public class BirthCertificateCommandPartOneValidator {
 
     private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartOneValidator.class);
+
+    private final ValidateTypes validateTypes;
+
+    public BirthCertificateCommandPartOneValidator(ValidateTypes validateTypes) {
+        this.validateTypes = validateTypes;
+    }
 
     @SuppressWarnings("unused")
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
@@ -37,15 +43,9 @@ public class BirthCertificateCommandPartOneValidator {
 
     private void validateNewBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate newBorn");
-        validatePerson(birthCertificateCommand.getNewBorn(),"newBorn", ValidationConstants.NEWBORN_IS_NULL, bindingResult);
+        validateTypes.validatePerson(birthCertificateCommand.getNewBorn(),"newBorn", ValidationConstants.NEWBORN_IS_NULL, bindingResult);
     }
 
-    @SuppressWarnings("SameParameterValue")
-    private void validatePerson(Person person, String field, String message, BindingResult bindingResult) {
-        if (person == null ) {
-            bindingResult.rejectValue(field, ApplicationConstants.EMPTY_STRING, null, message);
-        }
-    }
 
     private void validateNullOrEmptyString(String string, @SuppressWarnings("SameParameterValue") String field, @SuppressWarnings("SameParameterValue") String message, BindingResult bindingResult) {
         if (string == null||string.isEmpty()) {

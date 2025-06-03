@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
+import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -39,9 +40,12 @@ class BirthCertificateCommandValidatorPartOneTest {
     @Mock
     BindingResult bindingResultMock;
 
+    ValidateTypes validateTypes;
+
     @BeforeEach
     void setUp() {
-        commandValidator = new BirthCertificateCommandPartOneValidator();
+        validateTypes = new ValidateTypes();
+        commandValidator = new BirthCertificateCommandPartOneValidator(validateTypes);
         stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor2 = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor3 = ArgumentCaptor.forClass(String.class);
@@ -71,6 +75,7 @@ class BirthCertificateCommandValidatorPartOneTest {
 
     @Test
     public void certificateSourceTest() {
+
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateNumber(GetRandomString());
         birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
