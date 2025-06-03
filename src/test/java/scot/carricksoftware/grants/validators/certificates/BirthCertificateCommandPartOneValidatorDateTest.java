@@ -16,7 +16,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
-import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
+import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -40,11 +40,11 @@ class BirthCertificateCommandPartOneValidatorDateTest {
     @Mock
     BindingResult bindingResultMock;
 
-    ValidateTypes validateTypes;
+    ValidateTypesImpl validateTypes;
 
     @BeforeEach
     void setUp() {
-        validateTypes = new ValidateTypes();
+        validateTypes = new ValidateTypesImpl();
         commandValidator = new BirthCertificateCommandPartOneValidator(validateTypes);
         stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor2 = ArgumentCaptor.forClass(String.class);

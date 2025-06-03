@@ -5,17 +5,9 @@
 
 package scot.carricksoftware.grants.validators.helpers;
 
-import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 
-@Component
-public class ValidateTypes {
-
-    public void validatePerson(Person person, String field, String message, BindingResult bindingResult) {
-        if (person == null ) {
-            bindingResult.rejectValue(field, ApplicationConstants.EMPTY_STRING, null, message);
-        }
-    }
+public interface ValidateTypes {
+    void validatePerson(Person person, String field, String message, BindingResult bindingResult);
 }
