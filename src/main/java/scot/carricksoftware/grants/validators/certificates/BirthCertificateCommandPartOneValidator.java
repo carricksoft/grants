@@ -47,24 +47,14 @@ public class BirthCertificateCommandPartOneValidator {
     }
 
 
-    private void validateNullOrEmptyString(String string, @SuppressWarnings("SameParameterValue") String field, @SuppressWarnings("SameParameterValue") String message, BindingResult bindingResult) {
-        if (string == null||string.isEmpty()) {
-            bindingResult.rejectValue(field, ApplicationConstants.EMPTY_STRING, null, message);
-        }
-    }
-
     private void validateCertificateNumber(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Certificate Number");
-        validateNullOrEmptyString(birthCertificateCommand.getCertificateNumber(), "certificateNumber", ValidationConstants.CERTIFICATE_NUMBER_IS_NULL, bindingResult);
+        validateTypes.validateNullOrEmptyString(birthCertificateCommand.getCertificateNumber(), "certificateNumber", ValidationConstants.CERTIFICATE_NUMBER_IS_NULL, bindingResult);
     }
 
     private void validateCertificateSource(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Certificate Source");
-        if (birthCertificateCommand.getCertificateSource() == null ) {
-            bindingResult.rejectValue("certificateSource", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.SOURCE_IS_NULL);
-        }
+        validateTypes.validateOrganisation(birthCertificateCommand.getCertificateSource(), "certificateSource", ValidationConstants.SOURCE_IS_NULL, bindingResult);
     }
 
     private void validateCertificateType(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
