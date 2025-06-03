@@ -36,9 +36,6 @@ public class BirthCertificateCommandPartOneValidator {
         validateCertificateSource(birthCertificateCommand, bindingResult);
         validateCertificateType(birthCertificateCommand, bindingResult);
         validateCertificateDate(birthCertificateCommand, bindingResult);
-        if (!bindingResult.hasErrors()) {
-            validateCertificateLegitimateDate(birthCertificateCommand, bindingResult);
-        }
     }
 
     private void validateNewBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
@@ -83,19 +80,6 @@ public class BirthCertificateCommandPartOneValidator {
         }
     }
 
-    private void validateCertificateLegitimateDate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
-        logger.debug("Validating birth Certificate valid date");
-        try {
-            LocalDate testDate = LocalDate.parse(birthCertificateCommand.getCertificateDate(), ApplicationConstants.FORMATTER);
-            if (testDate.isAfter(LocalDate.now())) {
-                bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
-                        null,
-                        ValidationConstants.DATE_IN_FUTURE);
-            }
-        } catch (Exception e) {
-            logger.debug("Error trapped in  birth Certificate valid date");
-        }
-    }
 
 
 }

@@ -71,7 +71,14 @@ class BirthCertificateCommandTest {
     }
 
     @Test
-    void setCertificateDateTest() {
+    void setCertificateDateNullTest() {
+        String certificateDate = GetRandomString();
+        command.setCertificateDate(certificateDate);
+        assertEquals(certificateDate, command.getCertificateDate());
+    }
+
+    @Test
+    void setCertificateDateEmptyTest() {
         String certificateDate = GetRandomString();
         command.setCertificateDate(certificateDate);
         assertEquals(certificateDate, command.getCertificateDate());
