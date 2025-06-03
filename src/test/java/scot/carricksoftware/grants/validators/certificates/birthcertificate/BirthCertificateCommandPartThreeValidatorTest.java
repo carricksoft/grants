@@ -6,11 +6,29 @@
 package scot.carricksoftware.grants.validators.certificates.birthcertificate;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@ExtendWith(MockitoExtension.class)
 class BirthCertificateCommandPartThreeValidatorTest {
+
+    private BirthCertificateCommandPartThreeValidator validator;
+
+    @Mock
+    private ValidateTypes validateTypesMock;
 
     @BeforeEach
     void setUp() {
+        validator = new BirthCertificateCommandPartThreeValidatorImpl(validateTypesMock);
+    }
+
+    @Test
+    void constructorTest() {
+        assertNotNull(validator);
     }
 }
