@@ -10,8 +10,8 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
-import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
+import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 
 @Component
@@ -19,90 +19,34 @@ public class BirthCertificateCommandPartThreeValidator {
 
     private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartThreeValidator.class);
 
+    private final ValidateTypes validateTypes;
+
+    public BirthCertificateCommandPartThreeValidator(ValidateTypes validateTypes) {
+        this.validateTypes = validateTypes;
+    }
 
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
-        logger.debug("Validating birth certificate command (part two)");
+        logger.debug("Validating birth certificate command (part three)");
 
         validateSex(birthCertificateCommand, bindingResult);
         validateWhenBorn(birthCertificateCommand, bindingResult);
         validateWhereBorn(birthCertificateCommand, bindingResult);
     }
 
-
     private void validateWhereBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating where born");
-        if (birthCertificateCommand.getWhereBorn() == null || birthCertificateCommand.getWhereBorn().isEmpty()) {
-            bindingResult.rejectValue("whereBorn", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.WHERE_BORN_IS_NULL);
-        }
+        validateTypes.validateNullOrEmptyString(birthCertificateCommand.getWhereBorn(), "whereBorn", ValidationConstants.WHERE_BORN_IS_NULL, bindingResult);
     }
-
 
     private void validateSex(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating sex");
-        if (birthCertificateCommand.getSex() == null ) {
-            bindingResult.rejectValue("sex", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.SEX_IS_NULL);
-        }
+        validateTypes.validateSex(birthCertificateCommand.getSex(), "whereBorn", ValidationConstants.SEX_IS_NULL, bindingResult);
     }
 
     private void validateWhenBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
-        String[] parts = birthCertificateCommand.getWhenBorn().split("/");
-        if (parts.length != 3) {
-            bindingResult.rejectValue("whenBorn", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.WHEN_BORN_INCORRECT_FORMAT);
-        } else {
-            validateInteger(parts[0], 1, 31, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, "whenBorn", bindingResult);
-            validateInteger(parts[1], 1, 12, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, "whenBorn", bindingResult);
-            validateYearAndTime(parts[2], bindingResult);
-        }
+        logger.debug("Validating when born");
+        validateTypes.validatePastDateAndTime(birthCertificateCommand.getWhenBorn(), "whereBorn", ValidationConstants.WHEN_BORN_IS_NULL, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, ValidationConstants.DATE_IN_FUTURE,bindingResult);
     }
 
 
-    @SuppressWarnings("DuplicatedCode")
-    private void validateInteger(String part, int low, int high, @SuppressWarnings("SameParameterValue") String validationConstant, @SuppressWarnings("SameParameterValue") String field, BindingResult bindingResult) {
-        boolean invalid = false;
-        try {
-            int value = Integer.parseInt(part);
-            if (value < low || value > high) {
-                invalid = true;
-            }
-        } catch (RuntimeException e) {
-            invalid = true;
-        }
-        if (invalid) {
-            bindingResult.rejectValue(field, ApplicationConstants.EMPTY_STRING,
-                    null,
-                    validationConstant);
-        }
-    }
-
-    private void validateYearAndTime(String string, BindingResult bindingResult) {
-        String[] parts = string.split(" ");
-        if (parts.length != 2) {
-            bindingResult.rejectValue("whenBorn", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.WHEN_BORN_INCORRECT_FORMAT);
-        }
-        else {
-            validateInteger(parts[0], 1600, 2029, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, "whenBorn", bindingResult);
-            validateTime(parts[1], "whenBorn", bindingResult);
-        }
-    }
-
-    @SuppressWarnings("unused")
-    private void validateTime(String time, @SuppressWarnings("SameParameterValue") String whenBorn, BindingResult bindingResult) {
-        String[] parts = time.split(":");
-        if (parts.length != 2) {
-            bindingResult.rejectValue("whenBorn", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.WHEN_BORN_INCORRECT_FORMAT);
-        } else {
-            validateInteger(parts[0], 0, 24, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, "whenBorn", bindingResult);
-            validateInteger(parts[1], 0, 59, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, "whenBorn", bindingResult);
-        }
-    }
 }
