@@ -93,8 +93,14 @@ public class BirthCertificateCommandPartThreeValidator {
 
     private void validateTime(String time, String whenBorn, BindingResult bindingResult) {
         String[] parts = time.split(":");
-        validateInteger(parts[0], 0, 24, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, "whenBorn", bindingResult);
-        validateInteger(parts[1], 0, 59, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, "whenBorn", bindingResult);
+        if (parts.length != 2) {
+            bindingResult.rejectValue("whenBorn", ApplicationConstants.EMPTY_STRING,
+                    null,
+                    ValidationConstants.WHEN_BORN_INCORRECT_FORMAT);
+        } else {
+            validateInteger(parts[0], 0, 24, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, "whenBorn", bindingResult);
+            validateInteger(parts[1], 0, 59, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, "whenBorn", bindingResult);
+        }
     }
 
 
