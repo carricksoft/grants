@@ -26,7 +26,7 @@ import scot.carricksoftware.grants.converters.certificates.birthcertificates.Bir
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.validators.certificates.BirthCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.birthcertificate.BirthCertificateCommandValidatorImpl;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -37,7 +37,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final BirthCertificateCommandConverterImpl birthCertificateCommandConverter;
     private final BirthCertificateConverterImpl birthCertificateConverter;
-    private final BirthCertificateCommandValidator birthCertificateCommandValidator;
+    private final BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImpl;
     private final PersonService personService;
     private final OrganisationService organisationService;
 
@@ -45,7 +45,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     public BirthCertificateFormControllerImpl(BirthCertificateService birthCertificateService,
                                               BirthCertificateCommandConverterImpl birthCertificateCommandConverter,
                                               BirthCertificateConverterImpl birthCertificateConverter,
-                                              BirthCertificateCommandValidator birthCertificateCommandValidator,
+                                              BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImpl,
                                               PersonService personService,
                                               OrganisationService organisationService) {
         this.birthCertificateService = birthCertificateService;
@@ -53,7 +53,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
 
 
         this.birthCertificateConverter = birthCertificateConverter;
-        this.birthCertificateCommandValidator = birthCertificateCommandValidator;
+        this.birthCertificateCommandValidatorImpl = birthCertificateCommandValidatorImpl;
         this.personService = personService;
         this.organisationService = organisationService;
     }
@@ -86,7 +86,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     public String saveOrUpdate(@Valid @ModelAttribute BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
 
-        birthCertificateCommandValidator.validate(birthCertificateCommand, bindingResult);
+        birthCertificateCommandValidatorImpl.validate(birthCertificateCommand, bindingResult);
 
 
         if (bindingResult.hasErrors()) {

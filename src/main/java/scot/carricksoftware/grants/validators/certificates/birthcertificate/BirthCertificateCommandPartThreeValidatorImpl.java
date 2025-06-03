@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.validators.certificates;
+package scot.carricksoftware.grants.validators.certificates.birthcertificate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,16 +15,17 @@ import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 
 @Component
-public class BirthCertificateCommandPartThreeValidator {
+public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCertificateCommandPartThreeValidator {
 
-    private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartThreeValidator.class);
+    private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartThreeValidatorImpl.class);
 
     private final ValidateTypes validateTypes;
 
-    public BirthCertificateCommandPartThreeValidator(ValidateTypes validateTypes) {
+    public BirthCertificateCommandPartThreeValidatorImpl(ValidateTypes validateTypes) {
         this.validateTypes = validateTypes;
     }
 
+    @Override
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate command (part three)");
 

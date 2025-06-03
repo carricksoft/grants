@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 19/03/2025, 09:50. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.validators.certificates;
+package scot.carricksoftware.grants.validators.certificates.birthcertificate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,13 +14,13 @@ import scot.carricksoftware.grants.constants.ValidationConstants;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 @Component
-public class BirthCertificateCommandPartTwoValidator {
+public class BirthCertificateCommandPartTwoValidatorImpl implements BirthCertificateCommandPartTwoValidator {
 
-    private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartTwoValidator.class);
+    private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartTwoValidatorImpl.class);
 
     private final ValidateTypes validateTypes;
 
-    public BirthCertificateCommandPartTwoValidator(ValidateTypes validateTypes) {
+    public BirthCertificateCommandPartTwoValidatorImpl(ValidateTypes validateTypes) {
         this.validateTypes = validateTypes;
     }
 

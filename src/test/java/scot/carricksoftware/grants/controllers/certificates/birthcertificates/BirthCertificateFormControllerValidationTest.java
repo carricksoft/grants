@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.converters.certificates.birthcertificates.Bir
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.validators.certificates.BirthCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.birthcertificate.BirthCertificateCommandValidatorImpl;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -52,7 +52,7 @@ public class BirthCertificateFormControllerValidationTest {
     private OrganisationService organisationServiceMock;
 
     @Mock
-    private BirthCertificateCommandValidator birthCertificateCommandValidatorMock;
+    private BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImplMock;
 
     @Mock
     private Model modelMock;
@@ -63,7 +63,7 @@ public class BirthCertificateFormControllerValidationTest {
         birthCertificateController = new BirthCertificateFormControllerImpl(birthCertificateServiceMock,
                 birthCertificateCommandConverterMock,
                 birthCertificateConverterMock,
-                birthCertificateCommandValidatorMock,
+                birthCertificateCommandValidatorImplMock,
                 personServiceMock,
                 organisationServiceMock);
     }
@@ -78,7 +78,7 @@ public class BirthCertificateFormControllerValidationTest {
 
         birthCertificateController.saveOrUpdate(birthCertificateCommand, bindingResultMock, modelMock);
 
-        verify(birthCertificateCommandValidatorMock).validate(birthCertificateCommand, bindingResultMock);
+        verify(birthCertificateCommandValidatorImplMock).validate(birthCertificateCommand, bindingResultMock);
     }
 
 

@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.converters.certificates.marriagecertificates.
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.MarriageCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.certificates.MarriageCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.deathcertificate.MarriageCertificateCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

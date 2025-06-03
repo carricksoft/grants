@@ -19,7 +19,7 @@ import scot.carricksoftware.grants.converters.certificates.birthcertificates.Bir
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.validators.certificates.BirthCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.birthcertificate.BirthCertificateCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -55,7 +55,7 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     BindingResult bindingResultMock;
 
     @Mock
-    private BirthCertificateCommandValidator birthCertificateCommandValidatorMock;
+    private BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImplMock;
 
     private BirthCertificateCommand birthCertificateCommand;
 
@@ -65,7 +65,7 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
         birthCertificateController = new BirthCertificateFormControllerImpl(birthCertificateServiceMock,
                 birthCertificateCommandConverterMock,
                 birthCertificateConverterMock,
-                birthCertificateCommandValidatorMock,
+                birthCertificateCommandValidatorImplMock,
                 personServiceMock,
                 organisationServiceMock);
         birthCertificateCommand = new BirthCertificateCommandImpl();

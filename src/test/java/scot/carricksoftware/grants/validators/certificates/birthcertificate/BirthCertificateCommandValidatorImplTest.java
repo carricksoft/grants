@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 19/03/2025, 11:37. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.validators.certificates;
+package scot.carricksoftware.grants.validators.certificates.birthcertificate;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -17,18 +17,18 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class BirthCertificateCommandValidatorTest {
+class BirthCertificateCommandValidatorImplTest {
 
-    private BirthCertificateCommandValidator commandValidator;
-
-    @Mock
-    private BirthCertificateCommandPartOneValidator partOneValidatorMock;
+    private BirthCertificateCommandValidatorImpl commandValidator;
 
     @Mock
-    private BirthCertificateCommandPartTwoValidator partTwoValidatorMock;
+    private BirthCertificateCommandPartOneValidatorImpl partOneValidatorMock;
 
     @Mock
-    private BirthCertificateCommandPartThreeValidator partThreeValidatorMock;
+    private BirthCertificateCommandPartTwoValidatorImpl partTwoValidatorMock;
+
+    @Mock
+    private BirthCertificateCommandPartThreeValidatorImpl partThreeValidatorMock;
 
     @Mock
     private BindingResult bindingResultMock;
@@ -38,7 +38,7 @@ class BirthCertificateCommandValidatorTest {
 
     @BeforeEach
     void setUp() {
-        commandValidator = new BirthCertificateCommandValidator(
+        commandValidator = new BirthCertificateCommandValidatorImpl(
                 partOneValidatorMock,
                 partTwoValidatorMock,
                 partThreeValidatorMock);

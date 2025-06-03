@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 19/03/2025, 09:50. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.validators.certificates;
+package scot.carricksoftware.grants.validators.certificates.birthcertificate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,17 +15,17 @@ import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 
 @Component
-public class BirthCertificateCommandPartOneValidator {
+public class BirthCertificateCommandPartOneValidatorImpl implements BirthCertificateCommandPartOneValidator {
 
-    private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartOneValidator.class);
+    private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartOneValidatorImpl.class);
 
     private final ValidateTypes validateTypes;
 
-    public BirthCertificateCommandPartOneValidator(ValidateTypes validateTypes) {
+    public BirthCertificateCommandPartOneValidatorImpl(ValidateTypes validateTypes) {
         this.validateTypes = validateTypes;
     }
 
-    @SuppressWarnings("unused")
+    @Override
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate command (part one)");
 
@@ -38,7 +38,7 @@ public class BirthCertificateCommandPartOneValidator {
 
     private void validateNewBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate newBorn");
-        validateTypes.validatePerson(birthCertificateCommand.getNewBorn(),"newBorn", ValidationConstants.NEWBORN_IS_NULL, bindingResult);
+        validateTypes.validatePerson(birthCertificateCommand.getNewBorn(), "newBorn", ValidationConstants.NEWBORN_IS_NULL, bindingResult);
     }
 
 
@@ -66,7 +66,6 @@ public class BirthCertificateCommandPartOneValidator {
                 ValidationConstants.DATE_IN_FUTURE,
                 bindingResult);
     }
-
 
 
 }
