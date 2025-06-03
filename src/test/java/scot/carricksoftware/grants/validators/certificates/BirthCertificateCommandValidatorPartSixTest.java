@@ -82,5 +82,54 @@ class BirthCertificateCommandValidatorPartSixTest {
         assertEquals("The format should be dd/MM/yyyy hh:mm.", stringArgumentCaptor3.getValue());
     }
 
+    @Test
+    void whereBornTooHighDayTest() {
+        birthCertificateCommand.setNewBorn(GetRandomPerson());
+        birthCertificateCommand.setCertificateDate("25/01/1953");
+        birthCertificateCommand.setNumber("99");
+        birthCertificateCommand.setVolume("02");
+        birthCertificateCommand.setSex(CensusEntrySex.FEMALE);
+        birthCertificateCommand.setWhereBorn("Edinburgh");
+        birthCertificateCommand.setWhenBorn("33/01/1953 01:01");
+        birthCertificateCommand.setRegistrationAuthority(GetRandomOrganisation());
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
+
+        commandValidator.validate(birthCertificateCommand, bindingResultMock);
+
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
+                stringArgumentCaptor2.capture(),
+                objectArgumentCaptor.capture(),
+                stringArgumentCaptor3.capture());
+
+        assertEquals("whenBorn", stringArgumentCaptor.getValue());
+        assertEquals("The format should be dd/MM/yyyy hh:mm.", stringArgumentCaptor3.getValue());
+    }
+
+    @Test
+    void whereBornTooHighMonthTest() {
+        birthCertificateCommand.setNewBorn(GetRandomPerson());
+        birthCertificateCommand.setCertificateDate("25/01/1953");
+        birthCertificateCommand.setNumber("99");
+        birthCertificateCommand.setVolume("02");
+        birthCertificateCommand.setSex(CensusEntrySex.FEMALE);
+        birthCertificateCommand.setWhereBorn("Edinburgh");
+        birthCertificateCommand.setWhenBorn("25/13/1953 01:01");
+        birthCertificateCommand.setRegistrationAuthority(GetRandomOrganisation());
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
+
+        commandValidator.validate(birthCertificateCommand, bindingResultMock);
+
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
+                stringArgumentCaptor2.capture(),
+                objectArgumentCaptor.capture(),
+                stringArgumentCaptor3.capture());
+
+        assertEquals("whenBorn", stringArgumentCaptor.getValue());
+        assertEquals("The format should be dd/MM/yyyy hh:mm.", stringArgumentCaptor3.getValue());
+    }
+
+
 
 }
