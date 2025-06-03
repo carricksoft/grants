@@ -47,13 +47,15 @@ public class BirthCertificateCommandPartOneValidator {
         }
     }
 
+    private void validateNullOrEmptyString(String string, @SuppressWarnings("SameParameterValue") String field, @SuppressWarnings("SameParameterValue") String message, BindingResult bindingResult) {
+        if (string == null||string.isEmpty()) {
+            bindingResult.rejectValue(field, ApplicationConstants.EMPTY_STRING, null, message);
+        }
+    }
+
     private void validateCertificateNumber(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Certificate Number");
-        if (birthCertificateCommand.getCertificateNumber() == null || birthCertificateCommand.getCertificateNumber().isEmpty()) {
-            bindingResult.rejectValue("certificateNumber", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.CERTIFICATE_NUMBER_IS_NULL);
-        }
+        validateNullOrEmptyString(birthCertificateCommand.getCertificateNumber(), "certificateNumber", ValidationConstants.CERTIFICATE_NUMBER_IS_NULL, bindingResult);
     }
 
     private void validateCertificateSource(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
