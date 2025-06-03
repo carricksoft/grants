@@ -10,11 +10,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
-import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
-import java.time.LocalDate;
 
 @Component
 public class BirthCertificateCommandPartOneValidator {
@@ -56,28 +54,17 @@ public class BirthCertificateCommandPartOneValidator {
 
     private void validateCertificateType(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Certificate Type");
-        if (birthCertificateCommand.getCertificateType() == null ) {
-            bindingResult.rejectValue("certificateType", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.CERTIFICATE_TYPE_IS_NULL);
-        }
+        validateTypes.validateCertificateType(birthCertificateCommand.getCertificateType(), "certificateType", ValidationConstants.CERTIFICATE_TYPE_IS_NULL, bindingResult);
     }
 
     private void validateCertificateDate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Certificate Date");
-        if (birthCertificateCommand.getCertificateDate() == null || birthCertificateCommand.getCertificateDate().isEmpty()) {
-            bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.CERTIFICATE_DATE_IS_NULL);
-        } else {
-            try {
-                LocalDate.parse(birthCertificateCommand.getCertificateDate(), ApplicationConstants.FORMATTER);
-            } catch (Exception e) {
-                bindingResult.rejectValue("certificateDate", ApplicationConstants.EMPTY_STRING,
-                        null,
-                        ValidationConstants.DATE_IS_INVALID);
-            }
-        }
+        validateTypes.validatePastDate(birthCertificateCommand.getCertificateDate(),
+                "certificateDate",
+                ValidationConstants.CERTIFICATE_DATE_IS_NULL,
+                ValidationConstants.DATE_IS_INVALID,
+                ValidationConstants.DATE_IN_FUTURE,
+                bindingResult);
     }
 
 

@@ -10,13 +10,19 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
-import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
+import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 @Component
 public class BirthCertificateCommandPartTwoValidator {
 
     private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartTwoValidator.class);
+
+    private final ValidateTypes validateTypes;
+
+    public BirthCertificateCommandPartTwoValidator(ValidateTypes validateTypes) {
+        this.validateTypes = validateTypes;
+    }
 
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate command (part two)");
@@ -29,43 +35,17 @@ public class BirthCertificateCommandPartTwoValidator {
 
     private void validateNumber(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating registration number");
-        if (birthCertificateCommand.getNumber() == null || birthCertificateCommand.getNumber().isEmpty()) {
-            bindingResult.rejectValue("number", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.NUMBER_IS_NULL);
-        } else {
-            try {
-                int number = Integer.parseInt(birthCertificateCommand.getNumber());
-                if (number < 0) {
-                    bindingResult.rejectValue("number", ApplicationConstants.EMPTY_STRING,
-                            null,
-                            ValidationConstants.NUMBER_IS_INVALID);
-                }
-            } catch (NumberFormatException e) {
-                bindingResult.rejectValue("number", ApplicationConstants.EMPTY_STRING,
-                        null,
-                        ValidationConstants.NUMBER_IS_INVALID);
-            }
-        }
+        validateTypes.validateNonNegativeInteger(birthCertificateCommand.getNumber(), "volume", ValidationConstants.NUMBER_IS_NULL, ValidationConstants.NUMBER_IS_INVALID,bindingResult);
     }
-
 
     private void validateVolume(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating number Registration Volume");
-        if (birthCertificateCommand.getVolume() == null || birthCertificateCommand.getVolume().isEmpty()) {
-            bindingResult.rejectValue("volume", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.REGISTRATION_VOLUME_IS_NULL);
-        }
+        validateTypes.validateNullOrEmptyString(birthCertificateCommand.getVolume(), "volume", ValidationConstants.REGISTRATION_VOLUME_IS_NULL,bindingResult);
     }
 
     private void validateRegistrationAuthority(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Registration Authority");
-        if (birthCertificateCommand.getRegistrationAuthority() == null) {
-            bindingResult.rejectValue("registrationAuthority", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.REGISTRATION_AUTHORITY_IS_NULL);
-        }
+        validateTypes.validateOrganisation(birthCertificateCommand.getRegistrationAuthority(), "certificateSource", ValidationConstants.REGISTRATION_AUTHORITY_IS_NULL, bindingResult);
     }
 
 }

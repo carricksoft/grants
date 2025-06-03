@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 19/03/2025, 09:50. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
@@ -13,10 +13,12 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 
+
 @Component
 public class BirthCertificateCommandPartThreeValidator {
 
     private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartThreeValidator.class);
+
 
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate command (part two)");
@@ -103,7 +105,4 @@ public class BirthCertificateCommandPartThreeValidator {
             validateInteger(parts[1], 0, 59, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, "whenBorn", bindingResult);
         }
     }
-
-
 }
-
