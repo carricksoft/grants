@@ -61,7 +61,7 @@ public class BirthCertificateCommandPartThreeValidator {
 
 
     @SuppressWarnings("DuplicatedCode")
-    private void validateInteger(String part, int low, int high, String validationConstant, String field, BindingResult bindingResult) {
+    private void validateInteger(String part, int low, int high, @SuppressWarnings("SameParameterValue") String validationConstant, @SuppressWarnings("SameParameterValue") String field, BindingResult bindingResult) {
         boolean invalid = false;
         try {
             int value = Integer.parseInt(part);
@@ -91,7 +91,8 @@ public class BirthCertificateCommandPartThreeValidator {
         }
     }
 
-    private void validateTime(String time, String whenBorn, BindingResult bindingResult) {
+    @SuppressWarnings("unused")
+    private void validateTime(String time, @SuppressWarnings("SameParameterValue") String whenBorn, BindingResult bindingResult) {
         String[] parts = time.split(":");
         if (parts.length != 2) {
             bindingResult.rejectValue("whenBorn", ApplicationConstants.EMPTY_STRING,

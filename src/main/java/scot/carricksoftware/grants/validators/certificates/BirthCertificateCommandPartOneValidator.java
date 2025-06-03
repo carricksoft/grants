@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
+import scot.carricksoftware.grants.domains.people.Person;
 
 import java.time.LocalDate;
 
@@ -36,10 +37,13 @@ public class BirthCertificateCommandPartOneValidator {
 
     private void validateNewBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate newBorn");
-        if (birthCertificateCommand.getNewBorn() == null ) {
-            bindingResult.rejectValue("newBorn", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.NEWBORN_IS_NULL);
+        validatePerson(birthCertificateCommand.getNewBorn(),"newBorn", ValidationConstants.NEWBORN_IS_NULL, bindingResult);
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    private void validatePerson(Person person, String field, String message, BindingResult bindingResult) {
+        if (person == null ) {
+            bindingResult.rejectValue(field, ApplicationConstants.EMPTY_STRING, null, message);
         }
     }
 

@@ -58,6 +58,7 @@ class BirthCertificateCommandValidatorPartSixTest {
     }
 
 
+    @SuppressWarnings("SpellCheckingInspection")
     @Test
     void whereBornInvalidDateTest() {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
