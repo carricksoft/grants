@@ -56,5 +56,12 @@ class BirthCertificateCommandValidatorTest {
         verify(partTwoValidatorMock).validate(birthCertificateCommandMock, bindingResultMock);
     }
 
+    @Test
+    public void partThreeIsCalledTest() {
+        commandValidator.validate(birthCertificateCommandMock, bindingResultMock);
+        verify(partThreeValidatorMock).validate(birthCertificateCommandMock, bindingResultMock);
+    }
+
+
 
 }
