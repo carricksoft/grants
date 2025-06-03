@@ -15,19 +15,19 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 public class BirthCertificateCommandValidatorImpl implements BirthCertificateCommandValidator {
     private static final Logger logger = LogManager.getLogger(BirthCertificateCommandValidatorImpl.class);
 
-    private final BirthCertificateCommandPartOneValidatorImpl partOneValidator;
-    private final BirthCertificateCommandPartTwoValidatorImpl partTwoValidator;
-    private final BirthCertificateCommandPartThreeValidatorImpl partThreeValidator;
+    private final BirthCertificateCommandPartOneValidator partOneValidator;
+    private final BirthCertificateCommandPartTwoValidator partTwoValidator;
+    private final BirthCertificateCommandPartThreeValidator partThreeValidator;
 
-    public BirthCertificateCommandValidatorImpl(BirthCertificateCommandPartOneValidatorImpl partOneValidator,
-                                                BirthCertificateCommandPartTwoValidatorImpl partTwoValidator,
-                                                BirthCertificateCommandPartThreeValidatorImpl partThreeValidator) {
+    public BirthCertificateCommandValidatorImpl(BirthCertificateCommandPartOneValidator partOneValidator,
+                                                BirthCertificateCommandPartTwoValidator partTwoValidator,
+                                                BirthCertificateCommandPartThreeValidator partThreeValidator) {
         this.partOneValidator = partOneValidator;
         this.partTwoValidator = partTwoValidator;
         this.partThreeValidator = partThreeValidator;
     }
 
-
+    @Override
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate command");
 
@@ -35,7 +35,6 @@ public class BirthCertificateCommandValidatorImpl implements BirthCertificateCom
         partTwoValidator.validate(birthCertificateCommand, bindingResult);
         partThreeValidator.validate(birthCertificateCommand, bindingResult);
     }
-
 
 
 }

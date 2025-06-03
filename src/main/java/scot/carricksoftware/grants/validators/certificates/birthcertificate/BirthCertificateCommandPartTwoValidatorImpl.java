@@ -24,6 +24,7 @@ public class BirthCertificateCommandPartTwoValidatorImpl implements BirthCertifi
         this.validateTypes = validateTypes;
     }
 
+    @Override
     public void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate command (part two)");
 

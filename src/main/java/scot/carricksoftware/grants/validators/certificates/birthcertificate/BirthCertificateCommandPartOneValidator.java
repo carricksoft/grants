@@ -5,12 +5,9 @@
 
 package scot.carricksoftware.grants.validators.certificates.birthcertificate;
 
-import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 
-
-@Component
 public interface BirthCertificateCommandPartOneValidator {
 
 
