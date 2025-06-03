@@ -28,6 +28,9 @@ class BirthCertificateCommandValidatorTest {
     private BirthCertificateCommandPartTwoValidator partTwoValidatorMock;
 
     @Mock
+    private BirthCertificateCommandPartThreeValidator partThreeValidatorMock;
+
+    @Mock
     private BindingResult bindingResultMock;
 
     @Mock
@@ -35,7 +38,10 @@ class BirthCertificateCommandValidatorTest {
 
     @BeforeEach
     void setUp() {
-        commandValidator = new BirthCertificateCommandValidator(partOneValidatorMock, partTwoValidatorMock);
+        commandValidator = new BirthCertificateCommandValidator(
+                partOneValidatorMock,
+                partTwoValidatorMock,
+                partThreeValidatorMock);
     }
 
     @Test
