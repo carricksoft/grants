@@ -17,18 +17,18 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class BirthCertificateCommandValidatorImplTest {
+class BirthCertificateCommandValidatorTest {
 
-    private BirthCertificateCommandValidatorImpl commandValidator;
-
-    @Mock
-    private BirthCertificateCommandPartOneValidatorImpl partOneValidatorMock;
+    private BirthCertificateCommandValidator commandValidator;
 
     @Mock
-    private BirthCertificateCommandPartTwoValidatorImpl partTwoValidatorMock;
+    private BirthCertificateCommandPartOneValidator partOneValidatorMock;
 
     @Mock
-    private BirthCertificateCommandPartThreeValidatorImpl partThreeValidatorMock;
+    private BirthCertificateCommandPartTwoValidator partTwoValidatorMock;
+
+    @Mock
+    private BirthCertificateCommandPartThreeValidator partThreeValidatorMock;
 
     @Mock
     private BindingResult bindingResultMock;
