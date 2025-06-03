@@ -155,7 +155,7 @@ class BirthCertificateCommandValidatorPartSixTest {
     }
 
     @Test
-    void whereBornTooHighMinuteTest() {
+    void whereBornTooHighHourTest() {
         birthCertificateCommand.setNewBorn(GetRandomPerson());
         birthCertificateCommand.setCertificateDate("25/01/1953");
         birthCertificateCommand.setNumber("99");
@@ -177,6 +177,31 @@ class BirthCertificateCommandValidatorPartSixTest {
         assertEquals("whenBorn", stringArgumentCaptor.getValue());
         assertEquals("The format should be dd/MM/yyyy hh:mm.", stringArgumentCaptor3.getValue());
     }
+
+    @Test
+    void whereBornTooHighMinuteTest() {
+        birthCertificateCommand.setNewBorn(GetRandomPerson());
+        birthCertificateCommand.setCertificateDate("25/01/1953");
+        birthCertificateCommand.setNumber("99");
+        birthCertificateCommand.setVolume("02");
+        birthCertificateCommand.setSex(CensusEntrySex.FEMALE);
+        birthCertificateCommand.setWhereBorn("Edinburgh");
+        birthCertificateCommand.setWhenBorn("25/01/1953 10:67");
+        birthCertificateCommand.setRegistrationAuthority(GetRandomOrganisation());
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
+        birthCertificateCommand.setCertificateSource(GetRandomOrganisation());
+
+        commandValidator.validate(birthCertificateCommand, bindingResultMock);
+
+        verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
+                stringArgumentCaptor2.capture(),
+                objectArgumentCaptor.capture(),
+                stringArgumentCaptor3.capture());
+
+        assertEquals("whenBorn", stringArgumentCaptor.getValue());
+        assertEquals("The format should be dd/MM/yyyy hh:mm.", stringArgumentCaptor3.getValue());
+    }
+
 
 
 
