@@ -15,6 +15,7 @@ import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
@@ -80,8 +81,15 @@ class ValidateTypesNullTest {
         verifyNoInteractions(bindingResultMock);
     }
 
+    @Test
+    void nullCertificateTypeTest() {
+        validateTypes.validateCertificateType(null, field, message, bindingResultMock);
+        verify(bindingResultMock).rejectValue(field, ApplicationConstants.EMPTY_STRING, null, message);
+    }
 
-
-
-
+    @Test
+    void nonNullCertificateTypeTest() {
+        validateTypes.validateCertificateType(CertificateType.EXTRACT, field, message, bindingResultMock);
+        verifyNoInteractions(bindingResultMock);
+    }
 }
