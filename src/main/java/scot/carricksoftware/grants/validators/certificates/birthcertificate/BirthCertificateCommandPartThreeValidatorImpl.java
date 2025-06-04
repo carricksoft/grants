@@ -41,13 +41,12 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
 
     private void validateSex(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating sex");
-        validateTypes.validateSex(birthCertificateCommand.getSex(), "whereBorn", ValidationConstants.SEX_IS_NULL, bindingResult);
+        validateTypes.validateSex(birthCertificateCommand.getSex(), "sex", ValidationConstants.SEX_IS_NULL, bindingResult);
     }
 
     private void validateWhenBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating when born");
-        validateTypes.validatePastDateAndTime(birthCertificateCommand.getWhenBorn(), "whereBorn", ValidationConstants.WHEN_BORN_IS_NULL, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, ValidationConstants.DATE_IN_FUTURE,bindingResult);
+        validateTypes.validatePastDateAndTime(birthCertificateCommand.getWhenBorn(), "whenBorn", ValidationConstants.WHEN_BORN_IS_NULL, ValidationConstants.WHEN_BORN_INCORRECT_FORMAT, ValidationConstants.DATE_IN_FUTURE,bindingResult);
     }
-
 
 }

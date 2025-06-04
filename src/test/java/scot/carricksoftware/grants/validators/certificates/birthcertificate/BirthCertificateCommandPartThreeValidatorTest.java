@@ -10,9 +10,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 @ExtendWith(MockitoExtension.class)
 class BirthCertificateCommandPartThreeValidatorTest {
@@ -22,13 +27,40 @@ class BirthCertificateCommandPartThreeValidatorTest {
     @Mock
     private ValidateTypes validateTypesMock;
 
+    @Mock()
+    BirthCertificateCommand birthCertificateCommandMock;
+
+    @Mock
+    private BindingResult bindingResultMock;
+
     @BeforeEach
     void setUp() {
         validator = new BirthCertificateCommandPartThreeValidatorImpl(validateTypesMock);
     }
 
     @Test
-    void constructorTest() {
-        assertNotNull(validator);
+    void validateWhereBornTest() {
+        String where = GetRandomString();
+        when(birthCertificateCommandMock.getWhereBorn()).thenReturn(where);
+        validator.validate(birthCertificateCommandMock, bindingResultMock);
+        verify(validateTypesMock).validateNullOrEmptyString(where, "whereBorn","Where born cannot be null.", bindingResultMock);
     }
+
+    @Test
+    void validateSexTest() {
+        CensusEntrySex sex = CensusEntrySex.MALE;
+        when(birthCertificateCommandMock.getSex()).thenReturn(sex);
+        validator.validate(birthCertificateCommandMock, bindingResultMock);
+        verify(validateTypesMock).validateSex(sex, "sex","Sex cannot be null.", bindingResultMock);
+    }
+
+    @Test
+    void validateWhenBornTest() {
+        String whenBorn = GetRandomString();
+        when(birthCertificateCommandMock.getWhenBorn()).thenReturn(whenBorn);
+        validator.validate(birthCertificateCommandMock, bindingResultMock);
+        verify(validateTypesMock).validatePastDateAndTime(whenBorn, "whenBorn","When born cannot be null.", "The format should be dd/MM/yyyy hh:mm.","Date should not be in the future.",bindingResultMock);
+    }
+
+
 }
