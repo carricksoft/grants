@@ -46,7 +46,7 @@ public class ValidateTypesImpl implements ValidateTypes {
 
     @Override
     public void validateNullOrEmptyString(String string, String fieldName, @SuppressWarnings("SameParameterValue") String message, BindingResult bindingResult) {
-        if (string == null || string.isEmpty()) {
+        if (string == null || string.trim().isEmpty()) {
             bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, message);
         }
     }
