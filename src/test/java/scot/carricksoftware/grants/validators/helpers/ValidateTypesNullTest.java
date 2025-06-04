@@ -17,7 +17,6 @@ import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
@@ -38,11 +37,6 @@ class ValidateTypesNullTest {
         validateTypes = new ValidateTypesImpl();
         field = "field";
         message = "message";
-    }
-
-    @Test
-    void constructorTest() {
-        assertNotNull(validateTypes);
     }
 
     @Test

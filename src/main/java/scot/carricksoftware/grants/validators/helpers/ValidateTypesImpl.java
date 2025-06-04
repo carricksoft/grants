@@ -57,6 +57,18 @@ public class ValidateTypesImpl implements ValidateTypes {
 
     @Override
     public void validateNonNegativeInteger(String integerString, String fieldName, @SuppressWarnings("SameParameterValue") String nullMessage, String formatMessage, BindingResult bindingResult) {
+        if (integerString == null || integerString.isEmpty()) {
+            bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, nullMessage);
+        } else {
+            try {
+                int test = Integer.parseInt(integerString);
+                if (test < 0) {
+                    bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, formatMessage);
+                }
+            } catch (NumberFormatException e) {
+                bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, formatMessage);
+            }
+        }
     }
 
     @Override
