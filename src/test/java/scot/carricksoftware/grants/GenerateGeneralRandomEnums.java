@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.enums.general.YesNo;
 
 import java.util.Random;
@@ -21,6 +22,15 @@ public class GenerateGeneralRandomEnums {
         Random random = new Random();
         int randomInt = random.nextInt(0, yesNoArray.length);
         return yesNoArray[randomInt];
+    }
+
+    public static CertificateType GetRandomCertificateType() {
+
+        CertificateType[] certificateTypes = CertificateType.values();
+
+        Random random = new Random();
+        int randomInt = random.nextInt(0, certificateTypes.length);
+        return certificateTypes[randomInt];
     }
 
 
