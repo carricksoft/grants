@@ -89,7 +89,19 @@ public class ValidateTypesImpl implements ValidateTypes {
 
     @Override
     public void validatePastDateAndTime(String dateString, String fieldName, String nullMessage, String formatMessage, String pastMessage, BindingResult bindingResult) {
-
+        if (dateString == null || dateString.trim().isEmpty()) {
+            bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, nullMessage);
+        } else {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern(ApplicationConstants.DATE_TIME_FORMAT);
+            try {
+                LocalDate date = LocalDate.parse(dateString, formatter);
+                if (date.isAfter(LocalDate.now())) {
+                    bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, pastMessage);
+                }
+            } catch (Exception e) {
+                bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, formatMessage);
+            }
+        }
     }
 
 }
