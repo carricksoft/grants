@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
@@ -47,6 +48,8 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     @Mock
     private OrganisationService organisationServiceMock;
 
+    @Mock
+    private Capitalisation capitalisationMock;
 
     @Mock
     Model modelMock;
@@ -67,7 +70,8 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
                 birthCertificateConverterMock,
                 birthCertificateCommandValidatorImplMock,
                 personServiceMock,
-                organisationServiceMock);
+                organisationServiceMock,
+                capitalisationMock);
         birthCertificateCommand = new BirthCertificateCommandImpl();
     }
 

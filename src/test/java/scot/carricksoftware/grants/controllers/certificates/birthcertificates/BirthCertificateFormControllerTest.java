@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
@@ -56,6 +57,9 @@ public class BirthCertificateFormControllerTest {
     private Model modelMock;
 
     @Mock
+    private Capitalisation capitalisationMock;
+
+    @Mock
     private BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImplMock;
 
 
@@ -66,7 +70,8 @@ public class BirthCertificateFormControllerTest {
                 birthCertificateConverterMock,
                 birthCertificateCommandValidatorImplMock,
                 personServiceMock,
-                organisationServiceMock);
+                organisationServiceMock,
+                capitalisationMock);
     }
 
     @Test
