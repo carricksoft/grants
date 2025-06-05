@@ -61,7 +61,7 @@ public class DataLoadCertificates {
         birthCertificateCommand.setNumber("01");
         birthCertificateCommand.setVolume("1953");
         birthCertificateCommand.setSex(Sex.MALE);
-        birthCertificateCommand.setWhenBorn("25/01/1953");
+        birthCertificateCommand.setWhenBorn("25/01/1953 01:01");
         birthCertificateCommand.setWhereBorn("Edinburgh");
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);

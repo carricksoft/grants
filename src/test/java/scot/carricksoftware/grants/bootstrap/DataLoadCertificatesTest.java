@@ -70,7 +70,7 @@ public class DataLoadCertificatesTest {
         assertEquals("01", captor.getValue().getNumber());
         assertEquals("1953", captor.getValue().getVolume());
         assertEquals(Sex.MALE, captor.getValue().getSex());
-        assertEquals("25/01/1953", captor.getValue().getWhenBorn());
+        assertEquals("25/01/1953 01:01", captor.getValue().getWhenBorn());
         assertEquals("Edinburgh", captor.getValue().getWhereBorn());
     }
 
