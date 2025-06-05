@@ -68,7 +68,7 @@ public class DataLoadCertificates {
         birthCertificateCommand.setSex(Sex.MALE);
         birthCertificateCommand.setWhenBorn("25/01/1953 01:01");
         birthCertificateCommand.setWhereBorn("where born");
-        birthCertificateCommand.setDateAndPlaceOfMarriage("dateAndPlaceOfMarriage");
+        birthCertificateCommand.setDateAndPlaceOfMarriage("date and place of marriage");
         birthCertificateCommand.setFatherRank("fatherRank");
 
         Person father = new Person();

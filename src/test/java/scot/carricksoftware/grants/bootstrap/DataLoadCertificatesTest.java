@@ -76,6 +76,7 @@ public class DataLoadCertificatesTest {
         assertEquals("untrackedFather", captor.getValue().getUntrackedFather());
         assertEquals("father", captor.getValue().getFather().getFirstName());
         assertEquals("mother", captor.getValue().getMother().getFirstName());
+        assertEquals("date and place of marriage", captor.getValue().getDateAndPlaceOfMarriage());
 
     }
 
