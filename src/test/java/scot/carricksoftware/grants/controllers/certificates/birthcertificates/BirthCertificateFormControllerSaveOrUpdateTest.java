@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.converters.Capitalisation;
+import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
@@ -24,9 +25,7 @@ import scot.carricksoftware.grants.validators.certificates.birthcertificate.Birt
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -50,8 +49,6 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     @Mock
     private OrganisationService organisationServiceMock;
 
-    @Mock
-    private Capitalisation capitalisationMock;
 
     @Mock
     Model modelMock;
@@ -65,15 +62,18 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     private BirthCertificateCommand birthCertificateCommand;
 
 
+
+
     @BeforeEach
     public void setUp() {
+        Capitalisation capitalisation = new CapitalisationImpl();
         birthCertificateController = new BirthCertificateFormControllerImpl(birthCertificateServiceMock,
                 birthCertificateCommandConverterMock,
                 birthCertificateConverterMock,
                 birthCertificateCommandValidatorImplMock,
                 personServiceMock,
                 organisationServiceMock,
-                capitalisationMock);
+                capitalisation);
         birthCertificateCommand = new BirthCertificateCommandImpl();
     }
 
@@ -95,12 +95,12 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
 
     @Test
     public void whereBornIsCapitalisedTest() {
-        String whereBorn = GetRandomString();
+        String whereBorn = "lower case";
         birthCertificateCommand.setWhereBorn(whereBorn);
         when(birthCertificateServiceMock.saveBirthCertificateCommand(any(BirthCertificateCommand.class))).thenReturn(birthCertificateCommand);
 
         birthCertificateController.saveOrUpdate(birthCertificateCommand, bindingResultMock, modelMock);
-        verify(capitalisationMock).getCapitalisation(whereBorn);
+        assertEquals("Lower Case", birthCertificateCommand.getWhereBorn());
     }
 
 
