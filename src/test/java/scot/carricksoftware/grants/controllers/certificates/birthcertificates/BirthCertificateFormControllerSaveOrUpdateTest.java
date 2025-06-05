@@ -24,7 +24,9 @@ import scot.carricksoftware.grants.validators.certificates.birthcertificate.Birt
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -90,5 +92,16 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
         when(bindingResultMock.hasErrors()).thenReturn(true);
         assertEquals("certificates/birthCertificate/form", birthCertificateController.saveOrUpdate(birthCertificateCommand, bindingResultMock, modelMock));
     }
+
+    @Test
+    public void whereBornIsCapitalisedTest() {
+        String whereBorn = GetRandomString();
+        birthCertificateCommand.setWhereBorn(whereBorn);
+        when(birthCertificateServiceMock.saveBirthCertificateCommand(any(BirthCertificateCommand.class))).thenReturn(birthCertificateCommand);
+
+        birthCertificateController.saveOrUpdate(birthCertificateCommand, bindingResultMock, modelMock);
+        verify(capitalisationMock).getCapitalisation(whereBorn);
+    }
+
 
 }
