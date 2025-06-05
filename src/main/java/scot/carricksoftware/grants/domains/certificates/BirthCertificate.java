@@ -39,6 +39,28 @@ public class BirthCertificate extends BaseCertificate {
     @Column(name = "`sex`")
     private Sex sex;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @ManyToOne()
+    @JoinColumn(name = "`father_id`")
+    private Person father;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`untracked_father`")
+    private String untrackedFather;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`father_rank`")
+    private String fatherRank;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @ManyToOne()
+    @JoinColumn(name = "`mother_id`")
+    private Person mother;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`date_and_place_of_marriage`")
+    private String dateAndPlaceOfMarriage;
+
     public Person getNewBorn() {
         return newBorn;
     }
@@ -69,5 +91,45 @@ public class BirthCertificate extends BaseCertificate {
 
     public void setSex(Sex sex) {
         this.sex = sex;
+    }
+
+    public Person getFather() {
+        return father;
+    }
+
+    public void setFather(Person father) {
+        this.father = father;
+    }
+
+    public String getUntrackedFather() {
+        return untrackedFather;
+    }
+
+    public void setUntrackedFather(String untrackedFather) {
+        this.untrackedFather = untrackedFather;
+    }
+
+    public String getFatherRank() {
+        return fatherRank;
+    }
+
+    public void setFatherRank(String fatherRank) {
+        this.fatherRank = fatherRank;
+    }
+
+    public Person getMother() {
+        return mother;
+    }
+
+    public void setMother(Person mother) {
+        this.mother = mother;
+    }
+
+    public String getDateAndPlaceOfMarriage() {
+        return dateAndPlaceOfMarriage;
+    }
+
+    public void setDateAndPlaceOfMarriage(String dateAndPlaceOfMarriage) {
+        this.dateAndPlaceOfMarriage = dateAndPlaceOfMarriage;
     }
 }

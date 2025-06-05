@@ -9,12 +9,13 @@
 8: Bootstrap (use personal details)
 9: Bootstrap Test
 10: Modify the form
+10.1: Uppercase on save
 11: Validator
 12: Validator Test
 13: Switch to uat
 13A: In the database window select the uat database *** and then refresh it***
 14: Generate changelog (ctrl-shift-A) as sql
-14A:Edit the file to add COLUMN IF NOT EXISTS to the entries
+14.1 :Edit the file to add COLUMN IF NOT EXISTS to the entries
 15: Add the new file to master.xml
 16: Run in terminal  mvn clean test liquibase:update
 
