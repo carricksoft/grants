@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
+import scot.carricksoftware.grants.enums.general.Sex;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -56,7 +56,7 @@ class BirthCertificateCommandThreeFieldsTest {
 
     @Test
     void setSexTest() {
-        CensusEntrySex sex = GetRandomCensusEntrySex();
+        Sex sex = GetRandomCensusEntrySex();
         command.setSex(sex);
         assertEquals(sex, command.getSex());
     }

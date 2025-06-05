@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.commands.census;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.general.YesNo;
 
 public interface CensusEntryCommand {
@@ -52,9 +53,9 @@ public interface CensusEntryCommand {
 
     void setWhereBorn(String whereBorn);
 
-    CensusEntrySex getSex();
+    Sex getSex();
 
-    void setSex(CensusEntrySex sex);
+    void setSex(Sex sex);
 
     String getBirthDay();
 

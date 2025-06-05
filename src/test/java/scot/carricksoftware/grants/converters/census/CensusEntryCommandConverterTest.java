@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.general.YesNo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -45,7 +46,7 @@ class CensusEntryCommandConverterTest {
         Person person = GetRandomPerson();
         String age = GetRandomString();
         String whereBorn = GetRandomString();
-        CensusEntrySex sex = GetRandomCensusEntrySex();
+        Sex sex = GetRandomCensusEntrySex();
         String birthYear = GetRandomString();
         String birthDay = GetRandomString();
         String personalOccupation = GetRandomString();

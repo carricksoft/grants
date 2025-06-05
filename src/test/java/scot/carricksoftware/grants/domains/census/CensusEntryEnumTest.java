@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.general.YesNo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -82,7 +83,7 @@ class CensusEntryEnumTest {
 
     @Test
     void setSexTest() {
-        CensusEntrySex sex = GetRandomCensusEntrySex();
+        Sex sex = GetRandomCensusEntrySex();
         entry.setSex(sex);
         assertEquals(sex, entry.getSex());
     }

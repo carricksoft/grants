@@ -182,7 +182,7 @@
                 <td style="text-align: left;">
                     <select id="sex" style="width: 200px;" name="sex" th:field="*{sex}">
                         <option th:value="${''}" th:text="${''}"></option>
-                        <option th:each="value : ${T(scot.carricksoftware.grants.enums.censusentry.CensusEntrySex).values()}"
+                        <option th:each="value : ${T(scot.carricksoftware.grants.enums.general.Sex).values()}"
                                 th:value="${value}" th:text="${value.label}"></option>
                     </select>
                     <div th:if="${#fields.hasErrors('sex')}">

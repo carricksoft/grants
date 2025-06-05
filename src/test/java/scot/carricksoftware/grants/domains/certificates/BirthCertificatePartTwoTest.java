@@ -7,7 +7,7 @@ package scot.carricksoftware.grants.domains.certificates;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
+import scot.carricksoftware.grants.enums.general.Sex;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -54,7 +54,7 @@ class BirthCertificatePartTwoTest {
 
     @Test
     void setSexTest() {
-        CensusEntrySex sex = GetRandomCensusEntrySex();
+        Sex sex = GetRandomCensusEntrySex();
         certificate.setSex(sex);
         assertEquals(sex, certificate.getSex());
     }

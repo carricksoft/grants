@@ -15,7 +15,7 @@ import jakarta.persistence.ManyToOne;
 import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
+import scot.carricksoftware.grants.enums.general.Sex;
 
 @Entity
 public class BirthCertificate extends BaseCertificate {
@@ -37,7 +37,7 @@ public class BirthCertificate extends BaseCertificate {
     @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`sex`")
-    private CensusEntrySex sex;
+    private Sex sex;
 
     public Person getNewBorn() {
         return newBorn;
@@ -63,11 +63,11 @@ public class BirthCertificate extends BaseCertificate {
         this.whereBorn = whereBorn;
     }
 
-    public CensusEntrySex getSex() {
+    public Sex getSex() {
         return sex;
     }
 
-    public void setSex(CensusEntrySex sex) {
+    public void setSex(Sex sex) {
         this.sex = sex;
     }
 }

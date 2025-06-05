@@ -10,7 +10,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import java.time.LocalDate;
@@ -41,7 +41,7 @@ public class ValidateTypesImpl implements ValidateTypes {
     }
 
     @Override
-    public void validateSex(CensusEntrySex sex, String fieldName, String message, BindingResult bindingResult) {
+    public void validateSex(Sex sex, String fieldName, String message, BindingResult bindingResult) {
         if (sex == null) {
             bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, message);
         }

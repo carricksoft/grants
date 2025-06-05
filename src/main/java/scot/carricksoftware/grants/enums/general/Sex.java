@@ -3,9 +3,9 @@
  *
  */
 
-package scot.carricksoftware.grants.enums.censusentry;
+package scot.carricksoftware.grants.enums.general;
 
-public enum CensusEntrySex {
+public enum Sex {
 
     @SuppressWarnings("unused") MALE("Male"),
     FEMALE ("Female");
@@ -14,7 +14,7 @@ public enum CensusEntrySex {
     public final String label;
 
     @SuppressWarnings("unused")
-    CensusEntrySex(String label) {
+    Sex(String label) {
         this.label = label;
     }
 }

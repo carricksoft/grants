@@ -9,6 +9,7 @@ import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.general.YesNo;
 
 @Entity
@@ -49,7 +50,7 @@ public class CensusEntry extends BaseEntity {
     @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`sex`")
-    private CensusEntrySex sex;
+    private Sex sex;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`age`")
@@ -177,11 +178,11 @@ public class CensusEntry extends BaseEntity {
         this.whereBorn = whereBorn;
     }
 
-    public CensusEntrySex getSex() {
+    public Sex getSex() {
         return this.sex;
     }
 
-    public void setSex(CensusEntrySex sex) {
+    public void setSex(Sex sex) {
         this.sex = sex;
     }
 

@@ -9,6 +9,7 @@ package scot.carricksoftware.grants.commands.census;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.general.YesNo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -80,7 +81,7 @@ class CensusEntryCommandEnumTest {
 
     @Test
     void setSexTest() {
-        CensusEntrySex sex = GetRandomCensusEntrySex();
+        Sex sex = GetRandomCensusEntrySex();
         command.setSex(sex);
         assertEquals(sex, command.getSex());
     }

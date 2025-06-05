@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
 import scot.carricksoftware.grants.enums.census.CensusDate;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.general.YesNo;
 import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.census.census.CensusService;
@@ -82,7 +83,7 @@ public class DataLoadCensus {
         censusEntryCommand.setWorker(CensusEntryWorker.WORKER);
         censusEntryCommand.setAge("72");
         censusEntryCommand.setWhereBorn("Edinburgh");
-        censusEntryCommand.setSex(CensusEntrySex.MALE);
+        censusEntryCommand.setSex(Sex.MALE);
         censusEntryCommand.setBirthDay("25/01");
         censusEntryCommand.setBirthYear("1953");
         censusEntryCommand.setPersonalOccupation("AA Patrol");

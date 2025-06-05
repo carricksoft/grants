@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 import static org.mockito.Mockito.verify;
@@ -48,7 +48,7 @@ class BirthCertificateCommandPartThreeValidatorTest {
 
     @Test
     void validateSexTest() {
-        CensusEntrySex sex = CensusEntrySex.MALE;
+        Sex sex = Sex.MALE;
         when(birthCertificateCommandMock.getSex()).thenReturn(sex);
         validator.validate(birthCertificateCommandMock, bindingResultMock);
         verify(validateTypesMock).validateSex(sex, "sex","Sex cannot be null.", bindingResultMock);

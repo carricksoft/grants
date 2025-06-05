@@ -12,7 +12,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -42,7 +42,7 @@ class BirthCertificateConverterTest {
         Organisation registrationAuthority = GetRandomOrganisation();
         String volume = GetRandomString();
         String number = GetRandomString();
-        CensusEntrySex sex = CensusEntrySex.MALE;
+        Sex sex = Sex.MALE;
         String whenBorn = GetRandomString();
         String whereBorn = GetRandomString();
 

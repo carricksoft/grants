@@ -14,6 +14,7 @@ import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
 import scot.carricksoftware.grants.enums.census.CensusDate;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.general.YesNo;
 import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.census.census.CensusService;
@@ -96,7 +97,7 @@ public class DataLoadCensusTest {
         assertEquals(CensusEntryWorker.WORKER, captor.getValue().getWorker());
         assertEquals("72", captor.getValue().getAge());
         assertEquals("Edinburgh", captor.getValue().getWhereBorn());
-        assertEquals(CensusEntrySex.MALE, captor.getValue().getSex());
+        assertEquals(Sex.MALE, captor.getValue().getSex());
         assertEquals("25/01", captor.getValue().getBirthDay());
         assertEquals("1953", captor.getValue().getBirthYear());
         assertEquals("AA Patrol", captor.getValue().getPersonalOccupation());

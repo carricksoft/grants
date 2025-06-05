@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.commands.census;
 import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.enums.censusentry.*;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.general.YesNo;
 
 public class CensusEntryCommandImpl implements CensusEntryCommand {
@@ -32,7 +33,7 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
 
     private String whereBorn;
 
-    private CensusEntrySex Sex;
+    private Sex Sex;
 
     private String birthDay;
 
@@ -153,12 +154,12 @@ public class CensusEntryCommandImpl implements CensusEntryCommand {
     }
 
     @Override
-    public CensusEntrySex getSex() {
+    public Sex getSex() {
         return Sex;
     }
 
     @Override
-    public void setSex(CensusEntrySex sex) {
+    public void setSex(Sex sex) {
         Sex = sex;
     }
 

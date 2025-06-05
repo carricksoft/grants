@@ -14,7 +14,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
-import scot.carricksoftware.grants.enums.censusentry.CensusEntrySex;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.mockito.Mockito.verify;
@@ -71,7 +71,7 @@ class ValidateTypesNullTest {
 
     @Test
     void nonNullSexTest() {
-        validateTypes.validateSex(CensusEntrySex.MALE, field, message, bindingResultMock);
+        validateTypes.validateSex(Sex.MALE, field, message, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
