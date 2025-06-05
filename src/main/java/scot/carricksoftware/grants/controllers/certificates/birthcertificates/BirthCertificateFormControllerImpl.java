@@ -21,6 +21,7 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
+import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
@@ -40,6 +41,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     private final BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImpl;
     private final PersonService personService;
     private final OrganisationService organisationService;
+    private final Capitalisation capitalisation;
 
 
     public BirthCertificateFormControllerImpl(BirthCertificateService birthCertificateService,
@@ -47,7 +49,8 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
                                               BirthCertificateConverterImpl birthCertificateConverter,
                                               BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImpl,
                                               PersonService personService,
-                                              OrganisationService organisationService) {
+                                              OrganisationService organisationService,
+                                              Capitalisation capitalisation) {
         this.birthCertificateService = birthCertificateService;
         this.birthCertificateCommandConverter = birthCertificateCommandConverter;
 
@@ -56,6 +59,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         this.birthCertificateCommandValidatorImpl = birthCertificateCommandValidatorImpl;
         this.personService = personService;
         this.organisationService = organisationService;
+        this.capitalisation = capitalisation;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -87,6 +91,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
 
         birthCertificateCommandValidatorImpl.validate(birthCertificateCommand, bindingResult);
+        birthCertificateCommand.setWhereBorn(capitalisation.getCapitalisation(birthCertificateCommand.getWhereBorn()));
 
 
         if (bindingResult.hasErrors()) {
