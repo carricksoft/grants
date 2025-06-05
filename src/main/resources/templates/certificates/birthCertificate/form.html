@@ -222,8 +222,42 @@
                     </div>
                 </div>
             </td>
-
             </tr>
+            <tr>
+                <td style="text-align: right; background-color: #D6EEEE;">
+                    <label for="father">Father&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="father" name="father" th:field="*{father}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="person : ${people}"
+                                th:value="${person.id}" th:text="${person.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('father')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('father')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;  background-color: #D6EEEE;">
+                    <label for="untrackedFather">Father (untracked)&nbsp;</label>
+                </td>
+                <td style="text-align: left; ">
+                    <div>
+                        <input class="number" id="untrackedFather"
+                               th:field="*{untrackedFather}" type="text">
+                        <div th:if="${#fields.hasErrors('untrackedFather')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('untrackedFather')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+
         </table>
 
 

@@ -29,6 +29,7 @@ public class DataLoadPeople {
         logger.debug("DataLoadPlaces::load");
         loadDad();
         loadMum();
+        loadMe();
     }
 
     private void loadDad() {
@@ -48,7 +49,15 @@ public class DataLoadPeople {
         mum.setCertifiedYearOfBirth("1910");
         mum.setRecordedYearOfBirth("1915");
         personService.save(mum);
+    }
 
+    private void loadMe() {
+        final Person mum = new Person();
+        mum.setFirstName("Andrew Peter");
+        mum.setLastName("Grant");
+        mum.setCertifiedYearOfBirth("1953");
+        mum.setRecordedYearOfBirth("1953");
+        personService.save(mum);
     }
 
 
