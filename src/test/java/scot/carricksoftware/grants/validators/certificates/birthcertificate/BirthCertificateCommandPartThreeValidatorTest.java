@@ -43,7 +43,7 @@ class BirthCertificateCommandPartThreeValidatorTest {
         String where = GetRandomString();
         when(birthCertificateCommandMock.getWhereBorn()).thenReturn(where);
         validator.validate(birthCertificateCommandMock, bindingResultMock);
-        verify(validateTypesMock).validateNullOrEmptyString(where, "whereBorn","Where born cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateNullOrEmptyString(where, "whereBorn", "Where born cannot be null.", bindingResultMock);
     }
 
     @Test
@@ -51,7 +51,7 @@ class BirthCertificateCommandPartThreeValidatorTest {
         Sex sex = Sex.MALE;
         when(birthCertificateCommandMock.getSex()).thenReturn(sex);
         validator.validate(birthCertificateCommandMock, bindingResultMock);
-        verify(validateTypesMock).validateSex(sex, "sex","Sex cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateSex(sex, "sex", "Sex cannot be null.", bindingResultMock);
     }
 
     @Test
@@ -59,7 +59,7 @@ class BirthCertificateCommandPartThreeValidatorTest {
         String whenBorn = GetRandomString();
         when(birthCertificateCommandMock.getWhenBorn()).thenReturn(whenBorn);
         validator.validate(birthCertificateCommandMock, bindingResultMock);
-        verify(validateTypesMock).validatePastDateAndTime(whenBorn, "whenBorn","When born cannot be null.", "The format should be dd/MM/yyyy hh:mm.","Date should not be in the future.",bindingResultMock);
+        verify(validateTypesMock).validatePastDateAndTime(whenBorn, "whenBorn", "When born cannot be null.", "The format should be dd/MM/yyyy hh:mm.", "Date should not be in the future.", bindingResultMock);
     }
 
 

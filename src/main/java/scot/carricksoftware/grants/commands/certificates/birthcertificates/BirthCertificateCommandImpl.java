@@ -36,6 +36,16 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     private Sex sex;
 
+    private Person father;
+
+    private String untrackedFather;
+
+    private String fatherRank;
+
+    private Person mother;
+
+    private String dateAndPlaceOfMarriage;
+
 
     public Long getId() {
         return Id;
@@ -154,5 +164,55 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     @Override
     public void setSex(Sex sex) {
         this.sex = sex;
+    }
+
+    @Override
+    public Person getFather() {
+        return father;
+    }
+
+    @Override
+    public void setFather(Person father) {
+        this.father = father;
+    }
+
+    @Override
+    public String getUntrackedFather() {
+        return untrackedFather;
+    }
+
+    @Override
+    public void setUntrackedFather(String untrackedFather) {
+        this.untrackedFather = untrackedFather;
+    }
+
+    @Override
+    public String getFatherRank() {
+        return fatherRank;
+    }
+
+    @Override
+    public void setFatherRank(String fatherRank) {
+        this.fatherRank = fatherRank;
+    }
+
+    @Override
+    public Person getMother() {
+        return mother;
+    }
+
+    @Override
+    public void setMother(Person mother) {
+        this.mother = mother;
+    }
+
+    @Override
+    public String getDateAndPlaceOfMarriage() {
+        return dateAndPlaceOfMarriage;
+    }
+
+    @Override
+    public void setDateAndPlaceOfMarriage(String dateAndPlaceOfMarriage) {
+        this.dateAndPlaceOfMarriage = dateAndPlaceOfMarriage;
     }
 }

@@ -65,4 +65,24 @@ public interface BirthCertificateCommand {
     Sex getSex();
 
     void setSex(Sex sex);
+
+    Person getFather();
+
+    void setFather(Person father);
+
+    String getUntrackedFather();
+
+    void setUntrackedFather(String untrackedFather);
+
+    String getFatherRank();
+
+    void setFatherRank(String fatherRank);
+
+    Person getMother();
+
+    void setMother(Person mother);
+
+    String getDateAndPlaceOfMarriage();
+
+    void setDateAndPlaceOfMarriage(String dateAndPlaceOfMarriage);
 }

@@ -62,8 +62,6 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     private BirthCertificateCommand birthCertificateCommand;
 
 
-
-
     @BeforeEach
     public void setUp() {
         Capitalisation capitalisation = new CapitalisationImpl();

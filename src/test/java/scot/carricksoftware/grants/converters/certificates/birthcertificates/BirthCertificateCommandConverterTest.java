@@ -46,6 +46,12 @@ class BirthCertificateCommandConverterTest {
         Sex sex = Sex.MALE;
         String whenBorn = GetRandomString();
         String whereBorn = GetRandomString();
+        Person father = GetRandomPerson();
+        Person mother = GetRandomPerson();
+        String dateAndPlaceOfMarriage = GetRandomString();
+        String fatherRank = GetRandomString();
+        String untrackedFather = GetRandomString();
+
 
         source.setId(id);
         source.setNewBorn(person);
@@ -59,6 +65,11 @@ class BirthCertificateCommandConverterTest {
         source.setSex(sex);
         source.setWhenBorn(whenBorn);
         source.setWhereBorn(whereBorn);
+        source.setFather(father);
+        source.setMother(mother);
+        source.setDateAndPlaceOfMarriage(dateAndPlaceOfMarriage);
+        source.setFatherRank(fatherRank);
+        source.setUntrackedFather(untrackedFather);
 
 
         BirthCertificate target = converter.convert(source);
@@ -76,5 +87,10 @@ class BirthCertificateCommandConverterTest {
         assertEquals(sex, target.getSex());
         assertEquals(whereBorn, target.getWhereBorn());
         assertEquals(whenBorn, target.getWhenBorn());
+        assertEquals(dateAndPlaceOfMarriage, target.getDateAndPlaceOfMarriage());
+        assertEquals(fatherRank, target.getFatherRank());
+        assertEquals(untrackedFather, target.getUntrackedFather());
+        assertEquals(father, target.getFather());
+        assertEquals(mother, target.getMother());
     }
 }
