@@ -92,6 +92,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
 
         birthCertificateCommandValidatorImpl.validate(birthCertificateCommand, bindingResult);
         birthCertificateCommand.setWhereBorn(capitalisation.getCapitalisation(birthCertificateCommand.getWhereBorn()));
+        birthCertificateCommand.setUntrackedFather(capitalisation.getCapitalisation(birthCertificateCommand.getUntrackedFather()));
 
 
         if (bindingResult.hasErrors()) {
