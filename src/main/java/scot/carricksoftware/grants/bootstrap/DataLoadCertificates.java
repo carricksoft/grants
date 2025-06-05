@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
+import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
@@ -48,9 +49,13 @@ public class DataLoadCertificates {
         loadDeathCertificates();
     }
 
+
+
     private void loadBirthCertificates() {
         BirthCertificateCommand birthCertificateCommand = new BirthCertificateCommandImpl();
-        birthCertificateCommand.setNewBorn(personService.findById(1L));
+        Person newBorn = new Person();
+        newBorn.setFirstName("new born");
+        birthCertificateCommand.setNewBorn(newBorn);
         birthCertificateCommand.setCertificateDate("25/01/1953");
         birthCertificateCommand.setCertificateNumber("999");
         birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
@@ -62,10 +67,19 @@ public class DataLoadCertificates {
         birthCertificateCommand.setVolume("1953");
         birthCertificateCommand.setSex(Sex.MALE);
         birthCertificateCommand.setWhenBorn("25/01/1953 01:01");
-        birthCertificateCommand.setWhereBorn("Edinburgh");
+        birthCertificateCommand.setWhereBorn("where born");
+        birthCertificateCommand.setDateAndPlaceOfMarriage("dateAndPlaceOfMarriage");
+        birthCertificateCommand.setFatherRank("fatherRank");
+
+        Person father = new Person();
+        father.setFirstName("father");
+        birthCertificateCommand.setFather(father);
+        birthCertificateCommand.setUntrackedFather("untrackedFather");
+        Person mother = new Person();
+        mother.setFirstName("mother");
+        birthCertificateCommand.setMother(mother);
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
-
     }
 
     private void loadDeathCertificates() {

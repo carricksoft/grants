@@ -61,7 +61,7 @@ public class DataLoadCertificatesTest {
         dataLoadCertificates.load();
 
         verify(birthCertificateServiceMock).saveBirthCertificateCommand(captor.capture());
-        assertEquals(person, captor.getValue().getNewBorn());
+        assertEquals("new born", captor.getValue().getNewBorn().getFirstName());
         assertEquals(organisation, captor.getValue().getCertificateSource());
         assertEquals("999", captor.getValue().getCertificateNumber());
         assertEquals("25/01/1953", captor.getValue().getCertificateDate());
@@ -71,7 +71,12 @@ public class DataLoadCertificatesTest {
         assertEquals("1953", captor.getValue().getVolume());
         assertEquals(Sex.MALE, captor.getValue().getSex());
         assertEquals("25/01/1953 01:01", captor.getValue().getWhenBorn());
-        assertEquals("Edinburgh", captor.getValue().getWhereBorn());
+        assertEquals("where born", captor.getValue().getWhereBorn());
+        assertEquals("fatherRank", captor.getValue().getFatherRank());
+        assertEquals("untrackedFather", captor.getValue().getUntrackedFather());
+        assertEquals("father", captor.getValue().getFather().getFirstName());
+        assertEquals("mother", captor.getValue().getMother().getFirstName());
+
     }
 
     @Test
