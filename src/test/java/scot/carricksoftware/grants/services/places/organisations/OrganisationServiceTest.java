@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.repositories.places.OrganisationRepository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -86,8 +87,10 @@ public class OrganisationServiceTest {
     @Test
     public void getFindByNameTest() {
         String name = GetRandomString();
+        Organisation organisation = GetRandomOrganisation();
         organisationService.findByName(name);
-        verify(organisationRepositoryMock).findByName(name);
+        when(organisationRepositoryMock.findByName(name)).thenReturn(Optional.of(organisation));
+        assertEquals(organisation, organisationService.findByName(name));
     }
 
 
