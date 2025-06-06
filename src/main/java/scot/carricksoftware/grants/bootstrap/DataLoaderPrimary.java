@@ -20,17 +20,20 @@ public class DataLoaderPrimary {
     private final DataLoadPlaces dataLoadPlaces;
     private final DataLoadPeople dataLoadPeople;
     private final DataLoadCensus dataLoadCensus;
+    private final DataLoadOrganisations dataLoadOrganisations;
 
-    public DataLoaderPrimary(DataLoadPlaces dataLoadPlaces, DataLoadPeople dataLoadPeople, DataLoadCensus dataLoadCensus) {
+    public DataLoaderPrimary(DataLoadPlaces dataLoadPlaces, DataLoadPeople dataLoadPeople, DataLoadCensus dataLoadCensus, DataLoadOrganisations dataLoadOrganisations) {
         this.dataLoadPlaces = dataLoadPlaces;
         this.dataLoadPeople = dataLoadPeople;
         this.dataLoadCensus = dataLoadCensus;
+        this.dataLoadOrganisations = dataLoadOrganisations;
     }
 
     public void load () {
         logger.debug("DataLoaderPrimary::load");
-        dataLoadPlaces.load();
         dataLoadPeople.load();
+        dataLoadOrganisations.load();
+        dataLoadPlaces.load();
         dataLoadCensus.load();
     }
 

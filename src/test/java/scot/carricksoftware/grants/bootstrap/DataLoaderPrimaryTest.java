@@ -27,11 +27,14 @@ class DataLoaderPrimaryTest {
     @Mock
     private DataLoadCensus dataLoadCensusMock;
 
+    @Mock
+    private DataLoadOrganisations dataLoadOrganisationsMock;
+
     @BeforeEach
     void setUp() {
         dataLoaderPrimary = new DataLoaderPrimary(dataLoadPlacesMock,
                 dataLoadPeopleMock,
-                dataLoadCensusMock);
+                dataLoadCensusMock, dataLoadOrganisationsMock);
     }
 
     @Test
@@ -50,6 +53,12 @@ class DataLoaderPrimaryTest {
     void loadCertificatesTextsIsCalledTest() {
         dataLoaderPrimary.load();
         verify(dataLoadCensusMock).load();
+    }
+
+    @Test
+    void loadCertificatesOrganisationsIsCalledTest() {
+        dataLoaderPrimary.load();
+        verify(dataLoadOrganisationsMock).load();
     }
 
 

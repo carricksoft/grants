@@ -23,4 +23,6 @@ public interface OrganisationRepository extends PagingAndSortingRepository<Organ
     Optional<Organisation> findById(Long id);
 
     Iterable<Organisation> findAll();
+
+    Optional<Organisation> findByName(String name);
 }

@@ -9,17 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
-import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
-import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
-import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.domains.places.Organisation;
-import scot.carricksoftware.grants.enums.general.Sex;
-import scot.carricksoftware.grants.enums.certificates.CertificateType;
-import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
-import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
-import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
+
 
 @Component
 @Profile("dev")
@@ -27,69 +17,18 @@ public class DataLoadCertificates {
 
     private static final Logger logger = LogManager.getLogger(DataLoadCertificates.class);
 
-    private final BirthCertificateService birthCertificateService;
-    private final DeathCertificateService deathCertificateService;
-    private final PersonService personService;
-
-    public DataLoadCertificates(BirthCertificateService birthCertificateService,
-                                DeathCertificateService deathCertificateService,
-                                PersonService personService) {
-        this.birthCertificateService = birthCertificateService;
-        this.deathCertificateService = deathCertificateService;
-        this.personService = personService;
-    }
-
-
     public void load() {
-        logger.debug("DataLoadPlaces::load");
+        logger.debug("DataLoadCertificates::load");
         loadBirthCertificates();
         loadDeathCertificates();
     }
 
-
-
     private void loadBirthCertificates() {
-        Person newBorn = new Person();
-        newBorn.setFirstName("new born");
-
-        BirthCertificateCommand birthCertificateCommand = new BirthCertificateCommandImpl();
-        birthCertificateCommand.setNewBorn(newBorn);
-        birthCertificateCommand.setCertificateDate("25/01/1953");
-        birthCertificateCommand.setCertificateNumber("999");
-        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
-
-        Organisation registrationAuthority = new Organisation();
-        registrationAuthority.setName("registration authority");
-        birthCertificateCommand.setRegistrationAuthority(registrationAuthority);
-
-        Organisation certificateSource = new Organisation();
-        certificateSource.setName("certificate source");
-        birthCertificateCommand.setCertificateSource(certificateSource);
-
-        birthCertificateCommand.setNumber("01");
-        birthCertificateCommand.setVolume("1953");
-        birthCertificateCommand.setSex(Sex.MALE);
-        birthCertificateCommand.setWhenBorn("25/01/1953 01:01");
-        birthCertificateCommand.setWhereBorn("where born");
-        birthCertificateCommand.setDateAndPlaceOfMarriage("date and place of marriage");
-        birthCertificateCommand.setFatherRank("fatherRank");
-
-        Person father = new Person();
-        father.setFirstName("father");
-        birthCertificateCommand.setFather(father);
-        birthCertificateCommand.setUntrackedFather("untrackedFather");
-
-        Person mother = new Person();
-        mother.setFirstName("mother");
-        birthCertificateCommand.setMother(mother);
-
-        birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
+        logger.debug("DataLoadCertificates::LoadBirthCertificates");
     }
 
     private void loadDeathCertificates() {
-        DeathCertificate deathCertificate = new DeathCertificate();
-        deathCertificate.setDeceased(personService.findById(1L));
-        deathCertificateService.save(deathCertificate);
+        logger.debug("DataLoadCertificates::LoadDeathCertificates");
     }
 
 

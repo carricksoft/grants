@@ -93,6 +93,13 @@ public class OrganisationServiceImpl implements OrganisationService {
     }
 
     @Override
+    public Organisation findByName(String name) {
+        logger.debug("OrganisationServiceImpl::findByName");
+        Optional<Organisation> organisation = organisationRepository.findByName(name);
+        return organisation.orElse(null);
+    }
+
+    @Override
     public Organisation save(Organisation organisation) {
         logger.debug("OrganisationServiceImpl::save");
         return organisationRepository.save(organisation);
