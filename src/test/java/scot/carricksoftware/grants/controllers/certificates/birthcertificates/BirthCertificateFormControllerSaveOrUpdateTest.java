@@ -92,13 +92,16 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    public void whereBornIsCapitalisedTest() {
-        String whereBorn = "lower case";
+    public void capitalisationIsAppliedIsAppliedTest() {
+        String whereBorn = "where born";
+        String untrackedFather = "untracked father";
         birthCertificateCommand.setWhereBorn(whereBorn);
+        birthCertificateCommand.setUntrackedFather(untrackedFather);
         when(birthCertificateServiceMock.saveBirthCertificateCommand(any(BirthCertificateCommand.class))).thenReturn(birthCertificateCommand);
 
         birthCertificateController.saveOrUpdate(birthCertificateCommand, bindingResultMock, modelMock);
-        assertEquals("Lower Case", birthCertificateCommand.getWhereBorn());
+        assertEquals("Where Born", birthCertificateCommand.getWhereBorn());
+        assertEquals("Untracked Father", birthCertificateCommand.getUntrackedFather());
     }
 
 
