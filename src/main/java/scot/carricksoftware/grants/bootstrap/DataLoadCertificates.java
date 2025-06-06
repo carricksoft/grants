@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
+import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
@@ -29,16 +30,13 @@ public class DataLoadCertificates {
     private final BirthCertificateService birthCertificateService;
     private final DeathCertificateService deathCertificateService;
     private final PersonService personService;
-    private final OrganisationService organisationService;
 
     public DataLoadCertificates(BirthCertificateService birthCertificateService,
                                 DeathCertificateService deathCertificateService,
-                                PersonService personService,
-                                OrganisationService organisationService) {
+                                PersonService personService) {
         this.birthCertificateService = birthCertificateService;
         this.deathCertificateService = deathCertificateService;
         this.personService = personService;
-        this.organisationService = organisationService;
     }
 
 
@@ -51,15 +49,23 @@ public class DataLoadCertificates {
 
 
     private void loadBirthCertificates() {
+        Person newBorn = new Person();
+        newBorn.setFirstName("new born");
+
         BirthCertificateCommand birthCertificateCommand = new BirthCertificateCommandImpl();
-        birthCertificateCommand.setNewBorn(personService.findById(3L));
+        birthCertificateCommand.setNewBorn(newBorn);
         birthCertificateCommand.setCertificateDate("25/01/1953");
         birthCertificateCommand.setCertificateNumber("999");
         birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
 
-        Organisation organisation = organisationService.findById(1L);
-        birthCertificateCommand.setCertificateSource(organisation);
-        birthCertificateCommand.setRegistrationAuthority(organisation);
+        Organisation registrationAuthority = new Organisation();
+        registrationAuthority.setName("registration authority");
+        birthCertificateCommand.setRegistrationAuthority(registrationAuthority);
+
+        Organisation certificateSource = new Organisation();
+        certificateSource.setName("certificate source");
+        birthCertificateCommand.setCertificateSource(certificateSource);
+
         birthCertificateCommand.setNumber("01");
         birthCertificateCommand.setVolume("1953");
         birthCertificateCommand.setSex(Sex.MALE);
@@ -67,9 +73,15 @@ public class DataLoadCertificates {
         birthCertificateCommand.setWhereBorn("where born");
         birthCertificateCommand.setDateAndPlaceOfMarriage("date and place of marriage");
         birthCertificateCommand.setFatherRank("fatherRank");
-        birthCertificateCommand.setFather(personService.findById(1L));
+
+        Person father = new Person();
+        father.setFirstName("father");
+        birthCertificateCommand.setFather(father);
         birthCertificateCommand.setUntrackedFather("untrackedFather");
-        birthCertificateCommand.setMother(personService.findById(2L));
+
+        Person mother = new Person();
+        mother.setFirstName("mother");
+        birthCertificateCommand.setMother(mother);
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
     }

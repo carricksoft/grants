@@ -9,7 +9,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
@@ -21,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
 public class DataLoadCertificatesTest {
@@ -51,10 +49,6 @@ public class DataLoadCertificatesTest {
 
     @Test
     public void birthCertificatesAreLoadedTest() {
-        Person person = GetRandomPerson();
-        when(personServiceMock.findById(1L)).thenReturn(person);
-        Organisation organisation = GetRandomOrganisation();
-        when(organisationServiceMock.findById(1L)).thenReturn(organisation);
 
         ArgumentCaptor<BirthCertificateCommand> captor = ArgumentCaptor.forClass(BirthCertificateCommand.class);
 
@@ -62,11 +56,11 @@ public class DataLoadCertificatesTest {
 
         verify(birthCertificateServiceMock).saveBirthCertificateCommand(captor.capture());
         assertEquals("new born", captor.getValue().getNewBorn().getFirstName());
-        assertEquals(organisation, captor.getValue().getCertificateSource());
+        assertEquals("certificate source", captor.getValue().getCertificateSource().getName());
         assertEquals("999", captor.getValue().getCertificateNumber());
         assertEquals("25/01/1953", captor.getValue().getCertificateDate());
         assertEquals(CertificateType.EXTRACT, captor.getValue().getCertificateType());
-        assertEquals(organisation, captor.getValue().getRegistrationAuthority());
+        assertEquals("registration authority", captor.getValue().getRegistrationAuthority().getName());
         assertEquals("01", captor.getValue().getNumber());
         assertEquals("1953", captor.getValue().getVolume());
         assertEquals(Sex.MALE, captor.getValue().getSex());
