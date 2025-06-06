@@ -25,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
@@ -80,6 +81,13 @@ public class OrganisationServiceTest {
         when(pageMock.getContent()).thenReturn(result);
         when(organisationRepositoryMock.findAll(any(Pageable.class))).thenReturn(pageMock);
         assertEquals(result, organisationService.getPagedOrganisations(0));
+    }
+
+    @Test
+    public void getFindByNameTest() {
+        String name = GetRandomString();
+        organisationService.findByName(name);
+        verify(organisationRepositoryMock).findByName(name);
     }
 
 
