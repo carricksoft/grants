@@ -14,7 +14,6 @@ import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -35,16 +34,12 @@ public class DataLoadCertificatesTest {
     @Mock
     private PersonService personServiceMock;
 
-    @Mock
-    private OrganisationService organisationServiceMock;
-
 
     @BeforeEach
     public void setUp() {
         dataLoadCertificates = new DataLoadCertificates(birthCertificateServiceMock,
                 deathCertificateServiceMock,
-                personServiceMock,
-                organisationServiceMock);
+                personServiceMock);
     }
 
     @Test
