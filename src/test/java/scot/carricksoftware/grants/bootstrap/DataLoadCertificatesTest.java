@@ -1,0 +1,90 @@
+package scot.carricksoftware.grants.bootstrap;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
+import scot.carricksoftware.grants.enums.general.Sex;
+import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.people.PersonService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+
+@ExtendWith(MockitoExtension.class)
+public class DataLoadCertificatesTest {
+
+    private DataLoadCertificates dataLoadCertificates;
+
+    @Mock
+    private BirthCertificateService birthCertificateServiceMock;
+
+    @Mock
+    private OrganisationService organisationServiceMock;
+
+    @Mock
+    private PersonService personServiceMock;
+
+    @Mock
+    private Person fatherMock;
+
+    @Mock
+    private Person motherMock;
+
+    @Mock
+    private Person newBornMock;
+
+    @Mock
+    private Organisation registrationAuthorityMock;
+
+    @Mock
+    private Organisation certificateSourceMock;
+
+    @BeforeEach
+    public void setup() {
+        dataLoadCertificates = new DataLoadCertificates(organisationServiceMock, birthCertificateServiceMock, personServiceMock);
+    }
+
+    @Test
+    void birthCertificateIsCreatedTest() {
+        ArgumentCaptor<BirthCertificateCommand> captor = ArgumentCaptor.forClass(BirthCertificateCommand.class);
+        when(personServiceMock.findById(1L)).thenReturn(fatherMock);
+        when(personServiceMock.findById(2L)).thenReturn(motherMock);
+        when(personServiceMock.findById(3L)).thenReturn(newBornMock);
+        when(organisationServiceMock.findByName("Registration Authority")).thenReturn(registrationAuthorityMock);
+        when(organisationServiceMock.findByName("Certificate Source")).thenReturn(certificateSourceMock);
+
+        dataLoadCertificates.load();
+
+        verify(birthCertificateServiceMock).saveBirthCertificateCommand(captor.capture());
+        assertEquals("999", captor.getValue().getCertificateNumber());
+        assertEquals("25/01/1953", captor.getValue().getCertificateDate());
+        assertEquals(CertificateType.EXTRACT, captor.getValue().getCertificateType());
+        assertEquals(registrationAuthorityMock, captor.getValue().getRegistrationAuthority());
+        assertEquals("01", captor.getValue().getVolume());
+        assertEquals("02", captor.getValue().getNumber());
+        assertEquals(certificateSourceMock, captor.getValue().getCertificateSource());
+        assertEquals(newBornMock, captor.getValue().getNewBorn());
+        assertEquals(Sex.MALE, captor.getValue().getSex());
+        assertEquals("25/01/1953 01:01",captor.getValue().getWhenBorn());
+        assertEquals("Edinburgh",captor.getValue().getWhereBorn());
+        assertEquals(fatherMock, captor.getValue().getFather());
+        assertEquals("Untracked Father", captor.getValue().getUntrackedFather());
+        assertEquals(motherMock, captor.getValue().getMother());
+
+
+    }
+
+
+
+
+}

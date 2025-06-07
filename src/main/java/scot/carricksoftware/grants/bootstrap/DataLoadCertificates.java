@@ -27,7 +27,9 @@ public class DataLoadCertificates {
     private final BirthCertificateService birthCertificateService;
     private final PersonService personService;
 
-    public DataLoadCertificates(OrganisationService organisationService, BirthCertificateService birthCertificateService, PersonService personService) {
+    public DataLoadCertificates(OrganisationService organisationService,
+                                BirthCertificateService birthCertificateService,
+                                PersonService personService) {
         this.organisationService = organisationService;
         this.birthCertificateService = birthCertificateService;
         this.personService = personService;
