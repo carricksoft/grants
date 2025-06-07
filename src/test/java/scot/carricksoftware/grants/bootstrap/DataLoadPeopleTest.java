@@ -32,40 +32,57 @@ public class DataLoadPeopleTest {
         ArgumentCaptor<Person> captor = ArgumentCaptor.forClass(Person.class);
         dataLoadPeople.load();
         verify(personServiceMock, atLeast(2)).save(captor.capture());
-        assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getFirstName().equals("Andrew")));
-        assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getLastName().equals("Grant")));
-        assertTrue(captor.getAllValues().stream().anyMatch(
-                person -> person.getCertifiedYearOfBirth().equals("1920")));
-        assertTrue(captor.getAllValues().stream().anyMatch(
-                person -> person.getRecordedYearOfBirth().equals("1925")));
+
+        boolean found = false;
+        for (Person person : captor.getAllValues()) {
+            if (person.getFirstName().equals("Andrew") &&
+                    person.getLastName().equals("Grant") &&
+                    person.getCertifiedYearOfBirth().equals("1920") &&
+                    person.getRecordedYearOfBirth().equals("1925")) {
+                found = true;
+                break;
+            }
+        }
+        assertTrue(found);
     }
 
 
+    @SuppressWarnings("SpellCheckingInspection")
     @Test
     public void mumIsCreatedTest() {
         ArgumentCaptor<Person> captor = ArgumentCaptor.forClass(Person.class);
         dataLoadPeople.load();
         verify(personServiceMock, atLeast(2)).save(captor.capture());
-        assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getFirstName().equals("Dorothy")));
-        //noinspection SpellCheckingInspection
-        assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getLastName().equals("Bramall")));
-        assertTrue(captor.getAllValues().stream().anyMatch(
-                person -> person.getCertifiedYearOfBirth().equals("1910")));
-        assertTrue(captor.getAllValues().stream().anyMatch(
-                person -> person.getRecordedYearOfBirth().equals("1915")));
+        boolean found = false;
+        for (Person person : captor.getAllValues()) {
+            if (person.getFirstName().equals("Dorothy") &&
+                    person.getLastName().equals("Bramall") &&
+                    person.getCertifiedYearOfBirth().equals("1910") &&
+                    person.getRecordedYearOfBirth().equals("1915")) {
+                found = true;
+                break;
+            }
+
+        }
+        assertTrue(found);
     }
 
     @Test
     public void iAmCreatedTest() {
         ArgumentCaptor<Person> captor = ArgumentCaptor.forClass(Person.class);
         dataLoadPeople.load();
-        verify(personServiceMock, atLeast(2)).save(captor.capture());
-        assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getFirstName().equals("Andrew Peter")));
-        assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getLastName().equals("Grant")));
-        assertTrue(captor.getAllValues().stream().anyMatch(
-                person -> person.getCertifiedYearOfBirth().equals("1953")));
-        assertTrue(captor.getAllValues().stream().anyMatch(
-                person -> person.getRecordedYearOfBirth().equals("1953")));
+        verify(personServiceMock, atLeast(3)).save(captor.capture());
+        boolean found = false;
+        for (Person person : captor.getAllValues()) {
+            if (person.getFirstName().equals("Andrew Peter") &&
+                    person.getLastName().equals("Grant") &&
+                    person.getCertifiedYearOfBirth().equals("1953") &&
+                    person.getRecordedYearOfBirth().equals("1953")) {
+                found = true;
+                break;
+            }
+        }
+        assertTrue(found);
     }
 
 }

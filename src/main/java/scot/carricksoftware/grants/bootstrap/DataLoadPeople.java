@@ -52,12 +52,12 @@ public class DataLoadPeople {
     }
 
     private void loadMe() {
-        final Person mum = new Person();
-        mum.setFirstName("Andrew Peter");
-        mum.setLastName("Grant");
-        mum.setCertifiedYearOfBirth("1953");
-        mum.setRecordedYearOfBirth("1953");
-        personService.save(mum);
+        final Person me = new Person();
+        me.setFirstName("Andrew Peter");
+        me.setLastName("Grant");
+        me.setCertifiedYearOfBirth("1953");
+        me.setRecordedYearOfBirth("1953");
+        personService.save(me);
     }
 
 
