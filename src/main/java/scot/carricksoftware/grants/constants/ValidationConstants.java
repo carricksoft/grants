@@ -39,6 +39,7 @@ public class ValidationConstants {
     public static final String SEX_IS_NULL = "Sex cannot be null.";
     public static final String WHEN_BORN_INCORRECT_FORMAT = "The format should be dd/MM/yyyy hh:mm.";
     public static final String WHEN_BORN_IS_NULL = "When born cannot be null.";
+    public static final String FATHER_AND_UNTRACKED_FATHER = "One and only one father and untracked father must be specified.";
 
     public static final String PLACE_IS_NULL = "The place cannot be null.";
     public static final String COUNTRY_IS_NULL = "The country cannot be null.";

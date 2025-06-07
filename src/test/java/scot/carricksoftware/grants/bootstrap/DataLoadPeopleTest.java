@@ -62,7 +62,6 @@ public class DataLoadPeopleTest {
                 found = true;
                 break;
             }
-
         }
         assertTrue(found);
     }

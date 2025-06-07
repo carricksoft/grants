@@ -30,4 +30,9 @@ public interface ValidateTypes {
 
     @SuppressWarnings("EmptyMethod")
     void validatePastDateAndTime(@SuppressWarnings("unused") String dateString, @SuppressWarnings("unused") String fieldName, @SuppressWarnings("unused") String nullMessage, @SuppressWarnings("unused") String formatMessage, @SuppressWarnings("unused") String pastMessage, @SuppressWarnings("unused") BindingResult bindingResult);
+
+    @SuppressWarnings("EmptyMethod")
+    void validatePersonAndUntrackedPerson(Person person, String untrackedPerson, String personFieldName, String untrackedFieldName, String message,  BindingResult bindingResult);
+
+
 }

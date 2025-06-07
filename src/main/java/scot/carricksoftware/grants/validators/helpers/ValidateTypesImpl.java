@@ -104,4 +104,16 @@ public class ValidateTypesImpl implements ValidateTypes {
         }
     }
 
+    @Override
+    public void validatePersonAndUntrackedPerson(Person person, String untrackedPerson, String personFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
+       boolean error = person == null && (untrackedPerson == null || untrackedPerson.trim().isEmpty());
+        if (!(person == null) && untrackedPerson != null &&  !(untrackedPerson.trim().isEmpty())) {
+            error = true;
+        }
+        if (error) {
+            bindingResult.rejectValue(personFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+            bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        }
+    }
+
 }
