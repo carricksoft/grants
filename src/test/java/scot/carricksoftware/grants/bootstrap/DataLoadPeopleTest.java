@@ -55,4 +55,17 @@ public class DataLoadPeopleTest {
                 person -> person.getRecordedYearOfBirth().equals("1915")));
     }
 
+    @Test
+    public void iAmCreatedTest() {
+        ArgumentCaptor<Person> captor = ArgumentCaptor.forClass(Person.class);
+        dataLoadPeople.load();
+        verify(personServiceMock, atLeast(2)).save(captor.capture());
+        assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getFirstName().equals("Andrew Peter")));
+        assertTrue(captor.getAllValues().stream().anyMatch(person -> person.getLastName().equals("Grant")));
+        assertTrue(captor.getAllValues().stream().anyMatch(
+                person -> person.getCertifiedYearOfBirth().equals("1953")));
+        assertTrue(captor.getAllValues().stream().anyMatch(
+                person -> person.getRecordedYearOfBirth().equals("1953")));
+    }
+
 }
