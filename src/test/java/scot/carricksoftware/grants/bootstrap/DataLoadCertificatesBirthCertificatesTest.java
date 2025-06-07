@@ -12,6 +12,7 @@ import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 
@@ -21,12 +22,15 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-public class DataLoadCertificatesTest {
+public class DataLoadCertificatesBirthCertificatesTest {
 
     private DataLoadCertificates dataLoadCertificates;
 
     @Mock
     private BirthCertificateService birthCertificateServiceMock;
+
+    @Mock
+    private DeathCertificateService deathCertificateServiceMock;
 
     @Mock
     private OrganisationService organisationServiceMock;
@@ -51,7 +55,7 @@ public class DataLoadCertificatesTest {
 
     @BeforeEach
     public void setup() {
-        dataLoadCertificates = new DataLoadCertificates(organisationServiceMock, birthCertificateServiceMock, personServiceMock);
+        dataLoadCertificates = new DataLoadCertificates(organisationServiceMock, birthCertificateServiceMock, personServiceMock, deathCertificateServiceMock);
     }
 
     @Test

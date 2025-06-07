@@ -11,9 +11,12 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
+import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 
@@ -26,13 +29,15 @@ public class DataLoadCertificates {
     private final OrganisationService organisationService;
     private final BirthCertificateService birthCertificateService;
     private final PersonService personService;
+    private final DeathCertificateService deathCertificateService;
 
     public DataLoadCertificates(OrganisationService organisationService,
                                 BirthCertificateService birthCertificateService,
-                                PersonService personService) {
+                                PersonService personService, DeathCertificateService deathCertificateService) {
         this.organisationService = organisationService;
         this.birthCertificateService = birthCertificateService;
         this.personService = personService;
+        this.deathCertificateService = deathCertificateService;
     }
 
     public void load() {
@@ -68,7 +73,9 @@ public class DataLoadCertificates {
 
     private void loadDeathCertificates() {
         logger.debug("DataLoadCertificates::LoadDeathCertificates");
+        DeathCertificateCommand deathCertificateCommand = new DeathCertificateCommandImpl();
 
+        deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
     }
 
 
