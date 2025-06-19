@@ -9,6 +9,7 @@ import scot.carricksoftware.grants.services.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -31,10 +32,18 @@ public class DataLoadCertificatesDeathCertificatesTest {
     @Mock
     private PersonService personServiceMock;
 
+    @Mock
+    private PlaceService placeServiceMock;
+
 
     @BeforeEach
     public void setup() {
-        dataLoadCertificates = new DataLoadCertificates(organisationServiceMock, birthCertificateServiceMock, personServiceMock, deathCertificateServiceMock);
+        dataLoadCertificates = new DataLoadCertificates(
+                organisationServiceMock,
+                birthCertificateServiceMock,
+                personServiceMock,
+                placeServiceMock,
+                deathCertificateServiceMock);
     }
 
     @Test

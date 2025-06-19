@@ -9,12 +9,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -39,6 +41,9 @@ public class DataLoadCertificatesBirthCertificatesTest {
     private PersonService personServiceMock;
 
     @Mock
+    private PlaceService placeServiceMock;
+
+    @Mock
     private Person fatherMock;
 
     @Mock
@@ -48,6 +53,9 @@ public class DataLoadCertificatesBirthCertificatesTest {
     private Person newBornMock;
 
     @Mock
+    private Place placeMock;
+
+    @Mock
     private Organisation registrationAuthorityMock;
 
     @Mock
@@ -55,7 +63,11 @@ public class DataLoadCertificatesBirthCertificatesTest {
 
     @BeforeEach
     public void setup() {
-        dataLoadCertificates = new DataLoadCertificates(organisationServiceMock, birthCertificateServiceMock, personServiceMock, deathCertificateServiceMock);
+        dataLoadCertificates = new DataLoadCertificates(organisationServiceMock,
+                birthCertificateServiceMock,
+                personServiceMock,
+                placeServiceMock,
+                deathCertificateServiceMock);
     }
 
     @Test
@@ -64,8 +76,10 @@ public class DataLoadCertificatesBirthCertificatesTest {
         when(personServiceMock.findById(1L)).thenReturn(fatherMock);
         when(personServiceMock.findById(2L)).thenReturn(motherMock);
         when(personServiceMock.findById(3L)).thenReturn(newBornMock);
+        when(placeServiceMock.findById(1L)).thenReturn(placeMock);
         when(organisationServiceMock.findByName("Registration Authority")).thenReturn(registrationAuthorityMock);
         when(organisationServiceMock.findByName("Certificate Source")).thenReturn(certificateSourceMock);
+
 
         dataLoadCertificates.load();
 
@@ -80,9 +94,10 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals(newBornMock, captor.getValue().getNewBorn());
         assertEquals(Sex.MALE, captor.getValue().getSex());
         assertEquals("25/01/1953 01:01", captor.getValue().getWhenBorn());
-        assertEquals("Edinburgh", captor.getValue().getUntrackedWhereBorn());
         assertEquals(fatherMock, captor.getValue().getFather());
         assertEquals("Untracked Father", captor.getValue().getUntrackedFather());
+        assertEquals("Birth Place", captor.getValue().getUntrackedWhereBorn());
+        assertEquals(placeMock, captor.getValue().getWhereBorn());
         assertEquals(motherMock, captor.getValue().getMother());
 
 

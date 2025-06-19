@@ -19,6 +19,7 @@ import scot.carricksoftware.grants.services.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
 
 
 @Component
@@ -29,14 +30,16 @@ public class DataLoadCertificates {
     private final OrganisationService organisationService;
     private final BirthCertificateService birthCertificateService;
     private final PersonService personService;
+    private final PlaceService placeService;
     private final DeathCertificateService deathCertificateService;
 
     public DataLoadCertificates(OrganisationService organisationService,
                                 BirthCertificateService birthCertificateService,
-                                PersonService personService, DeathCertificateService deathCertificateService) {
+                                PersonService personService, PlaceService placeService, DeathCertificateService deathCertificateService) {
         this.organisationService = organisationService;
         this.birthCertificateService = birthCertificateService;
         this.personService = personService;
+        this.placeService = placeService;
         this.deathCertificateService = deathCertificateService;
     }
 
@@ -67,6 +70,8 @@ public class DataLoadCertificates {
         birthCertificateCommand.setUntrackedFather("Untracked Father");
 
         birthCertificateCommand.setMother(personService.findById(2L));
+        birthCertificateCommand.setWhereBorn(placeService.findById(1L));
+        birthCertificateCommand.setUntrackedWhereBorn("Birth Place");
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
     }
