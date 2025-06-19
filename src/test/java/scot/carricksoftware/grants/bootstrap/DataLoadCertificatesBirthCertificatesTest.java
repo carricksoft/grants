@@ -100,7 +100,6 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals(placeMock, captor.getValue().getWhereBorn());
         assertEquals(motherMock, captor.getValue().getMother());
 
-
     }
 
 
