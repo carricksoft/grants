@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 
 @Entity
@@ -29,6 +30,11 @@ public class BirthCertificate extends BaseCertificate {
     @Column(name= "`when_born`")
     @DateTimeFormat(pattern = ApplicationConstants.DATE_TIME_FORMAT)
     private String whenBorn;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @ManyToOne
+    @JoinColumn(name = "`where_born_id`")
+    private Place whereBorn;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`untracked_where_born`")
@@ -75,6 +81,14 @@ public class BirthCertificate extends BaseCertificate {
 
     public void setWhenBorn(String whenBorn) {
         this.whenBorn = whenBorn;
+    }
+
+    public Place getWhereBorn() {
+        return whereBorn;
+    }
+
+    public void setWhereBorn(Place whereBorn) {
+        this.whereBorn = whereBorn;
     }
 
     public String getUntrackedWhereBorn() {

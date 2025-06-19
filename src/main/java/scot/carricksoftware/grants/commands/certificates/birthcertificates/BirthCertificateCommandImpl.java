@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
@@ -31,6 +32,8 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     private String number;
 
     private String whenBorn;
+
+    private Place whereBorn;
 
     private String untrackedWhereBorn;
 
@@ -144,6 +147,16 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     @Override
     public void setWhenBorn(String whenBorn) {
         this.whenBorn = whenBorn;
+    }
+
+    @Override
+    public Place getWhereBorn() {
+        return whereBorn;
+    }
+
+    @Override
+    public void setWhereBorn(Place whereBorn) {
+        this.whereBorn = whereBorn;
     }
 
     @Override

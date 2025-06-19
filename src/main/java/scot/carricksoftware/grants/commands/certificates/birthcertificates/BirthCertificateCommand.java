@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.commands.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
@@ -57,6 +58,10 @@ public interface BirthCertificateCommand {
     String getWhenBorn();
 
     void setWhenBorn(String whenBorn);
+
+    Place getWhereBorn();
+
+    void setWhereBorn(Place whereBorn);
 
     String getUntrackedWhereBorn();
 

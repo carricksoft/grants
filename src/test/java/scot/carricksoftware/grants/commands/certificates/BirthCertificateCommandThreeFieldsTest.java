@@ -9,12 +9,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCensusEntryRandomEnums.GetRandomCensusEntrySex;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 class BirthCertificateCommandThreeFieldsTest {
 
@@ -51,7 +53,7 @@ class BirthCertificateCommandThreeFieldsTest {
 
     @Test
     public void getSexTest() {
-        assertNull(command.getWhenBorn());
+        assertNull(command.getSex());
     }
 
     @Test
@@ -59,6 +61,18 @@ class BirthCertificateCommandThreeFieldsTest {
         Sex sex = GetRandomCensusEntrySex();
         command.setSex(sex);
         assertEquals(sex, command.getSex());
+    }
+
+    @Test
+    public void getWhereBornTest() {
+        assertNull(command.getWhenBorn());
+    }
+
+    @Test
+    void setWhereBorn() {
+        Place whereBorn = GetRandomPlace();
+        command.setWhereBorn(whereBorn);
+        assertEquals(whereBorn, command.getWhereBorn());
     }
 
 }

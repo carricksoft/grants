@@ -9,11 +9,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.domains.places.Place;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 
 class BirthCertificateRegistrationTest {
@@ -61,5 +63,16 @@ class BirthCertificateRegistrationTest {
         assertEquals(number, certificate.getNumber());
     }
 
+    @Test
+    void getWhereBornTest() {
+        assertNull(certificate.getWhereBorn());
+    }
+
+    @Test
+    void setWhereBornTest() {
+        Place whereBorn = GetRandomPlace();
+        certificate.setWhereBorn(whereBorn);
+        assertEquals(whereBorn, certificate.getWhereBorn());
+    }
 
 }
