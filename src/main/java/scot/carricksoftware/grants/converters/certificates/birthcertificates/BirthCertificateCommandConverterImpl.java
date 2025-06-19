@@ -28,6 +28,7 @@ public class BirthCertificateCommandConverterImpl implements BirthCertificateCom
         target.setNumber(source.getNumber());
         target.setSex(source.getSex());
         target.setWhenBorn(source.getWhenBorn());
+        target.setWhereBorn(source.getWhereBorn());
         target.setUntrackedWhereBorn(source.getUntrackedWhereBorn());
         target.setFather(source.getFather());
         target.setUntrackedFather(source.getUntrackedFather());
