@@ -12,6 +12,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
@@ -20,6 +21,7 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 class BirthCertificateConverterTest {
 
@@ -44,12 +46,13 @@ class BirthCertificateConverterTest {
         String number = GetRandomString();
         Sex sex = Sex.MALE;
         String whenBorn = GetRandomString();
-        String whereBorn = GetRandomString();
+        String untrackedWhereBorn = GetRandomString();
         Person father = GetRandomPerson();
         Person mother = GetRandomPerson();
         String dateAndPlaceOfMarriage = GetRandomString();
         String fatherRank = GetRandomString();
         String untrackedFather = GetRandomString();
+        Place whereBorn = GetRandomPlace();
 
 
         source.setId(id);
@@ -63,12 +66,14 @@ class BirthCertificateConverterTest {
         source.setRegistrationAuthority(registrationAuthority);
         source.setSex(sex);
         source.setWhenBorn(whenBorn);
-        source.setUntrackedWhereBorn(whereBorn);
+        source.setWhereBorn(whereBorn);
+        source.setUntrackedWhereBorn(untrackedWhereBorn);
         source.setFather(father);
         source.setMother(mother);
         source.setDateAndPlaceOfMarriage(dateAndPlaceOfMarriage);
         source.setFatherRank(fatherRank);
         source.setUntrackedFather(untrackedFather);
+
 
 
         BirthCertificateCommand target = converter.convert(source);
@@ -84,13 +89,13 @@ class BirthCertificateConverterTest {
         assertEquals(number, target.getNumber());
         assertEquals(registrationAuthority, target.getRegistrationAuthority());
         assertEquals(sex, target.getSex());
-        assertEquals(whereBorn, target.getUntrackedWhereBorn());
+        assertEquals(whereBorn, target.getWhereBorn());
+        assertEquals(untrackedWhereBorn, target.getUntrackedWhereBorn());
         assertEquals(whenBorn, target.getWhenBorn());
         assertEquals(dateAndPlaceOfMarriage, target.getDateAndPlaceOfMarriage());
         assertEquals(fatherRank, target.getFatherRank());
         assertEquals(untrackedFather, target.getUntrackedFather());
         assertEquals(father, target.getFather());
         assertEquals(mother, target.getMother());
-
     }
 }
