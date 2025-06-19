@@ -36,15 +36,15 @@ class BirthCertificatePartTwoTest {
     }
 
     @Test
-    public void getWhereBornTest() {
-        assertNull(certificate.getWhereBorn());
+    public void getUntrackedWhereBornTest() {
+        assertNull(certificate.getUntrackedWhereBorn());
     }
 
     @Test
-    public void setWhereBornTest() {
+    public void setUntrackedWhereBornTest() {
         String string;
-        certificate.setWhereBorn(string = GetRandomString());
-        assertEquals(string, certificate.getWhereBorn());
+        certificate.setUntrackedWhereBorn(string = GetRandomString());
+        assertEquals(string, certificate.getUntrackedWhereBorn());
     }
 
     @Test

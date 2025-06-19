@@ -31,8 +31,8 @@ public class BirthCertificate extends BaseCertificate {
     private String whenBorn;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
-    @Column(name = "`where_born`")
-    private String whereBorn;
+    @Column(name = "`untracked_where_born`")
+    private String untrackedWhereBorn;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
@@ -77,12 +77,12 @@ public class BirthCertificate extends BaseCertificate {
         this.whenBorn = whenBorn;
     }
 
-    public String getWhereBorn() {
-        return whereBorn;
+    public String getUntrackedWhereBorn() {
+        return untrackedWhereBorn;
     }
 
-    public void setWhereBorn(String whereBorn) {
-        this.whereBorn = whereBorn;
+    public void setUntrackedWhereBorn(String untrackedWhereBorn) {
+        this.untrackedWhereBorn = untrackedWhereBorn;
     }
 
     public Sex getSex() {

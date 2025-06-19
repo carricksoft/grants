@@ -95,12 +95,12 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     public void capitalisationIsAppliedIsAppliedTest() {
         String whereBorn = "where born";
         String untrackedFather = "untracked father";
-        birthCertificateCommand.setWhereBorn(whereBorn);
+        birthCertificateCommand.setUntrackedWhereBorn(whereBorn);
         birthCertificateCommand.setUntrackedFather(untrackedFather);
         when(birthCertificateServiceMock.saveBirthCertificateCommand(any(BirthCertificateCommand.class))).thenReturn(birthCertificateCommand);
 
         birthCertificateController.saveOrUpdate(birthCertificateCommand, bindingResultMock, modelMock);
-        assertEquals("Where Born", birthCertificateCommand.getWhereBorn());
+        assertEquals("Where Born", birthCertificateCommand.getUntrackedWhereBorn());
         assertEquals("Untracked Father", birthCertificateCommand.getUntrackedFather());
     }
 

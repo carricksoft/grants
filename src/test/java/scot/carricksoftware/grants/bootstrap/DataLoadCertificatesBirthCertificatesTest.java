@@ -80,7 +80,7 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals(newBornMock, captor.getValue().getNewBorn());
         assertEquals(Sex.MALE, captor.getValue().getSex());
         assertEquals("25/01/1953 01:01",captor.getValue().getWhenBorn());
-        assertEquals("Edinburgh",captor.getValue().getWhereBorn());
+        assertEquals("Edinburgh",captor.getValue().getUntrackedWhereBorn());
         assertEquals(fatherMock, captor.getValue().getFather());
         assertEquals("Untracked Father", captor.getValue().getUntrackedFather());
         assertEquals(motherMock, captor.getValue().getMother());

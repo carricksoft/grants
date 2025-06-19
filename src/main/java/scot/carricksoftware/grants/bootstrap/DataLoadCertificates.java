@@ -62,7 +62,7 @@ public class DataLoadCertificates {
         birthCertificateCommand.setNewBorn(personService.findById(3L));
         birthCertificateCommand.setSex(Sex.MALE);
         birthCertificateCommand.setWhenBorn("25/01/1953 01:01");
-        birthCertificateCommand.setWhereBorn("Edinburgh");
+        birthCertificateCommand.setUntrackedWhereBorn("Edinburgh");
         birthCertificateCommand.setFather(personService.findById(1L));
         birthCertificateCommand.setUntrackedFather("Untracked Father");
 

@@ -32,7 +32,7 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     private String whenBorn;
 
-    private String whereBorn;
+    private String untrackedWhereBorn;
 
     private Sex sex;
 
@@ -147,13 +147,13 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     }
 
     @Override
-    public String getWhereBorn() {
-        return whereBorn;
+    public String getUntrackedWhereBorn() {
+        return untrackedWhereBorn;
     }
 
     @Override
-    public void setWhereBorn(String whereBorn) {
-        this.whereBorn = whereBorn;
+    public void setUntrackedWhereBorn(String untrackedWhereBorn) {
+        this.untrackedWhereBorn = untrackedWhereBorn;
     }
 
     @Override

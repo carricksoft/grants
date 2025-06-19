@@ -58,9 +58,9 @@ public interface BirthCertificateCommand {
 
     void setWhenBorn(String whenBorn);
 
-    String getWhereBorn();
+    String getUntrackedWhereBorn();
 
-    void setWhereBorn(String whereBorn);
+    void setUntrackedWhereBorn(String untrackedWhereBorn);
 
     Sex getSex();
 

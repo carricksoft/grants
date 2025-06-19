@@ -91,7 +91,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
 
         birthCertificateCommandValidatorImpl.validate(birthCertificateCommand, bindingResult);
-        birthCertificateCommand.setWhereBorn(capitalisation.getCapitalisation(birthCertificateCommand.getWhereBorn()));
+        birthCertificateCommand.setUntrackedWhereBorn(capitalisation.getCapitalisation(birthCertificateCommand.getUntrackedWhereBorn()));
         birthCertificateCommand.setUntrackedFather(capitalisation.getCapitalisation(birthCertificateCommand.getUntrackedFather()));
 
 

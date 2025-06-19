@@ -38,15 +38,15 @@ class BirthCertificateCommandThreeFieldsTest {
     }
 
     @Test
-    public void getWhereBornTest() {
-        assertNull(command.getWhereBorn());
+    public void getUntrackedWhereBornTest() {
+        assertNull(command.getUntrackedWhereBorn());
     }
 
     @Test
-    public void setWhereBornTest() {
+    public void setUntrackedWhereBornTest() {
         String string;
-        command.setWhereBorn(string = GetRandomString());
-        assertEquals(string, command.getWhereBorn());
+        command.setUntrackedWhereBorn(string = GetRandomString());
+        assertEquals(string, command.getUntrackedWhereBorn());
     }
 
     @Test

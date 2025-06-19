@@ -63,7 +63,7 @@ class BirthCertificateConverterTest {
         source.setRegistrationAuthority(registrationAuthority);
         source.setSex(sex);
         source.setWhenBorn(whenBorn);
-        source.setWhereBorn(whereBorn);
+        source.setUntrackedWhereBorn(whereBorn);
         source.setFather(father);
         source.setMother(mother);
         source.setDateAndPlaceOfMarriage(dateAndPlaceOfMarriage);
@@ -84,7 +84,7 @@ class BirthCertificateConverterTest {
         assertEquals(number, target.getNumber());
         assertEquals(registrationAuthority, target.getRegistrationAuthority());
         assertEquals(sex, target.getSex());
-        assertEquals(whereBorn, target.getWhereBorn());
+        assertEquals(whereBorn, target.getUntrackedWhereBorn());
         assertEquals(whenBorn, target.getWhenBorn());
         assertEquals(dateAndPlaceOfMarriage, target.getDateAndPlaceOfMarriage());
         assertEquals(fatherRank, target.getFatherRank());

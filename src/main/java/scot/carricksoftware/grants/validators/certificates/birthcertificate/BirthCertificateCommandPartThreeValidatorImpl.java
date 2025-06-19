@@ -37,7 +37,7 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
 
     private void validateWhereBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating where born");
-        validateTypes.validateNullOrEmptyString(birthCertificateCommand.getWhereBorn(), "whereBorn", ValidationConstants.WHERE_BORN_IS_NULL, bindingResult);
+        validateTypes.validateNullOrEmptyString(birthCertificateCommand.getUntrackedWhereBorn(), "untrackedWhereBorn", ValidationConstants.WHERE_BORN_IS_NULL, bindingResult);
     }
 
     private void validateSex(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
