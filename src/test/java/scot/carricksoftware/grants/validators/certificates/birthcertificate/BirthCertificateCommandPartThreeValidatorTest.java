@@ -66,21 +66,32 @@ class BirthCertificateCommandPartThreeValidatorTest {
                 bindingResultMock);
     }
 
-        @Test
-        void validateWhereBornAndUntrackedWhereBornTest() {
-            String untrackedWhereBorn = GetRandomString();
-            Place whereBorn = GetRandomPlace();
-            when(birthCertificateCommandMock.getUntrackedWhereBorn()).thenReturn(untrackedWhereBorn);
-            when(birthCertificateCommandMock.getWhereBorn()).thenReturn(whereBorn);
-            validator.validate(birthCertificateCommandMock, bindingResultMock);
-            verify(validateTypesMock).validatePlaceAndUntrackedPlace(
-                    whereBorn,
-                    untrackedWhereBorn,
-                    "whereBorn",
-                    "untrackedWhereBorn",
-                    "One and only one where born and untracked where born must be specified.",
-                    bindingResultMock);
-        }
+    @Test
+    void validateWhereBornAndUntrackedWhereBornTest() {
+        String untrackedWhereBorn = GetRandomString();
+        Place whereBorn = GetRandomPlace();
+        when(birthCertificateCommandMock.getUntrackedWhereBorn()).thenReturn(untrackedWhereBorn);
+        when(birthCertificateCommandMock.getWhereBorn()).thenReturn(whereBorn);
+        validator.validate(birthCertificateCommandMock, bindingResultMock);
+        verify(validateTypesMock).validatePlaceAndUntrackedPlace(
+                whereBorn,
+                untrackedWhereBorn,
+                "whereBorn",
+                "untrackedWhereBorn",
+                "One and only one where born and untracked where born must be specified.",
+                bindingResultMock);
+    }
 
+    @Test
+    void validateWhenBornTestTest() {
+        validator.validate(birthCertificateCommandMock, bindingResultMock);
+        verify(validateTypesMock).validatePastDateAndTime(
+                birthCertificateCommandMock.getWhenBorn(),
+                "whenBorn",
+                "When born cannot be null.",
+                "The format should be dd/MM/yyyy hh:mm.",
+                "Date should not be in the future.",
+                bindingResultMock);
+    }
 
 }
