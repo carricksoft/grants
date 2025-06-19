@@ -41,14 +41,6 @@ class BirthCertificateCommandPartThreeValidatorTest {
     }
 
     @Test
-    void validateWhereBornTest() {
-        String where = GetRandomString();
-        when(birthCertificateCommandMock.getUntrackedWhereBorn()).thenReturn(where);
-        validator.validate(birthCertificateCommandMock, bindingResultMock);
-        verify(validateTypesMock).validateNullOrEmptyString(where, "untrackedWhereBorn", "Where born cannot be null.", bindingResultMock);
-    }
-
-    @Test
     void validateSexTest() {
         Sex sex = Sex.MALE;
         when(birthCertificateCommandMock.getSex()).thenReturn(sex);

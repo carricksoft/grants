@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.validators.helpers;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
@@ -35,4 +36,6 @@ public interface ValidateTypes {
     void validatePersonAndUntrackedPerson(Person person, String untrackedPerson, String personFieldName, String untrackedFieldName, String message,  BindingResult bindingResult);
 
 
+    @SuppressWarnings("EmptyMethod")
+    void validatePlaceAndUntrackedPlace(Place place, String untrackedPlace, String placeFieldName, String untrackedFieldName, String message, BindingResult bindingResult);
 }

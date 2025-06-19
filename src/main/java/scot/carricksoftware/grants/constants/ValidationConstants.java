@@ -20,6 +20,10 @@ public class ValidationConstants {
     public static final String NAME_IS_TOO_LONG = "Name must be no more than " + ApplicationConstants.MAXIMUM_NAME_LENGTH + " characters long.";
     public static final String DATE_IS_NULL = "Date must exist.";
     public static final String DATE_IN_FUTURE = "Date should not be in the future.";
+
+    public static final String PLACE_IS_NULL = "Place must exist.";
+    public static final String REGION_IS_NULL = "Region must exist.";
+    public static final String COUNTRY_IS_NULL = "Country must exist.";
     public static final String CENSUS_IS_NULL = "The census should be specified";
     public static final String CENSUS_NAME_IS_NULL = "Either Person or Untracked Person must be given";
     public static final String CENSUS_NAME_IS_NOT_NULL = "Both Person and Untracked Person cannot be given";
@@ -40,11 +44,7 @@ public class ValidationConstants {
     public static final String WHEN_BORN_INCORRECT_FORMAT = "The format should be dd/MM/yyyy hh:mm.";
     public static final String WHEN_BORN_IS_NULL = "When born cannot be null.";
     public static final String FATHER_AND_UNTRACKED_FATHER = "One and only one father and untracked father must be specified.";
-
-    public static final String PLACE_IS_NULL = "The place cannot be null.";
-    public static final String COUNTRY_IS_NULL = "The country cannot be null.";
-    public static final String REGION_IS_NULL = "The region cannot be null.";
-
+    public static final String WHERE_BORN_AND_UNTRACKED_WHERE_BORN = "One and only one where born and untracked where born must be specified.";
     public static final String BRIDE_IS_NULL = "The bride cannot be null.";
     public static final String GROOM_IS_NULL = "The groom cannot be null.";
     public static final String SAME_BRIDE_AND_GROOM = "The bride and groom cannot be the same person.";

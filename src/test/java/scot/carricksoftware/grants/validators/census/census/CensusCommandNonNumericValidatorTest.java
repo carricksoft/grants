@@ -84,6 +84,6 @@ public class CensusCommandNonNumericValidatorTest {
         assertEquals("place", stringArgumentCaptor.getValue());
         assertEquals("", stringArgumentCaptor2.getValue());
         assertNull(objectArgumentCaptor.getValue());
-        assertEquals("The place cannot be null.", stringArgumentCaptor3.getValue());
+        assertEquals("Place must exist.", stringArgumentCaptor3.getValue());
     }
 }

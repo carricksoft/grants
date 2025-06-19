@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
@@ -104,6 +105,7 @@ public class ValidateTypesImpl implements ValidateTypes {
         }
     }
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public void validatePersonAndUntrackedPerson(Person person, String untrackedPerson, String personFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
        boolean error = person == null && (untrackedPerson == null || untrackedPerson.trim().isEmpty());
@@ -112,6 +114,19 @@ public class ValidateTypesImpl implements ValidateTypes {
         }
         if (error) {
             bindingResult.rejectValue(personFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+            bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        }
+    }
+
+    @SuppressWarnings("DuplicatedCode")
+    @Override
+    public void validatePlaceAndUntrackedPlace(Place place, String untrackedPlace, String placeFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
+        boolean error = place == null && (untrackedPlace == null || untrackedPlace.trim().isEmpty());
+        if (!(place == null) && untrackedPlace != null &&  !(untrackedPlace.trim().isEmpty())) {
+            error = true;
+        }
+        if (error) {
+            bindingResult.rejectValue(placeFieldName, ApplicationConstants.EMPTY_STRING, null, message);
             bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
         }
     }

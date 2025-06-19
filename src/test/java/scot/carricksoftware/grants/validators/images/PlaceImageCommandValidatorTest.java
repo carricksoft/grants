@@ -55,6 +55,6 @@ class PlaceImageCommandValidatorTest {
                 stringArgumentCaptor3.capture());
 
         assertEquals("place", stringArgumentCaptor.getValue());
-        assertEquals("The place cannot be null.", stringArgumentCaptor3.getValue());
+        assertEquals("Place must exist.", stringArgumentCaptor3.getValue());
     }
 }

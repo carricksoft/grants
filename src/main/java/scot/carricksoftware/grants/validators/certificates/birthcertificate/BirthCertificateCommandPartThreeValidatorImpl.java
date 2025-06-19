@@ -31,14 +31,10 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
 
         validateSex(birthCertificateCommand, bindingResult);
         validateWhenBorn(birthCertificateCommand, bindingResult);
-        validateWhereBorn(birthCertificateCommand, bindingResult);
         validateFatherAndUntrackedFather(birthCertificateCommand, bindingResult);
+        validateWhereBornAndUntrackedWhereBorn(birthCertificateCommand, bindingResult);
     }
 
-    private void validateWhereBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
-        logger.debug("Validating where born");
-        validateTypes.validateNullOrEmptyString(birthCertificateCommand.getUntrackedWhereBorn(), "untrackedWhereBorn", ValidationConstants.WHERE_BORN_IS_NULL, bindingResult);
-    }
 
     private void validateSex(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating sex");
@@ -53,6 +49,12 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
     private void validateFatherAndUntrackedFather(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating father and untracked father");
         validateTypes.validatePersonAndUntrackedPerson(birthCertificateCommand.getFather(), birthCertificateCommand.getUntrackedFather(), "father", "untrackedFather", ValidationConstants.FATHER_AND_UNTRACKED_FATHER,bindingResult);
+    }
+
+    private void validateWhereBornAndUntrackedWhereBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating where born and untracked where born");
+        validateTypes.validatePlaceAndUntrackedPlace(birthCertificateCommand.getWhereBorn(), birthCertificateCommand.getUntrackedWhereBorn(),
+                "whereBorn", "untrackedWhereBorn", ValidationConstants.WHERE_BORN_AND_UNTRACKED_WHERE_BORN,bindingResult);
     }
 
 }
