@@ -71,7 +71,7 @@ class BirthCertificateCommandPartThreeValidatorTest {
         when(birthCertificateCommandMock.getUntrackedFather()).thenReturn(untrackedFather);
         when(birthCertificateCommandMock.getFather()).thenReturn(father);
         validator.validate(birthCertificateCommandMock, bindingResultMock);
-        verify(validateTypesMock).validatePersonAndUntrackedPerson(father, untrackedFather, "father", "unTrackedFather","One and only one father and untracked father must be specified.", bindingResultMock);
+        verify(validateTypesMock).validatePersonAndUntrackedPerson(father, untrackedFather, "father", "untrackedFather","One and only one father and untracked father must be specified.", bindingResultMock);
     }
 
 

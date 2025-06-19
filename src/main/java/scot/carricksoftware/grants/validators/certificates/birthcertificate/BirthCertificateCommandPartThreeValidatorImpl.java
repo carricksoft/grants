@@ -52,7 +52,7 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
 
     private void validateFatherAndUntrackedFather(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating father and untracked father");
-        validateTypes.validatePersonAndUntrackedPerson(birthCertificateCommand.getFather(), birthCertificateCommand.getUntrackedFather(), "father", "unTrackedFather", ValidationConstants.FATHER_AND_UNTRACKED_FATHER,bindingResult);
+        validateTypes.validatePersonAndUntrackedPerson(birthCertificateCommand.getFather(), birthCertificateCommand.getUntrackedFather(), "father", "untrackedFather", ValidationConstants.FATHER_AND_UNTRACKED_FATHER,bindingResult);
     }
 
 }
