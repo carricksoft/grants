@@ -48,14 +48,14 @@ class BirthCertificatePartThreeTest {
     }
 
     @Test
-    public void getInformantRankTest() {
-        assertNull(certificate.getInformantRank());
+    public void getInformantQualificationTest() {
+        assertNull(certificate.getInformantQualification());
     }
 
     @Test
     public void setInformantRankTest() {
-        String informantRank = GetRandomString();
-        certificate.setInformantRank(informantRank);
-        assertEquals(informantRank, certificate.getInformantRank());
+        String informantQualification = GetRandomString();
+        certificate.setInformantQualification(informantQualification);
+        assertEquals(informantQualification, certificate.getInformantQualification());
     }
 }
