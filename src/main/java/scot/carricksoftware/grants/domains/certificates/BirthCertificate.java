@@ -27,7 +27,7 @@ public class BirthCertificate extends BaseCertificate {
     private Person newBorn;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
-    @Column(name= "`when_born`")
+    @Column(name = "`when_born`")
     @DateTimeFormat(pattern = ApplicationConstants.DATE_TIME_FORMAT)
     private String whenBorn;
 
@@ -66,6 +66,19 @@ public class BirthCertificate extends BaseCertificate {
     @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`date_and_place_of_marriage`")
     private String dateAndPlaceOfMarriage;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @ManyToOne()
+    @JoinColumn(name = "`informant_id`")
+    private Person informant;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`untracked_informant`")
+    private String untrackedInformant;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`informant_rank`")
+    private String informantRank;
 
     public Person getNewBorn() {
         return newBorn;
@@ -146,4 +159,30 @@ public class BirthCertificate extends BaseCertificate {
     public void setDateAndPlaceOfMarriage(String dateAndPlaceOfMarriage) {
         this.dateAndPlaceOfMarriage = dateAndPlaceOfMarriage;
     }
+
+    public Person getInformant() {
+        return informant;
+    }
+
+    public void setInformant(Person informant) {
+        this.informant = informant;
+    }
+
+    public String getUntrackedInformant() {
+        return untrackedInformant;
+    }
+
+    public void setUntrackedInformant(String untrackedInformant) {
+        this.untrackedInformant = untrackedInformant;
+    }
+
+    public String getInformantRank() {
+        return informantRank;
+    }
+
+    public void setInformantRank(String informantRank) {
+        this.informantRank = informantRank;
+    }
+
+
 }
