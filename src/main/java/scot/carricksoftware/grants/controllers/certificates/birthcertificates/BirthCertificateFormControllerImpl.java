@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.Capitalise;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
@@ -43,7 +43,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     private final PersonService personService;
     private final PlaceService placeService;
     private final OrganisationService organisationService;
-    private final Capitalisation capitalisation;
+    private final Capitalise capitalise;
 
 
     public BirthCertificateFormControllerImpl(BirthCertificateService birthCertificateService,
@@ -52,8 +52,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
                                               BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImpl,
                                               PersonService personService,
                                               PlaceService placeService,
-                                              OrganisationService organisationService,
-                                              Capitalisation capitalisation) {
+                                              OrganisationService organisationService, Capitalise capitalise) {
         this.birthCertificateService = birthCertificateService;
         this.birthCertificateCommandConverter = birthCertificateCommandConverter;
 
@@ -63,7 +62,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         this.personService = personService;
         this.placeService = placeService;
         this.organisationService = organisationService;
-        this.capitalisation = capitalisation;
+        this.capitalise = capitalise;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -97,8 +96,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
 
         birthCertificateCommandValidatorImpl.validate(birthCertificateCommand, bindingResult);
-        birthCertificateCommand.setUntrackedWhereBorn(capitalisation.getCapitalisation(birthCertificateCommand.getUntrackedWhereBorn()));
-        birthCertificateCommand.setUntrackedFather(capitalisation.getCapitalisation(birthCertificateCommand.getUntrackedFather()));
+        capitalise.capitalise(birthCertificateCommand);
 
 
         if (bindingResult.hasErrors()) {

@@ -7,9 +7,11 @@ package scot.carricksoftware.grants.capitalisation;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
+@Component
 public class CapitaliseStringImpl implements CapitaliseString {
 
     private static final Logger logger = LogManager.getLogger(CapitaliseStringImpl.class);
