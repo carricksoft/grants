@@ -71,6 +71,9 @@ public class DataLoadCertificates {
 
         birthCertificateCommand.setMother(personService.findById(2L));
         birthCertificateCommand.setWhereBorn(placeService.findById(1L));
+        birthCertificateCommand.setInformant(personService.findById(1L));
+        birthCertificateCommand.setUntrackedInformant("Untracked Informant");
+        birthCertificateCommand.setInformantQualification("Qualification");
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
     }

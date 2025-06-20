@@ -99,6 +99,9 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals("Edinburgh", captor.getValue().getUntrackedWhereBorn());
         assertEquals(placeMock, captor.getValue().getWhereBorn());
         assertEquals(motherMock, captor.getValue().getMother());
+        assertEquals(fatherMock, captor.getValue().getInformant());
+        assertEquals("Untracked Informant", captor.getValue().getUntrackedInformant());
+        assertEquals("Qualification", captor.getValue().getInformantQualification());
 
     }
 
