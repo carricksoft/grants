@@ -90,4 +90,16 @@ public interface BirthCertificateCommand {
     String getDateAndPlaceOfMarriage();
 
     void setDateAndPlaceOfMarriage(String dateAndPlaceOfMarriage);
+
+    Person getInformant();
+
+    void setInformant(Person informant);
+
+    String getUntrackedInformant();
+
+    void setUntrackedInformant(String untrackedInformant);
+
+    String getInformantQualification();
+
+    void setInformantQualification(String informantQualification);
 }

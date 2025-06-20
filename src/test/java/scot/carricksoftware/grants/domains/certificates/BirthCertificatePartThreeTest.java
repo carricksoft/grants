@@ -53,7 +53,7 @@ class BirthCertificatePartThreeTest {
     }
 
     @Test
-    public void setInformantRankTest() {
+    public void setInformantQualificationTest() {
         String informantQualification = GetRandomString();
         certificate.setInformantQualification(informantQualification);
         assertEquals(informantQualification, certificate.getInformantQualification());

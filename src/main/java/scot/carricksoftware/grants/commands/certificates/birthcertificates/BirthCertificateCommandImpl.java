@@ -49,6 +49,11 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     private String dateAndPlaceOfMarriage;
 
+    private Person informant;
+
+    private String untrackedInformant;
+
+    private String informantQualification;
 
     public Long getId() {
         return Id;
@@ -227,5 +232,35 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     @Override
     public void setDateAndPlaceOfMarriage(String dateAndPlaceOfMarriage) {
         this.dateAndPlaceOfMarriage = dateAndPlaceOfMarriage;
+    }
+
+    @Override
+    public Person getInformant() {
+        return informant;
+    }
+
+    @Override
+    public void setInformant(Person informant) {
+        this.informant = informant;
+    }
+
+    @Override
+    public String getUntrackedInformant() {
+        return untrackedInformant;
+    }
+
+    @Override
+    public void setUntrackedInformant(String untrackedInformant) {
+        this.untrackedInformant = untrackedInformant;
+    }
+
+    @Override
+    public String getInformantQualification() {
+        return informantQualification;
+    }
+
+    @Override
+    public void setInformantQualification(String informantQualification) {
+        this.informantQualification = informantQualification;
     }
 }
