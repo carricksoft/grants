@@ -39,6 +39,9 @@ public class BirthCertificateConverterImpl implements BirthCertificateConverter 
         target.setFatherRank(source.getFatherRank());
         target.setMother(source.getMother());
         target.setDateAndPlaceOfMarriage(source.getDateAndPlaceOfMarriage());
+        target.setInformant(source.getInformant());
+        target.setUntrackedInformant(source.getUntrackedInformant());
+        target.setInformantQualification(source.getInformantQualification());
 
         return target;
     }
