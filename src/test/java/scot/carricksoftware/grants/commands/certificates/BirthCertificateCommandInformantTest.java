@@ -60,5 +60,5 @@ class BirthCertificateCommandInformantTest {
         command.setInformantQualification(informantQualification);
         assertEquals(informantQualification, command.getInformantQualification());
     }
-   
+
 }

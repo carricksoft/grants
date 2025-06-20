@@ -1,24 +1,23 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 11/03/2025, 23:47. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.converters;
+package scot.carricksoftware.grants.capitalisation;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.springframework.stereotype.Component;
 
 import java.util.Locale;
 
-@SuppressWarnings("DuplicatedCode")
-@Component
-public class CapitalisationImpl implements Capitalisation {
+public class CapitaliseStringImpl implements CapitaliseString {
 
-    private static final Logger logger = LogManager.getLogger(CapitalisationImpl.class);
+    private static final Logger logger = LogManager.getLogger(CapitaliseStringImpl.class);
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
-    public String getCapitalisation(String input) {
+    public String capitalise(String input) {
+        logger.info("CapitaliseStringImpl::capitalise");
         if (input == null) {
             return "";
         } else if (input.length() < 3) {
@@ -46,6 +45,7 @@ public class CapitalisationImpl implements Capitalisation {
         }
     }
 
+    @SuppressWarnings("DuplicatedCode")
     private String doPart(String input) {
         String result = input;
         if (input.length() >= 3) {
@@ -64,6 +64,4 @@ public class CapitalisationImpl implements Capitalisation {
         }
         return result;
     }
-
-
 }
