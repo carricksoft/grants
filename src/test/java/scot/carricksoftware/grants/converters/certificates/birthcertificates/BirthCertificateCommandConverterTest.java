@@ -54,6 +54,9 @@ class BirthCertificateCommandConverterTest {
         String dateAndPlaceOfMarriage = GetRandomString();
         String fatherRank = GetRandomString();
         String untrackedFather = GetRandomString();
+        Person informant = GetRandomPerson();
+        String untrackedInformant = GetRandomString();
+        String informantQualifier = GetRandomString();
 
 
         source.setId(id);
@@ -74,6 +77,9 @@ class BirthCertificateCommandConverterTest {
         source.setDateAndPlaceOfMarriage(dateAndPlaceOfMarriage);
         source.setFatherRank(fatherRank);
         source.setUntrackedFather(untrackedFather);
+        source.setInformant(informant);
+        source.setUntrackedInformant(untrackedInformant);
+        source.setInformantQualification(informantQualifier);
 
 
         BirthCertificate target = converter.convert(source);
@@ -97,5 +103,8 @@ class BirthCertificateCommandConverterTest {
         assertEquals(untrackedFather, target.getUntrackedFather());
         assertEquals(father, target.getFather());
         assertEquals(mother, target.getMother());
+        assertEquals(informant, target.getInformant());
+        assertEquals(untrackedInformant, target.getUntrackedInformant());
+        assertEquals(informantQualifier, target.getInformantQualification());
     }
 }
