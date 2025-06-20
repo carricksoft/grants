@@ -77,8 +77,8 @@ public class BirthCertificate extends BaseCertificate {
     private String untrackedInformant;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
-    @Column(name = "`informant_rank`")
-    private String informantRank;
+    @Column(name = "`informant_qualification`")
+    private String informantQualification;
 
     public Person getNewBorn() {
         return newBorn;
@@ -176,13 +176,13 @@ public class BirthCertificate extends BaseCertificate {
         this.untrackedInformant = untrackedInformant;
     }
 
-    public String getInformantRank() {
-        return informantRank;
+    @SuppressWarnings("unused")
+    public String getInformantQualification() {
+        return informantQualification;
     }
 
-    public void setInformantRank(String informantRank) {
-        this.informantRank = informantRank;
+    @SuppressWarnings("unused")
+    public void setInformantQualification(String informantQualification) {
+        this.informantQualification = informantQualification;
     }
-
-
 }
