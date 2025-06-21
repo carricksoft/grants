@@ -8,49 +8,41 @@ package scot.carricksoftware.grants.capitalisation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InOrder;
-import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 
-import static org.mockito.Mockito.inOrder;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
 class CapitaliseBirthCertificateCommandTest {
 
-    @Mock
-    private CapitaliseString capitaliseStringMock;
-
-    @Mock
-    private BirthCertificateCommand birthCertificateCommandMock;
+    private final CapitaliseStringImpl capitaliseString = new CapitaliseStringImpl();
 
     @SuppressWarnings("unused")
     private Capitalise capitalise;
 
     @BeforeEach
     void setUp() {
-        capitalise = new CapitaliseImpl(capitaliseStringMock);
+        capitalise = new CapitaliseImpl(capitaliseString);
     }
 
     @Test
     void birthCertificateCommandTest() {
-        when(birthCertificateCommandMock.getInformantQualification()).thenReturn("A");
-        when(birthCertificateCommandMock.getUntrackedWhereBorn()).thenReturn("B");
-        when(birthCertificateCommandMock.getUntrackedFather()).thenReturn("C");
-        when(birthCertificateCommandMock.getUntrackedInformant()).thenReturn("D");
-        when(birthCertificateCommandMock.getWhenBorn()).thenReturn("E");
-        when(birthCertificateCommandMock.getCertificateNumber()).thenReturn("F");
+        BirthCertificateCommand command = new BirthCertificateCommandImpl();
+        command.setInformantQualification("lower1");
+        command.setUntrackedInformant("lower2");
+        command.setUntrackedWhereBorn("lower3");
+        command.setUntrackedFather("lower4");
+        command.setWhenBorn("lower5");
+        command.setCertificateNumber("lower6");
 
-        capitalise.capitalise(birthCertificateCommandMock);
-        InOrder inOrder = inOrder(capitaliseStringMock);
-
-        inOrder.verify(capitaliseStringMock).capitalise(birthCertificateCommandMock.getInformantQualification());
-        inOrder.verify(capitaliseStringMock ).capitalise(birthCertificateCommandMock.getUntrackedWhereBorn());
-        verify(capitaliseStringMock).capitalise(birthCertificateCommandMock.getUntrackedFather());
-        verify(capitaliseStringMock).capitalise(birthCertificateCommandMock.getUntrackedInformant());
-        verify(capitaliseStringMock).capitalise(birthCertificateCommandMock.getWhenBorn());
-        verify(capitaliseStringMock).capitalise(birthCertificateCommandMock.getCertificateNumber());
+        capitalise.capitaliseBirthCertificateCommand(command);
+        assertEquals("Lower1", command.getInformantQualification());
+        assertEquals("Lower2", command.getUntrackedInformant());
+        assertEquals("Lower3", command.getUntrackedWhereBorn());
+        assertEquals("Lower4", command.getUntrackedFather());
+        assertEquals("Lower5", command.getWhenBorn());
+        assertEquals("Lower6", command.getCertificateNumber());
     }
 }

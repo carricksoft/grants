@@ -96,7 +96,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
 
         birthCertificateCommandValidatorImpl.validate(birthCertificateCommand, bindingResult);
-        capitalise.capitalise(birthCertificateCommand);
+        capitalise.capitaliseBirthCertificateCommand(birthCertificateCommand);
 
 
         if (bindingResult.hasErrors()) {

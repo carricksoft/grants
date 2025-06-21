@@ -11,7 +11,6 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 @Component
 public class CapitaliseImpl implements Capitalise {
 
-   @SuppressWarnings("unused")
    private final CapitaliseString capitaliseString;
 
     public CapitaliseImpl(CapitaliseString capitaliseString) {
@@ -19,7 +18,7 @@ public class CapitaliseImpl implements Capitalise {
     }
 
     @Override
-    public void capitalise(BirthCertificateCommand birthCertificateCommand) {
+    public void capitaliseBirthCertificateCommand(BirthCertificateCommand birthCertificateCommand) {
         birthCertificateCommand.setInformantQualification(capitaliseString.capitalise(birthCertificateCommand.getInformantQualification()));
         birthCertificateCommand.setUntrackedWhereBorn(capitaliseString.capitalise(birthCertificateCommand.getUntrackedWhereBorn()));
         birthCertificateCommand.setUntrackedFather(capitaliseString.capitalise(birthCertificateCommand.getUntrackedFather()));

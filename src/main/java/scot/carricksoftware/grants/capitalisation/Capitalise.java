@@ -10,5 +10,5 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 public interface Capitalise {
 
     @SuppressWarnings({"unused", "EmptyMethod"})
-    void capitalise(BirthCertificateCommand command);
+    void capitaliseBirthCertificateCommand(BirthCertificateCommand command);
 }
