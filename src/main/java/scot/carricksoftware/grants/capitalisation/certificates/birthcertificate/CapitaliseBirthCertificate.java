@@ -3,12 +3,12 @@
  *
  */
 
-package scot.carricksoftware.grants.capitalisation;
+package scot.carricksoftware.grants.capitalisation.certificates.birthcertificate;
 
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 
-public interface Capitalise {
+public interface CapitaliseBirthCertificate {
 
     @SuppressWarnings({"unused", "EmptyMethod"})
-    void capitaliseBirthCertificateCommand(BirthCertificateCommand command);
+    void capitalise(BirthCertificateCommand command);
 }

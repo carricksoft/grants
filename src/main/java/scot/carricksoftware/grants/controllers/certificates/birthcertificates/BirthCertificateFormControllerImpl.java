@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import scot.carricksoftware.grants.capitalisation.Capitalise;
+import scot.carricksoftware.grants.capitalisation.certificates.birthcertificate.CapitaliseBirthCertificate;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -43,7 +43,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     private final PersonService personService;
     private final PlaceService placeService;
     private final OrganisationService organisationService;
-    private final Capitalise capitalise;
+    private final CapitaliseBirthCertificate capitaliseBirthCertificate;
 
 
     public BirthCertificateFormControllerImpl(BirthCertificateService birthCertificateService,
@@ -52,7 +52,8 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
                                               BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImpl,
                                               PersonService personService,
                                               PlaceService placeService,
-                                              OrganisationService organisationService, Capitalise capitalise) {
+                                              OrganisationService organisationService,
+                                              CapitaliseBirthCertificate capitaliseBirthCertificate) {
         this.birthCertificateService = birthCertificateService;
         this.birthCertificateCommandConverter = birthCertificateCommandConverter;
 
@@ -62,7 +63,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         this.personService = personService;
         this.placeService = placeService;
         this.organisationService = organisationService;
-        this.capitalise = capitalise;
+        this.capitaliseBirthCertificate = capitaliseBirthCertificate;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -96,7 +97,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
 
         birthCertificateCommandValidatorImpl.validate(birthCertificateCommand, bindingResult);
-        capitalise.capitaliseBirthCertificateCommand(birthCertificateCommand);
+        capitaliseBirthCertificate.capitalise(birthCertificateCommand);
 
 
         if (bindingResult.hasErrors()) {

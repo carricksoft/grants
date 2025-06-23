@@ -9,22 +9,24 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import scot.carricksoftware.grants.capitalisation.certificates.birthcertificate.CapitaliseBirthCertificate;
+import scot.carricksoftware.grants.capitalisation.certificates.birthcertificate.CapitaliseBirthCertificateImpl;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-class CapitaliseBirthCertificateCommandTest {
+class CapitaliseBirthCertificateBirthCertificateCommandTest {
 
     private final CapitaliseStringImpl capitaliseString = new CapitaliseStringImpl();
 
     @SuppressWarnings("unused")
-    private Capitalise capitalise;
+    private CapitaliseBirthCertificate capitaliseBirthCertificate;
 
     @BeforeEach
     void setUp() {
-        capitalise = new CapitaliseImpl(capitaliseString);
+        capitaliseBirthCertificate = new CapitaliseBirthCertificateImpl(capitaliseString);
     }
 
     @Test
@@ -37,7 +39,7 @@ class CapitaliseBirthCertificateCommandTest {
         command.setWhenBorn("lower5");
         command.setCertificateNumber("lower6");
 
-        capitalise.capitaliseBirthCertificateCommand(command);
+        capitaliseBirthCertificate.capitalise(command);
         assertEquals("Lower1", command.getInformantQualification());
         assertEquals("Lower2", command.getUntrackedInformant());
         assertEquals("Lower3", command.getUntrackedWhereBorn());

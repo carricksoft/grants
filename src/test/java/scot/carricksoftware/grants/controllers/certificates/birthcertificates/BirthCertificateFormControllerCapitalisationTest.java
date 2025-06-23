@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.capitalisation.Capitalise;
+import scot.carricksoftware.grants.capitalisation.certificates.birthcertificate.CapitaliseBirthCertificate;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
@@ -57,7 +57,7 @@ public class BirthCertificateFormControllerCapitalisationTest {
     private OrganisationService organisationServiceMock;
 
     @Mock
-    private Capitalise capitaliseMock;
+    private CapitaliseBirthCertificate capitaliseBirthCertificateMock;
 
     @Mock
     private BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImplMock;
@@ -75,7 +75,7 @@ public class BirthCertificateFormControllerCapitalisationTest {
                 personServiceMock,
                 placeServiceMock,
                 organisationServiceMock,
-                capitaliseMock);
+                capitaliseBirthCertificateMock);
     }
 
 
@@ -88,7 +88,7 @@ public class BirthCertificateFormControllerCapitalisationTest {
 
         birthCertificateController.saveOrUpdate(birthCertificateCommand, bindingResultMock, modelMock);
 
-        verify(capitaliseMock).capitaliseBirthCertificateCommand(birthCertificateCommand);
+        verify(capitaliseBirthCertificateMock).capitalise(birthCertificateCommand);
     }
 
 

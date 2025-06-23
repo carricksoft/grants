@@ -3,22 +3,23 @@
  *
  */
 
-package scot.carricksoftware.grants.capitalisation;
+package scot.carricksoftware.grants.capitalisation.certificates.birthcertificate;
 
 import org.springframework.stereotype.Component;
+import scot.carricksoftware.grants.capitalisation.CapitaliseString;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 
 @Component
-public class CapitaliseImpl implements Capitalise {
+public class CapitaliseBirthCertificateImpl implements CapitaliseBirthCertificate {
 
    private final CapitaliseString capitaliseString;
 
-    public CapitaliseImpl(CapitaliseString capitaliseString) {
+    public CapitaliseBirthCertificateImpl(CapitaliseString capitaliseString) {
         this.capitaliseString = capitaliseString;
     }
 
     @Override
-    public void capitaliseBirthCertificateCommand(BirthCertificateCommand birthCertificateCommand) {
+    public void capitalise(BirthCertificateCommand birthCertificateCommand) {
         birthCertificateCommand.setInformantQualification(capitaliseString.capitalise(birthCertificateCommand.getInformantQualification()));
         birthCertificateCommand.setUntrackedWhereBorn(capitaliseString.capitalise(birthCertificateCommand.getUntrackedWhereBorn()));
         birthCertificateCommand.setUntrackedFather(capitaliseString.capitalise(birthCertificateCommand.getUntrackedFather()));

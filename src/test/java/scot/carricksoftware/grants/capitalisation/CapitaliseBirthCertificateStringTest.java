@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-class CapitaliseStringTest {
+class CapitaliseBirthCertificateStringTest {
 
     private CapitaliseString capitaliseString;
 
