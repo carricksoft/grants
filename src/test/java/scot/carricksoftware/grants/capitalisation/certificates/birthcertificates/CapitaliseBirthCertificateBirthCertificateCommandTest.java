@@ -3,12 +3,13 @@
  *
  */
 
-package scot.carricksoftware.grants.capitalisation;
+package scot.carricksoftware.grants.capitalisation.certificates.birthcertificates;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
+import scot.carricksoftware.grants.capitalisation.CapitaliseStringImpl;
 import scot.carricksoftware.grants.capitalisation.certificates.birthcertificate.CapitaliseBirthCertificate;
 import scot.carricksoftware.grants.capitalisation.certificates.birthcertificate.CapitaliseBirthCertificateImpl;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
