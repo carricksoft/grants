@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.census.census.CapitaliseCensus;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -33,15 +34,19 @@ public class CensusFormControllerImpl implements CensusFormController {
     private static final Logger logger = LogManager.getLogger(CensusFormControllerImpl.class);
     private final CensusService censusService;
     private final CensusCommandValidator censusCommandValidator;
+    private final CapitaliseCensus capitaliseCensus;
     private final CensusConverter censusConverter;
     private final PlaceService placeService;
 
 
     public CensusFormControllerImpl(CensusService censusService,
                                     CensusCommandValidator censusCommandValidator,
-                                    CensusConverter censusConverter, PlaceService placeService) {
+                                    CapitaliseCensus capitaliseCensusImpl,
+                                    CensusConverter censusConverter,
+                                    PlaceService placeService) {
         this.censusService = censusService;
         this.censusCommandValidator = censusCommandValidator;
+        this.capitaliseCensus = capitaliseCensusImpl;
         this.censusConverter = censusConverter;
         this.placeService = placeService;
     }
@@ -70,6 +75,7 @@ public class CensusFormControllerImpl implements CensusFormController {
     public String saveOrUpdate(@Valid @ModelAttribute CensusCommand censusCommand, BindingResult bindingResult, Model model) {
         logger.debug("CensusFormControllerImpl::saveOrUpdate");
 
+        capitaliseCensus.capitalise(censusCommand);
         censusCommandValidator.validate(censusCommand, bindingResult);
 
 
