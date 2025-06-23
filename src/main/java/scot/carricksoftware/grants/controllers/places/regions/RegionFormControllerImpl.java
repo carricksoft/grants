@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.places.regions.CapitaliseRegion;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.regions.RegionCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
@@ -36,7 +36,7 @@ public class RegionFormControllerImpl implements RegionFormController {
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final RegionCommandConverterImpl regionCommandConverter;
     private final RegionConverterImpl regionConverter;
-    private final Capitalisation capitalisation;
+    private final CapitaliseRegion capitaliseRegion;
     private final RegionCommandValidator regionCommandValidator;
     private final CountryService countryService;
 
@@ -44,14 +44,13 @@ public class RegionFormControllerImpl implements RegionFormController {
     public RegionFormControllerImpl(RegionService regionService,
                                     RegionCommandConverterImpl regionCommandConverter,
                                     RegionConverterImpl regionConverter,
-                                    Capitalisation capitalisation, RegionCommandValidator regionCommandValidator,
+                                    CapitaliseRegion capitaliseRegion,
+                                    RegionCommandValidator regionCommandValidator,
                                     CountryService countryService) {
         this.regionService = regionService;
         this.regionCommandConverter = regionCommandConverter;
-
-
         this.regionConverter = regionConverter;
-        this.capitalisation = capitalisation;
+        this.capitaliseRegion = capitaliseRegion;
         this.regionCommandValidator = regionCommandValidator;
         this.countryService = countryService;
     }
@@ -80,6 +79,7 @@ public class RegionFormControllerImpl implements RegionFormController {
     public String saveOrUpdate(@Valid @ModelAttribute RegionCommand regionCommand, BindingResult bindingResult, Model model) {
         logger.debug("RegionFormControllerImpl::saveOrUpdate");
 
+        capitaliseRegion.capitalise(regionCommand);
         regionCommandValidator.validate(regionCommand, bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -88,15 +88,11 @@ public class RegionFormControllerImpl implements RegionFormController {
             return ViewConstants.REGION_FORM;
         }
 
-        cleanUp(regionCommand);
         RegionCommand savedCommand = regionService.saveRegionCommand(regionCommand);
         model.addAttribute(AttributeConstants.REGION_COMMAND, savedCommand);
         return MappingConstants.REDIRECT + MappingConstants.REGION_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
-    private void cleanUp(RegionCommand regionCommand) {
-        regionCommand.setName(capitalisation.getCapitalisation(regionCommand.getName()));
-    }
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.REGION_SHOW)

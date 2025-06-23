@@ -13,9 +13,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.capitalisation.places.regions.CapitaliseRegion;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
-import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.regions.RegionCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl;
 import scot.carricksoftware.grants.domains.places.Region;
@@ -49,7 +49,7 @@ public class RegionFormControllerTest {
     private RegionConverterImpl regionConverterMock;
 
     @Mock
-    private Capitalisation capitalisationMock;
+    private CapitaliseRegion capitaliseRegionMock;
 
     @Mock
     private Model modelMock;
@@ -63,7 +63,7 @@ public class RegionFormControllerTest {
         regionController = new RegionFormControllerImpl(regionServiceMock,
                 regionCommandConverterMock,
                 regionConverterMock,
-                capitalisationMock,
+                capitaliseRegionMock,
                 regionCommandValidatorMock,
                 countryServiceMock);
     }

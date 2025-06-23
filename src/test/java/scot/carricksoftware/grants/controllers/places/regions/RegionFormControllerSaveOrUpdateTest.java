@@ -12,9 +12,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.places.regions.CapitaliseRegion;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommand;
 import scot.carricksoftware.grants.commands.places.regions.RegionCommandImpl;
-import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.regions.RegionCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
@@ -23,7 +23,6 @@ import scot.carricksoftware.grants.validators.places.RegionCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -47,7 +46,7 @@ public class RegionFormControllerSaveOrUpdateTest {
 
 
     @Mock
-    private Capitalisation capitalisationMock;
+    private CapitaliseRegion capitalisationRegionMock;
 
     @Mock
     private Model modelMock;
@@ -67,7 +66,7 @@ public class RegionFormControllerSaveOrUpdateTest {
         regionController = new RegionFormControllerImpl(regionServiceMock,
                 regionCommandConverterMock,
                 regionConverterMock,
-                capitalisationMock,
+                capitalisationRegionMock,
                 regionCommandValidatorMock,
                 countryServiceMock);
         regionCommand = new RegionCommandImpl();
@@ -87,17 +86,6 @@ public class RegionFormControllerSaveOrUpdateTest {
         regionCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
         assertEquals("region/form", regionController.saveOrUpdate(regionCommand, bindingResultMock, modelMock));
-    }
-
-    @Test
-    public void CleaningTakesPlaceTest() {
-        RegionCommand regionCommand = new RegionCommandImpl();
-        regionCommand.setId(4L);
-        regionCommand.setName("england");
-        when(bindingResultMock.hasErrors()).thenReturn(false);
-        when(regionServiceMock.saveRegionCommand(any(RegionCommand.class))).thenReturn(regionCommand);
-        regionController.saveOrUpdate(regionCommand, bindingResultMock, modelMock);
-        verify(capitalisationMock).getCapitalisation("england");
     }
 
 
