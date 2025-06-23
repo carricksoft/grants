@@ -15,13 +15,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.places.countries.CapitaliseCountry;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.converters.Capitalisation;
+import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverter;
 import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
+import scot.carricksoftware.grants.converters.places.countries.CountryConverter;
 import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
 import scot.carricksoftware.grants.validators.places.CountryCommandValidator;
@@ -33,22 +35,21 @@ public class CountryFormControllerImpl implements CountryFormController {
     private static final Logger logger = LogManager.getLogger(CountryFormControllerImpl.class);
     private final CountryService countryService;
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
-    private final CountryCommandConverterImpl countryCommandConverter;
-    private final CountryConverterImpl countryConverter;
-    private final Capitalisation capitalisation;
+    private final CountryCommandConverter countryCommandConverter;
+    private final CountryConverter countryConverter;
+    private final CapitaliseCountry capitaliseCountry;
     private final CountryCommandValidator countryCommandValidator;
 
-
-    public CountryFormControllerImpl(CountryService countryService,
-                                     CountryCommandConverterImpl countryCommandConverter,
-                                     CountryConverterImpl countryConverter,
-                                     Capitalisation capitalisation, CountryCommandValidator countryCommandValidator) {
+    public CountryFormControllerImpl(
+            CountryService countryService,
+            CountryCommandConverterImpl countryCommandConverter,
+            CountryConverterImpl countryConverter,
+            CapitaliseCountry capitaliseCountry,
+            CountryCommandValidator countryCommandValidator) {
         this.countryService = countryService;
         this.countryCommandConverter = countryCommandConverter;
-
-
         this.countryConverter = countryConverter;
-        this.capitalisation = capitalisation;
+        this.capitaliseCountry = capitaliseCountry;
         this.countryCommandValidator = countryCommandValidator;
     }
 
@@ -68,28 +69,21 @@ public class CountryFormControllerImpl implements CountryFormController {
         return ViewConstants.COUNTRY_FORM;
     }
 
-
     @Override
     @PostMapping(MappingConstants.COUNTRY)
     public String saveOrUpdate(@Valid @ModelAttribute CountryCommand countryCommand, BindingResult bindingResult, Model model) {
         logger.debug("CountryFormControllerImpl::saveOrUpdate");
-
+        capitaliseCountry.capitalise(countryCommand);
         countryCommandValidator.validate(countryCommand, bindingResult);
-
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             return ViewConstants.COUNTRY_FORM;
         }
 
-        cleanUp(countryCommand);
         CountryCommand savedCommand = countryService.saveCountryCommand(countryCommand);
         model.addAttribute(AttributeConstants.COUNTRY_COMMAND, savedCommand);
         return MappingConstants.REDIRECT + MappingConstants.COUNTRY_SHOW.replace("{id}", "" + savedCommand.getId());
-    }
-
-    private void cleanUp(CountryCommand countryCommand) {
-        countryCommand.setName(capitalisation.getCapitalisation(countryCommand.getName()));
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -100,6 +94,4 @@ public class CountryFormControllerImpl implements CountryFormController {
         model.addAttribute(AttributeConstants.COUNTRY_COMMAND, savedCommand);
         return ViewConstants.COUNTRY_FORM;
     }
-
-
 }

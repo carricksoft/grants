@@ -12,9 +12,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.places.countries.CapitaliseCountry;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommand;
 import scot.carricksoftware.grants.commands.places.countries.CountryCommandImpl;
-import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.countries.CountryCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.countries.CountryConverterImpl;
 import scot.carricksoftware.grants.services.places.countries.CountryService;
@@ -22,7 +22,6 @@ import scot.carricksoftware.grants.validators.places.CountryCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -42,7 +41,7 @@ public class CountryFormControllerSaveOrUpdateTest {
     private CountryConverterImpl countryConverterMock;
 
     @Mock
-    private Capitalisation capitalisationMock;
+    private CapitaliseCountry capitaliseCountryMock;
 
     @Mock
     Model modelMock;
@@ -61,7 +60,7 @@ public class CountryFormControllerSaveOrUpdateTest {
         countryController = new CountryFormControllerImpl(countryServiceMock,
                 countryCommandConverterMock,
                 countryConverterMock,
-                capitalisationMock,
+                capitaliseCountryMock,
                 countryCommandValidatorMock);
         countryCommand = new CountryCommandImpl();
     }
@@ -81,17 +80,4 @@ public class CountryFormControllerSaveOrUpdateTest {
         when(bindingResultMock.hasErrors()).thenReturn(true);
         assertEquals("country/form", countryController.saveOrUpdate(countryCommand, bindingResultMock, modelMock));
     }
-
-    @Test
-    public void CleaningTakesPlaceTest() {
-        CountryCommand countryCommand = new CountryCommandImpl();
-        countryCommand.setId(4L);
-        countryCommand.setName("england");
-        when(bindingResultMock.hasErrors()).thenReturn(false);
-        when(countryServiceMock.saveCountryCommand(any(CountryCommand.class))).thenReturn(countryCommand);
-        countryController.saveOrUpdate(countryCommand, bindingResultMock, modelMock);
-        verify(capitalisationMock).getCapitalisation("england");
-    }
-
-
 }
