@@ -13,9 +13,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.capitalisation.places.places.CapitalisePlace;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
-import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.domains.places.Place;
@@ -49,7 +49,7 @@ public class PlaceFormControllerTest {
     private PlaceConverterImpl placeConverterMock;
 
     @Mock
-    private Capitalisation capitalisationMock;
+    private CapitalisePlace capitalisePlaceMock;
 
     @Mock
     private Model modelMock;
@@ -63,7 +63,7 @@ public class PlaceFormControllerTest {
         placeController = new PlaceFormControllerImpl(placeServiceMock,
                 placeCommandConverterMock,
                 placeConverterMock,
-                capitalisationMock,
+                capitalisePlaceMock,
                 placeCommandValidatorMock,
                 regionServiceMock);
     }

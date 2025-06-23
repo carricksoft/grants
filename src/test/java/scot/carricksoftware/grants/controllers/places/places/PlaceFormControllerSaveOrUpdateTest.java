@@ -12,9 +12,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.places.places.CapitalisePlace;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommandImpl;
-import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
@@ -23,7 +23,6 @@ import scot.carricksoftware.grants.validators.places.PlaceCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -46,7 +45,7 @@ public class PlaceFormControllerSaveOrUpdateTest {
     private RegionService regionServiceMock;
 
     @Mock
-    private Capitalisation capitalisationMock;
+    private CapitalisePlace capitalisePlaceMock;
 
     @Mock
     Model modelMock;
@@ -65,7 +64,7 @@ public class PlaceFormControllerSaveOrUpdateTest {
         placeController = new PlaceFormControllerImpl(placeServiceMock,
                 placeCommandConverterMock,
                 placeConverterMock,
-                capitalisationMock,
+                capitalisePlaceMock,
                 placeCommandValidatorMock,
                 regionServiceMock);
         placeCommand = new PlaceCommandImpl();
@@ -86,17 +85,5 @@ public class PlaceFormControllerSaveOrUpdateTest {
         when(bindingResultMock.hasErrors()).thenReturn(true);
         assertEquals("place/form", placeController.saveOrUpdate(placeCommand, bindingResultMock, modelMock));
     }
-
-    @Test
-    public void CleaningTakesPlaceTest() {
-        PlaceCommand placeCommand = new PlaceCommandImpl();
-        placeCommand.setId(4L);
-        placeCommand.setName("england");
-        when(bindingResultMock.hasErrors()).thenReturn(false);
-        when(placeServiceMock.savePlaceCommand(any(PlaceCommand.class))).thenReturn(placeCommand);
-        placeController.saveOrUpdate(placeCommand, bindingResultMock, modelMock);
-        verify(capitalisationMock).getCapitalisation("england");
-    }
-
 
 }
