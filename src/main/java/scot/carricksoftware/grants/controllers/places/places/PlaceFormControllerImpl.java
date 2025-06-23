@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.places.places.CapitalisePlace;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.places.places.PlaceCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.places.PlaceConverterImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
@@ -36,7 +36,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final PlaceCommandConverterImpl placeCommandConverter;
     private final PlaceConverterImpl placeConverter;
-    private final Capitalisation capitalisation;
+    private final CapitalisePlace capitalisePlace;
     private final PlaceCommandValidator placeCommandValidator;
     private final RegionService regionService;
 
@@ -44,7 +44,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
     public PlaceFormControllerImpl(PlaceService placeService,
                                    PlaceCommandConverterImpl placeCommandConverter,
                                    PlaceConverterImpl placeConverter,
-                                   Capitalisation capitalisation,
+                                   CapitalisePlace capitalisePlace,
                                    PlaceCommandValidator placeCommandValidator,
                                    RegionService regionService) {
         this.placeService = placeService;
@@ -52,7 +52,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
 
 
         this.placeConverter = placeConverter;
-        this.capitalisation = capitalisation;
+        this.capitalisePlace = capitalisePlace;
         this.placeCommandValidator = placeCommandValidator;
         this.regionService = regionService;
     }
@@ -81,6 +81,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
     public String saveOrUpdate(@Valid @ModelAttribute PlaceCommand placeCommand, BindingResult bindingResult, Model model) {
         logger.debug("PlaceFormControllerImpl::saveOrUpdate");
 
+        capitalisePlace.capitalise(placeCommand);
         placeCommandValidator.validate(placeCommand, bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -89,16 +90,12 @@ public class PlaceFormControllerImpl implements PlaceFormController {
             return ViewConstants.PLACE_FORM;
         }
 
-        cleanUp(placeCommand);
         PlaceCommand savedCommand = placeService.savePlaceCommand(placeCommand);
         model.addAttribute(AttributeConstants.PLACE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.REGIONS, regionService.findAll());
         return MappingConstants.REDIRECT + MappingConstants.PLACE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
-    private void cleanUp(PlaceCommand placeCommand) {
-        placeCommand.setName(capitalisation.getCapitalisation(placeCommand.getName()));
-    }
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PLACE_SHOW)
