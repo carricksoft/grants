@@ -23,12 +23,10 @@ import scot.carricksoftware.grants.validators.people.PersonCommandValidator;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
-import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 
 @ExtendWith(MockitoExtension.class)
-public class PageFormControllerValidationTest {
+public class PageFormControllerValidationAndValidationTest {
 
     @SuppressWarnings("unused")
     private PersonFormControllerImpl personController;
@@ -66,18 +64,21 @@ public class PageFormControllerValidationTest {
 
 
     @Test
-    public void saveOrUpdateValidationTest() {
+    public void validationTakesPlaceTest() {
         PersonCommand personCommand = new PersonCommandImpl();
-        personCommand.setFirstName(GetRandomString());
-        personCommand.setLastName(GetRandomString());
-        personCommand.setId(GetRandomLong());
-        when(bindingResultMock.hasErrors()).thenReturn(false);
         when(personServiceMock.savePersonCommand(personCommand)).thenReturn(personCommand);
 
         personController.saveOrUpdate(personCommand, bindingResultMock, modelMock);
-
         verify(personCommandValidatorMock).validate(personCommand, bindingResultMock);
     }
 
+    @Test
+    public void capitalisationTakesPlaceTest() {
+        PersonCommand personCommand = new PersonCommandImpl();
+        when(personServiceMock.savePersonCommand(personCommand)).thenReturn(personCommand);
+
+        personController.saveOrUpdate(personCommand, bindingResultMock, modelMock);
+        verify(capitalisePersonMock).capitalise(personCommand);
+    }
 
 }
