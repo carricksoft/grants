@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.people.CapitalisePerson;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -36,20 +36,21 @@ public class PersonFormControllerImpl implements PersonFormController {
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final PersonCommandConverterImpl personCommandConverter;
     private final PersonConverterImpl personConverter;
-    private final Capitalisation capitalisation;
+    private final CapitalisePerson capitalisePerson;
     private final PersonCommandValidator personCommandValidator;
 
 
     public PersonFormControllerImpl(PersonService personService,
                                     PersonCommandConverterImpl personCommandConverter,
                                     PersonConverterImpl personConverter,
-                                    Capitalisation capitalisation, PersonCommandValidator personCommandValidator) {
+                                    CapitalisePerson capitalisePerson,
+                                    PersonCommandValidator personCommandValidator) {
         this.personService = personService;
         this.personCommandConverter = personCommandConverter;
 
 
         this.personConverter = personConverter;
-        this.capitalisation = capitalisation;
+        this.capitalisePerson = capitalisePerson;
         this.personCommandValidator = personCommandValidator;
     }
 
@@ -75,6 +76,7 @@ public class PersonFormControllerImpl implements PersonFormController {
     public String saveOrUpdate(@Valid @ModelAttribute PersonCommand personCommand, BindingResult bindingResult, Model model) {
         logger.debug("PersonFormControllerImpl::saveOrUpdate");
 
+        capitalisePerson.capitalise(personCommand);
         personCommandValidator.validate(personCommand, bindingResult);
 
         if (bindingResult.hasErrors()) {
@@ -82,15 +84,10 @@ public class PersonFormControllerImpl implements PersonFormController {
             return ViewConstants.PERSON_FORM;
         }
 
-        cleanUp(personCommand);
+
         PersonCommand savedCommand = personService.savePersonCommand(personCommand);
         model.addAttribute(AttributeConstants.PERSON_COMMAND, savedCommand);
         return MappingConstants.REDIRECT + MappingConstants.PERSON_SHOW.replace("{id}", "" + savedCommand.getId());
-    }
-
-    private void cleanUp(PersonCommand personCommand) {
-        personCommand.setFirstName(capitalisation.getCapitalisation(personCommand.getFirstName()));
-        personCommand.setLastName(capitalisation.getCapitalisation(personCommand.getLastName()));
     }
 
     @SuppressWarnings("SameReturnValue")

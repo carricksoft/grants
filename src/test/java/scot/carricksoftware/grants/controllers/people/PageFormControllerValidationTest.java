@@ -13,15 +13,14 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.people.CapitalisePerson;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
-import scot.carricksoftware.grants.converters.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.people.PersonCommandValidator;
 
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
@@ -44,7 +43,7 @@ public class PageFormControllerValidationTest {
     private PersonConverterImpl personConverterMock;
 
     @Mock
-    private CapitalisationImpl capitalisationMock;
+    private CapitalisePerson capitalisePersonMock;
 
     @Mock
     BindingResult bindingResultMock;
@@ -61,7 +60,7 @@ public class PageFormControllerValidationTest {
         personController = new PersonFormControllerImpl(personServiceMock,
                 personCommandConverterMock,
                 personConverterMock,
-                capitalisationMock,
+                capitalisePersonMock,
                 personCommandValidatorMock);
     }
 
@@ -73,7 +72,6 @@ public class PageFormControllerValidationTest {
         personCommand.setLastName(GetRandomString());
         personCommand.setId(GetRandomLong());
         when(bindingResultMock.hasErrors()).thenReturn(false);
-        when(capitalisationMock.getCapitalisation(anyString())).thenCallRealMethod();
         when(personServiceMock.savePersonCommand(personCommand)).thenReturn(personCommand);
 
         personController.saveOrUpdate(personCommand, bindingResultMock, modelMock);

@@ -12,9 +12,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.people.CapitalisePerson;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
-import scot.carricksoftware.grants.converters.Capitalisation;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
@@ -41,7 +41,7 @@ public class PersonFormControllerSaveOrUpdateTest {
     private PersonConverterImpl personConverterMock;
 
     @Mock
-    private Capitalisation capitalisationMock;
+    private CapitalisePerson capitalisePersonMock;
 
     @Mock
     Model modelMock;
@@ -60,7 +60,7 @@ public class PersonFormControllerSaveOrUpdateTest {
         personController = new PersonFormControllerImpl(personServiceMock,
                 personCommandConverterMock,
                 personConverterMock,
-                capitalisationMock,
+                capitalisePersonMock,
                 personCommandValidatorMock);
         personCommand = new PersonCommandImpl();
     }
