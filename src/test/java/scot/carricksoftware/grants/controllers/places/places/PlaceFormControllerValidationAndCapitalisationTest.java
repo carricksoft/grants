@@ -29,7 +29,7 @@ import static org.mockito.Mockito.when;
 @ExtendWith(MockitoExtension.class)
 public class PlaceFormControllerValidationAndCapitalisationTest {
 
-    @SuppressWarnings({"unused", "FieldCanBeLocal"})
+    @SuppressWarnings({"unused"})
     private PlaceFormControllerImpl placeController;
 
     @Mock
