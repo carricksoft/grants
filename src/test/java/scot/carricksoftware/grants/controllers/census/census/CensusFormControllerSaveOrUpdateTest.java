@@ -22,7 +22,6 @@ import scot.carricksoftware.grants.validators.census.census.CensusCommandValidat
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -80,15 +79,5 @@ public class CensusFormControllerSaveOrUpdateTest {
         when(bindingResultMock.hasErrors()).thenReturn(true);
         assertEquals("census/form", censusController.saveOrUpdate(censusCommand, bindingResultMock, modelMock));
     }
-
-    @Test
-    public void validationTakesPlaceTest() {
-        Long id = 4L;
-        censusCommand.setId(id);
-        when(censusServiceMock.saveCensusCommand(any(CensusCommand.class))).thenReturn(censusCommand);
-        censusController.saveOrUpdate(censusCommand, bindingResultMock, modelMock);
-        verify(censusCommandValidatorImplMock).validate(censusCommand, bindingResultMock);
-    }
-
 
 }

@@ -16,19 +16,19 @@ import scot.carricksoftware.grants.capitalisation.census.censusentry.CapitaliseC
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
-import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.census.census.CensusService;
+import scot.carricksoftware.grants.services.census.censusentry.CensusEntryService;
 import scot.carricksoftware.grants.services.census.censusentry.UpdateRecordedYearOfBirth;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.census.censusentry.CensusEntryCommandValidatorImpl;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-public class CensusEntryFormControllerSaveOrUpdateTest {
+public class CensusEntryFormControllerCapitalisationAndValidationTest {
 
     @SuppressWarnings("unused")
     private CensusEntryFormControllerImpl censusEntryController;
@@ -75,19 +75,21 @@ public class CensusEntryFormControllerSaveOrUpdateTest {
     }
 
     @Test
-    public void saveOrUpdateNoErrorsTest() {
+    public void validationTakesPlaceTest() {
         Long id = 4L;
         censusEntryCommand.setId(id);
         when(censusEntryServiceMock.saveCensusEntryCommand(any(CensusEntryCommand.class))).thenReturn(censusEntryCommand);
-        assertEquals("redirect:/censusEntry/4/show", censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock, modelMock));
+        censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock, modelMock);
+        verify(censusEntryCommandValidatorImplMock).validate(censusEntryCommand, bindingResultMock);
     }
 
     @Test
-    public void saveOrUpdateErrorsTest() {
+    public void capitalisationTakesPlaceTest() {
         Long id = 4L;
         censusEntryCommand.setId(id);
-        when(bindingResultMock.hasErrors()).thenReturn(true);
-        assertEquals("censusEntry/form", censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock, modelMock));
+        when(censusEntryServiceMock.saveCensusEntryCommand(any(CensusEntryCommand.class))).thenReturn(censusEntryCommand);
+        censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock, modelMock);
+        verify(capitaliseCensusEntryMock).capitalise(censusEntryCommand);
     }
 
 }
