@@ -73,6 +73,7 @@ public class CountryFormControllerImpl implements CountryFormController {
     @PostMapping(MappingConstants.COUNTRY)
     public String saveOrUpdate(@Valid @ModelAttribute CountryCommand countryCommand, BindingResult bindingResult, Model model) {
         logger.debug("CountryFormControllerImpl::saveOrUpdate");
+
         capitaliseCountry.capitalise(countryCommand);
         countryCommandValidator.validate(countryCommand, bindingResult);
 
