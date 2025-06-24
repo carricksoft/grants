@@ -20,6 +20,9 @@ public class CountryCommandImpl implements CountryCommand {
 
     private List<Region> regions;
 
+    public CountryCommandImpl() {
+    }
+
     @Override
     public Long getId() {
         return id;
