@@ -102,6 +102,8 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals(fatherMock, captor.getValue().getInformant());
         assertEquals("Untracked Informant", captor.getValue().getUntrackedInformant());
         assertEquals("Qualification", captor.getValue().getInformantQualification());
+        assertEquals("Where Registered", captor.getValue().getWhereRegistered());
+        assertEquals("When Registered", captor.getValue().getWhenRegistered());
 
     }
 
