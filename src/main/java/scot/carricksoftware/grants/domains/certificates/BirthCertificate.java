@@ -80,6 +80,14 @@ public class BirthCertificate extends BaseCertificate {
     @Column(name = "`informant_qualification`")
     private String informantQualification;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`when_registered`")
+    private String whenRegistered;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`where_registered`")
+    private String whereRegistered;
+
     public Person getNewBorn() {
         return newBorn;
     }
@@ -184,5 +192,21 @@ public class BirthCertificate extends BaseCertificate {
     @SuppressWarnings("unused")
     public void setInformantQualification(String informantQualification) {
         this.informantQualification = informantQualification;
+    }
+
+    public String getWhenRegistered() {
+        return whenRegistered;
+    }
+
+    public void setWhenRegistered(String whenRegistered) {
+        this.whenRegistered = whenRegistered;
+    }
+
+    public String getWhereRegistered() {
+        return whereRegistered;
+    }
+
+    public void setWhereRegistered(String whereRegistered) {
+        this.whereRegistered = whereRegistered;
     }
 }
