@@ -28,15 +28,17 @@ class CapitaliseCensusEntryTest {
     @Mock
     private CapitaliseStringImpl capitaliseStringMock;
 
+    private CensusEntryCommand censusEntryCommand;
+
     @BeforeEach
     void setUp() {
         capitaliseCensusEntry = new CapitaliseCensusEntryImpl(capitaliseStringMock);
+        censusEntryCommand = new CensusEntryCommandImpl();
+        when(capitaliseStringMock.capitalise(any())).thenReturn("Lower");
     }
 
     @Test
     void nameTest() {
-        CensusEntryCommand censusEntryCommand = new CensusEntryCommandImpl();
-        when(capitaliseStringMock.capitalise(any())).thenReturn("Lower");
         censusEntryCommand.setName("lower");
         capitaliseCensusEntry.capitalise(censusEntryCommand);
         assertEquals("Lower", censusEntryCommand.getName());
@@ -44,10 +46,29 @@ class CapitaliseCensusEntryTest {
 
     @Test
     void industryOrServiceTest() {
-        CensusEntryCommand censusEntryCommand = new CensusEntryCommandImpl();
-        when(capitaliseStringMock.capitalise(any())).thenReturn("Lower");
         censusEntryCommand.setIndustryOrService("lower");
         capitaliseCensusEntry.capitalise(censusEntryCommand);
         assertEquals("Lower", censusEntryCommand.getIndustryOrService());
+    }
+
+    @Test
+    void whereBornTest() {
+        censusEntryCommand.setWhereBorn("lower");
+        capitaliseCensusEntry.capitalise(censusEntryCommand);
+        assertEquals("Lower", censusEntryCommand.getWhereBorn());
+    }
+
+    @Test
+    void personalOccupationTest() {
+        censusEntryCommand.setPersonalOccupation("lower");
+        capitaliseCensusEntry.capitalise(censusEntryCommand);
+        assertEquals("Lower", censusEntryCommand.getPersonalOccupation());
+    }
+
+    @Test
+    void notesTest() {
+        censusEntryCommand.setNotes("lower");
+        capitaliseCensusEntry.capitalise(censusEntryCommand);
+        assertEquals("Lower", censusEntryCommand.getNotes());
     }
 }

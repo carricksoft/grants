@@ -28,7 +28,6 @@ public class CapitaliseCensusEntryImpl implements CapitaliseCensusEntry {
         censusEntryCommand.setWhereBorn(capitaliseString.capitalise(censusEntryCommand.getWhereBorn()));
         censusEntryCommand.setPersonalOccupation(capitaliseString.capitalise(censusEntryCommand.getPersonalOccupation()));
         censusEntryCommand.setNotes(capitaliseString.capitalise(censusEntryCommand.getNotes()));
-        censusEntryCommand.setPersonalOccupation(capitaliseString.capitalise(censusEntryCommand.getPersonalOccupation()));
         censusEntryCommand.setName(capitaliseString.capitalise(censusEntryCommand.getName()));
         censusEntryCommand.setIndustryOrService(capitaliseString.capitalise(censusEntryCommand.getIndustryOrService()));
     }
