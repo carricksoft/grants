@@ -22,6 +22,7 @@ public class CapitaliseBirthCertificateImpl implements CapitaliseBirthCertificat
         this.capitaliseString = capitaliseString;
     }
 
+
     @Override
     public void capitalise(BirthCertificateCommand birthCertificateCommand) {
         logger.debug("CapitaliseBirthCertificate::capitalise");
