@@ -42,6 +42,8 @@ public class BirthCertificateConverterImpl implements BirthCertificateConverter 
         target.setInformant(source.getInformant());
         target.setUntrackedInformant(source.getUntrackedInformant());
         target.setInformantQualification(source.getInformantQualification());
+        target.setWhenRegistered(source.getWhenRegistered());
+        target.setWhereRegistered(source.getWhereRegistered());
 
         return target;
     }

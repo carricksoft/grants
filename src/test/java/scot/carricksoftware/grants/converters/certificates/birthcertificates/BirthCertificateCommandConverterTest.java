@@ -57,6 +57,8 @@ class BirthCertificateCommandConverterTest {
         Person informant = GetRandomPerson();
         String untrackedInformant = GetRandomString();
         String informantQualifier = GetRandomString();
+        String whenRegistered= GetRandomString();
+        String whereRegistered= GetRandomString();
 
 
         source.setId(id);
@@ -80,6 +82,8 @@ class BirthCertificateCommandConverterTest {
         source.setInformant(informant);
         source.setUntrackedInformant(untrackedInformant);
         source.setInformantQualification(informantQualifier);
+        source.setWhenRegistered(whenRegistered);
+        source.setWhereRegistered(whereRegistered);
 
 
         BirthCertificate target = converter.convert(source);
@@ -106,5 +110,7 @@ class BirthCertificateCommandConverterTest {
         assertEquals(informant, target.getInformant());
         assertEquals(untrackedInformant, target.getUntrackedInformant());
         assertEquals(informantQualifier, target.getInformantQualification());
+        assertEquals(whenRegistered, target.getWhenRegistered());
+        assertEquals(whereRegistered, target.getWhereRegistered());
     }
 }

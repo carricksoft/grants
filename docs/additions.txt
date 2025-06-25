@@ -9,7 +9,6 @@
 8: Bootstrap
 9: Bootstrap Test
 10: Modify the form
-10.1: Uppercase on save
 11: Validator
 12: Validator Test
 12.1 Capitalisation
