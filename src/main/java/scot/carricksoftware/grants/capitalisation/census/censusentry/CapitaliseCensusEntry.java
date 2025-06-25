@@ -10,5 +10,5 @@ import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 public interface CapitaliseCensusEntry {
 
     @SuppressWarnings("EmptyMethod")
-    void capitalise(CensusEntryCommand command);
+    void capitalise(@SuppressWarnings("unused") CensusEntryCommand command);
 }

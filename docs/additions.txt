@@ -12,6 +12,9 @@
 10.1: Uppercase on save
 11: Validator
 12: Validator Test
+12.1 Capitalisation
+12.2 Capitalisation Test
+12.3 Capitalisation Integration Test
 13: Switch to uat
 13A: In the database window select the uat database *** and then refresh it***
 14: Generate changelog (ctrl-shift-A) as sql

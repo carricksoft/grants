@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants.commands.people;
 
+import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
@@ -16,6 +17,7 @@ import scot.carricksoftware.grants.domains.text.PersonText;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class PersonCommandImpl implements PersonCommand {
 
     private Long Id;

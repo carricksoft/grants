@@ -5,7 +5,6 @@
 
 package scot.carricksoftware.grants.controllers.places.regions;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -24,7 +23,6 @@ import scot.carricksoftware.grants.validators.places.RegionCommandValidator;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 
 @ExtendWith(MockitoExtension.class)
 public class RegionFormControllerCleansingTest {
