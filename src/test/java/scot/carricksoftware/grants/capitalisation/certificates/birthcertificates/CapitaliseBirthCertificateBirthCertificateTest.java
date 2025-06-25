@@ -18,7 +18,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ExtendWith(MockitoExtension.class)
-class CapitaliseBirthCertificateBirthCertificateCommandTest {
+class CapitaliseBirthCertificateBirthCertificateTest {
 
     private final CapitaliseStringImpl capitaliseString = new CapitaliseStringImpl();
 
