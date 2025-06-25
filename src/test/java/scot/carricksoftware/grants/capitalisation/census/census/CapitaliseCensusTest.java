@@ -38,6 +38,5 @@ class CapitaliseCensusTest {
         censusCommand.setFilledInBy("lower");
         capitaliseCensus.capitalise(censusCommand);
         assertEquals("Lower", censusCommand.getFilledInBy());
-
     }
 }
