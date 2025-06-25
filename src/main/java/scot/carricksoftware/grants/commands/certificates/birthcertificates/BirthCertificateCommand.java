@@ -102,4 +102,12 @@ public interface BirthCertificateCommand {
     String getInformantQualification();
 
     void setInformantQualification(String informantQualification);
+
+    String getWhenRegistered();
+
+    void setWhenRegistered(String whenRegistered);
+
+    String getWhereRegistered();
+
+    void setWhereRegistered(String whereRegistered);
 }

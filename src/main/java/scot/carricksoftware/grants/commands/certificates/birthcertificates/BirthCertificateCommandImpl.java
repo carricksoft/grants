@@ -55,6 +55,10 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     private String informantQualification;
 
+    private String whenRegistered;
+
+    private String whereRegistered;
+
     public Long getId() {
         return Id;
     }
@@ -262,5 +266,25 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     @Override
     public void setInformantQualification(String informantQualification) {
         this.informantQualification = informantQualification;
+    }
+
+    @Override
+    public String getWhenRegistered() {
+        return whenRegistered;
+    }
+
+    @Override
+    public void setWhenRegistered(String whenRegistered) {
+        this.whenRegistered = whenRegistered;
+    }
+
+    @Override
+    public String getWhereRegistered() {
+        return whereRegistered;
+    }
+
+    @Override
+    public void setWhereRegistered(String whereRegistered) {
+        this.whereRegistered = whereRegistered;
     }
 }
