@@ -33,6 +33,8 @@ public class CapitaliseBirthCertificateImpl implements CapitaliseBirthCertificat
         birthCertificateCommand.setWhenBorn(capitaliseString.capitalise(birthCertificateCommand.getWhenBorn()));
         birthCertificateCommand.setCertificateNumber(capitaliseString.capitalise(birthCertificateCommand.getCertificateNumber()));
         birthCertificateCommand.setWhereRegistered(capitaliseString.capitalise(birthCertificateCommand.getWhereRegistered()));
+        birthCertificateCommand.setFatherRank(capitaliseString.capitalise(birthCertificateCommand.getFatherRank()));
+        birthCertificateCommand.setDateAndPlaceOfMarriage(capitaliseString.capitalise(birthCertificateCommand.getDateAndPlaceOfMarriage()));
     }
 
 }

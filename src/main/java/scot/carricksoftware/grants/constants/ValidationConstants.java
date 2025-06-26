@@ -29,6 +29,7 @@ public class ValidationConstants {
     public static final String CENSUS_NAME_IS_NOT_NULL = "Both Person and Untracked Person cannot be given";
 
     public static final String PERSON_IS_NULL = "The person cannot be null.";
+    public static final String MOTHER_IS_NULL = "The mother cannot be null.";
     public static final String NEWBORN_IS_NULL = "The New Born cannot be null.";
     public static final String CERTIFICATE_NUMBER_IS_NULL = "The certificate number cannot be null.";
     public static final String CERTIFICATE_SOURCE_IS_NULL = "The certificate source cannot be null.";

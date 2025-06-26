@@ -34,6 +34,7 @@ public class BirthCertificateCommandPartOneValidatorImpl implements BirthCertifi
         validateCertificateSource(birthCertificateCommand, bindingResult);
         validateCertificateType(birthCertificateCommand, bindingResult);
         validateCertificateDate(birthCertificateCommand, bindingResult);
+        validateMother(birthCertificateCommand, bindingResult);
     }
 
     private void validateNewBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
@@ -67,6 +68,10 @@ public class BirthCertificateCommandPartOneValidatorImpl implements BirthCertifi
                 bindingResult);
     }
 
+    private void validateMother(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating birth certificate Mother");
+        validateTypes.validatePerson(birthCertificateCommand.getMother(), "mother", ValidationConstants.MOTHER_IS_NULL, bindingResult);
+    }
 
 }
 
