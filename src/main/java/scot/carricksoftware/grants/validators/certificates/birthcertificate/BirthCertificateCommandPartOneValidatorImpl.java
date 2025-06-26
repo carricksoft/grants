@@ -49,7 +49,7 @@ public class BirthCertificateCommandPartOneValidatorImpl implements BirthCertifi
 
     private void validateCertificateSource(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Certificate Source");
-        validateTypes.validateOrganisation(birthCertificateCommand.getCertificateSource(), "certificateSource", ValidationConstants.SOURCE_IS_NULL, bindingResult);
+        validateTypes.validateOrganisation(birthCertificateCommand.getCertificateSource(), "certificateSource", ValidationConstants.CERTIFICATE_SOURCE_IS_NULL, bindingResult);
     }
 
     private void validateCertificateType(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {

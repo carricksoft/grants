@@ -35,7 +35,7 @@ public class DataLoadOrganisations {
     private void loadCertificateSource() {
         logger.debug("DataLoadOrganisation::loadCertificateSource");
         OrganisationCommand certificateSourceCommand = new OrganisationCommandImpl();
-        certificateSourceCommand.setName("Certificate Source");
+        certificateSourceCommand.setName("General Register Office For Scotland");
         organisationService.saveOrganisationCommand(certificateSourceCommand);
     }
 
