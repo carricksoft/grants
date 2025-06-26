@@ -274,6 +274,22 @@
                 </td>
             </tr>
             <tr>
+                <td style="text-align: right;">
+                    <label for="fatherRank">Father's Rank&nbsp;</label>
+                </td>
+                <td style="text-align: left; ">
+                    <div>
+                        <input class="fatherRank" id="fatherRank"
+                               th:field="*{fatherRank}" type="text">
+                        <div th:if="${#fields.hasErrors('fatherRank')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('fatherRank')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
             <td style="text-align: right;">
                 <label for="mother">Mother&nbsp;</label>
             </td>
@@ -290,6 +306,17 @@
                 </div>
             </td>
         </tr>
+            <tr>
+                <td style="text-align: right; border-bottom: 5px solid #ccc;">
+                    <label for="dateAndPlaceOfMarriage">Date and Place Of Marriage&nbsp;</label>
+                </td>
+                <td style="text-align: left; ">
+                    <div>
+                        <input class="dateAndPlaceOfMarriage" id="dateAndPlaceOfMarriage"
+                               th:field="*{dateAndPlaceOfMarriage}" type="text">
+                    </div>
+                </td>
+            </tr>
             <tr>
                 <td style="text-align: right; background-color: #FFC300">
                     <label for="informant">Informant&nbsp;</label>
