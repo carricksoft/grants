@@ -314,11 +314,28 @@
                     <div>
                         <input class="informantQualification" id="informantQualification"
                                th:field="*{informantQualification}" type="text">
-                        <div th:if="${#fields.hasErrors('informantQualification')}">
-                            <ul class="text-danger">
-                                <li th:each="err : ${#fields.errors('informantQuaification')}" th:text="${err}"/>
-                            </ul>
-                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="whenRegistered">When Registered&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="whenRegistered" id="whenRegistered"
+                               th:field="*{whenRegistered}" type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr style = "border-bottom: 5px solid #ccc;">
+                <td style="text-align: right;">
+                    <label for="whereRegistered">Where Registered&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="whereRegistered" id="whereRegistered"
+                               th:field="*{whereRegistered}" type="text">
                     </div>
                 </td>
             </tr>
