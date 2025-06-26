@@ -39,7 +39,7 @@ public class DataLoadOrganisationsTest {
         List<OrganisationCommand> organisationCommands = captor.getAllValues();
         boolean found = false;
         for (OrganisationCommand organisationCommand : organisationCommands) {
-            if (organisationCommand.getName().equals("Certificate Source")) {
+            if (organisationCommand.getName().equals("General Register Office For Scotland")) {
                 found = true;
             }
         }
