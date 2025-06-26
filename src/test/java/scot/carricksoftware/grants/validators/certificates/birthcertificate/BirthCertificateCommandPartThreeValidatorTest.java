@@ -83,13 +83,27 @@ class BirthCertificateCommandPartThreeValidatorTest {
     }
 
     @Test
-    void validateWhenBornTestTest() {
+    void validateWhenBornTest() {
         validator.validate(birthCertificateCommandMock, bindingResultMock);
         verify(validateTypesMock).validatePastDateAndTime(
                 birthCertificateCommandMock.getWhenBorn(),
                 "whenBorn",
                 "When born cannot be null.",
                 "The format should be dd/MM/yyyy hh:mm.",
+                "Date should not be in the future.",
+                bindingResultMock);
+    }
+
+    @Test
+    void validateRegisteredDateTest() {
+        String string = GetRandomString();
+        when(birthCertificateCommandMock.getWhenRegistered()).thenReturn(string);
+        validator.validate(birthCertificateCommandMock, bindingResultMock);
+        verify(validateTypesMock).validatePastDate(
+                string,
+                "whenRegistered",
+                "When registered cannot be null.",
+                "When registered date is invalid.",
                 "Date should not be in the future.",
                 bindingResultMock);
     }
