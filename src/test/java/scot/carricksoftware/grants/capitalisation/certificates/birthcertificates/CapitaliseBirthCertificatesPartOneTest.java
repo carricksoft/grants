@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-class CapitaliseBirthCertificatesTest {
+class CapitaliseBirthCertificatesPartOneTest {
 
     private CapitaliseBirthCertificate capitaliseBirthCertificate;
 
@@ -67,26 +67,6 @@ class CapitaliseBirthCertificatesTest {
         assertEquals("Lower", birthCertificateCommand.getUntrackedInformant());
     }
 
-    @Test
-    void whenBornTest() {
-        birthCertificateCommand.setWhenBorn("lower");
-        capitaliseBirthCertificate.capitalise(birthCertificateCommand);
-        assertEquals("Lower", birthCertificateCommand.getWhenBorn());
-    }
-
-    @Test
-    void certificateNumberTest() {
-        birthCertificateCommand.setCertificateNumber("lower");
-        capitaliseBirthCertificate.capitalise(birthCertificateCommand);
-        assertEquals("Lower", birthCertificateCommand.getCertificateNumber());
-    }
-
-    @Test
-    void whereRegisteredTest() {
-        birthCertificateCommand.setWhereRegistered("lower");
-        capitaliseBirthCertificate.capitalise(birthCertificateCommand);
-        assertEquals("Lower", birthCertificateCommand.getWhereRegistered());
-    }
 
 
 }
