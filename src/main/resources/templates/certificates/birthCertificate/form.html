@@ -274,6 +274,23 @@
                 </td>
             </tr>
             <tr>
+            <td style="text-align: right;">
+                <label for="mother">Mother&nbsp;</label>
+            </td>
+            <td style="text-align: left;">
+                <select id="mother" name="mother" th:field="*{mother}">
+                    <option th:value="${''}" th:text="${''}"></option>
+                    <option th:each="person : ${people}"
+                            th:value="${person.id}" th:text="${person.toString()}"></option>
+                </select>
+                <div th:if="${#fields.hasErrors('mother')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('mother')}" th:text="${err}"/>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+            <tr>
                 <td style="text-align: right; background-color: #FFC300">
                     <label for="informant">Informant&nbsp;</label>
                 </td>
