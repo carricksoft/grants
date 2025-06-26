@@ -33,6 +33,7 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
         validateWhenBorn(birthCertificateCommand, bindingResult);
         validateFatherAndUntrackedFather(birthCertificateCommand, bindingResult);
         validateWhereBornAndUntrackedWhereBorn(birthCertificateCommand, bindingResult);
+        validateWhenRegistered(birthCertificateCommand, bindingResult);
     }
 
 
@@ -60,6 +61,16 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
         logger.debug("Validating where born and untracked where born");
         validateTypes.validatePlaceAndUntrackedPlace(birthCertificateCommand.getWhereBorn(), birthCertificateCommand.getUntrackedWhereBorn(),
                 "whereBorn", "untrackedWhereBorn", ValidationConstants.WHERE_BORN_AND_UNTRACKED_WHERE_BORN,bindingResult);
+    }
+
+    private void validateWhenRegistered(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating birth certificate Registration Date");
+        validateTypes.validatePastDate(birthCertificateCommand.getWhenRegistered(),
+                "whenRegistered",
+                ValidationConstants.WHEN_REGISTERED_DATE_IS_NULL,
+                ValidationConstants.WHEN_REGISTERED_DATE_IS_INVALID,
+                ValidationConstants.WHEN_REGISTERED_DATE_IN_FUTURE,
+                bindingResult);
     }
 
 }

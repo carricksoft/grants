@@ -48,6 +48,9 @@ public class ValidationConstants {
     public static final String BRIDE_IS_NULL = "The bride cannot be null.";
     public static final String GROOM_IS_NULL = "The groom cannot be null.";
     public static final String SAME_BRIDE_AND_GROOM = "The bride and groom cannot be the same person.";
+    public static final String WHEN_REGISTERED_DATE_IS_NULL = "When registered cannot be null.";
+    public static final String WHEN_REGISTERED_DATE_IS_INVALID = "When registered date is invalid.";
+    public static final String WHEN_REGISTERED_DATE_IN_FUTURE = "Date should not be in the future.";
 
     public static final String FIRST_PARTY_IS_NULL = "The first party cannot be null.";
     public static final String SECOND_PARTY_IS_NULL = "The second party cannot be null.";

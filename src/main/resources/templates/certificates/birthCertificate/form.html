@@ -326,6 +326,11 @@
                         <input class="whenRegistered" id="whenRegistered"
                                th:field="*{whenRegistered}" type="text">
                     </div>
+                    <div th:if="${#fields.hasErrors('whenRegistered')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('whenRegistered')}" th:text="${err}"/>
+                        </ul>
+                    </div>
                 </td>
             </tr>
             <tr style = "border-bottom: 5px solid #ccc;">
