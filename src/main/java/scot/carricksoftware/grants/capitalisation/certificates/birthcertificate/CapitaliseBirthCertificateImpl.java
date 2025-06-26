@@ -32,6 +32,7 @@ public class CapitaliseBirthCertificateImpl implements CapitaliseBirthCertificat
         birthCertificateCommand.setUntrackedInformant(capitaliseString.capitalise(birthCertificateCommand.getUntrackedInformant()));
         birthCertificateCommand.setWhenBorn(capitaliseString.capitalise(birthCertificateCommand.getWhenBorn()));
         birthCertificateCommand.setCertificateNumber(capitaliseString.capitalise(birthCertificateCommand.getCertificateNumber()));
+        birthCertificateCommand.setWhereRegistered(capitaliseString.capitalise(birthCertificateCommand.getWhereRegistered()));
     }
 
 }

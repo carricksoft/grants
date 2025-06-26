@@ -81,5 +81,12 @@ class CapitaliseBirthCertificatesTest {
         assertEquals("Lower", birthCertificateCommand.getCertificateNumber());
     }
 
+    @Test
+    void whereRegisteredTest() {
+        birthCertificateCommand.setWhereRegistered("lower");
+        capitaliseBirthCertificate.capitalise(birthCertificateCommand);
+        assertEquals("Lower", birthCertificateCommand.getWhereRegistered());
+    }
+
 
 }
