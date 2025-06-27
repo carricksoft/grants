@@ -10,22 +10,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.system.CapturedOutput;
-import org.springframework.boot.test.system.OutputCaptureExtension;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.converters.people.PersonConverter;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonService;
 
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verifyNoInteractions;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-@ExtendWith(OutputCaptureExtension.class)
 @ExtendWith(MockitoExtension.class)
-class UpdateCertifiedYearOfBirthTest {
+class UpdateCertifiedYearOfBirthPassingTest {
 
     private UpdateCertifiedYearOfBirth updateCertifiedYearOfBirth;
 
@@ -36,6 +32,9 @@ class UpdateCertifiedYearOfBirthTest {
     private PersonConverter personConverterMock;
 
     @Mock
+    private PersonCommand personCommandMock;
+
+    @Mock
     private BirthCertificateCommand birthCertificateCommandMock;
 
 
@@ -44,22 +43,16 @@ class UpdateCertifiedYearOfBirthTest {
         updateCertifiedYearOfBirth = new UpdateCertifiedYearOfBirthImpl(personConverterMock, personServiceMock);
     }
 
-    @Test
-    void nullPersonTest() {
-        updateCertifiedYearOfBirth.updateCertifiedYearOfBirth(birthCertificateCommandMock);
-        verifyNoInteractions(personConverterMock);
-    }
-
     @Test()
-    void nullPersonCommandTest(CapturedOutput capturedOutput) {
-
+    void passingTest() {
         when(birthCertificateCommandMock.getNewBorn()).thenReturn(new Person());
         when(birthCertificateCommandMock.getWhenBorn()).thenReturn("25/01/1953 01:01)");
-        when(personConverterMock.convert(any())).thenReturn(null);
+        when(personConverterMock.convert(any())).thenReturn(personCommandMock);
 
         updateCertifiedYearOfBirth.updateCertifiedYearOfBirth(birthCertificateCommandMock);
 
-        assertTrue(capturedOutput.getOut().contains("PersonCommand = null."));
+        verify(personCommandMock).setCertifiedYearOfBirth("1953");
+        verify(personServiceMock).savePersonCommand(personCommandMock);
     }
 
 }
