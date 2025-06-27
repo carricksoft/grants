@@ -30,19 +30,19 @@ rounded-3 text-center p-4">
         </div>
         <table style = "width:100%;">
             <tr>
-                <td>
-                    <label for="id">Database Id<span style="color: rgb(255,0,0);">*</span></label>
+                <td style="text-align: right;">
+                    <label for="id">Database Id<span style="color: rgb(255,0,0);">*</span>&nbsp;</label>
                 </td>
-                <td>
+                <td style="text-align: left;">
                     <input class="form-control" id="id"
                            th:field="*{id}" type="text" readonly>
                 </td>
             </tr>
             <tr>
-                <td>
-                    <label for="name">Name</label>
+                <td style="text-align: right;">
+                    <label for="name">Name&nbsp;</label>
                 </td>
-                <td>
+                <td style="text-align: left;">
                     <input class="form-control" id="name"
                            th:field="*{name}" type="text">
                     <div th:if="${#fields.hasErrors('name')}">
