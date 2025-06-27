@@ -34,19 +34,26 @@
 
 <div class="container border border-info
 rounded-3 text-center p-4">
+    <h3>Census Details</h3>
     <form th:object="${censusCommand}" th:action="@{/census}" method="post">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p>Please Correct The Errors Below</p>
         </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-md-3">
-                <label for="id">Database Id<span style="color: rgb(255,0,0);">*</span></label>
-                <input class="form-control" id="id"
-                       th:field="*{id}" type="text" readonly>
-            </div>
-            <div class="col-md-3">
-                <label for="censusDate">Date</label>
-                <div>
+        <table style="width:100%;">
+            <tr>
+                <td style="text-align: right;">
+                    <label for="id"><span style="color: rgb(255,0,0);">*</span>Database Id :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="id"
+                           th:field="*{id}" type="text" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="censusDate">Date : &nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="censusDate" style="width: 200px;" name="censusDate" th:field="*{censusDate}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="value : ${T(scot.carricksoftware.grants.enums.census.CensusDate).values()}"
@@ -57,11 +64,13 @@ rounded-3 text-center p-4">
                             <li th:each="err : ${#fields.errors('censusDate')}" th:text="${err}"/>
                         </ul>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="place">Place</label>
-                <div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="place">Place :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="place" style="width: 200px;" name="place" th:field="*{place}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="place : ${places}"
@@ -72,11 +81,13 @@ rounded-3 text-center p-4">
                             <li th:each="err : ${#fields.errors('place')}" th:text="${err}"/>
                         </ul>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="boundaryType">Boundary Type</label>
-                <div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="boundaryType">Boundary Type :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="boundaryType" style="width: 200px;" name="boundaryType" th:field="*{boundaryType}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="value : ${T(scot.carricksoftware.grants.enums.census.CensusBoundaryType).values()}"
@@ -87,93 +98,125 @@ rounded-3 text-center p-4">
                             <li th:each="err : ${#fields.errors('boundaryType')}" th:text="${err}"/>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-md-3">
-                <label for="filledInBy">Filled in by:</label>
-                <input class="form-control" id="filledInBy"
-                       th:field="*{filledInBy}" type="text">
-            </div>
-            <div class="col-md-3">
-                <label for="inhabitedRooms">Inhabited Rooms</label>
-                <input class="form-control" id="inhabitedRooms"
-                       th:field="*{inhabitedRooms}" type="text">
-                <div th:if="${#fields.hasErrors('inhabitedRooms')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('inhabitedRooms')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="roomsWithWindows">Rooms With Windows</label>
-                <input class="form-control" id="roomsWithWindows"
-                       th:field="*{roomsWithWindows}" type="text">
-                <div th:if="${#fields.hasErrors('roomsWithWindows')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('roomsWithWindows')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="totalRooms">Total Rooms</label>
-                <input class="form-control" id="totalRooms"
-                       th:field="*{totalRooms}" type="text">
-                <div th:if="${#fields.hasErrors('totalRooms')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('totalRooms')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-md-3">
-                <label for="roomsOccupied">Rooms Occupied</label>
-                <input class="form-control" id="roomsOccupied"
-                       th:field="*{roomsOccupied}" type="text">
-                <div th:if="${#fields.hasErrors('roomsOccupied')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('roomsOccupied')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="uninhabitedHouses">Uninhabited Houses</label>
-                <input class="form-control" id="uninhabitedHouses"
-                       th:field="*{uninhabitedHouses}" type="text">
-                <div th:if="${#fields.hasErrors('uninhabitedHouses')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('uninhabitedHouses')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="inhabitedHouses">Inhabited Houses</label>
-                <input class="form-control" id="inhabitedHouses"
-                       th:field="*{inhabitedHouses}" type="text">
-                <div th:if="${#fields.hasErrors('inhabitedHouses')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('inhabitedHouses')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="peopleInHouses">People in Houses</label>
-                <input class="form-control" id="peopleInHouses"
-                       th:field="*{peopleInHouses}" type="text">
-                <div th:if="${#fields.hasErrors('peopleInHouses')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('peopleInHouses')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Commit</button>
-            <a class="btn btn-secondary" th:href="@{/censuses}" th:text="${'List all'}">List all</a>
-            <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
-            <h6><span style="color: rgb(255,0,0);">*</span><span> Cannot be edited</span></h6>
-        </div>
-    </form>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="filledInBy">Filled in by :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="filledInBy"
+                           th:field="*{filledInBy}" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="inhabitedRooms">Inhabited Rooms :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="inhabitedRooms"
+                           th:field="*{inhabitedRooms}" type="text">
+                    <div th:if="${#fields.hasErrors('inhabitedRooms')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('inhabitedRooms')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="roomsWithWindows">Rooms With Windows :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="roomsWithWindows"
+                           th:field="*{roomsWithWindows}" type="text">
+                    <div th:if="${#fields.hasErrors('roomsWithWindows')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('roomsWithWindows')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="totalRooms">Total Rooms :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="totalRooms"
+                           th:field="*{totalRooms}" type="text">
+                    <div th:if="${#fields.hasErrors('totalRooms')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('totalRooms')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="roomsOccupied">Rooms Occupied :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="roomsOccupied"
+                           th:field="*{roomsOccupied}" type="text">
+                    <div th:if="${#fields.hasErrors('roomsOccupied')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('roomsOccupied')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="uninhabitedHouses">Uninhabited Houses :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="uninhabitedHouses"
+                           th:field="*{uninhabitedHouses}" type="text">
+                    <div th:if="${#fields.hasErrors('uninhabitedHouses')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('uninhabitedHouses')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="inhabitedHouses">Inhabited Houses :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="inhabitedHouses"
+                           th:field="*{inhabitedHouses}" type="text">
+                    <div th:if="${#fields.hasErrors('inhabitedHouses')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('inhabitedHouses')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="peopleInHouses">People in Houses :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="peopleInHouses"
+                           th:field="*{peopleInHouses}" type="text">
+                    <div th:if="${#fields.hasErrors('peopleInHouses')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('peopleInHouses')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+
+        <button type="submit" class="btn btn-primary">Commit</button>
+        <a class="btn btn-secondary" th:href="@{/censuses}" th:text="${'List all'}">List all</a>
+        <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
+        <h6><span style="color: rgb(255,0,0);">*</span><span> Cannot be edited</span></h6>
+</form>
 </div>
 </body>
 </html>
