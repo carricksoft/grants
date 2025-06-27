@@ -22,7 +22,7 @@ import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.enums.census.CensusDate.CENSUS_1881;
 
 @ExtendWith(MockitoExtension.class)
-class UpdateCertifiedYearOfBirthFailingTest {
+class UpdateRecordedYearOfBirthFailingTest {
 
     private UpdateRecordedYearOfBirth updateRecordedYearOfBirth;
 
