@@ -56,8 +56,8 @@ class BirthCertificateConverterTest {
         Person informant = GetRandomPerson();
         String untrackedInformant = GetRandomString();
         String informantQualifier = GetRandomString();
-        String whenRegistered= GetRandomString();
-        String whereRegistered= GetRandomString();
+        String whenRegistered = GetRandomString();
+        String whereRegistered = GetRandomString();
 
 
         source.setId(id);

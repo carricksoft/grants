@@ -30,8 +30,9 @@ class BirthCertificateCommandPartOneValidatorTest {
     @Mock
     private ValidateTypes validateTypesMock;
 
+
     @Mock()
-    BirthCertificateCommand birthCertificateCommandMock;
+    private BirthCertificateCommand birthCertificateCommandMock;
 
     @Mock
     private BindingResult bindingResultMock;
@@ -83,6 +84,14 @@ class BirthCertificateCommandPartOneValidatorTest {
                 "The certificate date is invalid or of the wrong format.",
                 "Date should not be in the future.",
                 bindingResultMock);
+    }
+
+    @Test
+    void MotherTest() {
+        Person mother = new Person();
+        when(birthCertificateCommandMock.getMother()).thenReturn(mother);
+        validator.validate(birthCertificateCommandMock, bindingResultMock);
+        verify(validateTypesMock).validatePerson(mother, "mother", "The mother cannot be null.", bindingResultMock);
     }
 
 

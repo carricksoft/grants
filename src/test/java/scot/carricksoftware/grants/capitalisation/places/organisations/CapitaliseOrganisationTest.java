@@ -36,6 +36,6 @@ class CapitaliseOrganisationTest {
         organisationCommand.setName("lower");
         when(capitaliseStringMock.capitalise("lower")).thenReturn("Lower");
         capitaliseOrganisation.capitalise(organisationCommand);
-        assertEquals("Lower",organisationCommand.getName());
+        assertEquals("Lower", organisationCommand.getName());
     }
 }

@@ -36,6 +36,6 @@ class CapitaliseCountryTest {
         countryCommand.setName("lower");
         when(capitaliseStringMock.capitalise("lower")).thenReturn("Lower");
         capitaliseCountry.capitalise(countryCommand);
-        assertEquals("Lower",countryCommand.getName());
+        assertEquals("Lower", countryCommand.getName());
     }
 }

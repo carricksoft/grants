@@ -36,6 +36,6 @@ class CapitalisePLaceTest {
         placeCommand.setName("lower");
         when(capitaliseStringMock.capitalise("lower")).thenReturn("Lower");
         capitalisePlace.capitalise(placeCommand);
-        assertEquals("Lower",placeCommand.getName());
+        assertEquals("Lower", placeCommand.getName());
     }
 }

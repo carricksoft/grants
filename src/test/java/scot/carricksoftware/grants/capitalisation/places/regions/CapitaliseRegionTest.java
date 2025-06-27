@@ -36,6 +36,6 @@ class CapitaliseRegionTest {
         regionCommand.setName("lower");
         when(capitaliseStringMock.capitalise("lower")).thenReturn("Lower");
         capitaliseRegion.capitalise(regionCommand);
-        assertEquals("Lower",regionCommand.getName());
+        assertEquals("Lower", regionCommand.getName());
     }
 }
