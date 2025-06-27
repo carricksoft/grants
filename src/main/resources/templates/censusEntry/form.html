@@ -26,20 +26,26 @@
 
 <div class="container border border-info
 rounded-3 text-center p-4">
+    <h3>Census Entry Details</h3>
     <form th:object="${censusEntryCommand}" th:action="@{/censusEntry}" method="post">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p>Please Correct The Errors Below</p>
         </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-md-2">
-                <label for="id">Database Id<span style="color: rgb(255,0,0);">*</span></label>
-                <input class="form-control" id="id"
-                       th:field="*{id}" type="text" readonly>
-            </div>
-
-            <div class="col-xs-4" style="margin-right:20px;">
-                <label for="census">Census</label>
-                <div>
+        <table style="width:100%;">
+            <tr>
+                <td style="text-align: right;">
+                    <label for="id"><span style="color: rgb(255,0,0);">*</span>Database Id :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="id"
+                           th:field="*{id}" type="text" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="census">Census :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="census" style="width: 500px;" name="census" th:field="*{census}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="census : ${censuses}"
@@ -50,23 +56,25 @@ rounded-3 text-center p-4">
                             <li th:each="err : ${#fields.errors('census')}" th:text="${err}"/>
                         </ul>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="sex">Male or Female</label>
-                <div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="sex">Male or Female :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="sex" style="width: 200px;" name="sex" th:field="*{sex}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="value : ${T(scot.carricksoftware.grants.enums.general.Sex).values()}"
                                 th:value="${value}" th:text="${value.label}"></option>
                     </select>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-md-3" style="margin-right:20px;">
-                <label for="person">Person</label>
-                <div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;background-color: #D6EEEE;">
+                    <label for="person">Person :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="person" style="width: 200px;" name="person" th:field="*{person}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="person : ${people}"
@@ -77,180 +85,233 @@ rounded-3 text-center p-4">
                             <li th:each="err : ${#fields.errors('person')}" th:text="${err}"/>
                         </ul>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="name">Untracked Person<span style="color: rgb(255,0,0);">+</span></label>
-                <input class="form-control" id="name"
-                       th:field="*{name}" type="text" style="width: 200px;">
-                <div th:if="${#fields.hasErrors('name')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('name')}" th:text="${err}" style="width: 300px;"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="relationship">Relationship to Head</label>
-                <div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;background-color: #D6EEEE;">
+                    <label for="name">Untracked Person :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="name"
+                           th:field="*{name}" type="text" style="width: 200px;">
+                    <div th:if="${#fields.hasErrors('name')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('name')}" th:text="${err}" style="width: 300px;"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="relationship">Relationship to Head :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="relationship" style="width: 200px;" name="relationship" th:field="*{relationship}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="value : ${T(scot.carricksoftware.grants.enums.censusentry.CensusEntryRelationship).values()}"
                                 th:value="${value}" th:text="${value.label}"></option>
                     </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="condition">Condition</label>
-                <div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="condition">Condition :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="condition" style="width: 200px;" name="condition" th:field="*{condition}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="value : ${T(scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition).values()}"
                                 th:value="${value}" th:text="${value.label}"></option>
                     </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="gaelic">Gaelic</label>
-                <div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="gaelic">Gaelic :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="gaelic" style="width: 200px;" name="gaelic" th:field="*{gaelic}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="value : ${T(scot.carricksoftware.grants.enums.censusentry.CensusEntryGaelic).values()}"
                                 th:value="${value}" th:text="${value.label}"></option>
                     </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <label for="worker">Worker</label>
-                <div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="worker">Worker :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="worker" style="width: 200px;" name="worker" th:field="*{worker}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="value : ${T(scot.carricksoftware.grants.enums.censusentry.CensusEntryWorker).values()}"
                                 th:value="${value}" th:text="${value.label}"></option>
                     </select>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-md-2">
-                <label for="age">Age</label>
-                <input class="form-control" id="age"
-                       th:field="*{age}" type="text">
-                <div th:if="${#fields.hasErrors('age')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('age')}" th:text="${err}" style="width: 300px;"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <label for="whereBorn">Where Born</label>
-                <input class="form-control" id="whereBorn"
-                       th:field="*{whereBorn}" type="text">
-            </div>
-            <div class="col-md-2">
-                <label for="birthDay">Birthday (dd/mm)</label>
-                <input class="form-control" id="birthDay"
-                       th:field="*{birthDay}" type="text">
-                <div th:if="${#fields.hasErrors('birthDay')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('birthDay')}" th:text="${err}" style="width: 300px;"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <label for="birthYear">Birth Year</label>
-                <input class="form-control" id="birthYear"
-                       th:field="*{birthYear}" type="text">
-                <div th:if="${#fields.hasErrors('birthYear')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('birthYear')}" th:text="${err}" style="width: 300px;"/>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-md-2">
-                <label for="yearsCompletedMarriage">Completed Years of Marriage</label>
-                <input class="form-control" id="yearsCompletedMarriage"
-                       th:field="*{yearsCompletedMarriage}" type="text">
-                <div th:if="${#fields.hasErrors('yearsCompletedMarriage')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('yearsCompletedMarriage')}" th:text="${err}"
-                            style="width: 300px;"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <label for="childrenBornAlive">Children Born Alive</label>
-                <div>&nbsp;</div>
-                <input class="form-control" id="childrenBornAlive"
-                       th:field="*{childrenBornAlive}" type="text">
-                <div th:if="${#fields.hasErrors('childrenBornAlive')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('childrenBornAlive')}" th:text="${err}"
-                            style="width: 300px;"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <label for="childrenStillAlive">Children Still Alive</label>
-                <div>&nbsp;</div>
-                <input class="form-control" id="childrenStillAlive"
-                       th:field="*{childrenStillAlive}" type="text">
-                <div th:if="${#fields.hasErrors('childrenStillAlive')}">
-                    <ul class="text-danger">> Unsubscribe
-                        <li th:each="err : ${#fields.errors('childrenStillAlive')}" th:text="${err}"
-                            style="width: 300px;"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-2">
-                <label for="childrenWhoHaveDied">Children Who Have Died</label>
-                <input class="form-control" id="childrenWhoHaveDied"
-                       th:field="*{childrenWhoHaveDied}" type="text">
-                <div th:if="${#fields.hasErrors('childrenWhoHaveDied')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('childrenWhoHaveDied')}" th:text="${err}"
-                            style="width: 300px;"/>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-md-2">
-                <label for="industryOrService">Industry or Service</label>
-                <input class="form-control" id="industryOrService"
-                       th:field="*{industryOrService}" type="text">
-            </div>
-            <div class="col-md-3">
-                <label for="workingAtHome">Working at Home</label>
-                <div>
-                    <select id="workingAtHome" style="width: 200px;" name="workingAtHome" th:field="*{workingAtHome}">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="age">Age :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="age"
+                           th:field="*{age}" type="text">
+                    <div th:if="${#fields.hasErrors('age')}">
+                        <ul class="text-danger">&nbsp;
+                            <li th:each="err : ${#fields.errors('age')}" th:text="${err}" style="width: 300px;"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="whereBorn">Where Born :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="whereBorn"
+                           th:field="*{whereBorn}" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="birthDay">Birthday (dd/mm): &nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="birthDay"
+                           th:field="*{birthDay}" type="text">
+                    <div th:if="${#fields.hasErrors('birthDay')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('birthDay')}" th:text="${err}"
+                                style="width: 300px;"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="birthYear">Birth Year :&nbsp;</label>
+                </td>
+                <td>
+                    <input class="form-control" id="birthYear"
+                           th:field="*{birthYear}" type="text">
+                    <div th:if="${#fields.hasErrors('birthYear')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('birthYear')}" th:text="${err}"
+                                style="width: 300px;"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="yearsCompletedMarriage">Completed Years of Marriage : &nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="yearsCompletedMarriage"
+                           th:field="*{yearsCompletedMarriage}" type="text">
+                    <div th:if="${#fields.hasErrors('yearsCompletedMarriage')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('yearsCompletedMarriage')}" th:text="${err}"
+                                style="width: 300px;"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="childrenBornAlive">Children Born Alive :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="childrenBornAlive"
+                           th:field="*{childrenBornAlive}" type="text">
+                    <div th:if="${#fields.hasErrors('childrenBornAlive')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('childrenBornAlive')}" th:text="${err}"
+                                style="width: 300px;"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="childrenStillAlive">Children Still Alive :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="childrenStillAlive"
+                           th:field="*{childrenStillAlive}" type="text">
+                    <div th:if="${#fields.hasErrors('childrenStillAlive')}">
+                        <ul class="text-danger">> Unsubscribe
+                            <li th:each="err : ${#fields.errors('childrenStillAlive')}" th:text="${err}"
+                                style="width: 300px;"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="childrenWhoHaveDied">Children Who Have Died :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="childrenWhoHaveDied"
+                           th:field="*{childrenWhoHaveDied}" type="text">
+                    <div th:if="${#fields.hasErrors('childrenWhoHaveDied')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('childrenWhoHaveDied')}" th:text="${err}"
+                                style="width: 300px;"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="industryOrService">Industry or Service :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="industryOrService"
+                           th:field="*{industryOrService}" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="workingAtHome">Working at Home :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="workingAtHome" style="width: 200px;" name="workingAtHome"
+                            th:field="*{workingAtHome}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="value : ${T(scot.carricksoftware.grants.enums.general.YesNo).values()}"
                                 th:value="${value}" th:text="${value.label}"></option>
                     </select>
-                </div>
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-xs-2">
-                <label for="personalOccupation">Personal Occupation</label>
-                <input class="form-control" id="personalOccupation" style="width: 400px;margin-right:20px;"
-                       th:field="*{personalOccupation}" type="text">
-            </div>
-            <div class="col-xs-2">
-                <label for="notes">Notes</label>
-                <input class="form-control" id="notes" style="width: 400px;"
-                       th:field="*{notes}" type="text">
-            </div>
-        </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="personalOccupation">Personal Occupation :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="personalOccupation" style="width: 400px;margin-right:20px;"
+                           th:field="*{personalOccupation}" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="notes">Notes :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="notes" style="width: 400px;"
+                           th:field="*{notes}" type="text">
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
 
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/censusEntries}" th:text="${'List all'}">List all</a>
         <a class="btn btn-warning" th:href="@{/censusEntry/new}" th:text="${'New Entry'}">New Entry</a>
         <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
         <h6><span style="color: rgb(255,0,0);">*</span><span> Cannot be edited</span></h6>
-        <h6><span style="color: rgb(255,0,0);">+</span><span>Not further recorded</span></h6>
     </form>
 </div>
 </body>
