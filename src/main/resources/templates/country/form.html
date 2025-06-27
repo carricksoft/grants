@@ -23,6 +23,7 @@
 
 <div class="container border border-info
 rounded-3 text-center p-4">
+    <h3>Country Details</h3>
     <form th:object="${countryCommand}" th:action="@{/country}" method="post">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p>Please Correct The Errors Below</p>
