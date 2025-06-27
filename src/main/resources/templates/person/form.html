@@ -23,49 +23,73 @@
 
 <div class="container border border-info
 rounded-3 text-center p-4">
+    <h3>Person Details</h3>
     <form th:object="${personCommand}" th:action="@{/person}" method="post">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p>Please Correct The Errors Below</p>
         </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-xs-3" style="margin-right:20px;">
-                <label for="firstName">First Name</label>
-                <input class="form-control" id="firstName"
-                       th:field="*{firstName}" type="text">
-                <div th:if="${#fields.hasErrors('firstName')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-3 " style="margin-right:20px;">
-                <label for="lastName">Last Name</label>
-                <input class="form-control" id="lastName"
-                       th:field="*{lastName}" type="text">
-                <div th:if="${#fields.hasErrors('lastName')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <label for="id">Database Id<span style="color: rgb(255,0,0);">*</span></label>
-                <input class="form-control" id="id"
-                       th:field="*{id}" type="text" readonly>
-            </div>
-        </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-xs-3 " style="margin-right:20px;">
-                <label for="certifiedYearOfBirth">Certified Year of Birth<span style="color: rgb(255,0,0);">*</span></label>
-                <input class="form-control" id="certifiedYearOfBirth"
-                       th:field="*{certifiedYearOfBirth}" type="text" readonly>
-            </div>
-                <div class="col-xs-3 " style="margin-right:20px;">
-                    <label for="recordedYearOfBirth">Recorded Year of Birth<span style="color: rgb(255,0,0);">*</span></label>
+        <table style="width:100%;">
+            <tr>
+                <td style="text-align: right;">
+                    <label for="firstName">First Name : &nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="firstName"
+                           th:field="*{firstName}" type="text">
+                    <div th:if="${#fields.hasErrors('firstName')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('firstName')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="lastName">Last Name :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="lastName"
+                           th:field="*{lastName}" type="text">
+                    <div th:if="${#fields.hasErrors('lastName')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('lastName')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="id"><span style="color: rgb(255,0,0);">*</span>Database Id : &nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="id"
+                           th:field="*{id}" type="text" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="certifiedYearOfBirth"><span style="color: rgb(255,0,0);">*</span>Certified Year of Birth
+                        :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="certifiedYearOfBirth"
+                           th:field="*{certifiedYearOfBirth}" type="text" readonly>
+                </td>
+
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="recordedYearOfBirth"><span style="color: rgb(255,0,0);">*</span>Recorded Year of Birth :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
                     <input class="form-control" id="recordedYearOfBirth"
                            th:field="*{recordedYearOfBirth}" type="text" readonly>
-                </div>
-        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/people}" th:text="${'List all'}">List all</a>
         <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
