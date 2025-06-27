@@ -25,6 +25,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.certificates.birthcertificates.UpdateCertifiedYearOfBirth;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
@@ -44,6 +45,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     private final PlaceService placeService;
     private final OrganisationService organisationService;
     private final CapitaliseBirthCertificate capitaliseBirthCertificate;
+    private final UpdateCertifiedYearOfBirth updateCertifiedYearOfBirth;
 
 
     public BirthCertificateFormControllerImpl(BirthCertificateService birthCertificateService,
@@ -53,7 +55,8 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
                                               PersonService personService,
                                               PlaceService placeService,
                                               OrganisationService organisationService,
-                                              CapitaliseBirthCertificate capitaliseBirthCertificate) {
+                                              CapitaliseBirthCertificate capitaliseBirthCertificate,
+                                              UpdateCertifiedYearOfBirth updateCertifiedYearOfBirth) {
         this.birthCertificateService = birthCertificateService;
         this.birthCertificateCommandConverter = birthCertificateCommandConverter;
 
@@ -64,6 +67,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         this.placeService = placeService;
         this.organisationService = organisationService;
         this.capitaliseBirthCertificate = capitaliseBirthCertificate;
+        this.updateCertifiedYearOfBirth = updateCertifiedYearOfBirth;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -109,6 +113,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         }
 
         BirthCertificateCommand savedCommand = birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
+        updateCertifiedYearOfBirth.updateCertifiedYearOfBirth(savedCommand);
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());

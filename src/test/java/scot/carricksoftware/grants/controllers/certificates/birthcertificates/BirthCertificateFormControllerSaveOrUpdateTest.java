@@ -18,6 +18,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.certificates.birthcertificates.UpdateCertifiedYearOfBirth;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
@@ -64,6 +65,9 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     @Mock
     private BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImplMock;
 
+    @Mock
+    private UpdateCertifiedYearOfBirth updateCertifiedYearOfBirthMock;
+
     private BirthCertificateCommand birthCertificateCommand;
 
     @BeforeEach
@@ -75,7 +79,8 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
                 personServiceMock,
                 placeServiceMock,
                 organisationServiceMock,
-                capitaliseBirthCertificateMock);
+                capitaliseBirthCertificateMock,
+                updateCertifiedYearOfBirthMock);
         birthCertificateCommand = new BirthCertificateCommandImpl();
     }
 

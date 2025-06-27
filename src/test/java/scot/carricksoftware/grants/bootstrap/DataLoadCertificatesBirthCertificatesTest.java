@@ -56,14 +56,16 @@ public class DataLoadCertificatesBirthCertificatesTest {
     private Place placeMock;
 
     @Mock
-    private Organisation registrationAuthorityMock;
+    private Organisation certificateSourceMock;
 
     @Mock
-    private Organisation certificateSourceMock;
+    private Organisation registrationAuthorityMock;
+
 
     @BeforeEach
     public void setup() {
-        dataLoadCertificates = new DataLoadCertificates(organisationServiceMock,
+        dataLoadCertificates = new DataLoadCertificates(
+                organisationServiceMock,
                 birthCertificateServiceMock,
                 personServiceMock,
                 placeServiceMock,
@@ -77,8 +79,10 @@ public class DataLoadCertificatesBirthCertificatesTest {
         when(personServiceMock.findById(2L)).thenReturn(motherMock);
         when(personServiceMock.findById(3L)).thenReturn(newBornMock);
         when(placeServiceMock.findById(1L)).thenReturn(placeMock);
-        when(organisationServiceMock.findByName("Registration Authority")).thenReturn(registrationAuthorityMock);
-        when(organisationServiceMock.findByName("Certificate Source")).thenReturn(certificateSourceMock);
+        when(certificateSourceMock.getName()).thenReturn("Source");
+        when(registrationAuthorityMock.getName()).thenReturn("Authority");
+        when(organisationServiceMock.findById(1L)).thenReturn(certificateSourceMock);
+        when(organisationServiceMock.findById(2L)).thenReturn(registrationAuthorityMock);
 
 
         dataLoadCertificates.load();
@@ -87,10 +91,10 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals("999", captor.getValue().getCertificateNumber());
         assertEquals("25/01/1953", captor.getValue().getCertificateDate());
         assertEquals(CertificateType.EXTRACT, captor.getValue().getCertificateType());
-        assertEquals(registrationAuthorityMock, captor.getValue().getRegistrationAuthority());
+        assertEquals("Authority", captor.getValue().getRegistrationAuthority().getName());
         assertEquals("01", captor.getValue().getVolume());
         assertEquals("02", captor.getValue().getNumber());
-        assertEquals(certificateSourceMock, captor.getValue().getCertificateSource());
+        assertEquals("Source", captor.getValue().getCertificateSource().getName());
         assertEquals(newBornMock, captor.getValue().getNewBorn());
         assertEquals(Sex.MALE, captor.getValue().getSex());
         assertEquals("25/01/1953 01:01", captor.getValue().getWhenBorn());
@@ -103,7 +107,7 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals("Untracked Informant", captor.getValue().getUntrackedInformant());
         assertEquals("Qualification", captor.getValue().getInformantQualification());
         assertEquals("Where Registered", captor.getValue().getWhereRegistered());
-        assertEquals("When Registered", captor.getValue().getWhenRegistered());
+        assertEquals("22/01/1978", captor.getValue().getWhenRegistered());
 
     }
 

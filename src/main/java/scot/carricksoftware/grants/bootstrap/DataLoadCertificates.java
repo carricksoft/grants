@@ -57,10 +57,10 @@ public class DataLoadCertificates {
         birthCertificateCommand.setCertificateDate("25/01/1953");
         birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
 
-        birthCertificateCommand.setRegistrationAuthority(organisationService.findByName("Registration Authority"));
+        birthCertificateCommand.setRegistrationAuthority(organisationService.findById(2L));
         birthCertificateCommand.setVolume("01");
         birthCertificateCommand.setNumber("02");
-        birthCertificateCommand.setCertificateSource(organisationService.findByName("Certificate Source"));
+        birthCertificateCommand.setCertificateSource(organisationService.findById(1L));
 
         birthCertificateCommand.setNewBorn(personService.findById(3L));
         birthCertificateCommand.setSex(Sex.MALE);
@@ -74,7 +74,7 @@ public class DataLoadCertificates {
         birthCertificateCommand.setInformant(personService.findById(1L));
         birthCertificateCommand.setUntrackedInformant("Untracked Informant");
         birthCertificateCommand.setInformantQualification("Qualification");
-        birthCertificateCommand.setWhenRegistered("When Registered");
+        birthCertificateCommand.setWhenRegistered("22/01/1978");
         birthCertificateCommand.setWhereRegistered("Where Registered");
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
