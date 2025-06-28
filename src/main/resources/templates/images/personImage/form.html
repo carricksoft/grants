@@ -39,10 +39,10 @@
             </tr>
             <tr>
                 <td style="text-align: right;">
-                    <label for="person">Person</label>
+                    <label for="person">Person :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
-                    <select id="person" style="width: 300px;" name="person" th:field="*{person}">
+                    <select id="person" style="width: 300px;" name="person :&nbsp;" th:field="*{person}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="person : ${people}"
                                 th:value="${person.id}" th:text="${person.toString()}"></option>
