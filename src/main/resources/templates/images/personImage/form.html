@@ -22,19 +22,26 @@
 <div th:insert="~{fragments/layout::banner}"></div>
 
 <div class="container border border-info rounded-3 text-center p-4">
+    <h3>Personal Image Details</h3>
     <form th:object="${personImageCommand}" th:action="@{/personImage}" method="post">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p>Please Correct The Errors Below</p>
         </div>
-        <div class="form-group row justify-content-center">
-            <div class="col-xs-2">
-                <label for="id">Database Id<span style="color: rgb(255,0,0);">*</span></label>
-                <input class="form-control" id="id"
-                       th:field="*{id}" type="text" readonly>
-            </div>
-            <div class="col-xs-4" style="margin-right:20px;">
-                <label for="person">Person</label>
-                <div>
+        <table style = "width:100%;">
+            <tr>
+                <td style="text-align: right;">
+                    <label for="id"><span style="color: rgb(255,0,0);">*</span>Database Id :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="id"
+                           th:field="*{id}" type="text" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="person">Person</label>
+                </td>
+                <td style="text-align: left;">
                     <select id="person" style="width: 300px;" name="person" th:field="*{person}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="person : ${people}"
@@ -45,9 +52,10 @@
                             <li th:each="err : ${#fields.errors('person')}" th:text="${err}"/>
                         </ul>
                     </div>
-                </div>
-            </div>
-        </div>
+                </td>
+            </tr>
+            <tr><td>&nbsp;</td></tr>
+        </table>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/personImages}" th:text="${'List all'}">List all</a>
         <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
