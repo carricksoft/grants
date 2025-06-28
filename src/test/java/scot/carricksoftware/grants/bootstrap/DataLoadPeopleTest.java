@@ -37,7 +37,6 @@ public class DataLoadPeopleTest {
         for (Person person : captor.getAllValues()) {
             if (person.getFirstName().equals("Andrew") &&
                     person.getLastName().equals("Grant") &&
-                    person.getCertifiedYearOfBirth().equals("1920") &&
                     person.getRecordedYearOfBirth().equals("1925")) {
                 found = true;
                 break;

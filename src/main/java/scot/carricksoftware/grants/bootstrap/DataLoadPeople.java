@@ -36,7 +36,6 @@ public class DataLoadPeople {
         final Person dad = new Person();
         dad.setFirstName("Andrew");
         dad.setLastName("Grant");
-        dad.setCertifiedYearOfBirth("1920");
         dad.setRecordedYearOfBirth("1925");
         personService.save(dad);
     }

@@ -23,8 +23,7 @@
             <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
+                <th>Name</th>
                 <th></th>
             </tr>
             </thead>
@@ -32,8 +31,7 @@
             <tr th:each="person : ${people}">
                 <!--/*@thymesVar id="person" type="scot.carricksoftware.grants.domains.people.Person"*/-->
                 <td th:text="${person.id}">123</td>
-                <td th:text="${person.firstName}"> First</td>
-                <td th:text="${person.lastName}">Last</td>
+                <td th:text="${person.toString()}"> First</td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="@{/person/{id}/delete(id=${person.id})}"
