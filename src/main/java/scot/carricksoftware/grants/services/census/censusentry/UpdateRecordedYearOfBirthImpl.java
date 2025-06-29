@@ -63,13 +63,8 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
             personCommand.setRecordedYearOfBirth(dateString);
             personService.savePersonCommand(personCommand);
         } else {
-            logNoCommandError();
+            logger.info(" -- Person Command is null.");
         }
     }
-
-    private void logNoCommandError() {
-        throw new NullPointerException("Person Command is null.");
-    }
-
 
 }
