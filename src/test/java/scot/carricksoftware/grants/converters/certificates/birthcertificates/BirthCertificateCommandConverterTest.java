@@ -117,6 +117,6 @@ class BirthCertificateCommandConverterTest {
         assertEquals(whenRegistered, target.getWhenRegistered());
         assertEquals(whereRegistered, target.getWhereRegistered());
         assertEquals(fatherUsualResidence, target.getFatherUsualResidence());
-        assertEquals(untrackedFather, target.getUntrackedFather());
+        assertEquals(untrackedFatherUsualResidence, target.getUntrackedFatherUsualResidence());
     }
 }
