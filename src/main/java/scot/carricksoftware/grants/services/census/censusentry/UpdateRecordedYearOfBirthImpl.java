@@ -34,26 +34,21 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
         logger.debug("UpdateRecordedYearOfBirthImpl::updateRecordedYearOfBirth");
         Person person = censusEntryCommand.getPerson();
         if (!isNull(person)) {
-            if (isNull(person.getRecordedYearOfBirth())) {
-                if (!isNull(censusEntryCommand.getBirthYear())) {
-                    PersonCommand personCommand = personConverter.convert(person);
-                    if (!isNull(personCommand)) {
-                        personCommand.setRecordedYearOfBirth(censusEntryCommand.getBirthYear());
-                        personService.savePersonCommand(personCommand);
-                    } else {
-                        logNoCommandError();
-                    }
-                } else {
-                    String dateString = censusEntryCommand.getCensus().getCensusDate().label;
-                    String[] dateStrings = dateString.split("/");
-                    Integer year = Integer.valueOf(dateStrings[2]);
-                    try {
-                        Integer age = Integer.valueOf(censusEntryCommand.getAge());
-                        updateDate(person, String.valueOf(year - age));
-                    } catch (NumberFormatException e) {
-                        logger.info(" -- Age cannot be parsed");
-                    }
+            if (isNull(censusEntryCommand.getBirthYear()) || censusEntryCommand.getBirthYear().isEmpty()) {
+                String dateString = censusEntryCommand.getCensus().getCensusDate().label;
+                String[] dateStrings = dateString.split("/");
+                Integer year = Integer.valueOf(dateStrings[2]);
+                try {
+                    Integer age = Integer.valueOf(censusEntryCommand.getAge());
+                    updateDate(person, String.valueOf(year - age));
+                } catch (NumberFormatException e) {
+                    logger.info(" -- Age cannot be parsed");
                 }
+            } else {
+                PersonCommand personCommand = personConverter.convert(person);
+                assert personCommand != null;
+                personCommand.setRecordedYearOfBirth(censusEntryCommand.getBirthYear());
+                personService.savePersonCommand(personCommand);
             }
         }
     }

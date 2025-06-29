@@ -54,7 +54,6 @@ class UpdateRecordedYearOfBirthPassingTest {
     @Test
     public void theYearOfBirthIsUpdatedTest() {
         when(censusEntryCommandMock.getAge()).thenReturn("7");
-        when(personMock.getRecordedYearOfBirth()).thenReturn(null);
         when(censusMock.getCensusDate()).thenReturn(CENSUS_1881);
 
         updateRecordedYearOfBirth.updateRecordedYearOfBirth(censusEntryCommandMock);
