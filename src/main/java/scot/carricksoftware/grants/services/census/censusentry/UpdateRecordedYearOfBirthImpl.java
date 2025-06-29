@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.converters.people.PersonConverter;
+import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonService;
 
@@ -35,7 +36,8 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
         Person person = censusEntryCommand.getPerson();
         if (!isNull(person)) {
             if (isNull(censusEntryCommand.getBirthYear()) || censusEntryCommand.getBirthYear().isEmpty()) {
-                String dateString = censusEntryCommand.getCensus().getCensusDate().label;
+                Census census = censusEntryCommand.getCensus();
+                String dateString = census.getCensusDate().label;
                 String[] dateStrings = dateString.split("/");
                 Integer year = Integer.valueOf(dateStrings[2]);
                 try {

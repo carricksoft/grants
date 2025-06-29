@@ -25,7 +25,7 @@ import static scot.carricksoftware.grants.enums.census.CensusDate.CENSUS_1881;
 
 @ExtendWith(MockitoExtension.class)
 @ExtendWith(OutputCaptureExtension.class)
-class UpdateRecordedYearOfBirthPassingTest {
+class UpdateRecordedYearOfBirthViaBirthYearTest {
 
     private UpdateRecordedYearOfBirth updateRecordedYearOfBirth;
 
