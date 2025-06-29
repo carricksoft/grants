@@ -40,6 +40,8 @@ public class BirthCertificateCommandConverterImpl implements BirthCertificateCom
         target.setInformantQualification(source.getInformantQualification());
         target.setWhenRegistered(source.getWhenRegistered());
         target.setWhereRegistered(source.getWhereRegistered());
+        target.setUntrackedFatherUsualResidence(source.getUntrackedFatherUsualResidence());
+        target.setFatherUsualResidence(source.getFatherUsualResidence());
 
         return target;
     }
