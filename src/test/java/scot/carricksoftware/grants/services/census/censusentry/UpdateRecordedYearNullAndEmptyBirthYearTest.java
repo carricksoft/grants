@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonService;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.enums.census.CensusDate.CENSUS_1881;
@@ -46,13 +47,12 @@ class UpdateRecordedYearNullAndEmptyBirthYearTest {
 
     @BeforeEach
     void setUp() {
-        when(censusMock.getCensusDate()).thenReturn(CENSUS_1881);
+        when(personConverterMock.convert(any())).thenReturn(personCommandMock);
+        updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock, personServiceMock);
         when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
         when(censusEntryCommandMock.getCensus()).thenReturn(censusMock);
         when(censusEntryCommandMock.getAge()).thenReturn("80");
-        when(personConverterMock.convert(personMock)).thenReturn(personCommandMock);
-        updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock, personServiceMock);
-
+        when(censusMock.getCensusDate()).thenReturn(CENSUS_1881);
     }
 
     @Test
