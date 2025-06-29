@@ -76,6 +76,8 @@ public class DataLoadCertificates {
         birthCertificateCommand.setInformantQualification("Qualification");
         birthCertificateCommand.setWhenRegistered("22/01/1978");
         birthCertificateCommand.setWhereRegistered("Where Registered");
+        birthCertificateCommand.setFatherUsualResidence(placeService.findById(1L));
+        birthCertificateCommand.setUntrackedFatherUsualResidence("57 Back Street, Edinburgh");
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
     }
