@@ -88,6 +88,15 @@ public class BirthCertificate extends BaseCertificate {
     @Column(name = "`where_registered`")
     private String whereRegistered;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @ManyToOne()
+    @JoinColumn(name = "`father_usual_residence_id`")
+    private Place fatherUsualResidence;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name="`untracked_father_usual_residence`")
+    private String untrackedFatherUsualResidence;
+
     public Person getNewBorn() {
         return newBorn;
     }
@@ -208,5 +217,21 @@ public class BirthCertificate extends BaseCertificate {
 
     public void setWhereRegistered(String whereRegistered) {
         this.whereRegistered = whereRegistered;
+    }
+
+    public Place getFatherUsualResidence() {
+        return fatherUsualResidence;
+    }
+
+    public void setFatherUsualResidence(Place fatherUsualResidence) {
+        this.fatherUsualResidence = fatherUsualResidence;
+    }
+
+    public String getUntrackedFatherUsualResidence() {
+        return untrackedFatherUsualResidence;
+    }
+
+    public void setUntrackedFatherUsualResidence(String untrackedFatherUsualResidence) {
+        this.untrackedFatherUsualResidence = untrackedFatherUsualResidence;
     }
 }
