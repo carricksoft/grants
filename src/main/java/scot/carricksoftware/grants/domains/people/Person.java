@@ -80,11 +80,11 @@ public class Person extends BaseEntity {
         builder.append(", ");
         builder.append(this.firstName);
         builder.append(", ");
-        if (certifiedYearOfBirth != null) {
+        if (certifiedYearOfBirth != null && !certifiedYearOfBirth.isEmpty())  {
             builder.append(certifiedYearOfBirth);
             builder.append(" ");
         }  else {
-            if (recordedYearOfBirth != null) {
+            if (recordedYearOfBirth != null && !recordedYearOfBirth.isEmpty())  {
                 builder.append("(");
                 builder.append(recordedYearOfBirth);
                 builder.append(")");
