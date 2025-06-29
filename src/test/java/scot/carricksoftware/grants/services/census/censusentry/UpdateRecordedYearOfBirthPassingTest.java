@@ -10,6 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.boot.test.system.CapturedOutput;
+import org.springframework.boot.test.system.OutputCaptureExtension;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.converters.people.PersonConverter;
@@ -17,10 +19,12 @@ import scot.carricksoftware.grants.domains.census.Census;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonService;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.enums.census.CensusDate.CENSUS_1881;
 
 @ExtendWith(MockitoExtension.class)
+@ExtendWith(OutputCaptureExtension.class)
 class UpdateRecordedYearOfBirthPassingTest {
 
     private UpdateRecordedYearOfBirth updateRecordedYearOfBirth;
@@ -47,7 +51,6 @@ class UpdateRecordedYearOfBirthPassingTest {
     void setUp() {
         updateRecordedYearOfBirth = new UpdateRecordedYearOfBirthImpl(personConverterMock, personServiceMock);
         when(censusEntryCommandMock.getPerson()).thenReturn(personMock);
-        when(personConverterMock.convert(personMock)).thenReturn(personCommandMock);
         when(censusEntryCommandMock.getCensus()).thenReturn(censusMock);
     }
 
@@ -55,10 +58,20 @@ class UpdateRecordedYearOfBirthPassingTest {
     public void theYearOfBirthIsUpdatedTest() {
         when(censusEntryCommandMock.getAge()).thenReturn("7");
         when(censusMock.getCensusDate()).thenReturn(CENSUS_1881);
+        when(personConverterMock.convert(personMock)).thenReturn(personCommandMock);
 
         updateRecordedYearOfBirth.updateRecordedYearOfBirth(censusEntryCommandMock);
 
         verify(personCommandMock).setRecordedYearOfBirth("1874");
+    }
+
+    @Test
+    public void theYearOfBirthIsInvalidIsLoggedTest(CapturedOutput capturedOutput) {
+        when(censusEntryCommandMock.getAge()).thenReturn("a");
+        when(censusMock.getCensusDate()).thenReturn(CENSUS_1881);
+
+        updateRecordedYearOfBirth.updateRecordedYearOfBirth(censusEntryCommandMock);
+        assertTrue(capturedOutput.getOut().contains("Age cannot be parsed"));
     }
 
 
