@@ -110,4 +110,12 @@ public interface BirthCertificateCommand {
     String getWhereRegistered();
 
     void setWhereRegistered(String whereRegistered);
+
+    Place getFatherUsualResidence();
+
+    void setFatherUsualResidence(Place fatherUsualResidence);
+
+    String getUntrackedFatherUsualResidence();
+
+    void setUntrackedFatherUsualResidence(String untrackedFatherUsualResidence);
 }
