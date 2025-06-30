@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.constants.ValidationConstants;
+import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
 import scot.carricksoftware.grants.validators.helpers.ValidateTwoFieldTypes;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
@@ -22,10 +23,12 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
 
     private final ValidateTypes validateTypes;
     private final ValidateTwoFieldTypes validateTwoFieldTypes;
+    private final ValidateDateTypes validateDateTypes;
 
-    public BirthCertificateCommandPartThreeValidatorImpl(ValidateTypes validateTypes, ValidateTwoFieldTypes validateTwoFieldTypes) {
+    public BirthCertificateCommandPartThreeValidatorImpl(ValidateTypes validateTypes, ValidateTwoFieldTypes validateTwoFieldTypes, ValidateDateTypes validateDateTypes) {
         this.validateTypes = validateTypes;
         this.validateTwoFieldTypes = validateTwoFieldTypes;
+        this.validateDateTypes = validateDateTypes;
     }
 
     @Override
@@ -48,7 +51,7 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
 
     private void validateWhenBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating when born");
-        validateTypes.validatePastDateAndTime(birthCertificateCommand.getWhenBorn(),
+        validateDateTypes.validatePastDateAndTime(birthCertificateCommand.getWhenBorn(),
                 "whenBorn",
                 ValidationConstants.WHEN_BORN_IS_NULL,
                 ValidationConstants.WHEN_BORN_INCORRECT_FORMAT,
@@ -75,7 +78,7 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
 
     private void validateWhenRegistered(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Registration Date");
-        validateTypes.validatePastDate(birthCertificateCommand.getWhenRegistered(),
+        validateDateTypes.validatePastDate(birthCertificateCommand.getWhenRegistered(),
                 "whenRegistered",
                 ValidationConstants.WHEN_REGISTERED_DATE_IS_NULL,
                 ValidationConstants.WHEN_REGISTERED_DATE_IS_INVALID,

@@ -11,6 +11,7 @@ import scot.carricksoftware.grants.commands.certificates.birthcertificates.Birth
 
 public interface BirthCertificateCommandValidator {
 
+    @SuppressWarnings("unused")
     void validate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult);
 }
 

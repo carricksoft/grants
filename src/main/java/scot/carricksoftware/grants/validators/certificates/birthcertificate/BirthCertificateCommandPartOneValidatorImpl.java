@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.constants.ValidationConstants;
+import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 
@@ -21,8 +22,11 @@ public class BirthCertificateCommandPartOneValidatorImpl implements BirthCertifi
 
     private final ValidateTypes validateTypes;
 
-    public BirthCertificateCommandPartOneValidatorImpl(ValidateTypes validateTypes) {
+    private final ValidateDateTypes validateDateTypes;
+
+    public BirthCertificateCommandPartOneValidatorImpl(ValidateTypes validateTypes, ValidateDateTypes validateDateTypes) {
         this.validateTypes = validateTypes;
+        this.validateDateTypes = validateDateTypes;
     }
 
     @Override
@@ -60,7 +64,7 @@ public class BirthCertificateCommandPartOneValidatorImpl implements BirthCertifi
 
     private void validateCertificateDate(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Certificate Date");
-        validateTypes.validatePastDate(birthCertificateCommand.getCertificateDate(),
+        validateDateTypes.validatePastDate(birthCertificateCommand.getCertificateDate(),
                 "certificateDate",
                 ValidationConstants.CERTIFICATE_DATE_IS_NULL,
                 ValidationConstants.DATE_IS_INVALID,
