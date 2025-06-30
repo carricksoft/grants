@@ -34,6 +34,7 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
         validateFatherAndUntrackedFather(birthCertificateCommand, bindingResult);
         validateWhereBornAndUntrackedWhereBorn(birthCertificateCommand, bindingResult);
         validateWhenRegistered(birthCertificateCommand, bindingResult);
+        validateUsualResidences(birthCertificateCommand, bindingResult);
     }
 
 
@@ -61,6 +62,12 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
         logger.debug("Validating where born and untracked where born");
         validateTypes.validatePlaceAndUntrackedPlace(birthCertificateCommand.getWhereBorn(), birthCertificateCommand.getUntrackedWhereBorn(),
                 "whereBorn", "untrackedWhereBorn", ValidationConstants.WHERE_BORN_AND_UNTRACKED_WHERE_BORN,bindingResult);
+    }
+
+    private void validateUsualResidences(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating where Usual Residence and untracked usual residence");
+        validateTypes.validateOptionalPlaceAndUntrackedPlace(birthCertificateCommand.getFatherUsualResidence(), birthCertificateCommand.getUntrackedFatherUsualResidence(),
+                "fatherUsualResidence", "untrackedFatherUsualResidence", ValidationConstants.FATHER_USUAL_RESIDENCE_AND_UNTRACKED_FATHER_USUAL_RESIDENCE,bindingResult);
     }
 
     private void validateWhenRegistered(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {

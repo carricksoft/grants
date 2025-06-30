@@ -46,6 +46,7 @@ public class ValidationConstants {
     public static final String WHEN_BORN_IS_NULL = "When born cannot be null.";
     public static final String FATHER_AND_UNTRACKED_FATHER = "One and only one father and untracked father must be specified.";
     public static final String WHERE_BORN_AND_UNTRACKED_WHERE_BORN = "One and only one where born and untracked where born must be specified.";
+    public static final String FATHER_USUAL_RESIDENCE_AND_UNTRACKED_FATHER_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence may be specified.";
     public static final String BRIDE_IS_NULL = "The bride cannot be null.";
     public static final String GROOM_IS_NULL = "The groom cannot be null.";
     public static final String SAME_BRIDE_AND_GROOM = "The bride and groom cannot be the same person.";

@@ -131,4 +131,12 @@ public class ValidateTypesImpl implements ValidateTypes {
         }
     }
 
+    @Override
+    public void validateOptionalPlaceAndUntrackedPlace(Place place, String untrackedPlace, String placeFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
+        if (!(place == null) && untrackedPlace != null &&  !(untrackedPlace.trim().isEmpty())) {
+            bindingResult.rejectValue(placeFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+            bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        }
+    }
+
 }
