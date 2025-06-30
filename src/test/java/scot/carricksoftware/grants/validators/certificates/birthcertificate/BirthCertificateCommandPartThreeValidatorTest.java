@@ -16,6 +16,7 @@ import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
+import scot.carricksoftware.grants.validators.helpers.ValidateTwoFieldTypes;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -31,6 +32,9 @@ class BirthCertificateCommandPartThreeValidatorTest {
     @Mock
     private ValidateTypes validateTypesMock;
 
+    @Mock
+    private ValidateTwoFieldTypes validateTwoFieldsTypesMock;
+
     @Mock()
     BirthCertificateCommand birthCertificateCommandMock;
 
@@ -39,7 +43,7 @@ class BirthCertificateCommandPartThreeValidatorTest {
 
     @BeforeEach
     void setUp() {
-        validator = new BirthCertificateCommandPartThreeValidatorImpl(validateTypesMock);
+        validator = new BirthCertificateCommandPartThreeValidatorImpl(validateTypesMock, validateTwoFieldsTypesMock);
     }
 
     @Test

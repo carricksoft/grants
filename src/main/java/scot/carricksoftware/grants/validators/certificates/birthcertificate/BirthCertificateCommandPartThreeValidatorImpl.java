@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.constants.ValidationConstants;
+import scot.carricksoftware.grants.validators.helpers.ValidateTwoFieldTypes;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 
@@ -20,9 +21,11 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
     private static final Logger logger = LogManager.getLogger(BirthCertificateCommandPartThreeValidatorImpl.class);
 
     private final ValidateTypes validateTypes;
+    private final ValidateTwoFieldTypes validateTwoFieldTypes;
 
-    public BirthCertificateCommandPartThreeValidatorImpl(ValidateTypes validateTypes) {
+    public BirthCertificateCommandPartThreeValidatorImpl(ValidateTypes validateTypes, ValidateTwoFieldTypes validateTwoFieldTypes) {
         this.validateTypes = validateTypes;
+        this.validateTwoFieldTypes = validateTwoFieldTypes;
     }
 
     @Override
@@ -55,18 +58,18 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
 
     private void validateFatherAndUntrackedFather(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating father and untracked father");
-        validateTypes.validatePersonAndUntrackedPerson(birthCertificateCommand.getFather(), birthCertificateCommand.getUntrackedFather(), "father", "untrackedFather", ValidationConstants.FATHER_AND_UNTRACKED_FATHER,bindingResult);
+        validateTwoFieldTypes.validatePersonAndUntrackedPerson(birthCertificateCommand.getFather(), birthCertificateCommand.getUntrackedFather(), "father", "untrackedFather", ValidationConstants.FATHER_AND_UNTRACKED_FATHER,bindingResult);
     }
 
     private void validateWhereBornAndUntrackedWhereBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating where born and untracked where born");
-        validateTypes.validatePlaceAndUntrackedPlace(birthCertificateCommand.getWhereBorn(), birthCertificateCommand.getUntrackedWhereBorn(),
+        validateTwoFieldTypes.validatePlaceAndUntrackedPlace(birthCertificateCommand.getWhereBorn(), birthCertificateCommand.getUntrackedWhereBorn(),
                 "whereBorn", "untrackedWhereBorn", ValidationConstants.WHERE_BORN_AND_UNTRACKED_WHERE_BORN,bindingResult);
     }
 
     private void validateUsualResidences(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating where Usual Residence and untracked usual residence");
-        validateTypes.validateOptionalPlaceAndUntrackedPlace(birthCertificateCommand.getFatherUsualResidence(), birthCertificateCommand.getUntrackedFatherUsualResidence(),
+        validateTwoFieldTypes.validateOptionalPlaceAndUntrackedPlace(birthCertificateCommand.getFatherUsualResidence(), birthCertificateCommand.getUntrackedFatherUsualResidence(),
                 "fatherUsualResidence", "untrackedFatherUsualResidence", ValidationConstants.FATHER_USUAL_RESIDENCE_AND_UNTRACKED_FATHER_USUAL_RESIDENCE,bindingResult);
     }
 

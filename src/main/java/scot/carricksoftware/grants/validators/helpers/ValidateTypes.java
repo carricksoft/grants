@@ -39,5 +39,6 @@ public interface ValidateTypes {
     @SuppressWarnings("EmptyMethod")
     void validatePlaceAndUntrackedPlace(Place place, String untrackedPlace, String placeFieldName, String untrackedFieldName, String message, BindingResult bindingResult);
 
+    @SuppressWarnings("unused")
     void validateOptionalPlaceAndUntrackedPlace(Place place, String untrackedPlace, String placeFieldName, String untrackedFieldName, String message, BindingResult bindingResult);
 }
