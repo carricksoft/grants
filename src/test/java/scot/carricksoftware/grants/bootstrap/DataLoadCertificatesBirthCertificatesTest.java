@@ -108,7 +108,8 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals("Qualification", captor.getValue().getInformantQualification());
         assertEquals("Where Registered", captor.getValue().getWhereRegistered());
         assertEquals("22/01/1978", captor.getValue().getWhenRegistered());
-
+        assertEquals("57 Back Street, Edinburgh", captor.getValue().getUntrackedFatherUsualResidence());
+        assertEquals(placeMock, captor.getValue().getFatherUsualResidence());
     }
 
 
