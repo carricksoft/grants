@@ -28,7 +28,7 @@ class BirthCertificateCommandPartOneValidatorTest {
     private BirthCertificateCommandPartOneValidator validator;
 
     @Mock
-     private ValidateTypes validateTypesMock;
+    private ValidateTypes validateTypesMock;
 
     @Mock
     private ValidateDateTypes validateDateTypesMock;
@@ -41,7 +41,7 @@ class BirthCertificateCommandPartOneValidatorTest {
 
     @BeforeEach
     void setUp() {
-       validator = new BirthCertificateCommandPartOneValidatorImpl(validateTypesMock, validateDateTypesMock) ;
+        validator = new BirthCertificateCommandPartOneValidatorImpl(validateTypesMock, validateDateTypesMock);
         when(birthCertificateCommandMock.getNewBorn()).thenReturn(GetRandomPerson());
         when(birthCertificateCommandMock.getCertificateNumber()).thenReturn(GetRandomString());
         when(birthCertificateCommandMock.getCertificateSource()).thenReturn(GetRandomOrganisation());
