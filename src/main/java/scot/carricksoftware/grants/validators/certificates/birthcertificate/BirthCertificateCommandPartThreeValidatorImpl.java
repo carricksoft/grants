@@ -43,7 +43,6 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
         validateUsualResidences(birthCertificateCommand, bindingResult);
     }
 
-
     private void validateSex(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating sex");
         validateTypes.validateSex(birthCertificateCommand.getSex(), "sex", ValidationConstants.SEX_IS_NULL, bindingResult);
@@ -61,7 +60,8 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
 
     private void validateFatherAndUntrackedFather(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating father and untracked father");
-        validateTwoFieldTypes.validatePersonAndUntrackedPerson(birthCertificateCommand.getFather(), birthCertificateCommand.getUntrackedFather(), "father", "untrackedFather", ValidationConstants.FATHER_AND_UNTRACKED_FATHER,bindingResult);
+        validateTwoFieldTypes.validatePersonAndUntrackedPerson(birthCertificateCommand.getFather(),
+                birthCertificateCommand.getUntrackedFather(), "father", "untrackedFather", ValidationConstants.FATHER_AND_UNTRACKED_FATHER,bindingResult);
     }
 
     private void validateWhereBornAndUntrackedWhereBorn(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
