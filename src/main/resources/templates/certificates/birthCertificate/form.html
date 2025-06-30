@@ -290,6 +290,39 @@
                 </td>
             </tr>
             <tr>
+            <td style="text-align: right; background-color: #FFFF00;">
+                <label for="fatherUsualResidence">Usual Residence :&nbsp;</label>
+            </td>
+            <td style="text-align: left;">
+                <select id="fatherUsualResidence" name="fatherUsualResidence" th:field="*{fatherUsualResidence}">
+                    <option th:value="${''}" th:text="${''}"></option>
+                    <option th:each="place : ${places}"
+                            th:value="${place.id}" th:text="${place.toString()}"></option>
+                </select>
+                <div th:if="${#fields.hasErrors('fatherUsualResidence')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('fatherUsualResidence')}" th:text="${err}"/>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+            <tr>
+                <td style="text-align: right;  background-color: #FFFF00;">
+                    <label for="untrackedFatherUsualResidence">Usual Residence (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left; ">
+                    <div>
+                        <input class="number" id="untrackedFatherUsualResidence"
+                               th:field="*{untrackedFatherUsualResidence}" type="text">
+                        <div th:if="${#fields.hasErrors('untrackedFatherUsualResidence')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('untrackedFatherUsualResidence')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td style="text-align: right;">
                     <label for="mother">Mother :&nbsp;</label>
                 </td>
