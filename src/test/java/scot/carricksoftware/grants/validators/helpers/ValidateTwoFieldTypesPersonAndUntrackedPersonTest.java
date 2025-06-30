@@ -20,9 +20,9 @@ import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPe
 
 
 @ExtendWith(MockitoExtension.class)
-class ValidateTypesPersonAndUntrackedPersonTest {
+class ValidateTwoFieldTypesPersonAndUntrackedPersonTest {
 
-    private ValidateTypes validateTypes;
+    private ValidateTypes validateTwoTypes;
 
     private String untrackedPersonField;
     private String personField;
@@ -33,7 +33,7 @@ class ValidateTypesPersonAndUntrackedPersonTest {
 
     @BeforeEach
     void setUp() {
-        validateTypes = new ValidateTypesImpl();
+        validateTwoTypes = new ValidateTypesImpl();
         untrackedPersonField = "untrackedPerson";
         personField = "person";
         message = GetRandomString();
@@ -41,40 +41,40 @@ class ValidateTypesPersonAndUntrackedPersonTest {
 
     @Test
     void bothNullTest() {
-        validateTypes.validatePersonAndUntrackedPerson(null, null, personField, untrackedPersonField, message, bindingResultMock);
+        validateTwoTypes.validatePersonAndUntrackedPerson(null, null, personField, untrackedPersonField, message, bindingResultMock);
         verify(bindingResultMock).rejectValue(personField, ApplicationConstants.EMPTY_STRING, null, message);
         verify(bindingResultMock).rejectValue(untrackedPersonField, ApplicationConstants.EMPTY_STRING, null, message);
     }
 
     @Test
     void nullAndEmptyTest() {
-        validateTypes.validatePersonAndUntrackedPerson(null, "  ", personField, untrackedPersonField, message, bindingResultMock);
+        validateTwoTypes.validatePersonAndUntrackedPerson(null, "  ", personField, untrackedPersonField, message, bindingResultMock);
         verify(bindingResultMock).rejectValue(personField, ApplicationConstants.EMPTY_STRING, null, message);
         verify(bindingResultMock).rejectValue(untrackedPersonField, ApplicationConstants.EMPTY_STRING, null, message);
     }
 
     @Test
     void bothFullTest() {
-        validateTypes.validatePersonAndUntrackedPerson(GetRandomPerson(), GetRandomString(), personField, untrackedPersonField, message, bindingResultMock);
+        validateTwoTypes.validatePersonAndUntrackedPerson(GetRandomPerson(), GetRandomString(), personField, untrackedPersonField, message, bindingResultMock);
         verify(bindingResultMock).rejectValue(personField, ApplicationConstants.EMPTY_STRING, null, message);
         verify(bindingResultMock).rejectValue(untrackedPersonField, ApplicationConstants.EMPTY_STRING, null, message);
     }
 
     @Test
     void fullPersonAndNullUntrackedTest() {
-        validateTypes.validatePersonAndUntrackedPerson(GetRandomPerson(), null, personField, untrackedPersonField, message, bindingResultMock);
+        validateTwoTypes.validatePersonAndUntrackedPerson(GetRandomPerson(), null, personField, untrackedPersonField, message, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
     void fullPersonAndEmptyUntrackedTest() {
-        validateTypes.validatePersonAndUntrackedPerson(GetRandomPerson(), "  ", personField, untrackedPersonField, message, bindingResultMock);
+        validateTwoTypes.validatePersonAndUntrackedPerson(GetRandomPerson(), "  ", personField, untrackedPersonField, message, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
     void nullPersonAndFullUntrackedTest() {
-        validateTypes.validatePersonAndUntrackedPerson(null, GetRandomString(), personField, untrackedPersonField, message, bindingResultMock);
+        validateTwoTypes.validatePersonAndUntrackedPerson(null, GetRandomString(), personField, untrackedPersonField, message, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
