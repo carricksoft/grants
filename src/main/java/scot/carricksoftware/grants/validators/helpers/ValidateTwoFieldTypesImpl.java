@@ -16,8 +16,7 @@ public class ValidateTwoFieldTypesImpl implements ValidateTwoFieldTypes {
 
     @Override
     public void validatePersonAndUntrackedPerson(Person person, String untrackedPerson, String personFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
-
-        boolean untrackedFound = (untrackedPerson != null && !untrackedPerson.isEmpty());
+        @SuppressWarnings("DuplicatedCode") boolean untrackedFound = (untrackedPerson != null && !untrackedPerson.isEmpty());
         if ((person == null && !untrackedFound) || person != null && untrackedFound) {
             bindingResult.rejectValue(personFieldName, ApplicationConstants.EMPTY_STRING, null, message);
             bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
@@ -26,14 +25,11 @@ public class ValidateTwoFieldTypesImpl implements ValidateTwoFieldTypes {
 
     @Override
     public void validatePlaceAndUntrackedPlace(Place place, String untrackedPlace, String placeFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
-        boolean error = place == null && (untrackedPlace == null || untrackedPlace.trim().isEmpty());
-        if (!(place == null) && untrackedPlace != null &&  !(untrackedPlace.trim().isEmpty())) {
-            error = true;
-        }
-        if (error) {
+        @SuppressWarnings("DuplicatedCode") boolean untrackedFound = (untrackedPlace != null && !untrackedPlace.isEmpty());
+        if ((place == null && !untrackedFound) || place != null && untrackedFound) {
             bindingResult.rejectValue(placeFieldName, ApplicationConstants.EMPTY_STRING, null, message);
             bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
-        }
+        } 
     }
 
     @Override
