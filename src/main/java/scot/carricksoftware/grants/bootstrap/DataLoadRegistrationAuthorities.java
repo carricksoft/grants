@@ -27,20 +27,13 @@ public class DataLoadRegistrationAuthorities {
     }
 
     public void load() {
-        logger.debug("DataLoadOrganisation::load");
+        logger.debug("DataLoadRegistrationAuthorities::load");
         loadRegistrationAuthority();
-        loadCertificateSource();
     }
 
-    private void loadCertificateSource() {
-        logger.debug("DataLoadOrganisation::loadCertificateSource");
-        OrganisationCommand certificateSourceCommand = new OrganisationCommandImpl();
-        certificateSourceCommand.setName("General Register Office For Scotland");
-        organisationService.saveOrganisationCommand(certificateSourceCommand);
-    }
 
     private void loadRegistrationAuthority() {
-        logger.debug("DataLoadOrganisation::loadRegistrationAuthority");
+        logger.debug("DataLoadRegistrationAuthorities::loadRegistrationAuthority");
         OrganisationCommand registrationAuthorityCommand = new OrganisationCommandImpl();
         registrationAuthorityCommand.setName("Registration Authority");
         organisationService.saveOrganisationCommand(registrationAuthorityCommand);
