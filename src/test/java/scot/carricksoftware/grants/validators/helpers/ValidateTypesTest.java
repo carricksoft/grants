@@ -40,7 +40,7 @@ class ValidateTypesTest {
     @Test
     void nullSexTest() {
         validateTypes.validateSex(null, field, message, bindingResultMock);
-        verify(bindingResultMock).rejectValue(field,"", null, message);
+        verify(bindingResultMock).rejectValue(field, "", null, message);
     }
 
 

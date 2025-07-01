@@ -27,12 +27,25 @@ public class DataLoadOrganisationsTest {
     }
 
     @Test
-    void certificateSourcesAreLoadedTest() {
+    void certificateSourcesIsLoadedTest() {
         ArgumentCaptor<OrganisationCommand> captor = ArgumentCaptor.forClass(OrganisationCommand.class);
         dataLoadOrganisations.load();
         verify(organisationServiceMock, atLeast(1)).saveOrganisationCommand(captor.capture());
         for (OrganisationCommand command : captor.getAllValues()) {
             if (command.getName().equals("General Register Office For Scotland")) {
+                assertTrue(true);
+                return;
+            }
+        }
+    }
+
+    @Test
+    void registrationAuthorityIsLoadedTest() {
+        ArgumentCaptor<OrganisationCommand> captor = ArgumentCaptor.forClass(OrganisationCommand.class);
+        dataLoadOrganisations.load();
+        verify(organisationServiceMock, atLeast(1)).saveOrganisationCommand(captor.capture());
+        for (OrganisationCommand command : captor.getAllValues()) {
+            if (command.getName().equals("Registration Authority")) {
                 assertTrue(true);
                 return;
             }
