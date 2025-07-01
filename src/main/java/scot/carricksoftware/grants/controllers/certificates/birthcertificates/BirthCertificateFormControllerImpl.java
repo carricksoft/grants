@@ -118,7 +118,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
-        return MappingConstants.REDIRECT + CertificateMappingConstants.BIRTH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
+        return MappingConstants.REDIRECT + CertificateMappingConstants.BIRTH_CERTIFICATE_EDIT.replace("{id}", "" + savedCommand.getId());
     }
 
 
