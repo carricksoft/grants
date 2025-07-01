@@ -53,6 +53,6 @@ class BirthCertificateCommandPartTwoValidatorTest {
         verify(validateTypesMock).validateNullOrEmptyString(birthCertificateCommandMock.getVolume(),
                 "volume", "The volume cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateOrganisation(birthCertificateCommandMock.getRegistrationAuthority(),
-                "certificateSource", "The registration authority cannot be null.", bindingResultMock);
+                "registrationAuthority", "The registration authority cannot be null.", bindingResultMock);
     }
 }
