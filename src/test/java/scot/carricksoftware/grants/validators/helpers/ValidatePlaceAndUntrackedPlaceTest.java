@@ -15,14 +15,14 @@ import org.springframework.validation.BindingResult;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
-import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-class ValidateValidatePersonAndUntrackedPersonTest {
+class ValidatePlaceAndUntrackedPlaceTest {
 
     private ValidateTwoFieldTypes validateTwoFieldTypes;
 
-    private String personField;
+    private String placeField;
     private String untrackedField;
     private String message;
 
@@ -32,41 +32,41 @@ class ValidateValidatePersonAndUntrackedPersonTest {
     @BeforeEach
     void setUp() {
         validateTwoFieldTypes = new ValidateTwoFieldTypesImpl();
-        personField = "personField";
+        placeField = "personField";
         untrackedField = "untrackedField";
         message = "message";
     }
 
     @Test
     void bothNullTest() {
-        validateTwoFieldTypes.validatePersonAndUntrackedPerson(null, null, personField, untrackedField, message, bindingResultMock);
-        verify(bindingResultMock).rejectValue(personField, "", null, message);
+        validateTwoFieldTypes.validatePlaceAndUntrackedPlace(null, null, placeField, untrackedField, message, bindingResultMock);
+        verify(bindingResultMock).rejectValue(placeField, "", null, message);
         verify(bindingResultMock).rejectValue(untrackedField, "", null, message);
     }
 
     @Test
-    void nullPersonAndEmptyUntrackedFieldTest() {
-        validateTwoFieldTypes.validatePersonAndUntrackedPerson(null, "", personField, untrackedField, message, bindingResultMock);
-        verify(bindingResultMock).rejectValue(personField, "", null, message);
+    void nullPlaceAndEmptyUntrackedFieldTest() {
+        validateTwoFieldTypes.validatePlaceAndUntrackedPlace(null, "", placeField, untrackedField, message, bindingResultMock);
+        verify(bindingResultMock).rejectValue(placeField, "", null, message);
         verify(bindingResultMock).rejectValue(untrackedField, "", null, message);
     }
 
     @Test
     void bothGivenFieldTest() {
-        validateTwoFieldTypes.validatePersonAndUntrackedPerson(GetRandomPerson(), GetRandomString(), personField, untrackedField, message, bindingResultMock);
-        verify(bindingResultMock).rejectValue(personField, "", null, message);
+        validateTwoFieldTypes.validatePlaceAndUntrackedPlace(GetRandomPlace(), GetRandomString(), placeField, untrackedField, message, bindingResultMock);
+        verify(bindingResultMock).rejectValue(placeField, "", null, message);
         verify(bindingResultMock).rejectValue(untrackedField, "", null, message);
     }
 
     @Test
-    void personOnlyGivenTest() {
-        validateTwoFieldTypes.validatePersonAndUntrackedPerson(GetRandomPerson(), null, personField, untrackedField, message, bindingResultMock);
+    void placeOnlyGivenTest() {
+        validateTwoFieldTypes.validatePlaceAndUntrackedPlace(GetRandomPlace(), null, placeField, untrackedField, message, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
-    void unTrackedPersonOnlyGivenTest() {
-        validateTwoFieldTypes.validatePersonAndUntrackedPerson(null, GetRandomString(), personField, untrackedField, message, bindingResultMock);
+    void unTrackedPlaceOnlyGivenTest() {
+        validateTwoFieldTypes.validatePlaceAndUntrackedPlace(null, GetRandomString(), placeField, untrackedField, message, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 

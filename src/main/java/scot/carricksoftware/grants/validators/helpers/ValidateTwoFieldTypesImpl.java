@@ -16,28 +16,30 @@ public class ValidateTwoFieldTypesImpl implements ValidateTwoFieldTypes {
 
     @Override
     public void validatePersonAndUntrackedPerson(Person person, String untrackedPerson, String personFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
-        @SuppressWarnings("DuplicatedCode") boolean untrackedFound = (untrackedPerson != null && !untrackedPerson.isEmpty());
+        boolean untrackedFound = (untrackedPerson != null && !untrackedPerson.isEmpty());
         if ((person == null && !untrackedFound) || person != null && untrackedFound) {
-            bindingResult.rejectValue(personFieldName, ApplicationConstants.EMPTY_STRING, null, message);
-            bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+            reportError(personFieldName, untrackedFieldName, message, bindingResult);
         }
     }
 
     @Override
     public void validatePlaceAndUntrackedPlace(Place place, String untrackedPlace, String placeFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
-        @SuppressWarnings("DuplicatedCode") boolean untrackedFound = (untrackedPlace != null && !untrackedPlace.isEmpty());
+    boolean untrackedFound = (untrackedPlace != null && !untrackedPlace.isEmpty());
         if ((place == null && !untrackedFound) || place != null && untrackedFound) {
-            bindingResult.rejectValue(placeFieldName, ApplicationConstants.EMPTY_STRING, null, message);
-            bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+            reportError(placeFieldName, untrackedFieldName, message, bindingResult);
         } 
     }
 
     @Override
     public void validateOptionalPlaceAndUntrackedPlace(Place place, String untrackedPlace, String placeFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
-        if (!(place == null) && untrackedPlace != null &&  !(untrackedPlace.trim().isEmpty())) {
-            bindingResult.rejectValue(placeFieldName, ApplicationConstants.EMPTY_STRING, null, message);
-            bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
-        }
+      if (place!= null && (untrackedPlace != null && !untrackedPlace.isEmpty())) {
+          reportError(placeFieldName, untrackedFieldName, message, bindingResult);
+      }
+    }
+
+    private void reportError(String personFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
+        bindingResult.rejectValue(personFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
     }
 
 }
