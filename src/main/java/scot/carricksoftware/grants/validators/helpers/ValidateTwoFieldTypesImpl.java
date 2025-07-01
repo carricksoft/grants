@@ -14,21 +14,16 @@ import scot.carricksoftware.grants.domains.places.Place;
 @Component
 public class ValidateTwoFieldTypesImpl implements ValidateTwoFieldTypes {
 
-
-    @SuppressWarnings("DuplicatedCode")
     @Override
     public void validatePersonAndUntrackedPerson(Person person, String untrackedPerson, String personFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
-       boolean error = person == null && (untrackedPerson == null || untrackedPerson.trim().isEmpty());
-        if (!(person == null) && untrackedPerson != null &&  !(untrackedPerson.trim().isEmpty())) {
-            error = true;
-        }
-        if (error) {
+
+        boolean untrackedFound = (untrackedPerson != null && !untrackedPerson.isEmpty());
+        if ((person == null && !untrackedFound) || person != null && untrackedFound) {
             bindingResult.rejectValue(personFieldName, ApplicationConstants.EMPTY_STRING, null, message);
             bindingResult.rejectValue(untrackedFieldName, ApplicationConstants.EMPTY_STRING, null, message);
         }
     }
 
-    @SuppressWarnings("DuplicatedCode")
     @Override
     public void validatePlaceAndUntrackedPlace(Place place, String untrackedPlace, String placeFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
         boolean error = place == null && (untrackedPlace == null || untrackedPlace.trim().isEmpty());
