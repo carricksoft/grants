@@ -45,7 +45,7 @@ public class BirthCertificateCommandPartTwoValidatorImpl implements BirthCertifi
 
     private void validateRegistrationAuthority(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating birth certificate Registration Authority");
-        validateTypes.validateOrganisation(birthCertificateCommand.getRegistrationAuthority(), "certificateSource", ValidationConstants.REGISTRATION_AUTHORITY_IS_NULL, bindingResult);
+        validateTypes.validateOrganisation(birthCertificateCommand.getRegistrationAuthority(), "registrationAuthority", ValidationConstants.REGISTRATION_AUTHORITY_IS_NULL, bindingResult);
     }
 
 }
