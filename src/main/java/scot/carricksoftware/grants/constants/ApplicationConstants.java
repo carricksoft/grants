@@ -24,6 +24,6 @@ public class ApplicationConstants {
     public final static String EMPTY_STRING = "";
 
     public static final int MINIMUM_NAME_LENGTH = 3;
-    public static final int MAXIMUM_NAME_LENGTH = 40;
+    public static final int MAXIMUM_NAME_LENGTH = 120;//changed from 40 1/7/2025
 
 }
