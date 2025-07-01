@@ -14,22 +14,22 @@ import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-public class DataLoadCertificateAuthoritiesTest {
+public class DataLoadCertificateSourcesTest {
 
-    private DataLoadCertificateAuthorities dataLoadCertificateAuthorities;
+    private DataLoadCertificateSources dataLoadCertificateSources;
 
     @Mock
     private OrganisationService organisationServiceMock;
 
     @BeforeEach
     public void setUp() {
-        dataLoadCertificateAuthorities = new DataLoadCertificateAuthorities(organisationServiceMock);
+        dataLoadCertificateSources = new DataLoadCertificateSources(organisationServiceMock);
     }
 
     @Test
     void certificateSourcesIsLoadedTest() {
         ArgumentCaptor<OrganisationCommand> captor = ArgumentCaptor.forClass(OrganisationCommand.class);
-        dataLoadCertificateAuthorities.load();
+        dataLoadCertificateSources.load();
         verify(organisationServiceMock, atLeast(1)).saveOrganisationCommand(captor.capture());
         for (OrganisationCommand command : captor.getAllValues()) {
             if (command.getName().equals("General Register Office For Scotland")) {

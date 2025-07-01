@@ -16,13 +16,13 @@ import scot.carricksoftware.grants.services.places.organisations.OrganisationSer
 
 @Component
 @Profile("dev")
-public class DataLoadCertificateAuthorities {
+public class DataLoadCertificateSources {
 
-    private static final Logger logger = LogManager.getLogger(DataLoadCertificateAuthorities.class);
+    private static final Logger logger = LogManager.getLogger(DataLoadCertificateSources.class);
 
     private final OrganisationService organisationService;
 
-    public DataLoadCertificateAuthorities(OrganisationService organisationService) {
+    public DataLoadCertificateSources(OrganisationService organisationService) {
         this.organisationService = organisationService;
     }
 

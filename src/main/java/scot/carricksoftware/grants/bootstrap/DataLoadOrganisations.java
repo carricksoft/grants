@@ -17,18 +17,18 @@ public class DataLoadOrganisations {
 
     private static final Logger logger = LogManager.getLogger(DataLoadOrganisations.class);
 
-    private final DataLoadCertificateAuthorities dataLoadCertificateAuthorities;
+    private final DataLoadCertificateSources dataLoadCertificateSources;
 
     private final DataLoadRegistrationAuthorities dataLoadRegistrationAuthorities;
 
-    public DataLoadOrganisations(DataLoadCertificateAuthorities dataLoadCertificateAuthorities, DataLoadRegistrationAuthorities dataLoadRegistrationAuthorities) {
-        this.dataLoadCertificateAuthorities = dataLoadCertificateAuthorities;
+    public DataLoadOrganisations(DataLoadCertificateSources dataLoadCertificateSources, DataLoadRegistrationAuthorities dataLoadRegistrationAuthorities) {
+        this.dataLoadCertificateSources = dataLoadCertificateSources;
         this.dataLoadRegistrationAuthorities = dataLoadRegistrationAuthorities;
     }
 
     public void load() {
         logger.debug("DataLoadOrganisation::load");
-        dataLoadCertificateAuthorities.load();
+        dataLoadCertificateSources.load();
         dataLoadRegistrationAuthorities.load();
     }
 

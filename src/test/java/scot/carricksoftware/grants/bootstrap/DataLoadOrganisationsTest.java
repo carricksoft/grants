@@ -15,20 +15,20 @@ public class DataLoadOrganisationsTest {
 
 
     @Mock
-    private DataLoadCertificateAuthorities dataLoadCertificateAuthoritiesMock;
+    private DataLoadCertificateSources dataLoadCertificateSourcesMock;
 
     @Mock
     private DataLoadRegistrationAuthorities dataLoadRegistrationAuthoritiesMock;
 
     @BeforeEach
     public void setUp() {
-        dataLoadOrganisations = new DataLoadOrganisations(dataLoadCertificateAuthoritiesMock, dataLoadRegistrationAuthoritiesMock);
+        dataLoadOrganisations = new DataLoadOrganisations(dataLoadCertificateSourcesMock, dataLoadRegistrationAuthoritiesMock);
     }
 
     @Test
     void certificateAuthoritiesAreLoadedTest() {
         dataLoadOrganisations.load();
-        verify(dataLoadCertificateAuthoritiesMock).load();
+        verify(dataLoadCertificateSourcesMock).load();
     }
 
     @Test
