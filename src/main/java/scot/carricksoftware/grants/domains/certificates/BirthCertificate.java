@@ -97,6 +97,10 @@ public class BirthCertificate extends BaseCertificate {
     @Column(name="`untracked_father_usual_residence`")
     private String untrackedFatherUsualResidence;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name="`informant_residence`")
+    private String informantResidence;
+
     public Person getNewBorn() {
         return newBorn;
     }
@@ -233,5 +237,13 @@ public class BirthCertificate extends BaseCertificate {
 
     public void setUntrackedFatherUsualResidence(String untrackedFatherUsualResidence) {
         this.untrackedFatherUsualResidence = untrackedFatherUsualResidence;
+    }
+
+    public String getInformantResidence() {
+        return informantResidence;
+    }
+
+    public void setInformantResidence(String informantResidence) {
+        this.informantResidence = informantResidence;
     }
 }

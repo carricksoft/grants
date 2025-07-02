@@ -48,7 +48,7 @@ class BirthCertificatePartTwoTest {
     }
 
     @Test
-    public void getSexTestTest() {
+    public void getSexTest() {
         assertNull(certificate.getWhenBorn());
     }
 
@@ -57,6 +57,18 @@ class BirthCertificatePartTwoTest {
         Sex sex = GetRandomCensusEntrySex();
         certificate.setSex(sex);
         assertEquals(sex, certificate.getSex());
+    }
+
+    @Test
+    public void getInformantResidenceTest() {
+        assertNull(certificate.getInformantResidence());
+    }
+
+    @Test
+    void setInformantResidenceTest() {
+        String informantResidence = GetRandomString();
+        certificate.setInformantResidence(informantResidence);
+        assertEquals(informantResidence, certificate.getInformantResidence());
     }
 
 }
