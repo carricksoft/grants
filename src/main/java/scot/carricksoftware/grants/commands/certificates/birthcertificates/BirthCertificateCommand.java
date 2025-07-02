@@ -122,4 +122,12 @@ public interface BirthCertificateCommand {
     String getInformantResidence();
 
     void setInformantResidence(String informantResidence);
+
+    Place getMotherUsualResidence();
+
+    void setMotherUsualResidence(Place motherUsualResidence);
+
+    String getUntrackedMotherUsualResidence();
+
+    void setUntrackedMotherUsualResidence(String untrackedMotherUsualResidence);
 }
