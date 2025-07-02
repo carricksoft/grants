@@ -46,6 +46,7 @@ public class BirthCertificateConverterImpl implements BirthCertificateConverter 
         target.setWhereRegistered(source.getWhereRegistered());
         target.setUntrackedFatherUsualResidence(source.getUntrackedFatherUsualResidence());
         target.setFatherUsualResidence(source.getFatherUsualResidence());
+        target.setInformantResidence(source.getInformantResidence());
 
         return target;
     }
