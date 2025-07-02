@@ -82,5 +82,12 @@ class CapitaliseBirthCertificatesPartTwoTest {
         assertEquals("Lower", birthCertificateCommand.getUntrackedFatherUsualResidence());
     }
 
+    @Test
+    void informantResidenceTest() {
+        birthCertificateCommand.setInformantResidence("lower");
+        capitaliseBirthCertificate.capitalise(birthCertificateCommand);
+        assertEquals("Lower", birthCertificateCommand.getInformantResidence());
+    }
+
 
 }
