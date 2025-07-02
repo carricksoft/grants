@@ -61,6 +61,8 @@ class BirthCertificateConverterTest {
         Place fatherUsualResidence = GetRandomPlace();
         String untrackedFatherUsualResidence = GetRandomString();
         String informantResidence = GetRandomString();
+        Place motherUsualResidence = GetRandomPlace();
+        String untrackedMotherUsualResidence = GetRandomString();
 
 
         source.setId(id);
@@ -89,6 +91,8 @@ class BirthCertificateConverterTest {
         source.setFatherUsualResidence(fatherUsualResidence);
         source.setUntrackedFatherUsualResidence(untrackedFatherUsualResidence);
         source.setInformantResidence(informantResidence);
+        source.setMotherUsualResidence(motherUsualResidence);
+        source.setUntrackedMotherUsualResidence(untrackedMotherUsualResidence);
 
         BirthCertificateCommand target = converter.convert(source);
 
@@ -119,5 +123,7 @@ class BirthCertificateConverterTest {
         assertEquals(fatherUsualResidence, target.getFatherUsualResidence());
         assertEquals(untrackedFatherUsualResidence, target.getUntrackedFatherUsualResidence());
         assertEquals(informantResidence, target.getInformantResidence());
+        assertEquals(motherUsualResidence, target.getMotherUsualResidence());
+        assertEquals(untrackedMotherUsualResidence, target.getUntrackedMotherUsualResidence());
     }
 }
