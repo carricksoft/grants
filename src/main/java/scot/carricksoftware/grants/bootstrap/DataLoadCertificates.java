@@ -79,7 +79,7 @@ public class DataLoadCertificates {
         birthCertificateCommand.setFatherUsualResidence(placeService.findById(1L));
         birthCertificateCommand.setUntrackedFatherUsualResidence("57 Back Street, Edinburgh");
         birthCertificateCommand.setInformantResidence("2 Wilson Avenue, Edinburgh");
-        birthCertificateCommand.setFatherUsualResidence(placeService.findById(1L));
+        birthCertificateCommand.setMotherUsualResidence(placeService.findById(1L));
         birthCertificateCommand.setUntrackedMotherUsualResidence("92 Broughton Road, Edinburgh");
 
         birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
