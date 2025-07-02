@@ -113,7 +113,7 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals("2 Wilson Avenue, Edinburgh", captor.getValue().getInformantResidence());
         assertEquals(placeMock, captor.getValue().getFatherUsualResidence());
         assertEquals("92 Broughton Road, Edinburgh", captor.getValue().getUntrackedMotherUsualResidence());
-        assertEquals(placeMock, captor.getValue().getFatherUsualResidence());
+        assertEquals(placeMock, captor.getValue().getMotherUsualResidence());
     }
 
 
