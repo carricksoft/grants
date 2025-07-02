@@ -118,4 +118,8 @@ public interface BirthCertificateCommand {
     String getUntrackedFatherUsualResidence();
 
     void setUntrackedFatherUsualResidence(String untrackedFatherUsualResidence);
+
+    String getInformantResidence();
+
+    void setInformantResidence(String informantResidence);
 }

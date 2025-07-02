@@ -50,4 +50,16 @@ class BirthCertificateCommandUsualResidenceTest {
         assertEquals(untrackedUsualResidence, command.getUntrackedFatherUsualResidence());
     }
 
+    @Test
+    void getInformantResidenceTest() {
+        assertNull(command.getInformantResidence());
+    }
+
+    @Test
+    void setInformantResidenceTest() {
+        String informantResidence = GetRandomString();
+        command.setInformantResidence(informantResidence);
+        assertEquals(informantResidence, command.getInformantResidence());
+    }
+
 }

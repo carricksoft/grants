@@ -63,10 +63,11 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
 
     private String untrackedFatherUsualResidence;
 
+    private String informantResidence;
+
     public Long getId() {
         return Id;
     }
-
 
     public void setId(Long id) {
         Id = id;
@@ -311,5 +312,15 @@ public class BirthCertificateCommandImpl implements BirthCertificateCommand {
     @Override
     public void setUntrackedFatherUsualResidence(String untrackedFatherUsualResidence) {
         this.untrackedFatherUsualResidence = untrackedFatherUsualResidence;
+    }
+
+    @Override
+    public String getInformantResidence() {
+        return informantResidence;
+    }
+
+    @Override
+    public void setInformantResidence(String informantResidence) {
+        this.informantResidence = informantResidence;
     }
 }
