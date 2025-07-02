@@ -47,4 +47,28 @@ class BirthCertificateUsualResidenceTestTest {
         certificate.setUntrackedFatherUsualResidence(untrackedUsualResidence);
         assertEquals(untrackedUsualResidence, certificate.getUntrackedFatherUsualResidence());
     }
+
+    @Test
+    void getMotherUsualResidenceTest() {
+        assertNull(certificate.getMotherUsualResidence());
+    }
+
+    @Test
+    void setMotherUsualResidenceTest() {
+        Place usualResidence = GetRandomPlace();
+        certificate.setMotherUsualResidence(usualResidence);
+        assertEquals(usualResidence, certificate.getMotherUsualResidence());
+    }
+
+    @Test
+    void getUntrackedMotherUsualResidenceTest() {
+        assertNull(certificate.getUntrackedMotherUsualResidence());
+    }
+
+    @Test
+    void setUntrackedMotherUsualResidenceTest() {
+        String untrackedUsualResidence = GetRandomString();
+        certificate.setUntrackedMotherUsualResidence(untrackedUsualResidence);
+        assertEquals(untrackedUsualResidence, certificate.getUntrackedMotherUsualResidence());
+    }
 }
