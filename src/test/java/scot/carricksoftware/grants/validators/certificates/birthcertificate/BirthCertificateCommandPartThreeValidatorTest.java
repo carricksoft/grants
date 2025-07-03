@@ -85,6 +85,12 @@ class BirthCertificateCommandPartThreeValidatorTest {
                 "untrackedFatherUsualResidence",
                 "Only one usual residence and untracked usual residence must be specified.",
                 bindingResultMock);
+        verify(validateTwoFieldsTypesMock).validateOptionalPlaceAndUntrackedPlace(birthCertificateCommandMock.getMotherUsualResidence(),
+                birthCertificateCommandMock.getUntrackedMotherUsualResidence(),
+                "motherUsualResidence",
+                "untrackedMotherUsualResidence",
+                "Only one usual residence and untracked usual residence may be specified.",
+                bindingResultMock);
         verify(validateDateTypesMock).validatePastDate(birthCertificateCommandMock.getWhenRegistered(),
                 "whenRegistered",
                 "When registered cannot be null.",
