@@ -83,7 +83,7 @@ class BirthCertificateCommandPartThreeValidatorTest {
                 birthCertificateCommandMock.getUntrackedFatherUsualResidence(),
                 "fatherUsualResidence",
                 "untrackedFatherUsualResidence",
-                "Only one usual residence and untracked usual residence may be specified.",
+                "Only one usual residence and untracked usual residence must be specified.",
                 bindingResultMock);
         verify(validateDateTypesMock).validatePastDate(birthCertificateCommandMock.getWhenRegistered(),
                 "whenRegistered",
