@@ -343,11 +343,11 @@
             </tr>
             <!---------------------------->
             <tr>
-            <td style="text-align: right; background-color: #FFFF00;">
+            <td style="text-align: right; background-color: #73ff00;">
                 <label for="motherUsualResidence">Mother Usual Residence :&nbsp;</label>
             </td>
             <td style="text-align: left;">
-                <select id="motherUsualResidence" name="motherUsualResidence" th:field="*{fatherUsualResidence}">
+                <select id="motherUsualResidence" name="motherUsualResidence" th:field="*{motherUsualResidence}">
                     <option th:value="${''}" th:text="${''}"></option>
                     <option th:each="place : ${places}"
                             th:value="${place.id}" th:text="${place.toString()}"></option>
@@ -360,7 +360,7 @@
             </td>
             </tr>
             <tr>
-                <td style="text-align: right;  background-color: #FFFF00;">
+                <td style="text-align: right;  background-color: #73ff00;">
                     <label for="untrackedMotherUsualResidence">Mother Usual Residence (untracked) :&nbsp;</label>
                 </td>
                 <td style="text-align: left; ">

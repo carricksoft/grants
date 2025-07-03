@@ -40,7 +40,8 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
         validateFatherAndUntrackedFather(birthCertificateCommand, bindingResult);
         validateWhereBornAndUntrackedWhereBorn(birthCertificateCommand, bindingResult);
         validateWhenRegistered(birthCertificateCommand, bindingResult);
-        validateUsualResidences(birthCertificateCommand, bindingResult);
+        validateFatherUsualResidencesAndUntrackedFatherUsualResidence(birthCertificateCommand, bindingResult);
+        validateMotherUsualResidencesAndUntrackedMotherUsualResidence(birthCertificateCommand, bindingResult);
     }
 
     private void validateSex(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
@@ -70,10 +71,16 @@ public class BirthCertificateCommandPartThreeValidatorImpl implements BirthCerti
                 "whereBorn", "untrackedWhereBorn", ValidationConstants.WHERE_BORN_AND_UNTRACKED_WHERE_BORN,bindingResult);
     }
 
-    private void validateUsualResidences(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
-        logger.debug("Validating where Usual Residence and untracked usual residence");
+    private void validateFatherUsualResidencesAndUntrackedFatherUsualResidence(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating father Usual Residence and untracked usual residence");
         validateTwoFieldTypes.validateOptionalPlaceAndUntrackedPlace(birthCertificateCommand.getFatherUsualResidence(), birthCertificateCommand.getUntrackedFatherUsualResidence(),
                 "fatherUsualResidence", "untrackedFatherUsualResidence", ValidationConstants.FATHER_USUAL_RESIDENCE_AND_UNTRACKED_FATHER_USUAL_RESIDENCE,bindingResult);
+    }
+
+    private void validateMotherUsualResidencesAndUntrackedMotherUsualResidence(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating mother Usual Residence and untracked usual residence");
+        validateTwoFieldTypes.validateOptionalPlaceAndUntrackedPlace(birthCertificateCommand.getMotherUsualResidence(), birthCertificateCommand.getUntrackedMotherUsualResidence(),
+                "motherUsualResidence", "untrackedMotherUsualResidence", ValidationConstants.MOTHER_USUAL_RESIDENCE_AND_UNTRACKED_MOTHER_USUAL_RESIDENCE,bindingResult);
     }
 
     private void validateWhenRegistered(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
