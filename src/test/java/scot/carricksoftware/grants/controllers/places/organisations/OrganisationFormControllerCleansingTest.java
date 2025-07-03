@@ -14,7 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommand;
-import scot.carricksoftware.grants.converters.CapitalisationImpl;
+import scot.carricksoftware.grants.converters.capitalisation.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationConverterImpl;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
