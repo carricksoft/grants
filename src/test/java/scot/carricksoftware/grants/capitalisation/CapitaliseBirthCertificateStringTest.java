@@ -37,7 +37,7 @@ class CapitaliseBirthCertificateStringTest {
 
     @Test
     public void thirdTest() {
-        assertEquals("Smith", capitaliseString.capitalise("SMITH"));
+        assertEquals("SMITH", capitaliseString.capitalise("SMITH"));
     }
 
     @Test

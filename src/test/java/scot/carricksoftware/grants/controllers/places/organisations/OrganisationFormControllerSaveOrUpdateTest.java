@@ -12,9 +12,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.CapitaliseString;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommand;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommandImpl;
-import scot.carricksoftware.grants.capitalisation.Capitalisation;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationConverterImpl;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
@@ -42,7 +42,7 @@ public class OrganisationFormControllerSaveOrUpdateTest {
     private OrganisationConverterImpl organisationConverterMock;
 
     @Mock
-    private Capitalisation capitalisationMock;
+    private CapitaliseString capitaliseStringMock;
 
     @Mock
     Model modelMock;
@@ -61,7 +61,7 @@ public class OrganisationFormControllerSaveOrUpdateTest {
         organisationController = new OrganisationFormControllerImpl(organisationServiceMock,
                 organisationCommandConverterMock,
                 organisationConverterMock,
-                capitalisationMock,
+                capitaliseStringMock,
                 organisationCommandValidatorMock);
         organisationCommand = new OrganisationCommandImpl();
     }
@@ -90,7 +90,7 @@ public class OrganisationFormControllerSaveOrUpdateTest {
         when(bindingResultMock.hasErrors()).thenReturn(false);
         when(organisationServiceMock.saveOrganisationCommand(any(OrganisationCommand.class))).thenReturn(organisationCommand);
         organisationController.saveOrUpdate(organisationCommand, bindingResultMock, modelMock);
-        verify(capitalisationMock).getCapitalisation("england");
+        verify(capitaliseStringMock).capitalise("england");
     }
 
 

@@ -13,9 +13,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.capitalisation.CapitaliseString;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
-import scot.carricksoftware.grants.capitalisation.Capitalisation;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationConverterImpl;
 import scot.carricksoftware.grants.domains.places.Organisation;
@@ -46,7 +46,7 @@ public class OrganisationFormControllerTest {
     private OrganisationConverterImpl organisationConverterMock;
 
     @Mock
-    private Capitalisation capitalisationMock;
+    private CapitaliseString capitaliseString;
 
     @Mock
     private Model modelMock;
@@ -60,7 +60,7 @@ public class OrganisationFormControllerTest {
         organisationController = new OrganisationFormControllerImpl(organisationServiceMock,
                 organisationCommandConverterMock,
                 organisationConverterMock,
-                capitalisationMock,
+                capitaliseString,
                 organisationCommandValidatorMock);
     }
 

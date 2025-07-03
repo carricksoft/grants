@@ -13,8 +13,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.CapitaliseString;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommand;
-import scot.carricksoftware.grants.capitalisation.CapitalisationImpl;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationConverterImpl;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
@@ -41,7 +41,7 @@ public class OrganisationFormControllerCleansingTest {
     private OrganisationConverterImpl organisationConverterMock;
 
     @Mock
-    private CapitalisationImpl capitalisationMock;
+    private CapitaliseString capitaliseStringMock;
 
     @Mock
     OrganisationCommand organisationCommandMock;
@@ -61,7 +61,7 @@ public class OrganisationFormControllerCleansingTest {
         organisationController = new OrganisationFormControllerImpl(organisationServiceMock,
                 organisationCommandConverterMock,
                 organisationConverterMock,
-                capitalisationMock,
+                capitaliseStringMock,
                 organisationCommandValidatorMock);
     }
 
@@ -72,7 +72,7 @@ public class OrganisationFormControllerCleansingTest {
         String uName = "Goat";
         when(organisationServiceMock.saveOrganisationCommand(any())).thenReturn(organisationCommandMock);
         when(organisationCommandMock.getName()).thenReturn(name);
-        when(capitalisationMock.getCapitalisation(name)).thenReturn(uName);
+        when(capitaliseStringMock.capitalise(name)).thenReturn(uName);
         organisationController.saveOrUpdate(organisationCommandMock, bindingResultMock, modelMock);
         verify(organisationCommandMock).setName(uName);
     }
@@ -83,7 +83,7 @@ public class OrganisationFormControllerCleansingTest {
         String uName = "Goat";
         when(organisationServiceMock.saveOrganisationCommand(any())).thenReturn(organisationCommandMock);
         when(organisationCommandMock.getName()).thenReturn(name);
-        when(capitalisationMock.getCapitalisation(name)).thenReturn(uName);
+        when(capitaliseStringMock.capitalise(name)).thenReturn(uName);
         organisationController.saveOrUpdate(organisationCommandMock, bindingResultMock, modelMock);
         verify(organisationCommandValidatorMock).validate(organisationCommandMock, bindingResultMock);
     }

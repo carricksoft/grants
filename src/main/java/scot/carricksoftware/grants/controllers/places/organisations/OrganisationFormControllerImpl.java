@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.CapitaliseString;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommand;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.capitalisation.Capitalisation;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationCommandConverter;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationConverter;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
@@ -35,18 +35,18 @@ public class OrganisationFormControllerImpl implements OrganisationFormControlle
     @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private final OrganisationCommandConverter organisationCommandConverter;
     private final OrganisationConverter organisationConverter;
-    private final Capitalisation capitalisation;
+    private final CapitaliseString capitaliseString;
     private final OrganisationCommandValidator organisationCommandValidator;
 
     public OrganisationFormControllerImpl(OrganisationService organisationService,
                                           OrganisationCommandConverter organisationCommandConverter,
                                           OrganisationConverter organisationConverter,
-                                          Capitalisation capitalisation,
+                                          CapitaliseString capitaliseString,
                                           OrganisationCommandValidator organisationCommandValidator) {
         this.organisationService = organisationService;
         this.organisationCommandConverter = organisationCommandConverter;
         this.organisationConverter = organisationConverter;
-        this.capitalisation = capitalisation;
+        this.capitaliseString = capitaliseString;
         this.organisationCommandValidator = organisationCommandValidator;
     }
 
@@ -78,7 +78,7 @@ public class OrganisationFormControllerImpl implements OrganisationFormControlle
     }
 
     private void cleanUp(OrganisationCommand organisationCommand) {
-        organisationCommand.setName(capitalisation.getCapitalisation(organisationCommand.getName()));
+        organisationCommand.setName(capitaliseString.capitalise(organisationCommand.getName()));
     }
 
     @SuppressWarnings("SameReturnValue")
