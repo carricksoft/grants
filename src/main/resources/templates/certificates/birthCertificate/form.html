@@ -290,8 +290,9 @@
                 </td>
             </tr>
             <tr>
+                <!---------------------------->
             <td style="text-align: right; background-color: #FFFF00;">
-                <label for="fatherUsualResidence">Usual Residence :&nbsp;</label>
+                <label for="fatherUsualResidence">Father Usual Residence :&nbsp;</label>
             </td>
             <td style="text-align: left;">
                 <select id="fatherUsualResidence" name="fatherUsualResidence" th:field="*{fatherUsualResidence}">
@@ -308,7 +309,7 @@
         </tr>
             <tr>
                 <td style="text-align: right;  background-color: #FFFF00;">
-                    <label for="untrackedFatherUsualResidence">Usual Residence (untracked) :&nbsp;</label>
+                    <label for="untrackedFatherUsualResidence">Father Usual Residence (untracked) :&nbsp;</label>
                 </td>
                 <td style="text-align: left; ">
                     <div>
@@ -322,6 +323,7 @@
                     </div>
                 </td>
             </tr>
+            <!---------------------------->
             <tr>
                 <td style="text-align: right;">
                     <label for="mother">Mother :&nbsp;</label>
@@ -339,6 +341,41 @@
                     </div>
                 </td>
             </tr>
+            <!---------------------------->
+            <tr>
+            <td style="text-align: right; background-color: #FFFF00;">
+                <label for="motherUsualResidence">Mother Usual Residence :&nbsp;</label>
+            </td>
+            <td style="text-align: left;">
+                <select id="motherUsualResidence" name="motherUsualResidence" th:field="*{fatherUsualResidence}">
+                    <option th:value="${''}" th:text="${''}"></option>
+                    <option th:each="place : ${places}"
+                            th:value="${place.id}" th:text="${place.toString()}"></option>
+                </select>
+                <div th:if="${#fields.hasErrors('motherUsualResidence')}">
+                    <ul class="text-danger">
+                        <li th:each="err : ${#fields.errors('motherUsualResidence')}" th:text="${err}"/>
+                    </ul>
+                </div>
+            </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;  background-color: #FFFF00;">
+                    <label for="untrackedMotherUsualResidence">Mother Usual Residence (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left; ">
+                    <div>
+                        <input class="number" id="untrackedMotherUsualResidence"
+                               th:field="*{untrackedMotherUsualResidence}" type="text">
+                        <div th:if="${#fields.hasErrors('untrackedMotherUsualResidence')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('untrackedMotherUsualResidence')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <!---------------------------->
             <tr>
                 <td style="text-align: right; border-bottom: 5px solid #ccc;">
                     <label for="dateAndPlaceOfMarriage">Date and Place Of Marriage :&nbsp;</label>
