@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.commands.places.organisations.OrganisationCom
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.converters.capitalisation.Capitalisation;
+import scot.carricksoftware.grants.capitalisation.Capitalisation;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationCommandConverter;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationConverter;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;

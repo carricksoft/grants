@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.converters.capitalisation;
+package scot.carricksoftware.grants.capitalisation;
 
 public interface Capitalisation {
     String getCapitalisation(@SuppressWarnings("unused") String input);

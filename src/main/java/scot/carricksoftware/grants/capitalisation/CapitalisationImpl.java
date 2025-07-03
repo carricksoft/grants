@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.converters.capitalisation;
+package scot.carricksoftware.grants.capitalisation;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
