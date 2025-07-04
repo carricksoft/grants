@@ -7,9 +7,9 @@ package scot.carricksoftware.grants.enums.certificates;
 
 public enum CertificateType {
 
-    @SuppressWarnings("unused") EXTRACT("Extract");
+    COPY("Copy"),
+    EXTRACT("Extract");
 
-    @SuppressWarnings("unused")
     public final String label;
 
     @SuppressWarnings({"unused", "SameParameterValue"})
