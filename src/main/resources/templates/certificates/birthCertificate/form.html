@@ -117,7 +117,7 @@
                             <!--/*@thymesVar id="organisations" type="scot.carricksoftware.grants.domains.places.Organisation"*/-->
                             <option th:each="organisation : ${organisations}"
                                     th:value="${organisation.id}" th:text="${organisation.name}"></option>
-                        </select>i
+                        </select>
                     </div>
                     <div th:if="${#fields.hasErrors('registrationAuthority')}">
                         <ul class="text-danger">
