@@ -74,7 +74,8 @@ public class BirthCertificateServiceImpl implements BirthCertificateService {
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.ASC, "id");
+        return Sort.by(Sort.Direction.ASC, "newBorn.lastName")
+                .and(Sort.by(Sort.Direction.ASC, "newBorn.firstName"));
     }
 
     @Override
