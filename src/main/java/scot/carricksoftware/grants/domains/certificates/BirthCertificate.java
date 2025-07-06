@@ -110,6 +110,14 @@ public class BirthCertificate extends BaseCertificate {
     @Column(name="`untracked_mother_usual_residence`")
     private String untrackedMotherUsualResidence;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name="`father_place_of_birth`")
+    private String fatherPlaceOfBirth;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name="`mother_place_of_birth`")
+    private String motherPlaceOfBirth;
+
     public Person getNewBorn() {
         return newBorn;
     }
@@ -272,4 +280,19 @@ public class BirthCertificate extends BaseCertificate {
         this.untrackedMotherUsualResidence = untrackedMotherUsualResidence;
     }
 
+    public String getFatherPlaceOfBirth() {
+        return fatherPlaceOfBirth;
+    }
+
+    public void setFatherPlaceOfBirth(String fatherPlaceOfBirth) {
+        this.fatherPlaceOfBirth = fatherPlaceOfBirth;
+    }
+
+    public String getMotherPlaceOfBirth() {
+        return motherPlaceOfBirth;
+    }
+
+    public void setMotherPlaceOfBirth(String motherPlaceOfBirth) {
+        this.motherPlaceOfBirth = motherPlaceOfBirth;
+    }
 }
