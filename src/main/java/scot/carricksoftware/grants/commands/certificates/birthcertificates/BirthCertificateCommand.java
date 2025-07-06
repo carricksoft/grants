@@ -130,4 +130,12 @@ public interface BirthCertificateCommand {
     String getUntrackedMotherUsualResidence();
 
     void setUntrackedMotherUsualResidence(String untrackedMotherUsualResidence);
+
+    String getMotherPlaceOfBirth();
+
+    void setMotherPlaceOfBirth(String motherPlaceOfBirth);
+
+    String getFatherPlaceOfBirth();
+
+    void setFatherPlaceOfBirth(String fatherPlaceOfBirth);
 }
