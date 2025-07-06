@@ -74,7 +74,8 @@ public class RegionServiceImpl implements RegionService {
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.ASC, "name");
+        return Sort.by(Sort.Direction.DESC, "country.name")
+                .and(Sort.by(Sort.Direction.ASC, "name"));
     }
 
     @Override
