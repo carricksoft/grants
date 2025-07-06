@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Sort;
 import scot.carricksoftware.grants.converters.places.regions.RegionCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.regions.RegionConverterImpl;
 import scot.carricksoftware.grants.domains.places.Region;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomRegion;
@@ -50,7 +52,7 @@ public class RegionServiceFindTest {
     public void testFindAll() {
         List<Region> countries = new ArrayList<>();
         countries.add(GetRandomRegion());
-        when(regionRepositoryMock.findAll()).thenReturn(countries);
+        when(regionRepositoryMock.findAll(any(Sort.class))).thenReturn(countries);
         assertEquals(countries, regionService.findAll());
     }
 

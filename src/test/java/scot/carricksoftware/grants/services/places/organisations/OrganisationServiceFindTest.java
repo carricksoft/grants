@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Sort;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationCommandConverterImpl;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationConverterImpl;
 import scot.carricksoftware.grants.domains.places.Organisation;
@@ -21,6 +22,7 @@ import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
@@ -50,7 +52,7 @@ public class OrganisationServiceFindTest {
     public void testFindAll() {
         List<Organisation> organisations = new ArrayList<>();
         organisations.add(GetRandomOrganisation());
-        when(organisationRepositoryMock.findAll()).thenReturn(organisations);
+        when(organisationRepositoryMock.findAll(any(Sort.class))).thenReturn(organisations);
         assertEquals(organisations, organisationService.findAll());
     }
 
