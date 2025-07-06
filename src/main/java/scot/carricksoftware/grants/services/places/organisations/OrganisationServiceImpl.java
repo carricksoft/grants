@@ -80,7 +80,7 @@ public class OrganisationServiceImpl implements OrganisationService {
     public List<Organisation> findAll() {
         logger.debug("OrganisationServiceImpl::findAll");
         List<Organisation> result = new ArrayList<>();
-        Iterable<Organisation> organisationIterable = organisationRepository.findAll();
+        Iterable<Organisation> organisationIterable = organisationRepository.findAll(getSort());
         organisationIterable.forEach(result::add);
         return result;
     }

@@ -73,7 +73,9 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.ASC, "name");
+        return Sort.by(Sort.Direction.DESC, "region.country.name")
+                .and(Sort.by(Sort.Direction.ASC, "region.name")
+                        .and(Sort.by(Sort.Direction.ASC, "name")));
     }
 
     @Override
@@ -96,7 +98,7 @@ public class PlaceServiceImpl implements PlaceService {
     public List<Place> findAll() {
         logger.debug("PlaceServiceImpl::findAll");
         List<Place> result = new ArrayList<>();
-        Iterable<Place> placeIterable = placeRepository.findAll();
+        Iterable<Place> placeIterable = placeRepository.findAll(getSort());
         placeIterable.forEach(result::add);
         return result;
     }

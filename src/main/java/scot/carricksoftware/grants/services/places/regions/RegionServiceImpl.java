@@ -98,7 +98,7 @@ public class RegionServiceImpl implements RegionService {
     public List<Region> findAll() {
         logger.debug("RegionServiceImpl::findAll");
         List<Region> result = new ArrayList<>();
-        Iterable<Region> regionIterable = regionRepository.findAll();
+        Iterable<Region> regionIterable = regionRepository.findAll(getSort());
         regionIterable.forEach(result::add);
         return result;
     }
