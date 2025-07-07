@@ -118,5 +118,4 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals("Drip", captor.getValue().getFatherPlaceOfBirth());
     }
 
-
 }

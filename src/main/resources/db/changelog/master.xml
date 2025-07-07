@@ -40,6 +40,7 @@
     <include file="/db/changelog/2025/07/02-01-changelog.sql"/>
     <include file="/db/changelog/2025/07/04-01-changelog.sql"/>
     <include file="/db/changelog/2025/07/04-02-changelog.sql"/>
+    <include file="/db/changelog/2025/07/07-01-changelog.sql"/>
 
 
 </databaseChangeLog>
