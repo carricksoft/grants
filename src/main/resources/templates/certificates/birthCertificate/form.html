@@ -290,23 +290,34 @@
                 </td>
             </tr>
             <tr>
+                <td style="text-align: right;">
+                    <label for="fatherPlaceOfBirth">Father's Place of Birth :&nbsp;</label>
+                </td>
+                <td style="text-align: left; ">
+                    <div>
+                        <input class="fatherPlaceOfBirth" id="fatherPlaceOfBirth"
+                               th:field="*{fatherPlaceOfBirth}" type="text">
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <!---------------------------->
-            <td style="text-align: right; background-color: #FFFF00;">
-                <label for="fatherUsualResidence">Father Usual Residence :&nbsp;</label>
-            </td>
-            <td style="text-align: left;">
-                <select id="fatherUsualResidence" name="fatherUsualResidence" th:field="*{fatherUsualResidence}">
-                    <option th:value="${''}" th:text="${''}"></option>
-                    <option th:each="place : ${places}"
-                            th:value="${place.id}" th:text="${place.toString()}"></option>
-                </select>
-                <div th:if="${#fields.hasErrors('fatherUsualResidence')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('fatherUsualResidence')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </td>
-        </tr>
+                <td style="text-align: right; background-color: #FFFF00;">
+                    <label for="fatherUsualResidence">Father Usual Residence :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="fatherUsualResidence" name="fatherUsualResidence" th:field="*{fatherUsualResidence}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="place : ${places}"
+                                th:value="${place.id}" th:text="${place.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('fatherUsualResidence')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('fatherUsualResidence')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
             <tr>
                 <td style="text-align: right;  background-color: #FFFF00;">
                     <label for="untrackedFatherUsualResidence">Father Usual Residence (untracked) :&nbsp;</label>
@@ -317,7 +328,8 @@
                                th:field="*{untrackedFatherUsualResidence}" type="text">
                         <div th:if="${#fields.hasErrors('untrackedFatherUsualResidence')}">
                             <ul class="text-danger">
-                                <li th:each="err : ${#fields.errors('untrackedFatherUsualResidence')}" th:text="${err}"/>
+                                <li th:each="err : ${#fields.errors('untrackedFatherUsualResidence')}"
+                                    th:text="${err}"/>
                             </ul>
                         </div>
                     </div>
@@ -341,23 +353,22 @@
                     </div>
                 </td>
             </tr>
-            <!---------------------------->
             <tr>
-            <td style="text-align: right; background-color: #73ff00;">
-                <label for="motherUsualResidence">Mother Usual Residence :&nbsp;</label>
-            </td>
-            <td style="text-align: left;">
-                <select id="motherUsualResidence" name="motherUsualResidence" th:field="*{motherUsualResidence}">
-                    <option th:value="${''}" th:text="${''}"></option>
-                    <option th:each="place : ${places}"
-                            th:value="${place.id}" th:text="${place.toString()}"></option>
-                </select>
-                <div th:if="${#fields.hasErrors('motherUsualResidence')}">
-                    <ul class="text-danger">
-                        <li th:each="err : ${#fields.errors('motherUsualResidence')}" th:text="${err}"/>
-                    </ul>
-                </div>
-            </td>
+                <td style="text-align: right; background-color: #73ff00;">
+                    <label for="motherUsualResidence">Mother Usual Residence :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="motherUsualResidence" name="motherUsualResidence" th:field="*{motherUsualResidence}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="place : ${places}"
+                                th:value="${place.id}" th:text="${place.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('motherUsualResidence')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('motherUsualResidence')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td style="text-align: right;  background-color: #73ff00;">
@@ -369,13 +380,24 @@
                                th:field="*{untrackedMotherUsualResidence}" type="text">
                         <div th:if="${#fields.hasErrors('untrackedMotherUsualResidence')}">
                             <ul class="text-danger">
-                                <li th:each="err : ${#fields.errors('untrackedMotherUsualResidence')}" th:text="${err}"/>
+                                <li th:each="err : ${#fields.errors('untrackedMotherUsualResidence')}"
+                                    th:text="${err}"/>
                             </ul>
                         </div>
                     </div>
                 </td>
             </tr>
-            <!---------------------------->
+            <tr>
+                <td style="text-align: right;">
+                    <label for="motherPlaceOfBirth">Mother's Place of Birth :&nbsp;</label>
+                </td>
+                <td style="text-align: left; ">
+                    <div>
+                        <input class="motherPlaceOfBirth" id="motherPlaceOfBirth"
+                               th:field="*{motherPlaceOfBirth}" type="text">
+                    </div>
+                </td>
+            </tr>
             <tr>
                 <td style="text-align: right; border-bottom: 5px solid #ccc;">
                     <label for="dateAndPlaceOfMarriage">Date and Place Of Marriage :&nbsp;</label>

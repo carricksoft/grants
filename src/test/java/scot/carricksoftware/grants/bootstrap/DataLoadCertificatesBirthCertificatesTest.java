@@ -114,8 +114,8 @@ public class DataLoadCertificatesBirthCertificatesTest {
         assertEquals(placeMock, captor.getValue().getFatherUsualResidence());
         assertEquals("92 Broughton Road, Edinburgh", captor.getValue().getUntrackedMotherUsualResidence());
         assertEquals(placeMock, captor.getValue().getMotherUsualResidence());
-        assertEquals("MPOB", captor.getValue().getMotherPlaceOfBirth());
-        assertEquals("FPOB", captor.getValue().getFatherPlaceOfBirth());
+        assertEquals("Drop", captor.getValue().getMotherPlaceOfBirth());
+        assertEquals("Drip", captor.getValue().getFatherPlaceOfBirth());
     }
 
 
