@@ -60,4 +60,16 @@ class DeathCertificateTimeTest {
         assertEquals(whenDied, deathCertificate.getWhenDied());
     }
 
+    @Test
+    void getWhenRegistered() {
+        assertNull(deathCertificate.getWhenRegistered());
+    }
+
+    @Test
+    void setWhenRegisteredTest() {
+        String whenRegistered = GetRandomString();
+        deathCertificate.setWhenRegistered(whenRegistered);
+        assertEquals(whenRegistered, deathCertificate.getWhenRegistered());
+    }
+
 }

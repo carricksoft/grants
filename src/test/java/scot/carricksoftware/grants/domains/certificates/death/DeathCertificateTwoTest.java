@@ -22,8 +22,7 @@ class DeathCertificateTwoTest {
     void setUp() {
         deathCertificate = new DeathCertificate();
     }
-
-
+    
     @Test
     void getCauseOfDeathTest() {
         assertNull(deathCertificate.getCauseOfDeath());
@@ -34,6 +33,18 @@ class DeathCertificateTwoTest {
         String causeOfDeath = GetRandomString();
         deathCertificate.setCauseOfDeath(causeOfDeath);
         assertEquals(causeOfDeath, deathCertificate.getCauseOfDeath());
+    }
+
+    @Test
+    void getInformantQualificationTest() {
+        assertNull(deathCertificate.getInformantQualification());
+    }
+
+    @Test
+    void setInformantQualificationTest() {
+        String informantQualification = GetRandomString();
+        deathCertificate.setInformantQualification(informantQualification);
+        assertEquals(informantQualification, deathCertificate.getInformantQualification());
     }
 
 }
