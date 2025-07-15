@@ -1,0 +1,68 @@
+/*
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
+ *
+ */
+
+package scot.carricksoftware.grants.domains.certificates.death;
+
+import org.junit.jupiter.api.BeforeEach;
+
+import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
+import scot.carricksoftware.grants.domains.people.Person;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
+
+
+class DeathCertificatePersonTest {
+
+    private DeathCertificate deathCertificate;
+
+    @BeforeEach
+    void setUp() {
+        deathCertificate = new DeathCertificate();
+    }
+    
+    void getDeceasedTest() {
+        assertNull(deathCertificate.getDeceased());
+    }
+
+    void setDeceasedTest() {
+        Person deceased = GetRandomPerson();
+        deathCertificate.setDeceased(deceased);
+        assertEquals(deceased, deathCertificate.getDeceased());
+    }
+
+    void getFatherTest() {
+        assertNull(deathCertificate.getFather());
+    }
+
+    void setFatherTest() {
+        Person father = GetRandomPerson();
+        deathCertificate.setFather(father);
+        assertEquals(father, deathCertificate.getFather());
+    }
+
+    void getMotherTest() {
+        assertNull(deathCertificate.getMother());
+    }
+
+    void setMotherTest() {
+        Person mother = GetRandomPerson();
+        deathCertificate.setMother(mother);
+        assertEquals(mother, deathCertificate.getMother());
+    }
+
+    void getInformantTest() {
+        assertNull(deathCertificate.getInformant());
+    }
+
+    void setInformantTest() {
+        Person informant = GetRandomPerson();
+        deathCertificate.setInformant(informant);
+        assertEquals(informant, deathCertificate.getInformant());
+    }
+
+
+}

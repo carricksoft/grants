@@ -1,12 +1,13 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 24/03/2025, 17:20. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.domains.certificates;
+package scot.carricksoftware.grants.domains.certificates.birth;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
