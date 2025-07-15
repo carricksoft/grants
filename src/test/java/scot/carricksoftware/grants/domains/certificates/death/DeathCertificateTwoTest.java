@@ -1,0 +1,39 @@
+/*
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
+ *
+ */
+
+package scot.carricksoftware.grants.domains.certificates.death;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+
+
+class DeathCertificateTwoTest {
+
+    private DeathCertificate deathCertificate;
+
+    @BeforeEach
+    void setUp() {
+        deathCertificate = new DeathCertificate();
+    }
+
+
+    @Test
+    void getCauseOfDeathTest() {
+        assertNull(deathCertificate.getCauseOfDeath());
+    }
+
+    @Test
+    void setCauseOfDeathTest() {
+        String causeOfDeath = GetRandomString();
+        deathCertificate.setCauseOfDeath(causeOfDeath);
+        assertEquals(causeOfDeath, deathCertificate.getCauseOfDeath());
+    }
+
+}

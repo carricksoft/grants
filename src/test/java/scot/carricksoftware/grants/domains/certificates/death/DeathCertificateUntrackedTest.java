@@ -83,5 +83,17 @@ class DeathCertificateUntrackedTest {
         assertEquals(untrackedInformant, deathCertificate.getUntrackedInformant());
     }
 
+    @Test
+    void getUntrackedUsualResidence() {
+        assertNull(deathCertificate.getUntrackedUsualResidence());
+    }
+
+    @Test
+    void setUntrackedUsualResidence() {
+        String untrackedUsualResidence = GetRandomString();
+        deathCertificate.setUntrackedUsualResidence(untrackedUsualResidence);
+        assertEquals(untrackedUsualResidence, deathCertificate.getUntrackedUsualResidence());
+    }
+
 
 }

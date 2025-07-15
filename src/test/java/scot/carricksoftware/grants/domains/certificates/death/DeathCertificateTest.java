@@ -85,5 +85,17 @@ class DeathCertificateTest {
         assertEquals(motherOccupation, deathCertificate.getMotherOccupation());
     }
 
+    @Test
+    void getMaritalStatusTest() {
+        assertNull(deathCertificate.getMaritalStatus());
+    }
+
+    @Test
+    void setMaritalStatusTest() {
+        String maritalStatus = GetRandomString();
+        deathCertificate.setMaritalStatus(maritalStatus);
+        assertEquals(maritalStatus, deathCertificate.getMaritalStatus());
+    }
+
 
 }
