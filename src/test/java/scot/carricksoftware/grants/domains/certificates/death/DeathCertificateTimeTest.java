@@ -1,0 +1,63 @@
+/*
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
+ *
+ */
+
+package scot.carricksoftware.grants.domains.certificates.death;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+
+
+class DeathCertificateTimeTest {
+
+    private DeathCertificate deathCertificate;
+
+    @BeforeEach
+    void setUp() {
+        deathCertificate = new DeathCertificate();
+    }
+
+
+    @Test
+    void getWhenBornTest() {
+        assertNull(deathCertificate.getWhenBorn());
+    }
+
+    @Test
+    void setWhenBornTest() {
+        String whenBorn = GetRandomString();
+        deathCertificate.setWhenBorn(whenBorn);
+        assertEquals(whenBorn, deathCertificate.getWhenBorn());
+    }
+
+    @Test
+    void getAgeTest() {
+        assertNull(deathCertificate.getAge());
+    }
+
+    @Test
+    void setAgeTest() {
+        String age = GetRandomString();
+        deathCertificate.setAge(age);
+        assertEquals(age, deathCertificate.getAge());
+    }
+
+    @Test
+    void getWhenDiedTest() {
+        assertNull(deathCertificate.getWhenDied());
+    }
+
+    @Test
+    void setWhenDiedTest() {
+        String whenDied = GetRandomString();
+        deathCertificate.setWhenDied(whenDied);
+        assertEquals(whenDied, deathCertificate.getWhenDied());
+    }
+
+}

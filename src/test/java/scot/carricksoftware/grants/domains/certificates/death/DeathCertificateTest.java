@@ -49,4 +49,41 @@ class DeathCertificateTest {
         assertEquals(occupation, deathCertificate.getOccupation());
     }
 
+    @Test
+    void getSpouseOccupationTest() {
+        assertNull(deathCertificate.getSpouseOccupation());
+    }
+
+    @Test
+    void setSpouseOccupationTest() {
+        String spouseOccupation = GetRandomString();
+        deathCertificate.setSpouseOccupation(spouseOccupation);
+        assertEquals(spouseOccupation, deathCertificate.getSpouseOccupation());
+    }
+
+    @Test
+    void getFatherOccupationTest() {
+        assertNull(deathCertificate.getFatherOccupation());
+    }
+
+    @Test
+    void setFatherOccupationTest() {
+        String fatherOccupation = GetRandomString();
+        deathCertificate.setFatherOccupation(fatherOccupation);
+        assertEquals(fatherOccupation, deathCertificate.getFatherOccupation());
+    }
+
+    @Test
+    void getMotherOccupationTest() {
+        assertNull(deathCertificate.getMotherOccupation());
+    }
+
+    @Test
+    void setMotherOccupationTest() {
+        String motherOccupation = GetRandomString();
+        deathCertificate.setMotherOccupation(motherOccupation);
+        assertEquals(motherOccupation, deathCertificate.getMotherOccupation());
+    }
+
+
 }
