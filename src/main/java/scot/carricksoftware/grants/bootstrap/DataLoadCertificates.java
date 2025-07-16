@@ -35,7 +35,8 @@ public class DataLoadCertificates {
 
     public DataLoadCertificates(OrganisationService organisationService,
                                 BirthCertificateService birthCertificateService,
-                                PersonService personService, PlaceService placeService, DeathCertificateService deathCertificateService) {
+                                PersonService personService, PlaceService placeService,
+                                DeathCertificateService deathCertificateService) {
         this.organisationService = organisationService;
         this.birthCertificateService = birthCertificateService;
         this.personService = personService;
@@ -91,9 +92,9 @@ public class DataLoadCertificates {
         DeathCertificateCommand deathCertificateCommand = new DeathCertificateCommandImpl();
         deathCertificateCommand.setDeceased(personService.findById(1L));
         deathCertificateCommand.setFather(personService.findById(2L));
-        deathCertificateCommand.setInformant(personService.findById(1L));
-        deathCertificateCommand.setMother(personService.findById(2L));
-        deathCertificateCommand.setSpouse(personService.findById(2L));
+        deathCertificateCommand.setInformant(personService.findById(3L));
+        deathCertificateCommand.setMother(personService.findById(4L));
+        deathCertificateCommand.setSpouse(personService.findById(5L));
 
         deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
     }
