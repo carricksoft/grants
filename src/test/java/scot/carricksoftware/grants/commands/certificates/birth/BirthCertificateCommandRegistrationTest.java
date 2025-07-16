@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 24/03/2025, 17:31. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.commands.certificates;
+package scot.carricksoftware.grants.commands.certificates.birth;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
