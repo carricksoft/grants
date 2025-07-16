@@ -11,17 +11,11 @@ import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
-import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.domains.places.Place;
-import scot.carricksoftware.grants.enums.general.Sex;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
-import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
-import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
-import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
-class DeathCertificateCommandConverterTest {
+class DeathCertificateCommandConverterStringTest {
 
     private DeathCertificateCommandConverter converter;
 
@@ -32,18 +26,6 @@ class DeathCertificateCommandConverterTest {
 
     @Test
     void convertTest() {
-        Long id = GetRandomLong();
-        Person person = GetRandomPerson();
-        Person father = GetRandomPerson();
-        Person informant = GetRandomPerson();
-        Person mother = GetRandomPerson();
-        Person spouse = GetRandomPerson();
-
-        Place usualResidence = GetRandomPlace();
-        Place whereDied = GetRandomPlace();
-
-        Sex sex = Sex.MALE;
-
         String age = GetRandomString();
         String causeOfDeath = GetRandomString();
         String fatherOccupation = GetRandomString();
@@ -65,18 +47,6 @@ class DeathCertificateCommandConverterTest {
         String whereRegistered = GetRandomString();
         
         DeathCertificateCommand source = new DeathCertificateCommandImpl();
-
-        source.setId(id);
-        source.setDeceased(person);
-        source.setFather(father);
-        source.setInformant(informant);
-        source.setMother(mother);
-        source.setSpouse(spouse);
-
-        source.setUsualResidence(usualResidence);
-        source.setWhereDied(whereDied);
-
-        source.setSex(sex);
 
         source.setAge(age);
         source.setCauseOfDeath(causeOfDeath);
@@ -101,17 +71,6 @@ class DeathCertificateCommandConverterTest {
         DeathCertificate target = converter.convert(source);
 
         assert target != null;
-        assertEquals(id,target.getId());
-        assertEquals(person,target.getDeceased());
-        assertEquals(father,target.getFather());
-        assertEquals(informant,target.getInformant());
-        assertEquals(mother,target.getMother());
-        assertEquals(spouse,target.getSpouse());
-
-        assertEquals(usualResidence,target.getUsualResidence());
-        assertEquals(whereDied,target.getWhereDied());
-
-        assertEquals(sex,target.getSex());
 
         assertEquals(age,target.getAge());
         assertEquals(causeOfDeath,target.getCauseOfDeath());
