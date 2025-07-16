@@ -1,22 +1,22 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 24/03/2025, 19:02. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.converters.certificates.deathcertificates;
+package scot.carricksoftware.grants.converters.certificates.deathcertificates.command;
 
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
+import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverter;
+import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
-import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.enums.general.Sex;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
-import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
-class DeathCertificateConverterTest {
+class DeathCertificateConverterSexTest {
 
     private DeathCertificateConverter converter;
 
@@ -27,17 +27,19 @@ class DeathCertificateConverterTest {
 
     @Test
     void convertTest() {
-        Long id = GetRandomLong();
-        Person person = GetRandomPerson();
+
+        Sex sex = Sex.MALE;
+
         DeathCertificate source = new DeathCertificate();
 
-        source.setId(id);
-        source.setDeceased(person);
+        source.setSex(sex);
 
         DeathCertificateCommand target = converter.convert(source);
 
         assert target != null;
-        assertEquals(id, target.getId());
-        assertEquals(person, target.getDeceased());
+
+        assertEquals(sex,target.getSex());
+
+        
     }
 }
