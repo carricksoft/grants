@@ -72,7 +72,6 @@ public class DataLoadCertificatesDeathCertificatesTest {
         ArgumentCaptor<DeathCertificateCommand> captor = ArgumentCaptor.forClass(DeathCertificateCommand.class);
 
         dataLoadCertificates.load();
-
         verify(deathCertificateServiceMock).saveDeathCertificateCommand(captor.capture());
         assertEquals(deceased, captor.getValue().getDeceased());
         assertEquals(father, captor.getValue().getFather());
