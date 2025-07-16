@@ -14,4 +14,5 @@ public interface DeathCertificateCommandConverter extends Converter<DeathCertifi
     @Override
     DeathCertificate convert(@SuppressWarnings("NullableProblems") DeathCertificateCommand source);
 
+
 }

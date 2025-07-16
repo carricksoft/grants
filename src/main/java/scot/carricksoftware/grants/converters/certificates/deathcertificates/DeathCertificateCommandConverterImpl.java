@@ -15,10 +15,37 @@ public class DeathCertificateCommandConverterImpl implements DeathCertificateCom
 
     @Override
     public DeathCertificate convert(DeathCertificateCommand source) {
+
         DeathCertificate target = new DeathCertificate();
 
         target.setId(source.getId());
         target.setDeceased(source.getDeceased());
+        target.setFather(source.getFather());
+        target.setInformant(source.getInformant());
+        target.setMother(source.getMother());
+        target.setSpouse(source.getSpouse());
+        target.setUsualResidence(source.getUsualResidence());
+        target.setWhereDied(source.getWhereDied());
+        target.setSex(source.getSex());
+        target.setAge(source.getAge());
+        target.setCauseOfDeath(source.getCauseOfDeath());
+        target.setFatherOccupation(source.getFatherOccupation());
+        target.setInformantAddress(source.getInformantAddress());
+        target.setInformantQualification(source.getInformantQualification());
+        target.setMaritalStatus(source.getMaritalStatus());
+        target.setMotherOccupation(source.getMotherOccupation());
+        target.setOccupation(source.getOccupation());
+        target.setSpouseOccupation(source.getSpouseOccupation());
+        target.setUntrackedFather(source.getUntrackedFather());
+        target.setUntrackedInformant(source.getUntrackedInformant());
+        target.setUntrackedMother(source.getUntrackedMother());
+        target.setUntrackedSpouse(source.getUntrackedSpouse());
+        target.setUntrackedUsualResidence(source.getUntrackedUsualResidence());
+        target.setUntrackedWhereDied(source.getUntrackedWhereDied());
+        target.setWhenBorn(source.getWhenBorn());
+        target.setWhenDied(source.getWhenDied());
+        target.setWhenRegistered(source.getWhenRegistered());
+        target.setWhereRegistered(source.getWhereRegistered());
 
         return target;
     }
