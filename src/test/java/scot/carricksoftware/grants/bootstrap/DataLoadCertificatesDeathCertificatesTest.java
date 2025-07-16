@@ -63,8 +63,6 @@ public class DataLoadCertificatesDeathCertificatesTest {
         when(personServiceMock.findById(1L)).thenReturn(deceased);
         when(personServiceMock.findById(2L)).thenReturn(father);
         when(personServiceMock.findById(3L)).thenReturn(informant);
-        when(personServiceMock.findById(4L)).thenReturn(mother);
-        when(personServiceMock.findById(5L)).thenReturn(spouse);
     }
 
     @Test
