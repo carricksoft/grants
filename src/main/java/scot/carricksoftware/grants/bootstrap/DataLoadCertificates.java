@@ -90,11 +90,6 @@ public class DataLoadCertificates {
     private void loadDeathCertificates() {
         logger.debug("DataLoadCertificates::LoadDeathCertificates");
         DeathCertificateCommand deathCertificateCommand = new DeathCertificateCommandImpl();
- //       deathCertificateCommand.setDeceased(personService.findById(1L));
-        deathCertificateCommand.setFather(personService.findById(2L));
-        deathCertificateCommand.setInformant(personService.findById(3L));
-        deathCertificateCommand.setMother(personService.findById(4L));
-        deathCertificateCommand.setSpouse(personService.findById(5L));
 
         deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
     }
