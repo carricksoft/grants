@@ -6,12 +6,21 @@
 package scot.carricksoftware.grants.commands.certificates.deathcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.enums.general.Sex;
 
 public class DeathCertificateCommandImpl implements DeathCertificateCommand {
 
     Long Id;
+    private String certificateNumber;
+    private Organisation certificateSource;
+    private String certificateDate;
+    private CertificateType certificateType;
+    private Organisation registrationAuthority;
+    private String volume;
+    private String number;
     private Person deceased;
     private Person father;
     private Person informant;
@@ -318,5 +327,75 @@ public class DeathCertificateCommandImpl implements DeathCertificateCommand {
     @Override
     public void setWhereRegistered(String whereRegistered) {
         this.whereRegistered = whereRegistered;
+    }
+
+    @Override
+    public String getCertificateNumber() {
+        return certificateNumber;
+    }
+
+    @Override
+    public void setCertificateNumber(String certificateNumber) {
+        this.certificateNumber = certificateNumber;
+    }
+
+    @Override
+    public Organisation getCertificateSource() {
+        return certificateSource;
+    }
+
+    @Override
+    public void setCertificateSource(Organisation certificateSource) {
+        this.certificateSource = certificateSource;
+    }
+
+    @Override
+    public String getCertificateDate() {
+        return certificateDate;
+    }
+
+    @Override
+    public void setCertificateDate(String certificateDate) {
+        this.certificateDate = certificateDate;
+    }
+
+    @Override
+    public CertificateType getCertificateType() {
+        return certificateType;
+    }
+
+    @Override
+    public void setCertificateType(CertificateType certificateType) {
+        this.certificateType = certificateType;
+    }
+
+    @Override
+    public Organisation getRegistrationAuthority() {
+        return registrationAuthority;
+    }
+
+    @Override
+    public void setRegistrationAuthority(Organisation registrationAuthority) {
+        this.registrationAuthority = registrationAuthority;
+    }
+
+    @Override
+    public String getVolume() {
+        return volume;
+    }
+
+    @Override
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    @Override
+    public String getNumber() {
+        return number;
+    }
+
+    @Override
+    public void setNumber(String number) {
+        this.number = number;
     }
 }

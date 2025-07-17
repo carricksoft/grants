@@ -13,14 +13,13 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import org.springframework.format.annotation.DateTimeFormat;
-import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 
 @Entity
-public class DeathCertificate extends BaseEntity {
+public class DeathCertificate extends BaseCertificate {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne

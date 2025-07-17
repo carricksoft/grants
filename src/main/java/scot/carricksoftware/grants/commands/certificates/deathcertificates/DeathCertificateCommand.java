@@ -6,7 +6,9 @@
 package scot.carricksoftware.grants.commands.certificates.deathcertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.enums.general.Sex;
 
 public interface DeathCertificateCommand {
@@ -68,4 +70,32 @@ public interface DeathCertificateCommand {
     void setWhenRegistered(String whenRegistered);
     void setWhereDied(Place whereDied);
     void setWhereRegistered(String whereRegistered);
+
+    String getCertificateNumber();
+
+    void setCertificateNumber(String certificateNumber);
+
+    Organisation getCertificateSource();
+
+    void setCertificateSource(Organisation certificateSource);
+
+    String getCertificateDate();
+
+    void setCertificateDate(String certificateDate);
+
+    CertificateType getCertificateType();
+
+    void setCertificateType(CertificateType certificateType);
+
+    Organisation getRegistrationAuthority();
+
+    void setRegistrationAuthority(Organisation registrationAuthority);
+
+    String getVolume();
+
+    void setVolume(String volume);
+
+    String getNumber();
+
+    void setNumber(String number);
 }

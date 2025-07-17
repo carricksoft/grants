@@ -18,7 +18,13 @@ public class DeathCertificateCommandConverterImpl implements DeathCertificateCom
 
         DeathCertificate target = new DeathCertificate();
 
-        target.setId(source.getId());
+        target.setId(source.getId());target.setCertificateNumber(source.getCertificateNumber());
+        target.setCertificateDate(source.getCertificateDate());
+        target.setCertificateSource(source.getCertificateSource());
+        target.setCertificateType(source.getCertificateType());
+        target.setRegistrationAuthority(source.getRegistrationAuthority());
+        target.setVolume(source.getVolume());
+        target.setNumber(source.getNumber());
         target.setDeceased(source.getDeceased());
         target.setFather(source.getFather());
         target.setInformant(source.getInformant());
