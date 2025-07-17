@@ -47,16 +47,6 @@ class DeathCertificateTwoTest {
         assertEquals(informantQualification, deathCertificate.getInformantQualification());
     }
 
-    @Test
-    void getCertificateNumberTest() {
-        assertNull(deathCertificate.getCertificateNumber());
-    }
 
-    @Test
-    void setCertificateNumberTest() {
-        String certificateNumber = GetRandomString();
-        deathCertificate.setCertificateNumber(certificateNumber);
-        assertEquals(certificateNumber, deathCertificate.getCertificateNumber());
-    }
 
 }

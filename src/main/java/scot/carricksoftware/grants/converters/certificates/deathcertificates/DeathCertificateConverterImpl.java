@@ -19,30 +19,27 @@ public class DeathCertificateConverterImpl implements DeathCertificateConverter 
     public DeathCertificateCommand convert(DeathCertificate source) {
         DeathCertificateCommand target = new DeathCertificateCommandImpl();
 
-        target.setId(source.getId());
-        target.setCertificateNumber(source.getCertificateNumber());
-        target.setCertificateDate(source.getCertificateDate());
-        target.setCertificateSource(source.getCertificateSource());
-        target.setCertificateType(source.getCertificateType());
-        target.setRegistrationAuthority(source.getRegistrationAuthority());
-        target.setVolume(source.getVolume());
-        target.setNumber(source.getNumber());
-        target.setDeceased(source.getDeceased());
-        target.setFather(source.getFather());
-        target.setInformant(source.getInformant());
-        target.setMother(source.getMother());
-        target.setSpouse(source.getSpouse());
-        target.setUsualResidence(source.getUsualResidence());
-        target.setWhereDied(source.getWhereDied());
-        target.setSex(source.getSex());
         target.setAge(source.getAge());
         target.setCauseOfDeath(source.getCauseOfDeath());
+        target.setCertificateDate(source.getCertificateDate());
+        target.setCertificateNumber(source.getCertificateNumber());
+        target.setCertificateSource(source.getCertificateSource());
+        target.setCertificateType(source.getCertificateType());
+        target.setDeceased(source.getDeceased());
+        target.setFather(source.getFather());
         target.setFatherOccupation(source.getFatherOccupation());
+        target.setId(source.getId());
+        target.setInformant(source.getInformant());
         target.setInformantAddress(source.getInformantAddress());
         target.setInformantQualification(source.getInformantQualification());
         target.setMaritalStatus(source.getMaritalStatus());
+        target.setMother(source.getMother());
         target.setMotherOccupation(source.getMotherOccupation());
+        target.setNumber(source.getNumber());
         target.setOccupation(source.getOccupation());
+        target.setRegistrationAuthority(source.getRegistrationAuthority());
+        target.setSex(source.getSex());
+        target.setSpouse(source.getSpouse());
         target.setSpouseOccupation(source.getSpouseOccupation());
         target.setUntrackedFather(source.getUntrackedFather());
         target.setUntrackedInformant(source.getUntrackedInformant());
@@ -50,9 +47,12 @@ public class DeathCertificateConverterImpl implements DeathCertificateConverter 
         target.setUntrackedSpouse(source.getUntrackedSpouse());
         target.setUntrackedUsualResidence(source.getUntrackedUsualResidence());
         target.setUntrackedWhereDied(source.getUntrackedWhereDied());
+        target.setUsualResidence(source.getUsualResidence());
+        target.setVolume(source.getVolume());
         target.setWhenBorn(source.getWhenBorn());
         target.setWhenDied(source.getWhenDied());
         target.setWhenRegistered(source.getWhenRegistered());
+        target.setWhereDied(source.getWhereDied());
         target.setWhereRegistered(source.getWhereRegistered());
 
         return target;

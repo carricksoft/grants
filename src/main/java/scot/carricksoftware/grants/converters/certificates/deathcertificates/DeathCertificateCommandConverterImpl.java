@@ -17,41 +17,42 @@ public class DeathCertificateCommandConverterImpl implements DeathCertificateCom
     public DeathCertificate convert(DeathCertificateCommand source) {
 
         DeathCertificate target = new DeathCertificate();
-
-        target.setId(source.getId());target.setCertificateNumber(source.getCertificateNumber());
-        target.setCertificateDate(source.getCertificateDate());
-        target.setCertificateSource(source.getCertificateSource());
-        target.setCertificateType(source.getCertificateType());
-        target.setRegistrationAuthority(source.getRegistrationAuthority());
-        target.setVolume(source.getVolume());
-        target.setNumber(source.getNumber());
-        target.setDeceased(source.getDeceased());
-        target.setFather(source.getFather());
-        target.setInformant(source.getInformant());
-        target.setMother(source.getMother());
-        target.setSpouse(source.getSpouse());
-        target.setUsualResidence(source.getUsualResidence());
-        target.setWhereDied(source.getWhereDied());
-        target.setSex(source.getSex());
         target.setAge(source.getAge());
-        target.setCauseOfDeath(source.getCauseOfDeath());
-        target.setFatherOccupation(source.getFatherOccupation());
-        target.setInformantAddress(source.getInformantAddress());
-        target.setInformantQualification(source.getInformantQualification());
-        target.setMaritalStatus(source.getMaritalStatus());
-        target.setMotherOccupation(source.getMotherOccupation());
-        target.setOccupation(source.getOccupation());
-        target.setSpouseOccupation(source.getSpouseOccupation());
-        target.setUntrackedFather(source.getUntrackedFather());
-        target.setUntrackedInformant(source.getUntrackedInformant());
-        target.setUntrackedMother(source.getUntrackedMother());
-        target.setUntrackedSpouse(source.getUntrackedSpouse());
-        target.setUntrackedUsualResidence(source.getUntrackedUsualResidence());
-        target.setUntrackedWhereDied(source.getUntrackedWhereDied());
-        target.setWhenBorn(source.getWhenBorn());
-        target.setWhenDied(source.getWhenDied());
-        target.setWhenRegistered(source.getWhenRegistered());
+        target.setSex(source.getSex());
+        target.setWhereDied(source.getWhereDied());
+        target.setUsualResidence(source.getUsualResidence());
+        target.setSpouse(source.getSpouse());
+        target.setMother(source.getMother());
+        target.setInformant(source.getInformant());
+        target.setFather(source.getFather());
+        target.setDeceased(source.getDeceased());
+        target.setNumber(source.getNumber());
+        target.setVolume(source.getVolume());
+        target.setRegistrationAuthority(source.getRegistrationAuthority());
+        target.setCertificateType(source.getCertificateType());
+        target.setCertificateSource(source.getCertificateSource());
+        target.setCertificateDate(source.getCertificateDate());
+        target.setId(source.getId());target.setCertificateNumber(source.getCertificateNumber());
         target.setWhereRegistered(source.getWhereRegistered());
+        target.setWhenRegistered(source.getWhenRegistered());
+        target.setWhenDied(source.getWhenDied());
+        target.setWhenBorn(source.getWhenBorn());
+        target.setUntrackedWhereDied(source.getUntrackedWhereDied());
+        target.setUntrackedUsualResidence(source.getUntrackedUsualResidence());
+        target.setUntrackedSpouse(source.getUntrackedSpouse());
+        target.setUntrackedMother(source.getUntrackedMother());
+        target.setUntrackedInformant(source.getUntrackedInformant());
+        target.setUntrackedFather(source.getUntrackedFather());
+        target.setSpouseOccupation(source.getSpouseOccupation());
+        target.setOccupation(source.getOccupation());
+        target.setMotherOccupation(source.getMotherOccupation());
+        target.setMaritalStatus(source.getMaritalStatus());
+        target.setInformantQualification(source.getInformantQualification());
+        target.setInformantAddress(source.getInformantAddress());
+        target.setFatherOccupation(source.getFatherOccupation());
+        target.setCauseOfDeath(source.getCauseOfDeath());
+
+
 
         return target;
     }
