@@ -47,4 +47,16 @@ class DeathCertificateStringTest {
         assertEquals(volume, deathCertificate.getVolume());
     }
 
+    @Test
+    void getCertificateNumberTest() {
+        assertNull(deathCertificate.getCertificateNumber());
+    }
+
+    @Test
+    void setCertificateNumberTest() {
+        String certificateNumber = GetRandomString();
+        deathCertificate.setCertificateNumber(certificateNumber);
+        assertEquals(certificateNumber, deathCertificate.getCertificateNumber());
+    }
+
 }
