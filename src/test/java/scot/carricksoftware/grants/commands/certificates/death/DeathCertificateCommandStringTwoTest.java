@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 
-class DeathCertificateCommandTwoTest {
+class DeathCertificateCommandStringTwoTest {
 
     private DeathCertificateCommand deathCertificateCommand;
 

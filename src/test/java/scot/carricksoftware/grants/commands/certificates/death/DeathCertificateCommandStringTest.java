@@ -13,27 +13,14 @@ import scot.carricksoftware.grants.enums.general.Sex;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
-import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-class DeathCertificateCommandTest {
+class DeathCertificateCommandStringTest {
 
     private DeathCertificateCommand deathCertificateCommand;
 
     @BeforeEach
     void setUp() {
         deathCertificateCommand = new DeathCertificateCommandImpl();
-    }
-
-    @Test
-    void getIdTest() {
-        assertNull(deathCertificateCommand.getId());
-    }
-
-    @Test
-    void setIdTest() {
-        Long id = GetRandomLong();
-        deathCertificateCommand.setId(id);
-        assertEquals(id, deathCertificateCommand.getId());
     }
 
     @Test
