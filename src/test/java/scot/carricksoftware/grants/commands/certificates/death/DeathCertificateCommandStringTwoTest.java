@@ -84,4 +84,16 @@ class DeathCertificateCommandStringTwoTest {
         assertEquals(number, deathCertificateCommand.getNumber());
     }
 
+    @Test
+    void getVolumeTest() {
+        assertNull(deathCertificateCommand.getVolume());
+    }
+
+    @Test
+    void setVolumeTest() {
+        String volume = GetRandomString();
+        deathCertificateCommand.setVolume(volume);
+        assertEquals(volume, deathCertificateCommand.getVolume());
+    }
+
 }
