@@ -25,7 +25,7 @@ class DeathCertificateStringTest {
 
     @Test
     void getNumberTest() {
-        assertEquals("",deathCertificate.getNumber());
+        assertEquals(null,deathCertificate.getNumber());
     }
 
     @Test
