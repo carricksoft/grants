@@ -72,7 +72,6 @@ public class DataLoadCertificatesDeathCertificatesTest {
 
         dataLoadCertificates.load();
         verify(deathCertificateServiceMock).saveDeathCertificateCommand(captor.capture());
-        var debug = captor.getValue();
         assertEquals(deceased, captor.getValue().getDeceased());
         assertEquals(father, captor.getValue().getFather());
 

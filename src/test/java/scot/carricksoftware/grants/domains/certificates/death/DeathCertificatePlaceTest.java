@@ -74,4 +74,5 @@ class DeathCertificatePlaceTest {
         assertEquals(usualResidence, deathCertificate.getUsualResidence());
     }
 
+
 }
