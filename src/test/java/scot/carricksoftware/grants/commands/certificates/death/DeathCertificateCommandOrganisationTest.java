@@ -35,6 +35,17 @@ class DeathCertificateCommandOrganisationTest {
         assertEquals(registrationAuthority, deathCertificateCommand.getRegistrationAuthority());
     }
 
+    @Test
+    void getCertificateSourceTest() {
+        assertNull(deathCertificateCommand.getCertificateSource());
+    }
+
+    @Test
+    void setCertificateSourceTest() {
+        Organisation certificateSource = new Organisation();
+        deathCertificateCommand.setCertificateSource(certificateSource);
+        assertEquals(certificateSource, deathCertificateCommand.getCertificateSource());
+    }
 
 
 }
