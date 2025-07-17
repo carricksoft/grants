@@ -72,4 +72,16 @@ class DeathCertificateCommandStringTwoTest {
         assertEquals(certificateDate, deathCertificateCommand.getCertificateDate());
     }
 
+    @Test
+    void getNumberTest() {
+        assertNull(deathCertificateCommand.getNumber());
+    }
+
+    @Test
+    void setNumberTest() {
+        String number = GetRandomString();
+        deathCertificateCommand.setNumber(number);
+        assertEquals(number, deathCertificateCommand.getNumber());
+    }
+
 }
