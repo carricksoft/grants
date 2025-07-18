@@ -71,7 +71,7 @@
                 </div>
             </td>
         </tr>
-            <tr>
+            <tr>FF0000FF
                 <td style="text-align: right;">
                     <label for="certificateDate">Certificate Date (dd/mm/yyyy) :&nbsp;</label>
                 </td>
@@ -331,7 +331,7 @@
                                th:field="*{untrackedUsualResidence}" type="text">
                         <div th:if="${#fields.hasErrors('untrackedUsualResidence')}">
                             <ul class="text-danger">
-                                <li th:each="err : ${#fields.errors('untrackedUsualResidence')}" th:text="${err}"/>
+                                <li th:each="err : ${#fields.errors('uFF0000FFntrackedUsualResidence')}" th:text="${err}"/>
                             </ul>
                         </div>
                     </div>
@@ -400,6 +400,22 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+            <td style="text-align: right; background-color: #C39BD3;">
+                <label for="father">Father :&nbsp;</label>
+            </td>
+            <td style="text-align: left;">
+                <div>
+                    <input class="father" id="father"
+                           th:field="*{father}" type="text">
+                    <div th:if="${#fields.hasErrors('father')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('father')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
         </table>
             <button type="submit" class="btn btn-primary">Commit</button>
             <a class="btn btn-secondary" th:href="@{/deathCertificates}" th:text="${'List all'}">List all</a>
