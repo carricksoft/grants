@@ -271,6 +271,72 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="whereDied">Where Died :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="whereDied" name="whereDied" th:field="*{whereDied}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="place : ${places}"
+                                th:value="${place.id}" th:text="${place.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('whereDied')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('whereDied')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="untrackedWhereDied">Where Died (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="untrackedWhereDied" id="untrackedWhereDied"
+                               th:field="*{untrackedWhereDied}" type="text">
+                        <div th:if="${#fields.hasErrors('untrackedWhereDied')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('untrackedWhereDied')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="usualResidence">Usual Residence :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="usualResidence" name="usualResidence" th:field="*{usualResidence}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="place : ${places}"
+                                th:value="${place.id}" th:text="${place.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('usualResidence')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('usualResidence')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="untrackedUsualResidence">Usual Residence (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="untrackedUsualResidence" id="untrackedUsualResidence"
+                               th:field="*{untrackedUsualResidence}" type="text">
+                        <div th:if="${#fields.hasErrors('untrackedUsualResidence')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('untrackedUsualResidence')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
         </table>
             <button type="submit" class="btn btn-primary">Commit</button>
             <a class="btn btn-secondary" th:href="@{/deathCertificates}" th:text="${'List all'}">List all</a>
