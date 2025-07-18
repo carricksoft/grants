@@ -192,7 +192,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="text-align: right;">
+                <td style="text-align: right">
                     <label for="occupation">Occupation :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
@@ -202,6 +202,70 @@
                         <div th:if="${#fields.hasErrors('occupation')}">
                             <ul class="text-danger">
                                 <li th:each="err : ${#fields.errors('occupation')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="whenBorn">When Born (dd/mm/yyyy hh:mm) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="whenBorn" id="whenBorn"
+                               th:field="*{whenBorn}" type="text">
+                        <div th:if="${#fields.hasErrors('whenBorn')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('whenBorn')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="age">Age :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="age" id="age"
+                               th:field="*{age}" type="text">
+                        <div th:if="${#fields.hasErrors('age')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('age')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="maritalStatus">Marital Status :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="maritalStatus" id="maritalStatus"
+                               th:field="*{maritalStatus}" type="text">
+                        <div th:if="${#fields.hasErrors('maritalStatus')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('matitalStatus')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="whenDied">When Died (dd/mm/yyyy hh:mm) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="whenDied" id="whenDied"
+                               th:field="*{whenBorn}" type="text">
+                        <div th:if="${#fields.hasErrors('whenDied')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('whenDied')}" th:text="${err}"/>
                             </ul>
                         </div>
                     </div>
