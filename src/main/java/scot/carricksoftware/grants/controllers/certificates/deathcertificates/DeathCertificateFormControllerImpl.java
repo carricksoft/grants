@@ -25,6 +25,8 @@ import scot.carricksoftware.grants.converters.certificates.deathcertificates.Dea
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -38,12 +40,17 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     private final DeathCertificateConverterImpl deathCertificateConverter;
     private final DeathCertificateCommandValidator deathCertificateCommandValidator;
     private final PersonService personService;
+    private final PlaceService placeService;
+    private final OrganisationService organisationService;
 
 
     public DeathCertificateFormControllerImpl(DeathCertificateService deathCertificateService,
                                               DeathCertificateCommandConverterImpl deathCertificateCommandConverter,
                                               DeathCertificateConverterImpl deathCertificateConverter,
-                                              DeathCertificateCommandValidator deathCertificateCommandValidator, PersonService personService) {
+                                              DeathCertificateCommandValidator deathCertificateCommandValidator,
+                                              PersonService personService,
+                                              PlaceService placeService,
+                                              OrganisationService organisationService) {
         this.deathCertificateService = deathCertificateService;
         this.deathCertificateCommandConverter = deathCertificateCommandConverter;
 
@@ -51,6 +58,9 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         this.deathCertificateConverter = deathCertificateConverter;
         this.deathCertificateCommandValidator = deathCertificateCommandValidator;
         this.personService = personService;
+        this.placeService = placeService;
+
+        this.organisationService = organisationService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -60,6 +70,8 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         logger.debug("DeathCertificateFormControllerImpl::getNewDeathCertificate");
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, new DeathCertificateCommandImpl());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
 
@@ -70,6 +82,8 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         logger.debug("DeathCertificateFormControllerImpl::deathCertificateEdit");
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, deathCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
 
@@ -85,12 +99,16 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+            model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+            model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
             return ViewConstants.DEATH_CERTIFICATE_FORM;
         }
 
         DeathCertificateCommand savedCommand = deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         return MappingConstants.REDIRECT + CertificateMappingConstants.DEATH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -103,6 +121,8 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         DeathCertificateCommand savedCommand = deathCertificateConverter.convert(deathCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
 

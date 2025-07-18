@@ -30,11 +30,10 @@
 
         <table style="width:100%;">
             <tr>
-                <td>
                 <td style="text-align: right;">
                     <label for="id"><span style="color: rgb(255,0,0);">*</span>Database Id :&nbsp;</label>
                 </td>
-                <td>
+                <td style="text-align: left;">
                     <input class="form-control" id="id"
                            th:field="*{id}" type="text" readonly>
                 </td>
@@ -50,6 +49,111 @@
                         <ul class="text-danger">
                             <li th:each="err : ${#fields.errors('certificateNumber')}" th:text="${err}"/>
                         </ul>
+                    </div>
+                </td>
+            </tr> <tr>
+            <td style="text-align: right;">
+                <label for="certificateSource">Certificate Source&nbsp;:&nbsp;</label>
+            </td>
+            <td style="text-align: left;">
+                <div>
+                    <select id="certificateSource" name="certificateSource" th:field="*{certificateSource}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <!--/*@thymesVar id="organisations" type="scot.carricksoftware.grants.domains.places.Organisation"*/-->
+                        <option th:each="organisation : ${organisations}"
+                                th:value="${organisation.id}" th:text="${organisation.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('certificateSource')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('certificateSource')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </div>
+            </td>
+        </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="certificateDate">Certificate Date (dd/mm/yyyy) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="certificateDate"
+                           th:field="*{certificateDate}" type="text">
+                    <div th:if="${#fields.hasErrors('certificateDate')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('certificateDate')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr style="border-bottom: 5px solid #ccc;">
+                <td style="text-align: right;">
+                    <label for="certificateType">Certificate Type :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <select id="certificateType" style="width: 200px;" name="certificateType"
+                                th:field="*{certificateType}">
+                            <option th:value="${''}" th:text="${''}"></option>
+                            <option th:each="value : ${T(scot.carricksoftware.grants.enums.certificates.CertificateType).values()}"
+                                    th:value="${value}" th:text="${value.label}"></option>
+                        </select>
+                    </div>
+                    <div th:if="${#fields.hasErrors('certificateType')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('certificateType')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="registrationAuthority">Registration Authority :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <select id="registrationAuthority" style="width: 200px;" name="registrationAuthority"
+                                th:field="*{registrationAuthority}">
+                            <option th:value="${''}" th:text="${''}"></option>
+                            <!--/*@thymesVar id="organisations" type="scot.carricksoftware.grants.domains.places.Organisation"*/-->
+                            <option th:each="organisation : ${organisations}"
+                                    th:value="${organisation.id}" th:text="${organisation.name}"></option>
+                        </select>
+                    </div>
+                    <div th:if="${#fields.hasErrors('registrationAuthority')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('registrationAuthority')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="volume">Volume :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="volume" id="volume"
+                               th:field="*{volume}" type="text">
+                        <div th:if="${#fields.hasErrors('volume')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('volume')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr style="border-bottom: 5px solid #ccc;">
+                <td style="text-align: right;">
+                    <label for="number">Number :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="number" id="number"
+                               th:field="*{number}" type="text">
+                        <div th:if="${#fields.hasErrors('number')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('number')}" th:text="${err}"/>
+                            </ul>
+                        </div>
                     </div>
                 </td>
             </tr>
