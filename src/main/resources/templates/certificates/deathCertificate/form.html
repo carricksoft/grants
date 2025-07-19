@@ -246,13 +246,12 @@
                 </td>
                 <td style="text-align: left;">
                     <div>
-                        <input class="maritalStatus" id="maritalStatus"
-                               th:field="*{maritalStatus}" type="text">
-                        <div th:if="${#fields.hasErrors('maritalStatus')}">
-                            <ul class="text-danger">
-                                <li th:each="err : ${#fields.errors('matitalStatus')}" th:text="${err}"/>
-                            </ul>
-                        </div>
+                        <select id="maritalStatus" style="width: 200px;" name="maritalStatus"
+                                th:field="*{maritalStatus}">
+                            <option th:value="${''}" th:text="${''}"></option>
+                            <option th:each="value : ${T(scot.carricksoftware.grants.enums.certificates.MaritalStatus).values()}"
+                                    th:value="${value}" th:text="${value.label}"></option>
+                        </select>
                     </div>
                 </td>
             </tr>
