@@ -542,6 +542,22 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="whenRegistered">When Registered :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="whenRegistered" id="whenRegistered"
+                               th:field="*{whenRegistered}" type="text">
+                        <div th:if="${#fields.hasErrors('whenRegistered')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('whenRegistered')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
         </table>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/deathCertificates}" th:text="${'List all'}">List all</a>
