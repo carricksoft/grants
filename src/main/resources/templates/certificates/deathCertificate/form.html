@@ -72,7 +72,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>FF0000FF
+            <tr>
                 <td style="text-align: right;">
                     <label for="certificateDate">Certificate Date (dd/mm/yyyy) :&nbsp;</label>
                 </td>
@@ -338,6 +338,7 @@
                         </div>
                     </div>
                 </td>
+            </tr>
             <tr>
                 <td style="text-align: right; background-color: #C39BD3;">
                     <label for="causeOfDeath">Cause of Death:&nbsp;</label>
@@ -499,21 +500,48 @@
                 </td>
             </tr>
             <tr>
-            <td style="text-align: right; background-color: #C39BD3;">
-                <label for="informant">Informant :&nbsp;</label>
-            </td>
-            <td style="text-align: left;">
-                <div>
-                    <input class="informant" id="informant"
-                           th:field="*{informant}" type="text">
-                    <div th:if="${#fields.hasErrors('informant')}">
-                        <ul class="text-danger">
-                            <li th:each="err : ${#fields.errors('informant')}" th:text="${err}"/>
-                        </ul>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="informant">Informant :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="informant" id="informant"
+                               th:field="*{informant}" type="text">
+                        <div th:if="${#fields.hasErrors('informant')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('informant')}" th:text="${err}"/>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </td>
-        </tr>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="untrackedInformant">Informant (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="untrackedInformant" id="untrackedInformant"
+                               th:field="*{untrackedInformant}" type="text">
+                        <div th:if="${#fields.hasErrors('untrackedInformant')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('untrackedInformant')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="informantQualification">Informant Qualification :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="informantQualification" id="informantQualification"
+                               th:field="*{informantQualification}" type="text">
+                    </div>
+                </td>
+            </tr>
         </table>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/deathCertificates}" th:text="${'List all'}">List all</a>
