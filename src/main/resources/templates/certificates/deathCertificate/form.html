@@ -558,6 +558,22 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="whereRegistered">Where Registered :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="whereRegistered" id="whereRegistered"
+                               th:field="*{whereRegistered}" type="text">
+                        <div th:if="${#fields.hasErrors('whereRegistered')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('whereRegistered')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
         </table>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/deathCertificates}" th:text="${'List all'}">List all</a>
