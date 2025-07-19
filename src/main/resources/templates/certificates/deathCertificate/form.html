@@ -51,26 +51,27 @@
                         </ul>
                     </div>
                 </td>
-            </tr> <tr>
-            <td style="text-align: right;">
-                <label for="certificateSource">Certificate Source&nbsp;:&nbsp;</label>
-            </td>
-            <td style="text-align: left;">
-                <div>
-                    <select id="certificateSource" name="certificateSource" th:field="*{certificateSource}">
-                        <option th:value="${''}" th:text="${''}"></option>
-                        <!--/*@thymesVar id="organisations" type="scot.carricksoftware.grants.domains.places.Organisation"*/-->
-                        <option th:each="organisation : ${organisations}"
-                                th:value="${organisation.id}" th:text="${organisation.toString()}"></option>
-                    </select>
-                    <div th:if="${#fields.hasErrors('certificateSource')}">
-                        <ul class="text-danger">
-                            <li th:each="err : ${#fields.errors('certificateSource')}" th:text="${err}"/>
-                        </ul>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="certificateSource">Certificate Source&nbsp;:&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <select id="certificateSource" name="certificateSource" th:field="*{certificateSource}">
+                            <option th:value="${''}" th:text="${''}"></option>
+                            <!--/*@thymesVar id="organisations" type="scot.carricksoftware.grants.domains.places.Organisation"*/-->
+                            <option th:each="organisation : ${organisations}"
+                                    th:value="${organisation.id}" th:text="${organisation.toString()}"></option>
+                        </select>
+                        <div th:if="${#fields.hasErrors('certificateSource')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('certificateSource')}" th:text="${err}"/>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </td>
-        </tr>
+                </td>
+            </tr>
             <tr>FF0000FF
                 <td style="text-align: right;">
                     <label for="certificateDate">Certificate Date (dd/mm/yyyy) :&nbsp;</label>
@@ -331,7 +332,8 @@
                                th:field="*{untrackedUsualResidence}" type="text">
                         <div th:if="${#fields.hasErrors('untrackedUsualResidence')}">
                             <ul class="text-danger">
-                                <li th:each="err : ${#fields.errors('uFF0000FFntrackedUsualResidence')}" th:text="${err}"/>
+                                <li th:each="err : ${#fields.errors('uFF0000FFntrackedUsualResidence')}"
+                                    th:text="${err}"/>
                             </ul>
                         </div>
                     </div>
@@ -342,7 +344,7 @@
                 </td>
                 <td style="text-align: left;">
                     <div>
-                        <textarea class="causeOfDeath" id="causeOfDeath" rows="5" cols = "60"
+                        <textarea class="causeOfDeath" id="causeOfDeath" rows="5" cols="60"
                                   th:field="*{causeOfDeath}" type="text"></textarea>
                         <div th:if="${#fields.hasErrors('causeOfDeath')}">
                             <ul class="text-danger">
@@ -359,7 +361,7 @@
                 <td style="text-align: left;">
                     <div>
                         <input class="spouse" id="spouse"
-                                  th:field="*{spouse}" type="text">
+                               th:field="*{spouse}" type="text">
                         <div th:if="${#fields.hasErrors('spouse')}">
                             <ul class="text-danger">
                                 <li th:each="err : ${#fields.errors('spouse')}" th:text="${err}"/>
@@ -401,26 +403,122 @@
                 </td>
             </tr>
             <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="father">Father :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="father" id="father"
+                               th:field="*{father}" type="text">
+                        <div th:if="${#fields.hasErrors('father')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('father')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="untrackedFather">Father (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="untrackedFather" id="untrackedFather"
+                               th:field="*{untrackedFather}" type="text">
+                        <div th:if="${#fields.hasErrors('untrackedFather')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('untrackedFather')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="fatherOccupation">Father Occupation :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="fatherOccupation" id="fatherOccupation"
+                               th:field="*{fatherOccupation}" type="text">
+                        <div th:if="${#fields.hasErrors('fatherOccupation')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('fatherOccupation')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="mother">Mother :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="mother" id="mother"
+                               th:field="*{mother}" type="text">
+                        <div th:if="${#fields.hasErrors('mother')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('mother')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="untrackedMother">Mother (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="untrackedMother" id="untrackedMother"
+                               th:field="*{untrackedMother}" type="text">
+                        <div th:if="${#fields.hasErrors('untrackedMother')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('untrackedMother')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #C39BD3;">
+                    <label for="motherOccupation">Mother Occupation :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="motherOccupation" id="motherOccupation"
+                               th:field="*{motherOccupation}" type="text">
+                        <div th:if="${#fields.hasErrors('motherOccupation')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('motherOccupation')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
             <td style="text-align: right; background-color: #C39BD3;">
-                <label for="father">Father :&nbsp;</label>
+                <label for="informant">Informant :&nbsp;</label>
             </td>
             <td style="text-align: left;">
                 <div>
-                    <input class="father" id="father"
-                           th:field="*{father}" type="text">
-                    <div th:if="${#fields.hasErrors('father')}">
+                    <input class="informant" id="informant"
+                           th:field="*{informant}" type="text">
+                    <div th:if="${#fields.hasErrors('informant')}">
                         <ul class="text-danger">
-                            <li th:each="err : ${#fields.errors('father')}" th:text="${err}"/>
+                            <li th:each="err : ${#fields.errors('informant')}" th:text="${err}"/>
                         </ul>
                     </div>
                 </div>
             </td>
         </tr>
         </table>
-            <button type="submit" class="btn btn-primary">Commit</button>
-            <a class="btn btn-secondary" th:href="@{/deathCertificates}" th:text="${'List all'}">List all</a>
-            <a class="btn btn-success" th:href="@{/static}" th:text="${'Home'}">Home</a>
-            <h6><span style="color: rgb(255,0,0);">*</span><span> Cannot be edited</span></h6>
+        <button type="submit" class="btn btn-primary">Commit</button>
+        <a class="btn btn-secondary" th:href="@{/deathCertificates}" th:text="${'List all'}">List all</a>
+        <a class="btn btn-success" th:href="@{/static}" th:text="${'Home'}">Home</a>
+        <h6><span style="color: rgb(255,0,0);">*</span><span> Cannot be edited</span></h6>
     </form>
 </div>
 </body>
