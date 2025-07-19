@@ -25,7 +25,7 @@ import scot.carricksoftware.grants.converters.certificates.divorcecertificates.D
 import scot.carricksoftware.grants.converters.certificates.divorcecertificates.DivorceCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.divorcecertificates.DivorceCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.certificates.deathcertificate.DivorceCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.divorcecertificate.DivorceCertificateCommandValidator;
 
 
 @SuppressWarnings("LoggingSimilarMessage")

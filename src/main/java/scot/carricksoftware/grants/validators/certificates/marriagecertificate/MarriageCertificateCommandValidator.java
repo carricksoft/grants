@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.validators.certificates.deathcertificate;
+package scot.carricksoftware.grants.validators.certificates.marriagecertificate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

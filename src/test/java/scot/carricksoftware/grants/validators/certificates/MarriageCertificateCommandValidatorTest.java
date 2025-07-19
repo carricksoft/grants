@@ -15,7 +15,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.people.Person;
-import scot.carricksoftware.grants.validators.certificates.deathcertificate.MarriageCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.marriagecertificate.MarriageCertificateCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;

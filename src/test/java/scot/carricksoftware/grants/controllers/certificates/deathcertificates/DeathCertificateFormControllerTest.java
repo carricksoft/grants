@@ -22,7 +22,7 @@ import scot.carricksoftware.grants.services.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
-import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -59,7 +59,7 @@ public class DeathCertificateFormControllerTest {
     private OrganisationService organisationServiceMock;
 
     @Mock
-    private DeathCertificateCommandValidator deathCertificateCommandValidatorMock;
+    private DeathCertificateCommandValidatorImpl deathCertificateCommandValidatorImplMock;
 
 
     @BeforeEach
@@ -67,7 +67,7 @@ public class DeathCertificateFormControllerTest {
         deathCertificateFormController = new DeathCertificateFormControllerImpl(deathCertificateServiceMock,
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
-                deathCertificateCommandValidatorMock,
+                deathCertificateCommandValidatorImplMock,
                 personServiceMock,
                 placeServiceMock,
                 organisationServiceMock);

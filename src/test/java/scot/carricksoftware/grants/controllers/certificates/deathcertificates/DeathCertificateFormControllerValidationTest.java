@@ -21,7 +21,7 @@ import scot.carricksoftware.grants.services.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
-import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidatorImpl;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -57,7 +57,7 @@ public class DeathCertificateFormControllerValidationTest {
     private OrganisationService organisationServiceMock;
 
     @Mock
-    private DeathCertificateCommandValidator deathCertificateCommandValidatorMock;
+    private DeathCertificateCommandValidatorImpl deathCertificateCommandValidatorImplMock;
 
     @Mock
     private Model modelMock;
@@ -68,7 +68,7 @@ public class DeathCertificateFormControllerValidationTest {
         deathCertificateController = new DeathCertificateFormControllerImpl(deathCertificateServiceMock,
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
-                deathCertificateCommandValidatorMock,
+                deathCertificateCommandValidatorImplMock,
                 personServiceMock,
                 placeServiceMock,
                 organisationServiceMock);
@@ -84,7 +84,7 @@ public class DeathCertificateFormControllerValidationTest {
 
         deathCertificateController.saveOrUpdate(deathCertificateCommand, bindingResultMock, modelMock);
 
-        verify(deathCertificateCommandValidatorMock).validate(deathCertificateCommand, bindingResultMock);
+        verify(deathCertificateCommandValidatorImplMock).validate(deathCertificateCommand, bindingResultMock);
     }
 
 

@@ -27,7 +27,7 @@ import scot.carricksoftware.grants.services.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
-import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidatorImpl;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -38,7 +38,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final DeathCertificateCommandConverterImpl deathCertificateCommandConverter;
     private final DeathCertificateConverterImpl deathCertificateConverter;
-    private final DeathCertificateCommandValidator deathCertificateCommandValidator;
+    private final DeathCertificateCommandValidatorImpl deathCertificateCommandValidatorImpl;
     private final PersonService personService;
     private final PlaceService placeService;
     private final OrganisationService organisationService;
@@ -47,7 +47,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     public DeathCertificateFormControllerImpl(DeathCertificateService deathCertificateService,
                                               DeathCertificateCommandConverterImpl deathCertificateCommandConverter,
                                               DeathCertificateConverterImpl deathCertificateConverter,
-                                              DeathCertificateCommandValidator deathCertificateCommandValidator,
+                                              DeathCertificateCommandValidatorImpl deathCertificateCommandValidatorImpl,
                                               PersonService personService,
                                               PlaceService placeService,
                                               OrganisationService organisationService) {
@@ -56,7 +56,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
 
 
         this.deathCertificateConverter = deathCertificateConverter;
-        this.deathCertificateCommandValidator = deathCertificateCommandValidator;
+        this.deathCertificateCommandValidatorImpl = deathCertificateCommandValidatorImpl;
         this.personService = personService;
         this.placeService = placeService;
 
@@ -93,7 +93,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     public String saveOrUpdate(@Valid @ModelAttribute DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
 
-        deathCertificateCommandValidator.validate(deathCertificateCommand, bindingResult);
+        deathCertificateCommandValidatorImpl.validate(deathCertificateCommand, bindingResult);
 
 
         if (bindingResult.hasErrors()) {

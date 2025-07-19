@@ -15,7 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
-import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -23,9 +23,9 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
-class DeathCertificateCommandValidatorTest {
+class DeathCertificateCommandValidatorImplTest {
 
-    private DeathCertificateCommandValidator commandValidator;
+    private DeathCertificateCommandValidatorImpl commandValidator;
 
     private ArgumentCaptor<String> stringArgumentCaptor;
     private ArgumentCaptor<String> stringArgumentCaptor2;
@@ -39,7 +39,7 @@ class DeathCertificateCommandValidatorTest {
 
     @BeforeEach
     void setUp() {
-        commandValidator = new DeathCertificateCommandValidator();
+        commandValidator = new DeathCertificateCommandValidatorImpl();
         stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor2 = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor3 = ArgumentCaptor.forClass(String.class);
