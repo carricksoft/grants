@@ -12,6 +12,10 @@ import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 public interface ValidateTypes {
+
+    @SuppressWarnings("unused")
+    void validateString(String string, String fieldName, String message, BindingResult bindingResult);
+
     void validatePerson(Person person, String field, String message, BindingResult bindingResult);
 
     void validateOrganisation(Organisation organisation, String field, String message, BindingResult bindingResult);

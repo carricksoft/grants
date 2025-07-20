@@ -17,6 +17,13 @@ import scot.carricksoftware.grants.enums.certificates.CertificateType;
 public class ValidateTypesImpl implements ValidateTypes {
 
     @Override
+    public void validateString(String string, String fieldName, String message, BindingResult bindingResult) {
+        if (string == null  || string.isEmpty()) {
+            bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        }
+    }
+
+    @Override
     public void validatePerson(Person person, String fieldName, String message, BindingResult bindingResult) {
         if (person == null) {
             bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, message);

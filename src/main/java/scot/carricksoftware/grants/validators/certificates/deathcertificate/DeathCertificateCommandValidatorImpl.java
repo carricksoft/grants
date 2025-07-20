@@ -5,26 +5,22 @@
 
 package scot.carricksoftware.grants.validators.certificates.deathcertificate;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
-import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.constants.ValidationConstants;
 
 
 @Component
 public class DeathCertificateCommandValidatorImpl implements DeathCertificateCommandValidator {
-    private static final Logger logger = LogManager.getLogger(DeathCertificateCommandValidatorImpl.class);
+
+    final DeathCertificateNullFieldsValidator deathCertificateNullFieldsValidator;
+
+    public DeathCertificateCommandValidatorImpl(DeathCertificateNullFieldsValidator deathCertificateNullFieldsValidator) {
+        this.deathCertificateNullFieldsValidator = deathCertificateNullFieldsValidator;
+    }
 
     public void validate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
-        logger.debug("Validating death certificate command");
-        if (deathCertificateCommand.getDeceased() == null) {
-            bindingResult.rejectValue("deceased", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.PERSON_IS_NULL);
-        }
+        deathCertificateNullFieldsValidator.validate(deathCertificateCommand, bindingResult);
     }
 
 }
