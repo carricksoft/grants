@@ -15,7 +15,6 @@ public class ValidationConstants {
         // to stop checkstyle complaining
     }
 
-
     public static final String NAME_IS_TOO_SHORT = "Name must be at least " + ApplicationConstants.MINIMUM_NAME_LENGTH + " characters long.";
     public static final String NAME_IS_TOO_LONG = "Name must be no more than " + ApplicationConstants.MAXIMUM_NAME_LENGTH + " characters long.";
     public static final String DATE_IS_NULL = "Date must exist.";
@@ -47,6 +46,7 @@ public class ValidationConstants {
     public static final String FATHER_AND_UNTRACKED_FATHER = "One and only one father and untracked father must be specified.";
     public static final String MOTHER_AND_UNTRACKED_FATHER = "One and only one father and untracked father may be specified.";
     public static final String WHERE_BORN_AND_UNTRACKED_WHERE_BORN = "One and only one where born and untracked where born must be specified.";
+
     public static final String MOTHER_USUAL_RESIDENCE_AND_UNTRACKED_MOTHER_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence may be specified.";
     public static final String FATHER_USUAL_RESIDENCE_AND_UNTRACKED_FATHER_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence must be specified.";
     public static final String BRIDE_IS_NULL = "The bride cannot be null.";
@@ -55,6 +55,10 @@ public class ValidationConstants {
     public static final String WHEN_REGISTERED_DATE_IS_NULL = "When registered cannot be null.";
     public static final String WHEN_REGISTERED_DATE_IS_INVALID = "When registered date is invalid.";
     public static final String WHEN_REGISTERED_DATE_IN_FUTURE = "Date should not be in the future.";
+
+
+    public static final String WHERE_DIED_AND_UNTRACKED_WHERE_DIED = "One and only one where died and untracked where died must be specified.";
+    public static final String USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence may be specified.";
 
     public static final String FIRST_PARTY_IS_NULL = "The first party cannot be null.";
     public static final String SECOND_PARTY_IS_NULL = "The second party cannot be null.";

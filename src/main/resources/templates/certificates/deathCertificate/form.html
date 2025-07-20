@@ -255,7 +255,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr>DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult
                 <td style="text-align: right;">
                     <label for="whenDied">When Died (dd/mm/yyyy hh:mm) :&nbsp;</label>
                 </td>
@@ -331,7 +331,7 @@
                                th:field="*{untrackedUsualResidence}" type="text">
                         <div th:if="${#fields.hasErrors('untrackedUsualResidence')}">
                             <ul class="text-danger">
-                                <li th:each="err : ${#fields.errors('uFF0000FFntrackedUsualResidence')}"
+                                <li th:each="err : ${#fields.errors('untrackedUsualResidence')}"
                                     th:text="${err}"/>
                             </ul>
                         </div>
