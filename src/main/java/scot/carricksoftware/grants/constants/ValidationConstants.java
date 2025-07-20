@@ -44,7 +44,8 @@ public class ValidationConstants {
     public static final String WHEN_BORN_INCORRECT_FORMAT = "The format should be dd/MM/yyyy hh:mm.";
     public static final String WHEN_BORN_IS_NULL = "When born cannot be null.";
     public static final String FATHER_AND_UNTRACKED_FATHER = "One and only one father and untracked father must be specified.";
-    public static final String MOTHER_AND_UNTRACKED_FATHER = "One and only one father and untracked father may be specified.";
+    public static final String MOTHER_AND_UNTRACKED_MOTHER = "One and only one mother and untracked mother may be specified.";
+    public static final String INFORMANT_AND_UNTRACKED_INFORMANT = "One and only one informant and untracked informant may be specified.";
     public static final String WHERE_BORN_AND_UNTRACKED_WHERE_BORN = "One and only one where born and untracked where born must be specified.";
 
     public static final String MOTHER_USUAL_RESIDENCE_AND_UNTRACKED_MOTHER_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence may be specified.";
@@ -58,6 +59,7 @@ public class ValidationConstants {
 
 
     public static final String WHERE_DIED_AND_UNTRACKED_WHERE_DIED = "One and only one where died and untracked where died must be specified.";
+    public static final String SPOUSE_AND_UNTRACKED_SPOUSE = "One and only one spouse and untracked spouse must be specified.";
     public static final String USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence may be specified.";
 
     public static final String FIRST_PARTY_IS_NULL = "The first party cannot be null.";

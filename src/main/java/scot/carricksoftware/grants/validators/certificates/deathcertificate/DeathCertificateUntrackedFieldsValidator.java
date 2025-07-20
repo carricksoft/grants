@@ -15,5 +15,15 @@ public interface DeathCertificateUntrackedFieldsValidator {
     void validate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
 
     void validateUntrackedWhereDied(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
+
+    void validateUsualResidence(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
+
+    void validateSpouse(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
+
+    void validateFather(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
+
+    void validateMother(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
+
+    void validateInformant(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
 }
 

@@ -26,17 +26,83 @@ public class DeathCertificateUntrackedFieldsValidatorImpl implements DeathCertif
 
     @Override
     public void validate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateUntrackedFieldsValidatorImpl::validate");
         validateUntrackedWhereDied(deathCertificateCommand, bindingResult);
+        validateUsualResidence(deathCertificateCommand, bindingResult);
+        validateSpouse(deathCertificateCommand, bindingResult);
+        validateFather(deathCertificateCommand, bindingResult);
+        validateMother(deathCertificateCommand, bindingResult);
+        validateInformant(deathCertificateCommand, bindingResult);
     }
 
     @Override
-    public void validateUntrackedWhereDied(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult){
-        logger.debug("DeathCertificateUntrackedFieldsValidatorImpl::validateUntrackedWhereDied");
+    public void validateUntrackedWhereDied(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateUntrackedFieldsValidatorImp::validateUntrackedWhereDied");
         validateTwoFieldTypes.validatePlaceAndUntrackedPlace(deathCertificateCommand.getWhereDied(),
                 deathCertificateCommand.getUntrackedWhereDied(),
-                "getWhereDied",
-                "getUntrackedWhereDied",
-                ValidationConstants.WHERE_BORN_AND_UNTRACKED_WHERE_BORN, bindingResult);
+                "whereDied",
+                "untrackedWhereDied",
+                ValidationConstants.WHERE_DIED_AND_UNTRACKED_WHERE_DIED,
+                bindingResult);
     }
+
+    @Override
+    public void validateUsualResidence(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateUntrackedFieldsValidatorImp::validateUsualResidence");
+        validateTwoFieldTypes.validateOptionalPlaceAndUntrackedPlace(deathCertificateCommand.getUsualResidence(),
+                deathCertificateCommand.getUntrackedUsualResidence(),
+                "usualResidence",
+                "untrackedUsualResidence",
+                ValidationConstants.USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE,
+                bindingResult);
+    }
+
+    @Override
+    public void validateSpouse(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateUntrackedFieldsValidatorImp::validateSpouse");
+        validateTwoFieldTypes.validatePersonAndUntrackedPerson(deathCertificateCommand.getSpouse(),
+                deathCertificateCommand.getUntrackedSpouse(),
+                "spouse",
+                "untrackedSpouse",
+                ValidationConstants.SPOUSE_AND_UNTRACKED_SPOUSE,
+                bindingResult);
+    }
+
+    @Override
+    public void validateFather(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateUntrackedFieldsValidatorImp::validateFather");
+        validateTwoFieldTypes.validatePersonAndUntrackedPerson(deathCertificateCommand.getFather(),
+                deathCertificateCommand.getUntrackedFather(),
+                "father",
+                "untrackedFather",
+                ValidationConstants.FATHER_AND_UNTRACKED_FATHER,
+                bindingResult);
+    }
+
+    @Override
+    public void validateMother(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateUntrackedFieldsValidatorImp::validateMother");
+        validateTwoFieldTypes.validatePersonAndUntrackedPerson(deathCertificateCommand.getMother(),
+                deathCertificateCommand.getUntrackedMother(),
+                "mother",
+                "untrackedMother",
+                ValidationConstants.MOTHER_AND_UNTRACKED_MOTHER,
+                bindingResult);
+    }
+
+    @Override
+    public void validateInformant(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateUntrackedFieldsValidatorImp::validateInformant");
+        validateTwoFieldTypes.validatePersonAndUntrackedPerson(deathCertificateCommand.getInformant(),
+                deathCertificateCommand.getUntrackedInformant(),
+                "informant",
+                "untrackedInformant",
+                ValidationConstants.INFORMANT_AND_UNTRACKED_INFORMANT,
+                bindingResult);
+    }
+
+
+
+
 
 }
