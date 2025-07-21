@@ -36,9 +36,12 @@ class DeathCertificateNullFieldsValidatorImplTest {
     private BindingResult bindingResultMock;
 
     DeathCertificateCommand deathCertificateCommand;
-Person deceased;
-String certificateNumber;
-String volume;
+    Person deceased;
+    String certificateNumber;
+    String volume;
+    String number;
+    String causeOfDeath;
+    String informantQualification;
 
     @BeforeEach
     void setUp() {
@@ -47,9 +50,15 @@ String volume;
         deceased = GetRandomPerson();
         certificateNumber = GetRandomString();
         volume = GetRandomString();
+        number = GetRandomString();
+        causeOfDeath = GetRandomString();
+        informantQualification = GetRandomString();
         deathCertificateCommand.setDeceased(deceased);
         deathCertificateCommand.setCertificateNumber(certificateNumber);
         deathCertificateCommand.setVolume(volume);
+        deathCertificateCommand.setNumber(number);
+        deathCertificateCommand.setCauseOfDeath(causeOfDeath);
+        deathCertificateCommand.setInformantQualification(informantQualification);
     }
 
     @Test
@@ -59,6 +68,9 @@ String volume;
         verify(validateTypesMock).validatePerson(deceased, "deceased", "The deceased cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(certificateNumber, "certificateNumber", "The certificate number cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(volume, "volume", "The volume cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateNullOrEmptyString(number, "number", "The number cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateNullOrEmptyString(causeOfDeath, "causeOfDeath", "The cause of death should be specified.", bindingResultMock);
+        verify(validateTypesMock).validateNullOrEmptyString(informantQualification, "informantQualification", "The informant qualification cannot be null.", bindingResultMock);
     }
 
 

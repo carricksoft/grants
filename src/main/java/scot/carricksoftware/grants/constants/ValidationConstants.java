@@ -21,7 +21,7 @@ public class ValidationConstants {
     public static final String BOUNDARY_TYPE_IS_NULL = "The boundary type cannot be null.";
     public static final String BRIDE_IS_NULL = "The bride cannot be null.";
     public static final String CENSUS_IS_NULL = "The census should be specified";
-    public static final String CAUSE_OF_DEATH_IS_NULL = "The cause of death should be specified";
+    public static final String CAUSE_OF_DEATH_IS_NULL = "The cause of death should be specified.";
     public static final String CENSUS_NAME_IS_NOT_NULL = "Both Person and Untracked Person cannot be given";
     public static final String CENSUS_NAME_IS_NULL = "Either Person or Untracked Person must be given";
     public static final String CERTIFICATE_DATE_IS_NULL = "The certificate date cannot be null.";
@@ -38,7 +38,7 @@ public class ValidationConstants {
     public static final String FIELD_NOT_NEGATIVE_INTEGER = "Not a non negative integer.";
     public static final String FIRST_PARTY_IS_NULL = "The first party cannot be null.";
     public static final String GROOM_IS_NULL = "The groom cannot be null.";
-    public static final String INFORMANT_QUALIFICATION_IS_NULL = "Informant Qualification must exist.";
+    public static final String INFORMANT_QUALIFICATION_IS_NULL = "The informant qualification cannot be null.";
     public static final String INFORMANT_AND_UNTRACKED_INFORMANT = "One and only one informant and untracked informant may be specified.";
     public static final String MOTHER_AND_UNTRACKED_MOTHER = "One and only one mother and untracked mother may be specified.";
     public static final String MOTHER_IS_NULL = "The mother cannot be null.";
