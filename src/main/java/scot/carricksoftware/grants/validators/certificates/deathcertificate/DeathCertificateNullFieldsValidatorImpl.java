@@ -88,7 +88,7 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
     }
 
     private void validateCertificateType(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
-        logger.debug("DeathCertificateNullFieldsValidator::validateRegistrationAuthority");
+        logger.debug("DeathCertificateNullFieldsValidator::validateCertificateType");
         validateTypes.validateCertificateType(deathCertificateCommand.getCertificateType(), "certificateType",ValidationConstants.CERTIFICATE_TYPE_IS_NULL, bindingResult);
     }
 
