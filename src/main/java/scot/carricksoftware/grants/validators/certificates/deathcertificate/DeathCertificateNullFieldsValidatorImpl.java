@@ -41,27 +41,27 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
 
     private void validateCertificateNumber(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateCertificateNumber");
-        validateTypes.validateString(deathCertificateCommand.getCertificateNumber(), "certificateNumber","Certificate number must exist", bindingResult);
+        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getCertificateNumber(), "certificateNumber","Certificate number must exist", bindingResult);
     }
 
     private void validateVolume(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateVolume");
-        validateTypes.validateString(deathCertificateCommand.getVolume(), "volume","Volume must exist", bindingResult);
+        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getVolume(), "volume","Volume must exist", bindingResult);
     }
 
     private void validateNumber(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateNumber");
-        validateTypes.validateString(deathCertificateCommand.getNumber(), "number","Number must exist", bindingResult);
+        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getNumber(), "number","Number must exist", bindingResult);
     }
 
     private void validateCauseOfDeath(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateCauseOfDeath");
-        validateTypes.validateString(deathCertificateCommand.getCauseOfDeath(), "causeOfDeath","Cause of Death must exist", bindingResult);
+        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getCauseOfDeath(), "causeOfDeath","Cause of Death must exist", bindingResult);
     }
 
     private void validateInformantQualification(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateInformantQualification");
-        validateTypes.validateString(deathCertificateCommand.getInformantQualification(), "informantQualification","Informant Qualification must exist", bindingResult);
+        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getInformantQualification(), "informantQualification","Informant Qualification must exist", bindingResult);
     }
 
     private void validateSex(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {

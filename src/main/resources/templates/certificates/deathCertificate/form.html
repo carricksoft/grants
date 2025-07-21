@@ -507,7 +507,7 @@
                 </td>
 
                 <td style="text-align: left;">
-                    <select id="informant" name="informant" th:field="*{mother}">
+                    <select id="informant" name="informant" th:field="*{informant}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="person : ${people}"
                                 th:value="${person.id}" th:text="${person.toString()}"></option>
