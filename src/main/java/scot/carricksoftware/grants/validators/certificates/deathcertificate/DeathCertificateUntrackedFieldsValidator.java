@@ -14,16 +14,22 @@ public interface DeathCertificateUntrackedFieldsValidator {
     @SuppressWarnings("unused")
     void validate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
 
+    @SuppressWarnings("unused")
     void validateUntrackedWhereDied(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
 
+    @SuppressWarnings("unused")
     void validateUsualResidence(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
 
+    @SuppressWarnings("unused")
     void validateSpouse(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
 
+    @SuppressWarnings("unused")
     void validateFather(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
 
+    @SuppressWarnings("unused")
     void validateMother(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
 
+    @SuppressWarnings("unused")
     void validateInformant(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult);
 }
 

@@ -32,6 +32,8 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
         validateSex(deathCertificateCommand, bindingResult);
         validateCauseOfDeath(deathCertificateCommand, bindingResult);
         validateInformantQualification(deathCertificateCommand, bindingResult);
+        validateCertificateSource(deathCertificateCommand, bindingResult);
+        validateRegistrationAuthority(deathCertificateCommand, bindingResult);
     }
 
     private void validateDeceased(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
@@ -69,7 +71,15 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
         validateTypes.validateSex(deathCertificateCommand.getSex(), "sex","Sex cannot be null", bindingResult);
     }
 
+    private void validateCertificateSource(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateNullFieldsValidator::validateCertificateSource");
+        validateTypes.validateOrganisation(deathCertificateCommand.getCertificateSource(), "certificateSource","Certificate source must exist", bindingResult);
+    }
 
+    private void validateRegistrationAuthority(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateNullFieldsValidator::validateRegistrationAuthority");
+        validateTypes.validateOrganisation(deathCertificateCommand.getRegistrationAuthority(), "registrationAuthority","Certificate source must exist", bindingResult);
+    }
 
 
 }
