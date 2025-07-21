@@ -14,16 +14,21 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
+import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
 import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
-class DeathCertificateNullFieldsValidatorImplTest {
+class DeathCertificateFieldsValidatorImplTest {
 
+    @SuppressWarnings("unused")
     DeathCertificateNullFieldsValidator deathCertificateNullFieldsValidator;
 
     @Mock
@@ -35,6 +40,7 @@ class DeathCertificateNullFieldsValidatorImplTest {
     @Mock
     private BindingResult bindingResultMock;
 
+    @SuppressWarnings("unused")
     DeathCertificateCommand deathCertificateCommand;
     Person deceased;
     String certificateNumber;
@@ -42,23 +48,38 @@ class DeathCertificateNullFieldsValidatorImplTest {
     String number;
     String causeOfDeath;
     String informantQualification;
+    String certificateDate;
+    final Sex sex = Sex.FEMALE;
+    Organisation certificateSource;
+    Organisation registrationAuthority;
+    CertificateType certificateType;
 
     @BeforeEach
     void setUp() {
         deathCertificateNullFieldsValidator = new DeathCertificateNullFieldsValidatorImpl(validateTypesMock, validateDateTypesMock);
         deathCertificateCommand = new DeathCertificateCommandImpl();
+
         deceased = GetRandomPerson();
         certificateNumber = GetRandomString();
         volume = GetRandomString();
         number = GetRandomString();
         causeOfDeath = GetRandomString();
         informantQualification = GetRandomString();
+        certificateSource = GetRandomOrganisation();
+        certificateType = CertificateType.EXTRACT;
+        registrationAuthority = GetRandomOrganisation();
+        certificateDate = GetRandomString();
         deathCertificateCommand.setDeceased(deceased);
         deathCertificateCommand.setCertificateNumber(certificateNumber);
         deathCertificateCommand.setVolume(volume);
         deathCertificateCommand.setNumber(number);
         deathCertificateCommand.setCauseOfDeath(causeOfDeath);
         deathCertificateCommand.setInformantQualification(informantQualification);
+        deathCertificateCommand.setSex(sex);
+        deathCertificateCommand.setCertificateSource(certificateSource);
+        deathCertificateCommand.setRegistrationAuthority(registrationAuthority);
+        deathCertificateCommand.setCertificateType(certificateType);
+        deathCertificateCommand.setCertificateDate(certificateDate);
     }
 
     @Test
@@ -71,7 +92,10 @@ class DeathCertificateNullFieldsValidatorImplTest {
         verify(validateTypesMock).validateNullOrEmptyString(number, "number", "The number cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(causeOfDeath, "causeOfDeath", "The cause of death should be specified.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(informantQualification, "informantQualification", "The informant qualification cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateSex(sex, "sex", "Sex cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateOrganisation(certificateSource, "certificateSource", "The certificate source cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateOrganisation(registrationAuthority, "registrationAuthority", "The registration authority cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateCertificateType(certificateType, "certificateType", "The certificate type cannot be null.", bindingResultMock);
     }
-
 
 }
