@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.constants.ValidationConstants;
+import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
 @Component
@@ -19,15 +20,18 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
     private static final Logger logger = LogManager.getLogger(DeathCertificateNullFieldsValidatorImpl.class);
 
     private final ValidateTypesImpl validateTypes;
+    private final ValidateDateTypes validateDateTypes;
 
-    public DeathCertificateNullFieldsValidatorImpl(ValidateTypesImpl validateTypes) {
+    public DeathCertificateNullFieldsValidatorImpl(ValidateTypesImpl validateTypes, ValidateDateTypes validateDateTypes) {
         this.validateTypes = validateTypes;
+        this.validateDateTypes = validateDateTypes;
     }
 
     @Override
     public void validate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         validateCertificateNumber(deathCertificateCommand, bindingResult);
         validateCertificateType(deathCertificateCommand, bindingResult);
+        validateCertificateDate(deathCertificateCommand, bindingResult);
         validateVolume(deathCertificateCommand, bindingResult);
         validateNumber(deathCertificateCommand, bindingResult);
         validateDeceased(deathCertificateCommand, bindingResult);
@@ -40,22 +44,22 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
 
     private void validateDeceased(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateDeceased");
-        validateTypes.validatePerson(deathCertificateCommand.getDeceased(), "deceased", "Deceased cannot be null", bindingResult);
+        validateTypes.validatePerson(deathCertificateCommand.getDeceased(), "deceased", ValidationConstants.DECEASED_IS_NULL, bindingResult);
     }
 
     private void validateCertificateNumber(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateCertificateNumber");
-        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getCertificateNumber(), "certificateNumber","Certificate number must exist", bindingResult);
+        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getCertificateNumber(), "certificateNumber",ValidationConstants.CERTIFICATE_NUMBER_IS_NULL, bindingResult);
     }
 
     private void validateVolume(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateVolume");
-        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getVolume(), "volume","Volume must exist", bindingResult);
+        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getVolume(), "volume",ValidationConstants.REGISTRATION_VOLUME_IS_NULL, bindingResult);
     }
 
     private void validateNumber(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateNumber");
-        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getNumber(), "number","Number must exist", bindingResult);
+        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getNumber(), "number",ValidationConstants.NUMBER_IS_NULL, bindingResult);
     }
 
     private void validateCauseOfDeath(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
@@ -86,6 +90,16 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
     private void validateCertificateType(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateRegistrationAuthority");
         validateTypes.validateCertificateType(deathCertificateCommand.getCertificateType(), "certificateType",ValidationConstants.CERTIFICATE_TYPE_IS_NULL, bindingResult);
+    }
+
+    private void validateCertificateDate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("Validating birth certificate Certificate Date");
+        validateDateTypes.validatePastDate(deathCertificateCommand.getCertificateDate(),
+                "certificateDate",
+                ValidationConstants.CERTIFICATE_DATE_IS_NULL,
+                ValidationConstants.DATE_IS_INVALID,
+                ValidationConstants.DATE_IN_FUTURE,
+                bindingResult);
     }
 
 
