@@ -13,15 +13,16 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.certificates.deathcertificate.CapitaliseDeathCertificate;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
-import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
-import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
+import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverter;
+import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverter;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
-import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidatorImpl;
+import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -32,16 +33,16 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 public class DeathCertificateFormControllerValidationTest {
 
     @SuppressWarnings("unused")
-    private DeathCertificateFormControllerImpl deathCertificateController;
+    private DeathCertificateFormController deathCertificateController;
 
     @Mock
     private DeathCertificateService deathCertificateServiceMock;
 
     @Mock
-    private DeathCertificateCommandConverterImpl deathCertificateCommandConverterMock;
+    private DeathCertificateCommandConverter deathCertificateCommandConverterMock;
 
     @Mock
-    private DeathCertificateConverterImpl deathCertificateConverterMock;
+    private DeathCertificateConverter deathCertificateConverterMock;
 
 
     @Mock
@@ -57,10 +58,13 @@ public class DeathCertificateFormControllerValidationTest {
     private OrganisationService organisationServiceMock;
 
     @Mock
-    private DeathCertificateCommandValidatorImpl deathCertificateCommandValidatorImplMock;
+    private DeathCertificateCommandValidator deathCertificateCommandValidatorMock;
 
     @Mock
     private Model modelMock;
+
+    @Mock
+    CapitaliseDeathCertificate capitaliseDeathCertificateMock;
 
 
     @BeforeEach
@@ -68,10 +72,11 @@ public class DeathCertificateFormControllerValidationTest {
         deathCertificateController = new DeathCertificateFormControllerImpl(deathCertificateServiceMock,
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
-                deathCertificateCommandValidatorImplMock,
+                deathCertificateCommandValidatorMock,
                 personServiceMock,
                 placeServiceMock,
-                organisationServiceMock);
+                organisationServiceMock,
+                capitaliseDeathCertificateMock);
     }
 
 
@@ -84,7 +89,7 @@ public class DeathCertificateFormControllerValidationTest {
 
         deathCertificateController.saveOrUpdate(deathCertificateCommand, bindingResultMock, modelMock);
 
-        verify(deathCertificateCommandValidatorImplMock).validate(deathCertificateCommand, bindingResultMock);
+        verify(deathCertificateCommandValidatorMock).validate(deathCertificateCommand, bindingResultMock);
     }
 
 

@@ -22,13 +22,13 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
-import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
+import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverter;
+import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverter;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
-import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidatorImpl;
+import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -37,9 +37,9 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     private static final Logger logger = LogManager.getLogger(DeathCertificateFormControllerImpl.class);
     private final DeathCertificateService deathCertificateService;
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
-    private final DeathCertificateCommandConverterImpl deathCertificateCommandConverter;
-    private final DeathCertificateConverterImpl deathCertificateConverter;
-    private final DeathCertificateCommandValidatorImpl deathCertificateCommandValidatorImpl;
+    private final DeathCertificateCommandConverter deathCertificateCommandConverter;
+    private final DeathCertificateConverter deathCertificateConverter;
+    private final DeathCertificateCommandValidator deathCertificateCommandValidator;
     private final PersonService personService;
     private final PlaceService placeService;
     private final OrganisationService organisationService;
@@ -47,9 +47,9 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
 
 
     public DeathCertificateFormControllerImpl(DeathCertificateService deathCertificateService,
-                                              DeathCertificateCommandConverterImpl deathCertificateCommandConverter,
-                                              DeathCertificateConverterImpl deathCertificateConverter,
-                                              DeathCertificateCommandValidatorImpl deathCertificateCommandValidatorImpl,
+                                              DeathCertificateCommandConverter deathCertificateCommandConverter,
+                                              DeathCertificateConverter deathCertificateConverter,
+                                              DeathCertificateCommandValidator deathCertificateCommandValidator,
                                               PersonService personService,
                                               PlaceService placeService,
                                               OrganisationService organisationService,
@@ -59,7 +59,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
 
 
         this.deathCertificateConverter = deathCertificateConverter;
-        this.deathCertificateCommandValidatorImpl = deathCertificateCommandValidatorImpl;
+        this.deathCertificateCommandValidator = deathCertificateCommandValidator;
         this.personService = personService;
         this.placeService = placeService;
 
@@ -97,7 +97,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     public String saveOrUpdate(@Valid @ModelAttribute DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
 
-        deathCertificateCommandValidatorImpl.validate(deathCertificateCommand, bindingResult);
+        deathCertificateCommandValidator.validate(deathCertificateCommand, bindingResult);
         capitaliseDeathCertificate.capitalise(deathCertificateCommand);
 
         if (bindingResult.hasErrors()) {

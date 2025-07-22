@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.certificates.deathcertificate.CapitaliseDeathCertificate;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
@@ -20,7 +21,7 @@ import scot.carricksoftware.grants.services.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
-import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidatorImpl;
+import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -58,7 +59,10 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
     BindingResult bindingResultMock;
 
     @Mock
-    private DeathCertificateCommandValidatorImpl deathCertificateCommandValidatorImplMock;
+    CapitaliseDeathCertificate capitaliseDeathCertificateMock;
+
+    @Mock
+    private DeathCertificateCommandValidator deathCertificateCommandValidatorMock;
 
     private DeathCertificateCommand deathCertificateCommand;
 
@@ -68,10 +72,11 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
         deathCertificateController = new DeathCertificateFormControllerImpl(deathCertificateServiceMock,
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
-                deathCertificateCommandValidatorImplMock,
+                deathCertificateCommandValidatorMock,
                 personServiceMock,
                 placeServiceMock,
-                organisationServiceMock);
+                organisationServiceMock,
+                capitaliseDeathCertificateMock);
         deathCertificateCommand = new DeathCertificateCommandImpl();
     }
 
