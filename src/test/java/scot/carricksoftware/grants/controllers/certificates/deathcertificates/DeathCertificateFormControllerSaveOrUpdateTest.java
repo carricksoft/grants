@@ -96,4 +96,9 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
         assertEquals("certificates/deathCertificate/form", deathCertificateController.saveOrUpdate(deathCertificateCommand, bindingResultMock, modelMock));
     }
 
+    @Test
+    public void capitalisationIsAppliedTest() {
+
+    }
+
 }

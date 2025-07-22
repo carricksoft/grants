@@ -26,6 +26,7 @@ import scot.carricksoftware.grants.validators.certificates.birthcertificate.Birt
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -102,15 +103,11 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
 
     @Test
     public void capitalisationIsAppliedTest() {
-        String whereBorn = "where born";
-        String untrackedFather = "untracked father";
-        birthCertificateCommand.setUntrackedWhereBorn(whereBorn);
-        birthCertificateCommand.setUntrackedFather(untrackedFather);
         when(birthCertificateServiceMock.saveBirthCertificateCommand(any(BirthCertificateCommand.class))).thenReturn(birthCertificateCommand);
-
+        birthCertificateCommand.setId(4L);
         birthCertificateController.saveOrUpdate(birthCertificateCommand, bindingResultMock, modelMock);
-        assertEquals("where born", birthCertificateCommand.getUntrackedWhereBorn());
-        assertEquals("untracked father", birthCertificateCommand.getUntrackedFather());
+        verify(capitaliseBirthCertificateMock).capitalise(birthCertificateCommand);
+
     }
 
 
