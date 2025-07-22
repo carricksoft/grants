@@ -107,7 +107,6 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
         birthCertificateCommand.setId(4L);
         birthCertificateController.saveOrUpdate(birthCertificateCommand, bindingResultMock, modelMock);
         verify(capitaliseBirthCertificateMock).capitalise(birthCertificateCommand);
-
     }
 
 

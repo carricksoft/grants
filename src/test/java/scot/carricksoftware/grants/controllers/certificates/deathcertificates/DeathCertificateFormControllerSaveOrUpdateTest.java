@@ -25,6 +25,7 @@ import scot.carricksoftware.grants.validators.certificates.deathcertificate.Deat
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -98,7 +99,10 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
 
     @Test
     public void capitalisationIsAppliedTest() {
-
+        when(deathCertificateServiceMock.saveDeathCertificateCommand(any(DeathCertificateCommand.class))).thenReturn(deathCertificateCommand);
+        deathCertificateCommand.setId(4L);
+        deathCertificateController.saveOrUpdate(deathCertificateCommand, bindingResultMock, modelMock);
+        verify(capitaliseDeathCertificateMock).capitalise(deathCertificateCommand);
     }
 
 }
