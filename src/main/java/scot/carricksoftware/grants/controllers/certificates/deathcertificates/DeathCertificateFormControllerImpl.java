@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.certificates.deathcertificate.CapitaliseDeathCertificate;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -42,6 +43,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     private final PersonService personService;
     private final PlaceService placeService;
     private final OrganisationService organisationService;
+    private final CapitaliseDeathCertificate capitaliseDeathCertificate;
 
 
     public DeathCertificateFormControllerImpl(DeathCertificateService deathCertificateService,
@@ -50,7 +52,8 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
                                               DeathCertificateCommandValidatorImpl deathCertificateCommandValidatorImpl,
                                               PersonService personService,
                                               PlaceService placeService,
-                                              OrganisationService organisationService) {
+                                              OrganisationService organisationService,
+                                              CapitaliseDeathCertificate capitaliseDeathCertificate) {
         this.deathCertificateService = deathCertificateService;
         this.deathCertificateCommandConverter = deathCertificateCommandConverter;
 
@@ -61,6 +64,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         this.placeService = placeService;
 
         this.organisationService = organisationService;
+        this.capitaliseDeathCertificate = capitaliseDeathCertificate;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -94,7 +98,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
 
         deathCertificateCommandValidatorImpl.validate(deathCertificateCommand, bindingResult);
-
+        capitaliseDeathCertificate.capitalise(deathCertificateCommand);
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
