@@ -60,6 +60,7 @@ class CapitaliseBirthCertificatesPartOneTest {
         assertEquals("Lower", birthCertificateCommand.getUntrackedFather());
     }
 
+
     @Test
     void untrackedInformantTest() {
         birthCertificateCommand.setUntrackedInformant("lower");

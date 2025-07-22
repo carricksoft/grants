@@ -17,7 +17,9 @@ import scot.carricksoftware.grants.capitalisation.certificates.deathcertificate.
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -35,12 +37,29 @@ class CapitaliseDeathCertificatesPartThreeTest {
     void setUp() {
         capitaliseDeathCertificate = new CapitaliseDeathCertificateImpl(capitaliseStringMock);
         deathCertificateCommand = new DeathCertificateCommandImpl();
+        when(capitaliseStringMock.capitalise(any())).thenReturn("Lower");
     }
 
-   @Test
-   void constructorTest(){
-        assertNotNull(deathCertificateCommand);
-   }
+    @Test
+    void spouseOccupationTest() {
+        deathCertificateCommand.setSpouseOccupation("lower");
+        capitaliseDeathCertificate.capitalise(deathCertificateCommand);
+        assertEquals("Lower", deathCertificateCommand.getSpouseOccupation());
+    }
+
+    @Test
+    void fatherOccupationTest() {
+        deathCertificateCommand.setFatherOccupation("lower");
+        capitaliseDeathCertificate.capitalise(deathCertificateCommand);
+        assertEquals("Lower", deathCertificateCommand.getFatherOccupation());
+    }
+
+    @Test
+    void motherOccupationTest() {
+        deathCertificateCommand.setMotherOccupation("lower");
+        capitaliseDeathCertificate.capitalise(deathCertificateCommand);
+        assertEquals("Lower", deathCertificateCommand.getMotherOccupation());
+    }
 
 
 }

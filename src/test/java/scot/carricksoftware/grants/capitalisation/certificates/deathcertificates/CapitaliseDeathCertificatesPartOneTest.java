@@ -61,6 +61,13 @@ class CapitaliseDeathCertificatesPartOneTest {
     }
 
     @Test
+    void untrackedMotherTest() {
+        deathCertificateCommand.setUntrackedMother("lower");
+        capitaliseDeathCertificate.capitalise(deathCertificateCommand);
+        assertEquals("Lower", deathCertificateCommand.getUntrackedMother());
+    }
+
+    @Test
     void untrackedInformantTest() {
         deathCertificateCommand.setUntrackedInformant("lower");
         capitaliseDeathCertificate.capitalise(deathCertificateCommand);

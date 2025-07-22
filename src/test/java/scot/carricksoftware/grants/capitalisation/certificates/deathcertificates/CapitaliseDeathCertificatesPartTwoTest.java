@@ -61,5 +61,19 @@ class CapitaliseDeathCertificatesPartTwoTest {
         assertEquals("Lower", deathCertificateCommand.getWhereRegistered());
     }
 
+    @Test
+    void occupationTest() {
+        deathCertificateCommand.setOccupation("lower");
+        capitaliseDeathCertificate.capitalise(deathCertificateCommand);
+        assertEquals("Lower", deathCertificateCommand.getOccupation());
+    }
+
+    @Test
+    void untrackedUsualResidenceTest() {
+        deathCertificateCommand.setUntrackedUsualResidence("lower");
+        capitaliseDeathCertificate.capitalise(deathCertificateCommand);
+        assertEquals("Lower", deathCertificateCommand.getUntrackedUsualResidence());
+    }
+
 
 }
