@@ -110,4 +110,12 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
         verify(capitaliseDeathCertificateMock).capitalise(deathCertificateCommand);
     }
 
+    @Test
+    public void yearOfDeathIsUpdatedTest() {
+        when(deathCertificateServiceMock.saveDeathCertificateCommand(any(DeathCertificateCommand.class))).thenReturn(deathCertificateCommand);
+        deathCertificateCommand.setId(4L);
+        deathCertificateController.saveOrUpdate(deathCertificateCommand, bindingResultMock, modelMock);
+        verify(updateCertifiedYearOfDeathMock).updateCertifiedYearOfDeath(deathCertificateCommand);
+    }
+
 }
