@@ -18,6 +18,7 @@ class PersonToStringTest {
     final String lastName = "Last";
     final String recordedBirth = "1920";
     final String certifiedBirth = "1930";
+    final String certifiedDeath = "1940";
 
 
     @BeforeEach
@@ -56,6 +57,16 @@ class PersonToStringTest {
         String requiredResult = "Last, First, " + certifiedBirth + " -";
         person.setCertifiedYearOfBirth(certifiedBirth);
         person.setRecordedYearOfBirth(recordedBirth);
+
+        assertEquals(requiredResult, person.toString());
+    }
+
+    @Test
+    public void witheDeathTest() {
+        String requiredResult = "Last, First, " + certifiedBirth + " - " + certifiedDeath;
+        person.setCertifiedYearOfBirth(certifiedBirth);
+        person.setRecordedYearOfBirth(recordedBirth);
+        person.setCertifiedYearOfDeath(certifiedDeath);
 
         assertEquals(requiredResult, person.toString());
     }

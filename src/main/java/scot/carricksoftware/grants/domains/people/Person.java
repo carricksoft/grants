@@ -97,8 +97,8 @@ public class Person extends BaseEntity {
         }
         builder.append("-");
         if (certifiedYearOfDeath != null && !certifiedYearOfDeath.isEmpty())  {
-            builder.append(certifiedYearOfDeath);
             builder.append(" ");
+            builder.append(certifiedYearOfDeath);
         }
 
         return builder.toString();
