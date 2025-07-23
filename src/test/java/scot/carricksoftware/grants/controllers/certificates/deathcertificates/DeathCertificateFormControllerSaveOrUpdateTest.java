@@ -18,6 +18,7 @@ import scot.carricksoftware.grants.commands.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
+import scot.carricksoftware.grants.services.certificates.deathcertificates.UpdateCertifiedYearOfDeath;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
@@ -54,6 +55,9 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
     private OrganisationService organisationServiceMock;
 
     @Mock
+    private UpdateCertifiedYearOfDeath updateCertifiedYearOfDeathMock;
+
+    @Mock
     Model modelMock;
 
     @Mock
@@ -77,7 +81,8 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
                 personServiceMock,
                 placeServiceMock,
                 organisationServiceMock,
-                capitaliseDeathCertificateMock);
+                capitaliseDeathCertificateMock,
+                updateCertifiedYearOfDeathMock);
         deathCertificateCommand = new DeathCertificateCommandImpl();
     }
 

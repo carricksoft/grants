@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.converters.certificates.deathcertificates.Dea
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
+import scot.carricksoftware.grants.services.certificates.deathcertificates.UpdateCertifiedYearOfDeath;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
@@ -66,6 +67,9 @@ public class DeathCertificateFormControllerTest {
     @Mock
     CapitaliseDeathCertificate capitaliseDeathCertificateMock;
 
+    @Mock
+    private UpdateCertifiedYearOfDeath updateCertifiedYearOfDeathMock;
+
 
     @BeforeEach
     public void setUp() {
@@ -76,7 +80,8 @@ public class DeathCertificateFormControllerTest {
                 personServiceMock,
                 placeServiceMock,
                 organisationServiceMock,
-                capitaliseDeathCertificateMock);
+                capitaliseDeathCertificateMock,
+                updateCertifiedYearOfDeathMock);
     }
 
     @Test
