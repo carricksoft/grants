@@ -41,6 +41,7 @@ class PersonConverterTest {
         Person source = new Person();
         String recordedYearOfBirth = GetRandomString();
         String certifiedYearOfBirth = GetRandomString();
+        String certifiedYearOfDeath = GetRandomString();
 
         ArrayList<DivorceCertificate> divorceCertificates = new ArrayList<>();
         divorceCertificates.add(new DivorceCertificate());
@@ -69,6 +70,7 @@ class PersonConverterTest {
         source.setLastName(lastName);
         source.setRecordedYearOfBirth(recordedYearOfBirth);
         source.setCertifiedYearOfBirth(certifiedYearOfBirth);
+        source.setCertifiedYearOfDeath(certifiedYearOfDeath);
 
         source.setDivorceCertificates(divorceCertificates);
         source.setPersonImages(personImages);
@@ -87,6 +89,7 @@ class PersonConverterTest {
         assertEquals(lastName, target.getLastName());
         assertEquals(recordedYearOfBirth, target.getRecordedYearOfBirth());
         assertEquals(certifiedYearOfBirth, target.getCertifiedYearOfBirth());
+        assertEquals(certifiedYearOfDeath, target.getCertifiedYearOfDeath());
 
         assertEquals(divorceCertificates, target.getDivorceCertificates());
         assertEquals(personImages, target.getPersonImages());
