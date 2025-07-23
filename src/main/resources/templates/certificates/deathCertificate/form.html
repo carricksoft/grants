@@ -249,7 +249,7 @@
                         <select id="maritalStatus" style="width: 200px;" name="maritalStatus"
                                 th:field="*{maritalStatus}">
                             <option th:value="${''}" th:text="${''}"></option>
-                            <option th:each="value : ${T(scot.carricksoftware.grants.enums.certificates.MaritalStatus).values()}"
+                            <option th:each="value : ${T(scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition).values()}"
                                     th:value="${value}" th:text="${value.label}"></option>
                         </select>
                     </div>
