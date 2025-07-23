@@ -25,6 +25,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverter;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverter;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
+import scot.carricksoftware.grants.services.certificates.deathcertificates.UpdateCertifiedYearOfDeath;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
@@ -44,6 +45,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     private final PlaceService placeService;
     private final OrganisationService organisationService;
     private final CapitaliseDeathCertificate capitaliseDeathCertificate;
+    private final UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath;
 
 
     public DeathCertificateFormControllerImpl(DeathCertificateService deathCertificateService,
@@ -53,7 +55,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
                                               PersonService personService,
                                               PlaceService placeService,
                                               OrganisationService organisationService,
-                                              CapitaliseDeathCertificate capitaliseDeathCertificate) {
+                                              CapitaliseDeathCertificate capitaliseDeathCertificate, UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath) {
         this.deathCertificateService = deathCertificateService;
         this.deathCertificateCommandConverter = deathCertificateCommandConverter;
 
@@ -65,6 +67,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
 
         this.organisationService = organisationService;
         this.capitaliseDeathCertificate = capitaliseDeathCertificate;
+        this.updateCertifiedYearOfDeath = updateCertifiedYearOfDeath;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -109,6 +112,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         }
 
         DeathCertificateCommand savedCommand = deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
+        updateCertifiedYearOfDeath.updateCertifiedYearOfDeath(savedCommand);
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());

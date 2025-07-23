@@ -30,6 +30,8 @@ public class PersonCommandImpl implements PersonCommand {
 
     private String certifiedYearOfBirth;
 
+    private String certifiedYearOfDeath;
+
     private List<BirthCertificate> birthCertificates = new ArrayList<>();
 
     private List<DeathCertificate> deathCertificates = new ArrayList<>();
@@ -163,5 +165,13 @@ public class PersonCommandImpl implements PersonCommand {
         this.personTexts = personTexts;
     }
 
+    @Override
+    public String getCertifiedYearOfDeath() {
+        return certifiedYearOfDeath;
+    }
 
+    @Override
+    public void setCertifiedYearOfDeath(String certifiedYearOfDeath) {
+        this.certifiedYearOfDeath = certifiedYearOfDeath;
+    }
 }

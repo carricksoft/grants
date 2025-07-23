@@ -36,6 +36,9 @@ public class Person extends BaseEntity {
     @Column(name = "`certified_year_of_birth`")
     String certifiedYearOfBirth;
 
+    @Column(name = "`certified_year_of_death`")
+    String certifiedYearOfDeath;
+
     @OneToMany(mappedBy = "id", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<BirthCertificate> birthCertificates = new ArrayList<>();
 
@@ -92,6 +95,10 @@ public class Person extends BaseEntity {
             }
         }
         builder.append("-");
+        if (certifiedYearOfDeath != null && !certifiedYearOfDeath.isEmpty())  {
+            builder.append(certifiedYearOfDeath);
+            builder.append(" ");
+        }
 
         return builder.toString();
     }
@@ -166,5 +173,13 @@ public class Person extends BaseEntity {
 
     public void setPersonTexts(List<PersonText> personTexts) {
         this.personTexts = personTexts;
+    }
+
+    public String getCertifiedYearOfDeath() {
+        return certifiedYearOfDeath;
+    }
+
+    public void setCertifiedYearOfDeath(String certifiedYearOfDeath) {
+        this.certifiedYearOfDeath = certifiedYearOfDeath;
     }
 }

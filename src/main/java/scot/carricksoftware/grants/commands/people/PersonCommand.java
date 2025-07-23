@@ -64,4 +64,8 @@ public interface PersonCommand {
     List<PersonText> getPersonTexts();
 
     void setPersonTexts(List<PersonText> personTexts);
+
+    String getCertifiedYearOfDeath();
+
+    void setCertifiedYearOfDeath(String certifiedYearOfDeath);
 }

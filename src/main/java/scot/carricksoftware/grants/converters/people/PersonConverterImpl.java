@@ -21,6 +21,7 @@ public class PersonConverterImpl implements PersonConverter {
         result.setLastName(source.getLastName());
         result.setRecordedYearOfBirth(source.getRecordedYearOfBirth());
         result.setCertifiedYearOfBirth(source.getCertifiedYearOfBirth());
+        result.setCertifiedYearOfDeath(source.getCertifiedYearOfDeath());
 
 
         result.setDivorceCertificates(source.getDivorceCertificates());

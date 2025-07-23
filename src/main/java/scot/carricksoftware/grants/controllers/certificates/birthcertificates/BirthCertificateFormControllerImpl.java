@@ -111,7 +111,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
             model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
             return ViewConstants.BIRTH_CERTIFICATE_FORM;
         }
-//
+
         BirthCertificateCommand savedCommand = birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
         updateCertifiedYearOfBirth.updateCertifiedYearOfBirth(savedCommand);
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
