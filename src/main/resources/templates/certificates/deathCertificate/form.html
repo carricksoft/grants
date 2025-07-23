@@ -262,7 +262,7 @@
                 <td style="text-align: left;">
                     <div>
                         <input class="whenDied" id="whenDied"
-                               th:field="*{whenBorn}" type="text">
+                               th:field="*{whenDied}" type="text">
                         <div th:if="${#fields.hasErrors('whenDied')}">
                             <ul class="text-danger">
                                 <li th:each="err : ${#fields.errors('whenDied')}" th:text="${err}"/>
