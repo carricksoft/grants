@@ -34,6 +34,7 @@ public class ValidationConstants {
     public static final String DATE_IS_NULL = "Date must exist.";
     public static final String DECEASED_IS_NULL = "The deceased cannot be null.";
     public static final String FATHER_AND_UNTRACKED_FATHER = "One and only one father and untracked father must be specified.";
+    public static final String FATHER_AND_UNTRACKED_FATHER_OPTIONAL = "One and only one father and untracked father may be specified.";
     public static final String FATHER_USUAL_RESIDENCE_AND_UNTRACKED_FATHER_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence must be specified.";
     public static final String FIELD_NOT_NEGATIVE_INTEGER = "Not a non negative integer.";
     public static final String FIRST_PARTY_IS_NULL = "The first party cannot be null.";

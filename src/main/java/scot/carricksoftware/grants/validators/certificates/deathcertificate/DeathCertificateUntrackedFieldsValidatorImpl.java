@@ -71,11 +71,11 @@ public class DeathCertificateUntrackedFieldsValidatorImpl implements DeathCertif
     @Override
     public void validateFather(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateUntrackedFieldsValidatorImp::validateFather");
-        validateTwoFieldTypes.validatePersonAndUntrackedPerson(deathCertificateCommand.getFather(),
+        validateTwoFieldTypes.validateOptionalPersonAndUntrackedPerson(deathCertificateCommand.getFather(),
                 deathCertificateCommand.getUntrackedFather(),
                 "father",
                 "untrackedFather",
-                ValidationConstants.FATHER_AND_UNTRACKED_FATHER,
+                ValidationConstants.FATHER_AND_UNTRACKED_FATHER_OPTIONAL,
                 bindingResult);
     }
 

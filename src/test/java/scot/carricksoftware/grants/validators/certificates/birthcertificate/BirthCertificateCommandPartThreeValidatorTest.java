@@ -49,6 +49,7 @@ class BirthCertificateCommandPartThreeValidatorTest {
         when(birthCertificateCommandMock.getSex()).thenReturn(Sex.MALE);
         when(birthCertificateCommandMock.getWhenBorn()).thenReturn(GetRandomString());
         when(birthCertificateCommandMock.getFather()).thenReturn(GetRandomPerson());
+        when(birthCertificateCommandMock.getUntrackedFather()).thenReturn(GetRandomString());
         when(birthCertificateCommandMock.getWhereBorn()).thenReturn(GetRandomPlace());
         when(birthCertificateCommandMock.getUntrackedWhereBorn()).thenReturn(GetRandomString());
         when(birthCertificateCommandMock.getFatherUsualResidence()).thenReturn(GetRandomPlace());

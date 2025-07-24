@@ -23,6 +23,13 @@ public class ValidateTwoFieldTypesImpl implements ValidateTwoFieldTypes {
     }
 
     @Override
+    public void validateOptionalPersonAndUntrackedPerson(Person person, String untrackedPerson, String personFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
+        if (person != null && (untrackedPerson != null  && !untrackedPerson.isEmpty())) {
+            reportError(personFieldName, untrackedFieldName, message, bindingResult);
+        }
+    }
+
+    @Override
     public void validatePlaceAndUntrackedPlace(Place place, String untrackedPlace, String placeFieldName, String untrackedFieldName, String message, BindingResult bindingResult) {
     boolean untrackedFound = (untrackedPlace != null && !untrackedPlace.isEmpty());
         if ((place == null && !untrackedFound) || place != null && untrackedFound) {
