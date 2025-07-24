@@ -36,7 +36,6 @@ public class Person extends BaseEntity {
     @Column(name = "`certified_year_of_birth`")
     String certifiedYearOfBirth;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`certified_year_of_death`")
     String certifiedYearOfDeath;
 

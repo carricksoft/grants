@@ -58,7 +58,7 @@ public class ValidationConstants {
     public static final String SAME_TWO_PARTIES = "The two parties cannot be the same person.";
     public static final String SECOND_PARTY_IS_NULL = "The second party cannot be null.";
     public static final String SEX_IS_NULL = "Sex cannot be null.";
-    public static final String SPOUSE_AND_UNTRACKED_SPOUSE = "One and only one spouse and untracked spouse must be specified.";
+    public static final String SPOUSE_AND_UNTRACKED_SPOUSE = "One and only one spouse and untracked spouse may be specified.";
     public static final String TOTAL_ROOMS_AND_INHABITED_ROOMS_CANNOT_COEXIST =  "Total Rooms and Inhabited Rooms cannot coexist.";
     public static final String TOTAL_ROOMS_AND_ROOMS_WITH_WINDOWS_CANNOT_COEXIST =  "Total Rooms and Rooms With Windows cannot coexist.";
     public static final String USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence may be specified.";

@@ -83,15 +83,15 @@ class DeathCertificateUntrackedFieldsValidatorTest {
     @Test
     void theTestAreRunTest() {
         deathCertificateUntrackedFieldsValidator.validate(deathCertificateCommand, bindingResultMock);
-        verify(validateTwoFieldTypesMock).validatePersonAndUntrackedPerson(spouse, untrackedSpouse, "spouse", "untrackedSpouse",
-                "One and only one spouse and untracked spouse must be specified.", bindingResultMock);
+        verify(validateTwoFieldTypesMock).validateOptionalPersonAndUntrackedPerson(spouse, untrackedSpouse, "spouse", "untrackedSpouse",
+                "One and only one spouse and untracked spouse may be specified.", bindingResultMock);
         verify(validateTwoFieldTypesMock).validateOptionalPersonAndUntrackedPerson(father, untrackedFather, "father", "untrackedFather",
                "One and only one father and untracked father may be specified.", bindingResultMock);
         verify(validateTwoFieldTypesMock).validatePlaceAndUntrackedPlace(whereDied, untrackedWhereDied, "whereDied", "untrackedWhereDied",
                "One and only one where died and untracked where died must be specified.", bindingResultMock);
         verify(validateTwoFieldTypesMock).validateOptionalPlaceAndUntrackedPlace(usualResidence, untrackedUsualResidence, "usualResidence", "untrackedUsualResidence",
                 "Only one usual residence and untracked usual residence may be specified.", bindingResultMock);
-        verify(validateTwoFieldTypesMock).validatePersonAndUntrackedPerson(mother, untrackedMother, "mother", "untrackedMother",
+        verify(validateTwoFieldTypesMock).validateOptionalPersonAndUntrackedPerson(mother, untrackedMother, "mother", "untrackedMother",
                 "One and only one mother and untracked mother may be specified.", bindingResultMock);
         verify(validateTwoFieldTypesMock).validatePersonAndUntrackedPerson(informant, untrackedInformant, "informant", "untrackedInformant",
                 "One and only one informant and untracked informant may be specified.", bindingResultMock);

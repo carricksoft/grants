@@ -60,7 +60,7 @@ public class DeathCertificateUntrackedFieldsValidatorImpl implements DeathCertif
     @Override
     public void validateSpouse(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateUntrackedFieldsValidatorImp::validateSpouse");
-        validateTwoFieldTypes.validatePersonAndUntrackedPerson(deathCertificateCommand.getSpouse(),
+        validateTwoFieldTypes.validateOptionalPersonAndUntrackedPerson(deathCertificateCommand.getSpouse(),
                 deathCertificateCommand.getUntrackedSpouse(),
                 "spouse",
                 "untrackedSpouse",
@@ -82,7 +82,7 @@ public class DeathCertificateUntrackedFieldsValidatorImpl implements DeathCertif
     @Override
     public void validateMother(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateUntrackedFieldsValidatorImp::validateMother");
-        validateTwoFieldTypes.validatePersonAndUntrackedPerson(deathCertificateCommand.getMother(),
+        validateTwoFieldTypes.validateOptionalPersonAndUntrackedPerson(deathCertificateCommand.getMother(),
                 deathCertificateCommand.getUntrackedMother(),
                 "mother",
                 "untrackedMother",
