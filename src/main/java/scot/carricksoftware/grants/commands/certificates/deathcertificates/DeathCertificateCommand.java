@@ -98,4 +98,16 @@ public interface DeathCertificateCommand {
     String getNumber();
 
     void setNumber(String number);
+
+    String getRegiment();
+
+    void setRegiment(String regiment);
+
+    String getServiceRank();
+
+    void setServiceRank(String serviceRank);
+
+    String getServiceNumber();
+
+    void setServiceNumber(String serviceNumber);
 }

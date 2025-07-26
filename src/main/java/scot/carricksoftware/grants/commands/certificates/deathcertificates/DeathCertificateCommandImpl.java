@@ -48,6 +48,9 @@ public class DeathCertificateCommandImpl implements DeathCertificateCommand {
     private String whenDied;
     private String whenRegistered;
     private String whereRegistered;
+    private String regiment;
+    private String serviceNumber;
+    private String serviceRank;
 
     @Override
     public Long getId() {
@@ -397,5 +400,35 @@ public class DeathCertificateCommandImpl implements DeathCertificateCommand {
     @Override
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String getRegiment() {
+        return regiment;
+    }
+
+    @Override
+    public void setRegiment(String regiment) {
+        this.regiment = regiment;
+    }
+
+    @Override
+    public String getServiceRank() {
+        return serviceRank;
+    }
+
+    @Override
+    public void setServiceRank(String serviceRank) {
+        this.serviceRank = serviceRank;
+    }
+
+    @Override
+    public String getServiceNumber() {
+        return serviceNumber;
+    }
+
+    @Override
+    public void setServiceNumber(String serviceNumber) {
+        this.serviceNumber = serviceNumber;
     }
 }
