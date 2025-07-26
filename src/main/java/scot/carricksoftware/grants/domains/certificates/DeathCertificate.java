@@ -141,6 +141,18 @@ public class DeathCertificate extends BaseCertificate {
     @Column(name = "`where_registered`")
     private String whereRegistered;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`regiment`")
+    private String regiment;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`service_number`")
+    private String serviceNumber;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`service_rank`")
+    private String serviceRank;
+
     public Person getDeceased() {
         return deceased;
     }
@@ -357,4 +369,27 @@ public class DeathCertificate extends BaseCertificate {
         this.whereRegistered = whereRegistered;
     }
 
+    public String getRegiment() {
+        return regiment;
+    }
+
+    public void setRegiment(String regiment) {
+        this.regiment = regiment;
+    }
+
+    public String getServiceNumber() {
+        return serviceNumber;
+    }
+
+    public void setServiceNumber(String serviceNumber) {
+        this.serviceNumber = serviceNumber;
+    }
+
+    public String getServiceRank() {
+        return serviceRank;
+    }
+
+    public void setServiceRank(String serviceRank) {
+        this.serviceRank = serviceRank;
+    }
 }
