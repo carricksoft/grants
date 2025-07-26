@@ -5,15 +5,16 @@
 
 package scot.carricksoftware.grants.enums.certificates;
 
-public enum ServiceRank {
+public enum Regiment {
 
-    @SuppressWarnings("unused") PRIVATE("Private");
+    @SuppressWarnings("unused") HLI15("15th Btn. Highland Light Infantry"),
+    @SuppressWarnings("unused") CH2("2nd Btn. Cameron Highlanders");
 
     @SuppressWarnings("unused")
     public final String label;
 
     @SuppressWarnings({"unused", "SameParameterValue"})
-    ServiceRank(String label) {
+    Regiment(String label) {
         this.label = label;
     }
 }
