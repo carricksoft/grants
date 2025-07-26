@@ -8,6 +8,9 @@ package scot.carricksoftware.grants.converters.certificates.deathcertificates;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.domains.people.Person;
@@ -24,14 +27,18 @@ import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPe
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
+@ExtendWith(MockitoExtension.class)
 class DeathCertificateConverterTest {
 
     private DeathCertificateConverter converter;
     private DeathCertificate deathCertificate;
 
+    @Mock
+    private DeathCertificateMilitaryConverter militaryConverterMock;
+
     @BeforeEach
     void setUp() {
-        converter = new DeathCertificateConverterImpl();
+        converter = new DeathCertificateConverterImpl(militaryConverterMock);
         deathCertificate = new DeathCertificate();
     }
 
