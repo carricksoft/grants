@@ -64,6 +64,7 @@ public class ValidationConstants {
     public static final String USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence may be specified.";
     public static final String WHEN_BORN_INCORRECT_FORMAT = "The format should be dd/MM/yyyy hh:mm.";
     public static final String WHEN_BORN_IS_NULL = "When born cannot be null.";
+    public static final String WHEN_DIED_IS_NULL = "When died cannot be null.";
     public static final String WHEN_REGISTERED_DATE_IN_FUTURE = "Date should not be in the future.";
     public static final String WHEN_REGISTERED_DATE_IS_INVALID = "When registered date is invalid.";
     public static final String WHEN_REGISTERED_DATE_IS_NULL = "When registered cannot be null.";

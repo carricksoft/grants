@@ -5,11 +5,11 @@
 
 package scot.carricksoftware.grants.converters.certificates.deathcertificates;
 
-import org.apache.logging.log4j.core.tools.picocli.CommandLine;
+import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 
-@CommandLine.Command
+@Component
 public class DeathCertificateCommandMilitaryConverterImpl implements DeathCertificateCommandMilitaryConverter {
 
     @Override

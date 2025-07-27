@@ -13,12 +13,18 @@ import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 @Component
 public class DeathCertificateCommandConverterImpl implements DeathCertificateCommandConverter {
 
+    private final DeathCertificateCommandMilitaryConverter militaryConverter;
 
+    public DeathCertificateCommandConverterImpl(DeathCertificateCommandMilitaryConverter militaryConverter) {
+        this.militaryConverter = militaryConverter;
+    }
 
     @Override
     public DeathCertificate convert(DeathCertificateCommand source) {
 
         DeathCertificate target = new DeathCertificate();
+
+        militaryConverter.convert(source, target);
         target.setAge(source.getAge());
         target.setSex(source.getSex());
         target.setWhereDied(source.getWhereDied());
@@ -53,7 +59,6 @@ public class DeathCertificateCommandConverterImpl implements DeathCertificateCom
         target.setInformantAddress(source.getInformantAddress());
         target.setFatherOccupation(source.getFatherOccupation());
         target.setCauseOfDeath(source.getCauseOfDeath());
-
 
 
         return target;

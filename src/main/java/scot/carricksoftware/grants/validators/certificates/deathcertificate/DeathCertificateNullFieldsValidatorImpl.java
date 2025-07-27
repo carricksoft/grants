@@ -40,6 +40,12 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
         validateInformantQualification(deathCertificateCommand, bindingResult);
         validateCertificateSource(deathCertificateCommand, bindingResult);
         validateRegistrationAuthority(deathCertificateCommand, bindingResult);
+        validateWhenDied(deathCertificateCommand, bindingResult);
+    }
+
+    private void validateWhenDied(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateNullFieldsValidator::validateWhenDied");
+        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getWhenDied(), "whenDied", ValidationConstants.WHEN_DIED_IS_NULL, bindingResult);
     }
 
     private void validateDeceased(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {

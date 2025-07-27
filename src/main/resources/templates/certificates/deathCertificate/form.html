@@ -338,7 +338,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr style="border-bottom: 5px solid #ccc;">
                 <td style="text-align: right;">
                     <label for="causeOfDeath">Cause of Death :&nbsp;</label>
                 </td>
@@ -387,7 +387,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr style="border-bottom: 5px solid #ccc;">
                 <td style="text-align: right;">
                     <label for="spouseOccupation">Spouse Occupation :&nbsp;</label>
                 </td>
@@ -404,7 +404,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="text-align: right; background-color: #D6EEEE;">
+                <td style="text-align: right;">
                     <label for="father">Father :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
@@ -421,7 +421,7 @@
                 </td>
             </tr>
             <tr>
-                <td style="text-align: right; background-color: #D6EEEE;">
+                <td style="text-align: right;">
                     <label for="untrackedFather">Father (untracked) :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
@@ -436,7 +436,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr style="border-bottom: 5px solid #ccc;">
                 <td style="text-align: right;">
                     <label for="fatherOccupation">Father Occupation :&nbsp;</label>
                 </td>
@@ -485,7 +485,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr  style="border-bottom: 5px solid #ccc;">
                 <td style="text-align: right;">
                     <label for="motherOccupation">Mother Occupation :&nbsp;</label>
                 </td>
@@ -584,7 +584,7 @@
                     </div>
                 </td>
             </tr>
-            <tr>
+            <tr style="border-bottom: 5px solid #ccc;">
                 <td style="text-align: right;">
                     <label for="whereRegistered">Where Registered :&nbsp;</label>
                 </td>
@@ -600,6 +600,66 @@
                     </div>
                 </td>
             </tr>
+	                <tr>
+                <td style="text-align: right;">
+                    <label for="regiment">Regiment :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <select id="regiment" style="width: 200px;" name="regiment"
+                                th:field="*{regiment}">
+                            <option th:value="${''}" th:text="${''}"></option>
+                            <option th:each="value : ${T(scot.carricksoftware.grants.enums.certificates.Regiment).values()}"
+                                    th:value="${value}" th:text="${value.label}"></option>
+                        </select>
+                    </div>
+                    <div th:if="${#fields.hasErrors('regiment')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('regiment')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+			</tr>
+
+            <tr>
+                <td style="text-align: right;">
+                    <label for="serviceRank">Service rank :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <select id="serviceRank" style="width: 200px;" name="serviceRank"
+                                th:field="*{serviceRank}">
+                            <option th:value="${''}" th:text="${''}"></option>
+                            <option th:each="value : ${T(scot.carricksoftware.grants.enums.certificates.ServiceRank).values()}"
+                                    th:value="${value}" th:text="${value.label}"></option>
+                        </select>
+                    </div>
+                    <div th:if="${#fields.hasErrors('serviceRank')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('serviceRank')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+		    </td>
+            </tr>
+
+	     <tr>
+                <td style="text-align: right;">
+                    <label for="serviceNumber">Service Number :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="serviceNumber" id="serviceNumber"
+                               th:field="*{serviceNumber}" type="text">
+                        <div th:if="${#fields.hasErrors('serviceNumber')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('serviceNumb')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+	 
+
+
         </table>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/deathCertificates}" th:text="${'List all'}">List all</a>
