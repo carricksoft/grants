@@ -47,10 +47,9 @@ public class DataLoadCertificatesDeathCertificatesTest {
     @SuppressWarnings("unused")
     private final Person deceased = GetRandomPerson();
     @SuppressWarnings("unused")
-    private final Person spouse= GetRandomPerson();
+    private final Person spouse = GetRandomPerson();
     @SuppressWarnings("unused")
     private final Person informant = GetRandomPerson();
-
 
 
     @BeforeEach

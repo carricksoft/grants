@@ -22,7 +22,7 @@ class DeathCertificateTwoTest {
     void setUp() {
         deathCertificate = new DeathCertificate();
     }
-    
+
     @Test
     void getCauseOfDeathTest() {
         assertNull(deathCertificate.getCauseOfDeath());
@@ -46,7 +46,6 @@ class DeathCertificateTwoTest {
         deathCertificate.setInformantQualification(informantQualification);
         assertEquals(informantQualification, deathCertificate.getInformantQualification());
     }
-
 
 
 }

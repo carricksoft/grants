@@ -76,6 +76,17 @@ class MarriageCertificatePersonTest {
     }
 
     @Test
+    void setFirstWitnessTest() {
+        marriageCertificate.setFirstWitness(person);
+        assertEquals(person, marriageCertificate.getFirstWitness());
+    }
+
+    @Test
+    void getSecondWitnessTest() {
+        assertNull(marriageCertificate.getSecondWitness());
+    }
+
+    @Test
     void setSecondWitnessTest() {
         marriageCertificate.setSecondWitness(person);
         assertEquals(person, marriageCertificate.getSecondWitness());

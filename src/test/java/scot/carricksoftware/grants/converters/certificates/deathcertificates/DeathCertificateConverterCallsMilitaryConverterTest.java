@@ -33,7 +33,7 @@ class DeathCertificateConverterCallsMilitaryConverterTest {
 
     @Test
     void militaryConverterIsCalledTest() {
-         DeathCertificateCommand deathCertificateCommand =  converter.convert(deathCertificate);
+        DeathCertificateCommand deathCertificateCommand = converter.convert(deathCertificate);
         verify(militaryConverterMock).convert(deathCertificate, deathCertificateCommand);
     }
 }

@@ -23,7 +23,7 @@ class DeathCertificateCommandStringTwoTest {
     void setUp() {
         deathCertificateCommand = new DeathCertificateCommandImpl();
     }
-    
+
     @Test
     void getCauseOfDeathTest() {
         assertNull(deathCertificateCommand.getCauseOfDeath());

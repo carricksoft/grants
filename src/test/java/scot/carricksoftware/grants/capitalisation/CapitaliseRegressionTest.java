@@ -22,6 +22,6 @@ class CapitaliseRegressionTest {
     @Test
     void certificateNumberTest() {
         String certificateNumber = "12345CE";
-        assertEquals(certificateNumber,capitaliseString.capitalise(certificateNumber));
+        assertEquals(certificateNumber, capitaliseString.capitalise(certificateNumber));
     }
 }
