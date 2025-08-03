@@ -47,6 +47,17 @@ class MarriageCertificateUntrackedTest {
         assertEquals(string, marriageCertificate.getGroomUntrackedResidence());
     }
 
+    @Test
+    void getBrideUntrackedResidenceTest() {
+        assertNull(marriageCertificate.getBrideUntrackedResidence());
+    }
+
+    @Test
+    void setBrideUntrackedResidenceTest() {
+        marriageCertificate.setBrideUntrackedResidence(string);
+        assertEquals(string, marriageCertificate.getBrideUntrackedResidence());
+    }
+
 
     @Test
     void getGroomUntrackedFatherTest() {
