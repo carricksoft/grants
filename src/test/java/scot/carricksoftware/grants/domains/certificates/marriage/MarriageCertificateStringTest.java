@@ -81,6 +81,29 @@ class MarriageCertificateStringTest {
         assertEquals(string, marriageCertificate.getBrideRank());
     }
 
+    @Test
+    void getGroomConditionTest() {
+        assertNull(marriageCertificate.getGroomCondition());
+    }
+
+    @Test
+    void setGroomConditionTest() {
+        marriageCertificate.setGroomCondition(string);
+        assertEquals(string, marriageCertificate.getGroomCondition());
+    }
+
+
+    @Test
+    void getBrideConditionTest() {
+        assertNull(marriageCertificate.getBrideCondition());
+    }
+
+    @Test
+    void setBrideConditionTest() {
+        marriageCertificate.setBrideCondition(string);
+        assertEquals(string, marriageCertificate.getBrideCondition());
+    }
+
     
  
 
