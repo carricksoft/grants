@@ -19,18 +19,6 @@ public class MarriageCertificateConverterImpl implements MarriageCertificateConv
     public MarriageCertificateCommand convert(MarriageCertificate source) {
         MarriageCertificateCommand target = new MarriageCertificateCommandImpl();
 
-        target.setId(source.getId());
-        target.setBride(source.getBride());
-        target.setGroom(source.getGroom());
-        target.setWhenMarried(source.getWhenMarried());
-        target.setWhenMarried(source.getWhenMarried());
-        target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
-        target.setGroomAge(source.getGroomAge());
-        target.setBrideAge(source.getBrideAge());
-        target.setGroomCondition(source.getGroomCondition());
-        target.setBrideCondition(source.getBrideCondition());
-        target.setGroomRank(source.getGroomRank());
-        target.setBrideRank(source.getBrideRank());
         target.setGroomUsualResidence(source.getGroomUsualResidence());
         target.setBrideUsualResidence(source.getBrideUsualResidence());
         target.setGroomUntrackedResidence(source.getGroomUntrackedResidence());
@@ -43,6 +31,19 @@ public class MarriageCertificateConverterImpl implements MarriageCertificateConv
         target.setFirstWitness(source.getFirstWitness());
         target.setSecondWitness(source.getSecondWitness());
         target.setUntrackedFirstWitness(source.getUntrackedFirstWitness());
+        target.setUntrackedSecondWitness(source.getUntrackedSecondWitness());
+        target.setId(source.getId());
+        target.setBride(source.getBride());
+        target.setGroom(source.getGroom());
+        target.setWhenMarried(source.getWhenMarried());
+        target.setWhereMarried(source.getWhereMarried());
+        target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
+        target.setGroomAge(source.getGroomAge());
+        target.setBrideAge(source.getBrideAge());
+        target.setGroomCondition(source.getGroomCondition());
+        target.setBrideCondition(source.getBrideCondition());
+        target.setGroomRank(source.getGroomRank());
+        target.setBrideRank(source.getBrideRank());
 
         return target;
     }

@@ -29,6 +29,7 @@ public class GenerateRandomPlaceValues {
     public static Place GetRandomPlace() {
         Place place = new Place();
         place.setName(GetRandomString());
+        place.setRegion(GetRandomRegion());
         return place;
     }
 
@@ -36,6 +37,7 @@ public class GenerateRandomPlaceValues {
     public static PlaceCommand GetRandomPlaceCommand() {
         PlaceCommand placeCommand = new PlaceCommandImpl();
         placeCommand.setName(GetRandomString());
+        placeCommand.setRegion(GetRandomRegion());
         return placeCommand;
     }
 
@@ -55,6 +57,7 @@ public class GenerateRandomPlaceValues {
     public static Region GetRandomRegion() {
         Region region = new Region();
         region.setName(GetRandomString());
+        region.setCountry(GetRandomCountry());
         return region;
     }
 
@@ -62,6 +65,7 @@ public class GenerateRandomPlaceValues {
     public static RegionCommand GetRandomRegionCommand() {
         RegionCommand regionCommand = new RegionCommandImpl();
         regionCommand.setName(GetRandomString());
+        regionCommand.setCountry(GetRandomCountry());
         return regionCommand;
     }
 

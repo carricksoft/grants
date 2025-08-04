@@ -33,7 +33,7 @@ public class MarriageCertificateCommandConverterImpl implements MarriageCertific
         target.setBride(source.getBride());
         target.setGroom(source.getGroom());
         target.setWhenMarried(source.getWhenMarried());
-        target.setWhenMarried(source.getWhenMarried());
+        target.setWhereMarried(source.getWhereMarried());
         target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
         target.setGroomAge(source.getGroomAge());
         target.setBrideAge(source.getBrideAge());
