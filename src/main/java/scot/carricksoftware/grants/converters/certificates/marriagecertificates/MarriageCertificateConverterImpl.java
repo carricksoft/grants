@@ -26,7 +26,7 @@ public class MarriageCertificateConverterImpl implements MarriageCertificateConv
         target.setGroomFather(source.getGroomFather());
         target.setBrideFather(source.getBrideFather());
         target.setGroomUntrackedFather(source.getGroomUntrackedFather());
-        target.setBrideUntrackedFather(source.getGroomUntrackedFather());
+        target.setBrideUntrackedFather(source.getBrideUntrackedFather());
         target.setBrideFatherRank(source.getBrideFatherRank());
         target.setFirstWitness(source.getFirstWitness());
         target.setSecondWitness(source.getSecondWitness());

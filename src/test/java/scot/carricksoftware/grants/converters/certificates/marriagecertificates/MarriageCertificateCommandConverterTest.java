@@ -76,6 +76,7 @@ class MarriageCertificateCommandConverterTest {
         assertEquals(source.getBrideUntrackedFather(), target.getBrideUntrackedFather());
         assertEquals(source.getGroomRank(), target.getGroomRank());
         assertEquals(source.getBrideRank(), target.getBrideRank());
+        assertEquals(source.getBrideFatherRank(), target.getBrideFatherRank());
         assertEquals(source.getFirstWitness(), target.getFirstWitness());
         assertEquals(source.getSecondWitness(), target.getSecondWitness());
         assertEquals(source.getWhenMarried(), target.getWhenMarried());
@@ -89,6 +90,8 @@ class MarriageCertificateCommandConverterTest {
         assertEquals(source.getBrideRank(), target.getBrideRank());
         assertEquals(source.getFirstWitness(), target.getFirstWitness());
         assertEquals(source.getSecondWitness(), target.getSecondWitness());
+        assertEquals(source.getUntrackedFirstWitness(), target.getUntrackedFirstWitness());
+        assertEquals(source.getUntrackedSecondWitness(), target.getUntrackedSecondWitness());
         assertEquals(source.getWhereMarried(), target.getWhereMarried());
         assertEquals(source.getWhereMarried(), target.getWhereMarried());
 
