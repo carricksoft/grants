@@ -22,6 +22,27 @@ public class MarriageCertificateConverterImpl implements MarriageCertificateConv
         target.setId(source.getId());
         target.setBride(source.getBride());
         target.setGroom(source.getGroom());
+        target.setWhenMarried(source.getWhenMarried());
+        target.setWhenMarried(source.getWhenMarried());
+        target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
+        target.setGroomAge(source.getGroomAge());
+        target.setBrideAge(source.getBrideAge());
+        target.setGroomCondition(source.getGroomCondition());
+        target.setBrideCondition(source.getBrideCondition());
+        target.setGroomRank(source.getGroomRank());
+        target.setBrideRank(source.getBrideRank());
+        target.setGroomUsualResidence(source.getGroomUsualResidence());
+        target.setBrideUsualResidence(source.getBrideUsualResidence());
+        target.setGroomUntrackedResidence(source.getGroomUntrackedResidence());
+        target.setBrideUntrackedResidence(source.getBrideUntrackedResidence());
+        target.setGroomFather(source.getGroomFather());
+        target.setBrideFather(source.getBrideFather());
+        target.setGroomUntrackedFather(source.getGroomUntrackedFather());
+        target.setBrideUntrackedFather(source.getGroomUntrackedFather());
+        target.setBrideFatherRank(source.getBrideFatherRank());
+        target.setFirstWitness(source.getFirstWitness());
+        target.setSecondWitness(source.getSecondWitness());
+        target.setUntrackedFirstWitness(source.getUntrackedFirstWitness());
 
         return target;
     }
