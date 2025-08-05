@@ -10,13 +10,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import org.springframework.format.annotation.DateTimeFormat;
-import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 
 @Entity
-public class MarriageCertificate extends BaseEntity {
+public class MarriageCertificate extends BaseCertificate {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne

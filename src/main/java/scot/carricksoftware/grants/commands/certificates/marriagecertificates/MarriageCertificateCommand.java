@@ -6,7 +6,9 @@
 package scot.carricksoftware.grants.commands.certificates.marriagecertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 public interface MarriageCertificateCommand {
 
@@ -111,4 +113,32 @@ public interface MarriageCertificateCommand {
     String getUntrackedSecondWitness();
 
     void setUntrackedSecondWitness(String untrackedSecondWitness);
+
+    String getCertificateNumber();
+
+    void setCertificateNumber(String certificateNumber);
+
+    Organisation getCertificateSource();
+
+    void setCertificateSource(Organisation certificateSource);
+
+    String getCertificateDate();
+
+    void setCertificateDate(String certificateDate);
+
+    CertificateType getCertificateType();
+
+    void setCertificateType(CertificateType certificateType);
+
+    Organisation getRegistrationAuthority();
+
+    void setRegistrationAuthority(Organisation registrationAuthority);
+
+    String getVolume();
+
+    void setVolume(String volume);
+
+    String getNumber();
+
+    void setNumber(String number);
 }

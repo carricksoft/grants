@@ -6,11 +6,20 @@
 package scot.carricksoftware.grants.commands.certificates.marriagecertificates;
 
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 public class MarriageCertificateCommandImpl implements MarriageCertificateCommand {
 
     private Long Id;
+    private String certificateNumber;
+    private Organisation certificateSource;
+    private String certificateDate;
+    private CertificateType certificateType;
+    private Organisation registrationAuthority;
+    private String volume;
+    private String number;
     private Person bride;
     private Person groom;
     private String whenMarried;
@@ -284,5 +293,75 @@ public class MarriageCertificateCommandImpl implements MarriageCertificateComman
     @Override
     public void setUntrackedSecondWitness(String untrackedSecondWitness) {
         this.untrackedSecondWitness = untrackedSecondWitness;
+    }
+
+    @Override
+    public String getCertificateNumber() {
+        return certificateNumber;
+    }
+
+    @Override
+    public void setCertificateNumber(String certificateNumber) {
+        this.certificateNumber = certificateNumber;
+    }
+
+    @Override
+    public Organisation getCertificateSource() {
+        return certificateSource;
+    }
+
+    @Override
+    public void setCertificateSource(Organisation certificateSource) {
+        this.certificateSource = certificateSource;
+    }
+
+    @Override
+    public String getCertificateDate() {
+        return certificateDate;
+    }
+
+    @Override
+    public void setCertificateDate(String certificateDate) {
+        this.certificateDate = certificateDate;
+    }
+
+    @Override
+    public CertificateType getCertificateType() {
+        return certificateType;
+    }
+
+    @Override
+    public void setCertificateType(CertificateType certificateType) {
+        this.certificateType = certificateType;
+    }
+
+    @Override
+    public Organisation getRegistrationAuthority() {
+        return registrationAuthority;
+    }
+
+    @Override
+    public void setRegistrationAuthority(Organisation registrationAuthority) {
+        this.registrationAuthority = registrationAuthority;
+    }
+
+    @Override
+    public String getVolume() {
+        return volume;
+    }
+
+    @Override
+    public void setVolume(String volume) {
+        this.volume = volume;
+    }
+
+    @Override
+    public String getNumber() {
+        return number;
+    }
+
+    @Override
+    public void setNumber(String number) {
+        this.number = number;
     }
 }
