@@ -36,7 +36,7 @@ public class DataLoadMarriageCertificates {
 
 
     private void loadDeathCertificates() {
-        logger.debug("DataLoadCertificates::LoadDeathCertificates");
+        logger.debug("DataLoadCertificates::LoadMarriageCertificates");
         MarriageCertificateCommand marriageCertificateCommand = new MarriageCertificateCommandImpl();
         marriageCertificateCommand.setGroom(personService.findById(1L));
         marriageCertificateCommand.setBride(personService.findById(2L));
