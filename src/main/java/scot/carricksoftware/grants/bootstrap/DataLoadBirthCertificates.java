@@ -1,0 +1,84 @@
+/*
+ * Copyright (c)  18 Feb 2025, Andrew Grant of Carrick Software .
+ * All rights reserved.
+ */
+
+package scot.carricksoftware.grants.bootstrap;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.context.annotation.Profile;
+import org.springframework.stereotype.Component;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
+import scot.carricksoftware.grants.enums.general.Sex;
+import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
+import scot.carricksoftware.grants.services.people.PersonService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
+import scot.carricksoftware.grants.services.places.places.PlaceService;
+
+
+@Component
+@Profile("dev")
+public class DataLoadBirthCertificates {
+
+    private static final Logger logger = LogManager.getLogger(DataLoadBirthCertificates.class);
+    private final OrganisationService organisationService;
+    private final BirthCertificateService birthCertificateService;
+    private final PersonService personService;
+    private final PlaceService placeService;
+
+    public DataLoadBirthCertificates(OrganisationService organisationService,
+                                     BirthCertificateService birthCertificateService,
+                                     PersonService personService, PlaceService placeService) {
+        this.organisationService = organisationService;
+        this.birthCertificateService = birthCertificateService;
+        this.personService = personService;
+        this.placeService = placeService;
+    }
+
+    public void load() {
+        logger.debug("DataLoadBirthCertificates::load");
+        loadBirthCertificates();
+    }
+
+    private void loadBirthCertificates() {
+        logger.debug("DataLoadBirthCertificates::LoadBirthCertificates");
+        BirthCertificateCommand birthCertificateCommand = new BirthCertificateCommandImpl();
+
+        birthCertificateCommand.setCertificateNumber("999");
+        birthCertificateCommand.setCertificateDate("25/01/1953");
+        birthCertificateCommand.setCertificateType(CertificateType.EXTRACT);
+
+        birthCertificateCommand.setRegistrationAuthority(organisationService.findById(2L));
+        birthCertificateCommand.setVolume("01");
+        birthCertificateCommand.setNumber("02");
+        birthCertificateCommand.setCertificateSource(organisationService.findById(1L));
+
+        birthCertificateCommand.setNewBorn(personService.findById(3L));
+        birthCertificateCommand.setSex(Sex.MALE);
+        birthCertificateCommand.setWhenBorn("25/01/1953 01:01");
+        birthCertificateCommand.setUntrackedWhereBorn("Edinburgh");
+        birthCertificateCommand.setFather(personService.findById(1L));
+        birthCertificateCommand.setUntrackedFather("Untracked Father");
+
+        birthCertificateCommand.setMother(personService.findById(2L));
+        birthCertificateCommand.setWhereBorn(placeService.findById(1L));
+        birthCertificateCommand.setInformant(personService.findById(1L));
+        birthCertificateCommand.setUntrackedInformant("Untracked Informant");
+        birthCertificateCommand.setInformantQualification("Qualification");
+        birthCertificateCommand.setWhenRegistered("22/01/1978");
+        birthCertificateCommand.setWhereRegistered("Where Registered");
+        birthCertificateCommand.setFatherUsualResidence(placeService.findById(1L));
+        birthCertificateCommand.setUntrackedFatherUsualResidence("57 Back Street, Edinburgh");
+        birthCertificateCommand.setInformantResidence("2 Wilson Avenue, Edinburgh");
+        birthCertificateCommand.setMotherUsualResidence(placeService.findById(1L));
+        birthCertificateCommand.setUntrackedMotherUsualResidence("92 Broughton Road, Edinburgh");
+        birthCertificateCommand.setMotherPlaceOfBirth("Drop");
+        birthCertificateCommand.setFatherPlaceOfBirth("Drip");
+        birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
+    }
+
+
+}
