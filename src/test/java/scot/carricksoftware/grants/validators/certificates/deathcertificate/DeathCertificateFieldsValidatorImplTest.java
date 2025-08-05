@@ -42,18 +42,17 @@ class DeathCertificateFieldsValidatorImplTest {
 
     @SuppressWarnings("unused")
     DeathCertificateCommand deathCertificateCommand;
-    Person deceased;
-    String certificateNumber;
-    String volume;
-    String number;
-    String causeOfDeath;
-    String informantQualification;
-    String certificateDate;
-    String whenDied;
-    final Sex sex = Sex.FEMALE;
-    Organisation certificateSource;
-    Organisation registrationAuthority;
-    CertificateType certificateType;
+    private Person deceased;
+    private String certificateNumber;
+    private String volume;
+    private String number;
+    private String causeOfDeath;
+    private String informantQualification;
+    private String whenDied;
+    private final Sex sex = Sex.FEMALE;
+    private Organisation certificateSource;
+    private Organisation registrationAuthority;
+    private CertificateType certificateType;
 
     @BeforeEach
     void setUp() {
@@ -66,10 +65,11 @@ class DeathCertificateFieldsValidatorImplTest {
         number = GetRandomString();
         causeOfDeath = GetRandomString();
         informantQualification = GetRandomString();
+        whenDied = GetRandomString();
         certificateSource = GetRandomOrganisation();
         certificateType = CertificateType.EXTRACT;
         registrationAuthority = GetRandomOrganisation();
-        certificateDate = GetRandomString();
+        String certificateDate = GetRandomString();
         deathCertificateCommand.setDeceased(deceased);
         deathCertificateCommand.setCertificateNumber(certificateNumber);
         deathCertificateCommand.setVolume(volume);
@@ -82,7 +82,6 @@ class DeathCertificateFieldsValidatorImplTest {
         deathCertificateCommand.setCertificateType(certificateType);
         deathCertificateCommand.setCertificateDate(certificateDate);
         deathCertificateCommand.setWhenDied(whenDied);
-
     }
 
     @Test

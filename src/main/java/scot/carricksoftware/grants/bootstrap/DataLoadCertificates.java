@@ -17,19 +17,23 @@ public class DataLoadCertificates {
     private static final Logger logger = LogManager.getLogger(DataLoadCertificates.class);
 
     private final DataLoadBirthCertificates dataLoadBirthCertificates;
-    private final DataLoadDeathCertificates dataLoadDeathertificates;
+    private final DataLoadDeathCertificates dataLoadDeathCertificates;
+    private final DataLoadMarriageCertificates dataLoadMarriageCertificates;
 
     public DataLoadCertificates(DataLoadBirthCertificates dataLoadBirthCertificates,
-                                DataLoadDeathCertificates dataLoadDeathertificates) {
+                                DataLoadDeathCertificates dataLoadDeathCertificates,
+                                DataLoadMarriageCertificates dataLoadMarriageCertificates) {
         this.dataLoadBirthCertificates = dataLoadBirthCertificates;
-        this.dataLoadDeathertificates = dataLoadDeathertificates;
+        this.dataLoadDeathCertificates = dataLoadDeathCertificates;
+        this.dataLoadMarriageCertificates = dataLoadMarriageCertificates;
     }
 
 
     public void load() {
         logger.debug("DataLoadCertificates::load");
         dataLoadBirthCertificates.load();
-        dataLoadDeathertificates.load();
+        dataLoadDeathCertificates.load();
+        dataLoadMarriageCertificates.load();
     }
 
 
