@@ -22,9 +22,6 @@ class DataLoaderSecondaryTest {
     private DataLoadCertificates dataLoadCertificatesMock;
 
     @Mock
-    private DataLoadTwoPartyCertificates dataLoadTwoPartyCertificatesMock;
-
-    @Mock
     private DataLoadImages dataLoadImagesMock;
 
     @Mock
@@ -34,22 +31,14 @@ class DataLoaderSecondaryTest {
     @BeforeEach
     void setUp() {
         dataLoaderSecondary = new DataLoaderSecondary(dataLoadCertificatesMock,
-                dataLoadTwoPartyCertificatesMock,
                 dataLoadTextsMock,
                 dataLoadImagesMock);
     }
-
 
     @Test
     void loadCertificatesIsCalledTest() {
         dataLoaderSecondary.load();
         verify(dataLoadCertificatesMock).load();
-    }
-
-    @Test
-    void loadCertificatesTwoPartyIsCalledTest() {
-        dataLoaderSecondary.load();
-        verify(dataLoadTwoPartyCertificatesMock).load();
     }
 
     @Test

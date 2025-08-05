@@ -19,16 +19,13 @@ public class DataLoaderSecondary {
     private static final Logger logger = LogManager.getLogger(DataLoaderSecondary.class);
 
     private final DataLoadCertificates dataLoadCertificates;
-    private final DataLoadTwoPartyCertificates dataLoadTwoPartyCertificates;
     private final DataLoadTexts dataLoadTexts;
     private final DataLoadImages dataLoadImages;
 
     public DataLoaderSecondary(DataLoadCertificates dataLoadCertificates,
-                               DataLoadTwoPartyCertificates dataLoadTwoPartyCertificates,
                                DataLoadTexts dataLoadTexts,
                                DataLoadImages dataLoadImages) {
         this.dataLoadCertificates = dataLoadCertificates;
-        this.dataLoadTwoPartyCertificates = dataLoadTwoPartyCertificates;
         this.dataLoadTexts = dataLoadTexts;
         this.dataLoadImages = dataLoadImages;
     }
@@ -36,7 +33,6 @@ public class DataLoaderSecondary {
     public void load() {
         logger.debug("DataLoaderSecondary::load");
         dataLoadCertificates.load();
-        dataLoadTwoPartyCertificates.load();
         dataLoadImages.load();
         dataLoadTexts.load();
     }
