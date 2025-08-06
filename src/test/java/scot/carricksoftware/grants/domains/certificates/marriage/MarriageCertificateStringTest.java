@@ -115,6 +115,18 @@ class MarriageCertificateStringTest {
         assertEquals(string, marriageCertificate.getBrideFatherRank());
     }
 
+    @Test
+    void getGroomFatherRankTest() {
+        assertNull(marriageCertificate.getGroomFatherRank());
+    }
+
+    @Test
+    void setGroomFatherRankTest() {
+        marriageCertificate.setGroomFatherRank(string);
+        assertEquals(string, marriageCertificate.getGroomFatherRank());
+    }
+
+
 
 
 
