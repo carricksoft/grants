@@ -10,11 +10,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 class MarriageCertificateConverterTest {
@@ -55,6 +57,13 @@ class MarriageCertificateConverterTest {
         source.setBrideCondition(GetRandomString());
         source.setGroomRank(GetRandomString());
         source.setBrideRank(GetRandomString());
+        source.setCertificateNumber(GetRandomString());
+        source.setCertificateType(CertificateType.EXTRACT);
+        source.setCertificateSource(GetRandomOrganisation());
+        source.setCertificateDate(GetRandomString());
+        source.setRegistrationAuthority(GetRandomOrganisation());
+        source.setVolume(GetRandomString());
+        source.setNumber(GetRandomString());
 
         MarriageCertificateCommand target = converter.convert(source);
 
@@ -90,6 +99,14 @@ class MarriageCertificateConverterTest {
         assertEquals(source.getUntrackedSecondWitness(), target.getUntrackedSecondWitness());
         assertEquals(source.getWhereMarried(), target.getWhereMarried());
         assertEquals(source.getWhenMarried(), target.getWhenMarried());
+
+        assertEquals(source.getCertificateNumber(), target.getCertificateNumber());
+        assertEquals(source.getCertificateType(), target.getCertificateType());
+        assertEquals(source.getCertificateSource(), target.getCertificateSource());
+        assertEquals(source.getCertificateDate(), target.getCertificateDate());
+        assertEquals(source.getRegistrationAuthority(), target.getRegistrationAuthority());
+        assertEquals(source.getVolume(), target.getVolume());
+        assertEquals(source.getNumber(), target.getNumber());
 
 
     }
