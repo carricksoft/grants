@@ -191,6 +191,72 @@
                 </td>
             </tr>
             <tr>
+                <td style="text-align: right; background-color: #F542A4;">
+                    <label for="firstWitness">First Witness :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="firstWitness" name="firstWitness" th:field="*{firstWitness}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="person : ${people}"
+                                th:value="${person.id}" th:text="${person.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('firstWitness')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('firstWitness')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #F542A4;">
+                    <label for="untrackedFirstWitness">First witness (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="untrackedFirstWitness" id="untrackedFirstWitness"
+                               th:field="*{untrackedFirstWitness}" type="text">
+                        <div th:if="${#fields.hasErrors('untrackedFirstWitness')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('untrackedFirstWitness')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #F542A4;">
+                    <label for="secondWitness">Second Witness :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="secondWitness" name="secondWitness" th:field="*{secondWitness}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="person : ${people}"
+                                th:value="${person.id}" th:text="${person.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('secondWitness')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('secondWitness')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #F542A4;">
+                    <label for="untrackedSecondWitness">Second witness (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="untrackedSecondWitness" id="untrackedSecondWitness"
+                               th:field="*{untrackedSecondWitness}" type="text">
+                        <div th:if="${#fields.hasErrors('untrackedSecondWitness')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('untrackedSecondWitness')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td style="text-align: right;">
                     <label for="bride">Bride</label>
                 </td>
