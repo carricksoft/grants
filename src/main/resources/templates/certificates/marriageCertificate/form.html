@@ -157,8 +157,6 @@
                     </div>
                 </td>
             </tr>
-
-
             <tr>
                 <td style="text-align: right;">
                     <label for="bride">Bride</label>
@@ -176,6 +174,55 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="brideCondition">Bride Condition :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="brideCondition" id="brideCondition"
+                               th:field="*{brideCondition}" type="text">
+                        <div th:if="${#fields.hasErrors('brideCondition')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('brideCondition')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="brideAge">Bride Age :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="brideAge" id="brideAge"
+                               th:field="*{brideAge}" type="text">
+                        <div th:if="${#fields.hasErrors('brideAge')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('brideAge')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="brideRank">Bride Rank :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="brideRank" id="brideRank"
+                               th:field="*{brideRank}" type="text">
+                        <div th:if="${#fields.hasErrors('brideRank')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('brideRank')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
             <tr>
                 <td style="text-align: right;">
                     <label for="groom">Groom</label>

@@ -142,22 +142,7 @@
                     </div>
                 </td>
             </tr>
-            <tr style="border-bottom: 5px solid #ccc;">
-                <td style="text-align: right;">
-                    <label for="number">Number :&nbsp;</label>
-                </td>
-                <td style="text-align: left;">
-                    <div>
-                        <input class="number" id="number"
-                               th:field="*{number}" type="text">
-                        <div th:if="${#fields.hasErrors('number')}">
-                            <ul class="text-danger">
-                                <li th:each="err : ${#fields.errors('number')}" th:text="${err}"/>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
+
             <tr>
                 <td style="text-align: right;">
                     <label for="deceased">Deceased :&nbsp;</label>
