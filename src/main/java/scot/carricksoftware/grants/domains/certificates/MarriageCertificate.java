@@ -189,9 +189,6 @@ public class MarriageCertificate extends BaseCertificate {
         return brideAge;
     }
 
-    @SuppressWarnings("unused")   @SuppressWarnings("JpaDataSourceORMInspection")
-    @Column(name = "`groom_father_rank`")
-    private String brideFatherRank;
     public void setBrideAge(String brideAge) {
         this.brideAge = brideAge;
     }
