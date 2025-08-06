@@ -420,6 +420,137 @@
                         </ul>
                     </div>
                 </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="groomCondition">Groom Condition :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="groomCondition" id="groomCondition"
+                               th:field="*{groomCondition}" type="text">
+                        <div th:if="${#fields.hasErrors('groomCondition')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('groomCondition')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="groomAge">Groom Age :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="groomAge" id="groomAge"
+                               th:field="*{groomAge}" type="text">
+                        <div th:if="${#fields.hasErrors('groomAge')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('groomAge')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="groomRank">Groom Rank :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="groomRank" id="groomRank"
+                               th:field="*{groomRank}" type="text">
+                        <div th:if="${#fields.hasErrors('groomRank')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('groomRank')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #F542A4;">
+                    <label for="groomUsualResidence">Groom Residence :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="groomUsualResidence" name="groomUsualResidence" th:field="*{groomUsualResidence}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="place : ${places}"
+                                th:value="${place.id}" th:text="${place.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('groomUsualResidence')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('groomUsualResidence')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #F542A4;">
+                    <label for="groomUntrackedResidence">Groom Residence (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="groomUntrackedResidence" id="groomUntrackedResidence"
+                               th:field="*{brideUntrackedResidence}" type="text">
+                        <div th:if="${#fields.hasErrors('groomUntrackedResidence')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('groomUntrackedResidence')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #F542A4;">
+                    <label for="groomFather">Groom's Father :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="groomFather" name="groomFather" th:field="*{groomFather}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="person : ${people}"
+                                th:value="${person.id}" th:text="${person.toString()}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('groomUsualResidence')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('groomUsualResidence')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #F542A4;">
+                    <label for="groomUntrackedFather">Groom's Father (untracked) :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="groomUntrackedFather" id="groomUntrackedFather"
+                               th:field="*{groomUntrackedFather}" type="text">
+                        <div th:if="${#fields.hasErrors('brideUntrackedFather')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('groomUntrackedFather')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right; background-color: #F542A4;">
+                    <label for="groomFatherRank">Groom's Father's Rank :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="groomFatherRank" id="groomFatherRank"
+                               th:field="*{groomFatherRank}" type="text">
+                        <div th:if="${#fields.hasErrors('groomFatherRank')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('groomFatherRank')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
 
         </table>
         <button type="submit" class="btn btn-primary">Commit</button>
