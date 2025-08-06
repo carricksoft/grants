@@ -103,6 +103,10 @@ public class MarriageCertificate extends BaseCertificate {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`groom_father_rank`")
+    private String groomFatherRank;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`bride_father_rank`")
     private String brideFatherRank;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
@@ -185,7 +189,9 @@ public class MarriageCertificate extends BaseCertificate {
         return brideAge;
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings("unused")   @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`groom_father_rank`")
+    private String brideFatherRank;
     public void setBrideAge(String brideAge) {
         this.brideAge = brideAge;
     }
@@ -358,5 +364,13 @@ public class MarriageCertificate extends BaseCertificate {
     @SuppressWarnings("unused")
     public void setUntrackedSecondWitness(String untrackedSecondWitness) {
         this.untrackedSecondWitness = untrackedSecondWitness;
+    }
+
+    public String getGroomFatherRank() {
+        return groomFatherRank;
+    }
+
+    public void setGroomFatherRank(String groomFatherRank) {
+        this.groomFatherRank = groomFatherRank;
     }
 }
