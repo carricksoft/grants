@@ -40,6 +40,7 @@ public class MarriageCertificateCommandImpl implements MarriageCertificateComman
     private String groomUntrackedFather;
     private String brideUntrackedFather;
     private String brideFatherRank;
+    private String groomFatherRank;
     private Person firstWitness;
     private Person secondWitness;
     private String untrackedFirstWitness;
@@ -363,5 +364,15 @@ public class MarriageCertificateCommandImpl implements MarriageCertificateComman
     @Override
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String getGroomFatherRank() {
+        return groomFatherRank;
+    }
+
+    @Override
+    public void setGroomFatherRank(String groomFatherRank) {
+        this.groomFatherRank = groomFatherRank;
     }
 }

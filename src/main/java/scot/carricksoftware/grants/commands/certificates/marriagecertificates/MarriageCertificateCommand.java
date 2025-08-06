@@ -141,4 +141,8 @@ public interface MarriageCertificateCommand {
     String getNumber();
 
     void setNumber(String number);
+
+    String getGroomFatherRank();
+
+    void setGroomFatherRank(String groomFatherRank);
 }
