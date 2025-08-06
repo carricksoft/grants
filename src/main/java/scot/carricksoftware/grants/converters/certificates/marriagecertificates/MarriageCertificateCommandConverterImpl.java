@@ -25,6 +25,7 @@ public class MarriageCertificateCommandConverterImpl implements MarriageCertific
         target.setGroomUntrackedFather(source.getGroomUntrackedFather());
         target.setBrideUntrackedFather(source.getBrideUntrackedFather());
         target.setBrideFatherRank(source.getBrideFatherRank());
+        target.setGroomFatherRank(source.getGroomFatherRank());
         target.setFirstWitness(source.getFirstWitness());
         target.setSecondWitness(source.getSecondWitness());
         target.setUntrackedFirstWitness(source.getUntrackedFirstWitness());
