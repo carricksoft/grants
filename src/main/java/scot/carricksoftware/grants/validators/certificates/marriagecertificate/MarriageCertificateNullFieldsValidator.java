@@ -5,14 +5,13 @@
 
 package scot.carricksoftware.grants.validators.certificates.marriagecertificate;
 
-import org.springframework.stereotype.Component;
+
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 
+public interface MarriageCertificateNullFieldsValidator {
 
-@Component
-public interface MarriageCertificateCommandValidator {
-
+    @SuppressWarnings("unused")
     void validate(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult);
 }
 
