@@ -18,6 +18,7 @@ import scot.carricksoftware.grants.converters.certificates.marriagecertificates.
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.MarriageCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.validators.certificates.marriagecertificate.MarriageCertificateCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -43,6 +44,8 @@ public class MarriageCertificateFormControllerSaveOrUpdateTest {
     @Mock
     private PersonService personServiceMock;
 
+    @Mock
+    private OrganisationService organisationServiceMock;
 
     @Mock
     Model modelMock;
@@ -62,7 +65,8 @@ public class MarriageCertificateFormControllerSaveOrUpdateTest {
                 marriageCertificateCommandConverterMock,
                 marriageCertificateConverterMock,
                 marriageCertificateCommandValidatorMock,
-                personServiceMock);
+                personServiceMock,
+                organisationServiceMock);
         marriageCertificateCommand = new MarriageCertificateCommandImpl();
     }
 
