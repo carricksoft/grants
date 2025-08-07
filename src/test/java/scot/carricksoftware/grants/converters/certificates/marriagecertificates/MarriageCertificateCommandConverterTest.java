@@ -46,6 +46,7 @@ class MarriageCertificateCommandConverterTest {
         source.setGroomUntrackedFather(GetRandomString());
         source.setBrideUntrackedFather(GetRandomString());
         source.setBrideFatherRank(GetRandomString());
+        source.setGroomFatherRank(GetRandomString());
         source.setFirstWitness(GetRandomPerson());
         source.setSecondWitness(GetRandomPerson());
         source.setUntrackedFirstWitness(GetRandomString());
@@ -88,6 +89,7 @@ class MarriageCertificateCommandConverterTest {
         assertEquals(source.getGroomRank(), target.getGroomRank());
         assertEquals(source.getBrideRank(), target.getBrideRank());
         assertEquals(source.getBrideFatherRank(), target.getBrideFatherRank());
+        assertEquals(source.getGroomFatherRank(), target.getGroomFatherRank());
         assertEquals(source.getFirstWitness(), target.getFirstWitness());
         assertEquals(source.getSecondWitness(), target.getSecondWitness());
         assertEquals(source.getWhenMarried(), target.getWhenMarried());
