@@ -107,8 +107,8 @@ public class MarriageCertificateUntrackedFieldsValidatorImpl implements Marriage
         logger.debug("MarriageCertificateUntrackedFieldsValidatorImp::validateUntrackedSecondWitness");
         validateTwoFieldTypes.validatePersonAndUntrackedPerson(marriageCertificateCommand.getSecondWitness(),
                 marriageCertificateCommand.getUntrackedSecondWitness(),
-                "firstWitness",
-                "untrackedFirstWitness",
+                "secondWitness",
+                "untrackedSecondWitness",
                 ValidationConstants.WITNESS_AND_UNTRACKED_SECOND_WITNESS,
                 bindingResult);
     }

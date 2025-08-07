@@ -32,6 +32,7 @@ public class MarriageCertificateCommandValidatorImpl implements MarriageCertific
 
     @Override
     public void validate(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
+        marriageCertificateBaseFieldsValidator.validate(marriageCertificateCommand, bindingResult);
         marriageCertificateNullFieldsValidator.validate(marriageCertificateCommand, bindingResult);
         marriageCertificateUntrackedFieldsValidator.validate(marriageCertificateCommand, bindingResult);
     }

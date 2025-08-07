@@ -24,6 +24,7 @@ public class ValidationConstants {
     public static final String BRIDE_RANK_IS_NULL = "The bride rank cannot be null.";
     public static final String BRIDE_CONDITION_IS_NULL = "The bride condition cannot be null.";
     public static final String BRIDE_FATHER_AND_UNTRACKED_FATHER = "One and only one bride father and untracked bride father may be specified.";
+    public static final String BRIDE_FATHER_RANK_IS_NULL = "The bride's father's rank cannot be null.";
     public static final String BRIDE_USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE = "One and only one bride residence and untracked groom residence may be specified.";
     public static final String CENSUS_IS_NULL = "The census should be specified";
     public static final String CAUSE_OF_DEATH_IS_NULL = "The cause of death should be specified.";
@@ -45,6 +46,7 @@ public class ValidationConstants {
     public static final String FIRST_PARTY_IS_NULL = "The first party cannot be null.";
     public static final String GROOM_IS_NULL = "The groom cannot be null.";
     public static final String GROOM_AGE_IS_NULL = "The groom age cannot be null.";
+    public static final String GROOM_FATHER_RANK_IS_NULL = "The groom's father's rank cannot be null.";
     public static final String GROOM_RANK_IS_NULL = "The groom rank cannot be null.";
     public static final String GROOM_CONDITION_IS_NULL = "The groom condition cannot be null.";
     public static final String GROOM_FATHER_AND_UNTRACKED_FATHER = "One and only one groom father and untracked groom father may be specified.";

@@ -28,12 +28,14 @@ public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCerti
     public void validate(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         validateGroom(marriageCertificateCommand, bindingResult);
         validateBride(marriageCertificateCommand, bindingResult);
+        validateBrideCondition(marriageCertificateCommand, bindingResult);
+        validateBrideRank(marriageCertificateCommand, bindingResult);
         validateGroomAge(marriageCertificateCommand, bindingResult);
         validateBrideAge(marriageCertificateCommand, bindingResult);
         validateGroomRank(marriageCertificateCommand, bindingResult);
-        validateBrideRank(marriageCertificateCommand, bindingResult);
         validateGroomCondition(marriageCertificateCommand, bindingResult);
-        validateBrideCondition(marriageCertificateCommand, bindingResult);
+        validateGroomFatherRank(marriageCertificateCommand, bindingResult);
+        validateBrideFatherRank(marriageCertificateCommand, bindingResult);
         validateWhenMarried(marriageCertificateCommand, bindingResult);
     }
 
@@ -52,36 +54,46 @@ public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCerti
         validateTypes.validatePerson(marriageCertificateCommand.getGroom(), "bride", ValidationConstants.BRIDE_IS_NULL, bindingResult);
     }
 
-
     private void validateGroomAge(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateGroomAge");
-        validateTypes.validatePerson(marriageCertificateCommand.getGroom(), "groomAge", ValidationConstants.GROOM_AGE_IS_NULL, bindingResult);
+        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getGroomAge(), "groomAge", ValidationConstants.GROOM_AGE_IS_NULL, bindingResult);
     }
 
     private void validateGroomRank(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateGroomRank");
-        validateTypes.validatePerson(marriageCertificateCommand.getGroom(), "groomRank", ValidationConstants.GROOM_RANK_IS_NULL, bindingResult);
+        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getGroomRank(), "groomRank", ValidationConstants.GROOM_RANK_IS_NULL, bindingResult);
     }
 
     private void validateGroomCondition(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateGroomCondition");
-        validateTypes.validatePerson(marriageCertificateCommand.getGroom(), "groomCondition", ValidationConstants.GROOM_CONDITION_IS_NULL, bindingResult);
+        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getGroomCondition(), "groomCondition", ValidationConstants.GROOM_CONDITION_IS_NULL, bindingResult);
     }
 
     private void validateBrideAge(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateBrideAge");
-        validateTypes.validatePerson(marriageCertificateCommand.getBride(), "brideAge", ValidationConstants.BRIDE_AGE_IS_NULL, bindingResult);
+        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getBrideAge(), "brideAge", ValidationConstants.BRIDE_AGE_IS_NULL, bindingResult);
     }
 
     private void validateBrideRank(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateBrideRank");
-        validateTypes.validatePerson(marriageCertificateCommand.getBride(), "brideRank", ValidationConstants.BRIDE_RANK_IS_NULL, bindingResult);
+        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getBrideRank(), "brideRank", ValidationConstants.BRIDE_RANK_IS_NULL, bindingResult);
     }
 
     private void validateBrideCondition(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateBrideCondition");
-        validateTypes.validatePerson(marriageCertificateCommand.getBride(), "brideCondition", ValidationConstants.BRIDE_CONDITION_IS_NULL, bindingResult);
+        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getBrideCondition(), "brideCondition", ValidationConstants.BRIDE_CONDITION_IS_NULL, bindingResult);
     }
+
+    private void validateBrideFatherRank(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
+        logger.debug("MarriageCertificateNullFieldsValidator::validateBrideFatherRank");
+        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getBrideFatherRank(), "brideFatherRank", ValidationConstants.BRIDE_FATHER_RANK_IS_NULL, bindingResult);
+    }
+
+    private void validateGroomFatherRank(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
+        logger.debug("MarriageCertificateNullFieldsValidator::validateGroomFatherRank");
+        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getGroomFatherRank(), "groomFatherRank", ValidationConstants.BRIDE_FATHER_RANK_IS_NULL, bindingResult);
+    }
+
 
 
 
