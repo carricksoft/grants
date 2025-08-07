@@ -39,7 +39,7 @@ public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCerti
 
     private void validateWhenMarried(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateWhenDied");
-        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getWhenMarried(), "whenDied", ValidationConstants.WHEN_MARRIED_IS_NULL, bindingResult);
+        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getWhenMarried(), "whenMarried", ValidationConstants.WHEN_MARRIED_IS_NULL, bindingResult);
     }
 
     private void validateGroom(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {

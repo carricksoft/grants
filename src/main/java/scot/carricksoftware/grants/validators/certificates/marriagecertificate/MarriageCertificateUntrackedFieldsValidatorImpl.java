@@ -53,7 +53,7 @@ public class MarriageCertificateUntrackedFieldsValidatorImpl implements Marriage
         validateTwoFieldTypes.validatePlaceAndUntrackedPlace(marriageCertificateCommand.getGroomUsualResidence(),
                 marriageCertificateCommand.getGroomUntrackedResidence(),
                 "groomUsualResidence",
-                "untrackedGroomResidence",
+                "groomUntrackedResidence",
                 ValidationConstants.GROOM_USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE,
                 bindingResult);
     }
@@ -63,8 +63,8 @@ public class MarriageCertificateUntrackedFieldsValidatorImpl implements Marriage
         logger.debug("MarriageCertificateUntrackedFieldsValidatorImp::validateBrideUntrackedResidence");
         validateTwoFieldTypes.validatePlaceAndUntrackedPlace(marriageCertificateCommand.getBrideUsualResidence(),
                 marriageCertificateCommand.getBrideUntrackedResidence(),
-                "groomUsualResidence",
-                "untrackedGroomResidence",
+                "brideUsualResidence",
+                "brideUntrackedResidence",
                 ValidationConstants.BRIDE_USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE,
                 bindingResult);
     }
