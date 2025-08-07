@@ -18,6 +18,7 @@ public class MarriageCertificateCommandValidatorImpl implements MarriageCertific
     @SuppressWarnings("unused")
     final MarriageCertificateBaseFieldsValidator marriageCertificateBaseFieldsValidator;
 
+
     final MarriageCertificateUntrackedFieldsValidator marriageCertificateUntrackedFieldsValidator;
 
 
