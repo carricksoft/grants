@@ -512,9 +512,9 @@
                         <option th:each="person : ${people}"
                                 th:value="${person.id}" th:text="${person.toString()}"></option>
                     </select>
-                    <div th:if="${#fields.hasErrors('groomUsualResidence')}">
+                    <div th:if="${#fields.hasErrors('groomFather')}">
                         <ul class="text-danger">
-                            <li th:each="err : ${#fields.errors('groomUsualResidence')}" th:text="${err}"/>
+                            <li th:each="err : ${#fields.errors('groomFather')}" th:text="${err}"/>
                         </ul>
                     </div>
                 </td>
