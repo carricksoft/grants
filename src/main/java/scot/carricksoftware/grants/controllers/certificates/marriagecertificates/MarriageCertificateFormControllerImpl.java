@@ -25,6 +25,7 @@ import scot.carricksoftware.grants.converters.certificates.marriagecertificates.
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.MarriageCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.validators.certificates.marriagecertificate.MarriageCertificateCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -38,13 +39,14 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
     private final MarriageCertificateConverterImpl marriageCertificateConverter;
     private final MarriageCertificateCommandValidator marriageCertificateCommandValidator;
     private final PersonService personService;
+    private final OrganisationService organisationService;
 
 
     public MarriageCertificateFormControllerImpl(MarriageCertificateService marriageCertificateService,
                                                  MarriageCertificateCommandConverterImpl marriageCertificateCommandConverter,
                                                  MarriageCertificateConverterImpl marriageCertificateConverter,
                                                  MarriageCertificateCommandValidator marriageCertificateCommandValidator,
-                                                 PersonService personService) {
+                                                 PersonService personService, OrganisationService organisationService) {
         this.marriageCertificateService = marriageCertificateService;
         this.marriageCertificateCommandConverter = marriageCertificateCommandConverter;
 
@@ -52,6 +54,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         this.marriageCertificateConverter = marriageCertificateConverter;
         this.marriageCertificateCommandValidator = marriageCertificateCommandValidator;
         this.personService = personService;
+        this.organisationService = organisationService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -61,6 +64,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         logger.debug("MarriageCertificateFormControllerImpl::getNewMarriageCertificate");
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, new MarriageCertificateCommandImpl());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         return ViewConstants.MARRIAGE_CERTIFICATE_FORM;
     }
 
@@ -71,6 +75,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         logger.debug("MarriageCertificateFormControllerImpl::marriageCertificateEdit");
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, marriageCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         return ViewConstants.MARRIAGE_CERTIFICATE_FORM;
     }
 
@@ -86,12 +91,14 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+            model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
             return ViewConstants.MARRIAGE_CERTIFICATE_FORM;
         }
 
         MarriageCertificateCommand savedCommand = marriageCertificateService.saveMarriageCertificateCommand(marriageCertificateCommand);
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         return MappingConstants.REDIRECT + CertificateMappingConstants.MARRIAGE_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -104,6 +111,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         MarriageCertificateCommand savedCommand = marriageCertificateConverter.convert(marriageCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         return ViewConstants.MARRIAGE_CERTIFICATE_FORM;
     }
 
