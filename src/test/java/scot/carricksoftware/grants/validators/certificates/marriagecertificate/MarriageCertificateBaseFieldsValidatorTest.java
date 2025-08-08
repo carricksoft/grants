@@ -42,23 +42,23 @@ class MarriageCertificateBaseFieldsValidatorTest {
     @Test
     void validateNullFieldsTest() {
         verify(validateTypesMock).validateNullOrEmptyString(marriageCertificateCommand.getCertificateNumber(),
-                "certificateNumber","The certificate number cannot be null.", bindingResultMock);
+                "certificateNumber", "The certificate number cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(marriageCertificateCommand.getVolume(),
-                "volume","The volume cannot be null.", bindingResultMock);
+                "volume", "The volume cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(marriageCertificateCommand.getNumber(),
-                "number","The number cannot be null.", bindingResultMock);
+                "number", "The number cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateOrganisation(marriageCertificateCommand.getCertificateSource(),
                 "certificateSource", "The certificate source cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateOrganisation(marriageCertificateCommand.getRegistrationAuthority(),
-                "registrationAuthority","The registration authority cannot be null.", bindingResultMock);
+                "registrationAuthority", "The registration authority cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateCertificateType(marriageCertificateCommand.getCertificateType(),
-                "certificateType","The certificate type cannot be null.", bindingResultMock);
+                "certificateType", "The certificate type cannot be null.", bindingResultMock);
     }
 
     @Test
     void validateCertificateDateTest() {
         verify(validateDateTypesMock).validatePastDate(marriageCertificateCommand.getCertificateDate(),
-                "certificateDate","The certificate date cannot be null.",
+                "certificateDate", "The certificate date cannot be null.",
                 "The certificate date is invalid or of the wrong format.",
                 "Date should not be in the future.",
                 bindingResultMock);

@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.capitalisation.certificates.birthcertificate;
+package scot.carricksoftware.grants.capitalisation.certificates.birthcertificates;
 
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 

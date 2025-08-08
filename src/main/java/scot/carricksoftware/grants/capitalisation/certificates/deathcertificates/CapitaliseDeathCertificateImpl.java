@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.capitalisation.certificates.deathcertificate;
+package scot.carricksoftware.grants.capitalisation.certificates.deathcertificates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

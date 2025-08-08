@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.capitalisation.certificates.marriagecertificate;
+package scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

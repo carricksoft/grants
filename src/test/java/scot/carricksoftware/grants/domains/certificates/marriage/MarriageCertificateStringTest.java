@@ -127,7 +127,4 @@ class MarriageCertificateStringTest {
     }
 
 
-
-
-
 }

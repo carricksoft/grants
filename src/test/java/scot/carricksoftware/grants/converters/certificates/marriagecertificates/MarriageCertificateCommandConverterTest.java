@@ -69,7 +69,6 @@ class MarriageCertificateCommandConverterTest {
         source.setNumber(GetRandomString());
 
 
-
         MarriageCertificate target = converter.convert(source);
 
         assert target != null;

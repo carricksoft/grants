@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.capitalisation.certificates.deathcertificate;
+package scot.carricksoftware.grants.capitalisation.certificates.deathcertificates;
 
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 

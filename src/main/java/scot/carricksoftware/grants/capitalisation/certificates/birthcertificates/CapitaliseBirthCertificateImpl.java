@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.capitalisation.certificates.birthcertificate;
+package scot.carricksoftware.grants.capitalisation.certificates.birthcertificates;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

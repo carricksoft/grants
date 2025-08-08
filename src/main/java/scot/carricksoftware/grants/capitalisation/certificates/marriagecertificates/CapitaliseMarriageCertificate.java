@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.capitalisation.certificates.marriagecertificate;
+package scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates;
 
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 
