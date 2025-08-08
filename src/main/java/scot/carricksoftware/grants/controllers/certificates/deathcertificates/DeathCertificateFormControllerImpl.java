@@ -55,7 +55,8 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
                                               PersonService personService,
                                               PlaceService placeService,
                                               OrganisationService organisationService,
-                                              CapitaliseDeathCertificate capitaliseDeathCertificate, UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath) {
+                                              CapitaliseDeathCertificate capitaliseDeathCertificate,
+                                              UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath) {
         this.deathCertificateService = deathCertificateService;
         this.deathCertificateCommandConverter = deathCertificateCommandConverter;
 

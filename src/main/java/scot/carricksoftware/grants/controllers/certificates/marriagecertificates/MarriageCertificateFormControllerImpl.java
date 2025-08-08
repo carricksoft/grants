@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.certificates.marriagecertificate.CapitaliseMarriageCertificate;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -42,13 +43,14 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
     private final PersonService personService;
     private final OrganisationService organisationService;
     private final PlaceService placeService;
+    private final CapitaliseMarriageCertificate capitaliseMarriageCertificate;
 
 
     public MarriageCertificateFormControllerImpl(MarriageCertificateService marriageCertificateService,
                                                  MarriageCertificateCommandConverterImpl marriageCertificateCommandConverter,
                                                  MarriageCertificateConverterImpl marriageCertificateConverter,
                                                  MarriageCertificateCommandValidator marriageCertificateCommandValidator,
-                                                 PersonService personService, OrganisationService organisationService, PlaceService placeService) {
+                                                 PersonService personService, OrganisationService organisationService, PlaceService placeService, CapitaliseMarriageCertificate capitaliseMarriageCertificate) {
         this.marriageCertificateService = marriageCertificateService;
         this.marriageCertificateCommandConverter = marriageCertificateCommandConverter;
 
@@ -58,6 +60,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         this.personService = personService;
         this.organisationService = organisationService;
         this.placeService = placeService;
+        this.capitaliseMarriageCertificate = capitaliseMarriageCertificate;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -91,6 +94,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         logger.debug("MarriageCertificateFormControllerImpl::saveOrUpdate");
 
         marriageCertificateCommandValidator.validate(marriageCertificateCommand, bindingResult);
+        capitaliseMarriageCertificate.capitalise(marriageCertificateCommand);
 
 
         if (bindingResult.hasErrors()) {

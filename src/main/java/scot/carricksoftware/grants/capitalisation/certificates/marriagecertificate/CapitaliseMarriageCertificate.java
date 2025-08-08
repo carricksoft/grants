@@ -1,0 +1,14 @@
+/*
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
+ *
+ */
+
+package scot.carricksoftware.grants.capitalisation.certificates.marriagecertificate;
+
+import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
+
+public interface CapitaliseMarriageCertificate {
+
+    @SuppressWarnings({"unused", "EmptyMethod"})
+    void capitalise( MarriageCertificateCommand command);
+}
