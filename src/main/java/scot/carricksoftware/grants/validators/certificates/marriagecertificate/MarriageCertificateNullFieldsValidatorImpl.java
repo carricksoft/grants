@@ -91,7 +91,7 @@ public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCerti
 
     private void validateGroomFatherRank(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateGroomFatherRank");
-        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getGroomFatherRank(), "groomFatherRank", ValidationConstants.BRIDE_FATHER_RANK_IS_NULL, bindingResult);
+        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getGroomFatherRank(), "groomFatherRank", ValidationConstants.GROOM_FATHER_RANK_IS_NULL, bindingResult);
     }
 
 

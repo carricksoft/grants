@@ -51,6 +51,10 @@ class MarriageCertificateNullFieldsValidatorTest {
                 "brideRank", "The bride rank cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(marriageCertificateCommand.getBrideCondition(),
                 "brideCondition", "The bride condition cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateNullOrEmptyString(marriageCertificateCommand.getBrideFatherRank(),
+                "brideFatherRank", "The bride's father's rank cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateNullOrEmptyString(marriageCertificateCommand.getGroomFatherRank(),
+                "groomFatherRank", "The groom's father's rank cannot be null.", bindingResultMock);
     }
 
     @Test
