@@ -52,5 +52,41 @@ class CapitaliseMarriageCertificatesPartOneTest {
         assertEquals("Lower", marriageCertificateCommand.getUntrackedSecondWitness());
     }
 
+    @Test
+    void untrackedWhereMarriedTest() {
+        marriageCertificateCommand.setUntrackedWhereMarried("lower");
+        capitaliseMarriageCertificate.capitalise(marriageCertificateCommand);
+        assertEquals("Lower", marriageCertificateCommand.getUntrackedWhereMarried());
+    }
+
+    @Test
+    void groomUntrackedResidenceTest() {
+        marriageCertificateCommand.setGroomUntrackedResidence("lower");
+        capitaliseMarriageCertificate.capitalise(marriageCertificateCommand);
+        assertEquals("Lower", marriageCertificateCommand.getGroomUntrackedResidence());
+    }
+
+    @Test
+    void brideUntrackedResidenceTest() {
+        marriageCertificateCommand.setBrideUntrackedResidence("lower");
+        capitaliseMarriageCertificate.capitalise(marriageCertificateCommand);
+        assertEquals("Lower", marriageCertificateCommand.getBrideUntrackedResidence());
+    }
+
+    @Test
+    void groomUntrackedFatherTest() {
+        marriageCertificateCommand.setGroomUntrackedFather("lower");
+        capitaliseMarriageCertificate.capitalise(marriageCertificateCommand);
+        assertEquals("Lower", marriageCertificateCommand.getGroomUntrackedFather());
+    }
+
+    @Test
+    void brideUntrackedFatherTest() {
+        marriageCertificateCommand.setBrideUntrackedFather("lower");
+        capitaliseMarriageCertificate.capitalise(marriageCertificateCommand);
+        assertEquals("Lower", marriageCertificateCommand.getBrideUntrackedFather());
+    }
+
+
 
 }
