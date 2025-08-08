@@ -278,15 +278,11 @@
                     <label for="brideCondition">Bride Condition :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
-                    <div>
-                        <input class="brideCondition" id="brideCondition"
-                               th:field="*{brideCondition}" type="text">
-                        <div th:if="${#fields.hasErrors('brideCondition')}">
-                            <ul class="text-danger">
-                                <li th:each="err : ${#fields.errors('brideCondition')}" th:text="${err}"/>
-                            </ul>
-                        </div>
-                    </div>
+                    <select id="brideCondition" style="width: 200px;" name="brideCondition" th:field="*{brideCondition}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="value : ${T(scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition).values()}"
+                                th:value="${value}" th:text="${value.label}"></option>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -426,15 +422,11 @@
                     <label for="groomCondition">Groom Condition :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
-                    <div>
-                        <input class="groomCondition" id="groomCondition"
-                               th:field="*{groomCondition}" type="text">
-                        <div th:if="${#fields.hasErrors('groomCondition')}">
-                            <ul class="text-danger">
-                                <li th:each="err : ${#fields.errors('groomCondition')}" th:text="${err}"/>
-                            </ul>
-                        </div>
-                    </div>
+                    <select id="groomCondition" style="width: 200px;" name="groomCondition" th:field="*{groomCondition}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="value : ${T(scot.carricksoftware.grants.enums.censusentry.CensusEntryCondition).values()}"
+                                th:value="${value}" th:text="${value.label}"></option>
+                    </select>
                 </td>
             </tr>
             <tr>
