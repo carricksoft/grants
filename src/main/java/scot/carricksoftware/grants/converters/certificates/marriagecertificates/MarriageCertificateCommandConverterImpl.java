@@ -7,8 +7,10 @@ package scot.carricksoftware.grants.converters.certificates.marriagecertificates
 
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
-import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.MarriageCertificateBrideCommandConverter;
-import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.MarriageCertificateGroomCommandConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateBrideCommandConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateCertificateCommandConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateGroomCommandConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateWitnessCommandConverter;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 
 @Component
@@ -16,10 +18,17 @@ public class MarriageCertificateCommandConverterImpl implements MarriageCertific
 
     private final MarriageCertificateBrideCommandConverter brideConverter;
     private final MarriageCertificateGroomCommandConverter groomConverter;
+    private final MarriageCertificateWitnessCommandConverter witnessConverter;
+    private final MarriageCertificateCertificateCommandConverter certificateConverter;
 
-    public MarriageCertificateCommandConverterImpl(MarriageCertificateBrideCommandConverter brideConverter, MarriageCertificateGroomCommandConverter groomConverter) {
+    public MarriageCertificateCommandConverterImpl(MarriageCertificateBrideCommandConverter brideConverter,
+                                                   MarriageCertificateGroomCommandConverter groomConverter,
+                                                   MarriageCertificateWitnessCommandConverter witnessConverter,
+                                                   MarriageCertificateCertificateCommandConverter certificateConverter) {
         this.brideConverter = brideConverter;
         this.groomConverter = groomConverter;
+        this.witnessConverter = witnessConverter;
+        this.certificateConverter = certificateConverter;
     }
 
     @Override
@@ -27,17 +36,8 @@ public class MarriageCertificateCommandConverterImpl implements MarriageCertific
         MarriageCertificate target = new MarriageCertificate();
         brideConverter.convert(source, target);
         groomConverter.convert(source, target);
-
-        target.setId(source.getId());
-        target.setNumber(source.getNumber());
-        target.setRegistrationAuthority(source.getRegistrationAuthority());
-        target.setSecondWitness(source.getSecondWitness());
-        target.setUntrackedFirstWitness(source.getUntrackedFirstWitness());
-        target.setUntrackedSecondWitness(source.getUntrackedSecondWitness());
-        target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
-        target.setVolume(source.getVolume());
-        target.setWhenMarried(source.getWhenMarried());
-        target.setWhereMarried(source.getWhereMarried());
+        witnessConverter.convert(source, target);
+        certificateConverter.convert(source, target);
 
         return target;
     }

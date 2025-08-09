@@ -3,12 +3,12 @@
  *
  */
 
-package scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers;
+package scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command;
 
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 
-public interface MarriageCertificateBrideCommandConverter {
+public interface MarriageCertificateGroomCommandConverter {
 
     void convert(MarriageCertificateCommand source, MarriageCertificate target);
 

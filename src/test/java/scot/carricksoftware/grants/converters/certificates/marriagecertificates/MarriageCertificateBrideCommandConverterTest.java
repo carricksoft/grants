@@ -10,8 +10,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
-import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.MarriageCertificateBrideCommandConverter;
-import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.MarriageCertificateBrideCommandConverterImpl;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateBrideCommandConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateBrideCommandConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

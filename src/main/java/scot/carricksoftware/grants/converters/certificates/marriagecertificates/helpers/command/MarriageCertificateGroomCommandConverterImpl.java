@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers;
+package scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command;
 
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
