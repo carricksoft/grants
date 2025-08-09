@@ -77,6 +77,7 @@ public class ValidationConstants {
     public static final String WHEN_BORN_INCORRECT_FORMAT = "The format should be dd/MM/yyyy hh:mm.";
     public static final String WHEN_BORN_IS_NULL = "When born cannot be null.";
     public static final String WHEN_MARRIED_IS_NULL = "When married cannot be null.";
+    public static final String WHEN_MARRIED_INCORRECT_FORMAT = "The format should be dd/MM/yyyy.";
     public static final String WHEN_DIED_IS_NULL = "When died cannot be null.";
     public static final String WHEN_REGISTERED_DATE_IN_FUTURE = "Date should not be in the future.";
     public static final String WHEN_REGISTERED_DATE_IS_INVALID = "When registered date is invalid.";

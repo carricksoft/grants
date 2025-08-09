@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.constants.ValidationConstants;
+import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
 @Component
@@ -19,13 +20,16 @@ public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCerti
     private static final Logger logger = LogManager.getLogger(MarriageCertificateNullFieldsValidatorImpl.class);
 
     private final ValidateTypesImpl validateTypes;
+    private final ValidateDateTypes validateDateTypes;
 
-    public MarriageCertificateNullFieldsValidatorImpl(ValidateTypesImpl validateTypes) {
+    public MarriageCertificateNullFieldsValidatorImpl(ValidateTypesImpl validateTypes, ValidateDateTypes validateDateTypes) {
         this.validateTypes = validateTypes;
+        this.validateDateTypes = validateDateTypes;
     }
 
     @Override
     public void validate(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
+        validateGroom(marriageCertificateCommand, bindingResult);
         validateGroom(marriageCertificateCommand, bindingResult);
         validateBride(marriageCertificateCommand, bindingResult);
         validateBrideCondition(marriageCertificateCommand, bindingResult);
@@ -40,9 +44,14 @@ public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCerti
     }
 
     private void validateWhenMarried(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
-        logger.debug("MarriageCertificateNullFieldsValidator::validateWhenDied");
-        validateTypes.validateNullOrEmptyString(marriageCertificateCommand.getWhenMarried(), "whenMarried", ValidationConstants.WHEN_MARRIED_IS_NULL, bindingResult);
+        logger.debug("MarriageCertificateNullFieldsValidator::validateWhenMarried");
+        validateDateTypes.validatePastDate(marriageCertificateCommand.getWhenMarried(), "whenMarried",
+                ValidationConstants.WHEN_MARRIED_IS_NULL,
+                ValidationConstants.WHEN_MARRIED_INCORRECT_FORMAT,
+                ValidationConstants.DATE_IN_FUTURE,
+                bindingResult);
     }
+
 
     private void validateGroom(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateGroom");
