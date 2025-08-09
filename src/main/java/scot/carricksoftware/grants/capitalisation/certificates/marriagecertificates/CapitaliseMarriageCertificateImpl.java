@@ -38,6 +38,7 @@ public class CapitaliseMarriageCertificateImpl implements CapitaliseMarriageCert
         marriageCertificateCommand.setBrideRank(capitaliseString.capitalise(marriageCertificateCommand.getBrideRank()));
         marriageCertificateCommand.setGroomRank(capitaliseString.capitalise(marriageCertificateCommand.getGroomRank()));
         marriageCertificateCommand.setGroomFatherRank(capitaliseString.capitalise(marriageCertificateCommand.getGroomFatherRank()));
+        marriageCertificateCommand.setBrideFatherRank(capitaliseString.capitalise(marriageCertificateCommand.getBrideFatherRank()));
     }
 
 }
