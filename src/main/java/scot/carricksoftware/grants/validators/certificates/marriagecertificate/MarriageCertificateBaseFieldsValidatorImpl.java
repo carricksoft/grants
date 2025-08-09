@@ -36,6 +36,7 @@ public class MarriageCertificateBaseFieldsValidatorImpl implements MarriageCerti
         validateRegistrationAuthority(marriageCertificateCommand, bindingResult);
         validateVolume(marriageCertificateCommand, bindingResult);
         validateNumber(marriageCertificateCommand, bindingResult);
+        validateWhenMarried(marriageCertificateCommand, bindingResult);
     }
 
 
@@ -75,6 +76,16 @@ public class MarriageCertificateBaseFieldsValidatorImpl implements MarriageCerti
                 "certificateDate",
                 ValidationConstants.CERTIFICATE_DATE_IS_NULL,
                 ValidationConstants.DATE_IS_INVALID,
+                ValidationConstants.DATE_IN_FUTURE,
+                bindingResult);
+    }
+
+    private void validateWhenMarried(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
+        logger.debug("MarriageCertificateBaseFieldsValidator::validateWhenMarried");
+        validateDateTypes.validatePastDate(marriageCertificateCommand.getWhenMarried(),
+                "whenMarried",
+                ValidationConstants.WHEN_MARRIED_IS_NULL,
+                ValidationConstants.WHEN_MARRIED_INCORRECT_FORMAT,
                 ValidationConstants.DATE_IN_FUTURE,
                 bindingResult);
     }

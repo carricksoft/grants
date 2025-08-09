@@ -64,5 +64,16 @@ class MarriageCertificateBaseFieldsValidatorTest {
                 bindingResultMock);
     }
 
+    @Test
+    void validateWhenMarriedTest() {
+        verify(validateDateTypesMock).validatePastDate(marriageCertificateCommand.getWhenMarried(),
+                "whenMarried",
+                "When married cannot be null.",
+                "The format should be dd/MM/yyyy.",
+                "Date should not be in the future.",
+                bindingResultMock);
+    }
+
+
 
 }
