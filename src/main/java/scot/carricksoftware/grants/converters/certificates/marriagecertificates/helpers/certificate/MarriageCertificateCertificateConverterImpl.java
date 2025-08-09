@@ -17,7 +17,6 @@ public class MarriageCertificateCertificateConverterImpl implements MarriageCert
 
         target.setId(source.getId());
         target.setCertificateNumber(source.getCertificateNumber());
-        target.setCertificateNumber(source.getCertificateNumber());
         target.setCertificateDate(source.getCertificateDate());
         target.setCertificateType(source.getCertificateType());
         target.setCertificateSource(source.getCertificateSource());

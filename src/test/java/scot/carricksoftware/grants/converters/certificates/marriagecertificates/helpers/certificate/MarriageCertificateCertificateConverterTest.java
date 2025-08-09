@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
@@ -37,6 +38,10 @@ class MarriageCertificateCertificateConverterTest {
         source.setId(GetRandomLong());
         source.setNumber(GetRandomString());
         source.setRegistrationAuthority(GetRandomOrganisation());
+        source.setCertificateNumber(GetRandomString());
+        source.setCertificateDate(GetRandomString());
+        target.setCertificateType(CertificateType.COPY);
+        target.setCertificateSource(GetRandomOrganisation());
         source.setUntrackedWhereMarried(GetRandomString());
         source.setVolume(GetRandomString());
         source.setWhenMarried(GetRandomString());
@@ -47,6 +52,10 @@ class MarriageCertificateCertificateConverterTest {
         assertEquals(source.getId(),target.getId());
         assertEquals(source.getNumber(),target.getNumber());
         assertEquals(source.getRegistrationAuthority(),target.getRegistrationAuthority());
+        assertEquals(source.getCertificateNumber(),target.getCertificateNumber());
+        assertEquals(source.getCertificateDate(),target.getCertificateDate());
+        assertEquals(source.getCertificateType(),target.getCertificateType());
+        assertEquals(source.getCertificateSource(),target.getCertificateSource());
         assertEquals(source.getUntrackedWhereMarried(),target.getUntrackedWhereMarried());
         assertEquals(source.getVolume(),target.getVolume());
         assertEquals(source.getWhenMarried(),target.getWhenMarried());
