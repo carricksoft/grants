@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.constants.ValidationConstants;
-import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 @Component
@@ -20,11 +19,9 @@ public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCerti
     private static final Logger logger = LogManager.getLogger(MarriageCertificateNullFieldsValidatorImpl.class);
 
     private final ValidateTypes validateTypes;
-    private final ValidateDateTypes validateDateTypes;
 
-    public MarriageCertificateNullFieldsValidatorImpl(ValidateTypes validateTypes, ValidateDateTypes validateDateTypes) {
+    public MarriageCertificateNullFieldsValidatorImpl(ValidateTypes validateTypes) {
         this.validateTypes = validateTypes;
-        this.validateDateTypes = validateDateTypes;
     }
 
 
@@ -40,16 +37,6 @@ public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCerti
         validateGroomCondition(marriageCertificateCommand, bindingResult);
         validateGroomFatherRank(marriageCertificateCommand, bindingResult);
         validateBrideFatherRank(marriageCertificateCommand, bindingResult);
-        validateWhenMarried(marriageCertificateCommand, bindingResult);
-    }
-
-    private void validateWhenMarried(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
-        logger.debug("MarriageCertificateNullFieldsValidator::validateWhenMarried");
-        validateDateTypes.validatePastDate(marriageCertificateCommand.getWhenMarried(), "whenMarried",
-                ValidationConstants.WHEN_MARRIED_IS_NULL,
-                ValidationConstants.WHEN_MARRIED_INCORRECT_FORMAT,
-                ValidationConstants.DATE_IN_FUTURE,
-                bindingResult);
     }
 
     private void validateGroom(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
