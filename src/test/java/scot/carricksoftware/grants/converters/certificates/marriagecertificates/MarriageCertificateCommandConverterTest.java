@@ -8,6 +8,9 @@ package scot.carricksoftware.grants.converters.certificates.marriagecertificates
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
@@ -20,13 +23,17 @@ import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPe
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
+@ExtendWith(MockitoExtension.class)
 class MarriageCertificateCommandConverterTest {
 
     private MarriageCertificateCommandConverter converter;
 
+    @Mock
+    private MarriageCertificateBrideCommandConverter marriageCertificateBrideConverterMock;
+
     @BeforeEach
     void setUp() {
-        converter = new MarriageCertificateCommandConverterImpl();
+        converter = new MarriageCertificateCommandConverterImpl(marriageCertificateBrideConverterMock);
     }
 
     @Test

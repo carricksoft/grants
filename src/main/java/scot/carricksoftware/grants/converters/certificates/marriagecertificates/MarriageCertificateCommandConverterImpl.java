@@ -12,9 +12,16 @@ import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 @Component
 public class MarriageCertificateCommandConverterImpl implements MarriageCertificateCommandConverter {
 
+    private final MarriageCertificateBrideCommandConverter brideConverter;
+
+    public MarriageCertificateCommandConverterImpl(MarriageCertificateBrideCommandConverter brideConverter) {
+        this.brideConverter = brideConverter;
+    }
+
     @Override
     public MarriageCertificate convert(MarriageCertificateCommand source) {
         MarriageCertificate target = new MarriageCertificate();
+        brideConverter.convert(source, target);
 
         target.setBride(source.getBride());
         target.setBrideAge(source.getBrideAge());
