@@ -13,6 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
+import scot.carricksoftware.grants.validators.helpers.ValidateDateTypesImpl;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
 import static org.mockito.Mockito.verify;
@@ -26,19 +27,22 @@ class MarriageCertificateNullFieldsValidatorTest {
     @Mock
     private ValidateTypesImpl validateTypesMock;
 
+    @Mock
+    private ValidateDateTypesImpl validateDateTypesMock;
+
     private MarriageCertificateCommand marriageCertificateCommand;
 
     @BeforeEach
     void setUp() {
-        MarriageCertificateNullFieldsValidator marriageCertificateNullFieldsValidator = new MarriageCertificateNullFieldsValidatorImpl(validateTypesMock);
+        MarriageCertificateNullFieldsValidator marriageCertificateNullFieldsValidator = new MarriageCertificateNullFieldsValidatorImpl(
+                validateTypesMock,
+                validateDateTypesMock);
         marriageCertificateCommand = new MarriageCertificateCommandImpl();
         marriageCertificateNullFieldsValidator.validate(marriageCertificateCommand, bindingResultMock);
     }
 
     @Test
     void validateNullOrEmptyStringTest() {
-        verify(validateTypesMock).validateNullOrEmptyString(marriageCertificateCommand.getWhenMarried(),
-                "whenMarried", "When married cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(marriageCertificateCommand.getGroomAge(),
                 "groomAge", "The groom age cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(marriageCertificateCommand.getGroomRank(),

@@ -12,24 +12,24 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
-import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
+import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 @Component
 public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCertificateNullFieldsValidator {
 
     private static final Logger logger = LogManager.getLogger(MarriageCertificateNullFieldsValidatorImpl.class);
 
-    private final ValidateTypesImpl validateTypes;
+    private final ValidateTypes validateTypes;
     private final ValidateDateTypes validateDateTypes;
 
-    public MarriageCertificateNullFieldsValidatorImpl(ValidateTypesImpl validateTypes, ValidateDateTypes validateDateTypes) {
+    public MarriageCertificateNullFieldsValidatorImpl(ValidateTypes validateTypes, ValidateDateTypes validateDateTypes) {
         this.validateTypes = validateTypes;
         this.validateDateTypes = validateDateTypes;
     }
 
+
     @Override
     public void validate(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
-        validateGroom(marriageCertificateCommand, bindingResult);
         validateGroom(marriageCertificateCommand, bindingResult);
         validateBride(marriageCertificateCommand, bindingResult);
         validateBrideCondition(marriageCertificateCommand, bindingResult);
@@ -51,7 +51,6 @@ public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCerti
                 ValidationConstants.DATE_IN_FUTURE,
                 bindingResult);
     }
-
 
     private void validateGroom(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateGroom");
