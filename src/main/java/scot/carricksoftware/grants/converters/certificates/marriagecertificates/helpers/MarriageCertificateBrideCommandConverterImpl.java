@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 24/03/2025, 17:45. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.converters.certificates.marriagecertificates;
+package scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers;
 
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;

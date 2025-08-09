@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.MarriageCertificateBrideCommandConverter;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 

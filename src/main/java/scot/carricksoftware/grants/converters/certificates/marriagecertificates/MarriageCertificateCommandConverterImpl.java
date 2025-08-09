@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.converters.certificates.marriagecertificates
 
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.MarriageCertificateBrideCommandConverter;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 
 @Component
