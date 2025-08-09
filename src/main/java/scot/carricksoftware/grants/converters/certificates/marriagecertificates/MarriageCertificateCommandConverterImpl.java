@@ -8,37 +8,26 @@ package scot.carricksoftware.grants.converters.certificates.marriagecertificates
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.MarriageCertificateBrideCommandConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.MarriageCertificateGroomCommandConverter;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 
 @Component
 public class MarriageCertificateCommandConverterImpl implements MarriageCertificateCommandConverter {
 
     private final MarriageCertificateBrideCommandConverter brideConverter;
+    private final MarriageCertificateGroomCommandConverter groomConverter;
 
-    public MarriageCertificateCommandConverterImpl(MarriageCertificateBrideCommandConverter brideConverter) {
+    public MarriageCertificateCommandConverterImpl(MarriageCertificateBrideCommandConverter brideConverter, MarriageCertificateGroomCommandConverter groomConverter) {
         this.brideConverter = brideConverter;
+        this.groomConverter = groomConverter;
     }
 
     @Override
     public MarriageCertificate convert(MarriageCertificateCommand source) {
         MarriageCertificate target = new MarriageCertificate();
         brideConverter.convert(source, target);
+        groomConverter.convert(source, target);
 
-
-        target.setCertificateDate(source.getCertificateDate());
-        target.setCertificateNumber(source.getCertificateNumber());
-        target.setCertificateSource(source.getCertificateSource());
-        target.setCertificateType(source.getCertificateType());
-        target.setFirstWitness(source.getFirstWitness());
-        target.setGroom(source.getGroom());
-        target.setGroomAge(source.getGroomAge());
-        target.setGroomCondition(source.getGroomCondition());
-        target.setGroomFather(source.getGroomFather());
-        target.setGroomFatherRank(source.getGroomFatherRank());
-        target.setGroomRank(source.getGroomRank());
-        target.setGroomUntrackedFather(source.getGroomUntrackedFather());
-        target.setGroomUntrackedResidence(source.getGroomUntrackedResidence());
-        target.setGroomUsualResidence(source.getGroomUsualResidence());
         target.setId(source.getId());
         target.setNumber(source.getNumber());
         target.setRegistrationAuthority(source.getRegistrationAuthority());
