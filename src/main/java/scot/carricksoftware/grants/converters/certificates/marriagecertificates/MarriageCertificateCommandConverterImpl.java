@@ -23,15 +23,7 @@ public class MarriageCertificateCommandConverterImpl implements MarriageCertific
         MarriageCertificate target = new MarriageCertificate();
         brideConverter.convert(source, target);
 
-        target.setBride(source.getBride());
-        target.setBrideAge(source.getBrideAge());
-        target.setBrideCondition(source.getBrideCondition());
-        target.setBrideFather(source.getBrideFather());
-        target.setBrideFatherRank(source.getBrideFatherRank());
-        target.setBrideRank(source.getBrideRank());
-        target.setBrideUntrackedFather(source.getBrideUntrackedFather());
-        target.setBrideUntrackedResidence(source.getBrideUntrackedResidence());
-        target.setBrideUsualResidence(source.getBrideUsualResidence());
+
         target.setCertificateDate(source.getCertificateDate());
         target.setCertificateNumber(source.getCertificateNumber());
         target.setCertificateSource(source.getCertificateSource());
