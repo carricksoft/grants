@@ -19,40 +19,39 @@ public class MarriageCertificateConverterImpl implements MarriageCertificateConv
     public MarriageCertificateCommand convert(MarriageCertificate source) {
         MarriageCertificateCommand target = new MarriageCertificateCommandImpl();
 
-        target.setGroomUsualResidence(source.getGroomUsualResidence());
-        target.setBrideUsualResidence(source.getBrideUsualResidence());
-        target.setGroomUntrackedResidence(source.getGroomUntrackedResidence());
-        target.setBrideUntrackedResidence(source.getBrideUntrackedResidence());
-        target.setGroomFather(source.getGroomFather());
+        target.setBride(source.getBride());
+        target.setBrideAge(source.getBrideAge());
+        target.setBrideCondition(source.getBrideCondition());
         target.setBrideFather(source.getBrideFather());
-        target.setGroomUntrackedFather(source.getGroomUntrackedFather());
-        target.setBrideUntrackedFather(source.getBrideUntrackedFather());
         target.setBrideFatherRank(source.getBrideFatherRank());
-        target.setGroomFatherRank(source.getGroomFatherRank());
+        target.setBrideRank(source.getBrideRank());
+        target.setBrideUntrackedFather(source.getBrideUntrackedFather());
+        target.setBrideUntrackedResidence(source.getBrideUntrackedResidence());
+        target.setBrideUsualResidence(source.getBrideUsualResidence());
+        target.setCertificateDate(source.getCertificateDate());
+        target.setCertificateNumber(source.getCertificateNumber());
+        target.setCertificateSource(source.getCertificateSource());
+        target.setCertificateType(source.getCertificateType());
         target.setFirstWitness(source.getFirstWitness());
+        target.setGroom(source.getGroom());
+        target.setGroomAge(source.getGroomAge());
+        target.setGroomCondition(source.getGroomCondition());
+        target.setGroomFather(source.getGroomFather());
+        target.setGroomFatherRank(source.getGroomFatherRank());
+        target.setGroomRank(source.getGroomRank());
+        target.setGroomUntrackedFather(source.getGroomUntrackedFather());
+        target.setGroomUntrackedResidence(source.getGroomUntrackedResidence());
+        target.setGroomUsualResidence(source.getGroomUsualResidence());
+        target.setId(source.getId());
+        target.setNumber(source.getNumber());
+        target.setRegistrationAuthority(source.getRegistrationAuthority());
         target.setSecondWitness(source.getSecondWitness());
         target.setUntrackedFirstWitness(source.getUntrackedFirstWitness());
         target.setUntrackedSecondWitness(source.getUntrackedSecondWitness());
-        target.setId(source.getId());
-        target.setBride(source.getBride());
-        target.setGroom(source.getGroom());
+        target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
+        target.setVolume(source.getVolume());
         target.setWhenMarried(source.getWhenMarried());
         target.setWhereMarried(source.getWhereMarried());
-        target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
-        target.setGroomAge(source.getGroomAge());
-        target.setBrideAge(source.getBrideAge());
-        target.setGroomCondition(source.getGroomCondition());
-        target.setBrideCondition(source.getBrideCondition());
-        target.setGroomRank(source.getGroomRank());
-        target.setBrideRank(source.getBrideRank());
-
-        target.setCertificateNumber(source.getCertificateNumber());
-        target.setCertificateType(source.getCertificateType());
-        target.setCertificateSource(source.getCertificateSource());
-        target.setCertificateDate(source.getCertificateDate());
-        target.setRegistrationAuthority(source.getRegistrationAuthority());
-        target.setVolume(source.getVolume());
-        target.setNumber(source.getNumber());
 
         return target;
     }
