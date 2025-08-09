@@ -158,6 +158,22 @@
                 </td>
             </tr>
             <tr>
+                <td style="text-align: right;">
+                    <label for="whenMarried">When Married :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <input class="whenMarried" id="whenMarried"
+                               th:field="*{whenMarried}" type="text">
+                        <div th:if="${#fields.hasErrors('whenMarried')}">
+                            <ul class="text-danger">
+                                <li th:each="err : ${#fields.errors('whenMarried')}" th:text="${err}"/>
+                            </ul>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td style="text-align:right; background-color: #FFC300;">
                     <label for="whereMarried">Where Married :&nbsp;</label>
                 </td>

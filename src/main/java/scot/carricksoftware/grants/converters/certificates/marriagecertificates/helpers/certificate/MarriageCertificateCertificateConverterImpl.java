@@ -16,6 +16,11 @@ public class MarriageCertificateCertificateConverterImpl implements MarriageCert
     public void convert(MarriageCertificate source, MarriageCertificateCommand target) {
 
         target.setId(source.getId());
+        target.setCertificateNumber(source.getCertificateNumber());
+        target.setCertificateNumber(source.getCertificateNumber());
+        target.setCertificateDate(source.getCertificateDate());
+        target.setCertificateType(source.getCertificateType());
+        target.setCertificateSource(source.getCertificateSource());
         target.setNumber(source.getNumber());
         target.setRegistrationAuthority(source.getRegistrationAuthority());
         target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
