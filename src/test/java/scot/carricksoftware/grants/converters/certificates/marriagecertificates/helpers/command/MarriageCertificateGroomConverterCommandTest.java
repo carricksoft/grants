@@ -17,7 +17,7 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
-class MarriageCertificateGroomCommandConverterTest {
+class MarriageCertificateGroomConverterCommandTest {
 
     private MarriageCertificateGroomCommandConverter converter;
    

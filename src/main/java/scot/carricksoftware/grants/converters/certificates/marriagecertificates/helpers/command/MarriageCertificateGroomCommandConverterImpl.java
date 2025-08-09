@@ -14,14 +14,14 @@ public class MarriageCertificateGroomCommandConverterImpl implements MarriageCer
 
     @Override
     public void convert(MarriageCertificateCommand source, MarriageCertificate target) {
-        target.setGroom(source.getGroom());
-        target.setGroomAge(source.getGroomAge());
-        target.setGroomCondition(source.getGroomCondition());
-        target.setGroomFather(source.getGroomFather());
-        target.setGroomFatherRank(source.getGroomFatherRank());
-        target.setGroomRank(source.getGroomRank());
-        target.setGroomUntrackedFather(source.getGroomUntrackedFather());
-        target.setGroomUntrackedResidence(source.getGroomUntrackedResidence());
         target.setGroomUsualResidence(source.getGroomUsualResidence());
+        target.setGroomUntrackedResidence(source.getGroomUntrackedResidence());
+        target.setGroomUntrackedFather(source.getGroomUntrackedFather());
+        target.setGroomRank(source.getGroomRank());
+        target.setGroomFatherRank(source.getGroomFatherRank());
+        target.setGroomFather(source.getGroomFather());
+        target.setGroomCondition(source.getGroomCondition());
+        target.setGroomAge(source.getGroomAge());
+        target.setGroom(source.getGroom());
     }
 }

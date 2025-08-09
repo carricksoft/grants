@@ -15,12 +15,12 @@ public class MarriageCertificateCertificateCommandConverterImpl implements Marri
     @Override
     public void convert(MarriageCertificateCommand source, MarriageCertificate target) {
 
-        target.setId(source.getId());
-        target.setNumber(source.getNumber());
-        target.setRegistrationAuthority(source.getRegistrationAuthority());
-        target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
-        target.setVolume(source.getVolume());
-        target.setWhenMarried(source.getWhenMarried());
         target.setWhereMarried(source.getWhereMarried());
+        target.setWhenMarried(source.getWhenMarried());
+        target.setVolume(source.getVolume());
+        target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
+        target.setRegistrationAuthority(source.getRegistrationAuthority());
+        target.setNumber(source.getNumber());
+        target.setId(source.getId());
     }
 }

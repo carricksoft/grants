@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
-class MarriageCertificateWitnessCommandConverterTest {
+class MarriageCertificateWitnessConverterCommandTest {
 
     private MarriageCertificateWitnessCommandConverter converter;
    

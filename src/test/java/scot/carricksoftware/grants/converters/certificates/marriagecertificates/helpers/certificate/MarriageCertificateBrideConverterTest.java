@@ -3,15 +3,13 @@
  *
  */
 
-package scot.carricksoftware.grants.converters.certificates.marriagecertificates;
+package scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate;
 
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
-import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateBrideCommandConverter;
-import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateBrideCommandConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -19,18 +17,18 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
-class MarriageCertificateBrideCommandConverterTest {
+class MarriageCertificateBrideConverterTest {
 
-    private MarriageCertificateBrideCommandConverter converter;
+    private MarriageCertificateBrideConverter converter;
    
-    private MarriageCertificateCommand source;
-    private MarriageCertificate target;
+    private MarriageCertificate source;
+    private MarriageCertificateCommand target;
 
     @BeforeEach
     void setUp() {
-        converter = new MarriageCertificateBrideCommandConverterImpl();
-        source = new MarriageCertificateCommandImpl();
-        target = new MarriageCertificate();
+        converter = new MarriageCertificateBrideConverterImpl();
+        source = new MarriageCertificate();
+        target = new MarriageCertificateCommandImpl();
     }
 
     @Test

@@ -15,15 +15,15 @@ public class MarriageCertificateBrideCommandConverterImpl implements MarriageCer
     @Override
     public void convert(MarriageCertificateCommand source, MarriageCertificate target) {
 
-        target.setBride(source.getBride());
-        target.setBrideAge(source.getBrideAge());
-        target.setBrideCondition(source.getBrideCondition());
-        target.setBrideFather(source.getBrideFather());
-        target.setBrideFatherRank(source.getBrideFatherRank());
-        target.setBrideRank(source.getBrideRank());
-        target.setBrideUntrackedFather(source.getBrideUntrackedFather());
-        target.setBrideUntrackedResidence(source.getBrideUntrackedResidence());
         target.setBrideUsualResidence(source.getBrideUsualResidence());
+        target.setBrideUntrackedResidence(source.getBrideUntrackedResidence());
+        target.setBrideUntrackedFather(source.getBrideUntrackedFather());
+        target.setBrideRank(source.getBrideRank());
+        target.setBrideFatherRank(source.getBrideFatherRank());
+        target.setBrideFather(source.getBrideFather());
+        target.setBrideCondition(source.getBrideCondition());
+        target.setBrideAge(source.getBrideAge());
+        target.setBride(source.getBride());
 
     }
 }

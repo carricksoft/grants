@@ -8,6 +8,10 @@ package scot.carricksoftware.grants.converters.certificates.marriagecertificates
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateBrideConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateCertificateConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateGroomConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateWitnessConverter;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 
 @SuppressWarnings("unused")
@@ -15,43 +19,28 @@ import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 @Component
 public class MarriageCertificateConverterImpl implements MarriageCertificateConverter {
 
+    private final MarriageCertificateBrideConverter brideConverter;
+    private final MarriageCertificateGroomConverter groomConverter;
+    private final MarriageCertificateWitnessConverter witnessConverter;
+    private final MarriageCertificateCertificateConverter certificateConverter;
+
+    public MarriageCertificateConverterImpl(MarriageCertificateBrideConverter brideConverter,
+                                            MarriageCertificateGroomConverter groomConverter,
+                                            MarriageCertificateWitnessConverter witnessConverter,
+                                            MarriageCertificateCertificateConverter certificateConverter) {
+        this.brideConverter = brideConverter;
+        this.groomConverter = groomConverter;
+        this.witnessConverter = witnessConverter;
+        this.certificateConverter = certificateConverter;
+    }
+
     @Override
     public MarriageCertificateCommand convert(MarriageCertificate source) {
         MarriageCertificateCommand target = new MarriageCertificateCommandImpl();
-
-        target.setBride(source.getBride());
-        target.setBrideAge(source.getBrideAge());
-        target.setBrideCondition(source.getBrideCondition());
-        target.setBrideFather(source.getBrideFather());
-        target.setBrideFatherRank(source.getBrideFatherRank());
-        target.setBrideRank(source.getBrideRank());
-        target.setBrideUntrackedFather(source.getBrideUntrackedFather());
-        target.setBrideUntrackedResidence(source.getBrideUntrackedResidence());
-        target.setBrideUsualResidence(source.getBrideUsualResidence());
-        target.setCertificateDate(source.getCertificateDate());
-        target.setCertificateNumber(source.getCertificateNumber());
-        target.setCertificateSource(source.getCertificateSource());
-        target.setCertificateType(source.getCertificateType());
-        target.setFirstWitness(source.getFirstWitness());
-        target.setGroom(source.getGroom());
-        target.setGroomAge(source.getGroomAge());
-        target.setGroomCondition(source.getGroomCondition());
-        target.setGroomFather(source.getGroomFather());
-        target.setGroomFatherRank(source.getGroomFatherRank());
-        target.setGroomRank(source.getGroomRank());
-        target.setGroomUntrackedFather(source.getGroomUntrackedFather());
-        target.setGroomUntrackedResidence(source.getGroomUntrackedResidence());
-        target.setGroomUsualResidence(source.getGroomUsualResidence());
-        target.setId(source.getId());
-        target.setNumber(source.getNumber());
-        target.setRegistrationAuthority(source.getRegistrationAuthority());
-        target.setSecondWitness(source.getSecondWitness());
-        target.setUntrackedFirstWitness(source.getUntrackedFirstWitness());
-        target.setUntrackedSecondWitness(source.getUntrackedSecondWitness());
-        target.setUntrackedWhereMarried(source.getUntrackedWhereMarried());
-        target.setVolume(source.getVolume());
-        target.setWhenMarried(source.getWhenMarried());
-        target.setWhereMarried(source.getWhereMarried());
+        brideConverter.convert(source, target);
+        groomConverter.convert(source, target);
+        witnessConverter.convert(source, target);
+        certificateConverter.convert(source, target);
 
         return target;
     }
