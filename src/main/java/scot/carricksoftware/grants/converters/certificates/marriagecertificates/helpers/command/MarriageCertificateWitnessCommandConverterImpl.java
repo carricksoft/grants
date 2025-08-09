@@ -15,7 +15,7 @@ public class MarriageCertificateWitnessCommandConverterImpl implements MarriageC
     @Override
     public void convert(MarriageCertificateCommand source, MarriageCertificate target) {
 
-        target.setSecondWitness(source.getFirstWitness());
+        target.setFirstWitness(source.getFirstWitness());
         target.setSecondWitness(source.getSecondWitness());
         target.setUntrackedFirstWitness(source.getUntrackedFirstWitness());
         target.setUntrackedSecondWitness(source.getUntrackedSecondWitness());
