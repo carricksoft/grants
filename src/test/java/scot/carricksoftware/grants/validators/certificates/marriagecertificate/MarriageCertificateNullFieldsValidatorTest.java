@@ -13,7 +13,6 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
-import scot.carricksoftware.grants.validators.helpers.ValidateDateTypesImpl;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
 import static org.mockito.Mockito.verify;
@@ -27,16 +26,12 @@ class MarriageCertificateNullFieldsValidatorTest {
     @Mock
     private ValidateTypesImpl validateTypesMock;
 
-    @Mock
-    private ValidateDateTypesImpl validateDateTypesMock;
-
     private MarriageCertificateCommand marriageCertificateCommand;
 
     @BeforeEach
     void setUp() {
         MarriageCertificateNullFieldsValidator marriageCertificateNullFieldsValidator = new MarriageCertificateNullFieldsValidatorImpl(
-                validateTypesMock,
-                validateDateTypesMock);
+                validateTypesMock);
         marriageCertificateCommand = new MarriageCertificateCommandImpl();
         marriageCertificateNullFieldsValidator.validate(marriageCertificateCommand, bindingResultMock);
     }
