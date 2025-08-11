@@ -45,7 +45,9 @@ public class MarriageCertificateCommandImpl implements MarriageCertificateComman
     private Person secondWitness;
     private String untrackedFirstWitness;
     private String untrackedSecondWitness;
-
+    private String yearMarried;
+    private String monthMarried;
+    private String dayMarried;
 
     @Override
     public Long getId() {
@@ -374,5 +376,35 @@ public class MarriageCertificateCommandImpl implements MarriageCertificateComman
     @Override
     public void setGroomFatherRank(String groomFatherRank) {
         this.groomFatherRank = groomFatherRank;
+    }
+
+    @Override
+    public String getYearMarried() {
+        return yearMarried;
+    }
+
+    @Override
+    public void setYearMarried(String yearMarried) {
+        this.yearMarried = yearMarried;
+    }
+
+    @Override
+    public String getDayMarried() {
+        return dayMarried;
+    }
+
+    @Override
+    public void setDayMarried(String dayMarried) {
+        this.dayMarried = dayMarried;
+    }
+
+    @Override
+    public String getMonthMarried() {
+        return monthMarried;
+    }
+
+    @Override
+    public void setMonthMarried(String monthMarried) {
+        this.monthMarried = monthMarried;
     }
 }

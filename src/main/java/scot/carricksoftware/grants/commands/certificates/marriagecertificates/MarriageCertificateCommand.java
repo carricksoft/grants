@@ -145,4 +145,16 @@ public interface MarriageCertificateCommand {
     String getGroomFatherRank();
 
     void setGroomFatherRank(String groomFatherRank);
+
+    String getYearMarried();
+
+    void setYearMarried(String yearMarried);
+
+    String getDayMarried();
+
+    void setDayMarried(String dayMarried);
+
+    String getMonthMarried();
+
+    void setMonthMarried(String monthMarried);
 }
