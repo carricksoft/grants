@@ -65,5 +65,6 @@ class MarriageCertificateCommandConverterTest {
         verify(marriageCertificateGroomConverterMock).convert(marriageCertificateCommand, certificate);
         verify(marriageCertificateWitnessConverterMock).convert(marriageCertificateCommand, certificate);
         verify(marriageCertificateCertificateConverterMock).convert(marriageCertificateCommand, certificate);
+        verify(marriageCertificateDateConverterMock).convert(marriageCertificateCommand, certificate);
     }
 }
