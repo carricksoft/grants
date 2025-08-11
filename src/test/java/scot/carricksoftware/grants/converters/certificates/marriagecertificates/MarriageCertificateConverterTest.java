@@ -52,8 +52,6 @@ class MarriageCertificateConverterTest {
                 marriageCertificateCertificateConverterMock,
                 marriageCertificateDateConverterMock);
 
-
-
         marriageCertificate = new MarriageCertificate();
     }
 
