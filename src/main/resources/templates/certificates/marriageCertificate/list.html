@@ -22,7 +22,7 @@
     <table class="table table-striped table-bordered">
         <thead class="table-dark">
         <tr>
-            <th>ID</th>
+            <th>Date</th>
             <th>Bride</th>
             <th>Groom</th>
             <th></th>
@@ -31,7 +31,7 @@
 
         <tr th:each="certificate   : ${marriageCertificates}">
 
-            <td th:text="${certificate.id}">123</td>
+            <td th:text="${certificate.whenMarried}">1/2/3</td>
             <td th:text="${certificate.bride}">John Doe</td>
             <td th:text="${certificate.groom}">John Doe</td>
             <td><span>

@@ -73,7 +73,7 @@ public class MarriageCertificateServiceImpl implements MarriageCertificateServic
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.ASC, "id");
+        return Sort.by(Sort.Direction.ASC, "whenMarried");
     }
 
     @Override

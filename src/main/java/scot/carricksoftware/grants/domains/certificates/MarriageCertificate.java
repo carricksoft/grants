@@ -127,6 +127,17 @@ public class MarriageCertificate extends BaseCertificate {
     @Column(name = "`untracked_second_witness`")
     private String untrackedSecondWitness;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`year_married`")
+    private String yearMarried;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`month_married`")
+    private String monthMarried;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name = "`day_married`")
+    private String dayMarried;
 
     public Person getBride() {
         return bride;
@@ -369,5 +380,29 @@ public class MarriageCertificate extends BaseCertificate {
 
     public void setGroomFatherRank(String groomFatherRank) {
         this.groomFatherRank = groomFatherRank;
+    }
+
+    public String getYearMarried() {
+        return yearMarried;
+    }
+
+    public void setYearMarried(String yearMarried) {
+        this.yearMarried = yearMarried;
+    }
+
+    public String getMonthMarried() {
+        return monthMarried;
+    }
+
+    public void setMonthMarried(String monthMarried) {
+        this.monthMarried = monthMarried;
+    }
+
+    public String getDayMarried() {
+        return dayMarried;
+    }
+
+    public void setDayMarried(String dayMarried) {
+        this.dayMarried = dayMarried;
     }
 }
