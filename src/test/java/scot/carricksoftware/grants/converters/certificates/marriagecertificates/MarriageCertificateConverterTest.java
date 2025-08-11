@@ -53,6 +53,7 @@ class MarriageCertificateConverterTest {
                 marriageCertificateDateConverterMock);
 
 
+
         marriageCertificate = new MarriageCertificate();
     }
 
@@ -63,6 +64,7 @@ class MarriageCertificateConverterTest {
         verify(marriageCertificateGroomConverterMock).convert(marriageCertificate, certificateCommand);
         verify(marriageCertificateWitnessConverterMock).convert(marriageCertificate, certificateCommand);
         verify(marriageCertificateCertificateConverterMock).convert(marriageCertificate, certificateCommand);
+        verify(marriageCertificateDateConverterMock).convert(marriageCertificate, certificateCommand);
     }
 
 
