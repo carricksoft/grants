@@ -10,6 +10,7 @@ import scot.carricksoftware.grants.commands.certificates.marriagecertificates.Ma
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateBrideConverter;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateCertificateConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateDateConverter;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateGroomConverter;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateWitnessConverter;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
@@ -23,15 +24,19 @@ public class MarriageCertificateConverterImpl implements MarriageCertificateConv
     private final MarriageCertificateGroomConverter groomConverter;
     private final MarriageCertificateWitnessConverter witnessConverter;
     private final MarriageCertificateCertificateConverter certificateConverter;
+    private final MarriageCertificateDateConverter dateConverter;
+
 
     public MarriageCertificateConverterImpl(MarriageCertificateBrideConverter brideConverter,
                                             MarriageCertificateGroomConverter groomConverter,
                                             MarriageCertificateWitnessConverter witnessConverter,
-                                            MarriageCertificateCertificateConverter certificateConverter) {
+                                            MarriageCertificateCertificateConverter certificateConverter,
+                                            MarriageCertificateDateConverter dateConverter) {
         this.brideConverter = brideConverter;
         this.groomConverter = groomConverter;
         this.witnessConverter = witnessConverter;
         this.certificateConverter = certificateConverter;
+        this.dateConverter = dateConverter;
     }
 
     @Override
@@ -41,6 +46,7 @@ public class MarriageCertificateConverterImpl implements MarriageCertificateConv
         groomConverter.convert(source, target);
         witnessConverter.convert(source, target);
         certificateConverter.convert(source, target);
+        dateConverter.convert(source, target);
 
         return target;
     }
