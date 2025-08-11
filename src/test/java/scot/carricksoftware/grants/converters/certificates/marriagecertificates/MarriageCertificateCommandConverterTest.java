@@ -15,6 +15,7 @@ import scot.carricksoftware.grants.commands.certificates.marriagecertificates.Ma
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateBrideCommandConverter;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateCertificateCommandConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateDateCommandConverter;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateGroomCommandConverter;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.command.MarriageCertificateWitnessCommandConverter;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
@@ -38,6 +39,9 @@ class MarriageCertificateCommandConverterTest {
     @Mock
     private MarriageCertificateCertificateCommandConverter marriageCertificateCertificateConverterMock;
 
+    @Mock
+    private MarriageCertificateDateCommandConverter marriageCertificateDateConverterMock;
+
     private MarriageCertificateCommand marriageCertificateCommand;
 
 
@@ -47,7 +51,10 @@ class MarriageCertificateCommandConverterTest {
                 marriageCertificateBrideConverterMock,
                 marriageCertificateGroomConverterMock,
                 marriageCertificateWitnessConverterMock,
-                marriageCertificateCertificateConverterMock);
+                marriageCertificateCertificateConverterMock,
+                marriageCertificateDateConverterMock);
+
+
         marriageCertificateCommand = new MarriageCertificateCommandImpl();
     }
 

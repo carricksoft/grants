@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateBrideConverter;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateCertificateConverter;
+import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateDateConverter;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateGroomConverter;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.helpers.certificate.MarriageCertificateWitnessConverter;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
@@ -37,6 +38,9 @@ class MarriageCertificateConverterTest {
     @Mock
     private MarriageCertificateCertificateConverter marriageCertificateCertificateConverterMock;
 
+    @Mock
+    private MarriageCertificateDateConverter marriageCertificateDateConverterMock;
+
     private MarriageCertificate marriageCertificate;
 
     @BeforeEach
@@ -45,7 +49,10 @@ class MarriageCertificateConverterTest {
                 marriageCertificateBrideConverterMock,
                 marriageCertificateGroomConverterMock,
                 marriageCertificateWitnessConverterMock,
-                marriageCertificateCertificateConverterMock);
+                marriageCertificateCertificateConverterMock,
+                marriageCertificateDateConverterMock);
+
+
         marriageCertificate = new MarriageCertificate();
     }
 
