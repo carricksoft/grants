@@ -73,7 +73,9 @@ public class MarriageCertificateServiceImpl implements MarriageCertificateServic
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.ASC, "whenMarried");
+        return Sort.by(Sort.Direction.DESC, "yearMarried")
+                .and(Sort.by(Sort.Direction.ASC, "monthMarried")
+                        .and(Sort.by(Sort.Direction.ASC, "dayMarried")));
     }
 
     @Override

@@ -40,6 +40,7 @@ public class DataLoadMarriageCertificates {
         MarriageCertificateCommand marriageCertificateCommand = new MarriageCertificateCommandImpl();
         marriageCertificateCommand.setGroom(personService.findById(1L));
         marriageCertificateCommand.setBride(personService.findById(2L));
+        marriageCertificateCommand.setWhenMarried("25/01/1953");
 
         marriageCertificateService.saveMarriageCertificateCommand(marriageCertificateCommand);
     }
