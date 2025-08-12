@@ -160,10 +160,7 @@ public class MarriageCertificate extends BaseCertificate {
         return whenMarried;
     }
 
-    @SuppressWarnings("unused")
-    public void setWhenMarried(String whenMarried) {
-        this.whenMarried = whenMarried;
-    }
+
 
     @SuppressWarnings("unused")
     public Place getWhereMarried() {
@@ -404,5 +401,10 @@ public class MarriageCertificate extends BaseCertificate {
 
     public void setDayMarried(String dayMarried) {
         this.dayMarried = dayMarried;
+    }
+
+
+    public void setWhenMarried(String whenMarried) {
+        this.whenMarried = whenMarried;
     }
 }

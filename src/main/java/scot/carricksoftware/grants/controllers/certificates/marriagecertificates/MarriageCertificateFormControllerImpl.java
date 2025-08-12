@@ -97,6 +97,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         capitaliseMarriageCertificate.capitalise(marriageCertificateCommand);
 
 
+
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
