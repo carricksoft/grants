@@ -41,6 +41,8 @@ class SetYearMarriedTest {
         //noinspection SpellCheckingInspection
         marriageCertificateCommand.setWhenMarried("zzzz");
         marriageCertificateCommand.setYearMarried(GetRandomString());
+        marriageCertificateCommand.setMonthMarried(GetRandomString());
+        marriageCertificateCommand.setDayMarried(GetRandomString());
 
         setYearMarried.setDatesMarried(marriageCertificateCommand);
 
