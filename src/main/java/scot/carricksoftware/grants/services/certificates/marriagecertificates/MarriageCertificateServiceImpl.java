@@ -89,7 +89,6 @@ public class MarriageCertificateServiceImpl implements MarriageCertificateServic
         MarriageCertificate marriageCertificate = marriageCertificateCommandConverterImpl.convert(marriageCertificateCommand);
         MarriageCertificate savedMarriageCertificate = marriageCertificateRepository.save(marriageCertificate);
         return marriageCertificateConverterImpl.convert(savedMarriageCertificate);
-
     }
 
     @Override
