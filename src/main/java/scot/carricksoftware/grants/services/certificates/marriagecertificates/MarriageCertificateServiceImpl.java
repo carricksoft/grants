@@ -97,7 +97,7 @@ public class MarriageCertificateServiceImpl implements MarriageCertificateServic
     public List<MarriageCertificate> findAll() {
         logger.debug("MarriageCertificateServiceImpl::findAll");
         List<MarriageCertificate> result = new ArrayList<>();
-        Iterable<MarriageCertificate> marriageCertificateIterable = marriageCertificateRepository.findAll(getSort());
+        Iterable<MarriageCertificate> marriageCertificateIterable = marriageCertificateRepository.findAll();
         marriageCertificateIterable.forEach(result::add);
         return result;
     }
