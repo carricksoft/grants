@@ -55,4 +55,10 @@ class DataLoadMarriageCertificatesTest {
         verify(marriageCertificateServiceMock).saveMarriageCertificateCommand(captor.capture());
         assertEquals(person, captor.getValue().getBride());
     }
+
+    @Test
+    void whenMarriedTest() {
+        verify(marriageCertificateServiceMock).saveMarriageCertificateCommand(captor.capture());
+        assertEquals("25/01/1953", captor.getValue().getWhenMarried());
+    }
 }
