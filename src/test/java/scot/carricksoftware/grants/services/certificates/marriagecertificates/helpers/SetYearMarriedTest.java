@@ -12,6 +12,7 @@ import scot.carricksoftware.grants.commands.certificates.marriagecertificates.Ma
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 class SetYearMarriedTest {
 
@@ -39,6 +40,8 @@ class SetYearMarriedTest {
     void invalidStringTest() {
         //noinspection SpellCheckingInspection
         marriageCertificateCommand.setWhenMarried("zzzz");
+        marriageCertificateCommand.setYearMarried(GetRandomString());
+
         setYearMarried.setDatesMarried(marriageCertificateCommand);
 
         assertNull(marriageCertificateCommand.getYearMarried());
