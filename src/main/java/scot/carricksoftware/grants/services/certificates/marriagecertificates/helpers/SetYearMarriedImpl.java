@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.services.certificates.marriagecertificates.helpers;
 
+import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 
 import java.time.LocalDate;
 
+@Component
 public class SetYearMarriedImpl implements SetYearMarried {
 
     @Override

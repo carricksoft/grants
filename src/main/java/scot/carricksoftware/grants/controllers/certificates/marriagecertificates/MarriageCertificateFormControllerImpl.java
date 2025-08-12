@@ -25,6 +25,7 @@ import scot.carricksoftware.grants.constants.ViewConstants;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.MarriageCertificateService;
+import scot.carricksoftware.grants.services.certificates.marriagecertificates.helpers.SetYearMarried;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
@@ -44,13 +45,18 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
     private final OrganisationService organisationService;
     private final PlaceService placeService;
     private final CapitaliseMarriageCertificate capitaliseMarriageCertificate;
+    private final SetYearMarried setYearMarried;
 
 
     public MarriageCertificateFormControllerImpl(MarriageCertificateService marriageCertificateService,
                                                  MarriageCertificateCommandConverterImpl marriageCertificateCommandConverter,
                                                  MarriageCertificateConverterImpl marriageCertificateConverter,
                                                  MarriageCertificateCommandValidator marriageCertificateCommandValidator,
-                                                 PersonService personService, OrganisationService organisationService, PlaceService placeService, CapitaliseMarriageCertificate capitaliseMarriageCertificate) {
+                                                 PersonService personService,
+                                                 OrganisationService organisationService,
+                                                 PlaceService placeService,
+                                                 CapitaliseMarriageCertificate capitaliseMarriageCertificate,
+                                                 SetYearMarried setYearMarried) {
         this.marriageCertificateService = marriageCertificateService;
         this.marriageCertificateCommandConverter = marriageCertificateCommandConverter;
 
@@ -61,6 +67,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         this.organisationService = organisationService;
         this.placeService = placeService;
         this.capitaliseMarriageCertificate = capitaliseMarriageCertificate;
+        this.setYearMarried = setYearMarried;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -95,7 +102,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
 
         marriageCertificateCommandValidator.validate(marriageCertificateCommand, bindingResult);
         capitaliseMarriageCertificate.capitalise(marriageCertificateCommand);
-
+        setYearMarried.setDatesMarried(marriageCertificateCommand);
 
 
         if (bindingResult.hasErrors()) {

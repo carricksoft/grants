@@ -18,6 +18,7 @@ import scot.carricksoftware.grants.commands.certificates.marriagecertificates.Ma
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.MarriageCertificateService;
+import scot.carricksoftware.grants.services.certificates.marriagecertificates.helpers.SetYearMarried;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
@@ -56,6 +57,9 @@ public class MarriageCertificateFormControllerSaveOrUpdateTest {
     private CapitaliseMarriageCertificate capitaliseMarriageCertificateMock;
 
     @Mock
+    private SetYearMarried setYearMarriedMock;
+
+    @Mock
     Model modelMock;
 
     @Mock
@@ -76,7 +80,8 @@ public class MarriageCertificateFormControllerSaveOrUpdateTest {
                 personServiceMock,
                 organisationServiceMock,
                 placeServiceMock,
-                capitaliseMarriageCertificateMock);
+                capitaliseMarriageCertificateMock,
+                setYearMarriedMock);
         marriageCertificateCommand = new MarriageCertificateCommandImpl();
     }
 
