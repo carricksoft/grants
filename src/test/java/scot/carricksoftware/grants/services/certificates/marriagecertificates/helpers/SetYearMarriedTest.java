@@ -7,20 +7,52 @@ package scot.carricksoftware.grants.services.certificates.marriagecertificates.h
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
+import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class SetYearMarriedTest {
 
     SetYearMarried setYearMarried;
 
+    private MarriageCertificateCommand marriageCertificateCommand;
+
     @BeforeEach
     void setUp() {
         setYearMarried = new SetYearMarriedImpl();
+        marriageCertificateCommand = new MarriageCertificateCommandImpl();
     }
 
     @Test
-    void constructorTest() {
-        assertNotNull(setYearMarried);
+    void validTest() {
+        marriageCertificateCommand.setWhenMarried("25/01/1953");
+        setYearMarried.setDatesMarried(marriageCertificateCommand);
+
+        assertEquals("1953", marriageCertificateCommand.getYearMarried());
+        assertEquals("01", marriageCertificateCommand.getMonthMarried());
+        assertEquals("25", marriageCertificateCommand.getDayMarried());
+    }
+
+    @Test
+    void invalidStringTest() {
+        //noinspection SpellCheckingInspection
+        marriageCertificateCommand.setWhenMarried("zzzz");
+        setYearMarried.setDatesMarried(marriageCertificateCommand);
+
+        assertNull(marriageCertificateCommand.getYearMarried());
+        assertNull(marriageCertificateCommand.getMonthMarried());
+        assertNull(marriageCertificateCommand.getDayMarried());
+    }
+
+    @Test
+    void invalidDateTest() {
+        marriageCertificateCommand.setWhenMarried("25/18/1953");
+        setYearMarried.setDatesMarried(marriageCertificateCommand);
+
+        assertNull(marriageCertificateCommand.getYearMarried());
+        assertNull(marriageCertificateCommand.getMonthMarried());
+        assertNull(marriageCertificateCommand.getDayMarried());
     }
 }
