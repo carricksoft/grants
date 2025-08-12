@@ -73,7 +73,7 @@ public class MarriageCertificateServiceImpl implements MarriageCertificateServic
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.DESC, "yearMarried")
+        return Sort.by(Sort.Direction.ASC, "yearMarried")
                 .and(Sort.by(Sort.Direction.ASC, "monthMarried")
                         .and(Sort.by(Sort.Direction.ASC, "dayMarried")));
     }
@@ -97,9 +97,10 @@ public class MarriageCertificateServiceImpl implements MarriageCertificateServic
     public List<MarriageCertificate> findAll() {
         logger.debug("MarriageCertificateServiceImpl::findAll");
         List<MarriageCertificate> result = new ArrayList<>();
-        Iterable<MarriageCertificate> marriageCertificateIterable = marriageCertificateRepository.findAll();
+        Iterable<MarriageCertificate> marriageCertificateIterable = marriageCertificateRepository.findAll(getSort());
         marriageCertificateIterable.forEach(result::add);
         return result;
     }
+
 
 }
