@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.controllers.certificates.marriagecertificate
 import jakarta.validation.Valid;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -87,6 +88,11 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
     @Override
     public final String marriageCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("MarriageCertificateFormControllerImpl::marriageCertificateEdit");
+        return getString(id, model);
+    }
+
+    @NotNull
+    private String getString(String id, Model model) {
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, marriageCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
