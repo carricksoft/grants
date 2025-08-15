@@ -79,10 +79,8 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     @Override
     public final String getNewDeathCertificate(final Model model) {
         logger.debug("DeathCertificateFormControllerImpl::getNewDeathCertificate");
+        addAttributes.AddDeathCertificate(model);
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, new DeathCertificateCommandImpl());
-        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
-        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
 
@@ -91,10 +89,8 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     @Override
     public final String deathCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::deathCertificateEdit");
+        addAttributes.AddDeathCertificate(model);
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, deathCertificateService.findById(Long.valueOf(id)));
-        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
-        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
 
@@ -109,18 +105,13 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
-            model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-            model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
-            model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
+            addAttributes.AddDeathCertificate(model);
             return ViewConstants.DEATH_CERTIFICATE_FORM;
         }
 
         DeathCertificateCommand savedCommand = deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
         updateCertifiedYearOfDeath.updateCertifiedYearOfDeath(savedCommand);
-        model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
-        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
-        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
+        addAttributes.AddDeathCertificate(model);
         return MappingConstants.REDIRECT + CertificateMappingConstants.DEATH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -132,11 +123,8 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
         DeathCertificateCommand savedCommand = deathCertificateConverter.convert(deathCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
-        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
-        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
+        addAttributes.AddDeathCertificate(model);
         return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
-
 
 }
