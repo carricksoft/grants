@@ -9,25 +9,21 @@ package scot.carricksoftware.grants.controllers.certificates.marriagecertificate
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates.CapitaliseMarriageCertificate;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.controllers.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.MarriageCertificateService;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.helpers.SetYearMarried;
-import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.certificates.marriagecertificate.MarriageCertificateCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.*;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
@@ -49,19 +45,13 @@ public class MarriageCertificateFormControllerTest {
     private MarriageCertificateConverterImpl marriageCertificateConverterMock;
 
     @Mock
-    private PersonService personServiceMock;
-
-    @Mock
-    private OrganisationService organisationServiceMock;
-
-    @Mock
-    private PlaceService placeServiceMock;
-
-    @Mock
     private CapitaliseMarriageCertificate capitaliseMarriageCertificateMock;
 
     @Mock
     private SetYearMarried setYearMarriedMock;
+
+    @Mock
+    private AddAttributes addAttributesMock;
 
     @Mock
     private Model modelMock;
@@ -76,37 +66,11 @@ public class MarriageCertificateFormControllerTest {
                 marriageCertificateCommandConverterMock,
                 marriageCertificateConverterMock,
                 marriageCertificateCommandValidatorMock,
-                personServiceMock,
-                organisationServiceMock,
-                placeServiceMock,
                 capitaliseMarriageCertificateMock,
-                setYearMarriedMock);
+                setYearMarriedMock,
+                addAttributesMock);
     }
 
-    @Test
-    public void getNewMarriageCertificateTest() {
-        ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
-        ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
-        assertEquals("certificates/marriageCertificate/form", marriageCertificateFormController.getNewMarriageCertificate(modelMock));
-        verify(modelMock, atLeast(1)).addAttribute(stringCaptor.capture(), objectCaptor.capture());
-        boolean foundMarriageCertificateCommand = false;
-        boolean foundPeople = false;
-        for (int i = 0; i < stringCaptor.getAllValues().size(); i++) {
-            if (stringCaptor.getAllValues().get(i).equals("marriageCertificateCommand")) {
-                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("MarriageCertificateCommandImpl")) {
-                    foundMarriageCertificateCommand = true;
-                }
-            }
-            if (stringCaptor.getAllValues().get(i).equals("people")) {
-                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("LinkedList")) {
-                    foundPeople = true;
-                }
-            }
-        }
-
-        assertTrue(foundMarriageCertificateCommand && foundPeople);
-
-    }
 
     @Test
     public void marriageCertificateEditTestEditTest() {

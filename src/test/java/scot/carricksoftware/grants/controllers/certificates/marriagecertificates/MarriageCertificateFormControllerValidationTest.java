@@ -16,13 +16,11 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates.CapitaliseMarriageCertificate;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
+import scot.carricksoftware.grants.controllers.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.MarriageCertificateService;
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.helpers.SetYearMarried;
-import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.certificates.marriagecertificate.MarriageCertificateCommandValidator;
 
 import static org.mockito.Mockito.verify;
@@ -49,19 +47,13 @@ public class MarriageCertificateFormControllerValidationTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private PersonService personServiceMock;
-
-    @Mock
-    private OrganisationService organisationServiceMock;
-
-    @Mock
-    private PlaceService placeServiceMock;
-
-    @Mock
     private CapitaliseMarriageCertificate capitaliseMarriageCertificateMock;
 
     @Mock
     private MarriageCertificateCommandValidator marriageCertificateCommandValidatorMock;
+
+    @Mock
+    private AddAttributes addAttributesMock;
 
     @Mock
     private SetYearMarried setYearMarriedMock;
@@ -76,11 +68,9 @@ public class MarriageCertificateFormControllerValidationTest {
                 marriageCertificateCommandConverterMock,
                 marriageCertificateConverterMock,
                 marriageCertificateCommandValidatorMock,
-                personServiceMock,
-                organisationServiceMock,
-                placeServiceMock,
                 capitaliseMarriageCertificateMock,
-                setYearMarriedMock);
+                setYearMarriedMock,
+                addAttributesMock);
     }
 
 
