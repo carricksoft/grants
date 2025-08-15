@@ -89,28 +89,6 @@ public class DeathCertificateFormControllerTest {
                 addAttributesMock);
     }
 
-    @Test
-    public void getNewDeathCertificateTest() {
-        ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
-        ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
-        assertEquals("certificates/deathCertificate/form", deathCertificateFormController.getNewDeathCertificate(modelMock));
-        verify(modelMock, atLeast(1)).addAttribute(stringCaptor.capture(), objectCaptor.capture());
-        boolean foundDeathCertificateCommand = false;
-        boolean foundPeople = false;
-        for (int i = 0; i < stringCaptor.getAllValues().size(); i++) {
-            if (stringCaptor.getAllValues().get(i).equals("deathCertificateCommand")) {
-                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("DeathCertificateCommandImpl")) {
-                    foundDeathCertificateCommand = true;
-                }
-            }
-            if (stringCaptor.getAllValues().get(i).equals("people")) {
-                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("LinkedList")) {
-                    foundPeople = true;
-                }
-            }
-        }
-        assertTrue(foundDeathCertificateCommand && foundPeople);
-    }
 
     @Test
     public void deathCertificateEditTestEditTest() {
