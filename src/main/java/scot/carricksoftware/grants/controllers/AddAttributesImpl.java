@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants.controllers;
 
+import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -12,13 +13,14 @@ import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
-public class AddAttributeImpl implements AddAttribute {
+@Component
+public class AddAttributesImpl implements AddAttributes {
 
     private final PersonService personService;
     private final PlaceService placeService;
     private final OrganisationService organisationService;
 
-    public AddAttributeImpl(PersonService personService, PlaceService placeService, OrganisationService organisationService) {
+    public AddAttributesImpl(PersonService personService, PlaceService placeService, OrganisationService organisationService) {
         this.personService = personService;
         this.placeService = placeService;
         this.organisationService = organisationService;

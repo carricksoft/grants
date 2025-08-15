@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import scot.carricksoftware.grants.capitalisation.certificates.deathcertificates.CapitaliseDeathCertificate;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.controllers.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
@@ -70,6 +71,9 @@ public class DeathCertificateFormControllerTest {
     @Mock
     private UpdateCertifiedYearOfDeath updateCertifiedYearOfDeathMock;
 
+    @Mock
+    private AddAttributes addAttributesMock;
+
 
     @BeforeEach
     public void setUp() {
@@ -81,7 +85,8 @@ public class DeathCertificateFormControllerTest {
                 placeServiceMock,
                 organisationServiceMock,
                 capitaliseDeathCertificateMock,
-                updateCertifiedYearOfDeathMock);
+                updateCertifiedYearOfDeathMock,
+                addAttributesMock);
     }
 
     @Test

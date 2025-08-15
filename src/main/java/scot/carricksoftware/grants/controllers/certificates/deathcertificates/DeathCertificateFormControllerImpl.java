@@ -22,6 +22,7 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
+import scot.carricksoftware.grants.controllers.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverter;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverter;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
@@ -46,6 +47,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     private final OrganisationService organisationService;
     private final CapitaliseDeathCertificate capitaliseDeathCertificate;
     private final UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath;
+    private final AddAttributes addAttributes;
 
 
     public DeathCertificateFormControllerImpl(DeathCertificateService deathCertificateService,
@@ -56,7 +58,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
                                               PlaceService placeService,
                                               OrganisationService organisationService,
                                               CapitaliseDeathCertificate capitaliseDeathCertificate,
-                                              UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath) {
+                                              UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath, AddAttributes addAttributes) {
         this.deathCertificateService = deathCertificateService;
         this.deathCertificateCommandConverter = deathCertificateCommandConverter;
 
@@ -69,6 +71,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         this.organisationService = organisationService;
         this.capitaliseDeathCertificate = capitaliseDeathCertificate;
         this.updateCertifiedYearOfDeath = updateCertifiedYearOfDeath;
+        this.addAttributes = addAttributes;
     }
 
     @SuppressWarnings("SameReturnValue")

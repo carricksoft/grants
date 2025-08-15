@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.capitalisation.certificates.deathcertificates.CapitaliseDeathCertificate;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
+import scot.carricksoftware.grants.controllers.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
@@ -67,6 +68,9 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
     CapitaliseDeathCertificate capitaliseDeathCertificateMock;
 
     @Mock
+    AddAttributes addAttributesMock;
+
+    @Mock
     private DeathCertificateCommandValidator deathCertificateCommandValidatorMock;
 
     private DeathCertificateCommand deathCertificateCommand;
@@ -82,7 +86,8 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
                 placeServiceMock,
                 organisationServiceMock,
                 capitaliseDeathCertificateMock,
-                updateCertifiedYearOfDeathMock);
+                updateCertifiedYearOfDeathMock,
+                addAttributesMock);
         deathCertificateCommand = new DeathCertificateCommandImpl();
     }
 

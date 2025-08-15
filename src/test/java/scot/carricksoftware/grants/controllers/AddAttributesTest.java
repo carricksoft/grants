@@ -5,8 +5,11 @@
 
 package scot.carricksoftware.grants.controllers;
 
-import org.springframework.ui.Model;
+import org.junit.jupiter.api.BeforeEach;
 
-public interface AddAttribute {
-    void AddDeathCertificate(Model model);
+class AddAttributesTest {
+
+    @BeforeEach
+    void setUp() {
+    }
 }
