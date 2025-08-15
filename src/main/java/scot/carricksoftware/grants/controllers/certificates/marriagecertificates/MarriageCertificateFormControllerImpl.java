@@ -68,7 +68,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
     public final String getNewMarriageCertificate(final Model model) {
         logger.debug("MarriageCertificateFormControllerImpl::getNewMarriageCertificate");
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, new MarriageCertificateCommandImpl());
-        addAttributes.AddMarriageCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         return ViewConstants.MARRIAGE_CERTIFICATE_FORM;
     }
 
@@ -80,10 +80,11 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         return getString(id, model);
     }
 
+    @SuppressWarnings("SameReturnValue")
     @NotNull
     private String getString(String id, Model model) {
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, marriageCertificateService.findById(Long.valueOf(id)));
-        addAttributes.AddMarriageCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         return ViewConstants.MARRIAGE_CERTIFICATE_FORM;
     }
 
@@ -100,13 +101,13 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
-            addAttributes.AddMarriageCertificate(model);
+            addAttributes.AddBMDCertificate(model);
             return ViewConstants.MARRIAGE_CERTIFICATE_FORM;
         }
 
         MarriageCertificateCommand savedCommand = marriageCertificateService.saveMarriageCertificateCommand(marriageCertificateCommand);
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, savedCommand);
-        addAttributes.AddMarriageCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         return MappingConstants.REDIRECT + CertificateMappingConstants.MARRIAGE_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -118,7 +119,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         logger.debug("MarriageCertificateFormControllerImpl::saveOrUpdate");
         MarriageCertificateCommand savedCommand = marriageCertificateConverter.convert(marriageCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, savedCommand);
-        addAttributes.AddMarriageCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         return ViewConstants.MARRIAGE_CERTIFICATE_FORM;
     }
 

@@ -68,7 +68,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     public final String getNewBirthCertificate(final Model model) {
         logger.debug("BirthCertificateFormControllerImpl::getNewBirthCertificate");
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, new BirthCertificateCommandImpl());
-        addAttributes.AddBirthCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         return ViewConstants.BIRTH_CERTIFICATE_FORM;
     }
 
@@ -78,7 +78,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     public final String birthCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("BirthCertificateFormControllerImpl::birthCertificateEdit");
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, birthCertificateService.findById(Long.valueOf(id)));
-        addAttributes.AddBirthCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         return ViewConstants.BIRTH_CERTIFICATE_FORM;
     }
 
@@ -94,14 +94,14 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
-            addAttributes.AddBirthCertificate(model);
+            addAttributes.AddBMDCertificate(model);
             return ViewConstants.BIRTH_CERTIFICATE_FORM;
         }
 
         BirthCertificateCommand savedCommand = birthCertificateService.saveBirthCertificateCommand(birthCertificateCommand);
         updateCertifiedYearOfBirth.updateCertifiedYearOfBirth(savedCommand);
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
-        addAttributes.AddBirthCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         return MappingConstants.REDIRECT + CertificateMappingConstants.BIRTH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -113,7 +113,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
         BirthCertificateCommand savedCommand = birthCertificateConverter.convert(birthCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
-        addAttributes.AddBirthCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         return ViewConstants.BIRTH_CERTIFICATE_FORM;
     }
 

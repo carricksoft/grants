@@ -26,23 +26,10 @@ public class AddAttributesImpl implements AddAttributes {
     }
 
     @Override
-    public void AddDeathCertificate(Model model) {
+    public void AddBMDCertificate(Model model) {
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
     }
 
-    @Override
-    public void AddMarriageCertificate(Model model) {
-        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
-        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
-    }
-
-    @Override
-    public void AddBirthCertificate(Model model) {
-        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
-        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
-        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
-    }
 }

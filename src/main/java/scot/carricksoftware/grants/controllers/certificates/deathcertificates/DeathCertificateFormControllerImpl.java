@@ -67,7 +67,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     @Override
     public final String getNewDeathCertificate(final Model model) {
         logger.debug("DeathCertificateFormControllerImpl::getNewDeathCertificate");
-        addAttributes.AddDeathCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, new DeathCertificateCommandImpl());
         return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
@@ -77,7 +77,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     @Override
     public final String deathCertificateEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("DeathCertificateFormControllerImpl::deathCertificateEdit");
-        addAttributes.AddDeathCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, deathCertificateService.findById(Long.valueOf(id)));
         return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
@@ -93,13 +93,13 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
-            addAttributes.AddDeathCertificate(model);
+            addAttributes.AddBMDCertificate(model);
             return ViewConstants.DEATH_CERTIFICATE_FORM;
         }
 
         DeathCertificateCommand savedCommand = deathCertificateService.saveDeathCertificateCommand(deathCertificateCommand);
         updateCertifiedYearOfDeath.updateCertifiedYearOfDeath(savedCommand);
-        addAttributes.AddDeathCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         return MappingConstants.REDIRECT + CertificateMappingConstants.DEATH_CERTIFICATE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -111,7 +111,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
         DeathCertificateCommand savedCommand = deathCertificateConverter.convert(deathCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
-        addAttributes.AddDeathCertificate(model);
+        addAttributes.AddBMDCertificate(model);
         return ViewConstants.DEATH_CERTIFICATE_FORM;
     }
 
