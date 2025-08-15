@@ -21,9 +21,6 @@ import scot.carricksoftware.grants.converters.certificates.deathcertificates.Dea
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverter;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.UpdateCertifiedYearOfDeath;
-import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
 
 import static org.mockito.Mockito.verify;
@@ -51,15 +48,6 @@ public class DeathCertificateFormControllerValidationTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private PersonService personServiceMock;
-
-    @Mock
-    private PlaceService placeServiceMock;
-
-    @Mock
-    private OrganisationService organisationServiceMock;
-
-    @Mock
     private DeathCertificateCommandValidator deathCertificateCommandValidatorMock;
 
     @Mock
@@ -81,9 +69,6 @@ public class DeathCertificateFormControllerValidationTest {
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
                 deathCertificateCommandValidatorMock,
-                personServiceMock,
-                placeServiceMock,
-                organisationServiceMock,
                 capitaliseDeathCertificateMock,
                 updateCertifiedYearOfDeathMock,
                 addAttributesMock);

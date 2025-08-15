@@ -27,9 +27,6 @@ import scot.carricksoftware.grants.converters.certificates.deathcertificates.Dea
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverter;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.UpdateCertifiedYearOfDeath;
-import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -42,9 +39,6 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     private final DeathCertificateCommandConverter deathCertificateCommandConverter;
     private final DeathCertificateConverter deathCertificateConverter;
     private final DeathCertificateCommandValidator deathCertificateCommandValidator;
-    private final PersonService personService;
-    private final PlaceService placeService;
-    private final OrganisationService organisationService;
     private final CapitaliseDeathCertificate capitaliseDeathCertificate;
     private final UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath;
     private final AddAttributes addAttributes;
@@ -54,9 +48,6 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
                                               DeathCertificateCommandConverter deathCertificateCommandConverter,
                                               DeathCertificateConverter deathCertificateConverter,
                                               DeathCertificateCommandValidator deathCertificateCommandValidator,
-                                              PersonService personService,
-                                              PlaceService placeService,
-                                              OrganisationService organisationService,
                                               CapitaliseDeathCertificate capitaliseDeathCertificate,
                                               UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath, AddAttributes addAttributes) {
         this.deathCertificateService = deathCertificateService;
@@ -65,10 +56,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
 
         this.deathCertificateConverter = deathCertificateConverter;
         this.deathCertificateCommandValidator = deathCertificateCommandValidator;
-        this.personService = personService;
-        this.placeService = placeService;
 
-        this.organisationService = organisationService;
         this.capitaliseDeathCertificate = capitaliseDeathCertificate;
         this.updateCertifiedYearOfDeath = updateCertifiedYearOfDeath;
         this.addAttributes = addAttributes;

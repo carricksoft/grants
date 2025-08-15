@@ -9,7 +9,6 @@ package scot.carricksoftware.grants.controllers.certificates.deathcertificates;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
@@ -22,14 +21,10 @@ import scot.carricksoftware.grants.converters.certificates.deathcertificates.Dea
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.UpdateCertifiedYearOfDeath;
-import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
 
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.*;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
@@ -54,15 +49,6 @@ public class DeathCertificateFormControllerTest {
     private Model modelMock;
 
     @Mock
-    private PersonService personServiceMock;
-
-    @Mock
-    private PlaceService placeServiceMock;
-
-    @Mock
-    private OrganisationService organisationServiceMock;
-
-    @Mock
     private DeathCertificateCommandValidator deathCertificateCommandValidatorMock;
 
     @Mock
@@ -81,9 +67,6 @@ public class DeathCertificateFormControllerTest {
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
                 deathCertificateCommandValidatorMock,
-                personServiceMock,
-                placeServiceMock,
-                organisationServiceMock,
                 capitaliseDeathCertificateMock,
                 updateCertifiedYearOfDeathMock,
                 addAttributesMock);
