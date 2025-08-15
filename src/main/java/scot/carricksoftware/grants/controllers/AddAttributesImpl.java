@@ -7,7 +7,6 @@ package scot.carricksoftware.grants.controllers;
 
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
-import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
@@ -28,9 +27,15 @@ public class AddAttributesImpl implements AddAttributes {
 
     @Override
     public void AddDeathCertificate(Model model) {
-        model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, new DeathCertificateCommandImpl());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
         model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
+    }
+
+    @Override
+    public void AddMarriageCertificate(Model model) {
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
     }
 }

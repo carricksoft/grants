@@ -9,4 +9,5 @@ import org.springframework.ui.Model;
 
 public interface AddAttributes {
     void AddDeathCertificate(Model model);
+    void AddMarriageCertificate(Model model);
 }
