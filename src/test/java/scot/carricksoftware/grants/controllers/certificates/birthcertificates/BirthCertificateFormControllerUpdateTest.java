@@ -16,13 +16,11 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.capitalisation.certificates.birthcertificates.CapitaliseBirthCertificate;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
+import scot.carricksoftware.grants.controllers.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.UpdateCertifiedYearOfBirth;
-import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.certificates.birthcertificate.BirthCertificateCommandValidatorImpl;
 
 import static org.mockito.Mockito.verify;
@@ -49,16 +47,10 @@ public class BirthCertificateFormControllerUpdateTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private PersonService personServiceMock;
-
-    @Mock
-    private PlaceService placeServiceMock;
-
-    @Mock
-    private OrganisationService organisationServiceMock;
-
-    @Mock
     private CapitaliseBirthCertificate capitaliseBirthCertificateMock;
+
+    @Mock
+    private AddAttributes addAttributesMock;
 
     @Mock
     private BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImplMock;
@@ -76,11 +68,9 @@ public class BirthCertificateFormControllerUpdateTest {
                 birthCertificateCommandConverterMock,
                 birthCertificateConverterMock,
                 birthCertificateCommandValidatorImplMock,
-                personServiceMock,
-                placeServiceMock,
-                organisationServiceMock,
                 capitaliseBirthCertificateMock,
-                updateCertifiedYearOfBirthMock);
+                updateCertifiedYearOfBirthMock,
+                addAttributesMock);
     }
 
 

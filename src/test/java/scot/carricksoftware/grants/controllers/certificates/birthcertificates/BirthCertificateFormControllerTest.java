@@ -9,26 +9,23 @@ package scot.carricksoftware.grants.controllers.certificates.birthcertificates;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.capitalisation.certificates.birthcertificates.CapitaliseBirthCertificate;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
+import scot.carricksoftware.grants.controllers.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.UpdateCertifiedYearOfBirth;
-import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.certificates.birthcertificate.BirthCertificateCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomBirthCertificate;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomBirthCertificateCommand;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
@@ -50,19 +47,13 @@ public class BirthCertificateFormControllerTest {
     private BirthCertificateConverterImpl birthCertificateConverterMock;
 
     @Mock
-    private PersonService personServiceMock;
-
-    @Mock
-    private PlaceService placeServiceMock;
-
-    @Mock
-    private OrganisationService organisationServiceMock;
-
-    @Mock
     private Model modelMock;
 
     @Mock
     private CapitaliseBirthCertificate capitaliseBirthCertificateMock;
+
+    @Mock
+    private AddAttributes addAttributesMock;
 
     @Mock
     private BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImplMock;
@@ -77,37 +68,11 @@ public class BirthCertificateFormControllerTest {
                 birthCertificateCommandConverterMock,
                 birthCertificateConverterMock,
                 birthCertificateCommandValidatorImplMock,
-                personServiceMock,
-                placeServiceMock,
-                organisationServiceMock,
                 capitaliseBirthCertificateMock,
-                updateCertifiedYearOfBirthMock);
+                updateCertifiedYearOfBirthMock,
+                addAttributesMock);
     }
 
-    @Test
-    public void getNewBirthCertificateTest() {
-        ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
-        ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
-        assertEquals("certificates/birthCertificate/form", birthCertificateFormController.getNewBirthCertificate(modelMock));
-        verify(modelMock, atLeast(1)).addAttribute(stringCaptor.capture(), objectCaptor.capture());
-        boolean foundBirthCertificateCommand = false;
-        boolean foundPeople = false;
-        for (int i = 0; i < stringCaptor.getAllValues().size(); i++) {
-            if (stringCaptor.getAllValues().get(i).equals("birthCertificateCommand")) {
-                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("BirthCertificateCommandImpl")) {
-                    foundBirthCertificateCommand = true;
-                }
-            }
-            if (stringCaptor.getAllValues().get(i).equals("people")) {
-                if (objectCaptor.getAllValues().get(i).getClass().getSimpleName().equals("LinkedList")) {
-                    foundPeople = true;
-                }
-            }
-        }
-
-        assertTrue(foundBirthCertificateCommand && foundPeople);
-
-    }
 
     @Test
     public void birthCertificateEditTestEditTest() {

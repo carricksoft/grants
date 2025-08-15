@@ -15,13 +15,11 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.capitalisation.certificates.birthcertificates.CapitaliseBirthCertificate;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
+import scot.carricksoftware.grants.controllers.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.UpdateCertifiedYearOfBirth;
-import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.certificates.birthcertificate.BirthCertificateCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,15 +44,6 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     private BirthCertificateConverterImpl birthCertificateConverterMock;
 
     @Mock
-    private PersonService personServiceMock;
-
-    @Mock
-    private PlaceService placeServiceMock;
-
-    @Mock
-    private OrganisationService organisationServiceMock;
-
-    @Mock
     private CapitaliseBirthCertificate capitaliseBirthCertificateMock;
 
     @Mock
@@ -69,7 +58,12 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     @Mock
     private UpdateCertifiedYearOfBirth updateCertifiedYearOfBirthMock;
 
+    @Mock
+    private AddAttributes addAttributesMock;
+
     private BirthCertificateCommand birthCertificateCommand;
+
+
 
     @BeforeEach
     public void setUp() {
@@ -77,11 +71,9 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
                 birthCertificateCommandConverterMock,
                 birthCertificateConverterMock,
                 birthCertificateCommandValidatorImplMock,
-                personServiceMock,
-                placeServiceMock,
-                organisationServiceMock,
                 capitaliseBirthCertificateMock,
-                updateCertifiedYearOfBirthMock);
+                updateCertifiedYearOfBirthMock,
+                addAttributesMock);
         birthCertificateCommand = new BirthCertificateCommandImpl();
     }
 

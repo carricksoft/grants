@@ -38,4 +38,11 @@ public class AddAttributesImpl implements AddAttributes {
         model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
     }
+
+    @Override
+    public void AddBirthCertificate(Model model) {
+        model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.ORGANISATIONS, organisationService.findAll());
+    }
 }
