@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.services.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.services.certificates.birthcertificates.UpdateCertifiedYearOfBirth;
 import scot.carricksoftware.grants.validators.certificates.birthcertificate.BirthCertificateCommandValidatorImpl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
 
@@ -69,7 +70,7 @@ public class BirthCertificateFormControllerAttributesTest {
 
     @Test
     public void newCertificateTest() {
-        birthCertificateFormController.getNewBirthCertificate(modelMock);
+        assertEquals("certificates/birthCertificate/form",birthCertificateFormController.getNewBirthCertificate(modelMock));
         verify(addAttributesMock).AddBMDCertificate(modelMock);
     }
 
