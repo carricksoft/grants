@@ -106,6 +106,12 @@ public class BirthCertificateFormControllerAttributesTest {
         verify(addAttributesMock).AddBMDCertificate(modelMock);
     }
 
+    @Test
+    public void showByIdTest() {
+        assertEquals("certificates/birthCertificate/form",
+                birthCertificateFormController.showById(GetRandomLong().toString(), modelMock));
+        verify(addAttributesMock).AddBMDCertificate(modelMock);
+    }
 
 
 }
