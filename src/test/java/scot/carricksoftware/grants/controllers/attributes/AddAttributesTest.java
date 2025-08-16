@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.controllers;
+package scot.carricksoftware.grants.controllers.attributes;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -11,8 +11,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
-import scot.carricksoftware.grants.controllers.attributes.AddAttributes;
-import scot.carricksoftware.grants.controllers.attributes.AddAttributesImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
