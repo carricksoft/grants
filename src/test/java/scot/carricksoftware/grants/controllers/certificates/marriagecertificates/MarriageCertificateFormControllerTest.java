@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates.CapitaliseMarriageCertificate;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
-import scot.carricksoftware.grants.controllers.AddAttributes;
+import scot.carricksoftware.grants.controllers.attributes.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;

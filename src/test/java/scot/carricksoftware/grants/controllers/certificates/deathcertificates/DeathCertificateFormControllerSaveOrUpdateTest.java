@@ -15,7 +15,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.capitalisation.certificates.deathcertificates.CapitaliseDeathCertificate;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
-import scot.carricksoftware.grants.controllers.AddAttributes;
+import scot.carricksoftware.grants.controllers.attributes.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;

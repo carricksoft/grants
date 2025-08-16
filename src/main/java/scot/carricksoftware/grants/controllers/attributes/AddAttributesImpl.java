@@ -3,7 +3,7 @@
  *
  */
 
-package scot.carricksoftware.grants.controllers;
+package scot.carricksoftware.grants.controllers.attributes;
 
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;

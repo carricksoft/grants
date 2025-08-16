@@ -22,7 +22,7 @@ import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.CertificateMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.controllers.AddAttributes;
+import scot.carricksoftware.grants.controllers.attributes.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverter;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverter;
 import scot.carricksoftware.grants.services.certificates.deathcertificates.DeathCertificateService;

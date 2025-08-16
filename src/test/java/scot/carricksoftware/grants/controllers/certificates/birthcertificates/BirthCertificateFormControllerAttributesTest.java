@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.capitalisation.certificates.birthcertificates.CapitaliseBirthCertificate;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
-import scot.carricksoftware.grants.controllers.AddAttributes;
+import scot.carricksoftware.grants.controllers.attributes.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.birthcertificates.BirthCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.birthcertificates.BirthCertificateService;

@@ -15,7 +15,7 @@ import org.springframework.ui.Model;
 import scot.carricksoftware.grants.capitalisation.certificates.deathcertificates.CapitaliseDeathCertificate;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
-import scot.carricksoftware.grants.controllers.AddAttributes;
+import scot.carricksoftware.grants.controllers.attributes.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateCommandConverterImpl;
 import scot.carricksoftware.grants.converters.certificates.deathcertificates.DeathCertificateConverterImpl;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
