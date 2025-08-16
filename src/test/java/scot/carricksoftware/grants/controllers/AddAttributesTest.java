@@ -7,13 +7,24 @@ package scot.carricksoftware.grants.controllers;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.ui.Model;
+import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.ArrayList;
+import java.util.List;
 
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
 class AddAttributesTest {
 
     private AddAttributes addAttributes;
@@ -27,13 +38,35 @@ class AddAttributesTest {
     @Mock
     private OrganisationService organisationServiceMock;
 
+    @Mock
+    private Model modelMock;
+
     @BeforeEach
     void setUp() {
         addAttributes = new AddAttributesImpl(personServiceMock, placeServiceMock, organisationServiceMock);
     }
 
     @Test
-    void constructorTest() {
-        assertNotNull(addAttributes);
+    void AddBMDCertificatePeopleTest() {
+        List<Person> peopleList = new ArrayList<>();
+        when(personServiceMock.findAll()).thenReturn(peopleList);
+        addAttributes.AddBMDCertificate(modelMock);
+        verify(modelMock).addAttribute("people", peopleList);
+    }
+
+    @Test
+    void AddBMDCertificatePlacesTest() {
+        List<Place> placeList = new ArrayList<>();
+        when(placeServiceMock.findAll()).thenReturn(placeList);
+        addAttributes.AddBMDCertificate(modelMock);
+        verify(modelMock).addAttribute("places", placeList);
+    }
+
+    @Test
+    void AddBMDCertificateOrganisationsTest() {
+        List<Organisation> organisationListList = new ArrayList<>();
+        when(organisationServiceMock.findAll()).thenReturn(organisationListList);
+        addAttributes.AddBMDCertificate(modelMock);
+        verify(modelMock).addAttribute("organisations", organisationListList);
     }
 }
