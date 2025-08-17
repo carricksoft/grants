@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
@@ -22,11 +22,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
-public class BMDPeopleCacheTest {
-
+public class BMDOrganisationsCacheTest {
+    
     @Mock
     PersonService personServiceMock;
 
@@ -38,34 +38,34 @@ public class BMDPeopleCacheTest {
 
     private BMDCache cache;
 
-    private List<Person> peopleList = null;
+    private List<Organisation> organisationsList = null;
 
     @BeforeEach
     void setUp() {
-        peopleList = new ArrayList<>();
-        peopleList.add(GetRandomPerson());
-        when(personServiceMock.findAll()).thenReturn(peopleList);
+        organisationsList = new ArrayList<>();
+        organisationsList.add(GetRandomOrganisation());
+        when(organisationServiceMock.findAll()).thenReturn(organisationsList);
         cache = new BMDCacheImpl(personServiceMock, placeServiceMock, organisationServiceMock);
     }
 
     @Test
-    void nullPeopleTest() {
-        assertEquals(peopleList,cache.getPeople());
-        verify(personServiceMock).findAll();
+    void nullOrganisationsTest() {
+        assertEquals(organisationsList,cache.getOrganisations());
+        verify(organisationServiceMock).findAll();
     }
 
     @Test
     void alreadyExistsTest() {
-        assertEquals(peopleList,cache.getPeople());
-        assertEquals(peopleList,cache.getPeople());
-        verify(personServiceMock, times(1)).findAll();
+        assertEquals(organisationsList,cache.getOrganisations());
+        assertEquals(organisationsList,cache.getOrganisations());
+        verify(organisationServiceMock, times(1)).findAll();
     }
 
     @Test
     void invalidateTest() {
-        assertEquals(peopleList,cache.getPeople());
-        cache.invalidatePeople();
-        assertEquals(peopleList,cache.getPeople());
-        verify(personServiceMock, times(2)).findAll();
+        assertEquals(organisationsList,cache.getOrganisations());
+        cache.invalidateOrganisations();
+        assertEquals(organisationsList,cache.getOrganisations());
+        verify(organisationServiceMock, times(2)).findAll();
     }
 }

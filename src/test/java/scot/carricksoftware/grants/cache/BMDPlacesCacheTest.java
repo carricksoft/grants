@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.services.people.PersonService;
+import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.domains.places.Place;
 
@@ -33,6 +34,9 @@ public class BMDPlacesCacheTest {
     @Mock
     PlaceService placeServiceMock;
 
+    @Mock
+    OrganisationService organisationServiceMock;
+
     private BMDCache cache;
 
     private List<Place> placesList = null;
@@ -42,7 +46,7 @@ public class BMDPlacesCacheTest {
         placesList = new ArrayList<>();
         placesList.add(GetRandomPlace());
         when(placeServiceMock.findAll()).thenReturn(placesList);
-        cache = new BMDCacheImpl(personServiceMock, placeServiceMock);
+        cache = new BMDCacheImpl(personServiceMock, placeServiceMock, organisationServiceMock);
     }
 
     @Test

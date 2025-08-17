@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants.cache;
 
 import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
 
 import java.util.List;
@@ -19,4 +20,8 @@ public interface BMDCache {
     List<Place> getPlaces();
 
     void invalidatePlaces();
+
+    List<Organisation> getOrganisations();
+
+    void invalidateOrganisations();
 }
