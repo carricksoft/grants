@@ -10,10 +10,17 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonService;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
 public class BMDPeopleCacheTest {
@@ -23,29 +30,34 @@ public class BMDPeopleCacheTest {
 
     private BMDCache cache;
 
+    private List<Person> peopleList = null;
+
     @BeforeEach
     void setUp() {
+        peopleList = new ArrayList<>();
+        peopleList.add(GetRandomPerson());
+        when(personServiceMock.findAll()).thenReturn(peopleList);
         cache = new BMDCacheImpl(personServiceMock);
     }
 
     @Test
     void nullPeopleTest() {
-        cache.getPeople();
+        assertEquals(peopleList,cache.getPeople());
         verify(personServiceMock).findAll();
     }
 
     @Test
     void alreadyExistsTest() {
-        cache.getPeople();
-        cache.getPeople();
+        assertEquals(peopleList,cache.getPeople());
+        assertEquals(peopleList,cache.getPeople());
         verify(personServiceMock, times(1)).findAll();
     }
 
     @Test
     void invalidateTest() {
-        cache.getPeople();
+        assertEquals(peopleList,cache.getPeople());
         cache.invalidatePeople();
-        cache.getPeople();
+        assertEquals(peopleList,cache.getPeople());
         verify(personServiceMock, times(2)).findAll();
     }
 }
