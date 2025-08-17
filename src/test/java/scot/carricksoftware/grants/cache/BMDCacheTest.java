@@ -7,17 +7,21 @@ package scot.carricksoftware.grants.cache;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import scot.carricksoftware.grants.services.people.PersonService;
 
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class BMDCacheTest {
+
+    @Mock
+    PersonService personServiceMock;
 
     private BMDCache cache;
 
     @BeforeEach
     void setUp() {
-        cache = new BMDCacheImpl();
+        cache = new BMDCacheImpl(personServiceMock);
     }
 
     @Test
