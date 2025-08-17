@@ -15,7 +15,6 @@ import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
-import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
@@ -35,9 +34,6 @@ class AddAttributesTest {
     private BMDCache bmdCacheMock;
 
     @Mock
-    private PersonService personServiceMock;
-
-    @Mock
     private PlaceService placeServiceMock;
 
     @Mock
@@ -54,7 +50,6 @@ class AddAttributesTest {
     @Test
     void AddBMDCertificatePeopleTest() {
         List<Person> peopleList = new ArrayList<>();
-        when(personServiceMock.findAll()).thenReturn(peopleList);
         addAttributes.AddBMDCertificate(modelMock);
         verify(modelMock).addAttribute("people", peopleList);
     }
