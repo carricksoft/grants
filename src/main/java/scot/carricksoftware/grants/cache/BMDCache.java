@@ -11,9 +11,8 @@ import java.util.List;
 
 public interface BMDCache {
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings("UnusedReturnValue")
     List<Person> getPeople();
-    @SuppressWarnings("unused")
     void invalidatePeople();
 
 }
