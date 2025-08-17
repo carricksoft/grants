@@ -11,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
@@ -29,6 +30,10 @@ class AddAttributesTest {
 
     private AddAttributes addAttributes;
 
+
+    @Mock
+    private BMDCache bmdCacheMock;
+
     @Mock
     private PersonService personServiceMock;
 
@@ -43,7 +48,7 @@ class AddAttributesTest {
 
     @BeforeEach
     void setUp() {
-        addAttributes = new AddAttributesImpl(personServiceMock, placeServiceMock, organisationServiceMock);
+        addAttributes = new AddAttributesImpl(bmdCacheMock, placeServiceMock, organisationServiceMock);
     }
 
     @Test

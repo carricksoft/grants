@@ -5,11 +5,13 @@
 
 package scot.carricksoftware.grants.cache;
 
+import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonService;
 
 import java.util.List;
 
+@Component
 public class BMDCacheImpl implements BMDCache {
 
     private final PersonService personService;
