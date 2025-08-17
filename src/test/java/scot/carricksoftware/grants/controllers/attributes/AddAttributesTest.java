@@ -16,7 +16,6 @@ import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.places.organisations.OrganisationService;
-import scot.carricksoftware.grants.services.places.places.PlaceService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +28,9 @@ class AddAttributesTest {
 
     private AddAttributes addAttributes;
 
-
     @Mock
     private BMDCache bmdCacheMock;
 
-    @Mock
-    private PlaceService placeServiceMock;
 
     @Mock
     private OrganisationService organisationServiceMock;
@@ -44,7 +40,7 @@ class AddAttributesTest {
 
     @BeforeEach
     void setUp() {
-        addAttributes = new AddAttributesImpl(bmdCacheMock, placeServiceMock, organisationServiceMock);
+        addAttributes = new AddAttributesImpl(bmdCacheMock, organisationServiceMock);
     }
 
     @Test
@@ -57,7 +53,6 @@ class AddAttributesTest {
     @Test
     void AddBMDCertificatePlacesTest() {
         List<Place> placeList = new ArrayList<>();
-        when(placeServiceMock.findAll()).thenReturn(placeList);
         addAttributes.AddBMDCertificate(modelMock);
         verify(modelMock).addAttribute("places", placeList);
     }
