@@ -10,9 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
+import scot.carricksoftware.grants.domains.places.Place;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,10 +21,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-public class BMDPeopleCacheTest {
+public class BMDPlacesCacheTest {
+
 
     @Mock
     PersonService personServiceMock;
@@ -34,34 +35,34 @@ public class BMDPeopleCacheTest {
 
     private BMDCache cache;
 
-    private List<Person> peopleList = null;
+    private List<Place> placesList = null;
 
     @BeforeEach
     void setUp() {
-        peopleList = new ArrayList<>();
-        peopleList.add(GetRandomPerson());
-        when(personServiceMock.findAll()).thenReturn(peopleList);
+        placesList = new ArrayList<>();
+        placesList.add(GetRandomPlace());
+        when(placeServiceMock.findAll()).thenReturn(placesList);
         cache = new BMDCacheImpl(personServiceMock, placeServiceMock);
     }
 
     @Test
-    void nullPeopleTest() {
-        assertEquals(peopleList,cache.getPeople());
-        verify(personServiceMock).findAll();
+    void nullPlacesTest() {
+        assertEquals(placesList,cache.getPlaces());
+        verify(placeServiceMock).findAll();
     }
 
     @Test
     void alreadyExistsTest() {
-        assertEquals(peopleList,cache.getPeople());
-        assertEquals(peopleList,cache.getPeople());
-        verify(personServiceMock, times(1)).findAll();
+        assertEquals(placesList,cache.getPlaces());
+        assertEquals(placesList,cache.getPlaces());
+        verify(placeServiceMock, times(1)).findAll();
     }
 
     @Test
     void invalidateTest() {
-        assertEquals(peopleList,cache.getPeople());
-        cache.invalidatePeople();
-        assertEquals(peopleList,cache.getPeople());
-        verify(personServiceMock, times(2)).findAll();
+        assertEquals(placesList,cache.getPlaces());
+        cache.invalidatePlaces();
+        assertEquals(placesList,cache.getPlaces());
+        verify(placeServiceMock, times(2)).findAll();
     }
 }
