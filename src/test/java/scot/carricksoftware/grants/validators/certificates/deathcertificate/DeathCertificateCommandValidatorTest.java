@@ -48,5 +48,6 @@ class DeathCertificateCommandValidatorTest {
         deathCertificateCommandValidator.validate(deathCertificateCommandMock, bindingResultMock);
         verify(deathCertificateNullFieldsValidatorMock).validate(deathCertificateCommandMock, bindingResultMock);
         verify(deathCertificateUntrackedFieldsValidatorMock).validate(deathCertificateCommandMock, bindingResultMock);
+        verify(deathCertificateDateFieldsValidatorMock).validate(deathCertificateCommandMock, bindingResultMock);
     }
 }
