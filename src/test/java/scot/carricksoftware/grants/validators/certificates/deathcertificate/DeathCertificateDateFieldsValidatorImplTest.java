@@ -14,7 +14,6 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
-import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
 import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;

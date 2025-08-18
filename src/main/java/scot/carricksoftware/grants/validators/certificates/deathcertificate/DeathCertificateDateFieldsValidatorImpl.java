@@ -12,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
-import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
 @Component
 public class DeathCertificateDateFieldsValidatorImpl implements DeathCertificateDateFieldsValidator {

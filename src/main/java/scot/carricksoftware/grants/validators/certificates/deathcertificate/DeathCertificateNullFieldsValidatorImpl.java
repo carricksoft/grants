@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.constants.ValidationConstants;
-import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
 @Component
@@ -20,18 +19,15 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
     private static final Logger logger = LogManager.getLogger(DeathCertificateNullFieldsValidatorImpl.class);
 
     private final ValidateTypesImpl validateTypes;
-    private final ValidateDateTypes validateDateTypes;
 
-    public DeathCertificateNullFieldsValidatorImpl(ValidateTypesImpl validateTypes, ValidateDateTypes validateDateTypes) {
+    public DeathCertificateNullFieldsValidatorImpl(ValidateTypesImpl validateTypes) {
         this.validateTypes = validateTypes;
-        this.validateDateTypes = validateDateTypes;
     }
 
     @Override
     public void validate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         validateCertificateNumber(deathCertificateCommand, bindingResult);
         validateCertificateType(deathCertificateCommand, bindingResult);
-        validateCertificateDate(deathCertificateCommand, bindingResult);
         validateVolume(deathCertificateCommand, bindingResult);
         validateNumber(deathCertificateCommand, bindingResult);
         validateDeceased(deathCertificateCommand, bindingResult);
@@ -40,8 +36,6 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
         validateInformantQualification(deathCertificateCommand, bindingResult);
         validateCertificateSource(deathCertificateCommand, bindingResult);
         validateRegistrationAuthority(deathCertificateCommand, bindingResult);
-        validateWhenBorn(deathCertificateCommand, bindingResult);
-        validateWhenDied(deathCertificateCommand, bindingResult);
     }
 
     private void validateDeceased(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
@@ -93,37 +87,5 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
         logger.debug("DeathCertificateNullFieldsValidator::validateCertificateType");
         validateTypes.validateCertificateType(deathCertificateCommand.getCertificateType(), "certificateType",ValidationConstants.CERTIFICATE_TYPE_IS_NULL, bindingResult);
     }
-
-    private void validateCertificateDate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
-        logger.debug("DeathCertificateNullFieldsValidator::validateCertifixateDate");
-        validateDateTypes.validatePastDate(deathCertificateCommand.getCertificateDate(),
-                "certificateDate",
-                ValidationConstants.CERTIFICATE_DATE_IS_NULL,
-                ValidationConstants.DATE_IS_INVALID,
-                ValidationConstants.DATE_IN_FUTURE,
-                bindingResult);
-    }
-
-    private void validateWhenBorn(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
-        logger.debug("DeathCertificateNullFieldsValidator::validateWhenBorn");
-        validateDateTypes.validatePastDate(deathCertificateCommand.getWhenBorn(),
-                "whenBorn",
-                ValidationConstants.WHEN_BORN_IS_NULL,
-                ValidationConstants.DATE_IS_INVALID,
-                ValidationConstants.DATE_IN_FUTURE,
-                bindingResult);
-    }
-
-    private void validateWhenDied(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
-        logger.debug("DeathCertificateNullFieldsValidator::validateWhenDied");
-        validateDateTypes.validatePastDate(deathCertificateCommand.getWhenDied(),
-                "whenDied",
-                ValidationConstants.WHEN_DIED_IS_NULL,
-                ValidationConstants.DATE_IS_INVALID,
-                ValidationConstants.DATE_IN_FUTURE,
-                bindingResult);
-    }
-
-
 
 }

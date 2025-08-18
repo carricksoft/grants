@@ -15,9 +15,7 @@ import scot.carricksoftware.grants.commands.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
-import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.enums.general.Sex;
-import scot.carricksoftware.grants.validators.helpers.ValidateDateTypes;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
 import static org.mockito.Mockito.verify;
@@ -34,8 +32,6 @@ class DeathCertificateFieldsValidatorImplTest {
     @Mock
     private ValidateTypesImpl validateTypesMock;
 
-    @Mock
-    private ValidateDateTypes validateDateTypesMock;
 
     @Mock
     private BindingResult bindingResultMock;
@@ -48,15 +44,14 @@ class DeathCertificateFieldsValidatorImplTest {
     private String number;
     private String causeOfDeath;
     private String informantQualification;
-    private String whenDied;
     private final Sex sex = Sex.FEMALE;
     private Organisation certificateSource;
+    @SuppressWarnings("unused")
     private Organisation registrationAuthority;
-    private CertificateType certificateType;
 
     @BeforeEach
     void setUp() {
-        deathCertificateNullFieldsValidator = new DeathCertificateNullFieldsValidatorImpl(validateTypesMock, validateDateTypesMock);
+        deathCertificateNullFieldsValidator = new DeathCertificateNullFieldsValidatorImpl(validateTypesMock);
         deathCertificateCommand = new DeathCertificateCommandImpl();
 
         deceased = GetRandomPerson();
@@ -65,11 +60,7 @@ class DeathCertificateFieldsValidatorImplTest {
         number = GetRandomString();
         causeOfDeath = GetRandomString();
         informantQualification = GetRandomString();
-        whenDied = GetRandomString();
         certificateSource = GetRandomOrganisation();
-        certificateType = CertificateType.EXTRACT;
-        registrationAuthority = GetRandomOrganisation();
-        String certificateDate = GetRandomString();
         deathCertificateCommand.setDeceased(deceased);
         deathCertificateCommand.setCertificateNumber(certificateNumber);
         deathCertificateCommand.setVolume(volume);
