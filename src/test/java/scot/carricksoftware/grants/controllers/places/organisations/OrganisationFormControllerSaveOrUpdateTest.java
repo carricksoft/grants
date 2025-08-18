@@ -98,5 +98,12 @@ public class OrganisationFormControllerSaveOrUpdateTest {
         verify(capitaliseStringMock).capitalise("england");
     }
 
+    @Test
+    public void cacheIsInvalidatedTest() {
+        when(organisationServiceMock.saveOrganisationCommand(any(OrganisationCommand.class))).thenReturn(organisationCommand);
+        organisationController.saveOrUpdate(organisationCommand, bindingResultMock, modelMock);
+        verify(bmdCacheMock).invalidateOrganisations();
+    }
+
 
 }
