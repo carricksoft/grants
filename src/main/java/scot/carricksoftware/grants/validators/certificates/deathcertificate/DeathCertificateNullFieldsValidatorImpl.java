@@ -40,12 +40,8 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
         validateInformantQualification(deathCertificateCommand, bindingResult);
         validateCertificateSource(deathCertificateCommand, bindingResult);
         validateRegistrationAuthority(deathCertificateCommand, bindingResult);
+        validateWhenBorn(deathCertificateCommand, bindingResult);
         validateWhenDied(deathCertificateCommand, bindingResult);
-    }
-
-    private void validateWhenDied(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
-        logger.debug("DeathCertificateNullFieldsValidator::validateWhenDied");
-        validateTypes.validateNullOrEmptyString(deathCertificateCommand.getWhenDied(), "whenDied", ValidationConstants.WHEN_DIED_IS_NULL, bindingResult);
     }
 
     private void validateDeceased(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
@@ -99,10 +95,30 @@ public class DeathCertificateNullFieldsValidatorImpl implements DeathCertificate
     }
 
     private void validateCertificateDate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
-        logger.debug("Validating birth certificate Certificate Date");
+        logger.debug("DeathCertificateNullFieldsValidator::validateCertifixateDate");
         validateDateTypes.validatePastDate(deathCertificateCommand.getCertificateDate(),
                 "certificateDate",
                 ValidationConstants.CERTIFICATE_DATE_IS_NULL,
+                ValidationConstants.DATE_IS_INVALID,
+                ValidationConstants.DATE_IN_FUTURE,
+                bindingResult);
+    }
+
+    private void validateWhenBorn(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateNullFieldsValidator::validateWhenBorn");
+        validateDateTypes.validatePastDate(deathCertificateCommand.getWhenBorn(),
+                "whenBorn",
+                ValidationConstants.WHEN_BORN_IS_NULL,
+                ValidationConstants.DATE_IS_INVALID,
+                ValidationConstants.DATE_IN_FUTURE,
+                bindingResult);
+    }
+
+    private void validateWhenDied(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
+        logger.debug("DeathCertificateNullFieldsValidator::validateWhenDied");
+        validateDateTypes.validatePastDate(deathCertificateCommand.getWhenDied(),
+                "whenDied",
+                ValidationConstants.WHEN_DIED_IS_NULL,
                 ValidationConstants.DATE_IS_INVALID,
                 ValidationConstants.DATE_IN_FUTURE,
                 bindingResult);
