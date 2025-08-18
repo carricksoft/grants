@@ -15,6 +15,7 @@ import scot.carricksoftware.grants.commands.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.enums.certificates.CertificateType;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
 
@@ -43,7 +44,8 @@ class DeathCertificateNullFieldsValidatorImplTest {
     private String number;
     private String causeOfDeath;
     private String informantQualification;
-    private String certificateType;
+    private CertificateType certificateType;
+    private String certificateNumber;
     private final Sex sex = Sex.FEMALE;
     private Organisation certificateSource;
     @SuppressWarnings("unused")
@@ -55,13 +57,13 @@ class DeathCertificateNullFieldsValidatorImplTest {
         deathCertificateCommand = new DeathCertificateCommandImpl();
 
         deceased = GetRandomPerson();
-        String certificateNumber = GetRandomString();
         volume = GetRandomString();
         number = GetRandomString();
         causeOfDeath = GetRandomString();
         informantQualification = GetRandomString();
         certificateSource = GetRandomOrganisation();
-        certificateType = GetRandomString();
+        certificateType = CertificateType.COPY;
+        certificateNumber = GetRandomString();
         deathCertificateCommand.setDeceased(deceased);
         deathCertificateCommand.setCertificateNumber(certificateNumber);
         deathCertificateCommand.setVolume(volume);
@@ -71,6 +73,7 @@ class DeathCertificateNullFieldsValidatorImplTest {
         deathCertificateCommand.setSex(sex);
         deathCertificateCommand.setCertificateSource(certificateSource);
         deathCertificateCommand.setRegistrationAuthority(registrationAuthority);
+        deathCertificateCommand.setCertificateType(certificateType);
     }
 
     @Test
@@ -79,7 +82,7 @@ class DeathCertificateNullFieldsValidatorImplTest {
 
         verify(validateTypesMock).validatePerson(deceased, "deceased", "The deceased cannot be null.", bindingResultMock);
         verify(validateTypesMock).validatePerson(deceased, "deceased", "The deceased cannot be null.", bindingResultMock);
-        verify(validateTypesMock).validateNullOrEmptyString(certificateType, "certificateNumber", "The certificate number cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateNullOrEmptyString(certificateNumber, "certificateNumber", "The certificate number cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(volume, "volume", "The volume cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(number, "number", "The number cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(causeOfDeath, "causeOfDeath", "The cause of death should be specified.", bindingResultMock);
