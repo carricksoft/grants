@@ -24,7 +24,7 @@ import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPe
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrganisation;
 
 @ExtendWith(MockitoExtension.class)
-class DeathCertificateFieldsValidatorImplTest {
+class DeathCertificateNullFieldsValidatorImplTest {
 
     @SuppressWarnings("unused")
     DeathCertificateNullFieldsValidator deathCertificateNullFieldsValidator;
@@ -39,11 +39,11 @@ class DeathCertificateFieldsValidatorImplTest {
     @SuppressWarnings("unused")
     DeathCertificateCommand deathCertificateCommand;
     private Person deceased;
-    private String certificateNumber;
     private String volume;
     private String number;
     private String causeOfDeath;
     private String informantQualification;
+    private String certificateType;
     private final Sex sex = Sex.FEMALE;
     private Organisation certificateSource;
     @SuppressWarnings("unused")
@@ -55,12 +55,13 @@ class DeathCertificateFieldsValidatorImplTest {
         deathCertificateCommand = new DeathCertificateCommandImpl();
 
         deceased = GetRandomPerson();
-        certificateNumber = GetRandomString();
+        String certificateNumber = GetRandomString();
         volume = GetRandomString();
         number = GetRandomString();
         causeOfDeath = GetRandomString();
         informantQualification = GetRandomString();
         certificateSource = GetRandomOrganisation();
+        certificateType = GetRandomString();
         deathCertificateCommand.setDeceased(deceased);
         deathCertificateCommand.setCertificateNumber(certificateNumber);
         deathCertificateCommand.setVolume(volume);
@@ -77,7 +78,8 @@ class DeathCertificateFieldsValidatorImplTest {
         deathCertificateNullFieldsValidator.validate(deathCertificateCommand, bindingResultMock);
 
         verify(validateTypesMock).validatePerson(deceased, "deceased", "The deceased cannot be null.", bindingResultMock);
-        verify(validateTypesMock).validateNullOrEmptyString(certificateNumber, "certificateNumber", "The certificate number cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validatePerson(deceased, "deceased", "The deceased cannot be null.", bindingResultMock);
+        verify(validateTypesMock).validateNullOrEmptyString(certificateType, "certificateNumber", "The certificate number cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(volume, "volume", "The volume cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(number, "number", "The number cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(causeOfDeath, "causeOfDeath", "The cause of death should be specified.", bindingResultMock);
