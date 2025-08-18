@@ -23,6 +23,7 @@ import scot.carricksoftware.grants.validators.people.PersonCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -84,6 +85,13 @@ public class PersonFormControllerSaveOrUpdateTest {
         personCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
         assertEquals("person/form", personController.saveOrUpdate(personCommand, bindingResultMock, modelMock));
+    }
+
+    @Test
+    public void cacheIsInvalidatedTest() {
+        when(personServiceMock.savePersonCommand(any(PersonCommand.class))).thenReturn(personCommand);
+        personController.saveOrUpdate(personCommand, bindingResultMock, modelMock);
+        verify(bmdCacheMock).invalidatePeople();
     }
 
 }
