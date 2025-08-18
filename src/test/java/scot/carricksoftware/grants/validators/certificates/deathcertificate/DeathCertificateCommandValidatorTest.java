@@ -27,6 +27,9 @@ class DeathCertificateCommandValidatorTest {
     private DeathCertificateUntrackedFieldsValidator deathCertificateUntrackedFieldsValidatorMock;
 
     @Mock
+    private DeathCertificateDateFieldsValidator deathCertificateDateFieldsValidatorMock;
+
+    @Mock
     private DeathCertificateCommand deathCertificateCommandMock;
 
     @Mock
@@ -36,7 +39,8 @@ class DeathCertificateCommandValidatorTest {
     void setUp() {
         deathCertificateCommandValidator = new DeathCertificateCommandValidatorImpl(
                 deathCertificateNullFieldsValidatorMock,
-                deathCertificateUntrackedFieldsValidatorMock);
+                deathCertificateUntrackedFieldsValidatorMock,
+                deathCertificateDateFieldsValidatorMock);
     }
 
     @Test

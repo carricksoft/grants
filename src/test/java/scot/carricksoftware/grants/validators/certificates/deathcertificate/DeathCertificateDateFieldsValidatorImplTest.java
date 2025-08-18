@@ -22,10 +22,7 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 @ExtendWith(MockitoExtension.class)
 class DeathCertificateDateFieldsValidatorImplTest {
 
-    DeathCertificateNullFieldsValidator deathCertificateNullFieldsValidator;
-
-    @Mock
-    private ValidateTypesImpl validateTypesMock;
+    DeathCertificateDateFieldsValidator deathCertificateDateFieldsValidator;
 
     @Mock
     private ValidateDateTypes validateDateTypesMock;
@@ -35,24 +32,54 @@ class DeathCertificateDateFieldsValidatorImplTest {
 
     DeathCertificateCommand deathCertificateCommand;
     String certificateDate;
+    String whenBorn;
+    String whenDied;
 
     @BeforeEach
     void setUp() {
-        deathCertificateNullFieldsValidator = new DeathCertificateNullFieldsValidatorImpl(validateTypesMock, validateDateTypesMock);
+        deathCertificateDateFieldsValidator = new DeathCertificateDateFieldsValidatorImpl(validateDateTypesMock);
         deathCertificateCommand = new DeathCertificateCommandImpl();
         certificateDate = GetRandomString();
+        whenBorn = GetRandomString();
+        whenDied = GetRandomString();
 
         deathCertificateCommand.setCertificateDate(certificateDate);
+        deathCertificateCommand.setWhenBorn(whenBorn);
+        deathCertificateCommand.setWhenDied(whenDied);
     }
 
     @Test
-    void validateDateTypesIsCalledTest() {
-        deathCertificateNullFieldsValidator.validate(deathCertificateCommand, bindingResultMock);
+    void validateCertificateDateIsCalledTest() {
+        deathCertificateDateFieldsValidator.validate(deathCertificateCommand, bindingResultMock);
 
         verify(validateDateTypesMock).validatePastDate(certificateDate,
                 "certificateDate",
                 "The certificate date cannot be null.",
                 "The certificate date is invalid or of the wrong format.",
+                "Date should not be in the future.",
+                bindingResultMock);
+    }
+
+    @Test
+    void validateWhenBornIsCalledTest() {
+        deathCertificateDateFieldsValidator.validate(deathCertificateCommand, bindingResultMock);
+
+        verify(validateDateTypesMock).validatePastDate(whenBorn,
+                "whenBorn",
+                "When born cannot be null.",
+                "The format should be dd/MM/yyyy hh:mm.",
+                "Date should not be in the future.",
+                bindingResultMock);
+    }
+
+    @Test
+    void validateWhenDiedIsCalledTest() {
+        deathCertificateDateFieldsValidator.validate(deathCertificateCommand, bindingResultMock);
+
+        verify(validateDateTypesMock).validatePastDate(whenDied,
+                "whenDied",
+                "When died cannot be null.",
+                "The format should be dd/MM/yyyy.",
                 "Date should not be in the future.",
                 bindingResultMock);
     }

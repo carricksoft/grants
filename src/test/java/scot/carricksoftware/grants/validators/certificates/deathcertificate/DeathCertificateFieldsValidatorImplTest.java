@@ -79,9 +79,6 @@ class DeathCertificateFieldsValidatorImplTest {
         deathCertificateCommand.setSex(sex);
         deathCertificateCommand.setCertificateSource(certificateSource);
         deathCertificateCommand.setRegistrationAuthority(registrationAuthority);
-        deathCertificateCommand.setCertificateType(certificateType);
-        deathCertificateCommand.setCertificateDate(certificateDate);
-        deathCertificateCommand.setWhenDied(whenDied);
     }
 
     @Test
@@ -97,8 +94,6 @@ class DeathCertificateFieldsValidatorImplTest {
         verify(validateTypesMock).validateSex(sex, "sex", "Sex cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateOrganisation(certificateSource, "certificateSource", "The certificate source cannot be null.", bindingResultMock);
         verify(validateTypesMock).validateOrganisation(registrationAuthority, "registrationAuthority", "The registration authority cannot be null.", bindingResultMock);
-        verify(validateTypesMock).validateCertificateType(certificateType, "certificateType", "The certificate type cannot be null.", bindingResultMock);
-        verify(validateTypesMock).validateNullOrEmptyString(whenDied, "whenDied", "When died cannot be null.", bindingResultMock);
     }
 
 }
