@@ -24,6 +24,7 @@ import scot.carricksoftware.grants.validators.places.PlaceCommandValidator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
@@ -89,6 +90,13 @@ public class PlaceFormControllerSaveOrUpdateTest {
         placeCommand.setId(id);
         when(bindingResultMock.hasErrors()).thenReturn(true);
         assertEquals("place/form", placeController.saveOrUpdate(placeCommand, bindingResultMock, modelMock));
+    }
+
+    @Test
+    public void cacheIsInvalidatedTest() {
+        when(placeServiceMock.savePlaceCommand(any(PlaceCommand.class))).thenReturn(placeCommand);
+        placeController.saveOrUpdate(placeCommand, bindingResultMock, modelMock);
+        verify(bmdCacheMock).invalidatePlaces();
     }
 
 }
