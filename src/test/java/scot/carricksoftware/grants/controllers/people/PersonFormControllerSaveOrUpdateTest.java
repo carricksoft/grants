@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.capitalisation.people.CapitalisePerson;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
@@ -52,6 +53,9 @@ public class PersonFormControllerSaveOrUpdateTest {
     @Mock
     PersonCommandValidator personCommandValidatorMock;
 
+    @Mock
+    private BMDCache bmdCacheMock;
+
     private PersonCommand personCommand;
 
 
@@ -61,7 +65,8 @@ public class PersonFormControllerSaveOrUpdateTest {
                 personCommandConverterMock,
                 personConverterMock,
                 capitalisePersonMock,
-                personCommandValidatorMock);
+                personCommandValidatorMock,
+                bmdCacheMock);
         personCommand = new PersonCommandImpl();
     }
 

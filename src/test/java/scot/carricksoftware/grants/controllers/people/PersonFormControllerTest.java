@@ -13,6 +13,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.capitalisation.people.CapitalisePerson;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -49,6 +50,9 @@ public class PersonFormControllerTest {
     private CapitalisePerson capitalisePersonMock;
 
     @Mock
+    private BMDCache bmdCacheMock;
+
+    @Mock
     private Model modelMock;
 
     @Mock
@@ -61,7 +65,8 @@ public class PersonFormControllerTest {
                 personCommandConverterMock,
                 personConverterMock,
                 capitalisePersonMock,
-                personCommandValidatorMock);
+                personCommandValidatorMock,
+                bmdCacheMock);
     }
 
     @Test

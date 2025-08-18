@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.capitalisation.people.CapitalisePerson;
 import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
@@ -33,18 +34,19 @@ public class PersonFormControllerImpl implements PersonFormController {
     private static final Logger logger = LogManager.getLogger(PersonFormControllerImpl.class);
 
     private final PersonService personService;
-    @SuppressWarnings({"FieldCanBeLocal", "unused"})
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private final PersonCommandConverterImpl personCommandConverter;
     private final PersonConverterImpl personConverter;
     private final CapitalisePerson capitalisePerson;
     private final PersonCommandValidator personCommandValidator;
+    private final BMDCache bmdCache;
 
 
     public PersonFormControllerImpl(PersonService personService,
                                     PersonCommandConverterImpl personCommandConverter,
                                     PersonConverterImpl personConverter,
                                     CapitalisePerson capitalisePerson,
-                                    PersonCommandValidator personCommandValidator) {
+                                    PersonCommandValidator personCommandValidator, BMDCache bmdCache) {
         this.personService = personService;
         this.personCommandConverter = personCommandConverter;
 
@@ -52,6 +54,7 @@ public class PersonFormControllerImpl implements PersonFormController {
         this.personConverter = personConverter;
         this.capitalisePerson = capitalisePerson;
         this.personCommandValidator = personCommandValidator;
+        this.bmdCache = bmdCache;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -78,6 +81,7 @@ public class PersonFormControllerImpl implements PersonFormController {
 
         capitalisePerson.capitalise(personCommand);
         personCommandValidator.validate(personCommand, bindingResult);
+        bmdCache.invalidatePeople();
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));

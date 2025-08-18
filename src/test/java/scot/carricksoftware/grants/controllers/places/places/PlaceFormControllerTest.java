@@ -13,6 +13,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.capitalisation.places.places.CapitalisePlace;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -57,6 +58,9 @@ public class PlaceFormControllerTest {
     @Mock
     PlaceCommandValidator placeCommandValidatorMock;
 
+    @Mock
+    private BMDCache bmdCacheMock;
+
 
     @BeforeEach
     public void setUp() {
@@ -65,7 +69,8 @@ public class PlaceFormControllerTest {
                 placeConverterMock,
                 capitalisePlaceMock,
                 placeCommandValidatorMock,
-                regionServiceMock);
+                regionServiceMock,
+                bmdCacheMock);
     }
 
     @Test

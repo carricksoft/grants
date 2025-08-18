@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.capitalisation.CapitaliseString;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommand;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommandImpl;
@@ -37,17 +38,19 @@ public class OrganisationFormControllerImpl implements OrganisationFormControlle
     private final OrganisationConverter organisationConverter;
     private final CapitaliseString capitaliseString;
     private final OrganisationCommandValidator organisationCommandValidator;
+    private final BMDCache bmdCache;
 
     public OrganisationFormControllerImpl(OrganisationService organisationService,
                                           OrganisationCommandConverter organisationCommandConverter,
                                           OrganisationConverter organisationConverter,
                                           CapitaliseString capitaliseString,
-                                          OrganisationCommandValidator organisationCommandValidator) {
+                                          OrganisationCommandValidator organisationCommandValidator, BMDCache bmdCache) {
         this.organisationService = organisationService;
         this.organisationCommandConverter = organisationCommandConverter;
         this.organisationConverter = organisationConverter;
         this.capitaliseString = capitaliseString;
         this.organisationCommandValidator = organisationCommandValidator;
+        this.bmdCache = bmdCache;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -65,6 +68,7 @@ public class OrganisationFormControllerImpl implements OrganisationFormControlle
         logger.debug("OrganisationFormControllerImpl::saveOrUpdate");
 
         organisationCommandValidator.validate(organisationCommand, bindingResult);
+        bmdCache.invalidateOrganisations();
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));

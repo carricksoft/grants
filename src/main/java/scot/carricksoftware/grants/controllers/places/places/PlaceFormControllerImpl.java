@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.capitalisation.places.places.CapitalisePlace;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommand;
 import scot.carricksoftware.grants.commands.places.places.PlaceCommandImpl;
@@ -33,12 +34,13 @@ public class PlaceFormControllerImpl implements PlaceFormController {
 
     private static final Logger logger = LogManager.getLogger(PlaceFormControllerImpl.class);
     private final PlaceService placeService;
-    @SuppressWarnings({"FieldCanBeLocal", "unused"})
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private final PlaceCommandConverterImpl placeCommandConverter;
     private final PlaceConverterImpl placeConverter;
     private final CapitalisePlace capitalisePlace;
     private final PlaceCommandValidator placeCommandValidator;
     private final RegionService regionService;
+    private final BMDCache bmdCache;
 
 
     public PlaceFormControllerImpl(PlaceService placeService,
@@ -46,7 +48,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
                                    PlaceConverterImpl placeConverter,
                                    CapitalisePlace capitalisePlace,
                                    PlaceCommandValidator placeCommandValidator,
-                                   RegionService regionService) {
+                                   RegionService regionService, BMDCache bmdCache) {
         this.placeService = placeService;
         this.placeCommandConverter = placeCommandConverter;
 
@@ -55,6 +57,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
         this.capitalisePlace = capitalisePlace;
         this.placeCommandValidator = placeCommandValidator;
         this.regionService = regionService;
+        this.bmdCache = bmdCache;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -83,6 +86,7 @@ public class PlaceFormControllerImpl implements PlaceFormController {
 
         capitalisePlace.capitalise(placeCommand);
         placeCommandValidator.validate(placeCommand, bindingResult);
+        bmdCache.invalidatePlaces();
 
         if (bindingResult.hasErrors()) {
             model.addAttribute(AttributeConstants.REGIONS, regionService.findAll());

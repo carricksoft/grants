@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.capitalisation.people.CapitalisePerson;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
@@ -39,6 +40,9 @@ public class PageFormControllerCleansingTest {
     private CapitalisePerson capitalisePersonMock;
 
     @Mock
+    private BMDCache bmdCacheMock;
+
+    @Mock
     PersonCommandValidator personCommandValidatorMock;
 
     @BeforeEach
@@ -47,7 +51,8 @@ public class PageFormControllerCleansingTest {
                 personCommandConverterMock,
                 personConverterMock,
                 capitalisePersonMock,
-                personCommandValidatorMock);
+                personCommandValidatorMock,
+                bmdCacheMock);
     }
 
 

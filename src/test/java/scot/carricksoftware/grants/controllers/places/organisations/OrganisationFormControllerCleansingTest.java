@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.capitalisation.CapitaliseString;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommand;
 import scot.carricksoftware.grants.converters.places.organisations.OrganisationCommandConverterImpl;
@@ -55,6 +56,9 @@ public class OrganisationFormControllerCleansingTest {
     @Mock
     Model modelMock;
 
+    @Mock
+    private BMDCache bmdCacheMock;
+
 
     @BeforeEach
     public void setUp() {
@@ -62,7 +66,8 @@ public class OrganisationFormControllerCleansingTest {
                 organisationCommandConverterMock,
                 organisationConverterMock,
                 capitaliseStringMock,
-                organisationCommandValidatorMock);
+                organisationCommandValidatorMock,
+                bmdCacheMock);
     }
 
 
