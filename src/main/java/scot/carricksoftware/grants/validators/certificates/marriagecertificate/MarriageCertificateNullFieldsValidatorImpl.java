@@ -46,7 +46,7 @@ public class MarriageCertificateNullFieldsValidatorImpl implements MarriageCerti
 
     private void validateBride(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
         logger.debug("MarriageCertificateNullFieldsValidator::validateBride");
-        validateTypes.validatePerson(marriageCertificateCommand.getGroom(), "bride", ValidationConstants.BRIDE_IS_NULL, bindingResult);
+        validateTypes.validatePerson(marriageCertificateCommand.getBride(), "bride", ValidationConstants.BRIDE_IS_NULL, bindingResult);
     }
 
     private void validateGroomAge(MarriageCertificateCommand marriageCertificateCommand, BindingResult bindingResult) {
