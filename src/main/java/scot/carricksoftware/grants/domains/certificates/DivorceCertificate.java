@@ -5,15 +5,17 @@
 
 package scot.carricksoftware.grants.domains.certificates;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.BaseEntity;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 
 @Entity
 public class DivorceCertificate extends BaseEntity {
-
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
@@ -24,6 +26,21 @@ public class DivorceCertificate extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "`second_party_id`")
     private Person secondParty;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name= "`registered_date`")
+    @DateTimeFormat(pattern = ApplicationConstants.DATE_FORMAT)
+    private String registeredDate;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name= "`first_party_date`")
+    @DateTimeFormat(pattern = ApplicationConstants.DATE_FORMAT)
+    private String firstPartyDate;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name= "`second_party_date`")
+    @DateTimeFormat(pattern = ApplicationConstants.DATE_FORMAT)
+    private String secondPartyDate;
 
     public Person getFirstParty() {
         return firstParty;
@@ -39,5 +56,29 @@ public class DivorceCertificate extends BaseEntity {
 
     public void setSecondParty(Person secondParty) {
         this.secondParty = secondParty;
+    }
+
+    public String getRegisteredDate() {
+        return registeredDate;
+    }
+
+    public void setRegisteredDate(String registeredDate) {
+        this.registeredDate = registeredDate;
+    }
+
+    public String getFirstPartyDate() {
+        return firstPartyDate;
+    }
+
+    public void setFirstPartyDate(String firstPartyDate) {
+        this.firstPartyDate = firstPartyDate;
+    }
+
+    public String getSecondPartyDate() {
+        return secondPartyDate;
+    }
+
+    public void setSecondPartyDate(String secondPartyDate) {
+        this.secondPartyDate = secondPartyDate;
     }
 }
