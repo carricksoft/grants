@@ -1,21 +1,21 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 24/03/2025, 17:20. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.domains.certificates;
+package scot.carricksoftware.grants.domains.certificates.divorce;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.domains.certificates.DivorceCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 
-class DivorceCertificateTest {
+class DivorceCertificatePeopleTest {
 
     private DivorceCertificate certificate;
 
@@ -25,20 +25,8 @@ class DivorceCertificateTest {
     }
 
     @Test
-    public void getIdTest() {
-        assertNull(certificate.getId());
-    }
-
-    @Test
-    public void setIdTest() {
-        Long id = GetRandomLong();
-        certificate.setId(id);
-        assertEquals(id, certificate.getId());
-    }
-
-    @Test
     public void getFirstPartyTest() {
-        assertNull(certificate.getId());
+        assertNull(certificate.getFirstParty());
     }
 
     @Test
@@ -59,6 +47,8 @@ class DivorceCertificateTest {
         certificate.setSecondParty(person);
         assertEquals(person, certificate.getSecondParty());
     }
+
+
 
 
 }
