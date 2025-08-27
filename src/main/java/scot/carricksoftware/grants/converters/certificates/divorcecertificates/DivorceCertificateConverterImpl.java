@@ -23,6 +23,10 @@ public class DivorceCertificateConverterImpl implements DivorceCertificateConver
         target.setFirstParty(source.getFirstParty());
         target.setSecondParty(source.getSecondParty());
 
+        target.setFirstPartyDate(source.getFirstPartyDate());
+        target.setSecondPartyDate(source.getSecondPartyDate());
+        target.setRegisteredDate(source.getRegisteredDate());
+
         return target;
     }
 }
