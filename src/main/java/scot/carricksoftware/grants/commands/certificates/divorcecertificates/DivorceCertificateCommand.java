@@ -22,5 +22,21 @@ public interface DivorceCertificateCommand {
 
     void setSecondParty(Person secondParty);
 
+    @SuppressWarnings("unused")
+    String getRegisteredDate();
 
+    @SuppressWarnings("unused")
+    void setRegisteredDate(String registeredDate);
+
+    @SuppressWarnings("unused")
+    String getFirstPartyDate();
+
+    @SuppressWarnings("unused")
+    void setFirstPartyDate(String firstPartyDate);
+
+    @SuppressWarnings("unused")
+    String getSecondPartyDate();
+
+    @SuppressWarnings("unused")
+    void setSecondPartyDate(String secondPartyDate);
 }

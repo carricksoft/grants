@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 24/03/2025, 17:31. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.commands.certificates;
+package scot.carricksoftware.grants.commands.certificates.divorce;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -13,28 +13,18 @@ import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
-class DivorceCertificateCommandTest {
+class DivorceCertificateCommandPersonTest {
 
     private DivorceCertificateCommand command;
+
+    private Person person;
 
     @BeforeEach
     void setUp() {
         command = new DivorceCertificateCommandImpl();
-    }
-
-    @Test
-    void getIdTest() {
-        assertNull(command.getId());
-    }
-
-    @Test
-    void setIdTest() {
-        Long id = GetRandomLong();
-        command.setId(id);
-        assertEquals(id, command.getId());
+        person = GetRandomPerson();
     }
 
     @Test
@@ -44,7 +34,6 @@ class DivorceCertificateCommandTest {
 
     @Test
     public void setFirstPartyTest() {
-        Person person = GetRandomPerson();
         command.setFirstParty(person);
         assertEquals(person, command.getFirstParty());
     }
@@ -56,7 +45,6 @@ class DivorceCertificateCommandTest {
 
     @Test
     public void setSecondPartyTest() {
-        Person person = GetRandomPerson();
         command.setSecondParty(person);
         assertEquals(person, command.getSecondParty());
     }
