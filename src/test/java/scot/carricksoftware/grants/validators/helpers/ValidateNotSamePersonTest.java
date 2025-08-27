@@ -38,8 +38,11 @@ class ValidateNotSamePersonTest {
     void setUp() {
         validateTwoFieldTypes = new ValidateTwoFieldTypesImpl();
         message = "message";
-        firstPerson = GetRandomPerson();
-        secondPerson = GetRandomPerson();
+        do {
+            firstPerson = GetRandomPerson();
+            secondPerson = GetRandomPerson();
+        } while (firstPerson == secondPerson);
+        secondPerson.setFirstName("blogs");
         firstPersonFieldName = GetRandomString();
         secondPersonFieldName = GetRandomString();
     }
