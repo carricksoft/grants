@@ -44,6 +44,8 @@ public class ValidationConstants {
     public static final String FATHER_USUAL_RESIDENCE_AND_UNTRACKED_FATHER_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence must be specified.";
     public static final String FIELD_NOT_NEGATIVE_INTEGER = "Not a non negative integer.";
     public static final String FIRST_PARTY_IS_NULL = "The first party cannot be null.";
+    public static final String FIRST_PARTY_DATE_IS_NULL = "The first party date cannot be null.";
+    public static final String FIRST_PARTY_DATE_INVALID_FORMAT = "The format should be dd/MM/yyyy.";
     public static final String GROOM_IS_NULL = "The groom cannot be null.";
     public static final String GROOM_AGE_IS_NULL = "The groom age cannot be null.";
     public static final String GROOM_FATHER_RANK_IS_NULL = "The groom's father's rank cannot be null.";
@@ -64,11 +66,15 @@ public class ValidationConstants {
     public static final String PERSON_IS_NULL = "The person cannot be null.";
     public static final String PLACE_IS_NULL = "Place must exist.";
     public static final String REGION_IS_NULL = "Region must exist.";
+    public static final String REGISTERED_DATE_IS_NULL = "The registered date cannot be null.";
+    public static final String REGISTERED_DATE_INVALID_FORMAT = "The format should be dd/MM/yyyy.";
     public static final String REGISTRATION_AUTHORITY_IS_NULL = "The registration authority cannot be null.";
     public static final String REGISTRATION_VOLUME_IS_NULL = "The volume cannot be null.";
     public static final String SAME_BRIDE_AND_GROOM = "The bride and groom cannot be the same person.";
     public static final String SAME_TWO_PARTIES = "The two parties cannot be the same person.";
     public static final String SECOND_PARTY_IS_NULL = "The second party cannot be null.";
+    public static final String SECOND_PARTY_DATE_IS_NULL = "The second party date cannot be null.";
+    public static final String SECOND_PARTY_DATE_INVALID_FORMAT = "The format should be dd/MM/yyyy.";
     public static final String SEX_IS_NULL = "Sex cannot be null.";
     public static final String SPOUSE_AND_UNTRACKED_SPOUSE = "One and only one spouse and untracked spouse may be specified.";
     public static final String TOTAL_ROOMS_AND_INHABITED_ROOMS_CANNOT_COEXIST =  "Total Rooms and Inhabited Rooms cannot coexist.";

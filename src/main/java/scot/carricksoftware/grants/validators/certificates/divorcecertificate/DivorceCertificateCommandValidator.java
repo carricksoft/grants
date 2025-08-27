@@ -12,6 +12,7 @@ import scot.carricksoftware.grants.commands.certificates.divorcecertificates.Div
 @Component
 public interface DivorceCertificateCommandValidator {
 
+    @SuppressWarnings("unused")
     void validate(DivorceCertificateCommand divorceCertificateCommand, BindingResult bindingResult);
 }
 
