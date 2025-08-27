@@ -49,7 +49,7 @@
                     </select>
                     <div th:if="${#fields.hasErrors('firstParty')}">
                         <ul class="text-danger">
-                            <li th:each="err : ${#fields.errors('bride')}" th:text="${err}"/>
+                            <li th:each="err : ${#fields.errors('firstParty')}" th:text="${err}"/>
                         </ul>
                     </div>
                 </td>
