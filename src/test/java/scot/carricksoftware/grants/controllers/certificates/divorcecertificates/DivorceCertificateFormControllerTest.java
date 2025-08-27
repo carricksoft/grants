@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.converters.certificates.divorcecertificates.D
 import scot.carricksoftware.grants.domains.certificates.DivorceCertificate;
 import scot.carricksoftware.grants.services.certificates.divorcecertificates.DivorceCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.certificates.divorcecertificate.DivorceCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.divorcecertificate.DivorceCertificateCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -51,7 +51,7 @@ public class DivorceCertificateFormControllerTest {
     private Model modelMock;
 
     @Mock
-    private DivorceCertificateCommandValidator divorceCertificateCommandValidatorMock;
+    private DivorceCertificateCommandValidatorImpl divorceCertificateCommandValidatorImplMock;
 
 
     @BeforeEach
@@ -59,7 +59,7 @@ public class DivorceCertificateFormControllerTest {
         divorceCertificateFormController = new DivorceCertificateFormControllerImpl(divorceCertificateServiceMock,
                 divorceCertificateCommandConverterMock,
                 divorceCertificateConverterMock,
-                divorceCertificateCommandValidatorMock,
+                divorceCertificateCommandValidatorImplMock,
                 personServiceMock);
     }
 

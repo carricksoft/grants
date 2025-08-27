@@ -18,7 +18,7 @@ import scot.carricksoftware.grants.converters.certificates.divorcecertificates.D
 import scot.carricksoftware.grants.converters.certificates.divorcecertificates.DivorceCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.divorcecertificates.DivorceCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.certificates.divorcecertificate.DivorceCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.divorcecertificate.DivorceCertificateCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -51,7 +51,7 @@ public class DivorceCertificateFormControllerSaveOrUpdateTest {
     BindingResult bindingResultMock;
 
     @Mock
-    private DivorceCertificateCommandValidator divorceCertificateCommandValidatorMock;
+    private DivorceCertificateCommandValidatorImpl divorceCertificateCommandValidatorImplMock;
 
     private DivorceCertificateCommand divorceCertificateCommand;
 
@@ -61,7 +61,7 @@ public class DivorceCertificateFormControllerSaveOrUpdateTest {
         divorceCertificateController = new DivorceCertificateFormControllerImpl(divorceCertificateServiceMock,
                 divorceCertificateCommandConverterMock,
                 divorceCertificateConverterMock,
-                divorceCertificateCommandValidatorMock,
+                divorceCertificateCommandValidatorImplMock,
                 personServiceMock);
         divorceCertificateCommand = new DivorceCertificateCommandImpl();
     }

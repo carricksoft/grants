@@ -25,7 +25,7 @@ import scot.carricksoftware.grants.converters.certificates.divorcecertificates.D
 import scot.carricksoftware.grants.converters.certificates.divorcecertificates.DivorceCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.divorcecertificates.DivorceCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.certificates.divorcecertificate.DivorceCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.divorcecertificate.DivorceCertificateCommandValidatorImpl;
 
 
 @SuppressWarnings("LoggingSimilarMessage")
@@ -37,20 +37,20 @@ public class DivorceCertificateFormControllerImpl implements DivorceCertificateF
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final DivorceCertificateCommandConverterImpl divorceCertificateCommandConverter;
     private final DivorceCertificateConverterImpl divorceCertificateConverter;
-    private final DivorceCertificateCommandValidator divorceCertificateCommandValidator;
+    private final DivorceCertificateCommandValidatorImpl divorceCertificateCommandValidatorImpl;
     private final PersonService personService;
 
 
     public DivorceCertificateFormControllerImpl(DivorceCertificateService divorceCertificateService,
                                                 DivorceCertificateCommandConverterImpl divorceCertificateCommandConverter,
                                                 DivorceCertificateConverterImpl divorceCertificateConverter,
-                                                DivorceCertificateCommandValidator divorceCertificateCommandValidator, PersonService personService) {
+                                                DivorceCertificateCommandValidatorImpl divorceCertificateCommandValidatorImpl, PersonService personService) {
         this.divorceCertificateService = divorceCertificateService;
         this.divorceCertificateCommandConverter = divorceCertificateCommandConverter;
 
 
         this.divorceCertificateConverter = divorceCertificateConverter;
-        this.divorceCertificateCommandValidator = divorceCertificateCommandValidator;
+        this.divorceCertificateCommandValidatorImpl = divorceCertificateCommandValidatorImpl;
         this.personService = personService;
     }
 
@@ -80,7 +80,7 @@ public class DivorceCertificateFormControllerImpl implements DivorceCertificateF
     public String saveOrUpdate(@Valid @ModelAttribute DivorceCertificateCommand divorceCertificateCommand, BindingResult bindingResult, Model model) {
         logger.debug("DivorceCertificateFormControllerImpl::saveOrUpdate");
 
-        divorceCertificateCommandValidator.validate(divorceCertificateCommand, bindingResult);
+        divorceCertificateCommandValidatorImpl.validate(divorceCertificateCommand, bindingResult);
 
 
         if (bindingResult.hasErrors()) {

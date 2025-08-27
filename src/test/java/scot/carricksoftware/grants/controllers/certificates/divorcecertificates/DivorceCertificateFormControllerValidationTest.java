@@ -19,7 +19,7 @@ import scot.carricksoftware.grants.converters.certificates.divorcecertificates.D
 import scot.carricksoftware.grants.converters.certificates.divorcecertificates.DivorceCertificateConverterImpl;
 import scot.carricksoftware.grants.services.certificates.divorcecertificates.DivorceCertificateService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.certificates.divorcecertificate.DivorceCertificateCommandValidator;
+import scot.carricksoftware.grants.validators.certificates.divorcecertificate.DivorceCertificateCommandValidatorImpl;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -48,7 +48,7 @@ public class DivorceCertificateFormControllerValidationTest {
     private PersonService personServiceMock;
 
     @Mock
-    private DivorceCertificateCommandValidator divorceCertificateCommandValidatorMock;
+    private DivorceCertificateCommandValidatorImpl divorceCertificateCommandValidatorImplMock;
 
     @Mock
     private Model modelMock;
@@ -59,7 +59,7 @@ public class DivorceCertificateFormControllerValidationTest {
         divorceCertificateController = new DivorceCertificateFormControllerImpl(divorceCertificateServiceMock,
                 divorceCertificateCommandConverterMock,
                 divorceCertificateConverterMock,
-                divorceCertificateCommandValidatorMock,
+                divorceCertificateCommandValidatorImplMock,
                 personServiceMock);
     }
 
@@ -73,7 +73,7 @@ public class DivorceCertificateFormControllerValidationTest {
 
         divorceCertificateController.saveOrUpdate(divorceCertificateCommand, bindingResultMock, modelMock);
 
-        verify(divorceCertificateCommandValidatorMock).validate(divorceCertificateCommand, bindingResultMock);
+        verify(divorceCertificateCommandValidatorImplMock).validate(divorceCertificateCommand, bindingResultMock);
     }
 
 
