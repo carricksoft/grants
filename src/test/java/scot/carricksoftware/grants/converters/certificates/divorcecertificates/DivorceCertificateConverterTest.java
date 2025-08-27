@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.domains.certificates.DivorceCertificate;
 import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
@@ -30,11 +31,17 @@ class DivorceCertificateConverterTest {
         Long id = GetRandomLong();
         Person firstParty = GetRandomPerson();
         Person secondParty = GetRandomPerson();
+        String firstPartyDate = GetRandomString();
+        String secondPartyDate = GetRandomString();
+        String registeredDate = GetRandomString();
         DivorceCertificate source = new DivorceCertificate();
 
         source.setId(id);
         source.setFirstParty(firstParty);
         source.setSecondParty(secondParty);
+        source.setFirstPartyDate(firstPartyDate);
+        source.setSecondPartyDate(secondPartyDate);
+        source.setRegisteredDate(registeredDate);
 
         DivorceCertificateCommand target = converter.convert(source);
 
@@ -42,5 +49,8 @@ class DivorceCertificateConverterTest {
         assertEquals(id, target.getId());
         assertEquals(firstParty, target.getFirstParty());
         assertEquals(secondParty, target.getSecondParty());
+        assertEquals(firstPartyDate, target.getFirstPartyDate());
+        assertEquals(secondPartyDate, target.getSecondPartyDate());
+        assertEquals(registeredDate, target.getRegisteredDate());
     }
 }

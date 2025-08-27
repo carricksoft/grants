@@ -19,13 +19,14 @@ public class DivorceCertificateConverterImpl implements DivorceCertificateConver
     public DivorceCertificateCommand convert(DivorceCertificate source) {
         DivorceCertificateCommand target = new DivorceCertificateCommandImpl();
 
+        target.setFirstPartyDate(source.getFirstPartyDate());
+        target.setSecondPartyDate(source.getSecondPartyDate());
+        target.setRegisteredDate(source.getRegisteredDate());
         target.setId(source.getId());
         target.setFirstParty(source.getFirstParty());
         target.setSecondParty(source.getSecondParty());
 
-        target.setFirstPartyDate(source.getFirstPartyDate());
-        target.setSecondPartyDate(source.getSecondPartyDate());
-        target.setRegisteredDate(source.getRegisteredDate());
+
 
         return target;
     }
