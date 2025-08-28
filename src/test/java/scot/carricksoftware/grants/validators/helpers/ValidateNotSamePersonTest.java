@@ -42,7 +42,6 @@ class ValidateNotSamePersonTest {
             firstPerson = GetRandomPerson();
             secondPerson = GetRandomPerson();
         } while (firstPerson == secondPerson);
-        secondPerson.setFirstName("blogs");
         firstPersonFieldName = GetRandomString();
         secondPersonFieldName = GetRandomString();
     }
@@ -71,9 +70,5 @@ class ValidateNotSamePersonTest {
         validateTwoFieldTypes.validateNotSamePerson(firstPerson, null, firstPersonFieldName, secondPersonFieldName, message, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
-
-
-
-
 
 }
