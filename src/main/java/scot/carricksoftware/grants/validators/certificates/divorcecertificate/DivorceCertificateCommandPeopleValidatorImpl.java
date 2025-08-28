@@ -12,7 +12,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.divorcecertificates.DivorceCertificateCommand;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 import scot.carricksoftware.grants.validators.helpers.ValidateTwoFieldTypes;
-import scot.carricksoftware.grants.validators.helpers.ValidateTypesImpl;
+import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 
 @Component
@@ -20,11 +20,12 @@ public class DivorceCertificateCommandPeopleValidatorImpl implements DivorceCert
 
     private static final Logger logger = LogManager.getLogger(DivorceCertificateCommandPeopleValidatorImpl.class);
 
-    private final ValidateTypesImpl validateTypes;
+    private final ValidateTypes validateTypes;
     private final ValidateTwoFieldTypes validateTwoFieldTypes;
 
-    public DivorceCertificateCommandPeopleValidatorImpl(ValidateTypesImpl validateTypes,
-                                                        ValidateTwoFieldTypes validateTwoFieldTypes) {
+
+
+    public DivorceCertificateCommandPeopleValidatorImpl(ValidateTypes validateTypes, ValidateTwoFieldTypes validateTwoFieldTypes) {
         this.validateTypes = validateTypes;
         this.validateTwoFieldTypes = validateTwoFieldTypes;
     }

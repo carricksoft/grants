@@ -45,7 +45,4 @@ class DivorceCertificateDateFieldsValidatorTest {
                 "The registered date cannot be null.", "The format should be dd/MM/yyyy.", "Date should not be in the future.",bindingResultMock);
     }
 
-
-
-
 }
