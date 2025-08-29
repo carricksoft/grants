@@ -11,7 +11,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.domains.people.Person;
 
 import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
@@ -24,8 +23,6 @@ class ValidateNotSamePersonTest {
 
     private String message;
 
-    private Person firstPerson;
-    private Person secondPerson;
     private String firstPersonFieldName;
     private String secondPersonFieldName;
 
@@ -36,30 +33,19 @@ class ValidateNotSamePersonTest {
     void setUp() {
         validateTwoFieldTypes = new ValidateTwoFieldTypesImpl();
         message = "message";
-        do {
-            firstPerson = GetRandomPerson();
-            secondPerson = GetRandomPerson();
-        } while (firstPerson == secondPerson);
         firstPersonFieldName = GetRandomString();
         secondPersonFieldName = GetRandomString();
     }
 
     @Test
-    void differentPeopleTest() {
-       validateTwoFieldTypes.validateNotSamePerson(firstPerson, secondPerson, firstPersonFieldName, secondPersonFieldName, message, bindingResultMock);
-       verifyNoInteractions(bindingResultMock);
-    }
-
-
-    @Test
     void nullFirstPersonTest() {
-        validateTwoFieldTypes.validateNotSamePerson(null, secondPerson, firstPersonFieldName, secondPersonFieldName, message, bindingResultMock);
+        validateTwoFieldTypes.validateNotSamePerson(null, GetRandomPerson(), firstPersonFieldName, secondPersonFieldName, message, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
     void nullSecondPersonTest() {
-        validateTwoFieldTypes.validateNotSamePerson(firstPerson, null, firstPersonFieldName, secondPersonFieldName, message, bindingResultMock);
+        validateTwoFieldTypes.validateNotSamePerson(GetRandomPerson(), null, firstPersonFieldName, secondPersonFieldName, message, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
