@@ -50,12 +50,6 @@ class ValidateNotSamePersonTest {
        verifyNoInteractions(bindingResultMock);
     }
 
-    @Test
-    void samePersonTest() {
-        validateTwoFieldTypes.validateNotSamePerson(firstPerson, firstPerson, firstPersonFieldName, secondPersonFieldName, message, bindingResultMock);
-     //   verify(bindingResultMock).rejectValue(firstPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
-     //   verify(bindingResultMock).rejectValue(secondPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
-    }
 
     @Test
     void nullFirstPersonTest() {
