@@ -11,7 +11,10 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.domains.people.Person;
 
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
@@ -49,4 +52,10 @@ class ValidateNotSamePersonTest {
         verifyNoInteractions(bindingResultMock);
     }
 
+    @Test
+    void TwoTheSameTest() {
+        Person person = GetRandomPerson();
+        validateTwoFieldTypes.validateNotSamePerson(person, person, firstPersonFieldName, secondPersonFieldName, message, bindingResultMock);
+        verify(bindingResultMock).rejectValue(firstPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+    }
 }
