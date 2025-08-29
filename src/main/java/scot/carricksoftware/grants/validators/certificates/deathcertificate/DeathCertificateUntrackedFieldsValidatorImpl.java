@@ -7,6 +7,7 @@ package scot.carricksoftware.grants.validators.certificates.deathcertificate;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
@@ -20,6 +21,7 @@ public class DeathCertificateUntrackedFieldsValidatorImpl implements DeathCertif
 
     private final ValidateTwoFieldTypes validateTwoFieldTypes;
 
+    @Autowired
     public DeathCertificateUntrackedFieldsValidatorImpl(ValidateTwoFieldTypes validateTwoFieldTypes) {
         this.validateTwoFieldTypes = validateTwoFieldTypes;
     }

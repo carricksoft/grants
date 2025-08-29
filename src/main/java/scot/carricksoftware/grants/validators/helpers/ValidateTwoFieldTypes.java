@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 
+
 public interface ValidateTwoFieldTypes {
 
     void validatePersonAndUntrackedPerson(Person person, String untrackedPerson, String personFieldName, String untrackedFieldName, String message,  BindingResult bindingResult);

@@ -46,9 +46,13 @@ public class ValidateTwoFieldTypesImpl implements ValidateTwoFieldTypes {
 
     @Override
     public void validateNotSamePerson(Person firstPerson, Person secondPerson, String firstPersonFieldName, String secondPersonFieldName, String message, BindingResult bindingResult) {
-        if (secondPerson != null && firstPerson == secondPerson) {
-            bindingResult.rejectValue(firstPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
-            bindingResult.rejectValue(secondPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        if (firstPerson != null) {
+            if (secondPerson != null) {
+                if (firstPerson.equals(secondPerson)) {
+                    bindingResult.rejectValue(firstPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+                    bindingResult.rejectValue(secondPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+                }
+            }
         }
     }
 
