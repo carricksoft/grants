@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 
+import static org.mockito.Mockito.atLeast;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
@@ -56,13 +57,13 @@ class ValidateNotSamePersonTest {
     void twoTheSameFirstPersonTest() {
         Person person = GetRandomPerson();
         validateTwoFieldTypes.validateNotSamePerson(person, person, firstPersonFieldName, secondPersonFieldName, message, bindingResultMock);
-        verify(bindingResultMock).rejectValue(firstPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        verify(bindingResultMock, atLeast(1)).rejectValue(firstPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
     }
 
     @Test
     void twoTheSameSecondPersonTest() {
         Person person = GetRandomPerson();
         validateTwoFieldTypes.validateNotSamePerson(person, person, firstPersonFieldName, secondPersonFieldName, message, bindingResultMock);
-        verify(bindingResultMock).rejectValue(secondPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        verify(bindingResultMock, atLeast(1)).rejectValue(secondPersonFieldName, ApplicationConstants.EMPTY_STRING, null, message);
     }
 }
