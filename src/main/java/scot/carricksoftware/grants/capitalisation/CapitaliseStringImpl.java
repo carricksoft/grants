@@ -18,7 +18,7 @@ public class CapitaliseStringImpl implements CapitaliseString {
 
     @Override
     public String capitalise(String input) {
-        logger.info("CapitaliseStringImpl::capitalise");
+        logger.debug("CapitaliseStringImpl::capitalise");
         StringBuilder result = new StringBuilder();
         boolean newWord = true;
         if (input != null && input.length() > 2) {

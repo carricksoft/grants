@@ -27,7 +27,7 @@ public class DivorceCertificateCommandDatesValidatorImpl implements DivorceCerti
 
     @Override
     public void validate(DivorceCertificateCommand divorceCertificateCommand, BindingResult bindingResult) {
-        logger.info("DivorceCertificateCommandPeopleValidator::validate");
+        logger.debug("DivorceCertificateCommandPeopleValidator::validate");
         validateFirstPartyDate(divorceCertificateCommand, bindingResult);
         validateSecondPartyDate(divorceCertificateCommand, bindingResult);
         validateRegisteredDate(divorceCertificateCommand, bindingResult);

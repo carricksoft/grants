@@ -30,7 +30,7 @@ public class DivorceCertificateCommandValidatorImpl implements DivorceCertificat
 
     @Override
     public void validate(DivorceCertificateCommand divorceCertificateCommand, BindingResult bindingResult) {
-        logger.info("DivorceCertificateCommandValidator::validate");
+        logger.debug("DivorceCertificateCommandValidator::validate");
         divorceCertificateCommandPeopleValidator.validate(divorceCertificateCommand, bindingResult);
         divorceCertificateCommandDatesValidator.validate(divorceCertificateCommand, bindingResult);
     }

@@ -58,7 +58,7 @@ public class UpdateCertifiedYearOfBirthImpl implements UpdateCertifiedYearOfBirt
     }
 
     private void logNoCommandError() {
-        logger.info("PersonCommand = null.");
+        logger.debug("PersonCommand = null.");
     }
 
 
