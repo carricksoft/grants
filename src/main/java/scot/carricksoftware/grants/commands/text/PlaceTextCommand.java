@@ -15,4 +15,20 @@ public interface PlaceTextCommand {
     Place getPlace();
 
     void setPlace(Place place);
+
+    Long getLevel();
+
+    void setLevel(Long level);
+
+    Long getOrder();
+
+    void setOrder(Long order);
+
+    String getHeading();
+
+    void setHeading(String heading);
+
+    String getContent();
+
+    void setContent(String content);
 }

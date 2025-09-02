@@ -10,9 +10,12 @@ import scot.carricksoftware.grants.domains.places.Place;
 
 public class PlaceTextCommandImpl implements PlaceTextCommand {
 
-    Long Id;
-
-    Place place;
+    private Long Id;
+    private Place place;
+    private Long level;
+    private Long order;
+    private String heading;
+    private String content;
 
     @Override
     public Long getId() {
@@ -32,5 +35,45 @@ public class PlaceTextCommandImpl implements PlaceTextCommand {
     @Override
     public void setPlace(Place place) {
         this.place = place;
+    }
+
+    @Override
+    public Long getLevel() {
+        return level;
+    }
+
+    @Override
+    public void setLevel(Long level) {
+        this.level = level;
+    }
+
+    @Override
+    public Long getOrder() {
+        return order;
+    }
+
+    @Override
+    public void setOrder(Long order) {
+        this.order = order;
+    }
+
+    @Override
+    public String getHeading() {
+        return heading;
+    }
+
+    @Override
+    public void setHeading(String heading) {
+        this.heading = heading;
+    }
+
+    @Override
+    public String getContent() {
+        return content;
+    }
+
+    @Override
+    public void setContent(String content) {
+        this.content = content;
     }
 }
