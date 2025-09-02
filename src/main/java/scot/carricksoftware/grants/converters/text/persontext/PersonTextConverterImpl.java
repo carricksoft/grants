@@ -23,8 +23,13 @@ public class PersonTextConverterImpl implements PersonTextConverter {
     public PersonTextCommand convert(@NotNull PersonText source) {
         logger.debug("PersonTextCommandConverter::convert");
         PersonTextCommand target = new PersonTextCommandImpl();
+        target.setLevel(source.getLevel());
+        target.setOrder(source.getOrder());
+        target.setHeading(source.getHeading());
+        target.setContent(source.getContent());
         target.setId(source.getId());
         target.setPerson(source.getPerson());
+        target.setContent(source.getContent());
         return target;
     }
 

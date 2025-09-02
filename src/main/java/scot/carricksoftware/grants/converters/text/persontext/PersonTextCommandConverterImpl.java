@@ -24,6 +24,11 @@ public class PersonTextCommandConverterImpl implements PersonTextCommandConverte
         PersonText target = new PersonText();
         target.setId(source.getId());
         target.setPerson(source.getPerson());
+        target.setContent(source.getContent());
+        target.setLevel(source.getLevel());
+        target.setOrder(source.getOrder());
+        target.setHeading(source.getHeading());
+        target.setContent(source.getContent());
         return target;
     }
 
