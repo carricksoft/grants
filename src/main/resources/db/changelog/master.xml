@@ -51,6 +51,8 @@
     <include file="/db/changelog/2025/08/10-01-changelog.sql"/>
     <include file="/db/changelog/2025/08/10-02-changelog.sql"/>
     <include file="/db/changelog/2025/08/12-01-changelog.sql"/>
+    <include file="/db/changelog/2025/08/30-01-changelog.sql"/>
+
 
 
 
