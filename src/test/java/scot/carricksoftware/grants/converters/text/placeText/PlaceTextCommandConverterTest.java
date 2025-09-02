@@ -32,6 +32,7 @@ class PlaceTextCommandConverterTest {
         Place place = GetRandomPlace();
         PlaceTextCommand source = new PlaceTextCommandImpl();
 
+
         source.setId(Id);
         source.setPlace(place);
 
