@@ -9,9 +9,12 @@ import scot.carricksoftware.grants.domains.people.Person;
 
 public class PersonTextCommandImpl implements PersonTextCommand {
 
-    Long Id;
-
-    Person person;
+    private Long Id;
+    private Person person;
+    private Long level;
+    private Long order;
+    private String heading;
+    private String content;
 
     @Override
     public Long getId() {
@@ -31,5 +34,45 @@ public class PersonTextCommandImpl implements PersonTextCommand {
     @Override
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    @Override
+    public Long getLevel() {
+        return level;
+    }
+
+    @Override
+    public void setLevel(Long level) {
+        this.level = level;
+    }
+
+    @Override
+    public Long getOrder() {
+        return order;
+    }
+
+    @Override
+    public void setOrder(Long order) {
+        this.order = order;
+    }
+
+    @Override
+    public String getHeading() {
+        return heading;
+    }
+
+    @Override
+    public void setHeading(String heading) {
+        this.heading = heading;
+    }
+
+    @Override
+    public String getContent() {
+        return content;
+    }
+
+    @Override
+    public void setContent(String content) {
+        this.content = content;
     }
 }
