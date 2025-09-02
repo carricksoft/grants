@@ -47,7 +47,7 @@ public class UpdateCertifiedYearOfBirthImpl implements UpdateCertifiedYearOfBirt
 
     private void updateDate(Person person,
                             String certifiedYearOfBirth) {
-        logger.debug("UpdateRecordedYearOfBirthImpl::UpdateDate");
+        logger.info("UpdateRecordedYearOfBirthImpl::UpdateDate");
         PersonCommand personCommand = personConverter.convert(person);
         if (personCommand != null) {
             personCommand.setCertifiedYearOfBirth(certifiedYearOfBirth);
@@ -58,7 +58,7 @@ public class UpdateCertifiedYearOfBirthImpl implements UpdateCertifiedYearOfBirt
     }
 
     private void logNoCommandError() {
-        logger.debug("PersonCommand = null.");
+        logger.info("PersonCommand = null.");
     }
 
 

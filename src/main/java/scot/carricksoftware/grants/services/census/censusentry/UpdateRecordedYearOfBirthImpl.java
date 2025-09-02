@@ -44,7 +44,7 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
                     Integer age = Integer.valueOf(censusEntryCommand.getAge());
                     updateDate(person, String.valueOf(year - age));
                 } catch (NumberFormatException e) {
-                    logger.debug(" -- Age cannot be parsed");
+                    logger.info(" -- Age cannot be parsed");
                 }
             } else {
                 PersonCommand personCommand = personConverter.convert(person);
@@ -63,7 +63,7 @@ public class UpdateRecordedYearOfBirthImpl implements UpdateRecordedYearOfBirth 
             personCommand.setRecordedYearOfBirth(dateString);
             personService.savePersonCommand(personCommand);
         } else {
-            logger.debug(" -- Person Command is null.");
+            logger.info(" -- Person Command is null.");
         }
     }
 
