@@ -71,6 +71,7 @@ public class DataLoadTextTest {
         assertEquals(person, captor.getValue().getPerson());
         assertEquals(1L, captor.getValue().getOrder());
         assertEquals(4L, captor.getValue().getLevel());
+        assertEquals("Edinburgh", captor.getValue().getHeading());
     }
 
     @Test

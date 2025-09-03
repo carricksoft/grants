@@ -55,6 +55,7 @@ public class DataLoadTexts {
         personTextCommand.setPerson(personService.findById(1L));
         personTextCommand.setOrder(1L);
         personTextCommand.setLevel(4L);
+        personTextCommand.setHeading("Edinburgh");
 
         personTextService.savePersonTextCommand(personTextCommand);
     }

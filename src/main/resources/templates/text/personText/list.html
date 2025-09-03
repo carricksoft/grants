@@ -26,6 +26,7 @@
                 <th>Person</th>
                 <th>Order</th>
                 <th>Level</th>
+                <th>Heading</th>
                 <th></th>
             </tr>
             </thead>
@@ -37,6 +38,7 @@
                 <td th:text="${text.person.toString()}">123</td>
                 <td th:text="${text.order}">123</td>
                 <td th:text="${text.level}">123</td>
+                <td th:text="${text.heading}">123</td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'personTexts/' + ${text.id} + '/delete'"
