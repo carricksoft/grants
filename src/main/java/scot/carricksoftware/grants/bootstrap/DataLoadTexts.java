@@ -53,6 +53,9 @@ public class DataLoadTexts {
     private void loadPersonText() {
         PersonTextCommand personTextCommand = new PersonTextCommandImpl();
         personTextCommand.setPerson(personService.findById(1L));
+        personTextCommand.setOrder(1L);
+        personTextCommand.setLevel(4L);
+
         personTextService.savePersonTextCommand(personTextCommand);
     }
 

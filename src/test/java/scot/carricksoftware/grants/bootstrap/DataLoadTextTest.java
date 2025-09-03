@@ -69,6 +69,8 @@ public class DataLoadTextTest {
 
         verify(personTextServiceMock).savePersonTextCommand(captor.capture());
         assertEquals(person, captor.getValue().getPerson());
+        assertEquals(1L, captor.getValue().getOrder());
+        assertEquals(4L, captor.getValue().getLevel());
     }
 
     @Test
