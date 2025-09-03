@@ -28,9 +28,7 @@ public class PersonTextCommandConverterImpl implements PersonTextCommandConverte
         target.setLevel(source.getLevel());
         target.setOrder(source.getOrder());
         target.setHeading(source.getHeading());
-        target.setContent(source.getContent());
         return target;
     }
-
 
 }

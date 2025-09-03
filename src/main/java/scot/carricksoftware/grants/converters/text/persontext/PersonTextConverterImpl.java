@@ -29,7 +29,6 @@ public class PersonTextConverterImpl implements PersonTextConverter {
         target.setContent(source.getContent());
         target.setId(source.getId());
         target.setPerson(source.getPerson());
-        target.setContent(source.getContent());
         return target;
     }
 
