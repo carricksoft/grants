@@ -37,6 +37,7 @@
                            th:field="*{id}" type="text" readonly>
                 </td>
             </tr>
+
             <tr>
                 <td style="text-align: right;">
                     <label for="person">Person :&nbsp;</label>
@@ -55,13 +56,65 @@
                 </td>
             </tr>
             <tr>
+                <td style="text-align: right;">
+                    <label for="order">Order :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="order"
+                           th:field="*{order}" type="text">
+                    <div th:if="${#fields.hasErrors('order')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('order')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="level">Level :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="level"
+                           th:field="*{level}" type="text">
+                    <div th:if="${#fields.hasErrors('level')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('level')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="heading">Heading :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="heading"
+                           th:field="*{heading}" type="text">
+                    <div th:if="${#fields.hasErrors('heading')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('heading')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr style="border-bottom: 5px solid #ccc;">
+                <td style="text-align: right;">
+                    <label for="content">Content :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <div>
+                        <textarea class="content" id="content" rows="25" cols="60"
+                                  th:field="*{content}" type="text"></textarea>
+                    </div>
+                </td>
+            </tr>
+            <tr>
                 <td>&nbsp;</td>
             </tr>
         </table>
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/personTexts}" th:text="${'List all'}">List all</a>
         <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
-        <h6><span style="color: rgb(255,0,0);">*</span><span> Cannot be edited</span></h6>
     </form>
 </div>
 </body>
