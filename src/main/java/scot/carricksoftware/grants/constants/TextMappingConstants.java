@@ -14,67 +14,59 @@ public class TextMappingConstants {
         // to stop checkstyle complaining
     }
 
-
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT_LIST = "/documentTexts";
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT_NEXT = "/documentTexts/next";
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT_PREVIOUS = "/documentTexts/prev";
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT_REWIND = "/documentTexts/rewind";
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT_FF = "/documentTexts/ff";
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT_NEW = "/documentText/new";
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT = "/documentText";
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT_SHOW = "/documentText/{id}/show";
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT_DELETE = "/documentTexts/{id}/delete";
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT_EDIT = "documentText/{id}/edit";
 
+    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT_LIST = "/appendixTexts";
+    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT_NEXT = "/appendixTexts/next";
+    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT_PREVIOUS = "/appendixTexts/prev";
+    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT_REWIND = "/appendixTexts/rewind";
+    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT_FF = "/appendixTexts/ff";
+    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT_NEW = "/appendixText/new";
+    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT = "/appendixText";
+    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT_SHOW = "/appendixText/{id}/show";
+    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT_DELETE = "/appendixTexts/{id}/delete";
+    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT_EDIT = "appendixText/{id}/edit";
+
+
     public static final String PERSON_TEXT_LIST = "/personTexts";
-    @SuppressWarnings({"unused"})
     public static final String PERSON_TEXT_NEXT = "/personTexts/next";
-    @SuppressWarnings({"unused"})
     public static final String PERSON_TEXT_PREVIOUS = "/personTexts/prev";
-    @SuppressWarnings({"unused"})
     public static final String PERSON_TEXT_REWIND = "/personTexts/rewind";
-    @SuppressWarnings({"unused"})
     public static final String PERSON_TEXT_FF = "/personTexts/ff";
-    @SuppressWarnings({"unused"})
     public static final String PERSON_TEXT_NEW = "/personText/new";
-    @SuppressWarnings({"unused"})
     public static final String PERSON_TEXT = "/personText";
-    @SuppressWarnings({"unused"})
     public static final String PERSON_TEXT_SHOW = "/personText/{id}/show";
-    @SuppressWarnings({"unused"})
     public static final String PERSON_TEXT_DELETE = "/personTexts/{id}/delete";
-    @SuppressWarnings({"unused"})
     public static final String PERSON_TEXT_EDIT = "personText/{id}/edit";
 
-    @SuppressWarnings("unused")
     public static final String PLACE_TEXT_LIST = "/placeTexts";
-    @SuppressWarnings({"unused"})
     public static final String PLACE_TEXT_NEXT = "/placeTexts/next";
-    @SuppressWarnings({"unused"})
-    public static final String PLACE_TEXT_PREVIOUS = "/placeTexts/prev";
-    @SuppressWarnings({"unused"})
+    public static final String PLACE_TEXT_PREVIOUS = "/placeTexts/previous";
     public static final String PLACE_TEXT_REWIND = "/placeTexts/rewind";
-    @SuppressWarnings({"unused"})
     public static final String PLACE_TEXT_FF = "/placeTexts/ff";
-    @SuppressWarnings({"unused"})
     public static final String PLACE_TEXT_NEW = "/placeText/new";
-    @SuppressWarnings({"unused"})
     public static final String PLACE_TEXT = "/placeText";
-    @SuppressWarnings({"unused"})
     public static final String PLACE_TEXT_SHOW = "/placeText/{id}/show";
-    @SuppressWarnings({"unused"})
     public static final String PLACE_TEXT_DELETE = "/placeTexts/{id}/delete";
-    @SuppressWarnings({"unused"})
     public static final String PLACE_TEXT_EDIT = "placeText/{id}/edit";
     
 }

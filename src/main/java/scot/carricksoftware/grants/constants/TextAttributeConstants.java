@@ -14,19 +14,15 @@ public class TextAttributeConstants {
         // to stop checkstyle complaining
     }
 
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXTS = "documentTexts";
-    @SuppressWarnings({"unused"})
     public static final String DOCUMENT_TEXT_COMMAND = "documentTextCommand";
 
-    @SuppressWarnings({"unused"})
-    public static final String PERSON_TEXTS = "personTexts";
-    @SuppressWarnings({"unused"})
-    public static final String PERSON_TEXT_COMMAND = "personTextCommand";
+    public static final String APPENDIX_TEXTS = "appendixTexts";
+    public static final String APPENDIX_TEXT_COMMAND = "appendixTextCommand";
 
-    @SuppressWarnings({"unused"})
+    public static final String PERSON_TEXTS = "personTexts";
+    public static final String PERSON_TEXT_COMMAND = "personTextCommand";
     public static final String PLACE_TEXTS = "placeTexts";
-    @SuppressWarnings({"unused"})
     public static final String PLACE_TEXT_COMMAND = "placeTextCommand";
 
     @SuppressWarnings("unused")
