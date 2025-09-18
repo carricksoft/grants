@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.text.*;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
+import scot.carricksoftware.grants.services.text.appendixtext.AppendixTextService;
 import scot.carricksoftware.grants.services.text.documenttext.DocumentTextService;
 import scot.carricksoftware.grants.services.text.persontext.PersonTextService;
 import scot.carricksoftware.grants.services.text.placetext.PlaceTextService;
@@ -27,15 +28,17 @@ public class DataLoadTexts {
     private final PlaceTextService placeTextService;
     private final PersonService personService;
     private final PlaceService placeService;
+    private final AppendixTextService appendixTextService;
 
     public DataLoadTexts(DocumentTextService documentTextService,
                          PersonTextService personTextService, PlaceTextService placeTextService,
-                         PersonService personService, PlaceService placeService) {
+                         PersonService personService, PlaceService placeService, AppendixTextService appendixTextService) {
         this.documentTextService = documentTextService;
         this.personTextService = personTextService;
         this.placeTextService = placeTextService;
         this.personService = personService;
         this.placeService = placeService;
+        this.appendixTextService = appendixTextService;
     }
 
     public void load() {
@@ -43,6 +46,7 @@ public class DataLoadTexts {
         loadDocumentText();
         loadPersonText();
         loadPlaceText();
+        loadAppendixText();
     }
 
     private void loadDocumentText() {
@@ -58,6 +62,15 @@ public class DataLoadTexts {
         personTextCommand.setHeading("Edinburgh");
 
         personTextService.savePersonTextCommand(personTextCommand);
+    }
+
+    private void loadAppendixText() {
+        AppendixTextCommand appendixTextCommand = new AppendixTextCommandImpl();
+        appendixTextCommand.setOrder(1L);
+        appendixTextCommand.setLevel(4L);
+        appendixTextCommand.setHeading("Edinburgh");
+
+        appendixTextService.saveAppendixTextCommand(appendixTextCommand);
     }
 
     private void loadPlaceText() {

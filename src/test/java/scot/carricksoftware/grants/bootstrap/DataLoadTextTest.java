@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.people.PersonServiceImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceServiceImpl;
+import scot.carricksoftware.grants.services.text.appendixtext.AppendixTextServiceImpl;
 import scot.carricksoftware.grants.services.text.documenttext.DocumentTextServiceImpl;
 import scot.carricksoftware.grants.services.text.persontext.PersonTextServiceImpl;
 import scot.carricksoftware.grants.services.text.placetext.PlaceTextServiceImpl;
@@ -43,13 +44,17 @@ public class DataLoadTextTest {
     @Mock
     private PlaceServiceImpl placeServiceMock;
 
+    @Mock
+    private AppendixTextServiceImpl appendixTextServiceMock;
+
     @BeforeEach
     public void setUp() {
         dataLoadTexts = new DataLoadTexts(documentTextServiceMock,
                 personTextServiceMock,
                 placeTextServiceMock,
                 personServiceMock,
-                placeServiceMock);
+                placeServiceMock,
+                appendixTextServiceMock);
     }
 
     @Test
