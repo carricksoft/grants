@@ -7,6 +7,7 @@ package scot.carricksoftware.grants;
 
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.text.*;
+import scot.carricksoftware.grants.domains.text.AppendixText;
 import scot.carricksoftware.grants.domains.text.DocumentText;
 import scot.carricksoftware.grants.domains.text.PersonText;
 import scot.carricksoftware.grants.domains.text.PlaceText;
@@ -62,6 +63,20 @@ public class GenerateRandomTextValues {
         placeTextCommand.setPlace(GetRandomPlace());
         return placeTextCommand;
     }
+
+    public static AppendixText GetRandomAppendixText() {
+        AppendixText appendixText = new AppendixText();
+        appendixText.setId(GetRandomLong());
+        return appendixText;
+    }
+
+    @SuppressWarnings("unused")
+    public static AppendixTextCommand GetRandomAppendixTextCommand() {
+        AppendixTextCommand appendixTextCommand = new AppendixTextCommandImpl();
+        appendixTextCommand.setId(GetRandomLong());
+        return appendixTextCommand;
+    }
+
 
 
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import scot.carricksoftware.grants.commands.text.AppendixTextCommand;
 import scot.carricksoftware.grants.commands.text.DocumentTextCommand;
 import scot.carricksoftware.grants.commands.text.PersonTextCommand;
 import scot.carricksoftware.grants.commands.text.PlaceTextCommand;
@@ -74,6 +75,18 @@ public class DataLoadTextTest {
 
         verify(personTextServiceMock).savePersonTextCommand(captor.capture());
         assertEquals(person, captor.getValue().getPerson());
+        assertEquals(1L, captor.getValue().getOrder());
+        assertEquals(4L, captor.getValue().getLevel());
+        assertEquals("Edinburgh", captor.getValue().getHeading());
+    }
+
+    @Test
+    public void appendixTextIsCreatedTest() {
+        ArgumentCaptor<AppendixTextCommand> captor = ArgumentCaptor.forClass(AppendixTextCommand.class);
+
+        dataLoadTexts.load();
+
+        verify(appendixTextServiceMock).saveAppendixTextCommand(captor.capture());
         assertEquals(1L, captor.getValue().getOrder());
         assertEquals(4L, captor.getValue().getLevel());
         assertEquals("Edinburgh", captor.getValue().getHeading());
