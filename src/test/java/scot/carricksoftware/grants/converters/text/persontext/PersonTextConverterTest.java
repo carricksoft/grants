@@ -30,8 +30,8 @@ class PersonTextConverterTest {
     void covertTest() {
         Long Id = GetRandomLong();
         Person person = GetRandomPerson();
-        Long order = GetRandomLong();
-        Long level = GetRandomLong();
+        String order = GetRandomString();
+        String level = GetRandomString();
         String heading = GetRandomString();
         String content = GetRandomString();
         PersonText source = new PersonText();

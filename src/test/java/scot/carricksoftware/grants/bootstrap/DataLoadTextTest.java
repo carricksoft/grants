@@ -75,8 +75,8 @@ public class DataLoadTextTest {
 
         verify(personTextServiceMock).savePersonTextCommand(captor.capture());
         assertEquals(person, captor.getValue().getPerson());
-        assertEquals(1L, captor.getValue().getOrder());
-        assertEquals(4L, captor.getValue().getLevel());
+        assertEquals("1", captor.getValue().getOrder());
+        assertEquals("2", captor.getValue().getLevel());
         assertEquals("Edinburgh", captor.getValue().getHeading());
     }
 
@@ -87,8 +87,8 @@ public class DataLoadTextTest {
         dataLoadTexts.load();
 
         verify(appendixTextServiceMock).saveAppendixTextCommand(captor.capture());
-        assertEquals(1L, captor.getValue().getOrder());
-        assertEquals(4L, captor.getValue().getLevel());
+        assertEquals("1", captor.getValue().getOrder());
+        assertEquals("4", captor.getValue().getLevel());
         assertEquals("Edinburgh", captor.getValue().getHeading());
     }
 

@@ -10,13 +10,13 @@ public interface AppendixTextCommand {
 
     void setId(Long id);
 
-    Long getLevel();
+    String getLevel();
 
-    void setLevel(Long level);
+    void setLevel(String level);
 
-    Long getOrder();
+    String getOrder();
 
-    void setOrder(Long order);
+    void setOrder(String order);
 
     String getHeading();
 

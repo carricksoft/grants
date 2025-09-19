@@ -31,8 +31,8 @@ class PersonTextCommandConverterTest {
     void covertTest() {
         Long Id = GetRandomLong();
         Person person = GetRandomPerson();
-        Long order = GetRandomLong();
-        Long level = GetRandomLong();
+        String order = GetRandomString();
+        String level = GetRandomString();
         String heading = GetRandomString();
         String content = GetRandomString();
 
@@ -43,7 +43,6 @@ class PersonTextCommandConverterTest {
         source.setOrder(order);
         source.setLevel(level);
         source.setHeading(heading);
-        source.setOrder(order);
         source.setContent(content);
 
         PersonText target = converter.convert(source);

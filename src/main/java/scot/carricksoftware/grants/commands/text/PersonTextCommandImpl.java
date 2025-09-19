@@ -11,8 +11,8 @@ public class PersonTextCommandImpl implements PersonTextCommand {
 
     private Long Id;
     private Person person;
-    private Long level;
-    private Long order;
+    private String level;
+    private String order;
     private String heading;
     private String content;
 
@@ -37,22 +37,22 @@ public class PersonTextCommandImpl implements PersonTextCommand {
     }
 
     @Override
-    public Long getLevel() {
+    public String getLevel() {
         return level;
     }
 
     @Override
-    public void setLevel(Long level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
     @Override
-    public Long getOrder() {
+    public String getOrder() {
         return order;
     }
 
     @Override
-    public void setOrder(Long order) {
+    public void setOrder(String order) {
         this.order = order;
     }
 

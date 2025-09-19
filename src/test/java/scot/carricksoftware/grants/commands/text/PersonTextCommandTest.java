@@ -55,7 +55,7 @@ class PersonTextCommandTest {
 
     @Test
     void setLevelTest() {
-        Long level = GetRandomLong();
+        String level = GetRandomString();
         personTextCommand.setLevel(level);
         assertEquals(level, personTextCommand.getLevel());
     }
@@ -67,7 +67,7 @@ class PersonTextCommandTest {
 
     @Test
     void setOrderTest() {
-        Long order = GetRandomLong();
+        String order = GetRandomString();
         personTextCommand.setOrder(order);
         assertEquals(order, personTextCommand.getOrder());
     }

@@ -8,8 +8,8 @@ package scot.carricksoftware.grants.commands.text;
 public class AppendixTextCommandImpl implements AppendixTextCommand {
 
     Long Id;
-    private Long level;
-    private Long order;
+    private String level;
+    private String order;
     private String heading;
     private String content;
 
@@ -25,22 +25,22 @@ public class AppendixTextCommandImpl implements AppendixTextCommand {
 
 
     @Override
-    public Long getLevel() {
+    public String getLevel() {
         return level;
     }
 
     @Override
-    public void setLevel(Long level) {
+    public void setLevel(String level) {
         this.level = level;
     }
 
     @Override
-    public Long getOrder() {
+    public String getOrder() {
         return order;
     }
 
     @Override
-    public void setOrder(Long order) {
+    public void setOrder(String order) {
         this.order = order;
     }
 

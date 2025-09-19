@@ -28,8 +28,8 @@ class AppendixTextCommandConverterTest {
     @Test
     void covertTest() {
         Long Id = GetRandomLong();
-        Long order = GetRandomLong();
-        Long level = GetRandomLong();
+        String order = GetRandomString();
+        String level = GetRandomString();
         String heading = GetRandomString();
         String content = GetRandomString();
 

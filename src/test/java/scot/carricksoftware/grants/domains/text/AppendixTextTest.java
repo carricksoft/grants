@@ -45,7 +45,7 @@ class AppendixTextTest {
 
     @Test
     void setLevelTest() {
-        Long level = GetRandomLong();
+        String level = GetRandomString();
         appendixText.setLevel(level);
         assertEquals(level, appendixText.getLevel());
     }
@@ -57,7 +57,7 @@ class AppendixTextTest {
 
     @Test
     void setOrderTest() {
-        Long order = GetRandomLong();
+        String order = GetRandomString();
         appendixText.setOrder(order);
         assertEquals(order, appendixText.getOrder());
     }

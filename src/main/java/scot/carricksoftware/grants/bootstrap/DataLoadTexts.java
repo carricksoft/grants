@@ -57,8 +57,8 @@ public class DataLoadTexts {
     private void loadPersonText() {
         PersonTextCommand personTextCommand = new PersonTextCommandImpl();
         personTextCommand.setPerson(personService.findById(1L));
-        personTextCommand.setOrder(1L);
-        personTextCommand.setLevel(4L);
+        personTextCommand.setOrder("1");
+        personTextCommand.setLevel("2");
         personTextCommand.setHeading("Edinburgh");
 
         personTextService.savePersonTextCommand(personTextCommand);
@@ -66,8 +66,8 @@ public class DataLoadTexts {
 
     private void loadAppendixText() {
         AppendixTextCommand appendixTextCommand = new AppendixTextCommandImpl();
-        appendixTextCommand.setOrder(1L);
-        appendixTextCommand.setLevel(4L);
+        appendixTextCommand.setOrder("1");
+        appendixTextCommand.setLevel("4");
         appendixTextCommand.setHeading("Edinburgh");
 
         appendixTextService.saveAppendixTextCommand(appendixTextCommand);
