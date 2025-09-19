@@ -92,7 +92,8 @@ public class AppendixTextFormControllerImpl implements AppendixTextFormControlle
     @GetMapping(TextMappingConstants.APPENDIX_TEXT_SHOW)
     public String showById(@PathVariable String id, Model model) {
         logger.debug("AppendixTextFormControllerImpl::saveOrUpdate");
-        appendixTextConverter.convert(appendixTextService.findById(Long.valueOf(id)));
+        AppendixTextCommand convertedCommand =  appendixTextConverter.convert(appendixTextService.findById(Long.valueOf(id)));
+        model.addAttribute(TextAttributeConstants.APPENDIX_TEXT_COMMAND, convertedCommand);
         return ViewConstants.APPENDIX_TEXT_FORM;
     }
 
