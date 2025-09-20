@@ -10,8 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.text.PlaceTextCommand;
-import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.constants.ValidationConstants;
+
 
 @SuppressWarnings("unused")
 @Component
@@ -21,12 +20,6 @@ public class PlaceTextCommandValidator {
 
     public void validate(PlaceTextCommand personTextCommand, BindingResult bindingResult) {
       logger.debug("PlaceTextCommandValidator::validate");
-
-        if (personTextCommand.getPlace() == null) {
-            bindingResult.rejectValue("place", ApplicationConstants.EMPTY_STRING,
-                    null,
-                    ValidationConstants.PLACE_IS_NULL);
-        }
     }
 
 
