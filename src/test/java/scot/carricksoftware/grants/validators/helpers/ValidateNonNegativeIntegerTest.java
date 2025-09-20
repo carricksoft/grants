@@ -15,6 +15,7 @@ import org.springframework.validation.BindingResult;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 @ExtendWith(MockitoExtension.class)
@@ -51,5 +52,40 @@ class ValidateNonNegativeIntegerTest {
 
         validateTypes.validateNonNegativeInteger("", fieldName, nullMessage, "", "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, nullMessage);
+    }
+
+    @Test
+    public void validateNegativeInteger() {
+        String fieldName = GetRandomString();
+        String negativeMessage = GetRandomString();
+
+        validateTypes.validateNonNegativeInteger("-5", fieldName, "", "", negativeMessage, bindingResultMock);
+        verify(bindingResultMock).rejectValue(fieldName, "", null, negativeMessage);
+    }
+
+    @Test
+    public void validateZeroInteger() {
+        String fieldName = GetRandomString();
+
+        validateTypes.validateNonNegativeInteger("0", fieldName, "", "", "", bindingResultMock);
+        verifyNoInteractions(bindingResultMock);
+    }
+
+    @Test
+    public void validatePositiveInteger() {
+        String fieldName = GetRandomString();
+
+        validateTypes.validateNonNegativeInteger("1", fieldName, "", "", "", bindingResultMock);
+        verifyNoInteractions(bindingResultMock);
+    }
+
+
+    @Test
+    public void validateBadFormatInteger() {
+        String fieldName = GetRandomString();
+        String formatMessage = GetRandomString();
+
+        validateTypes.validateNonNegativeInteger("zz", fieldName, "", formatMessage, "", bindingResultMock);
+        verify(bindingResultMock).rejectValue(fieldName, "", null, formatMessage);
     }
 }

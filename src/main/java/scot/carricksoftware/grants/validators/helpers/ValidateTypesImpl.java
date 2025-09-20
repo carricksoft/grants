@@ -60,10 +60,10 @@ public class ValidateTypesImpl implements ValidateTypes {
             try {
                 int test = Integer.parseInt(integerString);
                 if (test < 0) {
-                    bindingResult.rejectValue(fieldName, negativeMessage, null, formatMessage);
+                    bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, negativeMessage);
                 }
             } catch (NumberFormatException e) {
-                bindingResult.rejectValue(fieldName, formatMessage, null, formatMessage);
+                bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, formatMessage);
             }
         }
     }
