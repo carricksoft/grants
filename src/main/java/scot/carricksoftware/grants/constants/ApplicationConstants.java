@@ -26,4 +26,7 @@ public class ApplicationConstants {
     public static final int MINIMUM_NAME_LENGTH = 3;
     public static final int MAXIMUM_NAME_LENGTH = 120;//changed from 40 1/7/2025
 
+    public static final int LATEX_BOOK = -2;
+    public static final int LATEX_SUB_PARAGRAPH = 5;
+
 }

@@ -53,22 +53,39 @@ public class ValidateTypesImpl implements ValidateTypes {
     }
 
     @Override
-    public void validateNonNegativeInteger(String integerString, String fieldName, @SuppressWarnings("SameParameterValue") String nullMessage, String formatMessage, BindingResult bindingResult) {
+    public void validateNonNegativeInteger(String integerString, String fieldName, String nullMessage, String formatMessage, String negativeMessage, BindingResult bindingResult) {
         if (integerString == null || integerString.isEmpty()) {
             bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, nullMessage);
         } else {
             try {
                 int test = Integer.parseInt(integerString);
                 if (test < 0) {
-                    bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, formatMessage);
+                    bindingResult.rejectValue(fieldName, negativeMessage, null, formatMessage);
+                }
+            } catch (NumberFormatException e) {
+                bindingResult.rejectValue(fieldName, formatMessage, null, formatMessage);
+            }
+        }
+    }
+
+    @Override
+    public void validateIntegerRange(String integerString,
+                                     Integer lowValue, Integer highValue, String fieldName,
+                                     String nullMessage, String formatMessage, String rangeMessage,
+                                     BindingResult bindingResult) {
+        if (integerString == null || integerString.isEmpty()) {
+            bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, nullMessage);
+        } else {
+            try {
+                int test = Integer.parseInt(integerString);
+                if (test < lowValue || test > highValue) {
+                    bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, rangeMessage);
                 }
             } catch (NumberFormatException e) {
                 bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, formatMessage);
             }
         }
     }
-
-
 
 
 }

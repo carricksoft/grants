@@ -23,8 +23,13 @@ public interface ValidateTypes {
 
     void validateNullOrEmptyString(String string, @SuppressWarnings("SameParameterValue") String field, @SuppressWarnings("SameParameterValue") String message, BindingResult bindingResult);
 
-    @SuppressWarnings({"unused", "EmptyMethod"})
-    void validateNonNegativeInteger(String integerString, String fieldName, @SuppressWarnings("SameParameterValue") String nullMessage, String formatMessage, BindingResult bindingResult);
+    void validateNonNegativeInteger(String integerString, String fieldName, @SuppressWarnings("SameParameterValue") String nullMessage, String formatMessage, String negativeMessage, BindingResult bindingResult);
 
+    void validateIntegerRange(String integerString,
+                              Integer lowValue,
+                              Integer highValue,
+                              String fieldName, @SuppressWarnings("SameParameterValue")
+                              String nullMessage, String formatMessage, String rangeMessage,
+                              BindingResult bindingResult);
 
 }

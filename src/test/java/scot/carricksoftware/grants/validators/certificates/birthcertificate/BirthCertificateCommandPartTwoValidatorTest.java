@@ -48,7 +48,8 @@ class BirthCertificateCommandPartTwoValidatorTest {
         verify(validateTypesMock).validateNonNegativeInteger(birthCertificateCommandMock.getNumber(),
                 "number",
                 "The number cannot be null.",
-                "The number must be a non negative integer.",
+                "The number must be an integer.",
+                "The number cannot be negative.",
                 bindingResultMock);
         verify(validateTypesMock).validateNullOrEmptyString(birthCertificateCommandMock.getVolume(),
                 "volume", "The volume cannot be null.", bindingResultMock);

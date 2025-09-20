@@ -35,7 +35,8 @@ public class BirthCertificateCommandPartTwoValidatorImpl implements BirthCertifi
 
     private void validateNumber(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
         logger.debug("Validating registration number");
-        validateTypes.validateNonNegativeInteger(birthCertificateCommand.getNumber(), "number", ValidationConstants.NUMBER_IS_NULL, ValidationConstants.NUMBER_IS_INVALID,bindingResult);
+        validateTypes.validateNonNegativeInteger(birthCertificateCommand.getNumber(), "number",
+                ValidationConstants.NUMBER_IS_NULL, ValidationConstants.NUMBER_IS_INVALID, ValidationConstants.NUMBER_IS_NEGATIVE,bindingResult);
     }
 
     private void validateVolume(BirthCertificateCommand birthCertificateCommand, BindingResult bindingResult) {
