@@ -18,7 +18,7 @@ import scot.carricksoftware.grants.controllers.text.appendixtext.AppendixTextFor
 import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextCommandConverterImpl;
 import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextConverterImpl;
 import scot.carricksoftware.grants.services.text.appendixtext.AppendixTextService;
-import scot.carricksoftware.grants.validators.text.AppendixTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.AppendixTextCommandValidatorImpl;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -48,7 +48,7 @@ public class AppendixTextFormControllerValidationTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private AppendixTextCommandValidator appendixTextCommandValidatorMock;
+    private AppendixTextCommandValidatorImpl appendixTextCommandValidatorImplMock;
 
     @Mock
     private Model modelMock;
@@ -60,7 +60,7 @@ public class AppendixTextFormControllerValidationTest {
         appendixTextController = new AppendixTextFormControllerImpl(appendixTextServiceMock,
                 appendixTextCommandConverterMock,
                 appendixTextConverterMock,
-                appendixTextCommandValidatorMock);
+                appendixTextCommandValidatorImplMock);
     }
 
 
@@ -68,7 +68,7 @@ public class AppendixTextFormControllerValidationTest {
     public void saveOrUpdateValidationTest() {
         when(appendixTextServiceMock.saveAppendixTextCommand(any())).thenReturn(appendixTextCommandMock);
         appendixTextController.saveOrUpdate(appendixTextCommandMock, bindingResultMock, modelMock);
-        verify(appendixTextCommandValidatorMock).validate(appendixTextCommandMock, bindingResultMock);
+        verify(appendixTextCommandValidatorImplMock).validate(appendixTextCommandMock, bindingResultMock);
     }
 
 

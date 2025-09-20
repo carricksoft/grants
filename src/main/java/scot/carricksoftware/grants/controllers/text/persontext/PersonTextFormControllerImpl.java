@@ -22,7 +22,7 @@ import scot.carricksoftware.grants.converters.text.persontext.PersonTextCommandC
 import scot.carricksoftware.grants.converters.text.persontext.PersonTextConverterImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.text.persontext.PersonTextService;
-import scot.carricksoftware.grants.validators.text.PersonTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.PersonTextCommandValidatorImpl;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -33,21 +33,21 @@ public class PersonTextFormControllerImpl implements PersonTextFormController {
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final PersonTextCommandConverterImpl personTextCommandConverter;
     private final PersonTextConverterImpl personTextConverter;
-    private final PersonTextCommandValidator personTextCommandValidator;
+    private final PersonTextCommandValidatorImpl personTextCommandValidatorImpl;
     private final PersonService personService;
 
 
     public PersonTextFormControllerImpl(PersonTextService personTextService,
                                         PersonTextCommandConverterImpl personTextCommandConverter,
                                         PersonTextConverterImpl personTextConverter,
-                                        PersonTextCommandValidator personTextCommandValidator,
+                                        PersonTextCommandValidatorImpl personTextCommandValidatorImpl,
                                         PersonService personService) {
         this.personTextService = personTextService;
         this.personTextCommandConverter = personTextCommandConverter;
 
 
         this.personTextConverter = personTextConverter;
-        this.personTextCommandValidator = personTextCommandValidator;
+        this.personTextCommandValidatorImpl = personTextCommandValidatorImpl;
         this.personService = personService;
     }
 
@@ -75,7 +75,7 @@ public class PersonTextFormControllerImpl implements PersonTextFormController {
     public String saveOrUpdate(@Valid @ModelAttribute PersonTextCommand personTextCommand, BindingResult bindingResult, Model model) {
         logger.debug("PersonTextFormControllerImpl::saveOrUpdate");
 
-        personTextCommandValidator.validate(personTextCommand, bindingResult);
+        personTextCommandValidatorImpl.validate(personTextCommand, bindingResult);
 
 
         if (bindingResult.hasErrors()) {

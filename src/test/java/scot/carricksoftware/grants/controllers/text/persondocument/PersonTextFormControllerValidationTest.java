@@ -19,7 +19,7 @@ import scot.carricksoftware.grants.converters.text.persontext.PersonTextCommandC
 import scot.carricksoftware.grants.converters.text.persontext.PersonTextConverterImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.text.persontext.PersonTextService;
-import scot.carricksoftware.grants.validators.text.PersonTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.PersonTextCommandValidatorImpl;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -49,7 +49,7 @@ public class PersonTextFormControllerValidationTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private PersonTextCommandValidator personTextCommandValidatorMock;
+    private PersonTextCommandValidatorImpl personTextCommandValidatorImplMock;
 
     @Mock
     private Model modelMock;
@@ -63,7 +63,7 @@ public class PersonTextFormControllerValidationTest {
         personTextController = new PersonTextFormControllerImpl(personTextServiceMock,
                 personTextCommandConverterMock,
                 personTextConverterMock,
-                personTextCommandValidatorMock,
+                personTextCommandValidatorImplMock,
                 personServiceMock);
     }
 
@@ -72,7 +72,7 @@ public class PersonTextFormControllerValidationTest {
     public void saveOrUpdateValidationTest() {
         when(personTextServiceMock.savePersonTextCommand(any())).thenReturn(personTextCommandMock);
         personTextController.saveOrUpdate(personTextCommandMock, bindingResultMock, modelMock);
-        verify(personTextCommandValidatorMock).validate(personTextCommandMock, bindingResultMock);
+        verify(personTextCommandValidatorImplMock).validate(personTextCommandMock, bindingResultMock);
     }
 
 

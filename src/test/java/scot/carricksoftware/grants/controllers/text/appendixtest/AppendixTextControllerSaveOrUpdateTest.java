@@ -18,7 +18,7 @@ import scot.carricksoftware.grants.controllers.text.appendixtext.AppendixTextFor
 import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextCommandConverterImpl;
 import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextConverterImpl;
 import scot.carricksoftware.grants.services.text.appendixtext.AppendixTextService;
-import scot.carricksoftware.grants.validators.text.AppendixTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.AppendixTextCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -47,7 +47,7 @@ public class AppendixTextControllerSaveOrUpdateTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private AppendixTextCommandValidator appendixTextCommandValidatorMock;
+    private AppendixTextCommandValidatorImpl appendixTextCommandValidatorImplMock;
 
 
     private AppendixTextCommand appendixTextCommand;
@@ -58,7 +58,7 @@ public class AppendixTextControllerSaveOrUpdateTest {
         appendixTextController = new AppendixTextFormControllerImpl(appendixTextServiceMock,
                 appendixTextCommandConverterMock,
                 appendixTextConverterMock,
-                appendixTextCommandValidatorMock);
+                appendixTextCommandValidatorImplMock);
         appendixTextCommand = new AppendixTextCommandImpl();
     }
 

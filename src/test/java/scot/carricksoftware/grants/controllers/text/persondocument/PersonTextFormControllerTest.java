@@ -21,7 +21,7 @@ import scot.carricksoftware.grants.converters.text.persontext.PersonTextConverte
 import scot.carricksoftware.grants.domains.text.PersonText;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.text.persontext.PersonTextService;
-import scot.carricksoftware.grants.validators.text.PersonTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.PersonTextCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -49,7 +49,7 @@ public class PersonTextFormControllerTest {
     private Model modelMock;
 
     @Mock
-    private PersonTextCommandValidator personTextCommandValidatorMock;
+    private PersonTextCommandValidatorImpl personTextCommandValidatorImplMock;
 
     @Mock
     private PersonService personServiceMock;
@@ -60,7 +60,7 @@ public class PersonTextFormControllerTest {
         personTextController = new PersonTextFormControllerImpl(personTextServiceMock,
                 personTextCommandConverterMock,
                 personTextConverterMock,
-                personTextCommandValidatorMock,
+                personTextCommandValidatorImplMock,
                 personServiceMock);
     }
 

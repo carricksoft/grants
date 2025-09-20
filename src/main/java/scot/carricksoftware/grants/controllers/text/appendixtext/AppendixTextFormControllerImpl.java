@@ -25,7 +25,7 @@ import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextConv
 import scot.carricksoftware.grants.commands.text.AppendixTextCommand;
 
 import scot.carricksoftware.grants.services.text.appendixtext.AppendixTextService;
-import scot.carricksoftware.grants.validators.text.AppendixTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.AppendixTextCommandValidatorImpl;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -36,19 +36,19 @@ public class AppendixTextFormControllerImpl implements AppendixTextFormControlle
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final AppendixTextCommandConverterImpl appendixTextCommandConverter;
     private final AppendixTextConverterImpl appendixTextConverter;
-    private final AppendixTextCommandValidator appendixTextCommandValidator;
+    private final AppendixTextCommandValidatorImpl appendixTextCommandValidatorImpl;
 
 
     public AppendixTextFormControllerImpl(AppendixTextService appendixTextService,
                                           AppendixTextCommandConverterImpl appendixTextCommandConverter,
                                           AppendixTextConverterImpl appendixTextConverter,
-                                          AppendixTextCommandValidator appendixTextCommandValidator) {
+                                          AppendixTextCommandValidatorImpl appendixTextCommandValidatorImpl) {
         this.appendixTextService = appendixTextService;
         this.appendixTextCommandConverter = appendixTextCommandConverter;
 
 
         this.appendixTextConverter = appendixTextConverter;
-        this.appendixTextCommandValidator = appendixTextCommandValidator;
+        this.appendixTextCommandValidatorImpl = appendixTextCommandValidatorImpl;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -73,7 +73,7 @@ public class AppendixTextFormControllerImpl implements AppendixTextFormControlle
     public String saveOrUpdate(@Valid @ModelAttribute AppendixTextCommand appendixTextCommand, BindingResult bindingResult, Model model) {
         logger.debug("AppendixTextFormControllerImpl::saveOrUpdate");
 
-        appendixTextCommandValidator.validate(appendixTextCommand, bindingResult);
+        appendixTextCommandValidatorImpl.validate(appendixTextCommand, bindingResult);
 
 
         if (bindingResult.hasErrors()) {

@@ -21,7 +21,7 @@ import scot.carricksoftware.grants.constants.*;
 import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextCommandConverterImpl;
 import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextConverterImpl;
 import scot.carricksoftware.grants.services.text.documenttext.DocumentTextService;
-import scot.carricksoftware.grants.validators.text.DocumentTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.DocumentTextCommandValidatorImpl;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -32,19 +32,19 @@ public class DocumentTextFormControllerImpl implements DocumentTextFormControlle
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final DocumentTextCommandConverterImpl documentTextCommandConverter;
     private final DocumentTextConverterImpl documentTextConverter;
-    private final DocumentTextCommandValidator documentTextCommandValidator;
+    private final DocumentTextCommandValidatorImpl documentTextCommandValidatorImpl;
 
 
     public DocumentTextFormControllerImpl(DocumentTextService documentTextService,
                                           DocumentTextCommandConverterImpl documentTextCommandConverter,
                                           DocumentTextConverterImpl documentTextConverter,
-                                          DocumentTextCommandValidator documentTextCommandValidator) {
+                                          DocumentTextCommandValidatorImpl documentTextCommandValidatorImpl) {
         this.documentTextService = documentTextService;
         this.documentTextCommandConverter = documentTextCommandConverter;
 
 
         this.documentTextConverter = documentTextConverter;
-        this.documentTextCommandValidator = documentTextCommandValidator;
+        this.documentTextCommandValidatorImpl = documentTextCommandValidatorImpl;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -69,7 +69,7 @@ public class DocumentTextFormControllerImpl implements DocumentTextFormControlle
     public String saveOrUpdate(@Valid @ModelAttribute DocumentTextCommand documentTextCommand, BindingResult bindingResult, Model model) {
         logger.debug("DocumentTextFormControllerImpl::saveOrUpdate");
 
-        documentTextCommandValidator.validate(documentTextCommand, bindingResult);
+        documentTextCommandValidatorImpl.validate(documentTextCommand, bindingResult);
 
 
         if (bindingResult.hasErrors()) {

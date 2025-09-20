@@ -17,7 +17,7 @@ import scot.carricksoftware.grants.commands.text.DocumentTextCommandImpl;
 import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextCommandConverterImpl;
 import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextConverterImpl;
 import scot.carricksoftware.grants.services.text.documenttext.DocumentTextService;
-import scot.carricksoftware.grants.validators.text.DocumentTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.DocumentTextCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -46,7 +46,7 @@ public class DocumentTextControllerSaveOrUpdateTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private DocumentTextCommandValidator documentTextCommandValidatorMock;
+    private DocumentTextCommandValidatorImpl documentTextCommandValidatorImplMock;
 
     private DocumentTextCommand documentTextCommand;
 
@@ -56,7 +56,7 @@ public class DocumentTextControllerSaveOrUpdateTest {
         documentTextController = new DocumentTextFormControllerImpl(documentTextServiceMock,
                 documentTextCommandConverterMock,
                 documentTextConverterMock,
-                documentTextCommandValidatorMock);
+                documentTextCommandValidatorImplMock);
         documentTextCommand = new DocumentTextCommandImpl();
     }
 

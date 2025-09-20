@@ -19,7 +19,7 @@ import scot.carricksoftware.grants.converters.text.persontext.PersonTextCommandC
 import scot.carricksoftware.grants.converters.text.persontext.PersonTextConverterImpl;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.text.persontext.PersonTextService;
-import scot.carricksoftware.grants.validators.text.PersonTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.PersonTextCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -48,7 +48,7 @@ public class PersonTextControllerSaveOrUpdateTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private PersonTextCommandValidator personTextCommandValidatorMock;
+    private PersonTextCommandValidatorImpl personTextCommandValidatorImplMock;
 
     @Mock
     private PersonService personServiceMock;
@@ -61,7 +61,7 @@ public class PersonTextControllerSaveOrUpdateTest {
         personTextController = new PersonTextFormControllerImpl(personTextServiceMock,
                 personTextCommandConverterMock,
                 personTextConverterMock,
-                personTextCommandValidatorMock,
+                personTextCommandValidatorImplMock,
                 personServiceMock);
         personTextCommand = new PersonTextCommandImpl();
     }

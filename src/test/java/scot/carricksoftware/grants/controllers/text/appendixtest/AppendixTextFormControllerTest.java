@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextComm
 import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextConverterImpl;
 import scot.carricksoftware.grants.domains.text.AppendixText;
 import scot.carricksoftware.grants.services.text.appendixtext.AppendixTextService;
-import scot.carricksoftware.grants.validators.text.AppendixTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.AppendixTextCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -51,14 +51,14 @@ public class AppendixTextFormControllerTest {
     private Model modelMock;
 
     @Mock
-    private AppendixTextCommandValidator appendixTextCommandValidatorMock;
+    private AppendixTextCommandValidatorImpl appendixTextCommandValidatorImplMock;
 
     @BeforeEach
     public void setUp() {
         appendixTextController = new AppendixTextFormControllerImpl(appendixTextServiceMock,
                 appendixTextCommandConverterMock,
                 appendixTextConverterMock,
-                appendixTextCommandValidatorMock);
+                appendixTextCommandValidatorImplMock);
     }
 
     @Test

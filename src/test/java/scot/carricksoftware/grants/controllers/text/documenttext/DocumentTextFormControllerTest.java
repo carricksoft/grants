@@ -19,7 +19,7 @@ import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextComm
 import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextConverterImpl;
 import scot.carricksoftware.grants.domains.text.DocumentText;
 import scot.carricksoftware.grants.services.text.documenttext.DocumentTextService;
-import scot.carricksoftware.grants.validators.text.DocumentTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.DocumentTextCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
@@ -48,7 +48,7 @@ public class DocumentTextFormControllerTest {
     private Model modelMock;
 
     @Mock
-    private DocumentTextCommandValidator documentTextCommandValidatorMock;
+    private DocumentTextCommandValidatorImpl documentTextCommandValidatorImplMock;
 
 
     @BeforeEach
@@ -56,7 +56,7 @@ public class DocumentTextFormControllerTest {
         documentTextController = new DocumentTextFormControllerImpl(documentTextServiceMock,
                 documentTextCommandConverterMock,
                 documentTextConverterMock,
-                documentTextCommandValidatorMock);
+                documentTextCommandValidatorImplMock);
     }
 
     @Test

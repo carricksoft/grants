@@ -17,7 +17,7 @@ import scot.carricksoftware.grants.commands.text.DocumentTextCommand;
 import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextCommandConverterImpl;
 import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextConverterImpl;
 import scot.carricksoftware.grants.services.text.documenttext.DocumentTextService;
-import scot.carricksoftware.grants.validators.text.DocumentTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.DocumentTextCommandValidatorImpl;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -47,7 +47,7 @@ public class DocumentTextFormControllerValidationTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private DocumentTextCommandValidator documentTextCommandValidatorMock;
+    private DocumentTextCommandValidatorImpl documentTextCommandValidatorImplMock;
 
     @Mock
     private Model modelMock;
@@ -58,7 +58,7 @@ public class DocumentTextFormControllerValidationTest {
         documentTextController = new DocumentTextFormControllerImpl(documentTextServiceMock,
                 documentTextCommandConverterMock,
                 documentTextConverterMock,
-                documentTextCommandValidatorMock);
+                documentTextCommandValidatorImplMock);
     }
 
 
@@ -66,7 +66,7 @@ public class DocumentTextFormControllerValidationTest {
     public void saveOrUpdateValidationTest() {
         when(documentTextServiceMock.saveDocumentTextCommand(any())).thenReturn(documentTextCommandMock);
         documentTextController.saveOrUpdate(documentTextCommandMock, bindingResultMock, modelMock);
-        verify(documentTextCommandValidatorMock).validate(documentTextCommandMock, bindingResultMock);
+        verify(documentTextCommandValidatorImplMock).validate(documentTextCommandMock, bindingResultMock);
     }
 
 
