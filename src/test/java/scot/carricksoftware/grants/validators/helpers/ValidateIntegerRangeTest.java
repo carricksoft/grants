@@ -19,14 +19,14 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 @ExtendWith(MockitoExtension.class)
-class ValidateNonNegativeIntegerTest {
+class ValidateIntegerRangeTest {
 
     private ValidateTypes validateTypes;
 
     @Mock
     private BindingResult bindingResultMock;
 
-    private String fieldName;
+    String fieldName;
 
     @BeforeEach
     public void setUp() {
@@ -43,7 +43,7 @@ class ValidateNonNegativeIntegerTest {
     public void validateNullInteger() {
         String nullMessage = GetRandomString();
 
-        validateTypes.validateNonNegativeInteger(null, fieldName, nullMessage, "", "", bindingResultMock);
+        validateTypes.validateIntegerRange(null, null, null,fieldName, nullMessage, "", "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, nullMessage);
     }
 
@@ -51,36 +51,45 @@ class ValidateNonNegativeIntegerTest {
     public void validateEmptyInteger() {
         String nullMessage = GetRandomString();
 
-        validateTypes.validateNonNegativeInteger("", fieldName, nullMessage, "", "", bindingResultMock);
+        validateTypes.validateIntegerRange("", null, null, fieldName, nullMessage, "", "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, nullMessage);
     }
-
-    @Test
-    public void validateNegativeInteger() {
-        String negativeMessage = GetRandomString();
-
-        validateTypes.validateNonNegativeInteger("-5", fieldName, "", "", negativeMessage, bindingResultMock);
-        verify(bindingResultMock).rejectValue(fieldName, "", null, negativeMessage);
-    }
-
-    @Test
-    public void validateZeroInteger() {
-        validateTypes.validateNonNegativeInteger("0", fieldName, "", "", "", bindingResultMock);
-        verifyNoInteractions(bindingResultMock);
-    }
-
-    @Test
-    public void validatePositiveInteger() {
-        validateTypes.validateNonNegativeInteger("1", fieldName, "", "", "", bindingResultMock);
-        verifyNoInteractions(bindingResultMock);
-    }
-
 
     @Test
     public void validateBadFormatInteger() {
         String formatMessage = GetRandomString();
 
-        validateTypes.validateNonNegativeInteger("zz", fieldName, "", formatMessage, "", bindingResultMock);
+        validateTypes.validateIntegerRange("zz", null, null, fieldName, "", formatMessage, "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, formatMessage);
     }
+
+    @Test
+    public void validateTooLowInteger() {
+        String rangeMessage = GetRandomString();
+
+        validateTypes.validateIntegerRange("-6", -5, 99, fieldName, "", "", rangeMessage, bindingResultMock);
+        verify(bindingResultMock).rejectValue(fieldName, "", null, rangeMessage);
+    }
+
+    @Test
+    public void validateLowLimitInteger() {
+        validateTypes.validateIntegerRange("-6", -6, 99, fieldName, "", "", "", bindingResultMock);
+        verifyNoInteractions(bindingResultMock);
+    }
+
+    @Test
+    public void validateHighLimitInteger() {
+        validateTypes.validateIntegerRange("10", -6, 10, fieldName, "", "", "", bindingResultMock);
+        verifyNoInteractions(bindingResultMock);
+    }
+
+    @Test
+    public void validateTooHighInteger() {
+        String rangeMessage = GetRandomString();
+
+        validateTypes.validateIntegerRange("11", -5, 10, fieldName, "", "", rangeMessage, bindingResultMock);
+        verify(bindingResultMock).rejectValue(fieldName, "", null, rangeMessage);
+    }
+
+
 }
