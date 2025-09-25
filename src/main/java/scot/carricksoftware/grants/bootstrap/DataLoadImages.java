@@ -48,6 +48,8 @@ public class DataLoadImages {
     private void loadImage() {
         logger.debug("DataLoadCensus::loadImage");
         ImageCommand imageCommand = new ImageCommandImpl();
+        imageCommand.setName("Dalkeith");
+        imageCommand.setImageData("Dalkeith".getBytes());
 
         imageService.saveImageCommand(imageCommand);
     }
@@ -56,6 +58,7 @@ public class DataLoadImages {
         logger.debug("DataLoadCensus::loadPersonImage");
         PersonImageCommand imageCommand = new PersonImageCommandImpl();
         imageCommand.setPerson(personService.findById(1L));
+
 
         personImageService.savePersonImageCommand(imageCommand);
     }
