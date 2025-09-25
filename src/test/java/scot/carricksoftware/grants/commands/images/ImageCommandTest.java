@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 class ImageCommandTest {
@@ -31,6 +32,31 @@ class ImageCommandTest {
         imageCommand.setId(id);
         assertEquals(id, imageCommand.getId());
     }
+
+    @Test
+    public void getNameTest() {
+        assertNull(imageCommand.getName());
+    }
+
+    @Test
+    public void setNameTest() {
+        String name = GetRandomString();
+        imageCommand.setName(name);
+        assertEquals(name, imageCommand.getName());
+    }
+
+    @Test
+    public void getImageDataTest() {
+        assertNull(imageCommand.getImageData());
+    }
+
+    @Test
+    public void setImageDataTest() {
+        String string = GetRandomString();
+        imageCommand.setImageData(string.getBytes());
+        assertArrayEquals(string.getBytes(), imageCommand.getImageData());
+    }
+
 
 
 }
