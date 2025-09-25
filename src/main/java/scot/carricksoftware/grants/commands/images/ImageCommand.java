@@ -9,4 +9,16 @@ public interface ImageCommand {
     Long getId();
 
     void setId(Long id);
+
+    @SuppressWarnings("unused")
+    String getName();
+
+    @SuppressWarnings("unused")
+    void setName(String name);
+
+    @SuppressWarnings("unused")
+    byte[] getImageData();
+
+    @SuppressWarnings("unused")
+    void setImageData(byte[] imageData);
 }
