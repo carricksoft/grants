@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.commands.text.PersonTextCommand;
 @Component
 public interface PersonTextCommandValidator {
 
+    @SuppressWarnings("unused")
     void validate(PersonTextCommand personTextCommand, BindingResult bindingResult);
 
 }

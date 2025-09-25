@@ -8,7 +8,9 @@ package scot.carricksoftware.grants.domains.images;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+
 import static org.junit.jupiter.api.Assertions.*;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 class ImageTest {
@@ -30,5 +32,30 @@ class ImageTest {
         image.setId(id);
         assertEquals(id, image.getId());
     }
+
+    @Test
+    public void getNameTest() {
+        assertNull(image.getName());
+    }
+
+    @Test
+    public void setNameTest() {
+        String name = GetRandomString();
+        image.setName(name);
+        assertEquals(name, image.getName());
+    }
+
+    @Test
+    public void getImageDataTest() {
+        assertNull(image.getImageData());
+    }
+
+    @Test
+    public void setImageDataTest() {
+        String string = GetRandomString();
+        image.setImageData(string.getBytes());
+        assertArrayEquals(string.getBytes(), image.getImageData());
+    }
+
 
 }

@@ -22,6 +22,5 @@ public class PlaceTextCommandValidator {
       logger.debug("PlaceTextCommandValidator::validate");
     }
 
-
 }
 
