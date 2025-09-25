@@ -18,6 +18,8 @@ public class ImageConverterImpl implements ImageConverter {
     public ImageCommand convert(Image source) {
         ImageCommand target = new ImageCommandImpl();
         target.setId(source.getId());
+        target.setName(source.getName());
+        target.setImageData(source.getImageData());
         return target;
     }
 }
