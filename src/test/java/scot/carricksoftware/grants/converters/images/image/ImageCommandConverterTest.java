@@ -12,6 +12,7 @@ import scot.carricksoftware.grants.commands.images.ImageCommandImpl;
 import scot.carricksoftware.grants.domains.images.Image;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 class ImageCommandConverterTest {
@@ -26,14 +27,22 @@ class ImageCommandConverterTest {
     @Test
     void covertTest() {
         Long Id = GetRandomLong();
+        String name = GetRandomString();
+        String imageString = GetRandomString();
+        byte[] imageData = imageString.getBytes();
+
         ImageCommand source = new ImageCommandImpl();
 
         source.setId(Id);
+        source.setName(name);
+        source.setImageData(imageData);
 
 
         Image target = converter.convert(source);
 
         assertNotNull(target);
         assertEquals(Id, target.getId());
+        assertEquals(name, target.getName());
+        assertArrayEquals(imageData, target.getImageData());
     }
 }
