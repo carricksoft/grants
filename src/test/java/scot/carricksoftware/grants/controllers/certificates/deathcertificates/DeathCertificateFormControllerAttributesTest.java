@@ -79,13 +79,13 @@ public class DeathCertificateFormControllerAttributesTest {
 
     @Test
     public void newCertificateTest() {
-        assertEquals("certificates/deathCertificate/form",deathCertificateFormController.getNewDeathCertificate(modelMock));
+        assertEquals("certificates/deathCertificate/form", deathCertificateFormController.getNewDeathCertificate(modelMock));
         verify(addAttributesMock).AddBMDCertificate(modelMock);
     }
 
     @Test
     public void editCertificateTest() {
-        assertEquals("certificates/deathCertificate/form",deathCertificateFormController.deathCertificateEdit(GetRandomLong().toString(), modelMock));
+        assertEquals("certificates/deathCertificate/form", deathCertificateFormController.deathCertificateEdit(GetRandomLong().toString(), modelMock));
         verify(addAttributesMock).AddBMDCertificate(modelMock);
     }
 

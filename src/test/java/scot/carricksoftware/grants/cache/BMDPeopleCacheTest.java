@@ -50,22 +50,22 @@ public class BMDPeopleCacheTest {
 
     @Test
     void nullPeopleTest() {
-        assertEquals(peopleList,cache.getPeople());
+        assertEquals(peopleList, cache.getPeople());
         verify(personServiceMock).findAll();
     }
 
     @Test
     void alreadyExistsTest() {
-        assertEquals(peopleList,cache.getPeople());
-        assertEquals(peopleList,cache.getPeople());
+        assertEquals(peopleList, cache.getPeople());
+        assertEquals(peopleList, cache.getPeople());
         verify(personServiceMock, times(1)).findAll();
     }
 
     @Test
     void invalidateTest() {
-        assertEquals(peopleList,cache.getPeople());
+        assertEquals(peopleList, cache.getPeople());
         cache.invalidatePeople();
-        assertEquals(peopleList,cache.getPeople());
+        assertEquals(peopleList, cache.getPeople());
         verify(personServiceMock, times(2)).findAll();
     }
 }

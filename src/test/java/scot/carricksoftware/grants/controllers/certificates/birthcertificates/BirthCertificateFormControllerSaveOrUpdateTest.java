@@ -64,7 +64,6 @@ public class BirthCertificateFormControllerSaveOrUpdateTest {
     private BirthCertificateCommand birthCertificateCommand;
 
 
-
     @BeforeEach
     public void setUp() {
         birthCertificateController = new BirthCertificateFormControllerImpl(birthCertificateServiceMock,

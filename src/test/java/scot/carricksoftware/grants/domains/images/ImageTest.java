@@ -59,7 +59,7 @@ class ImageTest {
 
     @Test
     public void getFileNameTest() {
-       assertNull(image.getFileName());
+        assertNull(image.getFileName());
     }
 
     @Test

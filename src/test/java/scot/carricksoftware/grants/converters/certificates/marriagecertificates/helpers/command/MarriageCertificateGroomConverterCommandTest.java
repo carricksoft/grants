@@ -20,7 +20,7 @@ import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPla
 class MarriageCertificateGroomConverterCommandTest {
 
     private MarriageCertificateGroomCommandConverter converter;
-   
+
     private MarriageCertificateCommand source;
     private MarriageCertificate target;
 
@@ -46,18 +46,17 @@ class MarriageCertificateGroomConverterCommandTest {
 
         converter.convert(source, target);
 
-        assertEquals(source.getGroom(),target.getGroom());
-        assertEquals(source.getGroomUsualResidence(),target.getGroomUsualResidence());
-        assertEquals(source.getGroomAge(),target.getGroomAge());
-        assertEquals(source.getGroomCondition(),target.getGroomCondition());
-        assertEquals(source.getGroomFather(),target.getGroomFather());
-        assertEquals(source.getGroomFatherRank(),target.getGroomFatherRank());
-        assertEquals(source.getGroomRank(),target.getGroomRank());
-        assertEquals(source.getGroomUntrackedFather(),target.getGroomUntrackedFather());
-        assertEquals(source.getGroomUntrackedResidence(),target.getGroomUntrackedResidence());
-        assertEquals(source.getGroomUsualResidence(),target.getGroomUsualResidence());
-        
-  
+        assertEquals(source.getGroom(), target.getGroom());
+        assertEquals(source.getGroomUsualResidence(), target.getGroomUsualResidence());
+        assertEquals(source.getGroomAge(), target.getGroomAge());
+        assertEquals(source.getGroomCondition(), target.getGroomCondition());
+        assertEquals(source.getGroomFather(), target.getGroomFather());
+        assertEquals(source.getGroomFatherRank(), target.getGroomFatherRank());
+        assertEquals(source.getGroomRank(), target.getGroomRank());
+        assertEquals(source.getGroomUntrackedFather(), target.getGroomUntrackedFather());
+        assertEquals(source.getGroomUntrackedResidence(), target.getGroomUntrackedResidence());
+        assertEquals(source.getGroomUsualResidence(), target.getGroomUsualResidence());
+
 
     }
 

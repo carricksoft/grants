@@ -79,13 +79,13 @@ public class BirthCertificateFormControllerAttributesTest {
 
     @Test
     public void newCertificateTest() {
-        assertEquals("certificates/birthCertificate/form",birthCertificateFormController.getNewBirthCertificate(modelMock));
+        assertEquals("certificates/birthCertificate/form", birthCertificateFormController.getNewBirthCertificate(modelMock));
         verify(addAttributesMock).AddBMDCertificate(modelMock);
     }
 
     @Test
     public void editCertificateTest() {
-        assertEquals("certificates/birthCertificate/form",birthCertificateFormController.birthCertificateEdit(GetRandomLong().toString(), modelMock));
+        assertEquals("certificates/birthCertificate/form", birthCertificateFormController.birthCertificateEdit(GetRandomLong().toString(), modelMock));
         verify(addAttributesMock).AddBMDCertificate(modelMock);
     }
 

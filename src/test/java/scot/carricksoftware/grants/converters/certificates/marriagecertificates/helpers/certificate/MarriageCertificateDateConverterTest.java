@@ -19,7 +19,7 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 class MarriageCertificateDateConverterTest {
 
     private MarriageCertificateDateConverter converter;
-   
+
     private MarriageCertificate source;
     private MarriageCertificateCommand target;
 
@@ -38,9 +38,9 @@ class MarriageCertificateDateConverterTest {
 
         converter.convert(source, target);
 
-        assertEquals(source.getYearMarried(),target.getYearMarried());
-        assertEquals(source.getMonthMarried(),target.getMonthMarried());
-        assertEquals(source.getDayMarried(),target.getDayMarried());
+        assertEquals(source.getYearMarried(), target.getYearMarried());
+        assertEquals(source.getMonthMarried(), target.getMonthMarried());
+        assertEquals(source.getDayMarried(), target.getDayMarried());
     }
 
 }

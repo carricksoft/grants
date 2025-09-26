@@ -51,22 +51,22 @@ public class BMDPlacesCacheTest {
 
     @Test
     void nullPlacesTest() {
-        assertEquals(placesList,cache.getPlaces());
+        assertEquals(placesList, cache.getPlaces());
         verify(placeServiceMock).findAll();
     }
 
     @Test
     void alreadyExistsTest() {
-        assertEquals(placesList,cache.getPlaces());
-        assertEquals(placesList,cache.getPlaces());
+        assertEquals(placesList, cache.getPlaces());
+        assertEquals(placesList, cache.getPlaces());
         verify(placeServiceMock, times(1)).findAll();
     }
 
     @Test
     void invalidateTest() {
-        assertEquals(placesList,cache.getPlaces());
+        assertEquals(placesList, cache.getPlaces());
         cache.invalidatePlaces();
-        assertEquals(placesList,cache.getPlaces());
+        assertEquals(placesList, cache.getPlaces());
         verify(placeServiceMock, times(2)).findAll();
     }
 }

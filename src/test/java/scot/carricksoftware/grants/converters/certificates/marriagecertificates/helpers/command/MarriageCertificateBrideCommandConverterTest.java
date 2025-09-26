@@ -20,7 +20,7 @@ import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPla
 class MarriageCertificateBrideCommandConverterTest {
 
     private MarriageCertificateBrideCommandConverter converter;
-   
+
     private MarriageCertificateCommand source;
     private MarriageCertificate target;
 
@@ -46,18 +46,17 @@ class MarriageCertificateBrideCommandConverterTest {
 
         converter.convert(source, target);
 
-        assertEquals(source.getBride(),target.getBride());
-        assertEquals(source.getBrideUsualResidence(),target.getBrideUsualResidence());
-        assertEquals(source.getBrideAge(),target.getBrideAge());
-        assertEquals(source.getBrideCondition(),target.getBrideCondition());
-        assertEquals(source.getBrideFather(),target.getBrideFather());
-        assertEquals(source.getBrideFatherRank(),target.getBrideFatherRank());
-        assertEquals(source.getBrideRank(),target.getBrideRank());
-        assertEquals(source.getBrideUntrackedFather(),target.getBrideUntrackedFather());
-        assertEquals(source.getBrideUntrackedResidence(),target.getBrideUntrackedResidence());
-        assertEquals(source.getBrideUsualResidence(),target.getBrideUsualResidence());
-        
-  
+        assertEquals(source.getBride(), target.getBride());
+        assertEquals(source.getBrideUsualResidence(), target.getBrideUsualResidence());
+        assertEquals(source.getBrideAge(), target.getBrideAge());
+        assertEquals(source.getBrideCondition(), target.getBrideCondition());
+        assertEquals(source.getBrideFather(), target.getBrideFather());
+        assertEquals(source.getBrideFatherRank(), target.getBrideFatherRank());
+        assertEquals(source.getBrideRank(), target.getBrideRank());
+        assertEquals(source.getBrideUntrackedFather(), target.getBrideUntrackedFather());
+        assertEquals(source.getBrideUntrackedResidence(), target.getBrideUntrackedResidence());
+        assertEquals(source.getBrideUsualResidence(), target.getBrideUsualResidence());
+
 
     }
 

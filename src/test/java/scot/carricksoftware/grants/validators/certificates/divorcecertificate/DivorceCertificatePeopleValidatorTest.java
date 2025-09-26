@@ -46,5 +46,5 @@ class DivorceCertificatePeopleValidatorTest {
         verify(validateTwoFieldTypesMock).validateNotSamePerson(divorceCertificateCommand.getFirstParty(), divorceCertificateCommand.getSecondParty(),
                 "firstParty", "secondParty", "The two parties cannot be the same person.", bindingResultMock);
     }
-    
+
 }

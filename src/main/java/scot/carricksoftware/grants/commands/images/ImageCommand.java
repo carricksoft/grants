@@ -21,4 +21,8 @@ public interface ImageCommand {
 
     @SuppressWarnings("unused")
     void setImageData(byte[] imageData);
+
+    String getFilename();
+
+    void setFilename(String filename);
 }

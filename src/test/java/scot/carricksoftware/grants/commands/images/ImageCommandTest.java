@@ -57,6 +57,17 @@ class ImageCommandTest {
         assertArrayEquals(string.getBytes(), imageCommand.getImageData());
     }
 
+    @Test
+    public void getFilenameTest() {
+        assertNull(imageCommand.getFilename());
+    }
+
+    @Test
+    public void setFilenameTest() {
+        String filename = GetRandomString();
+        imageCommand.setFilename(filename);
+        assertEquals(filename, imageCommand.getFilename());
+    }
 
 
 }

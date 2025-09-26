@@ -41,12 +41,12 @@ class AppendixTextCommandValidatorImplTest {
     void validateRangeIsCalledTest() {
         String order = GetRandomString();
         appendixTextCommand.setOrder(order);
-       validator.validate(appendixTextCommand, bindingResultMock);
-       verify(validateTypesMock).validateNonNegativeInteger(order,
-               "order",
-               "Order must exist.",
-               "The order must be an integer.",
-               "The order must be non-negative.", bindingResultMock);
+        validator.validate(appendixTextCommand, bindingResultMock);
+        verify(validateTypesMock).validateNonNegativeInteger(order,
+                "order",
+                "Order must exist.",
+                "The order must be an integer.",
+                "The order must be non-negative.", bindingResultMock);
     }
 
     @Test

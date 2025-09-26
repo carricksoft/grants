@@ -43,7 +43,7 @@ class ValidateIntegerRangeTest {
     public void validateNullInteger() {
         String nullMessage = GetRandomString();
 
-        validateTypes.validateIntegerRange(null, null, null,fieldName, nullMessage, "", "", bindingResultMock);
+        validateTypes.validateIntegerRange(null, null, null, fieldName, nullMessage, "", "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, nullMessage);
     }
 

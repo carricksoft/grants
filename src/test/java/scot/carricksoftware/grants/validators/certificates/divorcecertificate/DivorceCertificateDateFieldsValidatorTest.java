@@ -38,11 +38,11 @@ class DivorceCertificateDateFieldsValidatorTest {
     @Test
     void validateDateFieldsTest() {
         verify(validateDateTypesMock).validatePastDate(divorceCertificateCommand.getFirstPartyDate(), "firstPartyDate",
-                "The first party date cannot be null.", "The format should be dd/MM/yyyy.", "Date should not be in the future.",bindingResultMock);
+                "The first party date cannot be null.", "The format should be dd/MM/yyyy.", "Date should not be in the future.", bindingResultMock);
         verify(validateDateTypesMock).validatePastDate(divorceCertificateCommand.getSecondPartyDate(), "secondPartyDate",
-                "The second party date cannot be null.", "The format should be dd/MM/yyyy.", "Date should not be in the future.",bindingResultMock);
+                "The second party date cannot be null.", "The format should be dd/MM/yyyy.", "Date should not be in the future.", bindingResultMock);
         verify(validateDateTypesMock).validatePastDate(divorceCertificateCommand.getRegisteredDate(), "registeredDate",
-                "The registered date cannot be null.", "The format should be dd/MM/yyyy.", "Date should not be in the future.",bindingResultMock);
+                "The registered date cannot be null.", "The format should be dd/MM/yyyy.", "Date should not be in the future.", bindingResultMock);
     }
 
 }

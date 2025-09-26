@@ -22,7 +22,7 @@ import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPla
 class MarriageCertificateCertificateConverterCommandTest {
 
     private MarriageCertificateCertificateCommandConverter converter;
-   
+
     private MarriageCertificateCommand source;
     private MarriageCertificate target;
 
@@ -49,17 +49,17 @@ class MarriageCertificateCertificateConverterCommandTest {
 
         converter.convert(source, target);
 
-        assertEquals(source.getId(),target.getId());
-        assertEquals(source.getNumber(),target.getNumber());
-        assertEquals(source.getRegistrationAuthority(),target.getRegistrationAuthority());
-        assertEquals(source.getCertificateNumber(),target.getCertificateNumber());
-        assertEquals(source.getCertificateDate(),target.getCertificateDate());
-        assertEquals(source.getCertificateType(),target.getCertificateType());
-        assertEquals(source.getCertificateSource(),target.getCertificateSource());
-        assertEquals(source.getUntrackedWhereMarried(),target.getUntrackedWhereMarried());
-        assertEquals(source.getVolume(),target.getVolume());
-        assertEquals(source.getWhenMarried(),target.getWhenMarried());
-        assertEquals(source.getWhereMarried(),target.getWhereMarried());
+        assertEquals(source.getId(), target.getId());
+        assertEquals(source.getNumber(), target.getNumber());
+        assertEquals(source.getRegistrationAuthority(), target.getRegistrationAuthority());
+        assertEquals(source.getCertificateNumber(), target.getCertificateNumber());
+        assertEquals(source.getCertificateDate(), target.getCertificateDate());
+        assertEquals(source.getCertificateType(), target.getCertificateType());
+        assertEquals(source.getCertificateSource(), target.getCertificateSource());
+        assertEquals(source.getUntrackedWhereMarried(), target.getUntrackedWhereMarried());
+        assertEquals(source.getVolume(), target.getVolume());
+        assertEquals(source.getWhenMarried(), target.getWhenMarried());
+        assertEquals(source.getWhereMarried(), target.getWhereMarried());
     }
 
 }

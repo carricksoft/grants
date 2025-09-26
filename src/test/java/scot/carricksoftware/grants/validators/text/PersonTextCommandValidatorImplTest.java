@@ -43,12 +43,12 @@ class PersonTextCommandValidatorImplTest {
     void validateRangeIsCalledTest() {
         String order = GetRandomString();
         personTextCommand.setOrder(order);
-       validator.validate(personTextCommand, bindingResultMock);
-       verify(validateTypesMock).validateNonNegativeInteger(order,
-               "order",
-               "Order must exist.",
-               "The order must be an integer.",
-               "The order must be non-negative.", bindingResultMock);
+        validator.validate(personTextCommand, bindingResultMock);
+        verify(validateTypesMock).validateNonNegativeInteger(order,
+                "order",
+                "Order must exist.",
+                "The order must be an integer.",
+                "The order must be non-negative.", bindingResultMock);
     }
 
     @Test
@@ -67,7 +67,7 @@ class PersonTextCommandValidatorImplTest {
 
     @Test
     void validatePersonIsCalledTest() {
-        Person person  = GetRandomPerson();
+        Person person = GetRandomPerson();
         personTextCommand.setPerson(person);
         validator.validate(personTextCommand, bindingResultMock);
         verify(validateTypesMock).validatePerson(person,

@@ -54,7 +54,6 @@ public class AppendixTextFormControllerValidationTest {
     private Model modelMock;
 
 
-
     @BeforeEach
     public void setUp() {
         appendixTextController = new AppendixTextFormControllerImpl(appendixTextServiceMock,

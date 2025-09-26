@@ -26,7 +26,7 @@ import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomOrg
 
 @ExtendWith(MockitoExtension.class)
 public class BMDOrganisationsCacheTest {
-    
+
     @Mock
     PersonService personServiceMock;
 
@@ -50,22 +50,22 @@ public class BMDOrganisationsCacheTest {
 
     @Test
     void nullOrganisationsTest() {
-        assertEquals(organisationsList,cache.getOrganisations());
+        assertEquals(organisationsList, cache.getOrganisations());
         verify(organisationServiceMock).findAll();
     }
 
     @Test
     void alreadyExistsTest() {
-        assertEquals(organisationsList,cache.getOrganisations());
-        assertEquals(organisationsList,cache.getOrganisations());
+        assertEquals(organisationsList, cache.getOrganisations());
+        assertEquals(organisationsList, cache.getOrganisations());
         verify(organisationServiceMock, times(1)).findAll();
     }
 
     @Test
     void invalidateTest() {
-        assertEquals(organisationsList,cache.getOrganisations());
+        assertEquals(organisationsList, cache.getOrganisations());
         cache.invalidateOrganisations();
-        assertEquals(organisationsList,cache.getOrganisations());
+        assertEquals(organisationsList, cache.getOrganisations());
         verify(organisationServiceMock, times(2)).findAll();
     }
 }

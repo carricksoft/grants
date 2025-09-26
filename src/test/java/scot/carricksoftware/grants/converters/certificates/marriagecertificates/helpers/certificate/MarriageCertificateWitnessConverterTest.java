@@ -19,7 +19,7 @@ import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPe
 class MarriageCertificateWitnessConverterTest {
 
     private MarriageCertificateWitnessConverter converter;
-   
+
     private MarriageCertificate source;
     private MarriageCertificateCommand target;
 
@@ -39,10 +39,10 @@ class MarriageCertificateWitnessConverterTest {
 
         converter.convert(source, target);
 
-        assertEquals(source.getFirstWitness(),target.getFirstWitness());
-        assertEquals(source.getSecondWitness(),target.getSecondWitness());
-        assertEquals(source.getUntrackedFirstWitness(),target.getUntrackedFirstWitness());
-        assertEquals(source.getUntrackedSecondWitness(),target.getUntrackedSecondWitness());
+        assertEquals(source.getFirstWitness(), target.getFirstWitness());
+        assertEquals(source.getSecondWitness(), target.getSecondWitness());
+        assertEquals(source.getUntrackedFirstWitness(), target.getUntrackedFirstWitness());
+        assertEquals(source.getUntrackedSecondWitness(), target.getUntrackedSecondWitness());
     }
 
 }
