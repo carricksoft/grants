@@ -24,6 +24,7 @@
             <tr>
                 <th>ID</th>
                 <th>Name</th>
+                <th>File Name</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -33,6 +34,7 @@
                 <!--/*@thymesVar id="image" type="scot.carricksoftware.grants.domains.images.Image"*/-->
                 <td th:text="${image.id}">123</td>
                 <td th:text="${image.name}">123</td>
+                <td th:text="${image.fileName}">123</td>
                 <td></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
