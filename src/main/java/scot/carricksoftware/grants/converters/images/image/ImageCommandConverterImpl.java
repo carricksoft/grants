@@ -20,7 +20,7 @@ public class ImageCommandConverterImpl implements ImageCommandConverter {
         target.setId(source.getId());
         target.setName(source.getName());
         target.setImageData(source.getImageData());
-        target.setFileName(source.getFilename());
+        target.setFileName(source.getFileName());
         return target;
     }
 

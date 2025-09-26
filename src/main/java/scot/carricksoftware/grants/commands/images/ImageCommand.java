@@ -22,7 +22,7 @@ public interface ImageCommand {
     @SuppressWarnings("unused")
     void setImageData(byte[] imageData);
 
-    String getFilename();
+    String getFileName();
 
-    void setFilename(String filename);
+    void setFileName(String filename);
 }

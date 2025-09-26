@@ -13,7 +13,7 @@ public class ImageCommandImpl implements ImageCommand{
     Long Id;
     private String name;
     private byte[] imageData;
-    private String filename;
+    private String fileName;
 
     @Override
     public Long getId() {
@@ -46,12 +46,12 @@ public class ImageCommandImpl implements ImageCommand{
     }
 
     @Override
-    public String getFilename() {
-        return filename;
+    public String getFileName() {
+        return fileName;
     }
 
     @Override
-    public void setFilename(String filename) {
-        this.filename = filename;
+    public void setFileName(String filename) {
+        this.fileName = filename;
     }
 }

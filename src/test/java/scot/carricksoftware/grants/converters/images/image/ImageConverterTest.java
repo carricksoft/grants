@@ -44,6 +44,6 @@ class ImageConverterTest {
         assertEquals(Id, target.getId());
         assertEquals(name, target.getName());
         assertArrayEquals(imageData, target.getImageData());
-        assertEquals(filename, target.getFilename());
+        assertEquals(filename, target.getFileName());
     }
 }

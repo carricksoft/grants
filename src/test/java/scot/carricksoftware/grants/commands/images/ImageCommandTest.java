@@ -59,14 +59,14 @@ class ImageCommandTest {
 
     @Test
     public void getFilenameTest() {
-        assertNull(imageCommand.getFilename());
+        assertNull(imageCommand.getFileName());
     }
 
     @Test
     public void setFilenameTest() {
         String filename = GetRandomString();
-        imageCommand.setFilename(filename);
-        assertEquals(filename, imageCommand.getFilename());
+        imageCommand.setFileName(filename);
+        assertEquals(filename, imageCommand.getFileName());
     }
 
 

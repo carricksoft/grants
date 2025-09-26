@@ -20,7 +20,7 @@ public class ImageConverterImpl implements ImageConverter {
         target.setId(source.getId());
         target.setName(source.getName());
         target.setImageData(source.getImageData());
-        target.setFilename(source.getFileName());
+        target.setFileName(source.getFileName());
         return target;
     }
 }

@@ -18,7 +18,7 @@
 
 </head>
 <body>
-<!--/*@thymesVar id="personCommand" type="scot.carricksoftware.grants.commands.people.PersonCommand"*/-->
+
 <div th:insert="~{fragments/layout::banner}"></div>
 
 <div class="container border border-info rounded-3 text-center p-4">
@@ -51,6 +51,23 @@
                     </div>
                 </td>
             </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="fileName"><span style="color: rgb(255,0,0);">*</span>File Name :&nbsp;</label>
+                </td>
+                <td  style="text-align: left;">
+                    <input class="form-control" id="fileName"
+                           th:field="*{fileName}" type="text" readonly >
+                    <div th:if="${#fields.hasErrors('name')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('fileName')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+
+
+
             <tr><td>&nbsp;</td></tr>
         </table>
         <button type="submit" class="btn btn-primary">Commit</button>
