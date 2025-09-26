@@ -19,6 +19,10 @@ public class Image extends BaseEntity {
     private String name;
 
     @SuppressWarnings("JpaDataSourceORMInspection")
+    @Column(name= "`file_name`")
+    private String fileName;
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Lob
     @Column(name = "`imageData`")
     private byte[] imageData;
@@ -37,5 +41,13 @@ public class Image extends BaseEntity {
 
     public void setImageData(byte[] imageData) {
         this.imageData = imageData;
+    }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
