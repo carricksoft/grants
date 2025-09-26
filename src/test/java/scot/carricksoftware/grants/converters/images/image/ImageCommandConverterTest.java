@@ -30,12 +30,14 @@ class ImageCommandConverterTest {
         String name = GetRandomString();
         String imageString = GetRandomString();
         byte[] imageData = imageString.getBytes();
+        String filename = GetRandomString();
 
         ImageCommand source = new ImageCommandImpl();
 
         source.setId(Id);
         source.setName(name);
         source.setImageData(imageData);
+        source.setFilename(filename);
 
 
         Image target = converter.convert(source);
@@ -44,5 +46,6 @@ class ImageCommandConverterTest {
         assertEquals(Id, target.getId());
         assertEquals(name, target.getName());
         assertArrayEquals(imageData, target.getImageData());
+        assertEquals(filename,target.getFileName());
     }
 }
