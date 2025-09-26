@@ -50,6 +50,7 @@ public class DataLoadImages {
         ImageCommand imageCommand = new ImageCommandImpl();
         imageCommand.setName("Dalkeith");
         imageCommand.setImageData("Dalkeith".getBytes());
+        imageCommand.setFilename("Midlothian");
 
         imageService.saveImageCommand(imageCommand);
     }
