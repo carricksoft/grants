@@ -64,10 +64,13 @@ public class ImageFormControllerImpl implements ImageFormController {
     }
 
 
-    @Override
+    @SuppressWarnings({"UnnecessaryLocalVariable", "unused"})
     @PostMapping(ImageMappingConstants.IMAGE)
+    @Override
     public String saveOrUpdate(@Valid @ModelAttribute ImageCommand imageCommand, BindingResult bindingResult, Model model) {
         logger.debug("ImageFormControllerImpl::saveOrUpdate");
+
+        var z = imageCommand;
 
         imageCommandValidator.validate(imageCommand, bindingResult);
 
@@ -92,6 +95,10 @@ public class ImageFormControllerImpl implements ImageFormController {
         model.addAttribute(ImageAttributeConstants.IMAGE_COMMAND, savedCommand);
         return ViewConstants.IMAGE_FORM;
     }
+
+
+
+
 
 
 }
