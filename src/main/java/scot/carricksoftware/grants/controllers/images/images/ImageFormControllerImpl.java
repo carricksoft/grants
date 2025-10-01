@@ -77,6 +77,8 @@ public class ImageFormControllerImpl implements ImageFormController {
         var z = imageCommand;
         var x = file;
         int debug = -1;
+        imageCommand.setFileName(file.getOriginalFilename());
+
         imageCommandValidator.validate(imageCommand, bindingResult);
 
 
