@@ -23,7 +23,7 @@
 
 <div class="container border border-info rounded-3 text-center p-4">
     <h3>Image Details</h3>
-    <form th:object="${imageCommand}"  th:action="@{/image}" method="post" >
+    <form th:object="${imageCommand}"  th:action="@{/image}" method="post" enctype="multipart/form-data">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p>Please Correct The Errors Below</p>
         </div>
@@ -65,17 +65,12 @@
                     </div>
                 </td>
             </tr>
-            <!--
             <tr>
-                <td style="text-align: right;">
-                    <label for="imageData">File :&nbsp;</label>
-                </td>
-                <td style="text-align: left;">
-                    <input type="file" name="imageData" id="imageData">
+                <td>File to upload:</td>
+                <td>
+                    <input type="file" name="file" />
                 </td>
             </tr>
-            --->
-
             <tr>
                 <td>&nbsp;</td>
             </tr>

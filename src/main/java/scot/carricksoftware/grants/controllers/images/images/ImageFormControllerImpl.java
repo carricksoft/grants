@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import scot.carricksoftware.grants.commands.images.ImageCommand;
 import scot.carricksoftware.grants.commands.images.ImageCommandImpl;
 import scot.carricksoftware.grants.constants.*;
@@ -67,11 +69,14 @@ public class ImageFormControllerImpl implements ImageFormController {
     @SuppressWarnings({"UnnecessaryLocalVariable", "unused"})
     @PostMapping(ImageMappingConstants.IMAGE)
     @Override
-    public String saveOrUpdate(@Valid @ModelAttribute ImageCommand imageCommand, BindingResult bindingResult, Model model) {
+    public String saveOrUpdate(@Valid @ModelAttribute ImageCommand imageCommand,
+                               @RequestParam MultipartFile file,
+                               BindingResult bindingResult, Model model) {
         logger.debug("ImageFormControllerImpl::saveOrUpdate");
 
         var z = imageCommand;
-
+        var x = file;
+        int debug = -1;
         imageCommandValidator.validate(imageCommand, bindingResult);
 
 
