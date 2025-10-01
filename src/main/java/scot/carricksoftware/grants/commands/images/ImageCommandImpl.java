@@ -12,7 +12,7 @@ public class ImageCommandImpl implements ImageCommand{
 
     Long Id;
     private String name;
-    private byte[] imageData;
+    private String imageData;
     private String fileName;
 
     @Override
@@ -36,12 +36,12 @@ public class ImageCommandImpl implements ImageCommand{
     }
 
     @Override
-    public byte[] getImageData() {
+    public String getImageData() {
         return imageData;
     }
 
     @Override
-    public void setImageData(byte[] imageData) {
+    public void setImageData(String imageData) {
         this.imageData = imageData;
     }
 

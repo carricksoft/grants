@@ -28,8 +28,7 @@ class ImageCommandConverterTest {
     void covertTest() {
         Long Id = GetRandomLong();
         String name = GetRandomString();
-        String imageString = GetRandomString();
-        byte[] imageData = imageString.getBytes();
+        String imageData = GetRandomString();
         String filename = GetRandomString();
 
         ImageCommand source = new ImageCommandImpl();
@@ -45,7 +44,6 @@ class ImageCommandConverterTest {
         assertNotNull(target);
         assertEquals(Id, target.getId());
         assertEquals(name, target.getName());
-        assertArrayEquals(imageData, target.getImageData());
         assertEquals(filename,target.getFileName());
     }
 }

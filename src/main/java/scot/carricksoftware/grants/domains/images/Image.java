@@ -25,7 +25,7 @@ public class Image extends BaseEntity {
     @SuppressWarnings("JpaDataSourceORMInspection")
     @Lob
     @Column(name = "`imageData`")
-    private byte[] imageData;
+    private String imageData;
 
     public String getName() {
         return name;
@@ -35,11 +35,11 @@ public class Image extends BaseEntity {
         this.name = name;
     }
 
-    public byte[] getImageData() {
+    public String getImageData() {
         return imageData;
     }
 
-    public void setImageData(byte[] imageData) {
+    public void setImageData(String imageData) {
         this.imageData = imageData;
     }
 

@@ -17,10 +17,10 @@ public interface ImageCommand {
     void setName(String name);
 
     @SuppressWarnings("unused")
-    byte[] getImageData();
+    String getImageData();
 
     @SuppressWarnings("unused")
-    void setImageData(byte[] imageData);
+    void setImageData(String imageData);
 
     String getFileName();
 

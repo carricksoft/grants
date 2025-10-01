@@ -53,8 +53,8 @@ class ImageTest {
     @Test
     public void setImageDataTest() {
         String string = GetRandomString();
-        image.setImageData(string.getBytes());
-        assertArrayEquals(string.getBytes(), image.getImageData());
+        image.setImageData(string);
+        assertEquals(string, image.getImageData());
     }
 
     @Test

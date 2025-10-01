@@ -49,7 +49,7 @@ public class DataLoadImages {
         logger.debug("DataLoadCensus::loadImage");
         ImageCommand imageCommand = new ImageCommandImpl();
         imageCommand.setName("Dalkeith");
-        imageCommand.setImageData("Dalkeith".getBytes());
+        imageCommand.setImageData("Wilson Avenue");
         imageCommand.setFileName("Midlothian");
 
         imageService.saveImageCommand(imageCommand);

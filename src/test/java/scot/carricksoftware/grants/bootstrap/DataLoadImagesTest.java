@@ -63,7 +63,7 @@ class DataLoadImagesTest {
         dataLoadImages.load();
         verify(imageServiceMock).saveImageCommand(captor.capture());
         assertEquals("Dalkeith", captor.getValue().getName());
-        assertEquals("Dalkeith", new String(captor.getValue().getImageData()));
+        assertEquals("Wilson Avenue", captor.getValue().getImageData());
         assertEquals("Midlothian", captor.getValue().getFileName());
     }
 

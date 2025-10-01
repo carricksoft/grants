@@ -27,8 +27,7 @@ class ImageConverterTest {
     void covertTest() {
         Long Id = GetRandomLong();
         String name = GetRandomString();
-        String imageString = GetRandomString();
-        byte[] imageData = imageString.getBytes();
+        String imageData = GetRandomString();
         String filename = GetRandomString();
 
         Image source = new Image();
@@ -43,7 +42,7 @@ class ImageConverterTest {
         assertNotNull(target);
         assertEquals(Id, target.getId());
         assertEquals(name, target.getName());
-        assertArrayEquals(imageData, target.getImageData());
+        assertEquals(imageData, target.getImageData());
         assertEquals(filename, target.getFileName());
     }
 }

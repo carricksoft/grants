@@ -77,7 +77,7 @@ public class ImageFormControllerImpl implements ImageFormController {
         logger.debug("ImageFormControllerImpl::saveOrUpdate");
 
         imageCommand.setFileName(file.getOriginalFilename());
-        imageCommand.setImageData(file.getBytes());
+        imageCommand.setImageData(convertToBase64(file.getBytes()));
 
         imageCommandValidator.validate(imageCommand, bindingResult);
 
@@ -89,7 +89,7 @@ public class ImageFormControllerImpl implements ImageFormController {
 
         ImageCommand savedCommand = imageService.saveImageCommand(imageCommand);
         model.addAttribute(ImageAttributeConstants.IMAGE_COMMAND, savedCommand);
-        model.addAttribute("image", new ImageUtil().getImgData(savedCommand.getImageData()));
+        model.addAttribute("image", savedCommand.getImageData());
         return MappingConstants.REDIRECT + ImageMappingConstants.IMAGE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -100,7 +100,7 @@ public class ImageFormControllerImpl implements ImageFormController {
         logger.debug("ImageFormControllerImpl::saveOrUpdate");
         ImageCommand savedCommand = imageConverter.convert(imageService.findById(Long.valueOf(id)));
         if (savedCommand != null) {
-            model.addAttribute("image", new ImageUtil().getImgData(savedCommand.getImageData()));
+            model.addAttribute("image", savedCommand.getImageData());
         } else {
             model.addAttribute("image", null);
         }
@@ -108,11 +108,8 @@ public class ImageFormControllerImpl implements ImageFormController {
         return ViewConstants.IMAGE_FORM;
     }
 
-    public static class ImageUtil {
-
-        public String getImgData(byte[] byteData) {
-            return Base64.getMimeEncoder().encodeToString(byteData);
-        }
+    private String convertToBase64(byte[] byteData) {
+        return Base64.getMimeEncoder().encodeToString(byteData);
     }
 }
 
