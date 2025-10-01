@@ -12,21 +12,17 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.commands.images.ImageCommand;
 import scot.carricksoftware.grants.converters.images.image.ImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.image.ImageConverterImpl;
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.validators.images.ImageCommandValidator;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
 @ExtendWith(MockitoExtension.class)
 public class ImageFormControllerValidationTest {
 
-    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private ImageFormControllerImpl imageController;
 
     @Mock
@@ -40,19 +36,11 @@ public class ImageFormControllerValidationTest {
 
 
     @Mock
-    ImageCommand imageCommandMock;
-
-    @SuppressWarnings("unused")
-    @Mock
-    BindingResult bindingResultMock;
-
-    @Mock
     ImageCommandValidator imageCommandValidatorMock;
 
     @SuppressWarnings("unused")
     @Mock
     Model modelMock;
-
 
     @BeforeEach
     public void setUp() {
@@ -62,13 +50,9 @@ public class ImageFormControllerValidationTest {
                 imageCommandValidatorMock);
     }
 
-
-    @SuppressWarnings("CommentedOutCode")
     @Test
-    public void saveOrUpdateValidationTest() {
-        when(imageServiceMock.saveImageCommand(any())).thenReturn(imageCommandMock);
-    //    imageController.saveOrUpdate(imageCommandMock, bindingResultMock, modelMock);
-    //    verify(imageCommandValidatorMock).validate(imageCommandMock, bindingResultMock);
+    public void constructorTest() {
+        assertNotNull(imageController);
     }
 
 

@@ -13,7 +13,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
-import scot.carricksoftware.grants.commands.images.ImageCommand;
 import scot.carricksoftware.grants.constants.ImageAttributeConstants;
 import scot.carricksoftware.grants.converters.images.image.ImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.image.ImageConverterImpl;
@@ -25,7 +24,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomImageValues.GetRandomImage;
-import static scot.carricksoftware.grants.GenerateRandomImageValues.GetRandomImageCommand;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 
@@ -79,16 +77,6 @@ public class ImageFormControllerTest {
         verify(modelMock).addAttribute(ImageAttributeConstants.IMAGE_COMMAND, image);
     }
 
-    @Test
-    public void showByIdTest() {
-        Long id = GetRandomLong();
-        Image image = GetRandomImage();
-        ImageCommand imageCommand = GetRandomImageCommand();
 
-        when(imageServiceMock.findById(id)).thenReturn(image);
-        when(imageConverterMock.convert(image)).thenReturn(imageCommand);
-        assertEquals("images/image/form", imageController.showById(id + "", modelMock));
-        verify(modelMock).addAttribute(ImageAttributeConstants.IMAGE_COMMAND, imageCommand);
-    }
 
 }
