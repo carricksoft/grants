@@ -9,21 +9,17 @@ import jakarta.validation.Valid;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import scot.carricksoftware.grants.commands.images.ImageCommand;
-import scot.carricksoftware.grants.constants.ImageMappingConstants;
+
+import java.io.IOException;
 
 @SuppressWarnings("unused")
 
 public interface ImageFormController {
 
-
-    @SuppressWarnings({"UnnecessaryLocalVariable", "unused"})
-    @PostMapping(ImageMappingConstants.IMAGE)
     String saveOrUpdate(@Valid @ModelAttribute ImageCommand imageCommand,
                         @RequestParam MultipartFile file,
-                        BindingResult bindingResult, Model model);
+                        BindingResult bindingResult, Model model) throws IOException;
 }

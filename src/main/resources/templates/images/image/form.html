@@ -76,12 +76,20 @@
             <tr>
                 <td>&nbsp;</td>
             </tr>
-        </table>
+            </table>
+
+            <div th:if="${image != null and !#strings.isEmpty(image)}">
+                        <img class='img-thumbnail' th:src="'data:image/jpeg;base64,' + ${image} "
+                             width="250" height="250" alt =""/>
+            </div>
+
         <button type="submit" class="btn btn-primary">Commit</button>
         <a class="btn btn-secondary" th:href="@{/images}" th:text="${'List all'}">List all</a>
         <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
         <h6><span style="color: rgb(255,0,0);">*</span><span> Cannot be edited</span></h6>
     </form>
 </div>
+
+
 </body>
 </html>

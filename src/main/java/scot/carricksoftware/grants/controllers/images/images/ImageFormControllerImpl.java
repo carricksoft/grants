@@ -25,6 +25,9 @@ import scot.carricksoftware.grants.converters.images.image.ImageConverterImpl;
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.validators.images.ImageCommandValidator;
 
+import java.io.IOException;
+import java.util.Base64;
+
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class ImageFormControllerImpl implements ImageFormController {
@@ -66,18 +69,15 @@ public class ImageFormControllerImpl implements ImageFormController {
     }
 
 
-    @SuppressWarnings({"UnnecessaryLocalVariable", "unused"})
     @PostMapping(ImageMappingConstants.IMAGE)
     @Override
     public String saveOrUpdate(@Valid @ModelAttribute ImageCommand imageCommand,
                                @RequestParam MultipartFile file,
-                               BindingResult bindingResult, Model model) {
+                               BindingResult bindingResult, Model model) throws IOException {
         logger.debug("ImageFormControllerImpl::saveOrUpdate");
 
-        var z = imageCommand;
-        var x = file;
-        int debug = -1;
         imageCommand.setFileName(file.getOriginalFilename());
+        imageCommand.setImageData(file.getBytes());
 
         imageCommandValidator.validate(imageCommand, bindingResult);
 
@@ -89,9 +89,9 @@ public class ImageFormControllerImpl implements ImageFormController {
 
         ImageCommand savedCommand = imageService.saveImageCommand(imageCommand);
         model.addAttribute(ImageAttributeConstants.IMAGE_COMMAND, savedCommand);
+        model.addAttribute("image", new ImageUtil().getImgData(savedCommand.getImageData()));
         return MappingConstants.REDIRECT + ImageMappingConstants.IMAGE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
-
 
 
     @SuppressWarnings("SameReturnValue")
@@ -99,13 +99,20 @@ public class ImageFormControllerImpl implements ImageFormController {
     public String showById(@PathVariable String id, Model model) {
         logger.debug("ImageFormControllerImpl::saveOrUpdate");
         ImageCommand savedCommand = imageConverter.convert(imageService.findById(Long.valueOf(id)));
+        if (savedCommand != null) {
+            model.addAttribute("image", new ImageUtil().getImgData(savedCommand.getImageData()));
+        } else {
+            model.addAttribute("image", null);
+        }
         model.addAttribute(ImageAttributeConstants.IMAGE_COMMAND, savedCommand);
         return ViewConstants.IMAGE_FORM;
     }
 
+    public static class ImageUtil {
 
-
-
-
-
+        public String getImgData(byte[] byteData) {
+            return Base64.getMimeEncoder().encodeToString(byteData);
+        }
+    }
 }
+
