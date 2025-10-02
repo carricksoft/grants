@@ -31,10 +31,12 @@
             <tr>
                 <td style="text-align: right;">
                     <label for="id"><span style="color: rgb(255,0,0);">*</span>Database Id :&nbsp;</label>
+                    <label for="imageData"></label>
                 </td>
                 <td style="text-align: left;">
                     <input class="form-control" id="id"
                            th:field="*{id}" type="text" readonly>
+                    <input  class="form-control" th:type = "hidden" id = "imageData" th:field ="*{imageData}" th:value="${imageCommand.imageData}"  >
                 </td>
             </tr>
             <tr>

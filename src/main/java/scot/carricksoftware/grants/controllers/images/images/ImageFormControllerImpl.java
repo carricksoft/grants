@@ -78,8 +78,10 @@ public class ImageFormControllerImpl implements ImageFormController {
                                BindingResult bindingResult, Model model) throws IOException {
         logger.debug("ImageFormControllerImpl::saveOrUpdate");
 
-        imageCommand.setFileName(file.getOriginalFilename());
-        imageCommand.setImageData(convertToBase64.convert(file.getBytes()));
+        if (imageCommand.getImageData() == null  || imageCommand.getImageData().isEmpty()) {
+            imageCommand.setFileName(file.getOriginalFilename());
+            imageCommand.setImageData(convertToBase64.convert(file.getBytes()));
+        }
 
         imageCommandValidator.validate(imageCommand, bindingResult);
 
