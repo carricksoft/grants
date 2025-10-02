@@ -78,7 +78,7 @@
             </tr>
             </table>
 
-            <div th:if="${image != null and !#strings.isEmpty(image)}">
+            <div th:if="${imageCommand.imageData != null and !#strings.isEmpty(imageCommand.imageData)}">
                         <img class='img-thumbnail' th:src="'data:image/jpeg;base64,' + ${imageCommand.imageData} "
                              width="250" height="250" alt =""/>
             </div>

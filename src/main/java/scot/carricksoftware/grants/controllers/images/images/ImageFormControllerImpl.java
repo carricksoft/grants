@@ -89,7 +89,6 @@ public class ImageFormControllerImpl implements ImageFormController {
 
         ImageCommand savedCommand = imageService.saveImageCommand(imageCommand);
         model.addAttribute(ImageAttributeConstants.IMAGE_COMMAND, savedCommand);
-        model.addAttribute("image", savedCommand.getImageData());
         return MappingConstants.REDIRECT + ImageMappingConstants.IMAGE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -99,11 +98,6 @@ public class ImageFormControllerImpl implements ImageFormController {
     public String showById(@PathVariable String id, Model model) {
         logger.debug("ImageFormControllerImpl::saveOrUpdate");
         ImageCommand savedCommand = imageConverter.convert(imageService.findById(Long.valueOf(id)));
-        if (savedCommand != null) {
-            model.addAttribute("image", savedCommand.getImageData());
-        } else {
-            model.addAttribute("image", null);
-        }
         model.addAttribute(ImageAttributeConstants.IMAGE_COMMAND, savedCommand);
         return ViewConstants.IMAGE_FORM;
     }
