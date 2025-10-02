@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.images.ImageCommand;
 import scot.carricksoftware.grants.commands.images.ImageCommandImpl;
+import scot.carricksoftware.grants.converters.images.ConvertToBase64;
 import scot.carricksoftware.grants.converters.images.image.ImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.image.ImageConverterImpl;
 import scot.carricksoftware.grants.services.images.image.ImageService;
@@ -46,6 +47,9 @@ public class ImageFormControllerSaveOrUpdateTest {
     @Mock
     private ImageCommandValidator imageCommandValidatorMock;
 
+    @Mock
+    ConvertToBase64 convertToBase64Mock;
+
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private ImageCommand imageCommand;
 
@@ -55,7 +59,8 @@ public class ImageFormControllerSaveOrUpdateTest {
         imageController = new ImageFormControllerImpl(imageServiceMock,
                 imageCommandConverterMock,
                 imageConverterMock,
-                imageCommandValidatorMock);
+                imageCommandValidatorMock,
+                convertToBase64Mock);
         imageCommand = new ImageCommandImpl();
     }
 

@@ -14,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import scot.carricksoftware.grants.constants.ImageAttributeConstants;
+import scot.carricksoftware.grants.converters.images.ConvertToBase64;
 import scot.carricksoftware.grants.converters.images.image.ImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.image.ImageConverterImpl;
 import scot.carricksoftware.grants.domains.images.Image;
@@ -46,6 +47,9 @@ public class ImageFormControllerTest {
     private Model modelMock;
 
     @Mock
+    private ConvertToBase64 convertToBase64Mock;
+
+    @Mock
     private ImageCommandValidator imageCommandValidatorMock;
 
 
@@ -54,7 +58,8 @@ public class ImageFormControllerTest {
         imageController = new ImageFormControllerImpl(imageServiceMock,
                 imageCommandConverterMock,
                 imageConverterMock,
-                imageCommandValidatorMock);
+                imageCommandValidatorMock,
+                convertToBase64Mock);
     }
 
     @Test

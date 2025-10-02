@@ -12,6 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.converters.images.ConvertToBase64;
 import scot.carricksoftware.grants.converters.images.image.ImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.image.ImageConverterImpl;
 import scot.carricksoftware.grants.services.images.image.ImageService;
@@ -42,12 +43,16 @@ public class ImageFormControllerValidationTest {
     @Mock
     Model modelMock;
 
+    @Mock
+    ConvertToBase64 convertToBase64Mock;
+
     @BeforeEach
     public void setUp() {
         imageController = new ImageFormControllerImpl(imageServiceMock,
                 imageCommandConverterMock,
                 imageConverterMock,
-                imageCommandValidatorMock);
+                imageCommandValidatorMock,
+                convertToBase64Mock);
     }
 
     @Test

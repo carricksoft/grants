@@ -20,13 +20,13 @@ import org.springframework.web.multipart.MultipartFile;
 import scot.carricksoftware.grants.commands.images.ImageCommand;
 import scot.carricksoftware.grants.commands.images.ImageCommandImpl;
 import scot.carricksoftware.grants.constants.*;
+import scot.carricksoftware.grants.converters.images.ConvertToBase64;
 import scot.carricksoftware.grants.converters.images.image.ImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.image.ImageConverterImpl;
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.validators.images.ImageCommandValidator;
 
 import java.io.IOException;
-import java.util.Base64;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -38,18 +38,20 @@ public class ImageFormControllerImpl implements ImageFormController {
     private final ImageCommandConverterImpl imageCommandConverter;
     private final ImageConverterImpl imageConverter;
     private final ImageCommandValidator imageCommandValidator;
+    private final ConvertToBase64 convertToBase64;
 
 
     public ImageFormControllerImpl(ImageService imageService,
                                    ImageCommandConverterImpl imageCommandConverter,
                                    ImageConverterImpl imageConverter,
-                                   ImageCommandValidator imageCommandValidator) {
+                                   ImageCommandValidator imageCommandValidator, ConvertToBase64 convertToBase64) {
         this.imageService = imageService;
         this.imageCommandConverter = imageCommandConverter;
 
 
         this.imageConverter = imageConverter;
         this.imageCommandValidator = imageCommandValidator;
+        this.convertToBase64 = convertToBase64;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -77,10 +79,9 @@ public class ImageFormControllerImpl implements ImageFormController {
         logger.debug("ImageFormControllerImpl::saveOrUpdate");
 
         imageCommand.setFileName(file.getOriginalFilename());
-        imageCommand.setImageData(convertToBase64(file.getBytes()));
+        imageCommand.setImageData(convertToBase64.convert(file.getBytes()));
 
         imageCommandValidator.validate(imageCommand, bindingResult);
-
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
@@ -102,8 +103,5 @@ public class ImageFormControllerImpl implements ImageFormController {
         return ViewConstants.IMAGE_FORM;
     }
 
-    private String convertToBase64(byte[] byteData) {
-        return Base64.getMimeEncoder().encodeToString(byteData);
-    }
 }
 
