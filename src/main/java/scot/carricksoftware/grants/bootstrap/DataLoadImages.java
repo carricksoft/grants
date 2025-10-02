@@ -49,7 +49,6 @@ public class DataLoadImages {
         logger.debug("DataLoadCensus::loadImage");
         ImageCommand imageCommand = new ImageCommandImpl();
         imageCommand.setName("Dalkeith");
-        imageCommand.setImageData("Wilson Avenue");
         imageCommand.setFileName("Midlothian");
 
         imageService.saveImageCommand(imageCommand);
