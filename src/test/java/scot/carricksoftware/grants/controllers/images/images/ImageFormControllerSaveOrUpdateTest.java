@@ -86,4 +86,5 @@ public class ImageFormControllerSaveOrUpdateTest {
         assertEquals("images/image/form", imageController.saveOrUpdate(imageCommand, fileMock, bindingResultMock, modelMock));
     }
 
+
 }
