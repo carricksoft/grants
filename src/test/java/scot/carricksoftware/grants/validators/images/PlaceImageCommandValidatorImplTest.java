@@ -13,18 +13,18 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.commands.images.PersonImageCommand;
-import scot.carricksoftware.grants.commands.images.PersonImageCommandImpl;
+import scot.carricksoftware.grants.commands.images.PlaceImageCommand;
+import scot.carricksoftware.grants.commands.images.PlaceImageCommandImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.verify;
 
 @ExtendWith(MockitoExtension.class)
-class PersonImageCommandValidatorTest {
+class PlaceImageCommandValidatorImplTest {
 
-    private PersonImageCommandValidator validator;
+    private PlaceImageCommandValidator validator;
 
-    private PersonImageCommand personImageCommand;
+    private PlaceImageCommand placeImageCommand;
 
     private ArgumentCaptor<String> stringArgumentCaptor;
     private ArgumentCaptor<String> stringArgumentCaptor2;
@@ -36,8 +36,8 @@ class PersonImageCommandValidatorTest {
 
     @BeforeEach
     void setUp() {
-        validator = new PersonImageCommandValidator();
-        personImageCommand = new PersonImageCommandImpl();
+        validator = new PlaceImageCommandValidator();
+        placeImageCommand = new PlaceImageCommandImpl();
 
         stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         stringArgumentCaptor2 = ArgumentCaptor.forClass(String.class);
@@ -47,14 +47,14 @@ class PersonImageCommandValidatorTest {
 
     @Test
     void validateNullPerson() {
-        validator.validate(personImageCommand, bindingResultMock);
+        validator.validate(placeImageCommand, bindingResultMock);
 
         verify(bindingResultMock).rejectValue(stringArgumentCaptor.capture(),
                 stringArgumentCaptor2.capture(),
                 objectArgumentCaptor.capture(),
                 stringArgumentCaptor3.capture());
 
-        assertEquals("person", stringArgumentCaptor.getValue());
-        assertEquals("The person cannot be null.", stringArgumentCaptor3.getValue());
+        assertEquals("place", stringArgumentCaptor.getValue());
+        assertEquals("Place must exist.", stringArgumentCaptor3.getValue());
     }
 }

@@ -53,11 +53,13 @@ public class ValidationConstants {
     public static final String GROOM_CONDITION_IS_NULL = "The groom condition cannot be null.";
     public static final String GROOM_FATHER_AND_UNTRACKED_FATHER = "One and only one groom father and untracked groom father may be specified.";
     public static final String GROOM_USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE = "One and only one groom residence and untracked groom residence may be specified.";
+    public static final String IMAGE_DATA_IS_NULL = "The file to upload cannot be null.";
     public static final String INFORMANT_QUALIFICATION_IS_NULL = "The informant qualification cannot be null.";
     public static final String INFORMANT_AND_UNTRACKED_INFORMANT = "One and only one informant and untracked informant may be specified.";
     public static final String MOTHER_AND_UNTRACKED_MOTHER = "One and only one mother and untracked mother may be specified.";
     public static final String MOTHER_IS_NULL = "The mother cannot be null.";
     public static final String MOTHER_USUAL_RESIDENCE_AND_UNTRACKED_MOTHER_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence may be specified.";
+    public static final String NAME_IS_NULL = "The name cannot be null.";
     public static final String NAME_IS_TOO_LONG = "Name must be no more than " + ApplicationConstants.MAXIMUM_NAME_LENGTH + " characters long.";
     public static final String NAME_IS_TOO_SHORT = "Name must be at least " + ApplicationConstants.MINIMUM_NAME_LENGTH + " characters long.";
     public static final String NEWBORN_IS_NULL = "The New Born cannot be null.";
@@ -86,6 +88,7 @@ public class ValidationConstants {
     public static final String SPOUSE_AND_UNTRACKED_SPOUSE = "One and only one spouse and untracked spouse may be specified.";
     public static final String TOTAL_ROOMS_AND_INHABITED_ROOMS_CANNOT_COEXIST =  "Total Rooms and Inhabited Rooms cannot coexist.";
     public static final String TOTAL_ROOMS_AND_ROOMS_WITH_WINDOWS_CANNOT_COEXIST =  "Total Rooms and Rooms With Windows cannot coexist.";
+    public static final String UNSUPPORTED_FILE_TYPE = "The file type is not supported.";
     public static final String USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE = "Only one usual residence and untracked usual residence may be specified.";
     public static final String WHEN_BORN_INCORRECT_FORMAT = "The format should be dd/MM/yyyy hh:mm.";
     public static final String WHEN_BORN_IS_NULL = "When born cannot be null.";

@@ -24,7 +24,7 @@ import scot.carricksoftware.grants.converters.images.ConvertToBase64;
 import scot.carricksoftware.grants.converters.images.image.ImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.image.ImageConverterImpl;
 import scot.carricksoftware.grants.services.images.image.ImageService;
-import scot.carricksoftware.grants.validators.images.ImageCommandValidator;
+import scot.carricksoftware.grants.validators.images.ImageCommandValidatorImpl;
 
 import java.io.IOException;
 
@@ -37,20 +37,20 @@ public class ImageFormControllerImpl implements ImageFormController {
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final ImageCommandConverterImpl imageCommandConverter;
     private final ImageConverterImpl imageConverter;
-    private final ImageCommandValidator imageCommandValidator;
+    private final ImageCommandValidatorImpl imageCommandValidatorImpl;
     private final ConvertToBase64 convertToBase64;
 
 
     public ImageFormControllerImpl(ImageService imageService,
                                    ImageCommandConverterImpl imageCommandConverter,
                                    ImageConverterImpl imageConverter,
-                                   ImageCommandValidator imageCommandValidator, ConvertToBase64 convertToBase64) {
+                                   ImageCommandValidatorImpl imageCommandValidatorImpl, ConvertToBase64 convertToBase64) {
         this.imageService = imageService;
         this.imageCommandConverter = imageCommandConverter;
 
 
         this.imageConverter = imageConverter;
-        this.imageCommandValidator = imageCommandValidator;
+        this.imageCommandValidatorImpl = imageCommandValidatorImpl;
         this.convertToBase64 = convertToBase64;
     }
 
@@ -83,7 +83,7 @@ public class ImageFormControllerImpl implements ImageFormController {
             imageCommand.setImageData(convertToBase64.convert(file.getBytes()));
         }
 
-        imageCommandValidator.validate(imageCommand, bindingResult);
+        imageCommandValidatorImpl.validate(imageCommand, bindingResult);
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));

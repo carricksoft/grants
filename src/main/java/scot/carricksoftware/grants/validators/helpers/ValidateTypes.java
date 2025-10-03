@@ -32,4 +32,10 @@ public interface ValidateTypes {
                               String nullMessage, String formatMessage, String rangeMessage,
                               BindingResult bindingResult);
 
+    void validateFileType(String fileName,
+                          String fieldName,
+                          String[] allowedFileExtensions,
+                          String message,
+                          BindingResult bindingResult);
+
 }

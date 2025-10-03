@@ -67,9 +67,9 @@ public class ImageListControllerTest {
     }
 
     @Test
-    public void placeDeleteTest() {
+    public void imageDeleteTest() {
         Long id = GetRandomLong();
-        assertEquals("redirect:/countries", controller.imageDelete(Long.toString(id)));
+        assertEquals("redirect:/images", controller.imageDelete(Long.toString(id)));
         verify(imageServiceMock).deleteById(id);
     }
 

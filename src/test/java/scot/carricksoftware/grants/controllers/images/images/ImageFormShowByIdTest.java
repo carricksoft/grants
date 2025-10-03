@@ -18,7 +18,7 @@ import scot.carricksoftware.grants.converters.images.ConvertToBase64;
 import scot.carricksoftware.grants.converters.images.image.ImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.image.ImageConverterImpl;
 import scot.carricksoftware.grants.services.images.image.ImageService;
-import scot.carricksoftware.grants.validators.images.ImageCommandValidator;
+import scot.carricksoftware.grants.validators.images.ImageCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -49,7 +49,7 @@ public class ImageFormShowByIdTest {
     private ConvertToBase64 convertToBase64Mock;
 
     @Mock
-    private ImageCommandValidator imageCommandValidatorMock;
+    private ImageCommandValidatorImpl imageCommandValidatorImplMock;
 
 
     @BeforeEach
@@ -57,7 +57,7 @@ public class ImageFormShowByIdTest {
         imageController = new ImageFormControllerImpl(imageServiceMock,
                 imageCommandConverterMock,
                 imageConverterMock,
-                imageCommandValidatorMock,
+                imageCommandValidatorImplMock,
                 convertToBase64Mock);
     }
 

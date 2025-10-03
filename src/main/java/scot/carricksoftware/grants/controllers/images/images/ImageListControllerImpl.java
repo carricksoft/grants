@@ -92,7 +92,7 @@ public class ImageListControllerImpl implements ImageListController {
     public final String imageDelete(@PathVariable final String id) {
         logger.debug("ImageListControllerImpl::imageDelete");
         imageService.deleteById(Long.valueOf(id));
-        return MappingConstants.REDIRECT + MappingConstants.COUNTRIES;
+        return MappingConstants.REDIRECT + ImageMappingConstants.IMAGE_LIST;
     }
 
     @Override

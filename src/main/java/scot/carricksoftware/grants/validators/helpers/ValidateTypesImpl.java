@@ -13,6 +13,8 @@ import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
+import java.util.Locale;
+
 @Component
 public class ValidateTypesImpl implements ValidateTypes {
 
@@ -85,6 +87,22 @@ public class ValidateTypesImpl implements ValidateTypes {
                 bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, formatMessage);
             }
         }
+    }
+
+    @Override
+    public void validateFileType(String fileName, String fieldName, String[] allowedFileExtensions, String message, BindingResult bindingResult) {
+        String extension = fileName.substring(fileName.lastIndexOf('.') + 1).toUpperCase(Locale.ROOT);
+        boolean validExtension = false;
+        for (String allowedFileExtension : allowedFileExtensions) {
+            if (allowedFileExtension.equals(extension)) {
+                validExtension = true;
+                break;
+            }
+        }
+        if (!validExtension){
+            bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        }
+
     }
 
 

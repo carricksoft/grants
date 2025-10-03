@@ -60,7 +60,7 @@
                 <td style="text-align: left;">
                     <input class="form-control" id="fileName"
                            th:field="*{fileName}" type="text" readonly>
-                    <div th:if="${#fields.hasErrors('name')}">
+                    <div th:if="${#fields.hasErrors('fileName')}">
                         <ul class="text-danger">
                             <li th:each="err : ${#fields.errors('fileName')}" th:text="${err}"/>
                         </ul>

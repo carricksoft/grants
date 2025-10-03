@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.converters.images.ConvertToBase64;
 import scot.carricksoftware.grants.converters.images.image.ImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.image.ImageConverterImpl;
 import scot.carricksoftware.grants.services.images.image.ImageService;
-import scot.carricksoftware.grants.validators.images.ImageCommandValidator;
+import scot.carricksoftware.grants.validators.images.ImageCommandValidatorImpl;
 
 import java.io.IOException;
 
@@ -44,7 +44,7 @@ public class ImageFormControllerValidationTest {
     private ImageConverterImpl imageConverterMock;
 
     @Mock
-    ImageCommandValidator imageCommandValidatorMock;
+    ImageCommandValidatorImpl imageCommandValidatorImplMock;
 
     @SuppressWarnings("unused")
     @Mock
@@ -64,7 +64,7 @@ public class ImageFormControllerValidationTest {
         imageController = new ImageFormControllerImpl(imageServiceMock,
                 imageCommandConverterMock,
                 imageConverterMock,
-                imageCommandValidatorMock,
+                imageCommandValidatorImplMock,
                 convertToBase64Mock);
     }
 
@@ -74,7 +74,7 @@ public class ImageFormControllerValidationTest {
         when(imageServiceMock.saveImageCommand(any())).thenReturn(imageCommand);
 
         imageController.saveOrUpdate(imageCommand,fileMock,bindingResultMock,modelMock);
-        verify(imageCommandValidatorMock).validate(imageCommand, bindingResultMock);
+        verify(imageCommandValidatorImplMock).validate(imageCommand, bindingResultMock);
     }
 
 
