@@ -9,5 +9,6 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.images.ImageCommand;
 
 public interface ImageCommandValidator {
+    @SuppressWarnings("unused")
     void validate(ImageCommand imageCommand, BindingResult bindingResult);
 }
