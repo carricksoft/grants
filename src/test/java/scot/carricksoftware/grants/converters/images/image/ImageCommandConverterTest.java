@@ -38,7 +38,6 @@ class ImageCommandConverterTest {
         source.setImageData(imageData);
         source.setFileName(filename);
 
-
         Image target = converter.convert(source);
 
         assertNotNull(target);
