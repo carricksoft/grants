@@ -87,6 +87,7 @@ class PersonCensusCommandTest {
     void setImageTest() {
         Image image = new Image();
         command.setImage(image);
+        assertEquals(image, command.getImage());
     }
 
     @Test
