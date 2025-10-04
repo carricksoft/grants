@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.commands.people;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import scot.carricksoftware.grants.domains.images.Image;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -80,6 +81,17 @@ class PersonCensusCommandTest {
         String string = GetRandomString();
         command.setCertifiedYearOfBirth(string);
         assertEquals(string, command.getCertifiedYearOfBirth());
+    }
+
+    @Test
+    void setImageTest() {
+        Image image = new Image();
+        command.setImage(image);
+    }
+
+    @Test
+    void getImageTest() {
+        assertNull(command.getImage());
     }
 
 }

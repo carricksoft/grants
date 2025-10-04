@@ -11,6 +11,7 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.certificates.DivorceCertificate;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
+import scot.carricksoftware.grants.domains.images.Image;
 import scot.carricksoftware.grants.domains.images.PersonImage;
 import scot.carricksoftware.grants.domains.text.PersonText;
 
@@ -46,6 +47,7 @@ public class PersonCommandImpl implements PersonCommand {
 
     private List<PersonText> personTexts = new ArrayList<>();
 
+    private Image image;
 
     public Long getId() {
         return Id;
@@ -173,5 +175,15 @@ public class PersonCommandImpl implements PersonCommand {
     @Override
     public void setCertifiedYearOfDeath(String certifiedYearOfDeath) {
         this.certifiedYearOfDeath = certifiedYearOfDeath;
+    }
+
+    @Override
+    public Image getImage() {
+        return image;
+    }
+
+    @Override
+    public void setImage(Image image) {
+        this.image = image;
     }
 }

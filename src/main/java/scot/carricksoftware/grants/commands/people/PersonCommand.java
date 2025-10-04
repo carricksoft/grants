@@ -10,6 +10,7 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.certificates.DivorceCertificate;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
+import scot.carricksoftware.grants.domains.images.Image;
 import scot.carricksoftware.grants.domains.images.PersonImage;
 import scot.carricksoftware.grants.domains.text.PersonText;
 
@@ -68,4 +69,8 @@ public interface PersonCommand {
     String getCertifiedYearOfDeath();
 
     void setCertifiedYearOfDeath(String certifiedYearOfDeath);
+
+    Image getImage();
+
+    void setImage(Image image);
 }
