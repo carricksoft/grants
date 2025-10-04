@@ -31,8 +31,6 @@ public class ImageCommandValidatorImpl implements ImageCommandValidator {
       validateName(imageCommand, bindingResult);
       validateImageData(imageCommand, bindingResult);
       validateFileType(imageCommand, bindingResult);
-      var z = bindingResult.getAllErrors();
-      var x = -1;
     }
 
     private void validateFileType(ImageCommand imageCommand, BindingResult bindingResult) {
