@@ -15,6 +15,7 @@ import scot.carricksoftware.grants.cache.BMDCache;
 import scot.carricksoftware.grants.capitalisation.people.CapitalisePerson;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
+import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.people.PersonCommandValidator;
 
@@ -43,7 +44,10 @@ public class PageFormControllerCleansingTest {
     private BMDCache bmdCacheMock;
 
     @Mock
-    PersonCommandValidator personCommandValidatorMock;
+    private PersonCommandValidator personCommandValidatorMock;
+
+    @Mock
+    private ImageService imageServiceMock;
 
     @BeforeEach
     public void setUp() {
@@ -52,7 +56,8 @@ public class PageFormControllerCleansingTest {
                 personConverterMock,
                 capitalisePersonMock,
                 personCommandValidatorMock,
-                bmdCacheMock);
+                bmdCacheMock,
+                imageServiceMock);
     }
 
 

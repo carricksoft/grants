@@ -22,8 +22,9 @@ import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
-import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
-import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
+import scot.carricksoftware.grants.converters.people.PersonCommandConverter;
+import scot.carricksoftware.grants.converters.people.PersonConverter;
+import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.people.PersonCommandValidator;
 
@@ -34,27 +35,28 @@ public class PersonFormControllerImpl implements PersonFormController {
     private static final Logger logger = LogManager.getLogger(PersonFormControllerImpl.class);
 
     private final PersonService personService;
-    @SuppressWarnings({"unused", "FieldCanBeLocal"})
-    private final PersonCommandConverterImpl personCommandConverter;
-    private final PersonConverterImpl personConverter;
+    private final PersonConverter personConverter;
     private final CapitalisePerson capitalisePerson;
     private final PersonCommandValidator personCommandValidator;
     private final BMDCache bmdCache;
+    private final ImageService imageService;
 
 
     public PersonFormControllerImpl(PersonService personService,
-                                    PersonCommandConverterImpl personCommandConverter,
-                                    PersonConverterImpl personConverter,
+                                    PersonCommandConverter personCommandConverter,
+                                    PersonConverter personConverter,
                                     CapitalisePerson capitalisePerson,
-                                    PersonCommandValidator personCommandValidator, BMDCache bmdCache) {
+                                    PersonCommandValidator personCommandValidator,
+                                    BMDCache bmdCache,
+                                    ImageService imageService) {
         this.personService = personService;
-        this.personCommandConverter = personCommandConverter;
 
 
         this.personConverter = personConverter;
         this.capitalisePerson = capitalisePerson;
         this.personCommandValidator = personCommandValidator;
         this.bmdCache = bmdCache;
+        this.imageService = imageService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -62,6 +64,7 @@ public class PersonFormControllerImpl implements PersonFormController {
     public final String getNewPerson(final Model model) {
         logger.debug("PersonFormControllerImpl::getNewPerson");
         model.addAttribute(AttributeConstants.PERSON_COMMAND, new PersonCommandImpl());
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return ViewConstants.PERSON_FORM;
     }
 
@@ -70,6 +73,7 @@ public class PersonFormControllerImpl implements PersonFormController {
     public final String personEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("PersonFormControllerImpl::personEdit");
         model.addAttribute(AttributeConstants.PERSON_COMMAND, personService.findById(Long.valueOf(id)));
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return ViewConstants.PERSON_FORM;
     }
 
@@ -91,6 +95,7 @@ public class PersonFormControllerImpl implements PersonFormController {
 
         PersonCommand savedCommand = personService.savePersonCommand(personCommand);
         model.addAttribute(AttributeConstants.PERSON_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return MappingConstants.REDIRECT + MappingConstants.PERSON_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -100,6 +105,7 @@ public class PersonFormControllerImpl implements PersonFormController {
         logger.debug("PersonFormControllerImpl::saveOrUpdate");
         PersonCommand savedCommand = personConverter.convert(personService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PERSON_COMMAND, savedCommand);
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return ViewConstants.PERSON_FORM;
     }
 

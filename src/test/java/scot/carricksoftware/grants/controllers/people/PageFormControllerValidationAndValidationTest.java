@@ -19,6 +19,7 @@ import scot.carricksoftware.grants.commands.people.PersonCommand;
 import scot.carricksoftware.grants.commands.people.PersonCommandImpl;
 import scot.carricksoftware.grants.converters.people.PersonCommandConverterImpl;
 import scot.carricksoftware.grants.converters.people.PersonConverterImpl;
+import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.people.PersonCommandValidator;
 
@@ -45,16 +46,19 @@ public class PageFormControllerValidationAndValidationTest {
     private CapitalisePerson capitalisePersonMock;
 
     @Mock
-    BindingResult bindingResultMock;
+    private BindingResult bindingResultMock;
 
     @Mock
-    PersonCommandValidator personCommandValidatorMock;
+    private PersonCommandValidator personCommandValidatorMock;
 
     @Mock
-    Model modelMock;
+    private Model modelMock;
 
     @Mock
     private BMDCache bmdCacheMock;
+
+    @Mock
+    private ImageService imageServiceMock;
 
 
     @BeforeEach
@@ -64,7 +68,8 @@ public class PageFormControllerValidationAndValidationTest {
                 personConverterMock,
                 capitalisePersonMock,
                 personCommandValidatorMock,
-                bmdCacheMock);
+                bmdCacheMock,
+                imageServiceMock);
     }
 
 
