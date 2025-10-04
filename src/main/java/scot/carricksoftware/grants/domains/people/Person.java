@@ -8,6 +8,8 @@ package scot.carricksoftware.grants.domains.people;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
@@ -15,6 +17,7 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.certificates.DivorceCertificate;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
+import scot.carricksoftware.grants.domains.images.Image;
 import scot.carricksoftware.grants.domains.images.PersonImage;
 import scot.carricksoftware.grants.domains.text.PersonText;
 
@@ -23,6 +26,11 @@ import java.util.List;
 
 @Entity
 public class Person extends BaseEntity {
+
+    @SuppressWarnings("JpaDataSourceORMInspection")
+    @ManyToOne
+    @JoinColumn(name = "`image_id`")
+    private Image image;
 
     @Column(name = "`first_name`")
     private String firstName;
@@ -181,5 +189,13 @@ public class Person extends BaseEntity {
 
     public void setCertifiedYearOfDeath(String certifiedYearOfDeath) {
         this.certifiedYearOfDeath = certifiedYearOfDeath;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
