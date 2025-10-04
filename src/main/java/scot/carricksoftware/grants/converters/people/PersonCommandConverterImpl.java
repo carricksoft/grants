@@ -29,6 +29,7 @@ public class PersonCommandConverterImpl implements PersonCommandConverter {
         result.setDivorceCertificates(source.getDivorceCertificates());
         result.setPersonImages(source.getPersonImages());
         result.setPersonTexts(source.getPersonTexts());
+        result.setImage(source.getImage());
 
         return result;
     }

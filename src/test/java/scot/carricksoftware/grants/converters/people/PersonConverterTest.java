@@ -13,6 +13,7 @@ import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
 import scot.carricksoftware.grants.domains.certificates.DeathCertificate;
 import scot.carricksoftware.grants.domains.certificates.DivorceCertificate;
 import scot.carricksoftware.grants.domains.certificates.MarriageCertificate;
+import scot.carricksoftware.grants.domains.images.Image;
 import scot.carricksoftware.grants.domains.images.PersonImage;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.text.PersonText;
@@ -42,6 +43,7 @@ class PersonConverterTest {
         String recordedYearOfBirth = GetRandomString();
         String certifiedYearOfBirth = GetRandomString();
         String certifiedYearOfDeath = GetRandomString();
+        Image image = new Image();
 
         ArrayList<DivorceCertificate> divorceCertificates = new ArrayList<>();
         divorceCertificates.add(new DivorceCertificate());
@@ -79,6 +81,7 @@ class PersonConverterTest {
         source.setDeathCertificates(deathCertificates);
         source.setBirthCertificates(birthCertificates);
         source.setMarriageCertificates(marriageCertificates);
+        source.setImage(image);
 
 
         PersonCommand target = converter.convert(source);
@@ -98,6 +101,7 @@ class PersonConverterTest {
         assertEquals(deathCertificates, target.getDeathCertificates());
         assertEquals(birthCertificates, target.getBirthCertificates());
         assertEquals(marriageCertificates, target.getMarriageCertificates());
+        assertEquals(image, target.getImage());
 
     }
 }

@@ -31,6 +31,7 @@ public class PersonConverterImpl implements PersonConverter {
         result.setDeathCertificates(source.getDeathCertificates());
         result.setBirthCertificates(source.getBirthCertificates());
         result.setMarriageCertificates(source.getMarriageCertificates());
+        result.setImage(source.getImage());
         return result;
     }
 }
