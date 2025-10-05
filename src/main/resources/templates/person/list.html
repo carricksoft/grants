@@ -36,7 +36,7 @@
 
                 <td th:text="${person.id}">123</td>
                 <td th:text="${person.toString()}"> First</td>
-                <th th:text="${person.getImage()?.getName()}"></th>
+                <th style="font-weight:normal;" th:text="${person.getImage()?.getName()}"></th>
                 <th th:if = "${person.getImage()}">
                     <img class='img-thumbnail' th:src="'data:image/jpeg;base64,' + ${person.getImage()?.imageData} "
                           width="50" height="50" alt=""/>
