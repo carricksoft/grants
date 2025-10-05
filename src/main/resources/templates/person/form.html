@@ -87,6 +87,19 @@ rounded-3 text-center p-4">
                 </td>
             </tr>
             <tr>
+                <td style="text-align: right;">
+                    <label for="image">Image : &nbsp;</label>
+                </td>
+                <td>
+                    <select id="image" name="region" th:field="*{image}"
+                            class="form-control" th:errorclass="has-error">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="image : ${images}"
+                                th:value="${image.id}" th:text="${image.name}"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
                 <td>&nbsp;</td>
             </tr>
         </table>
