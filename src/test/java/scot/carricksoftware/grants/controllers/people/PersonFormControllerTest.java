@@ -78,7 +78,7 @@ public class PersonFormControllerTest {
 
     @Test
     public void getNewPersonTest() {
-        personController.getNewPerson(modelMock);
+        assertEquals("person/form", personController.getNewPerson(modelMock));
         verify(modelMock, times(2)).addAttribute(keyCaptor.capture(), valueCaptor.capture());
         List<String> keys = keyCaptor.getAllValues();
         List<Object> values = valueCaptor.getAllValues();
