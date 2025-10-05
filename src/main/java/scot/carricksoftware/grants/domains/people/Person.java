@@ -27,7 +27,6 @@ import java.util.List;
 @Entity
 public class Person extends BaseEntity {
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`image_id`")
     private Image image;

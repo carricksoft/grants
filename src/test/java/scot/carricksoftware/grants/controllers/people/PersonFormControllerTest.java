@@ -9,6 +9,8 @@ package scot.carricksoftware.grants.controllers.people;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
@@ -23,7 +25,10 @@ import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.people.PersonCommandValidator;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
@@ -31,7 +36,6 @@ import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPe
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPersonCommand;
 
 
-@SuppressWarnings("CommentedOutCode")
 @ExtendWith(MockitoExtension.class)
 public class PersonFormControllerTest {
 
@@ -40,32 +44,30 @@ public class PersonFormControllerTest {
 
     @Mock
     private PersonService personServiceMock;
-
     @Mock
     private PersonCommandConverterImpl personCommandConverterMock;
-
     @Mock
     private PersonConverterImpl personConverterMock;
-
     @Mock
     private CapitalisePerson capitalisePersonMock;
-
     @Mock
     private BMDCache bmdCacheMock;
-
     @Mock
     private Model modelMock;
-
     @Mock
     private ImageService imageServiceMock;
-
     @Mock
-    PersonCommandValidator personCommandValidatorMock;
+    private PersonCommandValidator personCommandValidatorMock;
 
+    @Captor
+    ArgumentCaptor<String> keyCaptor;
+    @Captor
+    ArgumentCaptor<Object> valueCaptor;
 
     @BeforeEach
     public void setUp() {
-        personController = new PersonFormControllerImpl(personServiceMock,
+        personController = new PersonFormControllerImpl(
+                personServiceMock,
                 personCommandConverterMock,
                 personConverterMock,
                 capitalisePersonMock,
@@ -74,18 +76,24 @@ public class PersonFormControllerTest {
                 imageServiceMock);
     }
 
-//    @Test
-//    public void getNewPersonTest() {
-//        ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
-//        ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
-//        assertEquals("person/form", personController.getNewPerson(modelMock));
-//        verify(modelMock).addAttribute(stringCaptor.capture(), objectCaptor.capture());
-//        assertEquals("personCommand", stringCaptor.getValue());
-//        assertEquals("PersonCommandImpl", objectCaptor.getValue().getClass().getSimpleName());
-//    }
+    @Test
+    public void getNewPersonTest() {
+        personController.getNewPerson(modelMock);
+        verify(modelMock, times(2)).addAttribute(keyCaptor.capture(), valueCaptor.capture());
+        List<String> keys = keyCaptor.getAllValues();
+        List<Object> values = valueCaptor.getAllValues();
+        for (int i = 0; i < values.size(); i++) {
+            if (values.get(i).getClass().getSimpleName().equals("LinkedList")) {
+                assertEquals("images", keys.get(i));
+            }
+            if (values.get(i).getClass().getSimpleName().equals("PersonCommandImpl")) {
+                assertEquals("personCommand", keys.get(i));
+            }
+        }
+    }
 
     @Test
-    public void personEditTestEditTest() {
+    public void personEditTest() {
         Long id = GetRandomLong();
         Person person = GetRandomPerson();
         when(personServiceMock.findById(id)).thenReturn(person);
