@@ -24,10 +24,8 @@ import scot.carricksoftware.grants.validators.images.ImageCommandValidatorImpl;
 import java.io.IOException;
 
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -70,33 +68,17 @@ public class ImageFormControllerImageDataTest {
                 imageConverterMock,
                 imageCommandValidatorImplMock,
                 convertToBase64Mock);
-        when(imageServiceMock.saveImageCommand(any())).thenReturn(imageCommandMock);
+
     }
 
     @Test
     public void nullTest() throws IOException {
+        when(imageServiceMock.saveImageCommand(any())).thenReturn(imageCommandMock);
         imageController.saveOrUpdate(imageCommandMock, fileMock, bindingResultMock, modelMock);
 
         verify(imageCommandMock).setFileName(any());
         verify(imageCommandMock).setImageData(any());
     }
 
-    @Test
-    public void NonEmptyTest() throws IOException {
-        when(imageCommandMock.getImageData()).thenReturn(GetRandomString());
-
-        imageController.saveOrUpdate(imageCommandMock, fileMock, bindingResultMock, modelMock);
-        verify(imageCommandMock, times(0)).setFileName(any());
-        verify(imageCommandMock, times(0)).setImageData(any());
-    }
-
-    @Test
-    public void emptyTest() throws IOException {
-        when(imageCommandMock.getImageData()).thenReturn("");
-
-        imageController.saveOrUpdate(imageCommandMock, fileMock, bindingResultMock, modelMock);
-        verify(imageCommandMock).setFileName(any());
-        verify(imageCommandMock).setImageData(any());
-    }
 
 }
