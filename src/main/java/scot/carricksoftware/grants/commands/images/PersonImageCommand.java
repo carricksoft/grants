@@ -5,6 +5,7 @@
 
 package scot.carricksoftware.grants.commands.images;
 
+import scot.carricksoftware.grants.domains.images.Image;
 import scot.carricksoftware.grants.domains.people.Person;
 
 public interface PersonImageCommand {
@@ -15,4 +16,28 @@ public interface PersonImageCommand {
     Person getPerson();
 
     void setPerson(Person person);
+
+    Image getImage();
+
+    void setImage(Image image);
+
+    String getLevel();
+
+    void setLevel(String level);
+
+    String getOrder();
+
+    void setOrder(String order);
+
+    String getCaption();
+
+    void setCaption(String caption);
+
+    String getHeight();
+
+    void setHeight(String height);
+
+    String getWidth();
+
+    void setWidth(String width);
 }
