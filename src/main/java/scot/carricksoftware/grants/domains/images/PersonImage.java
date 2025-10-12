@@ -15,26 +15,33 @@ import scot.carricksoftware.grants.domains.people.Person;
 @Entity
 public class PersonImage extends BaseEntity {
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`image_id`")
     private Image image;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`level`")
     private String level;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`order`")
     private String order;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`caption`")
     private String caption;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`height`")
     private String height;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`width`")
     private String width;
 
@@ -61,6 +68,7 @@ public class PersonImage extends BaseEntity {
     public void setLevel(String level) {
         this.level = level;
     }
+
 
     public String getOrder() {
         return order;
@@ -93,4 +101,6 @@ public class PersonImage extends BaseEntity {
     public void setWidth(String width) {
         this.width = width;
     }
+
+
 }

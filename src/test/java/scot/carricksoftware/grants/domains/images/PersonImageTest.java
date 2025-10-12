@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
 class PersonImageTest {
@@ -31,6 +32,78 @@ class PersonImageTest {
         Long id = GetRandomLong();
         image.setId(id);
         assertEquals(id, image.getId());
+    }
+
+    @Test
+    public void getCaptionTest() {
+        assertNull(image.getCaption());
+    }
+
+    @Test
+    public void setCaptionTest() {
+        String caption = GetRandomString();
+        image.setCaption(caption);
+        assertEquals(caption, image.getCaption());
+    }
+
+    @Test
+    public void getHeightTest() {
+        assertNull(image.getHeight());
+    }
+
+    @Test
+    public void setHeightTest() {
+        String height = GetRandomString();
+        image.setHeight(height);
+        assertEquals(height, image.getHeight());
+    }
+
+    @Test
+    public void getWidthTest() {
+        assertNull(image.getWidth());
+    }
+
+    @Test
+    public void setWidthTest() {
+        String width = GetRandomString();
+        image.setWidth(width);
+        assertEquals(width, image.getWidth());
+    }
+
+    @Test
+    public void getImageTest() {
+        assertNull(image.getImage());
+    }
+
+    @Test
+    public void setImageTest() {
+        Image theImage = new Image();
+        image.setImage(theImage);
+        assertEquals(theImage, image.getImage());
+    }
+
+    @Test
+    public void getOrderTest() {
+        assertNull(image.getOrder());
+    }
+
+    @Test
+    public void setOrderTest() {
+        String order = GetRandomString();
+        image.setOrder(order);
+        assertEquals(order, image.getOrder());
+    }
+
+    @Test
+    public void getLevelTest() {
+        assertNull(image.getLevel());
+    }
+
+    @Test
+    public void setLevelTest() {
+        String level = GetRandomString();
+        image.setLevel(level);
+        assertEquals(level, image.getLevel());
     }
 
 }
