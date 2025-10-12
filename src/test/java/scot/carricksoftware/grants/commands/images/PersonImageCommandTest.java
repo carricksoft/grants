@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 28/03/2025, 23:56. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 28/03/2025, 09:54. All rights reserved.
  *
  */
 
@@ -7,43 +7,104 @@ package scot.carricksoftware.grants.commands.images;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.domains.people.Person;
+import scot.carricksoftware.grants.domains.images.Image;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
-import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 class PersonImageCommandTest {
 
-    private PersonImageCommand imageCommand;
+    private PersonImageCommand command;
 
     @BeforeEach
     void setUp() {
-        imageCommand = new PersonImageCommandImpl();
+        command = new PersonImageCommandImpl();
     }
 
     @Test
-    void getIdTest() {
-        assertNull(imageCommand.getId());
+    public void getIdTest() {
+        assertNull(command.getId());
     }
 
     @Test
-    void setIdTest() {
+    public void setIdTest() {
         Long id = GetRandomLong();
-        imageCommand.setId(id);
-        assertEquals(id, imageCommand.getId());
+        command.setId(id);
+        assertEquals(id, command.getId());
     }
 
     @Test
-    void getPersonTest() {
-        assertNull(imageCommand.getPerson());
+    public void getCaptionTest() {
+        assertNull(command.getCaption());
     }
 
     @Test
-    void setPersonTest() {
-        Person person = GetRandomPerson();
-        imageCommand.setPerson(person);
-        assertEquals(person, imageCommand.getPerson());
+    public void setCaptionTest() {
+        String caption = GetRandomString();
+        command.setCaption(caption);
+        assertEquals(caption, command.getCaption());
+    }
+
+    @Test
+    public void getHeightTest() {
+        assertNull(command.getHeight());
+    }
+
+    @Test
+    public void setHeightTest() {
+        String height = GetRandomString();
+        command.setHeight(height);
+        assertEquals(height, command.getHeight());
+    }
+
+    @Test
+    public void getWidthTest() {
+        assertNull(command.getWidth());
+    }
+
+    @Test
+    public void setWidthTest() {
+        String width = GetRandomString();
+        command.setWidth(width);
+        assertEquals(width, command.getWidth());
+    }
+
+    @Test
+    public void getImageTest() {
+        assertNull(command.getImage());
+    }
+
+    @Test
+    public void setImageTest() {
+        Image image = new Image();
+        command.setImage(image);
+        assertEquals(image, command.getImage());
+    }
+
+    @Test
+    public void getOrderTest() {
+        assertNull(command.getOrder());
+    }
+
+    @Test
+    public void setOrderTest() {
+        String order = GetRandomString();
+        command.setOrder(order);
+        assertEquals(order, command.getOrder());
+    }
+
+    @Test
+    public void getLevelTest() {
+        assertNull(command.getLevel());
+    }
+
+    @Test
+    public void setLevelTest() {
+        String level = GetRandomString();
+        command.setLevel(level);
+        assertEquals(level, command.getLevel());
     }
 
 }
