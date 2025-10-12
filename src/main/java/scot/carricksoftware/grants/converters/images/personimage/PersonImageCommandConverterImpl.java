@@ -19,6 +19,12 @@ public class PersonImageCommandConverterImpl implements PersonImageCommandConver
         PersonImage target = new PersonImage();
         target.setId(source.getId());
         target.setPerson(source.getPerson());
+        target.setImage(source.getImage());
+        target.setLevel(source.getLevel());
+        target.setOrder(source.getOrder());
+        target.setCaption(source.getCaption());
+        target.setHeight(source.getHeight());
+        target.setWidth(source.getWidth());
         return target;
     }
 

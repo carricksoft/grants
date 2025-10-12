@@ -33,11 +33,11 @@ class ValidateTypesFileTypeTest {
         message = "message";
     }
 
-   @Test
+    @Test
     void allowedTypeTest() {
         validateTypes.validateFileType("file.YES", field, new String[]{"YES"}, message, bindingResultMock);
         verifyNoInteractions(bindingResultMock);
-   }
+    }
 
     @Test
     void lowerCaseAllowedTypeTest() {
@@ -48,7 +48,7 @@ class ValidateTypesFileTypeTest {
     @Test
     void notAllowedTypeTest() {
         validateTypes.validateFileType("file.YES", field, new String[]{"NON"}, message, bindingResultMock);
-        verify(bindingResultMock).rejectValue(field,"", null, message);
+        verify(bindingResultMock).rejectValue(field, "", null, message);
     }
 
 }

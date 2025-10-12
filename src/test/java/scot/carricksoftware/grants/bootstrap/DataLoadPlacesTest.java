@@ -26,11 +26,14 @@ public class DataLoadPlacesTest {
     private DataLoadPlaces dataLoadPlaces;
 
 
-    @Mock private CountryServiceImpl countryServiceMock;
-    @Mock private RegionServiceImpl regionServiceMock;
-    @Mock private PlaceServiceImpl placeServiceMock;
-    @Mock private OrganisationServiceImpl organisationServiceMock;
-
+    @Mock
+    private CountryServiceImpl countryServiceMock;
+    @Mock
+    private RegionServiceImpl regionServiceMock;
+    @Mock
+    private PlaceServiceImpl placeServiceMock;
+    @Mock
+    private OrganisationServiceImpl organisationServiceMock;
 
 
     @BeforeEach

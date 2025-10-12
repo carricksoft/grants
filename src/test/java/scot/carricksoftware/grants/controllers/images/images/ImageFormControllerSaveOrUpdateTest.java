@@ -75,7 +75,7 @@ public class ImageFormControllerSaveOrUpdateTest {
         Long id = 4L;
         imageCommand.setId(id);
         when(imageServiceMock.saveImageCommand(any(ImageCommand.class))).thenReturn(imageCommand);
-        assertEquals("redirect:/image/4/show", imageController.saveOrUpdate(imageCommand, fileMock,bindingResultMock, modelMock));
+        assertEquals("redirect:/image/4/show", imageController.saveOrUpdate(imageCommand, fileMock, bindingResultMock, modelMock));
     }
 
     @Test

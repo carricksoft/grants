@@ -73,7 +73,7 @@ public class ImageFormControllerValidationTest {
         ImageCommand imageCommand = new ImageCommandImpl();
         when(imageServiceMock.saveImageCommand(any())).thenReturn(imageCommand);
 
-        imageController.saveOrUpdate(imageCommand,fileMock,bindingResultMock,modelMock);
+        imageController.saveOrUpdate(imageCommand, fileMock, bindingResultMock, modelMock);
         verify(imageCommandValidatorImplMock).validate(imageCommand, bindingResultMock);
     }
 

@@ -43,7 +43,7 @@ class ImageCommandConverterTest {
         assertNotNull(target);
         assertEquals(Id, target.getId());
         assertEquals(name, target.getName());
-        assertEquals(filename,target.getFileName());
-        assertEquals(imageData,target.getImageData());
+        assertEquals(filename, target.getFileName());
+        assertEquals(imageData, target.getImageData());
     }
 }

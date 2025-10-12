@@ -29,5 +29,5 @@ class ConvertToBase64Test {
         byte[] testBytes = testString.getBytes();
         assertEquals(wikipediaAnswer, converter.convert(testBytes));
     }
-    
+
 }

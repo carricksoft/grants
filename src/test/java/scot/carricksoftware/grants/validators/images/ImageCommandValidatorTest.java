@@ -46,7 +46,7 @@ class ImageCommandValidatorTest {
         validator.validate(imageCommandMock, bindingResultMock);
 
         verify(validateTypesMock).validateFileType(fileName,
-                "fileName", new String[]{"JPG","GIF"},
+                "fileName", new String[]{"JPG", "GIF"},
                 "The file type is not supported.", bindingResultMock);
     }
 
