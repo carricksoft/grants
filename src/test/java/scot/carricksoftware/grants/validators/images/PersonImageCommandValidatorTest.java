@@ -69,8 +69,8 @@ class PersonImageCommandValidatorTest {
         validator.validate(personImageCommandMock, bindingResultMock);
 
         verify(validateTypesMock).validateNonNegativeInteger(order,
-                "order", "Order must exist.","The order must be an integer.",
-                        "The order must be non-negative.", bindingResultMock);
+                "order", "Order must exist.", "The order must be an integer.",
+                "The order must be non-negative.", bindingResultMock);
     }
 
     @Test
@@ -80,11 +80,9 @@ class PersonImageCommandValidatorTest {
         validator.validate(personImageCommandMock, bindingResultMock);
 
         verify(validateTypesMock).validateNonNegativeInteger(level,
-                "level", "Level must exist.","Level must be an integer.",
+                "level", "Level must exist.", "Level must be an integer.",
                 "The level must be non-negative.", bindingResultMock);
     }
-
-
 
 
 }
