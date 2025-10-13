@@ -14,7 +14,6 @@
 <body>
 <div th:insert="~{fragments/layout::banner}"></div>
 
-
 <div class="container text-center">
     <div class="container border border-info
                     rounded-3 text-center p-4">
@@ -28,6 +27,7 @@
                 <th>Level</th>
                 <th>Caption</th>
                 <th></th>
+                <th></th>
             </tr>
             </thead>
 
@@ -38,6 +38,12 @@
                 <td th:text="${image.order}"></td>
                 <td th:text="${image.level}"></td>
                 <td th:text="${image.caption}"></td>
+                <td>
+                    <div th:if="${image.image != null and !#strings.isEmpty(image.image)}">
+                        <img class='img-thumbnail' th:src="'data:image/jpeg;base64,' + ${image.image.imageData} "
+                             width="50" height="50" alt=""/>
+                    </div>
+                </td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'personImage/' + ${image.id} + '/delete'"

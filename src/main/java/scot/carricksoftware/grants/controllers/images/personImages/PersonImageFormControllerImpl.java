@@ -81,7 +81,6 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
 
         personImageCommandValidator.validate(personImageCommand, bindingResult);
 
-
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
