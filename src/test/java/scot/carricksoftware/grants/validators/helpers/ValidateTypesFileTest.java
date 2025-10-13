@@ -16,7 +16,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoInteractions;
 
 @ExtendWith(MockitoExtension.class)
-class ValidateTypesFileTypeTest {
+class ValidateTypesFileTest {
 
     private ValidateTypes validateTypes;
 
