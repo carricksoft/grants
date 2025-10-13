@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.commands.images.PersonImageCommandImpl;
 import scot.carricksoftware.grants.constants.*;
 import scot.carricksoftware.grants.converters.images.personimage.PersonImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.personimage.PersonImageConverterImpl;
+import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.images.PersonImageCommandValidator;
@@ -35,12 +36,13 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
     private final PersonImageConverterImpl personImageConverter;
     private final PersonImageCommandValidator personImageCommandValidator;
     private final PersonService personService;
+    private final ImageService imageService;
 
 
     public PersonImageFormControllerImpl(PersonImageService personImageService,
                                          PersonImageCommandConverterImpl personImageCommandConverter,
                                          PersonImageConverterImpl personImageConverter,
-                                         PersonImageCommandValidator personImageCommandValidator, PersonService personService) {
+                                         PersonImageCommandValidator personImageCommandValidator, PersonService personService, ImageService imageService) {
         this.personImageService = personImageService;
         this.personImageCommandConverter = personImageCommandConverter;
 
@@ -48,6 +50,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
         this.personImageConverter = personImageConverter;
         this.personImageCommandValidator = personImageCommandValidator;
         this.personService = personService;
+        this.imageService = imageService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -56,6 +59,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
         logger.debug("PersonImageFormControllerImpl::getNewPersonImage");
         model.addAttribute(ImageAttributeConstants.PERSON_IMAGE_COMMAND, new PersonImageCommandImpl());
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return ViewConstants.PERSON_IMAGE_FORM;
     }
 
@@ -65,6 +69,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
         logger.debug("PersonImageFormControllerImpl::personImageEdit");
         model.addAttribute(ImageAttributeConstants.PERSON_IMAGE_COMMAND, personImageService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return ViewConstants.PERSON_IMAGE_FORM;
     }
 
@@ -86,6 +91,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
         PersonImageCommand savedCommand = personImageService.savePersonImageCommand(personImageCommand);
         model.addAttribute(ImageAttributeConstants.PERSON_IMAGE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return MappingConstants.REDIRECT + ImageMappingConstants.PERSON_IMAGE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -98,6 +104,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
         PersonImageCommand savedCommand = personImageConverter.convert(personImageService.findById(Long.valueOf(id)));
         model.addAttribute(ImageAttributeConstants.PERSON_IMAGE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return ViewConstants.PERSON_IMAGE_FORM;
     }
 

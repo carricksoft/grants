@@ -17,6 +17,7 @@ import scot.carricksoftware.grants.commands.images.PersonImageCommand;
 import scot.carricksoftware.grants.controllers.images.personImages.PersonImageFormControllerImpl;
 import scot.carricksoftware.grants.converters.images.personimage.PersonImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.personimage.PersonImageConverterImpl;
+import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.images.PersonImageCommandValidator;
@@ -52,6 +53,9 @@ public class PersonImageFormControllerValidationTest {
     private PersonService personServiceMocK;
 
     @Mock
+    private ImageService imageServiceMocK;
+
+    @Mock
     private PersonImageCommandValidator personImageCommandValidatorMock;
 
     @Mock
@@ -64,7 +68,8 @@ public class PersonImageFormControllerValidationTest {
                 personImageCommandConverterMock,
                 personImageConverterMock,
                 personImageCommandValidatorMock,
-                personServiceMocK);
+                personServiceMocK,
+                imageServiceMocK);
     }
 
 

@@ -91,7 +91,7 @@ rounded-3 text-center p-4">
                     <label for="image">Image : &nbsp;</label>
                 </td>
                 <td>
-                    <select id="image" name="region" th:field="*{image}"
+                    <select id="image" name="image" th:field="*{image}"
                             class="form-control" th:errorclass="has-error">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="image : ${images}"

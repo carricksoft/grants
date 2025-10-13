@@ -24,7 +24,9 @@
             <tr>
                 <th>ID</th>
                 <th>Person</th>
-                <th></th>
+                <th>Order</th>
+                <th>Level</th>
+                <th>Caption</th>
                 <th></th>
             </tr>
             </thead>
@@ -33,7 +35,9 @@
                 <!--/*@thymesVar id="person" type="scot.carricksoftware.grants.domains.people.Person"*/-->
                 <td th:text="${image.id}">123</td>
                 <td th:text="${image.person.toString()}">123</td>
-                <td></td>
+                <td th:text="${image.order}"></td>
+                <td th:text="${image.level}"></td>
+                <td th:text="${image.caption}"></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'personImage/' + ${image.id} + '/delete'"
