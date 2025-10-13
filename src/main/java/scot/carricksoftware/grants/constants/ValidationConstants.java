@@ -54,6 +54,7 @@ public class ValidationConstants {
     public static final String GROOM_FATHER_AND_UNTRACKED_FATHER = "One and only one groom father and untracked groom father may be specified.";
     public static final String GROOM_USUAL_RESIDENCE_AND_UNTRACKED_USUAL_RESIDENCE = "One and only one groom residence and untracked groom residence may be specified.";
     public static final String IMAGE_DATA_IS_NULL = "The file to upload cannot be null.";
+    public static final String IMAGE_IS_NULL = "The image cannot be null.";
     public static final String INFORMANT_QUALIFICATION_IS_NULL = "The informant qualification cannot be null.";
     public static final String INFORMANT_AND_UNTRACKED_INFORMANT = "One and only one informant and untracked informant may be specified.";
     public static final String MOTHER_AND_UNTRACKED_MOTHER = "One and only one mother and untracked mother may be specified.";
@@ -73,6 +74,7 @@ public class ValidationConstants {
     public static final String PLACE_IS_NULL = "Place must exist.";
     public static final String LEVEL_IS_NULL = "Level must exist.";
     public static final String LEVEL_IS_INVALID = "Level must be an integer.";
+    public static final String LEVEL_IS_NEGATIVE = "The level must be non-negative.";
     public static final String LEVEL_IS_OUTSIDE_LIMITS = "Level must be between -2 and 5.";
     public static final String REGION_IS_NULL = "Region must exist.";
     public static final String REGISTERED_DATE_IS_NULL = "The registered date cannot be null.";

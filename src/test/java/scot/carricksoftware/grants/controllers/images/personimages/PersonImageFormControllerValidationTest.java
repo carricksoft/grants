@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.converters.images.personimage.PersonImageConv
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.images.PersonImageCommandValidator;
+import scot.carricksoftware.grants.validators.images.PersonImageCommandValidatorImpl;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -56,7 +56,7 @@ public class PersonImageFormControllerValidationTest {
     private ImageService imageServiceMocK;
 
     @Mock
-    private PersonImageCommandValidator personImageCommandValidatorMock;
+    private PersonImageCommandValidatorImpl personImageCommandValidatorImplMock;
 
     @Mock
     Model modelMock;
@@ -67,7 +67,7 @@ public class PersonImageFormControllerValidationTest {
         personImageController = new PersonImageFormControllerImpl(personImageServiceMock,
                 personImageCommandConverterMock,
                 personImageConverterMock,
-                personImageCommandValidatorMock,
+                personImageCommandValidatorImplMock,
                 personServiceMocK,
                 imageServiceMocK);
     }
@@ -77,7 +77,7 @@ public class PersonImageFormControllerValidationTest {
     public void saveOrUpdateValidationTest() {
         when(personImageServiceMock.savePersonImageCommand(any())).thenReturn(personImageCommandMock);
         personImageController.saveOrUpdate(personImageCommandMock, bindingResultMock, modelMock);
-        verify(personImageCommandValidatorMock).validate(personImageCommandMock, bindingResultMock);
+        verify(personImageCommandValidatorImplMock).validate(personImageCommandMock, bindingResultMock);
     }
 
 

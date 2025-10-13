@@ -42,7 +42,7 @@
                     <label for="person">Person :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
-                    <select id="person" style="width: 300px;" name="person :&nbsp;" th:field="*{person}">
+                    <select id="person" style="width: 300px;" name="person" th:field="*{person}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="person : ${people}"
                                 th:value="${person.id}" th:text="${person.toString()}"></option>
@@ -58,13 +58,17 @@
                 <td style="text-align: right;">
                     <label for="image">Image : &nbsp;</label>
                 </td>
-                <td>
-                    <select id="image" name="image" th:field="*{image}"
-                            class="form-control" th:errorclass="has-error">
+                <td style="text-align: left;">
+                    <select id="image" name="image" th:field="*{image}">
                         <option th:value="${''}" th:text="${''}"></option>
                         <option th:each="image : ${images}"
                                 th:value="${image.id}" th:text="${image.name}"></option>
                     </select>
+                    <div th:if="${#fields.hasErrors('image')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('image')}" th:text="${err}"/>
+                        </ul>
+                    </div>
                 </td>
             </tr>
             <tr>

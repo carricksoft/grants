@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.validators.helpers;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
+import scot.carricksoftware.grants.domains.images.Image;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.enums.general.Sex;
@@ -22,6 +23,13 @@ public class ValidateTypesImpl implements ValidateTypes {
     @Override
     public void validatePerson(Person person, String fieldName, String message, BindingResult bindingResult) {
         if (person == null) {
+            bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        }
+    }
+
+    @Override
+    public void validateImage(Image image, String fieldName, String message, BindingResult bindingResult) {
+        if (image == null) {
             bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, message);
         }
     }

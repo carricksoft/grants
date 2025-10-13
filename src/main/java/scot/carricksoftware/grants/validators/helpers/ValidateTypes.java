@@ -6,6 +6,7 @@
 package scot.carricksoftware.grants.validators.helpers;
 
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.domains.images.Image;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
 import scot.carricksoftware.grants.enums.general.Sex;
@@ -14,6 +15,8 @@ import scot.carricksoftware.grants.enums.certificates.CertificateType;
 public interface ValidateTypes {
 
     void validatePerson(Person person, String field, String message, BindingResult bindingResult);
+
+    void validateImage(Image image, String fieldName, String message, BindingResult bindingResult);
 
     void validateOrganisation(Organisation organisation, String field, String message, BindingResult bindingResult);
 

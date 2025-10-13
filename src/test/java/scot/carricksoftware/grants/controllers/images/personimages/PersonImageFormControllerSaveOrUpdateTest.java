@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.converters.images.personimage.PersonImageConv
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.images.PersonImageCommandValidator;
+import scot.carricksoftware.grants.validators.images.PersonImageCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -55,7 +55,7 @@ public class PersonImageFormControllerSaveOrUpdateTest {
     BindingResult bindingResultMock;
 
     @Mock
-    private PersonImageCommandValidator personImageCommandValidatorMock;
+    private PersonImageCommandValidatorImpl personImageCommandValidatorImplMock;
 
     private PersonImageCommand personImageCommand;
 
@@ -65,7 +65,7 @@ public class PersonImageFormControllerSaveOrUpdateTest {
         personImageController = new PersonImageFormControllerImpl(personImageServiceMock,
                 personImageCommandConverterMock,
                 personImageConverterMock,
-                personImageCommandValidatorMock,
+                personImageCommandValidatorImplMock,
                 personServiceMock,
                 imageServiceMock);
         personImageCommand = new PersonImageCommandImpl();

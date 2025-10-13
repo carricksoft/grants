@@ -22,7 +22,7 @@ import scot.carricksoftware.grants.domains.images.PersonImage;
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.images.PersonImageCommandValidator;
+import scot.carricksoftware.grants.validators.images.PersonImageCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -50,7 +50,7 @@ public class PersonImageFormControllerTest {
     private Model modelMock;
 
     @Mock
-    private PersonImageCommandValidator personImageCommandValidatorMock;
+    private PersonImageCommandValidatorImpl personImageCommandValidatorImplMock;
 
     @Mock
     private PersonService personServiceMock;
@@ -64,7 +64,7 @@ public class PersonImageFormControllerTest {
         personImageController = new PersonImageFormControllerImpl(personImageServiceMock,
                 personImageCommandConverterMock,
                 personImageConverterMock,
-                personImageCommandValidatorMock,
+                personImageCommandValidatorImplMock,
                 personServiceMock,
                 imageServiceMock);
     }

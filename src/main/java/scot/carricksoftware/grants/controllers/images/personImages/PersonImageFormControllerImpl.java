@@ -23,7 +23,7 @@ import scot.carricksoftware.grants.converters.images.personimage.PersonImageConv
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
-import scot.carricksoftware.grants.validators.images.PersonImageCommandValidator;
+import scot.carricksoftware.grants.validators.images.PersonImageCommandValidatorImpl;
 
 @SuppressWarnings("LoggingSimilarMessage")
 @Controller
@@ -34,7 +34,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final PersonImageCommandConverterImpl personImageCommandConverter;
     private final PersonImageConverterImpl personImageConverter;
-    private final PersonImageCommandValidator personImageCommandValidator;
+    private final PersonImageCommandValidatorImpl personImageCommandValidatorImpl;
     private final PersonService personService;
     private final ImageService imageService;
 
@@ -42,13 +42,13 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
     public PersonImageFormControllerImpl(PersonImageService personImageService,
                                          PersonImageCommandConverterImpl personImageCommandConverter,
                                          PersonImageConverterImpl personImageConverter,
-                                         PersonImageCommandValidator personImageCommandValidator, PersonService personService, ImageService imageService) {
+                                         PersonImageCommandValidatorImpl personImageCommandValidatorImpl, PersonService personService, ImageService imageService) {
         this.personImageService = personImageService;
         this.personImageCommandConverter = personImageCommandConverter;
 
 
         this.personImageConverter = personImageConverter;
-        this.personImageCommandValidator = personImageCommandValidator;
+        this.personImageCommandValidatorImpl = personImageCommandValidatorImpl;
         this.personService = personService;
         this.imageService = imageService;
     }
@@ -79,11 +79,12 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
     public String saveOrUpdate(@Valid @ModelAttribute PersonImageCommand personImageCommand, BindingResult bindingResult, Model model) {
         logger.debug("PersonImageFormControllerImpl::saveOrUpdate");
 
-        personImageCommandValidator.validate(personImageCommand, bindingResult);
+        personImageCommandValidatorImpl.validate(personImageCommand, bindingResult);
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
+            model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
             return ViewConstants.PERSON_IMAGE_FORM;
         }
 
