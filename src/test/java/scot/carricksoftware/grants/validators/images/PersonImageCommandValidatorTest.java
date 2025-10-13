@@ -19,6 +19,7 @@ import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 
@@ -60,6 +61,29 @@ class PersonImageCommandValidatorTest {
         verify(validateTypesMock).validateImage(image,
                 "image", "The image cannot be null.", bindingResultMock);
     }
+
+    @Test
+    void validateOrderIsRunTest() {
+        String order = GetRandomString();
+        when(personImageCommandMock.getOrder()).thenReturn(order);
+        validator.validate(personImageCommandMock, bindingResultMock);
+
+        verify(validateTypesMock).validateNonNegativeInteger(order,
+                "order", "Order must exist.","The order must be an integer.",
+                        "The order must be non-negative.", bindingResultMock);
+    }
+
+    @Test
+    void validateLevelIsRunTest() {
+        String level = GetRandomString();
+        when(personImageCommandMock.getLevel()).thenReturn(level);
+        validator.validate(personImageCommandMock, bindingResultMock);
+
+        verify(validateTypesMock).validateNonNegativeInteger(level,
+                "level", "Level must exist.","Level must be an integer.",
+                "The level must be non-negative.", bindingResultMock);
+    }
+
 
 
 
