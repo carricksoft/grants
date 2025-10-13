@@ -85,14 +85,14 @@
             </tr>
             <tr>
                 <td style="text-align: right;">
-                    <label for="heading">Heading :&nbsp;</label>
+                    <label for="caption">Heading :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
-                    <input class="form-control" id="heading"
-                           th:field="*{heading}" type="text">
-                    <div th:if="${#fields.hasErrors('heading')}">
+                    <input class="form-control" id="caption"
+                           th:field="*{caption}" type="text">
+                    <div th:if="${#fields.hasErrors('caption')}">
                         <ul class="text-danger">
-                            <li th:each="err : ${#fields.errors('heading')}" th:text="${err}"/>
+                            <li th:each="err : ${#fields.errors('caption')}" th:text="${err}"/>
                         </ul>
                     </div>
                 </td>
