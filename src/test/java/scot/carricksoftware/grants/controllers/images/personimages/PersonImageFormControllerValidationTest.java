@@ -85,5 +85,11 @@ public class PersonImageFormControllerValidationTest {
         verify(personImageCommandValidatorImplMock).validate(personImageCommandMock, bindingResultMock);
     }
 
+    @Test
+    public void saveOrUpdateCapitalisationTest() {
+        when(personImageServiceMock.savePersonImageCommand(any())).thenReturn(personImageCommandMock);
+        personImageController.saveOrUpdate(personImageCommandMock, bindingResultMock, modelMock);
+        verify(capitalisePersonImageMock).capitalise(personImageCommandMock);
+    }
 
 }
