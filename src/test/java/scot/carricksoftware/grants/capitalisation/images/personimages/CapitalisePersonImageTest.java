@@ -14,7 +14,8 @@ import scot.carricksoftware.grants.capitalisation.CapitaliseString;
 import scot.carricksoftware.grants.commands.images.PersonImageCommand;
 import scot.carricksoftware.grants.commands.images.PersonImageCommandImpl;
 
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -36,7 +37,9 @@ class CapitalisePersonImageTest {
         PersonImageCommand personImageCommand = new PersonImageCommandImpl();
         personImageCommand.setCaption(lower);
 
+        when(capitaliseStringMock.capitalise(lower)).thenReturn("Upper");
+
         capitalisePersonImage.capitalise(personImageCommand);
-        verify(capitaliseStringMock).capitalise("lower");
+        assertEquals("Upper",personImageCommand.getCaption());
     }
 }
