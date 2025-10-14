@@ -71,7 +71,9 @@ public class PersonTextServiceImpl implements PersonTextService {
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.ASC, "id");
+        return Sort.by(Sort.Direction.ASC, "person")
+                .and(Sort.by(Sort.Direction.ASC, "order")
+                        .and(Sort.by(Sort.Direction.ASC, "level")));
     }
 
     @Override
