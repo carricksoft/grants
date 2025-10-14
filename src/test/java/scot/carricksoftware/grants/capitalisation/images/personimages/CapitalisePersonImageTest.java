@@ -16,6 +16,7 @@ import scot.carricksoftware.grants.commands.images.PersonImageCommandImpl;
 
 import static org.mockito.Mockito.verify;
 
+
 @ExtendWith(MockitoExtension.class)
 class CapitalisePersonImageTest {
 
@@ -34,6 +35,7 @@ class CapitalisePersonImageTest {
         String lower = "lower";
         PersonImageCommand personImageCommand = new PersonImageCommandImpl();
         personImageCommand.setCaption(lower);
+
         capitalisePersonImage.capitalise(personImageCommand);
         verify(capitaliseStringMock).capitalise("lower");
     }
