@@ -59,17 +59,6 @@ class DeathCertificateDateFieldsValidatorImplTest {
                 bindingResultMock);
     }
 
-    @Test
-    void validateWhenBornIsCalledTest() {
-        deathCertificateDateFieldsValidator.validate(deathCertificateCommand, bindingResultMock);
-
-        verify(validateDateTypesMock).validatePastDate(whenBorn,
-                "whenBorn",
-                "When born cannot be null.",
-                "The format should be dd/MM/yyyy hh:mm.",
-                "Date should not be in the future.",
-                bindingResultMock);
-    }
 
     @Test
     void validateWhenDiedIsCalledTest() {

@@ -27,7 +27,6 @@ public class DeathCertificateDateFieldsValidatorImpl implements DeathCertificate
     @Override
     public void validate(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         validateCertificateDate(deathCertificateCommand, bindingResult);
-        validateWhenBorn(deathCertificateCommand, bindingResult);
         validateWhenDied(deathCertificateCommand, bindingResult);
     }
 
@@ -41,15 +40,6 @@ public class DeathCertificateDateFieldsValidatorImpl implements DeathCertificate
                 bindingResult);
     }
 
-    private void validateWhenBorn(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
-        logger.debug("DeathCertificateDateFieldsValidator::validateWhenBorn");
-        validateDateTypes.validatePastDate(deathCertificateCommand.getWhenBorn(),
-                "whenBorn",
-                ValidationConstants.WHEN_BORN_IS_NULL,
-                ValidationConstants.WHEN_BORN_INCORRECT_FORMAT,
-                ValidationConstants.DATE_IN_FUTURE,
-                bindingResult);
-    }
 
     private void validateWhenDied(DeathCertificateCommand deathCertificateCommand, BindingResult bindingResult) {
         logger.debug("DeathCertificateNullFieldsValidator::validateWhenDied");

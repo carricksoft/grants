@@ -66,14 +66,15 @@ public class DeathCertificateServiceImpl implements DeathCertificateService {
 
     @Override
     public List<DeathCertificate> getPagedDeathCertificates(int pageNumber) {
-        logger.debug("DeathCertificateServiceImpl::getPagedCountries");
+        logger.debug("DeathCertificateServiceImpl::getPagedDeathCertificates");
         Pageable paging = PageRequest.of(pageNumber, ApplicationConstants.DEFAULT_PAGE_SIZE, getSort());
         Page<DeathCertificate> pagedResult = deathCertificateRepository.findAll(paging);
         return pagedResult.getContent();
     }
 
     private Sort getSort() {
-        return Sort.by(Sort.Direction.ASC, "id");
+        return Sort.by(Sort.Direction.ASC, "deceased.lastName")
+                .and(Sort.by(Sort.Direction.ASC, "deceased.firstName"));
     }
 
     @Override
