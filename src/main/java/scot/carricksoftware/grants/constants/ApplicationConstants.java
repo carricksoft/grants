@@ -29,4 +29,13 @@ public class ApplicationConstants {
     public static final int LATEX_BOOK = -2;
     public static final int LATEX_SUB_PARAGRAPH = 5;
 
+    private static final int MINIMUM_SIZE = 100;
+    private static final int MAXIMUM_SIZE = 100;
+
+    public static final int MINIMUM_IMAGE_WIDTH = MINIMUM_SIZE;
+    public static final int MAXIMUM_IMAGE_WIDTH = MAXIMUM_SIZE;
+
+    public static final int MINIMUM_IMAGE_HEIGHT = MINIMUM_SIZE;
+    public static final int MAXIMUM_IMAGE_HEIGHT = MAXIMUM_SIZE;
+
 }

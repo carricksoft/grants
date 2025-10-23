@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.images.PersonImageCommand;
+import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.constants.ValidationConstants;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
@@ -32,7 +33,35 @@ public class PersonImageCommandValidatorImpl implements PersonImageCommandValida
         validateImage(imageCommand, bindingResult);
         validateOrder(imageCommand, bindingResult);
         validateLevel(imageCommand, bindingResult);
+        validateWidth(imageCommand, bindingResult);
+        validateHeight(imageCommand, bindingResult);
     }
+
+    private void validateWidth(PersonImageCommand imageCommand, BindingResult bindingResult) {
+        logger.debug("ImageCommandValidator::validateWidth");
+        validateTypes.validateIntegerRange(imageCommand.getWidth(),
+                ApplicationConstants.MINIMUM_IMAGE_WIDTH,
+                ApplicationConstants.MAXIMUM_IMAGE_WIDTH,
+                "width",
+                ValidationConstants.WIDTH_IS_NULL,
+                ValidationConstants.WIDTH_IS_NOT_AN_INTEGER,
+                ValidationConstants.WIDTH_OUTSIDE_RANGE,
+                bindingResult);
+    }
+
+    private void validateHeight(PersonImageCommand imageCommand, BindingResult bindingResult) {
+        logger.debug("ImageCommandValidator::validateHeight");
+        validateTypes.validateIntegerRange(imageCommand.getHeight(),
+                ApplicationConstants.MINIMUM_IMAGE_HEIGHT,
+                ApplicationConstants.MAXIMUM_IMAGE_HEIGHT,
+                "height",
+                ValidationConstants.HEIGHT_IS_NULL,
+                ValidationConstants.HEIGHT_IS_NOT_AN_INTEGER,
+                ValidationConstants.HEIGHT_OUTSIDE_RANGE,
+                bindingResult);
+
+    }
+
 
     private void validateOrder(PersonImageCommand imageCommand, BindingResult bindingResult) {
         logger.debug("ImageCommandValidator::validateOrder");
@@ -42,6 +71,7 @@ public class PersonImageCommandValidatorImpl implements PersonImageCommandValida
                 ValidationConstants.ORDER_IS_NEGATIVE,
                 bindingResult);
     }
+
 
     private void validateLevel(PersonImageCommand imageCommand, BindingResult bindingResult) {
         logger.debug("ImageCommandValidator::validateLevel");
