@@ -30,7 +30,7 @@ public class ApplicationConstants {
     public static final int LATEX_SUB_PARAGRAPH = 5;
 
     private static final int MINIMUM_SIZE = 100;
-    private static final int MAXIMUM_SIZE = 100;
+    private static final int MAXIMUM_SIZE = 10000;
 
     public static final int MINIMUM_IMAGE_WIDTH = MINIMUM_SIZE;
     public static final int MAXIMUM_IMAGE_WIDTH = MAXIMUM_SIZE;
