@@ -25,25 +25,15 @@ public class TextMappingConstants {
     public static final String DOCUMENT_TEXT_DELETE = "/documentTexts/{id}/delete";
     public static final String DOCUMENT_TEXT_EDIT = "documentText/{id}/edit";
 
-    @SuppressWarnings({"unused"})
     public static final String APPENDIX_TEXT_LIST = "/appendixTexts";
-    @SuppressWarnings({"unused"})
     public static final String APPENDIX_TEXT_NEXT = "/appendixTexts/next";
-    @SuppressWarnings({"unused"})
     public static final String APPENDIX_TEXT_PREVIOUS = "/appendixTexts/prev";
-    @SuppressWarnings({"unused"})
     public static final String APPENDIX_TEXT_REWIND = "/appendixTexts/rewind";
-    @SuppressWarnings({"unused"})
     public static final String APPENDIX_TEXT_FF = "/appendixTexts/ff";
-    @SuppressWarnings({"unused"})
     public static final String APPENDIX_TEXT_NEW = "/appendixText/new";
-    @SuppressWarnings({"unused"})
     public static final String APPENDIX_TEXT = "/appendixText";
-    @SuppressWarnings({"unused"})
     public static final String APPENDIX_TEXT_SHOW = "/appendixText/{id}/show";
-    @SuppressWarnings({"unused"})
-    public static final String APPENDIX_TEXT_DELETE = "/appendixTexts/{id}/delete";
-    @SuppressWarnings({"unused"})
+    public static final String APPENDIX_TEXT_DELETE = "/appendixText/{id}/delete";
     public static final String APPENDIX_TEXT_EDIT = "appendixText/{id}/edit";
 
 
@@ -55,7 +45,7 @@ public class TextMappingConstants {
     public static final String PERSON_TEXT_NEW = "/personText/new";
     public static final String PERSON_TEXT = "/personText";
     public static final String PERSON_TEXT_SHOW = "/personText/{id}/show";
-    public static final String PERSON_TEXT_DELETE = "/personTexts/{id}/delete";
+    public static final String PERSON_TEXT_DELETE = "/personText/{id}/delete";
     public static final String PERSON_TEXT_EDIT = "personText/{id}/edit";
 
     public static final String PLACE_TEXT_LIST = "/placeTexts";
