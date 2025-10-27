@@ -41,10 +41,10 @@
                 <td th:text="${text.heading}">123</td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                           th:href="'personTexts/' + ${text.id} + '/delete'"
+                           th:href="@{'/personText/' + ${text.id} + '/delete'}"
                            th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="'personText/' + ${text.id} + '/edit'"
+                       th:href="@{'/personText/' + ${text.id} + '/edit'}"
                        th:text="Edit"></a>
                     </span></td>
             </tr>

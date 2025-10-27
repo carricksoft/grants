@@ -36,10 +36,10 @@
                 <td></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
-                           th:href="'placeImage/' + ${image.id} + '/delete'"
+                           th:href="@{'placeImage/' + ${image.id} + '/delete'}"
                            th:text="Delete"></a>
                     <a th:action="edit" class="btn btn-warning btn-sm"
-                       th:href="'placeImage/' + ${image.id} + '/edit'"
+                       th:href="@{'placeImage/' + ${image.id} + '/edit'}"
                        th:text="Edit"></a>
                     </span></td>
             </tr>
