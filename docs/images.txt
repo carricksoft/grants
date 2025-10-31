@@ -1,0 +1,7 @@
+Use width 400 as the default
+Images must be :
+    a jpg
+    less than 1M in size
+
+To convert from pdf to jpg use the site https://www.ilovepdf.com/pdf_to_jpg
+To change reduce the size of a jpg use  $ jpegoptim --size=800k
