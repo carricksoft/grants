@@ -3,23 +3,22 @@
  *
  */
 
-package scot.carricksoftware.grants.converters.images.personimage;
+package scot.carricksoftware.grants.converters.images.appendiximage;
 
 
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.commands.images.PersonImageCommand;
-import scot.carricksoftware.grants.commands.images.PersonImageCommandImpl;
-import scot.carricksoftware.grants.domains.images.PersonImage;
+import scot.carricksoftware.grants.commands.images.AppendixImageCommand;
+import scot.carricksoftware.grants.commands.images.AppendixImageCommandImpl;
+import scot.carricksoftware.grants.domains.images.AppendixImage;
 
 @Component
-public class PersonImageConverterImpl implements PersonImageConverter {
+public class AppendixImageConverterImpl implements AppendixImageConverter {
 
     @SuppressWarnings("DuplicatedCode")
     @Override
-    public PersonImageCommand convert(PersonImage source) {
-        PersonImageCommand target = new PersonImageCommandImpl();
+    public AppendixImageCommand convert(AppendixImage source) {
+        AppendixImageCommand target = new AppendixImageCommandImpl();
         target.setId(source.getId());
-        target.setPerson(source.getPerson());
         target.setOrder(source.getOrder());
         target.setCaption(source.getCaption());
         target.setHeight(source.getHeight());

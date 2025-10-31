@@ -3,23 +3,22 @@
  *
  */
 
-package scot.carricksoftware.grants.converters.images.personimage;
+package scot.carricksoftware.grants.converters.images.appendiximage;
 
 
 import jakarta.validation.constraints.NotNull;
 import org.springframework.stereotype.Component;
-import scot.carricksoftware.grants.commands.images.PersonImageCommand;
-import scot.carricksoftware.grants.domains.images.PersonImage;
+import scot.carricksoftware.grants.commands.images.AppendixImageCommand;
+import scot.carricksoftware.grants.domains.images.AppendixImage;
 
 @Component
-public class PersonImageCommandConverterImpl implements PersonImageCommandConverter {
+public class AppendixImageCommandConverterImpl implements AppendixImageCommandConverter {
 
     @SuppressWarnings("DuplicatedCode")
     @Override
-    public PersonImage convert(@NotNull PersonImageCommand source) {
-        PersonImage target = new PersonImage();
+    public AppendixImage convert(@NotNull AppendixImageCommand source) {
+        AppendixImage target = new AppendixImage();
         target.setId(source.getId());
-        target.setPerson(source.getPerson());
         target.setImage(source.getImage());
         target.setLevel(source.getLevel());
         target.setOrder(source.getOrder());
