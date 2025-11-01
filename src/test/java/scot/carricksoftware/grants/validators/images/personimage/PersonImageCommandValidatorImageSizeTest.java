@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 30/03/2025, 14:31. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.validators.images;
+package scot.carricksoftware.grants.validators.images.personimage;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -14,6 +14,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.images.PersonImageCommand;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
+import scot.carricksoftware.grants.validators.images.PersonImageCommandValidator;
+import scot.carricksoftware.grants.validators.images.PersonImageCommandValidatorImpl;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;

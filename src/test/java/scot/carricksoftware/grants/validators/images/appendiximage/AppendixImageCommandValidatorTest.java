@@ -1,9 +1,9 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 30/03/2025, 14:31. All rights reserved.
+ * Copyright (c) 2025.  Andrew Grant Carrick Software. All rights reserved
  *
  */
 
-package scot.carricksoftware.grants.validators.images;
+package scot.carricksoftware.grants.validators.images.appendiximage;
 
 
 import org.junit.jupiter.api.BeforeEach;
@@ -12,21 +12,21 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.commands.images.PersonImageCommand;
+import scot.carricksoftware.grants.commands.images.AppendixImageCommand;
 import scot.carricksoftware.grants.domains.images.Image;
-import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
+import scot.carricksoftware.grants.validators.images.AppendixImageCommandValidator;
+import scot.carricksoftware.grants.validators.images.AppendixImageCommandValidatorImpl;
 
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
-import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 
 @ExtendWith(MockitoExtension.class)
-class PersonImageCommandValidatorTest {
+class AppendixImageCommandValidatorTest {
 
-    private PersonImageCommandValidator validator;
+    private AppendixImageCommandValidator validator;
 
     @Mock
     private BindingResult bindingResultMock;
@@ -35,28 +35,18 @@ class PersonImageCommandValidatorTest {
     private ValidateTypes validateTypesMock;
 
     @Mock
-    private PersonImageCommand personImageCommandMock;
+    private AppendixImageCommand appendixImageCommandMock;
 
     @BeforeEach
     void setUp() {
-        validator = new PersonImageCommandValidatorImpl(validateTypesMock);
-    }
-
-    @Test
-    void validatePersonIsRunTest() {
-        Person person = GetRandomPerson();
-        when(personImageCommandMock.getPerson()).thenReturn(person);
-        validator.validate(personImageCommandMock, bindingResultMock);
-
-        verify(validateTypesMock).validatePerson(person,
-                "person", "The person cannot be null.", bindingResultMock);
+        validator = new AppendixImageCommandValidatorImpl(validateTypesMock);
     }
 
     @Test
     void validateImageIsRunTest() {
         Image image = new Image();
-        when(personImageCommandMock.getImage()).thenReturn(image);
-        validator.validate(personImageCommandMock, bindingResultMock);
+        when(appendixImageCommandMock.getImage()).thenReturn(image);
+        validator.validate(appendixImageCommandMock, bindingResultMock);
 
         verify(validateTypesMock).validateImage(image,
                 "image", "The image cannot be null.", bindingResultMock);
@@ -65,8 +55,8 @@ class PersonImageCommandValidatorTest {
     @Test
     void validateOrderIsRunTest() {
         String order = GetRandomString();
-        when(personImageCommandMock.getOrder()).thenReturn(order);
-        validator.validate(personImageCommandMock, bindingResultMock);
+        when(appendixImageCommandMock.getOrder()).thenReturn(order);
+        validator.validate(appendixImageCommandMock, bindingResultMock);
 
         verify(validateTypesMock).validateNonNegativeInteger(order,
                 "order", "Order must exist.", "The order must be an integer.",
@@ -76,8 +66,8 @@ class PersonImageCommandValidatorTest {
     @Test
     void validateLevelIsRunTest() {
         String level = GetRandomString();
-        when(personImageCommandMock.getLevel()).thenReturn(level);
-        validator.validate(personImageCommandMock, bindingResultMock);
+        when(appendixImageCommandMock.getLevel()).thenReturn(level);
+        validator.validate(appendixImageCommandMock, bindingResultMock);
 
         verify(validateTypesMock).validateNonNegativeInteger(level,
                 "level", "Level must exist.", "Level must be an integer.",
