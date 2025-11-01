@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.images.*;
+import scot.carricksoftware.grants.services.images.appendiximage.AppendixImageService;
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
@@ -24,16 +25,25 @@ public class DataLoadImages {
 
 
     private final ImageService imageService;
+
     private final PersonImageService personImageService;
     private final PlaceImageService placeImageService;
+    private final AppendixImageService appendixImageService;
     private final PersonService personService;
     private final PlaceService placeService;
 
 
-    public DataLoadImages(ImageService imageService, PersonImageService personImageService, PlaceImageService placeImageService, PersonService personService, PlaceService placeService) {
+
+    public DataLoadImages(ImageService imageService,
+                          PersonImageService personImageService,
+                          PlaceImageService placeImageService,
+                          AppendixImageService appendixImageService,
+                          PersonService personService,
+                          PlaceService placeService) {
         this.imageService = imageService;
         this.personImageService = personImageService;
         this.placeImageService = placeImageService;
+        this.appendixImageService = appendixImageService;
         this.personService = personService;
         this.placeService = placeService;
     }
@@ -43,6 +53,7 @@ public class DataLoadImages {
         loadImage();
         loadPersonImage();
         loadPlaceImage();
+        loadAppendixImage();
     }
 
     private void loadImage() {
@@ -69,6 +80,14 @@ public class DataLoadImages {
         imageCommand.setPlace(placeService.findById(1L));
 
         placeImageService.savePlaceImageCommand(imageCommand);
+    }
+
+    private void loadAppendixImage() {
+        logger.debug("DataLoadCensus::loadAppendixImage");
+        AppendixImageCommand appendixCommand = new AppendixImageCommandImpl();
+        appendixCommand.setImage(imageService.findById(1L));
+
+        appendixImageService.saveAppendixImageCommand(appendixCommand);
     }
 
 
