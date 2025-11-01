@@ -65,6 +65,7 @@ public class DataLoadImages {
         logger.debug("DataLoadCensus::loadPersonImage");
         PersonImageCommand command = new PersonImageCommandImpl();
         command.setImage(imageService.findById(1L));
+        command.setCaption("Person caption");
 
         personImageService.savePersonImageCommand(command);
     }
@@ -82,6 +83,7 @@ public class DataLoadImages {
         logger.debug("DataLoadCensus::loadAppendixImage");
         AppendixImageCommand appendixCommand = new AppendixImageCommandImpl();
         appendixCommand.setImage(imageService.findById(1L));
+        appendixCommand.setCaption("Appendix caption");
 
         appendixImageService.saveAppendixImageCommand(appendixCommand);
     }
