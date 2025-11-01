@@ -14,7 +14,6 @@ import scot.carricksoftware.grants.services.images.appendiximage.AppendixImageSe
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
-import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
 @Component
@@ -29,7 +28,6 @@ public class DataLoadImages {
     private final PersonImageService personImageService;
     private final PlaceImageService placeImageService;
     private final AppendixImageService appendixImageService;
-    private final PersonService personService;
     private final PlaceService placeService;
 
 
@@ -38,13 +36,11 @@ public class DataLoadImages {
                           PersonImageService personImageService,
                           PlaceImageService placeImageService,
                           AppendixImageService appendixImageService,
-                          PersonService personService,
                           PlaceService placeService) {
         this.imageService = imageService;
         this.personImageService = personImageService;
         this.placeImageService = placeImageService;
         this.appendixImageService = appendixImageService;
-        this.personService = personService;
         this.placeService = placeService;
     }
 
@@ -67,15 +63,15 @@ public class DataLoadImages {
 
     private void loadPersonImage() {
         logger.debug("DataLoadCensus::loadPersonImage");
-        PersonImageCommand imageCommand = new PersonImageCommandImpl();
-        imageCommand.setPerson(personService.findById(1L));
+        PersonImageCommand command = new PersonImageCommandImpl();
+        command.setImage(imageService.findById(1L));
 
-
-        personImageService.savePersonImageCommand(imageCommand);
+        personImageService.savePersonImageCommand(command);
     }
 
     private void loadPlaceImage() {
         logger.debug("DataLoadCensus::loadPlaceImage");
+
         PlaceImageCommand imageCommand = new PlaceImageCommandImpl();
         imageCommand.setPlace(placeService.findById(1L));
 
