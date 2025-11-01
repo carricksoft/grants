@@ -39,8 +39,7 @@ public class ViewConstants {
     public static final String CENSUS_ENTRY_FORM = "censusEntry/form";
 
     public static final String SELECTED_CENSUS_LIST = "selectedCensus/list";
-
-    @SuppressWarnings("unused")
+    
     public static final String BIRTH_CERTIFICATE_LIST = "certificates/birthCertificate/list";
     public static final String BIRTH_CERTIFICATE_FORM = "certificates/birthCertificate/form";
 
@@ -61,6 +60,9 @@ public class ViewConstants {
 
     public static final String PLACE_IMAGE_LIST = "images/placeImage/list";
     public static final String PLACE_IMAGE_FORM = "images/placeImage/form";
+
+    public static final String APPENDIX_IMAGE_LIST = "images/appendixImage/list";
+    public static final String APPENDIX_IMAGE_FORM = "images/appendixImage/form";
 
     public static final String DOCUMENT_TEXT_LIST = "text/documentText/list";
     public static final String DOCUMENT_TEXT_FORM = "text/documentText/form";
