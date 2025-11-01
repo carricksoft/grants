@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.capitalisation.certificates.deathcertificates.CapitaliseDeathCertificate;
+import scot.carricksoftware.grants.capitalisation.certificates.deathcertificates.CapitaliseDeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.controllers.attributes.AddAttributes;
@@ -53,7 +53,7 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
     BindingResult bindingResultMock;
 
     @Mock
-    CapitaliseDeathCertificate capitaliseDeathCertificateMock;
+    CapitaliseDeathCertificateCommand capitaliseDeathCertificateCommandMock;
 
     @Mock
     AddAttributes addAttributesMock;
@@ -70,7 +70,7 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
                 deathCertificateCommandValidatorMock,
-                capitaliseDeathCertificateMock,
+                capitaliseDeathCertificateCommandMock,
                 updateCertifiedYearOfDeathMock,
                 addAttributesMock);
         deathCertificateCommand = new DeathCertificateCommandImpl();
@@ -97,7 +97,7 @@ public class DeathCertificateFormControllerSaveOrUpdateTest {
         when(deathCertificateServiceMock.saveDeathCertificateCommand(any(DeathCertificateCommand.class))).thenReturn(deathCertificateCommand);
         deathCertificateCommand.setId(4L);
         deathCertificateController.saveOrUpdate(deathCertificateCommand, bindingResultMock, modelMock);
-        verify(capitaliseDeathCertificateMock).capitalise(deathCertificateCommand);
+        verify(capitaliseDeathCertificateCommandMock).capitalise(deathCertificateCommand);
     }
 
     @Test

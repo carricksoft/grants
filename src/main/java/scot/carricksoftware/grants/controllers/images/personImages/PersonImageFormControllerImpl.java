@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import scot.carricksoftware.grants.capitalisation.images.personimages.CapitalisePersonImage;
+import scot.carricksoftware.grants.capitalisation.images.personimage.CapitalisePersonImageCommand;
 import scot.carricksoftware.grants.commands.images.PersonImageCommand;
 import scot.carricksoftware.grants.commands.images.PersonImageCommandImpl;
 import scot.carricksoftware.grants.constants.*;
@@ -38,7 +38,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
     private final PersonImageCommandValidatorImpl personImageCommandValidatorImpl;
     private final PersonService personService;
     private final ImageService imageService;
-    private final CapitalisePersonImage capitalisePersonImage;
+    private final CapitalisePersonImageCommand capitalisePersonImageCommand;
 
 
     public PersonImageFormControllerImpl(PersonImageService personImageService,
@@ -47,7 +47,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
                                          PersonImageCommandValidatorImpl personImageCommandValidatorImpl,
                                          PersonService personService,
                                          ImageService imageService,
-                                         CapitalisePersonImage capitalisePersonImage) {
+                                         CapitalisePersonImageCommand capitalisePersonImageCommand) {
 
         this.personImageService = personImageService;
         this.personImageCommandConverter = personImageCommandConverter;
@@ -57,7 +57,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
         this.personImageCommandValidatorImpl = personImageCommandValidatorImpl;
         this.personService = personService;
         this.imageService = imageService;
-        this.capitalisePersonImage = capitalisePersonImage;
+        this.capitalisePersonImageCommand = capitalisePersonImageCommand;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -86,7 +86,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
     public String saveOrUpdate(@Valid @ModelAttribute PersonImageCommand personImageCommand, BindingResult bindingResult, Model model) {
         logger.debug("PersonImageFormControllerImpl::saveOrUpdate");
 
-        capitalisePersonImage.capitalise(personImageCommand);
+        capitalisePersonImageCommand.capitalise(personImageCommand);
         personImageCommandValidatorImpl.validate(personImageCommand, bindingResult);
 
         if (bindingResult.hasErrors()) {

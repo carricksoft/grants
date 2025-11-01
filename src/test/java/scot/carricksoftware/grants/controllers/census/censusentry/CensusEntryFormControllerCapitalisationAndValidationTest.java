@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.capitalisation.census.censusentry.CapitaliseCensusEntry;
+import scot.carricksoftware.grants.capitalisation.census.censusentry.CapitaliseCensusEntryCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
@@ -43,7 +43,7 @@ public class CensusEntryFormControllerCapitalisationAndValidationTest {
     private CensusEntryConverterImpl censusEntryConverterMock;
 
     @Mock
-    private CapitaliseCensusEntry capitaliseCensusEntryMock;
+    private CapitaliseCensusEntryCommand capitaliseCensusEntryCommandMock;
 
     @Mock
     private PersonService personServiceMock;
@@ -67,7 +67,7 @@ public class CensusEntryFormControllerCapitalisationAndValidationTest {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
                 censusEntryCommandValidatorImplMock,
                 censusEntryConverterMock,
-                capitaliseCensusEntryMock,
+                capitaliseCensusEntryCommandMock,
                 personServiceMock,
                 censusServiceMock,
                 updateRecordedYearOfBirthMock);
@@ -89,7 +89,7 @@ public class CensusEntryFormControllerCapitalisationAndValidationTest {
         censusEntryCommand.setId(id);
         when(censusEntryServiceMock.saveCensusEntryCommand(any(CensusEntryCommand.class))).thenReturn(censusEntryCommand);
         censusEntryController.saveOrUpdate(censusEntryCommand, bindingResultMock, modelMock);
-        verify(capitaliseCensusEntryMock).capitalise(censusEntryCommand);
+        verify(capitaliseCensusEntryCommandMock).capitalise(censusEntryCommand);
     }
 
 }

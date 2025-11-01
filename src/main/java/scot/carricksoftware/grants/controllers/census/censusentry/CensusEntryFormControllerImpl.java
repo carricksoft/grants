@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import scot.carricksoftware.grants.capitalisation.census.censusentry.CapitaliseCensusEntry;
+import scot.carricksoftware.grants.capitalisation.census.censusentry.CapitaliseCensusEntryCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -37,7 +37,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     private final CensusEntryService censusEntryService;
     private final CensusEntryCommandValidator censusEntryCommandValidator;
     private final CensusEntryConverter censusEntryConverter;
-    private final CapitaliseCensusEntry capitaliseCensusEntry;
+    private final CapitaliseCensusEntryCommand capitaliseCensusEntryCommand;
     private final PersonService personService;
     private final CensusService censusService;
     private final UpdateRecordedYearOfBirth updateRecordedYearOfBirth;
@@ -47,13 +47,13 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     public CensusEntryFormControllerImpl(CensusEntryService censusEntryService,
                                          CensusEntryCommandValidator censusEntryCommandValidator,
                                          CensusEntryConverter censusEntryConverter,
-                                         CapitaliseCensusEntry capitaliseCensusEntry,
+                                         CapitaliseCensusEntryCommand capitaliseCensusEntryCommand,
                                          PersonService personService,
                                          CensusService censusService, UpdateRecordedYearOfBirth updateRecordedYearOfBirth) {
         this.censusEntryService = censusEntryService;
         this.censusEntryCommandValidator = censusEntryCommandValidator;
         this.censusEntryConverter = censusEntryConverter;
-        this.capitaliseCensusEntry = capitaliseCensusEntry;
+        this.capitaliseCensusEntryCommand = capitaliseCensusEntryCommand;
         this.personService = personService;
         this.censusService = censusService;
         this.updateRecordedYearOfBirth = updateRecordedYearOfBirth;
@@ -85,7 +85,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     public String saveOrUpdate(@Valid @ModelAttribute CensusEntryCommand censusEntryCommand, BindingResult bindingResult, Model model) {
         logger.debug("CensusEntryFormControllerImpl::saveOrUpdate");
 
-        capitaliseCensusEntry.capitalise(censusEntryCommand);
+        capitaliseCensusEntryCommand.capitalise(censusEntryCommand);
         censusEntryCommandValidator.validate(censusEntryCommand, bindingResult);
 
 

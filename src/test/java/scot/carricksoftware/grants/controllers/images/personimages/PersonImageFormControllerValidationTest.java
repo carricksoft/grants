@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.capitalisation.images.personimages.CapitalisePersonImage;
+import scot.carricksoftware.grants.capitalisation.images.personimage.CapitalisePersonImageCommand;
 import scot.carricksoftware.grants.commands.images.PersonImageCommand;
 import scot.carricksoftware.grants.controllers.images.personImages.PersonImageFormControllerImpl;
 import scot.carricksoftware.grants.converters.images.personimage.PersonImageCommandConverterImpl;
@@ -60,7 +60,7 @@ public class PersonImageFormControllerValidationTest {
     private PersonImageCommandValidatorImpl personImageCommandValidatorImplMock;
 
     @Mock
-    private CapitalisePersonImage capitalisePersonImageMock;
+    private CapitalisePersonImageCommand capitalisePersonImageCommandMock;
 
     @Mock
     Model modelMock;
@@ -74,7 +74,7 @@ public class PersonImageFormControllerValidationTest {
                 personImageCommandValidatorImplMock,
                 personServiceMocK,
                 imageServiceMocK,
-                capitalisePersonImageMock);
+                capitalisePersonImageCommandMock);
     }
 
 
@@ -89,7 +89,7 @@ public class PersonImageFormControllerValidationTest {
     public void saveOrUpdateCapitalisationTest() {
         when(personImageServiceMock.savePersonImageCommand(any())).thenReturn(personImageCommandMock);
         personImageController.saveOrUpdate(personImageCommandMock, bindingResultMock, modelMock);
-        verify(capitalisePersonImageMock).capitalise(personImageCommandMock);
+        verify(capitalisePersonImageCommandMock).capitalise(personImageCommandMock);
     }
 
 }

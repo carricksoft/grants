@@ -12,7 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
-import scot.carricksoftware.grants.capitalisation.certificates.deathcertificates.CapitaliseDeathCertificate;
+import scot.carricksoftware.grants.capitalisation.certificates.deathcertificates.CapitaliseDeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.controllers.attributes.AddAttributes;
@@ -52,7 +52,7 @@ public class DeathCertificateFormControllerTest {
     private DeathCertificateCommandValidator deathCertificateCommandValidatorMock;
 
     @Mock
-    CapitaliseDeathCertificate capitaliseDeathCertificateMock;
+    CapitaliseDeathCertificateCommand capitaliseDeathCertificateCommandMock;
 
     @Mock
     private UpdateCertifiedYearOfDeath updateCertifiedYearOfDeathMock;
@@ -67,7 +67,7 @@ public class DeathCertificateFormControllerTest {
                 deathCertificateCommandConverterMock,
                 deathCertificateConverterMock,
                 deathCertificateCommandValidatorMock,
-                capitaliseDeathCertificateMock,
+                capitaliseDeathCertificateCommandMock,
                 updateCertifiedYearOfDeathMock,
                 addAttributesMock);
     }

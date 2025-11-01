@@ -13,7 +13,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
-import scot.carricksoftware.grants.capitalisation.census.censusentry.CapitaliseCensusEntry;
+import scot.carricksoftware.grants.capitalisation.census.censusentry.CapitaliseCensusEntryCommand;
 import scot.carricksoftware.grants.commands.census.CensusEntryCommand;
 import scot.carricksoftware.grants.constants.AttributeConstants;
 import scot.carricksoftware.grants.converters.census.CensusEntryConverterImpl;
@@ -55,7 +55,7 @@ public class CensusEntryFormControllerTest {
     private CensusEntryCommandValidatorImpl censusEntryCommandValidatorImplMock;
 
     @Mock
-    private CapitaliseCensusEntry capitaliseCensusEntryMock;
+    private CapitaliseCensusEntryCommand capitaliseCensusEntryCommandMock;
 
     @Mock
     private PersonService personServiceMock;
@@ -69,7 +69,7 @@ public class CensusEntryFormControllerTest {
         censusEntryController = new CensusEntryFormControllerImpl(censusEntryServiceMock,
                 censusEntryCommandValidatorImplMock,
                 censusEntryConverterMock,
-                capitaliseCensusEntryMock,
+                capitaliseCensusEntryCommandMock,
                 personServiceMock,
                 censusServiceMock,
                 updateRecordedYearOfBirthMock);

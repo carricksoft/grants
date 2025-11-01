@@ -13,7 +13,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
-import scot.carricksoftware.grants.capitalisation.images.personimages.CapitalisePersonImage;
+import scot.carricksoftware.grants.capitalisation.images.personimage.CapitalisePersonImageCommand;
 import scot.carricksoftware.grants.commands.images.PersonImageCommand;
 import scot.carricksoftware.grants.constants.ImageAttributeConstants;
 import scot.carricksoftware.grants.controllers.images.personImages.PersonImageFormControllerImpl;
@@ -60,7 +60,7 @@ public class PersonImageFormControllerTest {
     private ImageService imageServiceMock;
 
     @Mock
-    private CapitalisePersonImage capitalisePersonImageMock;
+    private CapitalisePersonImageCommand capitalisePersonImageCommandMock;
 
 
     @BeforeEach
@@ -71,7 +71,7 @@ public class PersonImageFormControllerTest {
                 personImageCommandValidatorImplMock,
                 personServiceMock,
                 imageServiceMock,
-                capitalisePersonImageMock);
+                capitalisePersonImageCommandMock);
     }
 
     @Test

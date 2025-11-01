@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates.CapitaliseMarriageCertificate;
+import scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates.CapitaliseMarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.controllers.attributes.AddAttributes;
@@ -47,7 +47,7 @@ public class MarriageCertificateFormControllerCapitalisationTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private CapitaliseMarriageCertificate capitaliseMarriageCertificateMock;
+    private CapitaliseMarriageCertificateCommand capitaliseMarriageCertificateCommandMock;
 
     @Mock
     private MarriageCertificateCommandValidator marriageCertificateCommandValidatorMock;
@@ -68,7 +68,7 @@ public class MarriageCertificateFormControllerCapitalisationTest {
                 marriageCertificateCommandConverterMock,
                 marriageCertificateConverterMock,
                 marriageCertificateCommandValidatorMock,
-                capitaliseMarriageCertificateMock,
+                capitaliseMarriageCertificateCommandMock,
                 setYearMarriedMock,
                 addAttributesMock);
     }
@@ -83,7 +83,7 @@ public class MarriageCertificateFormControllerCapitalisationTest {
 
         marriageCertificateController.saveOrUpdate(marriageCertificateCommand, bindingResultMock, modelMock);
 
-        verify(capitaliseMarriageCertificateMock).capitalise(marriageCertificateCommand);
+        verify(capitaliseMarriageCertificateCommandMock).capitalise(marriageCertificateCommand);
     }
 
 

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates.CapitaliseMarriageCertificate;
+import scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates.CapitaliseMarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -40,7 +40,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
     private final MarriageCertificateCommandConverterImpl marriageCertificateCommandConverter;
     private final MarriageCertificateConverterImpl marriageCertificateConverter;
     private final MarriageCertificateCommandValidator marriageCertificateCommandValidator;
-    private final CapitaliseMarriageCertificate capitaliseMarriageCertificate;
+    private final CapitaliseMarriageCertificateCommand capitaliseMarriageCertificateCommand;
     private final SetYearMarried setYearMarried;
     private final AddAttributes addAttributes;
 
@@ -49,7 +49,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
                                                  MarriageCertificateCommandConverterImpl marriageCertificateCommandConverter,
                                                  MarriageCertificateConverterImpl marriageCertificateConverter,
                                                  MarriageCertificateCommandValidator marriageCertificateCommandValidator,
-                                                 CapitaliseMarriageCertificate capitaliseMarriageCertificate,
+                                                 CapitaliseMarriageCertificateCommand capitaliseMarriageCertificateCommand,
                                                  SetYearMarried setYearMarried, AddAttributes addAttributes) {
         this.marriageCertificateService = marriageCertificateService;
         this.marriageCertificateCommandConverter = marriageCertificateCommandConverter;
@@ -57,7 +57,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
 
         this.marriageCertificateConverter = marriageCertificateConverter;
         this.marriageCertificateCommandValidator = marriageCertificateCommandValidator;
-        this.capitaliseMarriageCertificate = capitaliseMarriageCertificate;
+        this.capitaliseMarriageCertificateCommand = capitaliseMarriageCertificateCommand;
         this.setYearMarried = setYearMarried;
         this.addAttributes = addAttributes;
     }
@@ -95,7 +95,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
         logger.debug("MarriageCertificateFormControllerImpl::saveOrUpdate");
 
         marriageCertificateCommandValidator.validate(marriageCertificateCommand, bindingResult);
-        capitaliseMarriageCertificate.capitalise(marriageCertificateCommand);
+        capitaliseMarriageCertificateCommand.capitalise(marriageCertificateCommand);
         setYearMarried.setDatesMarried(marriageCertificateCommand);
 
 

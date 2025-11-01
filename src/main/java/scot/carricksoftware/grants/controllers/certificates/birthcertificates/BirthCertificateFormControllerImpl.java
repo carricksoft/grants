@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import scot.carricksoftware.grants.capitalisation.certificates.birthcertificates.CapitaliseBirthCertificate;
+import scot.carricksoftware.grants.capitalisation.certificates.birthcertificate.CapitaliseBirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.birthcertificates.BirthCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -39,7 +39,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     private final BirthCertificateCommandConverterImpl birthCertificateCommandConverter;
     private final BirthCertificateConverterImpl birthCertificateConverter;
     private final BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImpl;
-    private final CapitaliseBirthCertificate capitaliseBirthCertificate;
+    private final CapitaliseBirthCertificateCommand capitaliseBirthCertificateCommand;
     private final UpdateCertifiedYearOfBirth updateCertifiedYearOfBirth;
     private final AddAttributes addAttributes;
 
@@ -48,7 +48,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
                                               BirthCertificateCommandConverterImpl birthCertificateCommandConverter,
                                               BirthCertificateConverterImpl birthCertificateConverter,
                                               BirthCertificateCommandValidatorImpl birthCertificateCommandValidatorImpl,
-                                              CapitaliseBirthCertificate capitaliseBirthCertificate,
+                                              CapitaliseBirthCertificateCommand capitaliseBirthCertificateCommand,
                                               UpdateCertifiedYearOfBirth updateCertifiedYearOfBirth,
                                               AddAttributes addAttributes) {
         this.birthCertificateService = birthCertificateService;
@@ -57,7 +57,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
 
         this.birthCertificateConverter = birthCertificateConverter;
         this.birthCertificateCommandValidatorImpl = birthCertificateCommandValidatorImpl;
-        this.capitaliseBirthCertificate = capitaliseBirthCertificate;
+        this.capitaliseBirthCertificateCommand = capitaliseBirthCertificateCommand;
         this.updateCertifiedYearOfBirth = updateCertifiedYearOfBirth;
         this.addAttributes = addAttributes;
     }
@@ -89,7 +89,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
         logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
 
         birthCertificateCommandValidatorImpl.validate(birthCertificateCommand, bindingResult);
-        capitaliseBirthCertificate.capitalise(birthCertificateCommand);
+        capitaliseBirthCertificateCommand.capitalise(birthCertificateCommand);
 
 
         if (bindingResult.hasErrors()) {

@@ -13,7 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates.CapitaliseMarriageCertificate;
+import scot.carricksoftware.grants.capitalisation.certificates.marriagecertificates.CapitaliseMarriageCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.marriagecertificates.MarriageCertificateCommand;
 import scot.carricksoftware.grants.controllers.attributes.AddAttributes;
 import scot.carricksoftware.grants.converters.certificates.marriagecertificates.MarriageCertificateCommandConverterImpl;
@@ -48,7 +48,7 @@ public class MarriageCertificateFormControllerAttributesTest {
     private Model modelMock;
 
     @Mock
-    private CapitaliseMarriageCertificate capitaliseMarriageCertificateMock;
+    private CapitaliseMarriageCertificateCommand capitaliseMarriageCertificateCommandMock;
 
     @Mock
     private AddAttributes addAttributesMock;
@@ -72,7 +72,7 @@ public class MarriageCertificateFormControllerAttributesTest {
                 marriageCertificateCommandConverterMock,
                 marriageCertificateConverterMock,
                 marriageCertificateCommandValidatorImplMock,
-                capitaliseMarriageCertificateMock,
+                capitaliseMarriageCertificateCommandMock,
                 setYearMarriedMock,
                 addAttributesMock);
     }

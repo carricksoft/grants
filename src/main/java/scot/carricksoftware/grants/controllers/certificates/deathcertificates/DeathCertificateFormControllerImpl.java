@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import scot.carricksoftware.grants.capitalisation.certificates.deathcertificates.CapitaliseDeathCertificate;
+import scot.carricksoftware.grants.capitalisation.certificates.deathcertificates.CapitaliseDeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommand;
 import scot.carricksoftware.grants.commands.certificates.deathcertificates.DeathCertificateCommandImpl;
 import scot.carricksoftware.grants.constants.AttributeConstants;
@@ -39,7 +39,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     private final DeathCertificateCommandConverter deathCertificateCommandConverter;
     private final DeathCertificateConverter deathCertificateConverter;
     private final DeathCertificateCommandValidator deathCertificateCommandValidator;
-    private final CapitaliseDeathCertificate capitaliseDeathCertificate;
+    private final CapitaliseDeathCertificateCommand capitaliseDeathCertificateCommand;
     private final UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath;
     private final AddAttributes addAttributes;
 
@@ -48,7 +48,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
                                               DeathCertificateCommandConverter deathCertificateCommandConverter,
                                               DeathCertificateConverter deathCertificateConverter,
                                               DeathCertificateCommandValidator deathCertificateCommandValidator,
-                                              CapitaliseDeathCertificate capitaliseDeathCertificate,
+                                              CapitaliseDeathCertificateCommand capitaliseDeathCertificateCommand,
                                               UpdateCertifiedYearOfDeath updateCertifiedYearOfDeath, AddAttributes addAttributes) {
         this.deathCertificateService = deathCertificateService;
         this.deathCertificateCommandConverter = deathCertificateCommandConverter;
@@ -57,7 +57,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         this.deathCertificateConverter = deathCertificateConverter;
         this.deathCertificateCommandValidator = deathCertificateCommandValidator;
 
-        this.capitaliseDeathCertificate = capitaliseDeathCertificate;
+        this.capitaliseDeathCertificateCommand = capitaliseDeathCertificateCommand;
         this.updateCertifiedYearOfDeath = updateCertifiedYearOfDeath;
         this.addAttributes = addAttributes;
     }
@@ -89,7 +89,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
         logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
 
         deathCertificateCommandValidator.validate(deathCertificateCommand, bindingResult);
-        capitaliseDeathCertificate.capitalise(deathCertificateCommand);
+        capitaliseDeathCertificateCommand.capitalise(deathCertificateCommand);
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));

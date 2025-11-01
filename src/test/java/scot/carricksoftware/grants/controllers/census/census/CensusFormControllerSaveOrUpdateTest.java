@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.capitalisation.census.census.CapitaliseCensus;
+import scot.carricksoftware.grants.capitalisation.census.census.CapitaliseCensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusCommand;
 import scot.carricksoftware.grants.commands.census.CensusCommandImpl;
 import scot.carricksoftware.grants.converters.census.CensusConverterImpl;
@@ -38,7 +38,7 @@ public class CensusFormControllerSaveOrUpdateTest {
     CensusCommandValidatorImpl censusCommandValidatorImplMock;
 
     @Mock
-    private CapitaliseCensus capitaliseCensusMock;
+    private CapitaliseCensusCommand capitaliseCensusCommandMock;
 
     @Mock
     private CensusConverterImpl censusConverterMock;
@@ -58,7 +58,7 @@ public class CensusFormControllerSaveOrUpdateTest {
     public void setUp() {
         censusController = new CensusFormControllerImpl(censusServiceMock,
                 censusCommandValidatorImplMock,
-                capitaliseCensusMock,
+                capitaliseCensusCommandMock,
                 censusConverterMock,
                 placeServiceMock);
         censusCommand = new CensusCommandImpl();
