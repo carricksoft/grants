@@ -64,6 +64,7 @@ class DataLoadImagesImageAppendixTest {
 
         verify(appendixImageServiceMock).saveAppendixImageCommand(captor.capture());
         assertEquals(image, captor.getValue().getImage());
+        assertEquals("Appendix caption", captor.getValue().getCaption());
     }
 
 

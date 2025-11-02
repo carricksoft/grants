@@ -67,6 +67,7 @@ class DataLoadImagesImagePeopleAndPlacesTest {
 
         verify(personImageServiceMock).savePersonImageCommand(captor.capture());
         assertEquals(image, captor.getValue().getImage());
+        assertEquals("Person caption", captor.getValue().getCaption());
     }
 
     @Test
