@@ -6,10 +6,9 @@
 package scot.carricksoftware.grants.domains.text;
 
 import jakarta.persistence.Entity;
-import scot.carricksoftware.grants.BaseEntity;
 
 @Entity
-public class DocumentText extends BaseEntity {
+public class DocumentText extends Text {
 
 
 
