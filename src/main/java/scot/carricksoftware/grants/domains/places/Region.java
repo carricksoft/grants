@@ -12,12 +12,14 @@ import scot.carricksoftware.grants.BaseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name="`region`")
 public class Region extends BaseEntity {
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`name`")
     private String name;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`country_id`")
     private Country country;

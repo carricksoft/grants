@@ -11,12 +11,14 @@ import jakarta.persistence.Lob;
 import scot.carricksoftware.grants.BaseEntity;
 
 
-@Entity
+@Entity(name="`image`")
 public class Image extends BaseEntity {
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`name`")
     private String name;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name= "`file_name`")
     private String fileName;
 

@@ -10,7 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import scot.carricksoftware.grants.domains.places.Place;
 
-@Entity
+@Entity(name="`place_image`")
 public class PlaceImage extends BaseImage {
 
 

@@ -10,9 +10,10 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import scot.carricksoftware.grants.BaseEntity;
 
-@Entity
+@Entity(name="`organisation`")
 public class Organisation extends BaseEntity {
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`name`")
     private String name;
 

@@ -24,25 +24,31 @@ import scot.carricksoftware.grants.domains.text.PersonText;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name="`person`")
 public class Person extends BaseEntity {
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`image_id`")
     private Image image;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`first_name`")
     private String firstName;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`last_name`")
     String lastName;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`recorded_year_of_birth`")
     String recordedYearOfBirth;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`certified_year_of_birth`")
     String certifiedYearOfBirth;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`certified_year_of_death`")
     String certifiedYearOfDeath;
 

@@ -12,7 +12,7 @@ import scot.carricksoftware.grants.enums.censusentry.*;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.general.YesNo;
 
-@Entity
+@Entity(name="`census_entry`")
 public class CensusEntry extends BaseEntity {
 
     private String name;

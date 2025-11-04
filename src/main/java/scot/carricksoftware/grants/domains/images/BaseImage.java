@@ -6,36 +6,30 @@
 package scot.carricksoftware.grants.domains.images;
 
 import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.MappedSuperclass;
 import scot.carricksoftware.grants.BaseEntity;
 
-@Entity
+@MappedSuperclass
 public class BaseImage extends BaseEntity {
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`image_id`")
     private Image image;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`level`")
     private String level;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`order`")
     private String order;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`caption`")
     private String caption;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`height`")
     private String height;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`width`")
     private String width;
 

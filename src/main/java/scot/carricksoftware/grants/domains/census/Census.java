@@ -22,9 +22,10 @@ import scot.carricksoftware.grants.enums.census.CensusDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name="`census`")
 public class Census extends BaseEntity {
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`census_date`")
     private CensusDate censusDate;
@@ -32,35 +33,45 @@ public class Census extends BaseEntity {
     @OneToMany(mappedBy = "census", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CensusEntry> censusEntries = new ArrayList<>();
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`place_id`")
     private Place place;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`boundary_type`")
     private CensusBoundaryType boundaryType;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`inhabited_rooms`")
     private String inhabitedRooms;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`rooms_with_windows`")
     private String roomsWithWindows;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`filled_in_by`")
     private String filledInBy;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`total_rooms`")
     private String totalRooms;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name= "`rooms_occupied`")
     private String roomsOccupied;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`inhabited_houses`")
     private String inhabitedHouses;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`uninhabited_houses`")
     private String uninhabitedHouses;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`people_in_houses`")
     private String peopleInHouses;
 

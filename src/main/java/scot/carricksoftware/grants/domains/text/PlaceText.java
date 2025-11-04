@@ -11,8 +11,8 @@ import jakarta.persistence.ManyToOne;
 import scot.carricksoftware.grants.domains.places.Place;
 
 
-@Entity
-public class PlaceText extends Text {
+@Entity(name="`place_text`")
+public class PlaceText extends BaseText {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne

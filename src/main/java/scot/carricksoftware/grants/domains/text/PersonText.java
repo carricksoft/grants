@@ -10,8 +10,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import scot.carricksoftware.grants.domains.people.Person;
 
-@Entity
-public class PersonText extends Text {
+@Entity(name="`person_text`")
+public class PersonText extends BaseText {
 
     @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne

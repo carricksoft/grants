@@ -7,7 +7,7 @@ package scot.carricksoftware.grants.domains.images;
 
 import jakarta.persistence.Entity;
 
-@Entity
+@Entity(name="`appendix_image`")
 public class AppendixImage extends BaseImage {
 
 

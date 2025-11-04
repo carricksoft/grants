@@ -10,7 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import scot.carricksoftware.grants.domains.people.Person;
 
-@Entity
+@Entity(name="`person_image`")
 public class PersonImage extends BaseImage {
 
     @SuppressWarnings("JpaDataSourceORMInspection")

@@ -18,7 +18,7 @@ import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 
-@Entity
+@Entity(name="`birth_certificate`")
 public class BirthCertificate extends BaseCertificate {
 
     @SuppressWarnings("JpaDataSourceORMInspection")

@@ -15,12 +15,14 @@ import scot.carricksoftware.grants.domains.text.PlaceText;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+@Entity(name="`place`")
 public class Place extends BaseEntity {
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`name`")
     private String name;
 
+    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`region_id`")
     private Region region;

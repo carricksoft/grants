@@ -14,7 +14,7 @@ import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 
-@Entity
+@Entity(name="`marriage_certificate`")
 public class MarriageCertificate extends BaseCertificate {
 
     @SuppressWarnings("JpaDataSourceORMInspection")

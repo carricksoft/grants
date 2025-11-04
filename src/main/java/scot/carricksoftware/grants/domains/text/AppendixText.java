@@ -7,7 +7,7 @@ package scot.carricksoftware.grants.domains.text;
 
 import jakarta.persistence.Entity;
 
-@Entity
-public class AppendixText extends Text {
+@Entity(name="`appendix_text`")
+public class AppendixText extends BaseText {
 
 }
