@@ -24,7 +24,6 @@ public class Country extends BaseEntity {
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Region> regions = new ArrayList<>();
 
-
     public String getName() {
         return name;
     }
