@@ -5,9 +5,11 @@
 
 package scot.carricksoftware.grants.capitalisation.places.organisations;
 
+import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.capitalisation.CapitaliseString;
 import scot.carricksoftware.grants.commands.places.organisations.OrganisationCommand;
 
+@Component
 public class CapitaliseOrganisationImpl implements CapitaliseOrganisation {
 
     private final CapitaliseString capitaliseString;
