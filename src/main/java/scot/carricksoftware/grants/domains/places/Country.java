@@ -17,11 +17,11 @@ import java.util.List;
 @Entity(name="`country`")
 public class Country extends BaseEntity {
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
+
     @Column(name = "`name`")
     private String name;
 
-    @OneToMany(mappedBy = "`country`", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Region> regions = new ArrayList<>();
 
 
