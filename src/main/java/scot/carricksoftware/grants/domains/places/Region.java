@@ -15,11 +15,9 @@ import java.util.List;
 @Entity(name="`region`")
 public class Region extends BaseEntity {
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`name`")
     private String name;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`country_id`")
     private Country country;

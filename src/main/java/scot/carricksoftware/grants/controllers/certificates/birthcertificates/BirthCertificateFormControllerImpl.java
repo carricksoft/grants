@@ -29,7 +29,6 @@ import scot.carricksoftware.grants.services.certificates.birthcertificates.Birth
 import scot.carricksoftware.grants.services.certificates.birthcertificates.UpdateCertifiedYearOfBirth;
 import scot.carricksoftware.grants.validators.certificates.birthcertificate.BirthCertificateCommandValidatorImpl;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class BirthCertificateFormControllerImpl implements BirthCertificateFormController {
 
@@ -110,7 +109,7 @@ public class BirthCertificateFormControllerImpl implements BirthCertificateFormC
     @GetMapping(CertificateMappingConstants.BIRTH_CERTIFICATE_SHOW)
     @Override
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("BirthCertificateFormControllerImpl::saveOrUpdate");
+        logger.debug("BirthCertificateFormControllerImpl::showById");
         BirthCertificateCommand savedCommand = birthCertificateConverter.convert(birthCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.BIRTH_CERTIFICATE_COMMAND, savedCommand);
         addAttributes.AddBMDCertificate(model);

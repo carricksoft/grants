@@ -14,7 +14,6 @@ import scot.carricksoftware.grants.domains.places.Place;
 @Entity(name="`place_text`")
 public class PlaceText extends BaseText {
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`place_id`")
     private Place place;

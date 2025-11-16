@@ -176,8 +176,8 @@
                 <dependencies>
                     <dependency>
                         <groupId>org.liquibase.ext</groupId>
-                        <artifactId>liquibase-hibernate6</artifactId>
-                        <version>4.31.1</version>
+                        <artifactId>liquibase-hibernate</artifactId>
+                        <version>5.0.1</version>
                     </dependency>
                     <dependency>
                         <groupId>org.springframework.data</groupId>

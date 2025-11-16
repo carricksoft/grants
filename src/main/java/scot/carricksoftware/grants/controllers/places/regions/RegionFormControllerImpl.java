@@ -27,7 +27,6 @@ import scot.carricksoftware.grants.services.places.countries.CountryService;
 import scot.carricksoftware.grants.services.places.regions.RegionService;
 import scot.carricksoftware.grants.validators.places.RegionCommandValidator;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class RegionFormControllerImpl implements RegionFormController {
 
@@ -97,7 +96,7 @@ public class RegionFormControllerImpl implements RegionFormController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.REGION_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("RegionFormControllerImpl::saveOrUpdate");
+        logger.debug("RegionFormControllerImpl::showById");
         RegionCommand regionCommand = regionConverter.convert(regionService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.REGION_COMMAND, regionCommand);
         model.addAttribute(AttributeConstants.COUNTRIES, countryService.findAll());

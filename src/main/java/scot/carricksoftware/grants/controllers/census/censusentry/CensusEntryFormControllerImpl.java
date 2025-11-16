@@ -29,7 +29,6 @@ import scot.carricksoftware.grants.services.census.censusentry.UpdateRecordedYea
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.census.censusentry.CensusEntryCommandValidator;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class CensusEntryFormControllerImpl implements CensusEntryFormController {
 
@@ -106,7 +105,7 @@ public class CensusEntryFormControllerImpl implements CensusEntryFormController 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(CensusMappingConstants.CENSUS_ENTRY_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("CensusEntryFormControllerImpl::saveOrUpdate");
+        logger.debug("CensusEntryFormControllerImpl::showById");
         CensusEntryCommand savedCommand = censusEntryConverter.convert(censusEntryService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());
         model.addAttribute(AttributeConstants.CENSUS_ENTRY_COMMAND, savedCommand);

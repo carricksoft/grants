@@ -24,7 +24,6 @@ import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.images.PlaceImageCommandValidator;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class PlaceImageFormControllerImpl implements PlaceImageFormController {
 
@@ -94,7 +93,7 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.PLACE_IMAGE_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("PlaceImageFormControllerImpl::saveOrUpdate");
+        logger.debug("PlaceImageFormControllerImpl::showById");
         PlaceImageCommand savedCommand = placeImageConverter.convert(placeImageService.findById(Long.valueOf(id)));
         model.addAttribute(ImageAttributeConstants.PLACE_IMAGE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());

@@ -28,7 +28,6 @@ import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.certificates.divorcecertificate.DivorceCertificateCommandValidatorImpl;
 
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class DivorceCertificateFormControllerImpl implements DivorceCertificateFormController {
 
@@ -100,7 +99,7 @@ public class DivorceCertificateFormControllerImpl implements DivorceCertificateF
     @GetMapping(CertificateMappingConstants.DIVORCE_CERTIFICATE_SHOW)
     @Override
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("DivorceCertificateFormControllerImpl::saveOrUpdate");
+        logger.debug("DivorceCertificateFormControllerImpl::showById");
         DivorceCertificateCommand savedCommand = divorceCertificateConverter.convert(divorceCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.DIVORCE_CERTIFICATE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());

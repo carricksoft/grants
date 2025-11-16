@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-class DocumentBaseTextTest {
+class DocumentTextTest {
 
     private DocumentText documentText;
 

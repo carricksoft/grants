@@ -24,7 +24,6 @@ import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.text.persontext.PersonTextService;
 import scot.carricksoftware.grants.validators.text.PersonTextCommandValidatorImpl;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class PersonTextFormControllerImpl implements PersonTextFormController {
 
@@ -95,7 +94,7 @@ public class PersonTextFormControllerImpl implements PersonTextFormController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(TextMappingConstants.PERSON_TEXT_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("PersonTextFormControllerImpl::saveOrUpdate");
+        logger.debug("PersonTextFormControllerImpl::showById");
         PersonTextCommand savedCommand = personTextConverter.convert(personTextService.findById(Long.valueOf(id)));
         model.addAttribute(TextAttributeConstants.PERSON_TEXT_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());

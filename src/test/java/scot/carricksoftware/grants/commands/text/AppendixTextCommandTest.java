@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-class AppendixBaseTextCommandTest {
+class AppendixTextCommandTest {
 
     private AppendixTextCommand appendixTextCommand;
 

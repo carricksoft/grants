@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
-class PlaceBaseTextCommandTest {
+class PlaceTextCommandTest {
 
     private PlaceTextCommand placeTextCommand;
 

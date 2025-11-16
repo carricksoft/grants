@@ -21,100 +21,78 @@ import scot.carricksoftware.grants.enums.general.Sex;
 @Entity(name="`birth_certificate`")
 public class BirthCertificate extends BaseCertificate {
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne()
     @JoinColumn(name = "`new_born_id`")
     private Person newBorn;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`when_born`")
     @DateTimeFormat(pattern = ApplicationConstants.DATE_TIME_FORMAT)
     private String whenBorn;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`where_born_id`")
     private Place whereBorn;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`untracked_where_born`")
     private String untrackedWhereBorn;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`sex`")
     private Sex sex;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne()
     @JoinColumn(name = "`father_id`")
     private Person father;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`untracked_father`")
     private String untrackedFather;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`father_rank`")
     private String fatherRank;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne()
     @JoinColumn(name = "`mother_id`")
     private Person mother;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`date_and_place_of_marriage`")
     private String dateAndPlaceOfMarriage;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne()
     @JoinColumn(name = "`informant_id`")
     private Person informant;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`untracked_informant`")
     private String untrackedInformant;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`informant_qualification`")
     private String informantQualification;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`when_registered`")
     private String whenRegistered;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`where_registered`")
     private String whereRegistered;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne()
     @JoinColumn(name = "`father_usual_residence_id`")
     private Place fatherUsualResidence;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name="`untracked_father_usual_residence`")
     private String untrackedFatherUsualResidence;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name="`informant_residence`")
     private String informantResidence;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne()
     @JoinColumn(name = "`mother_usual_residence_id`")
     private Place motherUsualResidence;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name="`untracked_mother_usual_residence`")
     private String untrackedMotherUsualResidence;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name="`father_place_of_birth`")
     private String fatherPlaceOfBirth;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name="`mother_place_of_birth`")
     private String motherPlaceOfBirth;
 

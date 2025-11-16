@@ -24,7 +24,6 @@ import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.services.text.placetext.PlaceTextService;
 import scot.carricksoftware.grants.validators.text.PlaceTextCommandValidator;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class PlaceTextFormControllerImpl implements PlaceTextFormController {
 
@@ -95,7 +94,7 @@ public class PlaceTextFormControllerImpl implements PlaceTextFormController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(TextMappingConstants.PLACE_TEXT_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("PlaceTextFormControllerImpl::saveOrUpdate");
+        logger.debug("PlaceTextFormControllerImpl::showById");
         PlaceTextCommand savedCommand = placeTextConverter.convert(placeTextService.findById(Long.valueOf(id)));
         model.addAttribute(TextAttributeConstants.PLACE_TEXT_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());

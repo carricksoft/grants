@@ -14,7 +14,7 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
-class PersonBaseTextTest {
+class PersonTextTest {
 
     private PersonText personText;
 

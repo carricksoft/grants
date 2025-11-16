@@ -28,7 +28,6 @@ import scot.carricksoftware.grants.validators.images.ImageCommandValidatorImpl;
 
 import java.io.IOException;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class ImageFormControllerImpl implements ImageFormController {
 
@@ -99,7 +98,7 @@ public class ImageFormControllerImpl implements ImageFormController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.IMAGE_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("ImageFormControllerImpl::saveOrUpdate");
+        logger.debug("ImageFormControllerImpl::showById");
         ImageCommand savedCommand = imageConverter.convert(imageService.findById(Long.valueOf(id)));
         model.addAttribute(ImageAttributeConstants.IMAGE_COMMAND, savedCommand);
         return ViewConstants.IMAGE_FORM;

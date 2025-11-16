@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-class DocumentBaseTextCommandTest {
+class DocumentTextCommandTest {
 
     private DocumentTextCommand documentTextCommand;
 

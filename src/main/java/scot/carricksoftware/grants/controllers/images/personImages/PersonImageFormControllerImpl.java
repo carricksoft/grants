@@ -26,7 +26,6 @@ import scot.carricksoftware.grants.services.images.personimage.PersonImageServic
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.images.PersonImageCommandValidatorImpl;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class PersonImageFormControllerImpl implements PersonImageFormController {
 
@@ -108,7 +107,7 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.PERSON_IMAGE_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("PersonImageFormControllerImpl::saveOrUpdate");
+        logger.debug("PersonImageFormControllerImpl::showById");
         PersonImageCommand savedCommand = personImageConverter.convert(personImageService.findById(Long.valueOf(id)));
         model.addAttribute(ImageAttributeConstants.PERSON_IMAGE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PEOPLE, personService.findAll());

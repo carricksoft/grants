@@ -27,7 +27,6 @@ import scot.carricksoftware.grants.commands.text.AppendixTextCommand;
 import scot.carricksoftware.grants.services.text.appendixtext.AppendixTextService;
 import scot.carricksoftware.grants.validators.text.AppendixTextCommandValidatorImpl;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class AppendixTextFormControllerImpl implements AppendixTextFormController {
 
@@ -91,7 +90,7 @@ public class AppendixTextFormControllerImpl implements AppendixTextFormControlle
     @SuppressWarnings("SameReturnValue")
     @GetMapping(TextMappingConstants.APPENDIX_TEXT_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("AppendixTextFormControllerImpl::saveOrUpdate");
+        logger.debug("AppendixTextFormControllerImpl::showById");
         AppendixTextCommand convertedCommand =  appendixTextConverter.convert(appendixTextService.findById(Long.valueOf(id)));
         model.addAttribute(TextAttributeConstants.APPENDIX_TEXT_COMMAND, convertedCommand);
         return ViewConstants.APPENDIX_TEXT_FORM;

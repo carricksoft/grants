@@ -23,7 +23,6 @@ import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextConv
 import scot.carricksoftware.grants.services.text.documenttext.DocumentTextService;
 import scot.carricksoftware.grants.validators.text.DocumentTextCommandValidatorImpl;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class DocumentTextFormControllerImpl implements DocumentTextFormController {
 
@@ -87,7 +86,7 @@ public class DocumentTextFormControllerImpl implements DocumentTextFormControlle
     @SuppressWarnings("SameReturnValue")
     @GetMapping(TextMappingConstants.DOCUMENT_TEXT_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("DocumentTextFormControllerImpl::saveOrUpdate");
+        logger.debug("DocumentTextFormControllerImpl::showById");
         DocumentTextCommand savedCommand = documentTextConverter.convert(documentTextService.findById(Long.valueOf(id)));
         model.addAttribute(TextAttributeConstants.DOCUMENT_TEXT_COMMAND, savedCommand);
         return ViewConstants.DOCUMENT_TEXT_FORM;

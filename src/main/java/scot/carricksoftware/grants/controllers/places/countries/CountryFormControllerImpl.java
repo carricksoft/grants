@@ -28,7 +28,6 @@ import scot.carricksoftware.grants.converters.places.countries.CountryConverterI
 import scot.carricksoftware.grants.services.places.countries.CountryService;
 import scot.carricksoftware.grants.validators.places.CountryCommandValidator;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class CountryFormControllerImpl implements CountryFormController {
 
@@ -90,7 +89,7 @@ public class CountryFormControllerImpl implements CountryFormController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.COUNTRY_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("CountryFormControllerImpl::saveOrUpdate");
+        logger.debug("CountryFormControllerImpl::showById");
         CountryCommand savedCommand = countryConverter.convert(countryService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.COUNTRY_COMMAND, savedCommand);
         return ViewConstants.COUNTRY_FORM;

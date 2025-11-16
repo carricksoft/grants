@@ -30,7 +30,6 @@ import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.validators.images.AppendixImageCommandValidatorImpl;
 
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class AppendixImageFormControllerImpl implements AppendixImageFormController {
 
@@ -100,7 +99,7 @@ public class AppendixImageFormControllerImpl implements AppendixImageFormControl
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.APPENDIX_IMAGE_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("AppendixImageFormControllerImpl::saveOrUpdate");
+        logger.debug("AppendixImageFormControllerImpl::showById");
         AppendixImageCommand savedCommand = appendixImageConverter.convert(appendixImageService.findById(Long.valueOf(id)));
         model.addAttribute(ImageAttributeConstants.APPENDIX_IMAGE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());

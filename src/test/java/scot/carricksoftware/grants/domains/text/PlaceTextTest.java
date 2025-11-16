@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
-class PlaceBaseTextTest {
+class PlaceTextTest {
 
     private PlaceText placeText;
 

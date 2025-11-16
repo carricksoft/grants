@@ -30,7 +30,6 @@ import scot.carricksoftware.grants.services.certificates.marriagecertificates.Ma
 import scot.carricksoftware.grants.services.certificates.marriagecertificates.helpers.SetYearMarried;
 import scot.carricksoftware.grants.validators.certificates.marriagecertificate.MarriageCertificateCommandValidator;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class MarriageCertificateFormControllerImpl implements MarriageCertificateFormController {
 
@@ -116,7 +115,7 @@ public class MarriageCertificateFormControllerImpl implements MarriageCertificat
     @GetMapping(CertificateMappingConstants.MARRIAGE_CERTIFICATE_SHOW)
     @Override
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("MarriageCertificateFormControllerImpl::saveOrUpdate");
+        logger.debug("MarriageCertificateFormControllerImpl::showById");
         MarriageCertificateCommand savedCommand = marriageCertificateConverter.convert(marriageCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.MARRIAGE_CERTIFICATE_COMMAND, savedCommand);
         addAttributes.AddBMDCertificate(model);

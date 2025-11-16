@@ -17,88 +17,69 @@ public class CensusEntry extends BaseEntity {
 
     private String name;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`census_id`")
     private Census census;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`person_id`")
     private Person person;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`relationship`")
     private CensusEntryRelationship relationship;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`gaelic`")
     private CensusEntryGaelic gaelic;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`condition`")
     private CensusEntryCondition condition;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`worker`")
     private CensusEntryWorker worker;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`sex`")
     private Sex sex;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`age`")
     private String age;
 
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`where_born`")
     private String whereBorn;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`birth_day`")
     private String birthDay;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`birth_year`")
     private String birthYear;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`personal_occupation`")
     private String personalOccupation;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`notes`")
     private String notes;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`children_who_have_died`")
     private String childrenWhoHaveDied;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`children_still_alive`")
     private String childrenStillAlive;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`children_born_alive`")
     private String childrenBornAlive;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`years_Completed_Marriage`")
     private String yearsCompletedMarriage;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Enumerated(EnumType.STRING)
     @Column(name = "`working_at_home`")
     private YesNo workingAtHome;
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @Column(name = "`industry_or_service`")
     private String industryOrService;
 

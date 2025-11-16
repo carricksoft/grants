@@ -29,7 +29,6 @@ import scot.carricksoftware.grants.services.certificates.deathcertificates.Death
 import scot.carricksoftware.grants.services.certificates.deathcertificates.UpdateCertifiedYearOfDeath;
 import scot.carricksoftware.grants.validators.certificates.deathcertificate.DeathCertificateCommandValidator;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class DeathCertificateFormControllerImpl implements DeathCertificateFormController {
 
@@ -108,7 +107,7 @@ public class DeathCertificateFormControllerImpl implements DeathCertificateFormC
     @GetMapping(CertificateMappingConstants.DEATH_CERTIFICATE_SHOW)
     @Override
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("DeathCertificateFormControllerImpl::saveOrUpdate");
+        logger.debug("DeathCertificateFormControllerImpl::showById");
         DeathCertificateCommand savedCommand = deathCertificateConverter.convert(deathCertificateService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.DEATH_CERTIFICATE_COMMAND, savedCommand);
         addAttributes.AddBMDCertificate(model);

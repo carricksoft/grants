@@ -13,7 +13,6 @@ import scot.carricksoftware.grants.domains.people.Person;
 @Entity(name="`person_text`")
 public class PersonText extends BaseText {
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "`person_id`")
     private Person person;

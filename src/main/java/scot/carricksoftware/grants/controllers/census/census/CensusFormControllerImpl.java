@@ -27,7 +27,6 @@ import scot.carricksoftware.grants.services.census.census.CensusService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.census.census.CensusCommandValidator;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class CensusFormControllerImpl implements CensusFormController {
 
@@ -96,7 +95,7 @@ public class CensusFormControllerImpl implements CensusFormController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(CensusMappingConstants.CENSUS_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("CensusFormControllerImpl::saveOrUpdate");
+        logger.debug("CensusFormControllerImpl::showById");
         CensusCommand savedCommand = censusConverter.convert(censusService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.CENSUS_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());

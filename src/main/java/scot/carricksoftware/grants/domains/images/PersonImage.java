@@ -13,7 +13,6 @@ import scot.carricksoftware.grants.domains.people.Person;
 @Entity(name="`person_image`")
 public class PersonImage extends BaseImage {
 
-    @SuppressWarnings("JpaDataSourceORMInspection")
     @ManyToOne
     @JoinColumn(name = "person_id")
     private Person person;

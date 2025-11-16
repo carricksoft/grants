@@ -28,7 +28,6 @@ import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.validators.people.PersonCommandValidator;
 
-@SuppressWarnings("LoggingSimilarMessage")
 @Controller
 public class PersonFormControllerImpl implements PersonFormController {
 
@@ -50,7 +49,6 @@ public class PersonFormControllerImpl implements PersonFormController {
                                     BMDCache bmdCache,
                                     ImageService imageService) {
         this.personService = personService;
-
 
         this.personConverter = personConverter;
         this.capitalisePerson = capitalisePerson;
@@ -102,7 +100,7 @@ public class PersonFormControllerImpl implements PersonFormController {
     @SuppressWarnings("SameReturnValue")
     @GetMapping(MappingConstants.PERSON_SHOW)
     public String showById(@PathVariable String id, Model model) {
-        logger.debug("PersonFormControllerImpl::saveOrUpdate");
+        logger.debug("PersonFormControllerImpl::showById");
         PersonCommand savedCommand = personConverter.convert(personService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PERSON_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
