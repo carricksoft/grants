@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.images.ImageCommand;
 import scot.carricksoftware.grants.services.images.appendiximage.AppendixImageService;
+import scot.carricksoftware.grants.services.images.documentimage.DocumentImageService;
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
@@ -39,6 +40,9 @@ class DataLoadImagesImageTest {
     private AppendixImageService appendixImageServiceMock;
 
     @Mock
+    private DocumentImageService documentImageServiceMock;
+
+    @Mock
     private PlaceService placeServiceMock;
 
     @BeforeEach
@@ -47,6 +51,7 @@ class DataLoadImagesImageTest {
                 personImageServiceMock,
                 placeImageServiceMock,
                 appendixImageServiceMock,
+                documentImageServiceMock,
                 placeServiceMock);
     }
 

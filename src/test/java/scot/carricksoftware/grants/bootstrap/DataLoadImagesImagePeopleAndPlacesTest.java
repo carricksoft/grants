@@ -16,6 +16,7 @@ import scot.carricksoftware.grants.commands.images.PlaceImageCommand;
 import scot.carricksoftware.grants.domains.images.Image;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.images.appendiximage.AppendixImageService;
+import scot.carricksoftware.grants.services.images.documentimage.DocumentImageService;
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
@@ -44,6 +45,9 @@ class DataLoadImagesImagePeopleAndPlacesTest {
     private AppendixImageService appendixImageServiceMock;
 
     @Mock
+    private DocumentImageService documentImageServiceMock;
+
+    @Mock
     private PlaceService placeServiceMock;
 
 
@@ -53,6 +57,7 @@ class DataLoadImagesImagePeopleAndPlacesTest {
                 personImageServiceMock,
                 placeImageServiceMock,
                 appendixImageServiceMock,
+                documentImageServiceMock,
                 placeServiceMock);
     }
 

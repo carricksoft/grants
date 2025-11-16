@@ -7,20 +7,20 @@ package scot.carricksoftware.grants.repositories.images;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
-import scot.carricksoftware.grants.domains.images.AppendixImage;
+import scot.carricksoftware.grants.domains.images.DocumentImage;
 
 import java.util.Optional;
 
 @Repository
-public interface AppendixImageRepository extends PagingAndSortingRepository<AppendixImage, Long> {
+public interface DocumentImageRepository extends PagingAndSortingRepository<DocumentImage, Long> {
 
-    AppendixImage save(AppendixImage image);
+    DocumentImage save(DocumentImage image);
 
     long count();
 
     void deleteById(Long id);
 
-    Optional<AppendixImage> findById(Long id);
+    Optional<DocumentImage> findById(Long id);
 
-    Iterable<AppendixImage> findAll();
+    Iterable<DocumentImage> findAll();
 }

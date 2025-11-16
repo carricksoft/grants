@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 import scot.carricksoftware.grants.commands.images.*;
 import scot.carricksoftware.grants.services.images.appendiximage.AppendixImageService;
+import scot.carricksoftware.grants.services.images.documentimage.DocumentImageService;
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
@@ -28,6 +29,7 @@ public class DataLoadImages {
     private final PersonImageService personImageService;
     private final PlaceImageService placeImageService;
     private final AppendixImageService appendixImageService;
+    private final DocumentImageService documentImageService;
     private final PlaceService placeService;
 
 
@@ -36,11 +38,13 @@ public class DataLoadImages {
                           PersonImageService personImageService,
                           PlaceImageService placeImageService,
                           AppendixImageService appendixImageService,
+                          DocumentImageService documentImageService,
                           PlaceService placeService) {
         this.imageService = imageService;
         this.personImageService = personImageService;
         this.placeImageService = placeImageService;
         this.appendixImageService = appendixImageService;
+        this.documentImageService = documentImageService;
         this.placeService = placeService;
     }
 
@@ -50,6 +54,7 @@ public class DataLoadImages {
         loadPersonImage();
         loadPlaceImage();
         loadAppendixImage();
+        loadDocumentImage();
     }
 
     private void loadImage() {
@@ -81,11 +86,20 @@ public class DataLoadImages {
 
     private void loadAppendixImage() {
         logger.debug("DataLoadCensus::loadAppendixImage");
-        AppendixImageCommand appendixCommand = new AppendixImageCommandImpl();
-        appendixCommand.setImage(imageService.findById(1L));
-        appendixCommand.setCaption("Appendix caption");
+        AppendixImageCommand appendixImageCommand = new AppendixImageCommandImpl();
+        appendixImageCommand.setImage(imageService.findById(1L));
+        appendixImageCommand.setCaption("Appendix caption");
 
-        appendixImageService.saveAppendixImageCommand(appendixCommand);
+        appendixImageService.saveAppendixImageCommand(appendixImageCommand);
+    }
+
+    private void loadDocumentImage() {
+        logger.debug("DataLoadCensus::loadDocumentImage");
+        DocumentImageCommand documentImageCommand = new DocumentImageCommandImpl();
+        documentImageCommand.setImage(imageService.findById(1L));
+        documentImageCommand.setCaption("Document caption");
+
+        documentImageService.saveDocumentImageCommand(documentImageCommand);
     }
 
 
