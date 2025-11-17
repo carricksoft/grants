@@ -9,4 +9,20 @@ public interface DocumentTextCommand {
     Long getId();
 
     void setId(Long id);
+
+    String getLevel();
+
+    void setLevel(String level);
+
+    String getOrder();
+
+    void setOrder(String order);
+
+    String getHeading();
+
+    void setHeading(String heading);
+
+    String getContent();
+
+    void setContent(String content);
 }

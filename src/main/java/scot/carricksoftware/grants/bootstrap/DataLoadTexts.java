@@ -49,10 +49,6 @@ public class DataLoadTexts {
         loadAppendixText();
     }
 
-    private void loadDocumentText() {
-        DocumentTextCommand documentTextCommand = new DocumentTextCommandImpl();
-        documentTextService.saveDocumentTextCommand(documentTextCommand);
-    }
 
     private void loadPersonText() {
         PersonTextCommand personTextCommand = new PersonTextCommandImpl();
@@ -77,6 +73,12 @@ public class DataLoadTexts {
         PlaceTextCommand placeTextCommand = new PlaceTextCommandImpl();
         placeTextCommand.setPlace(placeService.findById(1L));
         placeTextService.savePlaceTextCommand(placeTextCommand);
+    }
+
+    private void loadDocumentText() {
+        DocumentTextCommand documentTextCommand = new DocumentTextCommandImpl();
+        documentTextCommand.setHeading("document text heading");
+        documentTextService.saveDocumentTextCommand(documentTextCommand);
     }
 
 }
