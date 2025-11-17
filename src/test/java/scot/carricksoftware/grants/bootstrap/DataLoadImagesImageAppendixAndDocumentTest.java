@@ -12,6 +12,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.images.AppendixImageCommand;
+import scot.carricksoftware.grants.commands.images.DocumentImageCommand;
 import scot.carricksoftware.grants.domains.images.Image;
 import scot.carricksoftware.grants.services.images.appendiximage.AppendixImageService;
 import scot.carricksoftware.grants.services.images.documentimage.DocumentImageService;
@@ -25,7 +26,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class DataLoadImagesImageAppendixTest {
+class DataLoadImagesImageAppendixAndDocumentTest {
 
     private DataLoadImages dataLoadImages;
 
@@ -60,7 +61,7 @@ class DataLoadImagesImageAppendixTest {
 
 
     @Test
-    public void anAppendixIsCreatedTest() {
+    public void anAppendixImageIsCreatedTest() {
         ArgumentCaptor<AppendixImageCommand> captor = ArgumentCaptor.forClass(AppendixImageCommand.class);
         Image image = new Image();
 
@@ -70,6 +71,19 @@ class DataLoadImagesImageAppendixTest {
         verify(appendixImageServiceMock).saveAppendixImageCommand(captor.capture());
         assertEquals(image, captor.getValue().getImage());
         assertEquals("Appendix caption", captor.getValue().getCaption());
+    }
+
+    @Test
+    public void aDocumentImageIsCreatedTest() {
+        ArgumentCaptor<DocumentImageCommand> captor = ArgumentCaptor.forClass(DocumentImageCommand.class);
+        Image image = new Image();
+
+        when(imageServiceMock.findById(1L)).thenReturn(image);
+        dataLoadImages.load();
+
+        verify(documentImageServiceMock).saveDocumentImageCommand(captor.capture());
+        assertEquals(image, captor.getValue().getImage());
+        assertEquals("Document caption", captor.getValue().getCaption());
     }
 
 
