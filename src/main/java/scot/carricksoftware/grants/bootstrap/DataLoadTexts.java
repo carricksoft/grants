@@ -31,8 +31,11 @@ public class DataLoadTexts {
     private final AppendixTextService appendixTextService;
 
     public DataLoadTexts(DocumentTextService documentTextService,
-                         PersonTextService personTextService, PlaceTextService placeTextService,
-                         PersonService personService, PlaceService placeService, AppendixTextService appendixTextService) {
+                         PersonTextService personTextService,
+                         PlaceTextService placeTextService,
+                         PersonService personService,
+                         PlaceService placeService,
+                         AppendixTextService appendixTextService) {
         this.documentTextService = documentTextService;
         this.personTextService = personTextService;
         this.placeTextService = placeTextService;

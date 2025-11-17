@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.services.people.PersonService;
 public class DataLoadMarriageCertificates {
 
     private static final Logger logger = LogManager.getLogger(DataLoadMarriageCertificates.class);
+
     private final PersonService personService;
     private final MarriageCertificateService marriageCertificateService;
 

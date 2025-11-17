@@ -59,7 +59,22 @@ public class ImageMappingConstants {
     public static final String APPENDIX_IMAGE_SHOW = "/appendixImage/{id}/show";
     public static final String APPENDIX_IMAGE_DELETE = "/appendixImage/{id}/delete";
     public static final String APPENDIX_IMAGE_EDIT = "appendixImage/{id}/edit";
+
+
+    public static final String DOCUMENT_IMAGE_LIST = "/documentImages";
+    public static final String DOCUMENT_IMAGE_NEXT = "/documentImages/next";
+    public static final String DOCUMENT_IMAGE_PREVIOUS = "/documentImages/prev";
+    public static final String DOCUMENT_IMAGE_REWIND = "/documentImages/rewind";
+    public static final String DOCUMENT_IMAGE_FF = "/documentImages/ff";
+    public static final String DOCUMENT_IMAGE_NEW = "/documentImage/new";
+    public static final String DOCUMENT_IMAGE = "/documentImage";
+    public static final String DOCUMENT_IMAGE_SHOW = "/documentImage/{id}/show";
+    public static final String DOCUMENT_IMAGE_DELETE = "/documentImage/{id}/delete";
+    public static final String DOCUMENT_IMAGE_EDIT = "documentImage/{id}/edit";
+
 }
+
+
 
 
 

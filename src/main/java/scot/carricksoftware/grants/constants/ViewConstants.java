@@ -64,6 +64,9 @@ public class ViewConstants {
     public static final String APPENDIX_IMAGE_LIST = "images/appendixImage/list";
     public static final String APPENDIX_IMAGE_FORM = "images/appendixImage/form";
 
+    public static final String DOCUMENT_IMAGE_LIST = "images/documentImage/list";
+    public static final String DOCUMENT_IMAGE_FORM = "images/documentImage/form";
+
     public static final String DOCUMENT_TEXT_LIST = "text/documentText/list";
     public static final String DOCUMENT_TEXT_FORM = "text/documentText/form";
 

@@ -14,20 +14,20 @@
     <!--suppress SpellCheckingInspection -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
             integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <title>Grants - images</title>
+    <title>Grants - appendix images</title>
 
 </head>
 <body>
-<!--/*@thymesVar id="documentTextCommand" type="scot.carricksoftware.grants.commands.text.DocumentTextCommand"*/-->
+<!--/*@thymesVar id="appendixImageCommand" type="scot.carricksoftware.grants.commands.images.AppendixImageCommand"*/-->
 <div th:insert="~{fragments/layout::banner}"></div>
 
 <div class="container border border-info rounded-3 text-center p-4">
-    <h3>Document Text Details</h3>
-    <form th:object="${documentTextCommand}" th:action="@{/documentText}" method="post">
+    <h3>Appendix Image Details</h3>
+    <form th:object="${appendixImageCommand}" th:action="@{/appendixImage}" method="post">
         <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
             <p>Please Correct The Errors Below</p>
         </div>
-        <table style = "width:100%;">
+        <table style="width:100%;">
             <tr>
                 <td style="text-align: right;">
                     <label for="id"><span style="color: rgb(255,0,0);">*</span>Database Id :&nbsp;</label>
@@ -35,6 +35,23 @@
                 <td style="text-align: left;">
                     <input class="form-control" id="id"
                            th:field="*{id}" type="text" readonly>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="image">Image : &nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <select id="image" name="image" th:field="*{image}">
+                        <option th:value="${''}" th:text="${''}"></option>
+                        <option th:each="image : ${images}"
+                                th:value="${image.id}" th:text="${image.name}"></option>
+                    </select>
+                    <div th:if="${#fields.hasErrors('image')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('image')}" th:text="${err}"/>
+                        </ul>
+                    </div>
                 </td>
             </tr>
             <tr>
@@ -67,26 +84,44 @@
             </tr>
             <tr>
                 <td style="text-align: right;">
-                    <label for="heading">Heading :&nbsp;</label>
+                    <label for="caption">Caption :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
-                    <input class="form-control" id="heading"
-                           th:field="*{heading}" type="text">
-                    <div th:if="${#fields.hasErrors('heading')}">
+                    <input class="form-control" id="caption"
+                           th:field="*{caption}" type="text">
+                    <div th:if="${#fields.hasErrors('caption')}">
                         <ul class="text-danger">
-                            <li th:each="err : ${#fields.errors('heading')}" th:text="${err}"/>
+                            <li th:each="err : ${#fields.errors('caption')}" th:text="${err}"/>
                         </ul>
                     </div>
                 </td>
             </tr>
-            <tr style="border-bottom: 5px solid #ccc;">
+
+            <tr>
                 <td style="text-align: right;">
-                    <label for="content">Content :&nbsp;</label>
+                    <label for="width">Width :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">
-                    <div>
-                        <textarea class="content" id="content" rows="25" cols="60"
-                                  th:field="*{content}" type="text"></textarea>
+                    <input class="form-control" id="width"
+                           th:field="*{width}" type="text">
+                    <div th:if="${#fields.hasErrors('width')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('width')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
+                    <label for="height">Height :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="height"
+                           th:field="*{height}" type="text">
+                    <div th:if="${#fields.hasErrors('height')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('height')}" th:text="${err}"/>
+                        </ul>
                     </div>
                 </td>
             </tr>
@@ -94,10 +129,8 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
-            <tr><td>&nbsp;</td></tr>
-        </table>
         <button type="submit" class="btn btn-primary">Commit</button>
-        <a class="btn btn-secondary" th:href="@{/documentTexts}" th:text="${'List all'}">List all</a>
+        <a class="btn btn-secondary" th:href="@{/appendixImages}" th:text="${'List all'}">List all</a>
         <a class="btn btn-success" th:href="@{/}" th:text="${'Home'}">Home</a>
         <h6><span style="color: rgb(255,0,0);">*</span><span> Cannot be edited</span></h6>
     </form>

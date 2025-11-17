@@ -26,6 +26,9 @@ public class ImageAttributeConstants {
     public static final String APPENDIX_IMAGES = "appendixImages";
     public static final String APPENDIX_IMAGE_COMMAND = "appendixImageCommand";
 
+    public static final String DOCUMENT_IMAGES = "documentImages";
+    public static final String DOCUMENT_IMAGE_COMMAND = "documentImageCommand";
+
 
 
 
