@@ -19,7 +19,6 @@ import scot.carricksoftware.grants.capitalisation.images.documentimage.Capitalis
 import scot.carricksoftware.grants.commands.images.DocumentImageCommand;
 import scot.carricksoftware.grants.commands.images.DocumentImageCommandImpl;
 import scot.carricksoftware.grants.constants.*;
-import scot.carricksoftware.grants.converters.images.documentimage.DocumentImageCommandConverter;
 import scot.carricksoftware.grants.converters.images.documentimage.DocumentImageConverter;
 import scot.carricksoftware.grants.services.images.documentimage.DocumentImageService;
 import scot.carricksoftware.grants.services.images.image.ImageService;
@@ -31,21 +30,17 @@ public class DocumentImageFormControllerImpl implements DocumentImageFormControl
 
     private static final Logger logger = LogManager.getLogger(DocumentImageFormControllerImpl.class);
     private final DocumentImageService documentImageService;
-    @SuppressWarnings("unused")
-    private final DocumentImageCommandConverter documentImageCommandConverter;
     private final DocumentImageConverter documentImageConverter;
     private final DocumentImageCommandValidator documentImageCommandValidator;
     private final ImageService imageService;
     private final CapitaliseDocumentImageCommand capitaliseDocumentImageCommand;
 
     public DocumentImageFormControllerImpl(DocumentImageService documentImageService,
-                                           DocumentImageCommandConverter documentImageCommandConverter,
                                            DocumentImageConverter documentImageConverter,
                                            DocumentImageCommandValidator documentImageCommandValidator,
                                            ImageService imageService,
                                            CapitaliseDocumentImageCommand capitaliseDocumentImageCommand) {
         this.documentImageService = documentImageService;
-        this.documentImageCommandConverter = documentImageCommandConverter;
         this.documentImageConverter = documentImageConverter;
         this.documentImageCommandValidator = documentImageCommandValidator;
         this.imageService = imageService;
