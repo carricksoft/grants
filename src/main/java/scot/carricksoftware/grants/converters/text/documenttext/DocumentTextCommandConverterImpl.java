@@ -23,7 +23,6 @@ public class DocumentTextCommandConverterImpl implements DocumentTextCommandConv
         logger.debug("DocumentTextCommandConverter::convert");
         DocumentText target = new DocumentText();
         target.setId(source.getId());
-        target.setId(source.getId());
         target.setContent(source.getContent());
         target.setLevel(source.getLevel());
         target.setOrder(source.getOrder());
