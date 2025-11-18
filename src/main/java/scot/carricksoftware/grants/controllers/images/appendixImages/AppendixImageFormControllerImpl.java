@@ -23,37 +23,37 @@ import scot.carricksoftware.grants.constants.ImageAttributeConstants;
 import scot.carricksoftware.grants.constants.ImageMappingConstants;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.ViewConstants;
+import scot.carricksoftware.grants.converters.images.appendiximage.AppendixImageCommandConverter;
 import scot.carricksoftware.grants.converters.images.appendiximage.AppendixImageCommandConverterImpl;
-import scot.carricksoftware.grants.converters.images.appendiximage.AppendixImageConverterImpl;
+import scot.carricksoftware.grants.converters.images.appendiximage.AppendixImageConverter;
 import scot.carricksoftware.grants.services.images.appendiximage.AppendixImageService;
 import scot.carricksoftware.grants.services.images.image.ImageService;
-import scot.carricksoftware.grants.validators.images.AppendixImageCommandValidatorImpl;
+import scot.carricksoftware.grants.validators.images.AppendixImageCommandValidator;
 
 
 @Controller
 public class AppendixImageFormControllerImpl implements AppendixImageFormController {
 
     private static final Logger logger = LogManager.getLogger(AppendixImageFormControllerImpl.class);
+
     private final AppendixImageService appendixImageService;
-    @SuppressWarnings({"FieldCanBeLocal", "unused"})
-    private final AppendixImageCommandConverterImpl appendixImageCommandConverter;
-    private final AppendixImageConverterImpl appendixImageConverter;
-    private final AppendixImageCommandValidatorImpl appendixImageCommandValidatorImpl;
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
+    private final AppendixImageCommandConverter appendixImageCommandConverter;
+    private final AppendixImageConverter appendixImageConverter;
+    private final AppendixImageCommandValidator appendixImageCommandValidator;
     private final ImageService imageService;
     private final CapitaliseAppendixImageCommand capitaliseAppendixImageCommand;
 
-
     public AppendixImageFormControllerImpl(AppendixImageService appendixImageService,
                                            AppendixImageCommandConverterImpl appendixImageCommandConverter,
-                                           AppendixImageConverterImpl appendixImageConverter,
-                                           AppendixImageCommandValidatorImpl appendixImageCommandValidatorImpl,
+                                           AppendixImageConverter appendixImageConverter,
+                                           AppendixImageCommandValidator appendixImageCommandValidator,
                                            ImageService imageService,
                                            CapitaliseAppendixImageCommand capitaliseAppendixImageCommand) {
-
         this.appendixImageService = appendixImageService;
         this.appendixImageCommandConverter = appendixImageCommandConverter;
         this.appendixImageConverter = appendixImageConverter;
-        this.appendixImageCommandValidatorImpl = appendixImageCommandValidatorImpl;
+        this.appendixImageCommandValidator = appendixImageCommandValidator;
         this.imageService = imageService;
         this.capitaliseAppendixImageCommand = capitaliseAppendixImageCommand;
     }
@@ -82,7 +82,7 @@ public class AppendixImageFormControllerImpl implements AppendixImageFormControl
         logger.debug("AppendixImageFormControllerImpl::saveOrUpdate");
 
         capitaliseAppendixImageCommand.capitalise(appendixImageCommand);
-        appendixImageCommandValidatorImpl.validate(appendixImageCommand, bindingResult);
+        appendixImageCommandValidator.validate(appendixImageCommand, bindingResult);
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));

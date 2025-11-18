@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.images.documentimage.CapitaliseDocumentImageCommand;
 import scot.carricksoftware.grants.commands.images.DocumentImageCommand;
 import scot.carricksoftware.grants.commands.images.DocumentImageCommandImpl;
 import scot.carricksoftware.grants.constants.*;
@@ -22,6 +23,7 @@ import scot.carricksoftware.grants.converters.images.documentimage.DocumentImage
 import scot.carricksoftware.grants.converters.images.documentimage.DocumentImageConverter;
 import scot.carricksoftware.grants.services.images.documentimage.DocumentImageService;
 import scot.carricksoftware.grants.services.images.image.ImageService;
+import scot.carricksoftware.grants.validators.images.DocumentImageCommandValidator;
 
 
 @Controller
@@ -32,18 +34,22 @@ public class DocumentImageFormControllerImpl implements DocumentImageFormControl
     @SuppressWarnings("unused")
     private final DocumentImageCommandConverter documentImageCommandConverter;
     private final DocumentImageConverter documentImageConverter;
+    private final DocumentImageCommandValidator documentImageCommandValidator;
     private final ImageService imageService;
-
+    private final CapitaliseDocumentImageCommand capitaliseDocumentImageCommand;
 
     public DocumentImageFormControllerImpl(DocumentImageService documentImageService,
                                            DocumentImageCommandConverter documentImageCommandConverter,
                                            DocumentImageConverter documentImageConverter,
-                                           ImageService imageService) {
-
+                                           DocumentImageCommandValidator documentImageCommandValidator,
+                                           ImageService imageService,
+                                           CapitaliseDocumentImageCommand capitaliseDocumentImageCommand) {
         this.documentImageService = documentImageService;
         this.documentImageCommandConverter = documentImageCommandConverter;
         this.documentImageConverter = documentImageConverter;
+        this.documentImageCommandValidator = documentImageCommandValidator;
         this.imageService = imageService;
+        this.capitaliseDocumentImageCommand = capitaliseDocumentImageCommand;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -69,6 +75,9 @@ public class DocumentImageFormControllerImpl implements DocumentImageFormControl
     public String saveOrUpdate(@Valid @ModelAttribute DocumentImageCommand documentImageCommand, BindingResult bindingResult, Model model) {
         logger.debug("DocumentImageFormControllerImpl::saveOrUpdate");
 
+
+        capitaliseDocumentImageCommand.capitalise(documentImageCommand);
+        documentImageCommandValidator.validate(documentImageCommand, bindingResult);
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
