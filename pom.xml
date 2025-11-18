@@ -10,7 +10,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.0</version>
+        <version>3.5.7</version>
+        <type>pom</type>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>scot.carricksoftware</groupId>
@@ -41,14 +42,17 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -78,15 +82,13 @@
             <artifactId>mariadb-java-client</artifactId>
             <scope>runtime</scope>
         </dependency>
+
         <dependency>
             <groupId>org.sonarsource.scanner.maven</groupId>
             <artifactId>sonar-maven-plugin</artifactId>
             <version>5.0.0.4389</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
+
 
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -113,6 +115,14 @@
             <artifactId>testng</artifactId>
             <version>7.11.0</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.liquibase.ext/liquibase-hibernate6 -->
+        <dependency>
+            <groupId>org.liquibase.ext</groupId>
+            <artifactId>liquibase-hibernate6</artifactId>
+            <version>5.0.1</version>
+            <scope>runtime</scope>
         </dependency>
 
 
@@ -162,7 +172,6 @@
             </plugin>
 
             <plugin>
-
                 <groupId>org.liquibase</groupId>
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>4.31.1</version>
@@ -170,35 +179,9 @@
                     <changeLogFile>src/main/resources/db/changelog/master.xml</changeLogFile>
                     <outputChangeLogFile>src/main/resources/db/changelog/migration/1.0_init.postgresql.sql
                     </outputChangeLogFile>
-                                       <propertyFile>src/main/resources/liquibase.properties</propertyFile>
+                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
                 </configuration>
-
-                <dependencies>
-                    <dependency>
-                        <groupId>org.liquibase.ext</groupId>
-                        <artifactId>liquibase-hibernate</artifactId>
-                        <version>5.0.1</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>org.springframework.data</groupId>
-                        <artifactId>spring-data-jpa</artifactId>
-                        <version>3.0.2</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>io.hypersistence</groupId>
-                        <artifactId>hypersistence-utils-hibernate-60</artifactId>
-                        <version>3.9.4</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>com.fasterxml.jackson.core</groupId>
-                        <artifactId>jackson-databind</artifactId>
-                        <version>2.14.2</version>
-                    </dependency>
-
-                </dependencies>
-
             </plugin>
-
 
         </plugins>
     </build>
