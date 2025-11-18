@@ -6,19 +6,15 @@
 package scot.carricksoftware.grants.domains.certificates;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 
-@Entity(name="`birth_certificate`")
+@Entity(name="birth_certificate")
+@Table(name="`birth_certificate`")
 public class BirthCertificate extends BaseCertificate {
 
     @ManyToOne()

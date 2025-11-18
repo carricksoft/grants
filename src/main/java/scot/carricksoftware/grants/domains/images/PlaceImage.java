@@ -8,9 +8,11 @@ package scot.carricksoftware.grants.domains.images;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import scot.carricksoftware.grants.domains.places.Place;
 
-@Entity(name="`place_image`")
+@Entity(name="place_image")
+@Table(name="`place_image`")
 public class PlaceImage extends BaseImage {
 
 

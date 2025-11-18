@@ -66,10 +66,14 @@ public class ImageMappingConstants {
     public static final String DOCUMENT_IMAGE_PREVIOUS = "/documentImages/prev";
     public static final String DOCUMENT_IMAGE_REWIND = "/documentImages/rewind";
     public static final String DOCUMENT_IMAGE_FF = "/documentImages/ff";
+    @SuppressWarnings("unused")
     public static final String DOCUMENT_IMAGE_NEW = "/documentImage/new";
+    @SuppressWarnings("unused")
     public static final String DOCUMENT_IMAGE = "/documentImage";
+    @SuppressWarnings("unused")
     public static final String DOCUMENT_IMAGE_SHOW = "/documentImage/{id}/show";
     public static final String DOCUMENT_IMAGE_DELETE = "/documentImage/{id}/delete";
+    @SuppressWarnings("unused")
     public static final String DOCUMENT_IMAGE_EDIT = "documentImage/{id}/edit";
 
 }

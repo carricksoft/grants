@@ -15,7 +15,8 @@ import scot.carricksoftware.grants.domains.text.PlaceText;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name="`place`")
+@Entity(name="place")
+@Table(name="`place`")
 public class Place extends BaseEntity {
 
     @Column(name = "`name`")

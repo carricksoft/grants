@@ -8,10 +8,13 @@ package scot.carricksoftware.grants.domains.text;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import scot.carricksoftware.grants.domains.places.Place;
 
 
-@Entity(name="`place_text`")
+
+@Entity(name="place_text")
+@Table(name="`place_text`")
 public class PlaceText extends BaseText {
 
     @ManyToOne

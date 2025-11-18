@@ -5,12 +5,7 @@
 
 package scot.carricksoftware.grants.domains.people;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.census.CensusEntry;
 import scot.carricksoftware.grants.domains.certificates.BirthCertificate;
@@ -24,7 +19,8 @@ import scot.carricksoftware.grants.domains.text.PersonText;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name="`person`")
+@Entity(name="person")
+@Table(name="`person`")
 public class Person extends BaseEntity {
 
     @ManyToOne

@@ -8,10 +8,12 @@ package scot.carricksoftware.grants.domains.images;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 import scot.carricksoftware.grants.BaseEntity;
 
 
-@Entity(name="`image`")
+@Entity(name="image")
+@Table(name="`image`")
 public class Image extends BaseEntity {
 
     @Column(name = "`name`")

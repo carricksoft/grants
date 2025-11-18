@@ -6,8 +6,11 @@
 package scot.carricksoftware.grants.domains.images;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-@Entity(name="`document_image`")
+@SuppressWarnings("JpaDataSourceORMInspection")
+@Entity(name="document_image")
+@Table(name="`document_image`")
 public class DocumentImage extends BaseImage {
 
 

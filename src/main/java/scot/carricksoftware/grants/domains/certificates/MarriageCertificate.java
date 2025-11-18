@@ -5,16 +5,14 @@
 
 package scot.carricksoftware.grants.domains.certificates;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import org.springframework.format.annotation.DateTimeFormat;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 
-@Entity(name="`marriage_certificate`")
+@Entity(name="marriage_certificate")
+@Table(name="`marriage_certificate`")
 public class MarriageCertificate extends BaseCertificate {
 
     @ManyToOne

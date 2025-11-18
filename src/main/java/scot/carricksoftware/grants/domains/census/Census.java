@@ -6,14 +6,7 @@
 package scot.carricksoftware.grants.domains.census;
 
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.census.CensusBoundaryType;
@@ -22,7 +15,8 @@ import scot.carricksoftware.grants.enums.census.CensusDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name="`census`")
+@Entity(name="census")
+@Table(name="`census`")
 public class Census extends BaseEntity {
 
     @Enumerated(EnumType.STRING)

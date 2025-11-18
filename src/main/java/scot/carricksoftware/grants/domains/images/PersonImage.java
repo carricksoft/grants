@@ -8,9 +8,11 @@ package scot.carricksoftware.grants.domains.images;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import scot.carricksoftware.grants.domains.people.Person;
 
-@Entity(name="`person_image`")
+@Entity(name="person_image")
+@Table(name="`person_image`")
 public class PersonImage extends BaseImage {
 
     @ManyToOne

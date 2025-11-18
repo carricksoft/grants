@@ -8,9 +8,11 @@ package scot.carricksoftware.grants.domains.text;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import scot.carricksoftware.grants.domains.people.Person;
 
-@Entity(name="`person_text`")
+@Entity(name="person_text")
+@Table(name="`person_text`")
 public class PersonText extends BaseText {
 
     @ManyToOne
@@ -21,7 +23,7 @@ public class PersonText extends BaseText {
         return person;
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(@SuppressWarnings("unused") Person person) {
         this.person = person;
     }
 

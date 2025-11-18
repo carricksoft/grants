@@ -6,8 +6,10 @@
 package scot.carricksoftware.grants.domains.text;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
-@Entity(name="`document_text`")
+@Entity(name="document_text")
+@Table(name="`document_text`")
 public class DocumentText extends BaseText {
 
 

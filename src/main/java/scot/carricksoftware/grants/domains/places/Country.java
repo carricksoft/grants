@@ -5,16 +5,14 @@
 
 package scot.carricksoftware.grants.domains.places;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import scot.carricksoftware.grants.BaseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name="`country`")
+@Entity(name="country")
+@Table(name="`country`")
 public class Country extends BaseEntity {
 
 

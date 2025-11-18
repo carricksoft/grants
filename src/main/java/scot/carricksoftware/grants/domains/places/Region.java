@@ -12,7 +12,8 @@ import scot.carricksoftware.grants.BaseEntity;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity(name="`region`")
+@Entity(name="region")
+@Table(name="`region`")
 public class Region extends BaseEntity {
 
     @Column(name = "`name`")
