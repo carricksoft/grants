@@ -28,7 +28,6 @@ public class DocumentTextConverterImpl implements DocumentTextConverter {
         target.setOrder(source.getOrder());
         target.setHeading(source.getHeading());
         target.setContent(source.getContent());
-        target.setId(source.getId());
         return target;
     }
 
