@@ -60,6 +60,7 @@ public class AppendixImageFormControllerImpl implements AppendixImageFormControl
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.APPENDIX_IMAGE_NEW)
+    @Override
     public final String getNewAppendixImage(final Model model) {
         logger.debug("AppendixImageFormControllerImpl::getNewAppendixImage");
         model.addAttribute(ImageAttributeConstants.APPENDIX_IMAGE_COMMAND, new AppendixImageCommandImpl());
@@ -69,6 +70,7 @@ public class AppendixImageFormControllerImpl implements AppendixImageFormControl
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.APPENDIX_IMAGE_EDIT)
+    @Override
     public final String appendixImageEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("AppendixImageFormControllerImpl::appendixImageEdit");
         model.addAttribute(ImageAttributeConstants.APPENDIX_IMAGE_COMMAND, appendixImageService.findById(Long.valueOf(id)));
@@ -98,6 +100,7 @@ public class AppendixImageFormControllerImpl implements AppendixImageFormControl
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.APPENDIX_IMAGE_SHOW)
+    @Override
     public String showById(@PathVariable String id, Model model) {
         logger.debug("AppendixImageFormControllerImpl::showById");
         AppendixImageCommand savedCommand = appendixImageConverter.convert(appendixImageService.findById(Long.valueOf(id)));

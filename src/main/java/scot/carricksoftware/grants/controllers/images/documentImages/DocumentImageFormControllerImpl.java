@@ -49,6 +49,7 @@ public class DocumentImageFormControllerImpl implements DocumentImageFormControl
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.DOCUMENT_IMAGE_NEW)
+    @Override
     public final String getNewDocumentImage(final Model model) {
         logger.debug("DocumentImageFormControllerImpl::getNewDocumentImage");
         model.addAttribute(ImageAttributeConstants.DOCUMENT_IMAGE_COMMAND, new DocumentImageCommandImpl());
@@ -58,6 +59,7 @@ public class DocumentImageFormControllerImpl implements DocumentImageFormControl
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.DOCUMENT_IMAGE_EDIT)
+    @Override
     public final String documentImageEdit(@Valid @PathVariable final String id, Model model) {
         logger.debug("DocumentImageFormControllerImpl::documentImageEdit");
         model.addAttribute(ImageAttributeConstants.DOCUMENT_IMAGE_COMMAND, documentImageService.findById(Long.valueOf(id)));
@@ -88,6 +90,7 @@ public class DocumentImageFormControllerImpl implements DocumentImageFormControl
 
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.DOCUMENT_IMAGE_SHOW)
+    @Override
     public String showById(@PathVariable String id, Model model) {
         logger.debug("DocumentImageFormControllerImpl::showById");
         DocumentImageCommand savedCommand = documentImageConverter.convert(documentImageService.findById(Long.valueOf(id)));

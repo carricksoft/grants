@@ -28,7 +28,7 @@ import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLo
 
 
 @ExtendWith(MockitoExtension.class)
-public class AppendixImageBaseTextListControllerTest {
+public class AppendixImageTextListControllerTest {
 
     private AppendixImageListControllerImpl controller;
 
