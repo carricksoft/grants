@@ -26,7 +26,7 @@ import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPe
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-public class DataLoadBaseTextTest {
+public class DataLoadTextTest {
 
     private DataLoadTexts dataLoadTexts;
 
@@ -63,6 +63,7 @@ public class DataLoadBaseTextTest {
         ArgumentCaptor<DocumentTextCommand> captor = ArgumentCaptor.forClass(DocumentTextCommand.class);
         dataLoadTexts.load();
         verify(documentTextServiceMock).saveDocumentTextCommand(captor.capture());
+        assertEquals("document text heading", captor.getValue().getHeading());
     }
 
     @Test
