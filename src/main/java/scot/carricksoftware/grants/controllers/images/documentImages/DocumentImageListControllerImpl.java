@@ -37,7 +37,7 @@ public class DocumentImageListControllerImpl implements DocumentImageListControl
     @GetMapping(ImageMappingConstants.DOCUMENT_IMAGE_LIST)
     @Override
     public final String getListPage(final Model model) {
-        logger.debug("PersonListControllerImpl::getPersonImagePage");
+        logger.debug("DocumentImageListControllerImpl::getListPage");
         currentPage = 0;
         return sendAttributesAndReturn(model);
     }
