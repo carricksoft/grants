@@ -11,10 +11,13 @@ import scot.carricksoftware.grants.commands.text.DocumentTextCommand;
 import scot.carricksoftware.grants.commands.text.DocumentTextCommandImpl;
 import scot.carricksoftware.grants.domains.text.DocumentText;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-class DocumentBaseTextCommandConverterTest {
+class DocumentTextCommandConverterTest {
+
 
     private DocumentTextCommandConverter converter;
 
@@ -26,13 +29,27 @@ class DocumentBaseTextCommandConverterTest {
     @Test
     void covertTest() {
         Long Id = GetRandomLong();
+        String order = GetRandomString();
+        String level = GetRandomString();
+        String heading = GetRandomString();
+        String content = GetRandomString();
+
         DocumentTextCommand source = new DocumentTextCommandImpl();
 
         source.setId(Id);
+        source.setOrder(order);
+        source.setLevel(level);
+        source.setHeading(heading);
+        source.setOrder(order);
+        source.setContent(content);
 
         DocumentText target = converter.convert(source);
 
         assertNotNull(target);
         assertEquals(Id, target.getId());
+        assertEquals(order, target.getOrder());
+        assertEquals(level, target.getLevel());
+        assertEquals(heading, target.getHeading());
+        assertEquals(content, target.getContent());
     }
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Andrew Grant of Carrick Software 30/03/2025, 13:45. All rights reserved.
+ * Copyright (c) Andrew Grant of Carrick Software 28/03/2025, 10:44. All rights reserved.
  *
  */
 
@@ -8,7 +8,6 @@ package scot.carricksoftware.grants.converters.text.appendixtext;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import scot.carricksoftware.grants.commands.text.AppendixTextCommand;
-import scot.carricksoftware.grants.commands.text.AppendixTextCommandImpl;
 import scot.carricksoftware.grants.domains.text.AppendixText;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,13 +15,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-class AppendixBaseTextCommandConverterTest {
+class AppendixTextConverterTest {
 
-    private AppendixTextCommandConverter converter;
+    private AppendixTextConverter converter;
 
     @BeforeEach
     void setUp() {
-        converter = new AppendixTextCommandConverterImpl();
+        converter = new AppendixTextConverterImpl();
     }
 
     @Test
@@ -32,8 +31,7 @@ class AppendixBaseTextCommandConverterTest {
         String level = GetRandomString();
         String heading = GetRandomString();
         String content = GetRandomString();
-
-        AppendixTextCommand source = new AppendixTextCommandImpl();
+        AppendixText source = new AppendixText();
 
         source.setId(Id);
         source.setOrder(order);
@@ -42,7 +40,7 @@ class AppendixBaseTextCommandConverterTest {
         source.setOrder(order);
         source.setContent(content);
 
-        AppendixText target = converter.convert(source);
+        AppendixTextCommand target = converter.convert(source);
 
         assertNotNull(target);
         assertEquals(Id, target.getId());

@@ -3,25 +3,26 @@
  *
  */
 
-package scot.carricksoftware.grants.converters.text.appendixtext;
+package scot.carricksoftware.grants.converters.text.documenttext;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import scot.carricksoftware.grants.commands.text.AppendixTextCommand;
-import scot.carricksoftware.grants.domains.text.AppendixText;
+import scot.carricksoftware.grants.commands.text.DocumentTextCommand;
+
+import scot.carricksoftware.grants.domains.text.DocumentText;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 
-class AppendixBaseTextConverterTest {
+class DocumentTextConverterTest {
 
-    private AppendixTextConverter converter;
+    private DocumentTextConverter converter;
 
     @BeforeEach
     void setUp() {
-        converter = new AppendixTextConverterImpl();
+        converter = new DocumentTextConverterImpl();
     }
 
     @Test
@@ -31,7 +32,7 @@ class AppendixBaseTextConverterTest {
         String level = GetRandomString();
         String heading = GetRandomString();
         String content = GetRandomString();
-        AppendixText source = new AppendixText();
+        DocumentText source = new DocumentText();
 
         source.setId(Id);
         source.setOrder(order);
@@ -40,7 +41,7 @@ class AppendixBaseTextConverterTest {
         source.setOrder(order);
         source.setContent(content);
 
-        AppendixTextCommand target = converter.convert(source);
+        DocumentTextCommand target = converter.convert(source);
 
         assertNotNull(target);
         assertEquals(Id, target.getId());
