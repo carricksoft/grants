@@ -116,26 +116,10 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.liquibase.ext/liquibase-hibernate6 -->
-        <dependency>
-            <groupId>org.liquibase.ext</groupId>
-            <artifactId>liquibase-hibernate6</artifactId>
-            <version>5.0.1</version>
-            <scope>runtime</scope>
-        </dependency>
-
-
     </dependencies>
     <build>
 
         <plugins>
-
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <version>3.4.5</version>
-            </plugin>
-
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
@@ -168,18 +152,6 @@
                         <version>1.2.2</version>
                     </dependency>
                 </dependencies>
-            </plugin>
-
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>4.31.1</version>
-                <configuration>
-                    <changeLogFile>src/main/resources/db/changelog/master.xml</changeLogFile>
-                    <outputChangeLogFile>src/main/resources/db/changelog/migration/1.0_init.postgresql.sql
-                    </outputChangeLogFile>
-                    <propertyFile>src/main/resources/liquibase.properties</propertyFile>
-                </configuration>
             </plugin>
 
         </plugins>
