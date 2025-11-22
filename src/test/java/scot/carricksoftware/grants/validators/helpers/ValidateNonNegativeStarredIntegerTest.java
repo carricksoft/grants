@@ -57,10 +57,18 @@ class ValidateNonNegativeStarredIntegerTest {
     }
 
     @Test
+    void validateStarInteger() {
+        String nullMessage = GetRandomString();
+
+        validateTypes.validateNonNegativeStaredInteger("*", fieldName, nullMessage, "", "", bindingResultMock);
+        verify(bindingResultMock).rejectValue(fieldName, "", null, nullMessage);
+    }
+
+    @Test
     void validateNegativeInteger() {
         String negativeMessage = GetRandomString();
 
-        validateTypes.validateNonNegativeStaredInteger("-5", fieldName, "", "", negativeMessage, bindingResultMock);
+        validateTypes.validateNonNegativeStaredInteger("-7", fieldName, "", "", negativeMessage, bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, negativeMessage);
     }
 
