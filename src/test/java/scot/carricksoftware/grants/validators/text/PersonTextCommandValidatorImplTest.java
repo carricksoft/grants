@@ -21,7 +21,7 @@ import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRan
 import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
-class PersonBaseTextCommandValidatorImplTest {
+class PersonTextCommandValidatorImplTest {
 
     private PersonTextCommandValidatorImpl validator;
 

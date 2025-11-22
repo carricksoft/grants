@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 @ExtendWith(MockitoExtension.class)
-class AppendixBaseTextCommandValidatorImplTest {
+class AppendixTextCommandValidatorImplTest {
 
     private AppendixTextCommandValidatorImpl validator;
 

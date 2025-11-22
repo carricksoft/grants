@@ -113,6 +113,26 @@ public class ValidateTypesImpl implements ValidateTypes {
     }
 
     @Override
+    public void validateIntegerStaredRange(String integerString,
+                                           Integer lowValue, Integer highValue, String fieldName,
+                                           String nullMessage, String formatMessage, String rangeMessage,
+                                           BindingResult bindingResult) {
+        if (integerString != null && !integerString.isEmpty()) {
+            int pos = integerString.lastIndexOf('*');
+            if (pos != -1) {
+                String newString = integerString.substring(0, pos);
+                validateIntegerRange(newString, lowValue,highValue,fieldName,nullMessage,formatMessage,rangeMessage,bindingResult);
+            } else {
+                validateIntegerRange(integerString, lowValue,highValue,fieldName,nullMessage,formatMessage,rangeMessage,bindingResult);
+            }
+        } else {
+            bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, nullMessage);
+        }
+
+
+    }
+
+    @Override
     public void validateFileType(String fileName, String fieldName, String[] allowedFileExtensions, String message, BindingResult bindingResult) {
         String extension = fileName.substring(fileName.lastIndexOf('.') + 1).toUpperCase(Locale.ROOT);
         boolean validExtension = false;

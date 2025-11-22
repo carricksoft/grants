@@ -37,6 +37,13 @@ public interface ValidateTypes {
                               String nullMessage, String formatMessage, String rangeMessage,
                               BindingResult bindingResult);
 
+    void validateIntegerStaredRange(String integerString,
+                              Integer lowValue,
+                              Integer highValue,
+                              String fieldName, @SuppressWarnings("SameParameterValue")
+                              String nullMessage, String formatMessage, String rangeMessage,
+                              BindingResult bindingResult);
+
     void validateFileType(String fileName,
                           String fieldName,
                           String[] allowedFileExtensions,
