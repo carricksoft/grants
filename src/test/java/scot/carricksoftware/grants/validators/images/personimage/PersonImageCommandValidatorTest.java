@@ -81,7 +81,7 @@ class PersonImageCommandValidatorTest {
         when(personImageCommandMock.getLevel()).thenReturn(level);
         validator.validate(personImageCommandMock, bindingResultMock);
 
-        verify(validateTypesMock).validateNonNegativeInteger(level,
+        verify(validateTypesMock).validateNonNegativeStaredInteger(level,
                 "level", "Level must exist.", "Level must be an integer.",
                 "The level must be non-negative.", bindingResultMock);
     }

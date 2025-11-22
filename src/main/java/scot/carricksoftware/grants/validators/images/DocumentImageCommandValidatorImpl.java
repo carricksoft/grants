@@ -74,7 +74,7 @@ public class DocumentImageCommandValidatorImpl implements DocumentImageCommandVa
 
     private void validateLevel(DocumentImageCommand imageCommand, BindingResult bindingResult) {
         logger.debug("DocumentImageCommandValidator::validateLevel");
-        validateTypes.validateNonNegativeInteger(imageCommand.getLevel(), "level",
+        validateTypes.validateNonNegativeStaredInteger(imageCommand.getLevel(), "level",
                 ValidationConstants.LEVEL_IS_NULL,
                 ValidationConstants.LEVEL_IS_INVALID,
                 ValidationConstants.LEVEL_IS_NEGATIVE,

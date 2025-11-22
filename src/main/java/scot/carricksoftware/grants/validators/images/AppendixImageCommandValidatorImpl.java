@@ -74,7 +74,7 @@ public class AppendixImageCommandValidatorImpl implements AppendixImageCommandVa
 
     private void validateLevel(AppendixImageCommand imageCommand, BindingResult bindingResult) {
         logger.debug("AppendixImageCommandValidator::validateLevel");
-        validateTypes.validateNonNegativeInteger(imageCommand.getLevel(), "level",
+        validateTypes.validateNonNegativeStaredInteger(imageCommand.getLevel(), "level",
                 ValidationConstants.LEVEL_IS_NULL,
                 ValidationConstants.LEVEL_IS_INVALID,
                 ValidationConstants.LEVEL_IS_NEGATIVE,

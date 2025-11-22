@@ -75,7 +75,7 @@ public class PersonImageCommandValidatorImpl implements PersonImageCommandValida
 
     private void validateLevel(PersonImageCommand imageCommand, BindingResult bindingResult) {
         logger.debug("ImageCommandValidator::validateLevel");
-        validateTypes.validateNonNegativeInteger(imageCommand.getLevel(), "level",
+        validateTypes.validateNonNegativeStaredInteger(imageCommand.getLevel(), "level",
                 ValidationConstants.LEVEL_IS_NULL,
                 ValidationConstants.LEVEL_IS_INVALID,
                 ValidationConstants.LEVEL_IS_NEGATIVE,

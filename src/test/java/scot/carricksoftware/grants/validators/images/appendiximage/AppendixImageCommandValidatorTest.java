@@ -69,7 +69,7 @@ class AppendixImageCommandValidatorTest {
         when(appendixImageCommandMock.getLevel()).thenReturn(level);
         validator.validate(appendixImageCommandMock, bindingResultMock);
 
-        verify(validateTypesMock).validateNonNegativeInteger(level,
+        verify(validateTypesMock).validateNonNegativeStaredInteger(level,
                 "level", "Level must exist.", "Level must be an integer.",
                 "The level must be non-negative.", bindingResultMock);
     }
