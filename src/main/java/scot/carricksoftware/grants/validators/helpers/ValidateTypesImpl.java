@@ -79,6 +79,25 @@ public class ValidateTypesImpl implements ValidateTypes {
     }
 
     @Override
+    public void validateNonNegativeStaredInteger(String integerString, String fieldName, String nullMessage, String formatMessage, String negativeMessage, BindingResult bindingResult) {
+        if (integerString == null || integerString.isEmpty()) {
+            assert integerString != null;
+            Integer pos = integerString.lastIndexOf('*');
+            //noinspection ConstantValue
+            if (pos != null) {
+                //noinspection ConstantValue
+                if (pos != -1) {
+                    String newString = integerString.substring(0, pos);
+                    validateNonNegativeInteger(newString, fieldName, nullMessage, formatMessage, negativeMessage, bindingResult);
+                } else {
+                    validateNonNegativeInteger(integerString, fieldName, nullMessage, formatMessage, negativeMessage, bindingResult);
+                }
+            }
+        }
+
+    }
+
+    @Override
     public void validateIntegerRange(String integerString,
                                      Integer lowValue, Integer highValue, String fieldName,
                                      String nullMessage, String formatMessage, String rangeMessage,
@@ -107,7 +126,7 @@ public class ValidateTypesImpl implements ValidateTypes {
                 break;
             }
         }
-        if (!validExtension){
+        if (!validExtension) {
             bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, message);
         }
 
