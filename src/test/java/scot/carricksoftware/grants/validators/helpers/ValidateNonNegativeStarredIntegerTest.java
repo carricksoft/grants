@@ -76,6 +76,12 @@ class ValidateNonNegativeStarredIntegerTest {
         verifyNoInteractions(bindingResultMock);
     }
 
+    @Test
+    void validateStarredPositiveInteger() {
+        validateTypes.validateNonNegativeStaredInteger("1*", fieldName, "", "", "", bindingResultMock);
+        verifyNoInteractions(bindingResultMock);
+    }
+
 
     @Test
     void validateBadFormatInteger() {
