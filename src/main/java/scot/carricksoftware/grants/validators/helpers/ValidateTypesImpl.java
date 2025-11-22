@@ -19,7 +19,6 @@ import java.util.Locale;
 @Component
 public class ValidateTypesImpl implements ValidateTypes {
 
-
     @Override
     public void validatePerson(Person person, String fieldName, String message, BindingResult bindingResult) {
         if (person == null) {
@@ -80,19 +79,16 @@ public class ValidateTypesImpl implements ValidateTypes {
 
     @Override
     public void validateNonNegativeStaredInteger(String integerString, String fieldName, String nullMessage, String formatMessage, String negativeMessage, BindingResult bindingResult) {
-        if (integerString == null || integerString.isEmpty()) {
-            assert integerString != null;
-            Integer pos = integerString.lastIndexOf('*');
-            //noinspection ConstantValue
-            if (pos != null) {
-                //noinspection ConstantValue
+        if (integerString != null && !integerString.isEmpty()) {
+            int pos = integerString.lastIndexOf('*');
                 if (pos != -1) {
                     String newString = integerString.substring(0, pos);
                     validateNonNegativeInteger(newString, fieldName, nullMessage, formatMessage, negativeMessage, bindingResult);
                 } else {
                     validateNonNegativeInteger(integerString, fieldName, nullMessage, formatMessage, negativeMessage, bindingResult);
                 }
-            }
+        } else {
+            bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, nullMessage);
         }
 
     }
