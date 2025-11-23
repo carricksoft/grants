@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 @ExtendWith(MockitoExtension.class)
-class ValidateIntegerStaredRangeTest {
+class ValidateIntegerAsteriskRangeTest {
 
     private ValidateTypes validateTypes;
 
@@ -43,7 +43,7 @@ class ValidateIntegerStaredRangeTest {
     public void validateNullInteger() {
         String nullMessage = GetRandomString();
 
-        validateTypes.validateIntegerStaredRange(null, null, null, fieldName, nullMessage, "", "", bindingResultMock);
+        validateTypes.validateIntegerAsteriskRange(null, null, null, fieldName, nullMessage, "", "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, nullMessage);
     }
 
@@ -51,7 +51,7 @@ class ValidateIntegerStaredRangeTest {
     public void validateEmptyInteger() {
         String nullMessage = GetRandomString();
 
-        validateTypes.validateIntegerStaredRange("*", null, null, fieldName, nullMessage, "", "", bindingResultMock);
+        validateTypes.validateIntegerAsteriskRange("*", null, null, fieldName, nullMessage, "", "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, nullMessage);
     }
 
@@ -59,7 +59,7 @@ class ValidateIntegerStaredRangeTest {
     public void validateBadFormatInteger() {
         String formatMessage = GetRandomString();
 
-        validateTypes.validateIntegerStaredRange("zz", null, null, fieldName, "", formatMessage, "", bindingResultMock);
+        validateTypes.validateIntegerAsteriskRange("zz", null, null, fieldName, "", formatMessage, "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, formatMessage);
     }
 
@@ -67,19 +67,19 @@ class ValidateIntegerStaredRangeTest {
     public void validateTooLowInteger() {
         String rangeMessage = GetRandomString();
 
-        validateTypes.validateIntegerStaredRange("-6*", -5, 99, fieldName, "", "", rangeMessage, bindingResultMock);
+        validateTypes.validateIntegerAsteriskRange("-6*", -5, 99, fieldName, "", "", rangeMessage, bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, rangeMessage);
     }
 
     @Test
     public void validateLowLimitInteger() {
-        validateTypes.validateIntegerStaredRange("-6*", -6, 99, fieldName, "", "", "", bindingResultMock);
+        validateTypes.validateIntegerAsteriskRange("-6*", -6, 99, fieldName, "", "", "", bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
     public void validateHighLimitInteger() {
-        validateTypes.validateIntegerStaredRange("10*", -6, 10, fieldName, "", "", "", bindingResultMock);
+        validateTypes.validateIntegerAsteriskRange("10*", -6, 10, fieldName, "", "", "", bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
@@ -87,7 +87,7 @@ class ValidateIntegerStaredRangeTest {
     public void validateTooHighInteger() {
         String rangeMessage = GetRandomString();
 
-        validateTypes.validateIntegerStaredRange("11*", -5, 10, fieldName, "", "", rangeMessage, bindingResultMock);
+        validateTypes.validateIntegerAsteriskRange("11*", -5, 10, fieldName, "", "", rangeMessage, bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, rangeMessage);
     }
 

@@ -54,7 +54,7 @@ class DocumentTextCommandValidatorImplTest {
         String level = GetRandomString();
         documentTextCommand.setLevel(level);
         validator.validate(documentTextCommand, bindingResultMock);
-        verify(validateTypesMock).validateIntegerStaredRange(level,
+        verify(validateTypesMock).validateIntegerAsteriskRange(level,
                 -2,
                 5,
                 "level",

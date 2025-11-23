@@ -28,7 +28,7 @@ public interface ValidateTypes {
 
     void validateNonNegativeInteger(String integerString, String fieldName, @SuppressWarnings("SameParameterValue") String nullMessage, String formatMessage, String negativeMessage, BindingResult bindingResult);
 
-    void validateNonNegativeStaredInteger(String integerString, String fieldName, @SuppressWarnings("SameParameterValue") String nullMessage, String formatMessage, String negativeMessage, BindingResult bindingResult);
+    void validateNonNegativeAsteriskInteger(String integerString, String fieldName, @SuppressWarnings("SameParameterValue") String nullMessage, String formatMessage, String negativeMessage, BindingResult bindingResult);
 
     void validateIntegerRange(String integerString,
                               Integer lowValue,
@@ -37,7 +37,7 @@ public interface ValidateTypes {
                               String nullMessage, String formatMessage, String rangeMessage,
                               BindingResult bindingResult);
 
-    void validateIntegerStaredRange(String integerString,
+    void validateIntegerAsteriskRange(String integerString,
                               Integer lowValue,
                               Integer highValue,
                               String fieldName, @SuppressWarnings("SameParameterValue")

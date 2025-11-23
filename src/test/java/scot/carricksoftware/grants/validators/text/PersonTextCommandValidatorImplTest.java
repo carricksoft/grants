@@ -56,7 +56,7 @@ class PersonTextCommandValidatorImplTest {
         String level = GetRandomString();
         personTextCommand.setLevel(level);
         validator.validate(personTextCommand, bindingResultMock);
-        verify(validateTypesMock).validateIntegerStaredRange(level,
+        verify(validateTypesMock).validateIntegerAsteriskRange(level,
                 -2,
                 5,
                 "level",

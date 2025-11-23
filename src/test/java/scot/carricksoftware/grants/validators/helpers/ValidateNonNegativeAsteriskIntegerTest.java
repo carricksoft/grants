@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verifyNoInteractions;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 
 @ExtendWith(MockitoExtension.class)
-class ValidateNonNegativeStarredIntegerTest {
+class ValidateNonNegativeAsteriskIntegerTest {
 
     private ValidateTypes validateTypes;
 
@@ -43,7 +43,7 @@ class ValidateNonNegativeStarredIntegerTest {
     public void validateNullInteger() {
         String nullMessage = GetRandomString();
 
-        validateTypes.validateNonNegativeStaredInteger(null, fieldName, nullMessage, "", "", bindingResultMock);
+        validateTypes.validateNonNegativeAsteriskInteger(null, fieldName, nullMessage, "", "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, nullMessage);
     }
 
@@ -52,7 +52,7 @@ class ValidateNonNegativeStarredIntegerTest {
     void validateEmptyInteger() {
         String nullMessage = GetRandomString();
 
-        validateTypes.validateNonNegativeStaredInteger("", fieldName, nullMessage, "", "", bindingResultMock);
+        validateTypes.validateNonNegativeAsteriskInteger("", fieldName, nullMessage, "", "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, nullMessage);
     }
 
@@ -60,7 +60,7 @@ class ValidateNonNegativeStarredIntegerTest {
     void validateStarInteger() {
         String nullMessage = GetRandomString();
 
-        validateTypes.validateNonNegativeStaredInteger("*", fieldName, nullMessage, "", "", bindingResultMock);
+        validateTypes.validateNonNegativeAsteriskInteger("*", fieldName, nullMessage, "", "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, nullMessage);
     }
 
@@ -68,25 +68,25 @@ class ValidateNonNegativeStarredIntegerTest {
     void validateNegativeInteger() {
         String negativeMessage = GetRandomString();
 
-        validateTypes.validateNonNegativeStaredInteger("-7", fieldName, "", "", negativeMessage, bindingResultMock);
+        validateTypes.validateNonNegativeAsteriskInteger("-7", fieldName, "", "", negativeMessage, bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, negativeMessage);
     }
 
     @Test
     void validateZeroInteger() {
-        validateTypes.validateNonNegativeStaredInteger("0", fieldName, "", "", "", bindingResultMock);
+        validateTypes.validateNonNegativeAsteriskInteger("0", fieldName, "", "", "", bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
     void validatePositiveInteger() {
-        validateTypes.validateNonNegativeStaredInteger("1", fieldName, "", "", "", bindingResultMock);
+        validateTypes.validateNonNegativeAsteriskInteger("1", fieldName, "", "", "", bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
     @Test
     void validateStarredPositiveInteger() {
-        validateTypes.validateNonNegativeStaredInteger("1*", fieldName, "", "", "", bindingResultMock);
+        validateTypes.validateNonNegativeAsteriskInteger("1*", fieldName, "", "", "", bindingResultMock);
         verifyNoInteractions(bindingResultMock);
     }
 
@@ -95,7 +95,7 @@ class ValidateNonNegativeStarredIntegerTest {
     void validateBadFormatInteger() {
         String formatMessage = GetRandomString();
 
-        validateTypes.validateNonNegativeStaredInteger("zz", fieldName, "", formatMessage, "", bindingResultMock);
+        validateTypes.validateNonNegativeAsteriskInteger("zz", fieldName, "", formatMessage, "", bindingResultMock);
         verify(bindingResultMock).rejectValue(fieldName, "", null, formatMessage);
     }
 }

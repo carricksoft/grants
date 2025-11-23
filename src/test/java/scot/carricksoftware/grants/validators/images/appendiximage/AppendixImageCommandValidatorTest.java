@@ -71,7 +71,7 @@ class AppendixImageCommandValidatorTest {
         String level = GetRandomString();
         when(appendixImageCommandMock.getLevel()).thenReturn(level);
         validator.validate(appendixImageCommandMock, bindingResultMock);
-        verify(validateTypesMock).validateIntegerStaredRange(level,
+        verify(validateTypesMock).validateIntegerAsteriskRange(level,
                 -2,
                 5,
                 "level",

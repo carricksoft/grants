@@ -80,7 +80,7 @@ class PersonImageCommandValidatorTest {
         String level = GetRandomString();
         when(personImageCommandMock.getLevel()).thenReturn(level);
         validator.validate(personImageCommandMock, bindingResultMock);
-        verify(validateTypesMock).validateIntegerStaredRange(level,
+        verify(validateTypesMock).validateIntegerAsteriskRange(level,
                 -2,
                 5,
                 "level",

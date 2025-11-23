@@ -37,7 +37,7 @@ public class PersonTextCommandValidatorImpl implements PersonTextCommandValidato
 
     private void validateLevel(String integerString, BindingResult bindingResult) {
         logger.debug("AppendixImageCommandValidator::validateLevel");
-        validateTypes.validateIntegerStaredRange(integerString,
+        validateTypes.validateIntegerAsteriskRange(integerString,
                 ApplicationConstants.LATEX_BOOK,
                 ApplicationConstants.LATEX_SUB_PARAGRAPH, "level",
                 ValidationConstants.LEVEL_IS_NULL,

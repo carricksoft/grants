@@ -78,7 +78,7 @@ public class ValidateTypesImpl implements ValidateTypes {
     }
 
     @Override
-    public void validateNonNegativeStaredInteger(String integerString, String fieldName, String nullMessage, String formatMessage, String negativeMessage, BindingResult bindingResult) {
+    public void validateNonNegativeAsteriskInteger(String integerString, String fieldName, String nullMessage, String formatMessage, String negativeMessage, BindingResult bindingResult) {
         if (integerString != null && !integerString.isEmpty()) {
             int pos = integerString.lastIndexOf('*');
                 if (pos != -1) {
@@ -112,8 +112,9 @@ public class ValidateTypesImpl implements ValidateTypes {
         }
     }
 
+
     @Override
-    public void validateIntegerStaredRange(String integerString,
+    public void validateIntegerAsteriskRange(String integerString,
                                            Integer lowValue, Integer highValue, String fieldName,
                                            String nullMessage, String formatMessage, String rangeMessage,
                                            BindingResult bindingResult) {
