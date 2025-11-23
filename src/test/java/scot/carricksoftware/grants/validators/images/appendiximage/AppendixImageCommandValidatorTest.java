@@ -64,8 +64,6 @@ class AppendixImageCommandValidatorTest {
     }
 
 
-
-
     @Test
     void validateLevelIsCalledTest() {
         String level = GetRandomString();

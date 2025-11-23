@@ -63,6 +63,21 @@ class DocumentImageCommandValidatorTest {
                 "The order must be non-negative.", bindingResultMock);
     }
 
+    @Test
+    void validateLevelIsCalledTest() {
+        String level = GetRandomString();
+        when(documentImageCommandMock.getLevel()).thenReturn(level);
+        validator.validate(documentImageCommandMock, bindingResultMock);
+        verify(validateTypesMock).validateIntegerAsteriskRange(level,
+                -2,
+                5,
+                "level",
+                "Level must exist.",
+                "Level must be an integer.",
+                "Level must be between -2 and 5.", bindingResultMock);
+    }
+
+
 
 
 
