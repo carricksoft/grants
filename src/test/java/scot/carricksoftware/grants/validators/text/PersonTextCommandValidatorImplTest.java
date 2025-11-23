@@ -13,10 +13,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.text.PersonTextCommand;
 import scot.carricksoftware.grants.commands.text.PersonTextCommandImpl;
+import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
 class PersonTextCommandValidatorImplTest {
@@ -65,4 +67,13 @@ class PersonTextCommandValidatorImplTest {
                 "Level must be between -2 and 5.", bindingResultMock);
     }
 
+
+    @Test
+    void validatePersonIsCalledTest() {
+        Person person =  GetRandomPerson();
+        personTextCommand.setPerson(person);
+        validator.validate(personTextCommand, bindingResultMock);
+        verify(validateTypesMock).validatePerson(person, "person",  "The person cannot be null.", bindingResultMock);
+
+    }
 }
