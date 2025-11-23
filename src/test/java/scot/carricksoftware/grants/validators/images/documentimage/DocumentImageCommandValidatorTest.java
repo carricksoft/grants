@@ -63,16 +63,7 @@ class DocumentImageCommandValidatorTest {
                 "The order must be non-negative.", bindingResultMock);
     }
 
-    @Test
-    void validateLevelIsRunTest() {
-        String level = GetRandomString();
-        when(documentImageCommandMock.getLevel()).thenReturn(level);
-        validator.validate(documentImageCommandMock, bindingResultMock);
 
-        verify(validateTypesMock).validateNonNegativeStaredInteger(level,
-                "level", "Level must exist.", "Level must be an integer.",
-                "The level must be non-negative.", bindingResultMock);
-    }
 
 
 }

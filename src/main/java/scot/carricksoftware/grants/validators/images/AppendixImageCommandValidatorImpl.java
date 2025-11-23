@@ -31,7 +31,7 @@ public class AppendixImageCommandValidatorImpl implements AppendixImageCommandVa
         logger.debug("AppendixCommandValidator::validate");
         validateImage(imageCommand, bindingResult);
         validateOrder(imageCommand, bindingResult);
-        validateLevel(imageCommand, bindingResult);
+        validateLevel(imageCommand.getLevel(), bindingResult);
         validateWidth(imageCommand, bindingResult);
         validateHeight(imageCommand, bindingResult);
     }
@@ -72,12 +72,14 @@ public class AppendixImageCommandValidatorImpl implements AppendixImageCommandVa
     }
 
 
-    private void validateLevel(AppendixImageCommand imageCommand, BindingResult bindingResult) {
+    private void validateLevel(String integerString, BindingResult bindingResult) {
         logger.debug("AppendixImageCommandValidator::validateLevel");
-        validateTypes.validateNonNegativeStaredInteger(imageCommand.getLevel(), "level",
+        validateTypes.validateIntegerStaredRange(integerString,
+                ApplicationConstants.LATEX_BOOK,
+                ApplicationConstants.LATEX_SUB_PARAGRAPH, "level",
                 ValidationConstants.LEVEL_IS_NULL,
                 ValidationConstants.LEVEL_IS_INVALID,
-                ValidationConstants.LEVEL_IS_NEGATIVE,
+                ValidationConstants.LEVEL_IS_OUTSIDE_LIMITS,
                 bindingResult);
     }
 

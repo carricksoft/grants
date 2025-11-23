@@ -63,16 +63,23 @@ class AppendixImageCommandValidatorTest {
                 "The order must be non-negative.", bindingResultMock);
     }
 
+
+
+
     @Test
-    void validateLevelIsRunTest() {
+    void validateLevelIsCalledTest() {
         String level = GetRandomString();
         when(appendixImageCommandMock.getLevel()).thenReturn(level);
         validator.validate(appendixImageCommandMock, bindingResultMock);
-
-        verify(validateTypesMock).validateNonNegativeStaredInteger(level,
-                "level", "Level must exist.", "Level must be an integer.",
-                "The level must be non-negative.", bindingResultMock);
+        verify(validateTypesMock).validateIntegerStaredRange(level,
+                -2,
+                5,
+                "level",
+                "Level must exist.",
+                "Level must be an integer.",
+                "Level must be between -2 and 5.", bindingResultMock);
     }
+
 
 
 }

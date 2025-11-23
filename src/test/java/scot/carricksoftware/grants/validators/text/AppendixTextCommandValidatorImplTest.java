@@ -54,7 +54,7 @@ class AppendixTextCommandValidatorImplTest {
         String level = GetRandomString();
         appendixTextCommand.setLevel(level);
         validator.validate(appendixTextCommand, bindingResultMock);
-        verify(validateTypesMock).validateIntegerRange(level,
+        verify(validateTypesMock).validateIntegerStaredRange(level,
                 -2,
                 5,
                 "level",

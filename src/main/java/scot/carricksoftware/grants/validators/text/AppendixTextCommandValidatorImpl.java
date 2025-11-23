@@ -28,16 +28,22 @@ public class AppendixTextCommandValidatorImpl implements AppendixTextCommandVali
 
     @Override
     public void validate(AppendixTextCommand appendixTextCommand, BindingResult bindingResult) {
-        logger.debug("PersonTextCommandValidator::validate");
+        logger.debug("AppendixTextCommandValidator::validate");
         validateOrder(appendixTextCommand.getOrder(), bindingResult);
         validateLevel(appendixTextCommand.getLevel(), bindingResult);
     }
 
-    private void validateLevel(String level, BindingResult bindingResult) {
-        logger.debug("PersonTextCommandValidator::validateLevel");
-        validateTypes.validateIntegerRange(level, ApplicationConstants.LATEX_BOOK, ApplicationConstants.LATEX_SUB_PARAGRAPH, "level",
-                ValidationConstants.LEVEL_IS_NULL, ValidationConstants.LEVEL_IS_INVALID, ValidationConstants.LEVEL_IS_OUTSIDE_LIMITS, bindingResult);
+    private void validateLevel(String integerString, BindingResult bindingResult) {
+        logger.debug("AppendixImageCommandValidator::validateLevel");
+        validateTypes.validateIntegerStaredRange(integerString,
+                ApplicationConstants.LATEX_BOOK,
+                ApplicationConstants.LATEX_SUB_PARAGRAPH, "level",
+                ValidationConstants.LEVEL_IS_NULL,
+                ValidationConstants.LEVEL_IS_INVALID,
+                ValidationConstants.LEVEL_IS_OUTSIDE_LIMITS,
+                bindingResult);
     }
+
 
     private void validateOrder(String order, BindingResult bindingResult) {
         logger.debug("PersonTextCommandValidator::validateOrder");
