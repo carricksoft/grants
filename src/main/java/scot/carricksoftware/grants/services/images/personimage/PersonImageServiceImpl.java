@@ -75,7 +75,7 @@ public class PersonImageServiceImpl implements PersonImageService {
     private Sort getSort() {
         return Sort.by(Sort.Direction.ASC, "person.lastName")
                 .and(Sort.by(Sort.Direction.ASC, "person.firstName")
-                        .and(Sort.by(Sort.Direction.ASC, "person.firstName")
+                        .and(Sort.by(Sort.Direction.ASC, "person.certifiedYearOfBirth")
                                 .and(Sort.by(Sort.Direction.ASC,  "order")
                                         .and(Sort.by(Sort.Direction.ASC, "level")))));
     }
