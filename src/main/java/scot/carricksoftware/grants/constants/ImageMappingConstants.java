@@ -22,9 +22,9 @@ public class ImageMappingConstants {
     public static final String IMAGE_FF = "/images/ff";
     public static final String IMAGE_NEW = "/image/new";
     public static final String IMAGE = "/image";
-    public static final String IMAGE_SHOW = "/image/{id}/show";
-    public static final String IMAGE_DELETE = "/image/{id}/delete";
-    public static final String IMAGE_EDIT = "image/{id}/edit";
+    public static final String IMAGE_SHOW = "/images/image/{id}/show";
+    public static final String IMAGE_DELETE = "/images/image/{id}/delete";
+    public static final String IMAGE_EDIT = "/images/image/{id}/edit";
     
     public static final String PERSON_IMAGE_LIST = "/personImages";
     public static final String PERSON_IMAGE_NEXT = "/personImages/next";
