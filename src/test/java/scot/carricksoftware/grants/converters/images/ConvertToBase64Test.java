@@ -23,7 +23,6 @@ class ConvertToBase64Test {
     void convertTest() {
         String testString = "Many hands make light work.";
 
-        @SuppressWarnings("SpellCheckingInspection")
         String wikipediaAnswer = "TWFueSBoYW5kcyBtYWtlIGxpZ2h0IHdvcmsu";
 
         byte[] testBytes = testString.getBytes();
