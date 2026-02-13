@@ -22,10 +22,12 @@ public class PlaceTextConverterImpl implements PlaceTextConverter {
     public PlaceTextCommand convert(@NotNull PlaceText source) {
         logger.debug("PlaceTextCommandConverter::convert");
         PlaceTextCommand target = new PlaceTextCommandImpl();
+        target.setLevel(source.getLevel());
+        target.setOrder(source.getOrder());
+        target.setHeading(source.getHeading());
+        target.setContent(source.getContent());
         target.setId(source.getId());
         target.setPlace(source.getPlace());
         return target;
     }
-
-
 }

@@ -24,8 +24,11 @@ public class PlaceTextCommandConverterImpl implements PlaceTextCommandConverter 
         PlaceText target = new PlaceText();
         target.setId(source.getId());
         target.setPlace(source.getPlace());
+        target.setContent(source.getContent());
+        target.setLevel(source.getLevel());
+        target.setOrder(source.getOrder());
+        target.setHeading(source.getHeading());
         return target;
     }
-
 
 }
