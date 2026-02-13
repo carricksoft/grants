@@ -24,7 +24,9 @@
             <tr>
                 <th>ID</th>
                 <th>Place</th>
-                <th></th>
+                <th>Order</th>
+                <th>Level</th>
+                <th>Heading</th>
                 <th></th>
             </tr>
             </thead>
@@ -35,7 +37,9 @@
             <tr th:each="text : ${placeTexts}">
                 <td th:text="${text.id}">123</td>
                 <td th:text="${text.place.toString()}">123</td>
-                <td></td>
+                <td th:text="${text.order}">order</td>
+                <td th:text="${text.level}">order</td>
+                <td th:text="${text.heading}">order</td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="'placeTexts/' + ${text.id} + '/delete'"
