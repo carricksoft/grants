@@ -14,6 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import scot.carricksoftware.grants.commands.images.PersonImageCommand;
 import scot.carricksoftware.grants.commands.images.PlaceImageCommand;
 import scot.carricksoftware.grants.domains.images.Image;
+import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.services.images.appendiximage.AppendixImageService;
 import scot.carricksoftware.grants.services.images.documentimage.DocumentImageService;
@@ -72,13 +73,20 @@ class DataLoadImagesPeopleAndPlacesTest {
     public void aPersonImageIsCreatedTest() {
         ArgumentCaptor<PersonImageCommand> captor = ArgumentCaptor.forClass(PersonImageCommand.class);
         Image image = new Image();
+        Person person = new Person();
 
         when(imageServiceMock.findById(1L)).thenReturn(image);
+        when(personServiceMock.findById(1L)).thenReturn(person);
         dataLoadImages.load();
 
         verify(personImageServiceMock).savePersonImageCommand(captor.capture());
         assertEquals(image, captor.getValue().getImage());
         assertEquals("Person caption", captor.getValue().getCaption());
+        assertEquals("600", captor.getValue().getWidth());
+        assertEquals("500", captor.getValue().getHeight());
+        assertEquals("9", captor.getValue().getOrder());
+        assertEquals("10", captor.getValue().getLevel());
+        assertEquals(person, captor.getValue().getPerson());
     }
 
     @Test
