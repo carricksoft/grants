@@ -80,6 +80,11 @@ public class DataLoadImages {
 
         PlaceImageCommand imageCommand = new PlaceImageCommandImpl();
         imageCommand.setPlace(placeService.findById(1L));
+        imageCommand.setOrder("7");
+        imageCommand.setLevel("8");
+        imageCommand.setCaption("Oban");
+        imageCommand.setHeight("800");
+        imageCommand.setWidth("9");
 
         placeImageService.savePlaceImageCommand(imageCommand);
     }
