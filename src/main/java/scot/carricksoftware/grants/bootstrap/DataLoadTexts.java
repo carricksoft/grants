@@ -75,6 +75,9 @@ public class DataLoadTexts {
     private void loadPlaceText() {
         PlaceTextCommand placeTextCommand = new PlaceTextCommandImpl();
         placeTextCommand.setPlace(placeService.findById(1L));
+        placeTextCommand.setOrder("5");
+        placeTextCommand.setLevel("6");
+        placeTextCommand.setHeading("Inverness");
         placeTextService.savePlaceTextCommand(placeTextCommand);
     }
 
