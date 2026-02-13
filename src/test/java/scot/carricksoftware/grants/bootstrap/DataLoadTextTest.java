@@ -103,6 +103,9 @@ public class DataLoadTextTest {
 
         verify(placeTextServiceMock).savePlaceTextCommand(captor.capture());
         assertEquals(place, captor.getValue().getPlace());
+        assertEquals("5", captor.getValue().getOrder());
+        assertEquals("6", captor.getValue().getLevel());
+        assertEquals("Inverness", captor.getValue().getHeading());
     }
 
 }
