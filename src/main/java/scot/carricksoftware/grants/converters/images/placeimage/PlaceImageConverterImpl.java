@@ -14,11 +14,19 @@ import scot.carricksoftware.grants.domains.images.PlaceImage;
 @Component
 public class PlaceImageConverterImpl implements PlaceImageConverter {
 
+    @SuppressWarnings("DuplicatedCode")
     @Override
     public PlaceImageCommand convert(PlaceImage source) {
         PlaceImageCommand target = new PlaceImageCommandImpl();
         target.setId(source.getId());
         target.setPlace(source.getPlace());
+        target.setOrder(source.getOrder());
+        target.setCaption(source.getCaption());
+        target.setHeight(source.getHeight());
+        target.setWidth(source.getWidth());
+        target.setImage(source.getImage());
+        target.setLevel(source.getLevel());
+
         return target;
     }
 }
