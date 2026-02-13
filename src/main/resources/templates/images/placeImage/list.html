@@ -23,8 +23,9 @@
             <thead class="table-dark">
             <tr>
                 <th>ID</th>
-                <th>Place</th>
-                <th></th>
+                <th>Place</th> <th>Order</th>
+                <th>Level</th>
+                <th>Caption</th>
                 <th></th>
             </tr>
             </thead>
@@ -33,7 +34,9 @@
                 <!--/*@thymesVar id="place" type="scot.carricksoftware.grants.domains.places.Place"*/-->
                 <td th:text="${image.id}">123</td>
                 <td th:text="${image.place.toString()}">123</td>
-                <td></td>
+                <td th:text="${image.order}"></td>
+                <td th:text="${image.level}"></td>
+                <td th:text="${image.caption}"></td>
                 <td><span>
                         <a th:action="delete" class="btn btn-danger btn-sm" href=""
                            th:href="@{'placeImage/' + ${image.id} + '/delete'}"
