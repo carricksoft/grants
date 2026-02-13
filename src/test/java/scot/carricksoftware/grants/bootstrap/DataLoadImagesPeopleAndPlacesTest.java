@@ -28,7 +28,7 @@ import static org.mockito.Mockito.when;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-class DataLoadImagesImagePeopleAndPlacesTest {
+class DataLoadImagesPeopleAndPlacesTest {
 
     private DataLoadImages dataLoadImages;
 
@@ -85,5 +85,10 @@ class DataLoadImagesImagePeopleAndPlacesTest {
 
         verify(placeImageServiceMock).savePlaceImageCommand(captor.capture());
         assertEquals(place, captor.getValue().getPlace());
+        assertEquals("7", captor.getValue().getOrder());
+        assertEquals("8", captor.getValue().getLevel());
+        assertEquals("Oban", captor.getValue().getCaption());
+        assertEquals("800", captor.getValue().getHeight());
+        assertEquals("9", captor.getValue().getWidth());
     }
 }
