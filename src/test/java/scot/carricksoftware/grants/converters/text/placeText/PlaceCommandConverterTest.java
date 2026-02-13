@@ -14,11 +14,12 @@ import scot.carricksoftware.grants.domains.text.PlaceText;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
 import static scot.carricksoftware.grants.GenerateRandomNumberValues.GetRandomLong;
 import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
-class PlaceBaseTextCommandConverterTest {
-
+class PlaceCommandConverterTest {
+    
     private PlaceTextCommandConverter converter;
 
     @BeforeEach
@@ -30,16 +31,28 @@ class PlaceBaseTextCommandConverterTest {
     void covertTest() {
         Long Id = GetRandomLong();
         Place place = GetRandomPlace();
-        PlaceTextCommand source = new PlaceTextCommandImpl();
+        String order = GetRandomString();
+        String level = GetRandomString();
+        String heading = GetRandomString();
+        String content = GetRandomString();
 
+        PlaceTextCommand source = new PlaceTextCommandImpl();
 
         source.setId(Id);
         source.setPlace(place);
+        source.setOrder(order);
+        source.setLevel(level);
+        source.setHeading(heading);
+        source.setContent(content);
 
         PlaceText target = converter.convert(source);
 
         assertNotNull(target);
         assertEquals(Id, target.getId());
         assertEquals(place, target.getPlace());
+        assertEquals(order, target.getOrder());
+        assertEquals(level, target.getLevel());
+        assertEquals(heading, target.getHeading());
+        assertEquals(content, target.getContent());
     }
 }
