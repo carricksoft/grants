@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.services.images.documentimage.DocumentImageSe
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
+import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -50,6 +51,10 @@ class DataLoadImagesPeopleAndPlacesTest {
     @Mock
     private PlaceService placeServiceMock;
 
+    @Mock
+    private PersonService personServiceMock;
+
+
 
     @BeforeEach
     void setUp() {
@@ -58,7 +63,8 @@ class DataLoadImagesPeopleAndPlacesTest {
                 placeImageServiceMock,
                 appendixImageServiceMock,
                 documentImageServiceMock,
-                placeServiceMock);
+                placeServiceMock,
+                personServiceMock);
     }
 
 

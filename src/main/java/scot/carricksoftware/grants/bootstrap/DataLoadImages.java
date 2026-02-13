@@ -15,6 +15,7 @@ import scot.carricksoftware.grants.services.images.documentimage.DocumentImageSe
 import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.personimage.PersonImageService;
 import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
+import scot.carricksoftware.grants.services.people.PersonService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 
 @Component
@@ -31,6 +32,7 @@ public class DataLoadImages {
     private final AppendixImageService appendixImageService;
     private final DocumentImageService documentImageService;
     private final PlaceService placeService;
+    private final PersonService personService;
 
 
 
@@ -39,13 +41,14 @@ public class DataLoadImages {
                           PlaceImageService placeImageService,
                           AppendixImageService appendixImageService,
                           DocumentImageService documentImageService,
-                          PlaceService placeService) {
+                          PlaceService placeService, PersonService personService) {
         this.imageService = imageService;
         this.personImageService = personImageService;
         this.placeImageService = placeImageService;
         this.appendixImageService = appendixImageService;
         this.documentImageService = documentImageService;
         this.placeService = placeService;
+        this.personService = personService;
     }
 
     public void load() {
@@ -70,7 +73,12 @@ public class DataLoadImages {
         logger.debug("DataLoadCensus::loadPersonImage");
         PersonImageCommand command = new PersonImageCommandImpl();
         command.setImage(imageService.findById(1L));
+        command.setPerson(personService.findById(1L));
         command.setCaption("Person caption");
+        command.setOrder("9");
+        command.setLevel("10");
+        command.setHeight("500");
+        command.setWidth("600");
 
         personImageService.savePersonImageCommand(command);
     }
