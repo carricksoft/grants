@@ -18,7 +18,7 @@ import scot.carricksoftware.grants.converters.text.placeText.PlaceTextCommandCon
 import scot.carricksoftware.grants.converters.text.placeText.PlaceTextConverterImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.services.text.placetext.PlaceTextService;
-import scot.carricksoftware.grants.validators.text.PlaceTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.PlaceTextCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -47,7 +47,7 @@ public class PlaceBaseTextControllerSaveOrUpdateTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private PlaceTextCommandValidator placeTextCommandValidatorMock;
+    private PlaceTextCommandValidatorImpl placeTextCommandValidatorImplMock;
 
     @Mock
     private PlaceService placeServiceMock;
@@ -60,7 +60,7 @@ public class PlaceBaseTextControllerSaveOrUpdateTest {
         placeTextController = new PlaceTextFormControllerImpl(placeTextServiceMock,
                 placeTextCommandConverterMock,
                 placeTextConverterMock,
-                placeTextCommandValidatorMock,
+                placeTextCommandValidatorImplMock,
                 placeServiceMock);
         placeTextCommand = new PlaceTextCommandImpl();
     }

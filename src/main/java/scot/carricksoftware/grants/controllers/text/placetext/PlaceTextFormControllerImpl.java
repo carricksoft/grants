@@ -22,7 +22,7 @@ import scot.carricksoftware.grants.converters.text.placeText.PlaceTextCommandCon
 import scot.carricksoftware.grants.converters.text.placeText.PlaceTextConverterImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.services.text.placetext.PlaceTextService;
-import scot.carricksoftware.grants.validators.text.PlaceTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.PlaceTextCommandValidatorImpl;
 
 @Controller
 public class PlaceTextFormControllerImpl implements PlaceTextFormController {
@@ -32,21 +32,21 @@ public class PlaceTextFormControllerImpl implements PlaceTextFormController {
     @SuppressWarnings({"FieldCanBeLocal", "unused"})
     private final PlaceTextCommandConverterImpl placeTextCommandConverter;
     private final PlaceTextConverterImpl placeTextConverter;
-    private final PlaceTextCommandValidator placeTextCommandValidator;
+    private final PlaceTextCommandValidatorImpl placeTextCommandValidatorImpl;
     private final PlaceService placeService;
 
 
     public PlaceTextFormControllerImpl(PlaceTextService placeTextService,
                                        PlaceTextCommandConverterImpl placeTextCommandConverter,
                                        PlaceTextConverterImpl placeTextConverter,
-                                       PlaceTextCommandValidator placeTextCommandValidator,
+                                       PlaceTextCommandValidatorImpl placeTextCommandValidatorImpl,
                                        PlaceService placeService) {
         this.placeTextService = placeTextService;
         this.placeTextCommandConverter = placeTextCommandConverter;
 
 
         this.placeTextConverter = placeTextConverter;
-        this.placeTextCommandValidator = placeTextCommandValidator;
+        this.placeTextCommandValidatorImpl = placeTextCommandValidatorImpl;
         this.placeService = placeService;
     }
 
@@ -74,7 +74,7 @@ public class PlaceTextFormControllerImpl implements PlaceTextFormController {
     public String saveOrUpdate(@Valid @ModelAttribute PlaceTextCommand placeTextCommand, BindingResult bindingResult, Model model) {
         logger.debug("PlaceTextFormControllerImpl::saveOrUpdate");
 
-        placeTextCommandValidator.validate(placeTextCommand, bindingResult);
+        placeTextCommandValidatorImpl.validate(placeTextCommand, bindingResult);
 
 
         if (bindingResult.hasErrors()) {

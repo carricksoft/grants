@@ -18,7 +18,7 @@ import scot.carricksoftware.grants.converters.text.placeText.PlaceTextCommandCon
 import scot.carricksoftware.grants.converters.text.placeText.PlaceTextConverterImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.services.text.placetext.PlaceTextService;
-import scot.carricksoftware.grants.validators.text.PlaceTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.PlaceTextCommandValidatorImpl;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -48,7 +48,7 @@ public class PlaceBaseTextFormControllerValidationTest {
     private BindingResult bindingResultMock;
 
     @Mock
-    private PlaceTextCommandValidator placeTextCommandValidatorMock;
+    private PlaceTextCommandValidatorImpl placeTextCommandValidatorImplMock;
 
     @Mock
     private Model modelMock;
@@ -62,7 +62,7 @@ public class PlaceBaseTextFormControllerValidationTest {
         placeTextController = new PlaceTextFormControllerImpl(placeTextServiceMock,
                 placeTextCommandConverterMock,
                 placeTextConverterMock,
-                placeTextCommandValidatorMock,
+                placeTextCommandValidatorImplMock,
                 placeServiceMock);
     }
 
@@ -71,7 +71,7 @@ public class PlaceBaseTextFormControllerValidationTest {
     public void saveOrUpdateValidationTest() {
         when(placeTextServiceMock.savePlaceTextCommand(any())).thenReturn(placeTextCommandMock);
         placeTextController.saveOrUpdate(placeTextCommandMock, bindingResultMock, modelMock);
-        verify(placeTextCommandValidatorMock).validate(placeTextCommandMock, bindingResultMock);
+        verify(placeTextCommandValidatorImplMock).validate(placeTextCommandMock, bindingResultMock);
     }
 
 

@@ -5,22 +5,16 @@
 
 package scot.carricksoftware.grants.validators.text;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.text.PlaceTextCommand;
 
 
-@SuppressWarnings("unused")
 @Component
-public class PlaceTextCommandValidator {
+public interface PlaceTextCommandValidator {
 
-    private static final Logger logger = LogManager.getLogger(PlaceTextCommandValidator.class);
-
-    public void validate(PlaceTextCommand personTextCommand, BindingResult bindingResult) {
-      logger.debug("PlaceTextCommandValidator::validate");
-    }
+    @SuppressWarnings("unused")
+    void validate(PlaceTextCommand personTextCommand, BindingResult bindingResult);
 
 }
 

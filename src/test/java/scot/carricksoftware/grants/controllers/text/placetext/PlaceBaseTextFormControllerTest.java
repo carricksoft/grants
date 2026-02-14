@@ -20,7 +20,7 @@ import scot.carricksoftware.grants.converters.text.placeText.PlaceTextConverterI
 import scot.carricksoftware.grants.domains.text.PlaceText;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.services.text.placetext.PlaceTextService;
-import scot.carricksoftware.grants.validators.text.PlaceTextCommandValidator;
+import scot.carricksoftware.grants.validators.text.PlaceTextCommandValidatorImpl;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -48,7 +48,7 @@ public class PlaceBaseTextFormControllerTest {
     private Model modelMock;
 
     @Mock
-    private PlaceTextCommandValidator placeTextCommandValidatorMock;
+    private PlaceTextCommandValidatorImpl placeTextCommandValidatorImplMock;
 
     @Mock
     private PlaceService placeServiceMock;
@@ -59,7 +59,7 @@ public class PlaceBaseTextFormControllerTest {
         placeTextController = new PlaceTextFormControllerImpl(placeTextServiceMock,
                 placeTextCommandConverterMock,
                 placeTextConverterMock,
-                placeTextCommandValidatorMock,
+                placeTextCommandValidatorImplMock,
                 placeServiceMock);
     }
 
