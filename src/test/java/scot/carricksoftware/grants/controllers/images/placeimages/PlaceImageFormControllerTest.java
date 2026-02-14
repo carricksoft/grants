@@ -18,6 +18,7 @@ import scot.carricksoftware.grants.constants.ImageAttributeConstants;
 import scot.carricksoftware.grants.converters.images.placeimage.PlaceImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.placeimage.PlaceImageConverterImpl;
 import scot.carricksoftware.grants.domains.images.PlaceImage;
+import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.images.PlaceImageCommandValidator;
@@ -51,6 +52,9 @@ public class PlaceImageFormControllerTest {
     private PlaceService placeServiceMock;
 
     @Mock
+    private ImageService imageServiceMock;
+
+    @Mock
     private PlaceImageCommandValidator placeImageCommandValidatorMock;
 
 
@@ -60,7 +64,8 @@ public class PlaceImageFormControllerTest {
                 placeImageCommandConverterMock,
                 placeImageConverterMock,
                 placeImageCommandValidatorMock,
-                placeServiceMock);
+                placeServiceMock,
+                imageServiceMock);
     }
 
     @Test
@@ -68,7 +73,7 @@ public class PlaceImageFormControllerTest {
         ArgumentCaptor<Object> objectCaptor = ArgumentCaptor.forClass(Object.class);
         ArgumentCaptor<String> stringCaptor = ArgumentCaptor.forClass(String.class);
         assertEquals("images/placeImage/form", placeImageController.getNewPlaceImage(modelMock));
-        verify(modelMock, times(2)).addAttribute(stringCaptor.capture(), objectCaptor.capture());
+        verify(modelMock, times(3)).addAttribute(stringCaptor.capture(), objectCaptor.capture());
         boolean foundPlaceImageCommand = false;
         boolean foundPlaces = false;
 

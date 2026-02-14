@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import scot.carricksoftware.grants.commands.images.PlaceImageCommand;
 import scot.carricksoftware.grants.converters.images.placeimage.PlaceImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.placeimage.PlaceImageConverterImpl;
+import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.images.PlaceImageCommandValidator;
@@ -54,6 +55,9 @@ public class PlaceImageFormControllerValidationTest {
     private PlaceImageCommandValidator placeImageCommandValidatorMock;
 
     @Mock
+    private ImageService imageServiceMock;
+
+    @Mock
     Model modelMock;
 
 
@@ -63,7 +67,8 @@ public class PlaceImageFormControllerValidationTest {
                 placeImageCommandConverterMock,
                 placeImageConverterMock,
                 placeImageCommandValidatorMock,
-                placeServiceMock);
+                placeServiceMock,
+                imageServiceMock);
     }
 
 
