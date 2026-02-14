@@ -11,6 +11,7 @@ import scot.carricksoftware.grants.constants.ApplicationConstants;
 import scot.carricksoftware.grants.domains.images.Image;
 import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.domains.places.Organisation;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.enums.general.Sex;
 import scot.carricksoftware.grants.enums.certificates.CertificateType;
 
@@ -25,6 +26,14 @@ public class ValidateTypesImpl implements ValidateTypes {
             bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, message);
         }
     }
+
+    @Override
+    public void validatePlace(Place place, String fieldName, String message, BindingResult bindingResult) {
+        if (place == null) {
+            bindingResult.rejectValue(fieldName, ApplicationConstants.EMPTY_STRING, null, message);
+        }
+    }
+
 
     @Override
     public void validateImage(Image image, String fieldName, String message, BindingResult bindingResult) {
