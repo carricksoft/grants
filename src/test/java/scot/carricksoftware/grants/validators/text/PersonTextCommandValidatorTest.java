@@ -11,17 +11,19 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.commands.text.DocumentTextCommand;
-import scot.carricksoftware.grants.commands.text.DocumentTextCommandImpl;
+import scot.carricksoftware.grants.commands.text.PersonTextCommand;
+import scot.carricksoftware.grants.commands.text.PersonTextCommandImpl;
+import scot.carricksoftware.grants.domains.people.Person;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateRandomPeopleValues.GetRandomPerson;
 
 @ExtendWith(MockitoExtension.class)
-class DocumentTextCommandValidatorImplTest {
+class PersonTextCommandValidatorTest {
 
-    private DocumentTextCommandValidatorImpl validator;
+    private PersonTextCommandValidatorImpl validator;
 
     @Mock
     private ValidateTypes validateTypesMock;
@@ -29,19 +31,19 @@ class DocumentTextCommandValidatorImplTest {
     @Mock
     private BindingResult bindingResultMock;
 
-    private DocumentTextCommand documentTextCommand;
+    private PersonTextCommand personTextCommand;
 
     @BeforeEach
     void setUp() {
-        validator = new DocumentTextCommandValidatorImpl(validateTypesMock);
-        documentTextCommand = new DocumentTextCommandImpl();
+        validator = new PersonTextCommandValidatorImpl(validateTypesMock);
+        personTextCommand = new PersonTextCommandImpl();
     }
 
     @Test
     void validateRangeIsCalledTest() {
         String order = GetRandomString();
-        documentTextCommand.setOrder(order);
-        validator.validate(documentTextCommand, bindingResultMock);
+        personTextCommand.setOrder(order);
+        validator.validate(personTextCommand, bindingResultMock);
         verify(validateTypesMock).validateNonNegativeInteger(order,
                 "order",
                 "Order must exist.",
@@ -49,11 +51,13 @@ class DocumentTextCommandValidatorImplTest {
                 "The order must be non-negative.", bindingResultMock);
     }
 
+
+
     @Test
     void validateLevelIsCalledTest() {
         String level = GetRandomString();
-        documentTextCommand.setLevel(level);
-        validator.validate(documentTextCommand, bindingResultMock);
+        personTextCommand.setLevel(level);
+        validator.validate(personTextCommand, bindingResultMock);
         verify(validateTypesMock).validateIntegerAsteriskRange(level,
                 -2,
                 5,
@@ -64,4 +68,12 @@ class DocumentTextCommandValidatorImplTest {
     }
 
 
+    @Test
+    void validatePersonIsCalledTest() {
+        Person person =  GetRandomPerson();
+        personTextCommand.setPerson(person);
+        validator.validate(personTextCommand, bindingResultMock);
+        verify(validateTypesMock).validatePerson(person, "person",  "The person cannot be null.", bindingResultMock);
+
+    }
 }

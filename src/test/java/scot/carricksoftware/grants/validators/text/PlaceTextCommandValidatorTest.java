@@ -11,17 +11,19 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.validation.BindingResult;
-import scot.carricksoftware.grants.commands.text.AppendixTextCommand;
-import scot.carricksoftware.grants.commands.text.AppendixTextCommandImpl;
+import scot.carricksoftware.grants.commands.text.PlaceTextCommand;
+import scot.carricksoftware.grants.commands.text.PlaceTextCommandImpl;
+import scot.carricksoftware.grants.domains.places.Place;
 import scot.carricksoftware.grants.validators.helpers.ValidateTypes;
 
 import static org.mockito.Mockito.verify;
 import static scot.carricksoftware.grants.GenerateCertificateRandomValues.GetRandomString;
+import static scot.carricksoftware.grants.GenerateRandomPlaceValues.GetRandomPlace;
 
 @ExtendWith(MockitoExtension.class)
-class AppendixTextCommandValidatorImplTest {
+class PlaceTextCommandValidatorTest {
 
-    private AppendixTextCommandValidatorImpl validator;
+    private PlaceTextCommandValidatorImpl validator;
 
     @Mock
     private ValidateTypes validateTypesMock;
@@ -29,19 +31,19 @@ class AppendixTextCommandValidatorImplTest {
     @Mock
     private BindingResult bindingResultMock;
 
-    private AppendixTextCommand appendixTextCommand;
+    private PlaceTextCommand placeTextCommand;
 
     @BeforeEach
     void setUp() {
-        validator = new AppendixTextCommandValidatorImpl(validateTypesMock);
-        appendixTextCommand = new AppendixTextCommandImpl();
+        validator = new PlaceTextCommandValidatorImpl(validateTypesMock);
+        placeTextCommand = new PlaceTextCommandImpl();
     }
 
     @Test
     void validateRangeIsCalledTest() {
         String order = GetRandomString();
-        appendixTextCommand.setOrder(order);
-        validator.validate(appendixTextCommand, bindingResultMock);
+        placeTextCommand.setOrder(order);
+        validator.validate(placeTextCommand, bindingResultMock);
         verify(validateTypesMock).validateNonNegativeInteger(order,
                 "order",
                 "Order must exist.",
@@ -49,11 +51,13 @@ class AppendixTextCommandValidatorImplTest {
                 "The order must be non-negative.", bindingResultMock);
     }
 
+
+
     @Test
     void validateLevelIsCalledTest() {
         String level = GetRandomString();
-        appendixTextCommand.setLevel(level);
-        validator.validate(appendixTextCommand, bindingResultMock);
+        placeTextCommand.setLevel(level);
+        validator.validate(placeTextCommand, bindingResultMock);
         verify(validateTypesMock).validateIntegerAsteriskRange(level,
                 -2,
                 5,
@@ -64,4 +68,12 @@ class AppendixTextCommandValidatorImplTest {
     }
 
 
+    @Test
+    void validatePlaceIsCalledTest() {
+        Place place =  GetRandomPlace();
+        placeTextCommand.setPlace(place);
+        validator.validate(placeTextCommand, bindingResultMock);
+        verify(validateTypesMock).validatePlace(place, "place",  "Place must exist.", bindingResultMock);
+
+    }
 }
