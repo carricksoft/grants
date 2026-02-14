@@ -20,6 +20,7 @@ import scot.carricksoftware.grants.commands.images.PlaceImageCommandImpl;
 import scot.carricksoftware.grants.constants.*;
 import scot.carricksoftware.grants.converters.images.placeimage.PlaceImageCommandConverterImpl;
 import scot.carricksoftware.grants.converters.images.placeimage.PlaceImageConverterImpl;
+import scot.carricksoftware.grants.services.images.image.ImageService;
 import scot.carricksoftware.grants.services.images.placeimage.PlaceImageService;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.validators.images.PlaceImageCommandValidator;
@@ -34,12 +35,13 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
     private final PlaceImageConverterImpl placeImageConverter;
     private final PlaceImageCommandValidator placeImageCommandValidator;
     private final PlaceService placeService;
+    private final ImageService imageService;
 
 
     public PlaceImageFormControllerImpl(PlaceImageService placeImageService,
                                         PlaceImageCommandConverterImpl placeImageCommandConverter,
                                         PlaceImageConverterImpl placeImageConverter,
-                                        PlaceImageCommandValidator placeImageCommandValidator, PlaceService placeService) {
+                                        PlaceImageCommandValidator placeImageCommandValidator, PlaceService placeService, ImageService imageService) {
         this.placeImageService = placeImageService;
         this.placeImageCommandConverter = placeImageCommandConverter;
 
@@ -47,6 +49,7 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
         this.placeImageConverter = placeImageConverter;
         this.placeImageCommandValidator = placeImageCommandValidator;
         this.placeService = placeService;
+        this.imageService = imageService;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -55,6 +58,7 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
         logger.debug("PlaceImageFormControllerImpl::getNewPlaceImage");
         model.addAttribute(ImageAttributeConstants.PLACE_IMAGE_COMMAND, new PlaceImageCommandImpl());
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return ViewConstants.PLACE_IMAGE_FORM;
     }
 
@@ -64,6 +68,7 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
         logger.debug("PlaceImageFormControllerImpl::placeImageEdit");
         model.addAttribute(ImageAttributeConstants.PLACE_IMAGE_COMMAND, placeImageService.findById(Long.valueOf(id)));
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return ViewConstants.PLACE_IMAGE_FORM;
     }
 
@@ -85,6 +90,7 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
         PlaceImageCommand savedCommand = placeImageService.savePlaceImageCommand(placeImageCommand);
         model.addAttribute(ImageAttributeConstants.PLACE_IMAGE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return MappingConstants.REDIRECT + ImageMappingConstants.PLACE_IMAGE_SHOW.replace("{id}", "" + savedCommand.getId());
     }
 
@@ -97,6 +103,7 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
         PlaceImageCommand savedCommand = placeImageConverter.convert(placeImageService.findById(Long.valueOf(id)));
         model.addAttribute(ImageAttributeConstants.PLACE_IMAGE_COMMAND, savedCommand);
         model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+        model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
         return ViewConstants.PLACE_IMAGE_FORM;
     }
 
