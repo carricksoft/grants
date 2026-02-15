@@ -27,7 +27,7 @@ import static scot.carricksoftware.grants.GenerateRandomTextValues.GetRandomPers
 
 
 @ExtendWith(MockitoExtension.class)
-public class PersonBaseTextListControllerTest {
+public class PersonTextListControllerTest {
 
     private PersonTextListControllerImpl controller;
 

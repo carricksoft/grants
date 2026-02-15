@@ -26,7 +26,7 @@ import static scot.carricksoftware.grants.GenerateRandomTextValues.GetRandomPlac
 
 
 @ExtendWith(MockitoExtension.class)
-public class PlaceBaseTextListControllerTest {
+public class PlaceTextListControllerTest {
 
     private PlaceTextListControllerImpl controller;
 

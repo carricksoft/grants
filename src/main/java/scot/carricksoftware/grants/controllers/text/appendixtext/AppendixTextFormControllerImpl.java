@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.text.appendixText.CapitaliseAppendixTextCommand;
 import scot.carricksoftware.grants.commands.text.AppendixTextCommandImpl;
 import scot.carricksoftware.grants.constants.MappingConstants;
 import scot.carricksoftware.grants.constants.TextAttributeConstants;
@@ -36,18 +37,20 @@ public class AppendixTextFormControllerImpl implements AppendixTextFormControlle
     private final AppendixTextCommandConverterImpl appendixTextCommandConverter;
     private final AppendixTextConverterImpl appendixTextConverter;
     private final AppendixTextCommandValidatorImpl appendixTextCommandValidatorImpl;
+    private final CapitaliseAppendixTextCommand capitaliseAppendixTextCommand;
 
 
     public AppendixTextFormControllerImpl(AppendixTextService appendixTextService,
                                           AppendixTextCommandConverterImpl appendixTextCommandConverter,
                                           AppendixTextConverterImpl appendixTextConverter,
-                                          AppendixTextCommandValidatorImpl appendixTextCommandValidatorImpl) {
+                                          AppendixTextCommandValidatorImpl appendixTextCommandValidatorImpl, CapitaliseAppendixTextCommand capitaliseAppendixTextCommand) {
         this.appendixTextService = appendixTextService;
         this.appendixTextCommandConverter = appendixTextCommandConverter;
 
 
         this.appendixTextConverter = appendixTextConverter;
         this.appendixTextCommandValidatorImpl = appendixTextCommandValidatorImpl;
+        this.capitaliseAppendixTextCommand = capitaliseAppendixTextCommand;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -73,6 +76,8 @@ public class AppendixTextFormControllerImpl implements AppendixTextFormControlle
         logger.debug("AppendixTextFormControllerImpl::saveOrUpdate");
 
         appendixTextCommandValidatorImpl.validate(appendixTextCommand, bindingResult);
+        capitaliseAppendixTextCommand.capitalise(appendixTextCommand);
+
 
 
         if (bindingResult.hasErrors()) {

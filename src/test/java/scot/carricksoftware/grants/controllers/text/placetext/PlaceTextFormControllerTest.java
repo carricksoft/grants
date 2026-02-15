@@ -13,6 +13,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.capitalisation.text.placetext.CapitalisePlaceTextCommand;
 import scot.carricksoftware.grants.commands.text.PlaceTextCommand;
 import scot.carricksoftware.grants.constants.TextAttributeConstants;
 import scot.carricksoftware.grants.converters.text.placeText.PlaceTextCommandConverterImpl;
@@ -30,7 +31,7 @@ import static scot.carricksoftware.grants.GenerateRandomTextValues.*;
 
 
 @ExtendWith(MockitoExtension.class)
-public class PlaceBaseTextFormControllerTest {
+public class PlaceTextFormControllerTest {
 
     @SuppressWarnings("unused")
     private PlaceTextFormControllerImpl placeTextController;
@@ -53,6 +54,9 @@ public class PlaceBaseTextFormControllerTest {
     @Mock
     private PlaceService placeServiceMock;
 
+    @Mock
+    private CapitalisePlaceTextCommand capitalisePlaceTextCommandMock;
+
 
     @BeforeEach
     public void setUp() {
@@ -60,7 +64,8 @@ public class PlaceBaseTextFormControllerTest {
                 placeTextCommandConverterMock,
                 placeTextConverterMock,
                 placeTextCommandValidatorImplMock,
-                placeServiceMock);
+                placeServiceMock,
+                capitalisePlaceTextCommandMock);
     }
 
     @Test

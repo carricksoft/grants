@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.text.documenttext.CapitaliseDocumentTextCommand;
 import scot.carricksoftware.grants.commands.text.DocumentTextCommand;
 import scot.carricksoftware.grants.commands.text.DocumentTextCommandImpl;
 import scot.carricksoftware.grants.constants.*;
@@ -32,18 +33,20 @@ public class DocumentTextFormControllerImpl implements DocumentTextFormControlle
     private final DocumentTextCommandConverterImpl documentTextCommandConverter;
     private final DocumentTextConverterImpl documentTextConverter;
     private final DocumentTextCommandValidatorImpl documentTextCommandValidatorImpl;
+    private final CapitaliseDocumentTextCommand capitaliseDocumentTextCommand;
 
 
     public DocumentTextFormControllerImpl(DocumentTextService documentTextService,
                                           DocumentTextCommandConverterImpl documentTextCommandConverter,
                                           DocumentTextConverterImpl documentTextConverter,
-                                          DocumentTextCommandValidatorImpl documentTextCommandValidatorImpl) {
+                                          DocumentTextCommandValidatorImpl documentTextCommandValidatorImpl, CapitaliseDocumentTextCommand capitaliseDocumentTextCommand) {
         this.documentTextService = documentTextService;
         this.documentTextCommandConverter = documentTextCommandConverter;
 
 
         this.documentTextConverter = documentTextConverter;
         this.documentTextCommandValidatorImpl = documentTextCommandValidatorImpl;
+        this.capitaliseDocumentTextCommand = capitaliseDocumentTextCommand;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -69,7 +72,7 @@ public class DocumentTextFormControllerImpl implements DocumentTextFormControlle
         logger.debug("DocumentTextFormControllerImpl::saveOrUpdate");
 
         documentTextCommandValidatorImpl.validate(documentTextCommand, bindingResult);
-
+        capitaliseDocumentTextCommand.capitalise(documentTextCommand);
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));

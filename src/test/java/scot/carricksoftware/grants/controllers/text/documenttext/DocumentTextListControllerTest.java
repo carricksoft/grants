@@ -26,7 +26,7 @@ import static scot.carricksoftware.grants.GenerateRandomTextValues.GetRandomDocu
 
 
 @ExtendWith(MockitoExtension.class)
-public class DocumentBaseTextListControllerTest {
+public class DocumentTextListControllerTest {
 
     private DocumentTextListControllerImpl controller;
 

@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.text.appendixText.CapitaliseAppendixTextCommand;
 import scot.carricksoftware.grants.commands.text.AppendixTextCommand;
 import scot.carricksoftware.grants.commands.text.AppendixTextCommandImpl;
 import scot.carricksoftware.grants.controllers.text.appendixtext.AppendixTextFormControllerImpl;
@@ -26,7 +27,7 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-public class AppendixBaseTextControllerSaveOrUpdateTest {
+public class AppendixTextControllerSaveOrUpdateTest {
 
     @SuppressWarnings("unused")
     private AppendixTextFormControllerImpl appendixTextController;
@@ -49,6 +50,9 @@ public class AppendixBaseTextControllerSaveOrUpdateTest {
     @Mock
     private AppendixTextCommandValidatorImpl appendixTextCommandValidatorImplMock;
 
+    @Mock
+    private CapitaliseAppendixTextCommand capitaliseAppendixTextCommandMock;
+
 
     private AppendixTextCommand appendixTextCommand;
 
@@ -58,7 +62,8 @@ public class AppendixBaseTextControllerSaveOrUpdateTest {
         appendixTextController = new AppendixTextFormControllerImpl(appendixTextServiceMock,
                 appendixTextCommandConverterMock,
                 appendixTextConverterMock,
-                appendixTextCommandValidatorImplMock);
+                appendixTextCommandValidatorImplMock,
+                capitaliseAppendixTextCommandMock);
         appendixTextCommand = new AppendixTextCommandImpl();
     }
 

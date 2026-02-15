@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.text.documenttext.CapitaliseDocumentTextCommand;
 import scot.carricksoftware.grants.commands.text.DocumentTextCommand;
 import scot.carricksoftware.grants.commands.text.DocumentTextCommandImpl;
 import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextCommandConverterImpl;
@@ -25,7 +26,7 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-public class DocumentBaseTextControllerSaveOrUpdateTest {
+public class DocumentTextControllerSaveOrUpdateTest {
 
     @SuppressWarnings("unused")
     private DocumentTextFormControllerImpl documentTextController;
@@ -48,6 +49,9 @@ public class DocumentBaseTextControllerSaveOrUpdateTest {
     @Mock
     private DocumentTextCommandValidatorImpl documentTextCommandValidatorImplMock;
 
+    @Mock
+    private CapitaliseDocumentTextCommand capitaliseDocumentTextCommandMock;
+
     private DocumentTextCommand documentTextCommand;
 
 
@@ -56,7 +60,8 @@ public class DocumentBaseTextControllerSaveOrUpdateTest {
         documentTextController = new DocumentTextFormControllerImpl(documentTextServiceMock,
                 documentTextCommandConverterMock,
                 documentTextConverterMock,
-                documentTextCommandValidatorImplMock);
+                documentTextCommandValidatorImplMock,
+                capitaliseDocumentTextCommandMock);
         documentTextCommand = new DocumentTextCommandImpl();
     }
 

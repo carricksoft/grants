@@ -5,7 +5,6 @@
 
 package scot.carricksoftware.grants.controllers.text.placetext;
 
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -13,20 +12,22 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import scot.carricksoftware.grants.capitalisation.text.placetext.CapitalisePlaceTextCommand;
 import scot.carricksoftware.grants.commands.text.PlaceTextCommand;
+import scot.carricksoftware.grants.commands.text.PlaceTextCommandImpl;
 import scot.carricksoftware.grants.converters.text.placeText.PlaceTextCommandConverterImpl;
 import scot.carricksoftware.grants.converters.text.placeText.PlaceTextConverterImpl;
 import scot.carricksoftware.grants.services.places.places.PlaceService;
 import scot.carricksoftware.grants.services.text.placetext.PlaceTextService;
 import scot.carricksoftware.grants.validators.text.PlaceTextCommandValidatorImpl;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-public class PlaceBaseTextFormControllerValidationTest {
+public class PlaceTextControllerSaveOrUpdateTest {
 
     @SuppressWarnings("unused")
     private PlaceTextFormControllerImpl placeTextController;
@@ -40,9 +41,8 @@ public class PlaceBaseTextFormControllerValidationTest {
     @Mock
     private PlaceTextConverterImpl placeTextConverterMock;
 
-
     @Mock
-    private PlaceTextCommand placeTextCommandMock;
+    private Model modelMock;
 
     @Mock
     private BindingResult bindingResultMock;
@@ -51,10 +51,12 @@ public class PlaceBaseTextFormControllerValidationTest {
     private PlaceTextCommandValidatorImpl placeTextCommandValidatorImplMock;
 
     @Mock
-    private Model modelMock;
+    private CapitalisePlaceTextCommand capitalisePlaceTextCommandMock;
 
     @Mock
     private PlaceService placeServiceMock;
+
+    private PlaceTextCommand placeTextCommand;
 
 
     @BeforeEach
@@ -63,16 +65,25 @@ public class PlaceBaseTextFormControllerValidationTest {
                 placeTextCommandConverterMock,
                 placeTextConverterMock,
                 placeTextCommandValidatorImplMock,
-                placeServiceMock);
+                placeServiceMock,
+                capitalisePlaceTextCommandMock);
+        placeTextCommand = new PlaceTextCommandImpl();
     }
-
 
     @Test
-    public void saveOrUpdateValidationTest() {
-        when(placeTextServiceMock.savePlaceTextCommand(any())).thenReturn(placeTextCommandMock);
-        placeTextController.saveOrUpdate(placeTextCommandMock, bindingResultMock, modelMock);
-        verify(placeTextCommandValidatorImplMock).validate(placeTextCommandMock, bindingResultMock);
+    public void saveOrUpdateNoErrorsTest() {
+        Long id = 4L;
+        placeTextCommand.setId(id);
+        when(placeTextServiceMock.savePlaceTextCommand(any(PlaceTextCommand.class))).thenReturn(placeTextCommand);
+        assertEquals("redirect:/placeText/4/show", placeTextController.saveOrUpdate(placeTextCommand, bindingResultMock, modelMock));
     }
 
+    @Test
+    public void saveOrUpdateErrorsTest() {
+        Long id = 4L;
+        placeTextCommand.setId(id);
+        when(bindingResultMock.hasErrors()).thenReturn(true);
+        assertEquals("text/placeText/form", placeTextController.saveOrUpdate(placeTextCommand, bindingResultMock, modelMock));
+    }
 
 }

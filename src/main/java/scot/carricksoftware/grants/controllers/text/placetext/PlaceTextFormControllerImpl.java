@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.text.placetext.CapitalisePlaceTextCommand;
 import scot.carricksoftware.grants.commands.text.PlaceTextCommand;
 import scot.carricksoftware.grants.commands.text.PlaceTextCommandImpl;
 import scot.carricksoftware.grants.constants.*;
@@ -34,13 +35,14 @@ public class PlaceTextFormControllerImpl implements PlaceTextFormController {
     private final PlaceTextConverterImpl placeTextConverter;
     private final PlaceTextCommandValidatorImpl placeTextCommandValidatorImpl;
     private final PlaceService placeService;
+    private final CapitalisePlaceTextCommand capitalisePlaceTextCommand;
 
 
     public PlaceTextFormControllerImpl(PlaceTextService placeTextService,
                                        PlaceTextCommandConverterImpl placeTextCommandConverter,
                                        PlaceTextConverterImpl placeTextConverter,
                                        PlaceTextCommandValidatorImpl placeTextCommandValidatorImpl,
-                                       PlaceService placeService) {
+                                       PlaceService placeService, CapitalisePlaceTextCommand capitalisePlaceTextCommand) {
         this.placeTextService = placeTextService;
         this.placeTextCommandConverter = placeTextCommandConverter;
 
@@ -48,6 +50,7 @@ public class PlaceTextFormControllerImpl implements PlaceTextFormController {
         this.placeTextConverter = placeTextConverter;
         this.placeTextCommandValidatorImpl = placeTextCommandValidatorImpl;
         this.placeService = placeService;
+        this.capitalisePlaceTextCommand = capitalisePlaceTextCommand;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -75,7 +78,7 @@ public class PlaceTextFormControllerImpl implements PlaceTextFormController {
         logger.debug("PlaceTextFormControllerImpl::saveOrUpdate");
 
         placeTextCommandValidatorImpl.validate(placeTextCommand, bindingResult);
-
+        capitalisePlaceTextCommand.capitalise(placeTextCommand);
 
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));

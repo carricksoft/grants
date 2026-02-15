@@ -13,6 +13,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.capitalisation.text.appendixText.CapitaliseAppendixTextCommand;
 import scot.carricksoftware.grants.commands.text.AppendixTextCommand;
 import scot.carricksoftware.grants.constants.TextAttributeConstants;
 import scot.carricksoftware.grants.controllers.text.appendixtext.AppendixTextFormControllerImpl;
@@ -33,7 +34,7 @@ import static scot.carricksoftware.grants.GenerateRandomTextValues.GetRandomAppe
 
 
 @ExtendWith(MockitoExtension.class)
-public class AppendixBaseTextFormControllerTest {
+public class AppendixTextFormControllerTest {
 
     @SuppressWarnings("unused")
     private AppendixTextFormControllerImpl appendixTextController;
@@ -53,12 +54,16 @@ public class AppendixBaseTextFormControllerTest {
     @Mock
     private AppendixTextCommandValidatorImpl appendixTextCommandValidatorImplMock;
 
+    @Mock
+    private CapitaliseAppendixTextCommand capitaliseAppendixTextCommandMock;
+
     @BeforeEach
     public void setUp() {
         appendixTextController = new AppendixTextFormControllerImpl(appendixTextServiceMock,
                 appendixTextCommandConverterMock,
                 appendixTextConverterMock,
-                appendixTextCommandValidatorImplMock);
+                appendixTextCommandValidatorImplMock,
+                capitaliseAppendixTextCommandMock);
     }
 
     @Test

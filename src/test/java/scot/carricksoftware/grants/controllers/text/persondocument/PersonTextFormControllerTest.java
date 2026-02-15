@@ -13,6 +13,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.capitalisation.text.persontext.CapitalisePersonTextCommand;
 import scot.carricksoftware.grants.commands.text.PersonTextCommand;
 import scot.carricksoftware.grants.constants.TextAttributeConstants;
 import scot.carricksoftware.grants.controllers.text.persontext.PersonTextFormControllerImpl;
@@ -31,7 +32,7 @@ import static scot.carricksoftware.grants.GenerateRandomTextValues.*;
 
 
 @ExtendWith(MockitoExtension.class)
-public class PersonBaseTextFormControllerTest {
+public class PersonTextFormControllerTest {
 
     @SuppressWarnings("unused")
     private PersonTextFormControllerImpl personTextController;
@@ -54,6 +55,9 @@ public class PersonBaseTextFormControllerTest {
     @Mock
     private PersonService personServiceMock;
 
+    @Mock
+    private CapitalisePersonTextCommand capitalisePersonTextCommandMock;
+
 
     @BeforeEach
     public void setUp() {
@@ -61,7 +65,8 @@ public class PersonBaseTextFormControllerTest {
                 personTextCommandConverterMock,
                 personTextConverterMock,
                 personTextCommandValidatorImplMock,
-                personServiceMock);
+                personServiceMock,
+                capitalisePersonTextCommandMock);
     }
 
     @Test

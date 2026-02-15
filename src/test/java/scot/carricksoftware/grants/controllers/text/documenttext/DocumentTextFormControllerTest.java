@@ -13,6 +13,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.capitalisation.text.documenttext.CapitaliseDocumentTextCommand;
 import scot.carricksoftware.grants.commands.text.DocumentTextCommand;
 import scot.carricksoftware.grants.constants.TextAttributeConstants;
 import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextCommandConverterImpl;
@@ -30,7 +31,7 @@ import static scot.carricksoftware.grants.GenerateRandomTextValues.GetRandomDocu
 
 
 @ExtendWith(MockitoExtension.class)
-public class DocumentBaseTextFormControllerTest {
+public class DocumentTextFormControllerTest {
 
     @SuppressWarnings("unused")
     private DocumentTextFormControllerImpl documentTextController;
@@ -50,13 +51,17 @@ public class DocumentBaseTextFormControllerTest {
     @Mock
     private DocumentTextCommandValidatorImpl documentTextCommandValidatorImplMock;
 
+    @Mock
+    private CapitaliseDocumentTextCommand capitaliseDocumentTextCommandMock;
+
 
     @BeforeEach
     public void setUp() {
         documentTextController = new DocumentTextFormControllerImpl(documentTextServiceMock,
                 documentTextCommandConverterMock,
                 documentTextConverterMock,
-                documentTextCommandValidatorImplMock);
+                documentTextCommandValidatorImplMock,
+                capitaliseDocumentTextCommandMock);
     }
 
     @Test

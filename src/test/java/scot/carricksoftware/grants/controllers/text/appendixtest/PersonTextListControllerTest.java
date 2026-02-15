@@ -29,7 +29,7 @@ import static scot.carricksoftware.grants.GenerateRandomTextValues.GetRandomAppe
 
 
 @ExtendWith(MockitoExtension.class)
-public class PersonBaseTextListControllerTest {
+public class PersonTextListControllerTest {
 
     private AppendixTextListControllerImpl controller;
 

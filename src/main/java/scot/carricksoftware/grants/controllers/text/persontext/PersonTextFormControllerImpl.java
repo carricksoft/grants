@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.text.persontext.CapitalisePersonTextCommand;
 import scot.carricksoftware.grants.commands.text.PersonTextCommand;
 import scot.carricksoftware.grants.commands.text.PersonTextCommandImpl;
 import scot.carricksoftware.grants.constants.*;
@@ -34,13 +35,14 @@ public class PersonTextFormControllerImpl implements PersonTextFormController {
     private final PersonTextConverterImpl personTextConverter;
     private final PersonTextCommandValidatorImpl personTextCommandValidatorImpl;
     private final PersonService personService;
+    private final CapitalisePersonTextCommand capitalisePersonTextCommand;
 
 
     public PersonTextFormControllerImpl(PersonTextService personTextService,
                                         PersonTextCommandConverterImpl personTextCommandConverter,
                                         PersonTextConverterImpl personTextConverter,
                                         PersonTextCommandValidatorImpl personTextCommandValidatorImpl,
-                                        PersonService personService) {
+                                        PersonService personService, CapitalisePersonTextCommand capitalisePersonTextCommand) {
         this.personTextService = personTextService;
         this.personTextCommandConverter = personTextCommandConverter;
 
@@ -48,6 +50,7 @@ public class PersonTextFormControllerImpl implements PersonTextFormController {
         this.personTextConverter = personTextConverter;
         this.personTextCommandValidatorImpl = personTextCommandValidatorImpl;
         this.personService = personService;
+        this.capitalisePersonTextCommand = capitalisePersonTextCommand;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -75,6 +78,7 @@ public class PersonTextFormControllerImpl implements PersonTextFormController {
         logger.debug("PersonTextFormControllerImpl::saveOrUpdate");
 
         personTextCommandValidatorImpl.validate(personTextCommand, bindingResult);
+        capitalisePersonTextCommand.capitalise(personTextCommand);
 
 
         if (bindingResult.hasErrors()) {
