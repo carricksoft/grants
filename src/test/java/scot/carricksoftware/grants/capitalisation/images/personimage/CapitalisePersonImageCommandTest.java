@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 
 @ExtendWith(MockitoExtension.class)
-class CapitalisePersonTextCommandTest {
+class CapitalisePersonImageCommandTest {
 
     private CapitalisePersonImageCommand capitalisePersonImageCommand;
 
