@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import scot.carricksoftware.grants.capitalisation.images.placeimage.CapitalisePlaceImageCommand;
 import scot.carricksoftware.grants.commands.images.PlaceImageCommand;
 import scot.carricksoftware.grants.commands.images.PlaceImageCommandImpl;
 import scot.carricksoftware.grants.constants.*;
@@ -36,12 +37,13 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
     private final PlaceImageCommandValidator placeImageCommandValidator;
     private final PlaceService placeService;
     private final ImageService imageService;
+    private final CapitalisePlaceImageCommand capitalisePlaceImageCommand;
 
 
     public PlaceImageFormControllerImpl(PlaceImageService placeImageService,
                                         PlaceImageCommandConverterImpl placeImageCommandConverter,
                                         PlaceImageConverterImpl placeImageConverter,
-                                        PlaceImageCommandValidator placeImageCommandValidator, PlaceService placeService, ImageService imageService) {
+                                        PlaceImageCommandValidator placeImageCommandValidator, PlaceService placeService, ImageService imageService, CapitalisePlaceImageCommand capitalisePlaceImageCommand) {
         this.placeImageService = placeImageService;
         this.placeImageCommandConverter = placeImageCommandConverter;
 
@@ -50,6 +52,7 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
         this.placeImageCommandValidator = placeImageCommandValidator;
         this.placeService = placeService;
         this.imageService = imageService;
+        this.capitalisePlaceImageCommand = capitalisePlaceImageCommand;
     }
 
     @SuppressWarnings("SameReturnValue")
@@ -79,6 +82,7 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
         logger.debug("PlaceImageFormControllerImpl::saveOrUpdate");
 
         placeImageCommandValidator.validate(placeImageCommand, bindingResult);
+        capitalisePlaceImageCommand.capitalise(placeImageCommand);
 
 
         if (bindingResult.hasErrors()) {

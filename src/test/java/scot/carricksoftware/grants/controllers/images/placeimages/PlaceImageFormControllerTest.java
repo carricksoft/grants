@@ -13,6 +13,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
+import scot.carricksoftware.grants.capitalisation.images.placeimage.CapitalisePlaceImageCommand;
 import scot.carricksoftware.grants.commands.images.PlaceImageCommand;
 import scot.carricksoftware.grants.constants.ImageAttributeConstants;
 import scot.carricksoftware.grants.converters.images.placeimage.PlaceImageCommandConverterImpl;
@@ -57,6 +58,9 @@ public class PlaceImageFormControllerTest {
     @Mock
     private PlaceImageCommandValidator placeImageCommandValidatorMock;
 
+    @Mock
+    private CapitalisePlaceImageCommand capitalisePlaceImageCommandMock;
+
 
     @BeforeEach
     public void setUp() {
@@ -65,7 +69,8 @@ public class PlaceImageFormControllerTest {
                 placeImageConverterMock,
                 placeImageCommandValidatorMock,
                 placeServiceMock,
-                imageServiceMock);
+                imageServiceMock,
+                capitalisePlaceImageCommandMock);
     }
 
     @Test
