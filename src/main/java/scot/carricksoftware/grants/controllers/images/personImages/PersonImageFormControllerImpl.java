@@ -103,7 +103,6 @@ public class PersonImageFormControllerImpl implements PersonImageFormController 
     }
 
 
-
     @SuppressWarnings("SameReturnValue")
     @GetMapping(ImageMappingConstants.PERSON_IMAGE_SHOW)
     public String showById(@PathVariable String id, Model model) {

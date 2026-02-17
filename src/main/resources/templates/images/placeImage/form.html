@@ -116,6 +116,20 @@
             </tr>
             <tr>
                 <td style="text-align: right;">
+                    <label for="width">Width :&nbsp;</label>
+                </td>
+                <td style="text-align: left;">
+                    <input class="form-control" id="width"
+                           th:field="*{width}" type="text">
+                    <div th:if="${#fields.hasErrors('width')}">
+                        <ul class="text-danger">
+                            <li th:each="err : ${#fields.errors('width')}" th:text="${err}"/>
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">
                     <label for="height">Height :&nbsp;</label>
                 </td>
                 <td style="text-align: left;">

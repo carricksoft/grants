@@ -88,6 +88,7 @@ public class PlaceImageFormControllerImpl implements PlaceImageFormController {
         if (bindingResult.hasErrors()) {
             bindingResult.getAllErrors().forEach(error -> logger.debug(error.getDefaultMessage()));
             model.addAttribute(AttributeConstants.PLACES, placeService.findAll());
+            model.addAttribute(AttributeConstants.IMAGES, imageService.findAll());
             return ViewConstants.PLACE_IMAGE_FORM;
         }
 
