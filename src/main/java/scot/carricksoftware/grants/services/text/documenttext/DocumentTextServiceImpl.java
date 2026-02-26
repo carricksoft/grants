@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import scot.carricksoftware.grants.commands.text.DocumentTextCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextCommandConverterImpl;
-import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextConverterImpl;
+import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextCommandConverter;
+import scot.carricksoftware.grants.converters.text.documenttext.DocumentTextConverter;
 import scot.carricksoftware.grants.domains.text.DocumentText;
 import scot.carricksoftware.grants.repositories.text.DocumentTextRepository;
 
@@ -30,17 +30,17 @@ public class DocumentTextServiceImpl implements DocumentTextService {
 
     @SuppressWarnings({"unused"})
     private final DocumentTextRepository documentTextRepository;
-    private final DocumentTextConverterImpl documentTextConverterImpl;
-    private final DocumentTextCommandConverterImpl documentTextCommandConverterImpl;
+    private final DocumentTextConverter documentTextConverter;
+    private final DocumentTextCommandConverter documentTextCommandConverter;
 
     public DocumentTextServiceImpl(
             DocumentTextRepository documentTextRepository,
-            DocumentTextConverterImpl documentTextConverterImpl,
-            DocumentTextCommandConverterImpl documentTextCommandConverterImpl) {
+            DocumentTextConverter documentTextConverter,
+            DocumentTextCommandConverter documentTextCommandConverter) {
 
         this.documentTextRepository = documentTextRepository;
-        this.documentTextConverterImpl = documentTextConverterImpl;
-        this.documentTextCommandConverterImpl = documentTextCommandConverterImpl;
+        this.documentTextConverter = documentTextConverter;
+        this.documentTextCommandConverter = documentTextCommandConverter;
     }
 
 
@@ -84,9 +84,9 @@ public class DocumentTextServiceImpl implements DocumentTextService {
     @Override
     public DocumentTextCommand saveDocumentTextCommand(DocumentTextCommand documentTextCommand) {
         logger.debug("DocumentTextServiceImpl::saveDocumentTextCommand");
-        DocumentText documentText = documentTextCommandConverterImpl.convert(documentTextCommand);
+        DocumentText documentText = documentTextCommandConverter.convert(documentTextCommand);
         DocumentText savedDocumentText = documentTextRepository.save(documentText);
-        return documentTextConverterImpl.convert(savedDocumentText);
+        return documentTextConverter.convert(savedDocumentText);
 
     }
 

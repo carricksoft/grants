@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import scot.carricksoftware.grants.commands.text.PersonTextCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.converters.text.persontext.PersonTextCommandConverterImpl;
-import scot.carricksoftware.grants.converters.text.persontext.PersonTextConverterImpl;
+import scot.carricksoftware.grants.converters.text.persontext.PersonTextCommandConverter;
+import scot.carricksoftware.grants.converters.text.persontext.PersonTextConverter;
 import scot.carricksoftware.grants.domains.text.PersonText;
 import scot.carricksoftware.grants.repositories.text.PersonTextRepository;
 
@@ -31,17 +31,17 @@ public class PersonTextServiceImpl implements PersonTextService {
 
     @SuppressWarnings({"unused"})
     private final PersonTextRepository personTextRepository;
-    private final PersonTextConverterImpl personTextConverterImpl;
-    private final PersonTextCommandConverterImpl personTextCommandConverterImpl;
+    private final PersonTextConverter personTextConverter;
+    private final PersonTextCommandConverter personTextCommandConverter;
 
     public PersonTextServiceImpl(
             PersonTextRepository personTextRepository,
-            PersonTextConverterImpl personTextConverterImpl,
-            PersonTextCommandConverterImpl personTextCommandConverterImpl) {
+            PersonTextConverter personTextConverter,
+            PersonTextCommandConverter personTextCommandConverter) {
 
         this.personTextRepository = personTextRepository;
-        this.personTextConverterImpl = personTextConverterImpl;
-        this.personTextCommandConverterImpl = personTextCommandConverterImpl;
+        this.personTextConverter = personTextConverter;
+        this.personTextCommandConverter = personTextCommandConverter;
     }
 
     @Override
@@ -88,9 +88,9 @@ public class PersonTextServiceImpl implements PersonTextService {
     @Override
     public PersonTextCommand savePersonTextCommand(PersonTextCommand personTextCommand) {
         logger.debug("PersonTextServiceImpl::savePersonTextCommand");
-        PersonText personText = personTextCommandConverterImpl.convert(personTextCommand);
+        PersonText personText = personTextCommandConverter.convert(personTextCommand);
         PersonText savedPersonText = personTextRepository.save(personText);
-        return personTextConverterImpl.convert(savedPersonText);
+        return personTextConverter.convert(savedPersonText);
 
     }
 

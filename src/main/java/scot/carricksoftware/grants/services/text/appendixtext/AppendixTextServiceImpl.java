@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import scot.carricksoftware.grants.commands.text.AppendixTextCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextCommandConverterImpl;
-import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextConverterImpl;
+import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextCommandConverter;
+import scot.carricksoftware.grants.converters.text.appendixtext.AppendixTextConverter;
 import scot.carricksoftware.grants.domains.text.AppendixText;
 import scot.carricksoftware.grants.repositories.text.AppendixTextRepository;
 
@@ -30,17 +30,17 @@ public class AppendixTextServiceImpl implements AppendixTextService {
 
     @SuppressWarnings({"unused"})
     private final AppendixTextRepository appendixTextRepository;
-    private final AppendixTextConverterImpl appendixTextConverterImpl;
-    private final AppendixTextCommandConverterImpl appendixTextCommandConverterImpl;
+    private final AppendixTextConverter appendixTextConverter;
+    private final AppendixTextCommandConverter appendixTextCommandConverter;
 
     public AppendixTextServiceImpl(
             AppendixTextRepository appendixTextRepository,
-            AppendixTextConverterImpl appendixTextConverterImpl,
-            AppendixTextCommandConverterImpl appendixTextCommandConverterImpl) {
+            AppendixTextConverter appendixTextConverter,
+            AppendixTextCommandConverter appendixTextCommandConverter) {
 
         this.appendixTextRepository = appendixTextRepository;
-        this.appendixTextConverterImpl = appendixTextConverterImpl;
-        this.appendixTextCommandConverterImpl = appendixTextCommandConverterImpl;
+        this.appendixTextConverter = appendixTextConverter;
+        this.appendixTextCommandConverter = appendixTextCommandConverter;
     }
 
 
@@ -84,9 +84,9 @@ public class AppendixTextServiceImpl implements AppendixTextService {
     @Override
     public AppendixTextCommand saveAppendixTextCommand(AppendixTextCommand appendixTextCommand) {
         logger.debug("AppendixTextServiceImpl::saveAppendixTextCommand");
-        AppendixText appendixText = appendixTextCommandConverterImpl.convert(appendixTextCommand);
+        AppendixText appendixText = appendixTextCommandConverter.convert(appendixTextCommand);
         AppendixText savedAppendixText = appendixTextRepository.save(appendixText);
-        return appendixTextConverterImpl.convert(savedAppendixText);
+        return appendixTextConverter.convert(savedAppendixText);
 
     }
 

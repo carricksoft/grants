@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import scot.carricksoftware.grants.commands.text.PlaceTextCommand;
 import scot.carricksoftware.grants.constants.ApplicationConstants;
-import scot.carricksoftware.grants.converters.text.placeText.PlaceTextCommandConverterImpl;
-import scot.carricksoftware.grants.converters.text.placeText.PlaceTextConverterImpl;
+import scot.carricksoftware.grants.converters.text.placeText.PlaceTextCommandConverter;
+import scot.carricksoftware.grants.converters.text.placeText.PlaceTextConverter;
 import scot.carricksoftware.grants.domains.text.PlaceText;
 import scot.carricksoftware.grants.repositories.text.PlaceTextRepository;
 
@@ -31,17 +31,17 @@ public class PlaceTextServiceImpl implements PlaceTextService {
 
     @SuppressWarnings({"unused"})
     private final PlaceTextRepository placeTextRepository;
-    private final PlaceTextConverterImpl placeTextConverterImpl;
-    private final PlaceTextCommandConverterImpl placeTextCommandConverterImpl;
+    private final PlaceTextConverter placeTextConverter;
+    private final PlaceTextCommandConverter placeTextCommandConverter;
 
     public PlaceTextServiceImpl(
             PlaceTextRepository placeTextRepository,
-            PlaceTextConverterImpl placeTextConverterImpl,
-            PlaceTextCommandConverterImpl placeTextCommandConverterImpl) {
+            PlaceTextConverter placeTextConverter,
+            PlaceTextCommandConverter placeTextCommandConverter) {
 
         this.placeTextRepository = placeTextRepository;
-        this.placeTextConverterImpl = placeTextConverterImpl;
-        this.placeTextCommandConverterImpl = placeTextCommandConverterImpl;
+        this.placeTextConverter = placeTextConverter;
+        this.placeTextCommandConverter = placeTextCommandConverter;
     }
 
     @Override
@@ -84,9 +84,9 @@ public class PlaceTextServiceImpl implements PlaceTextService {
     @Override
     public PlaceTextCommand savePlaceTextCommand(PlaceTextCommand placeTextCommand) {
         logger.debug("PlaceTextServiceImpl::savePlaceTextCommand");
-        PlaceText placeText = placeTextCommandConverterImpl.convert(placeTextCommand);
+        PlaceText placeText = placeTextCommandConverter.convert(placeTextCommand);
         PlaceText savedPlaceText = placeTextRepository.save(placeText);
-        return placeTextConverterImpl.convert(savedPlaceText);
+        return placeTextConverter.convert(savedPlaceText);
 
     }
 

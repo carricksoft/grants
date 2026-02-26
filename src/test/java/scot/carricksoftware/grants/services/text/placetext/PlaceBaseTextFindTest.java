@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import scot.carricksoftware.grants.converters.text.placeText.PlaceTextCommandConverterImpl;
-import scot.carricksoftware.grants.converters.text.placeText.PlaceTextConverterImpl;
+import scot.carricksoftware.grants.converters.text.placeText.PlaceTextCommandConverter;
+import scot.carricksoftware.grants.converters.text.placeText.PlaceTextConverter;
 import scot.carricksoftware.grants.domains.text.PlaceText;
 import scot.carricksoftware.grants.repositories.text.PlaceTextRepository;
 
@@ -34,10 +34,10 @@ public class PlaceBaseTextFindTest {
     PlaceTextRepository placeTextRepositoryMock;
 
     @Mock
-    PlaceTextConverterImpl placeTextConverterMock;
+    PlaceTextConverter placeTextConverterMock;
 
     @Mock
-    PlaceTextCommandConverterImpl placeTextCommandConverterMock;
+    PlaceTextCommandConverter placeTextCommandConverterMock;
 
     @BeforeEach
     public void setUp() {
