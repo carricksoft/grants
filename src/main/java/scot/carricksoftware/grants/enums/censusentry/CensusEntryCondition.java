@@ -8,6 +8,7 @@ package scot.carricksoftware.grants.enums.censusentry;
 public enum CensusEntryCondition {
 
     BACHELOR("Bachelor"),
+    DIVORCED("Divorced"),
     MARRIED("Married"),
     SINGLE("Single"),
     SPINSTER ("Spinster"),
